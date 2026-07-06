@@ -1,0 +1,92 @@
+{
+  "_comment": "Bill dataset catalog. Managed by storage.catalog.CatalogManager. Do not edit manually.",
+  "catalog_version": "1.0",
+  "dataset_group": "bills",
+  "last_updated": null,
+  "datasets": {
+    "bills_prs": {
+      "dataset_id": "bills_prs",
+      "description": "Legislative bill metadata scraped from PRS Legislative Research",
+      "source": "prsindia.org",
+      "source_url": "https://prsindia.org/bills",
+      "storage_path": "data/bills/metadata/",
+      "format": "json",
+      "schema_version": "1.0",
+      "record_count": 0,
+      "last_ingested_at": null,
+      "last_checked_at": null,
+      "source_version": null,
+      "checksum_md5": null,
+      "is_complete": false,
+      "coverage": {
+        "start_year": null,
+        "end_year": null,
+        "houses": []
+      },
+      "notes": "Primary source. Best structured metadata. Implemented in Task 1."
+    },
+    "bills_lok_sabha": {
+      "dataset_id": "bills_lok_sabha",
+      "description": "Bills from the official Lok Sabha portal",
+      "source": "loksabha.nic.in",
+      "source_url": "https://loksabha.nic.in/Bills_Extranet/bills_lists.aspx",
+      "storage_path": "data/bills/metadata/",
+      "format": "json",
+      "schema_version": "1.0",
+      "record_count": 0,
+      "last_ingested_at": null,
+      "last_checked_at": null,
+      "source_version": null,
+      "checksum_md5": null,
+      "is_complete": false,
+      "coverage": {
+        "start_year": null,
+        "end_year": null,
+        "houses": ["lok_sabha"]
+      },
+      "notes": "Official source for Lok Sabha bills. Implemented in Task 1."
+    },
+    "bills_rajya_sabha": {
+      "dataset_id": "bills_rajya_sabha",
+      "description": "Bills from the official Rajya Sabha portal",
+      "source": "rajyasabha.nic.in",
+      "source_url": "https://rajyasabha.nic.in/rsnew/business/bills.aspx",
+      "storage_path": "data/bills/metadata/",
+      "format": "json",
+      "schema_version": "1.0",
+      "record_count": 0,
+      "last_ingested_at": null,
+      "last_checked_at": null,
+      "source_version": null,
+      "checksum_md5": null,
+      "is_complete": false,
+      "coverage": {
+        "start_year": null,
+        "end_year": null,
+        "houses": ["rajya_sabha"]
+      },
+      "notes": "Official source for Rajya Sabha bills. Implemented in Task 1."
+    },
+    "bills_pdfs": {
+      "dataset_id": "bills_pdfs",
+      "description": "Downloaded bill PDF documents",
+      "source": "various",
+      "source_url": null,
+      "storage_path": "data/bills/pdfs/",
+      "format": "pdf",
+      "schema_version": null,
+      "record_count": 0,
+      "last_ingested_at": null,
+      "last_checked_at": null,
+      "source_version": null,
+      "checksum_md5": null,
+      "is_complete": false,
+      "coverage": {
+        "start_year": null,
+        "end_year": null,
+        "houses": []
+      },
+      "notes": "Binary PDFs stored separately from metadata. Implemented in Task 1."
+    }
+  }
+}

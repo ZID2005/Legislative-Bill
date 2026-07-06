@@ -1,0 +1,68 @@
+{
+  "_comment": "Company dataset catalog. Managed by storage.catalog.CatalogManager. Do not edit manually.",
+  "catalog_version": "1.0",
+  "dataset_group": "companies",
+  "last_updated": null,
+  "datasets": {
+    "company_master_bse": {
+      "dataset_id": "company_master_bse",
+      "description": "BSE scrip master — all listed companies on Bombay Stock Exchange",
+      "source": "bseindia.com",
+      "source_url": "https://www.bseindia.com/corporates/List_Scrips.aspx",
+      "storage_path": "data/companies/bse_master.parquet",
+      "format": "parquet",
+      "schema_version": "1.0",
+      "record_count": 0,
+      "last_ingested_at": null,
+      "last_checked_at": null,
+      "source_version": null,
+      "checksum_md5": null,
+      "is_complete": false,
+      "coverage": {
+        "exchange": "BSE",
+        "active_only": false
+      },
+      "notes": "Monthly refresh recommended. ~5000 active listings. Implemented in Task 2."
+    },
+    "company_master_nse": {
+      "dataset_id": "company_master_nse",
+      "description": "NSE equity symbols master — all listed companies on National Stock Exchange",
+      "source": "nseindia.com",
+      "source_url": "https://www.nseindia.com/market-data/securities-available-for-trading",
+      "storage_path": "data/companies/nse_master.parquet",
+      "format": "parquet",
+      "schema_version": "1.0",
+      "record_count": 0,
+      "last_ingested_at": null,
+      "last_checked_at": null,
+      "source_version": null,
+      "checksum_md5": null,
+      "is_complete": false,
+      "coverage": {
+        "exchange": "NSE",
+        "active_only": false
+      },
+      "notes": "Monthly refresh recommended. Implemented in Task 2."
+    },
+    "company_master_unified": {
+      "dataset_id": "company_master_unified",
+      "description": "Deduplicated and enriched company master combining BSE and NSE records, keyed by ISIN",
+      "source": "derived",
+      "source_url": null,
+      "storage_path": "data/companies/master.parquet",
+      "format": "parquet",
+      "schema_version": "1.0",
+      "record_count": 0,
+      "last_ingested_at": null,
+      "last_checked_at": null,
+      "source_version": null,
+      "checksum_md5": null,
+      "is_complete": false,
+      "coverage": {
+        "exchanges": ["BSE", "NSE"],
+        "active_only": false
+      },
+      "notes": "Primary reference used by all downstream modules. Derived from BSE + NSE masters. Implemented in Task 2."
+    }
+  }
+}

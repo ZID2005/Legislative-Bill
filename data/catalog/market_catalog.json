@@ -1,0 +1,97 @@
+{
+  "_comment": "Market price dataset catalog. Managed by storage.catalog.CatalogManager. Do not edit manually.",
+  "catalog_version": "1.0",
+  "dataset_group": "market",
+  "last_updated": null,
+  "datasets": {
+    "prices_nse_equities": {
+      "dataset_id": "prices_nse_equities",
+      "description": "Historical daily OHLCV prices for all NSE-listed equities",
+      "source": "yfinance",
+      "source_url": "https://finance.yahoo.com",
+      "storage_path": "data/market/equities/",
+      "format": "parquet",
+      "schema_version": "1.0",
+      "record_count": 0,
+      "last_ingested_at": null,
+      "last_checked_at": null,
+      "source_version": null,
+      "checksum_md5": null,
+      "is_complete": false,
+      "coverage": {
+        "exchange": "NSE",
+        "start_date": null,
+        "end_date": null,
+        "symbol_count": 0,
+        "partitioned_by": "symbol"
+      },
+      "notes": "Partitioned by symbol under data/market/equities/<SYMBOL>.parquet. Daily nightly refresh. Implemented in Task 2."
+    },
+    "prices_nifty50": {
+      "dataset_id": "prices_nifty50",
+      "description": "Historical daily closing values for the Nifty 50 index",
+      "source": "yfinance",
+      "source_url": "https://finance.yahoo.com (^NSEI)",
+      "storage_path": "data/market/indices/nifty50.parquet",
+      "format": "parquet",
+      "schema_version": "1.0",
+      "record_count": 0,
+      "last_ingested_at": null,
+      "last_checked_at": null,
+      "source_version": null,
+      "checksum_md5": null,
+      "is_complete": false,
+      "coverage": {
+        "index": "NIFTY50",
+        "start_date": null,
+        "end_date": null
+      },
+      "notes": "Primary benchmark for market model estimation. Implemented in Task 2."
+    },
+    "prices_sector_indices": {
+      "dataset_id": "prices_sector_indices",
+      "description": "Historical daily values for NSE sector indices (Nifty Bank, Nifty IT, Nifty Pharma, etc.)",
+      "source": "yfinance",
+      "source_url": "https://finance.yahoo.com",
+      "storage_path": "data/market/indices/sectors/",
+      "format": "parquet",
+      "schema_version": "1.0",
+      "record_count": 0,
+      "last_ingested_at": null,
+      "last_checked_at": null,
+      "source_version": null,
+      "checksum_md5": null,
+      "is_complete": false,
+      "coverage": {
+        "indices": [
+          "NIFTY BANK", "NIFTY IT", "NIFTY PHARMA", "NIFTY AUTO",
+          "NIFTY FMCG", "NIFTY MEDIA", "NIFTY METAL", "NIFTY REALTY",
+          "NIFTY ENERGY", "NIFTY INFRA"
+        ],
+        "start_date": null,
+        "end_date": null
+      },
+      "notes": "Sector-level benchmarks for abnormal return computation in Task 6."
+    },
+    "india_vix": {
+      "dataset_id": "india_vix",
+      "description": "India VIX — market volatility index published by NSE",
+      "source": "nse_bulk_download",
+      "source_url": "https://www.nseindia.com/products-services/indices-vix",
+      "storage_path": "data/market/indices/india_vix.parquet",
+      "format": "parquet",
+      "schema_version": "1.0",
+      "record_count": 0,
+      "last_ingested_at": null,
+      "last_checked_at": null,
+      "source_version": null,
+      "checksum_md5": null,
+      "is_complete": false,
+      "coverage": {
+        "start_date": null,
+        "end_date": null
+      },
+      "notes": "Used as a market context feature in Task 7."
+    }
+  }
+}

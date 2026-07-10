@@ -93,7 +93,9 @@ class ParliamentConnector:
                 parser.read()
                 self._robots_parsers[base_url] = parser
             except Exception as e:
-                logger.warning("Could not fetch robots.txt for %s: %s. Assuming allowed.", base_url, e)
+                logger.warning(
+                    "Could not fetch robots.txt for %s: %s. Assuming allowed.", base_url, e
+                )
                 # Store a dummy parser that allows all
                 dummy = RobotFileParser()
                 self._robots_parsers[base_url] = dummy
@@ -157,7 +159,7 @@ class ParliamentConnector:
 
         # 5. Retry loop with exponential backoff
         retries = 0
-        current_delay = 1.5
+        current_delay = self.delay
 
         while True:
             try:
@@ -174,12 +176,20 @@ class ParliamentConnector:
             except (httpx.HTTPStatusError, httpx.RequestError, httpx.TimeoutException) as e:
                 retries += 1
                 if retries >= self.max_retries:
-                    logger.error("Failed to fetch URL %s after %d attempts. Error: %s", url, retries, e)
-                    raise ConnectorError(f"Failed to fetch {url} after {self.max_retries} attempts: {e}") from e
+                    logger.error(
+                        "Failed to fetch URL %s after %d attempts. Error: %s", url, retries, e
+                    )
+                    raise ConnectorError(
+                        f"Failed to fetch {url} after {self.max_retries} attempts: {e}"
+                    ) from e
 
                 logger.warning(
                     "Error fetching %s. Retrying in %.2f seconds (attempt %d/%d). Error: %s",
-                    url, current_delay, retries, self.max_retries, e
+                    url,
+                    current_delay,
+                    retries,
+                    self.max_retries,
+                    e,
                 )
                 await asyncio.sleep(current_delay)
                 current_delay *= self.backoff_factor

@@ -63,6 +63,4 @@ class Trainer:
     """
 
     def __init__(self) -> None:
-        raise NotImplementedError(
-            "Trainer is not yet implemented.  See Task 8."
-        )
+        raise NotImplementedError("Trainer is not yet implemented.  See Task 8.")

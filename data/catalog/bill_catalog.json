@@ -2,7 +2,7 @@
   "_comment": "Bill dataset catalog. Managed by storage.catalog.CatalogManager. Do not edit manually.",
   "catalog_version": "1.0",
   "dataset_group": "bills",
-  "last_updated": null,
+  "last_updated": "2026-07-10T07:55:09.366705+00:00",
   "datasets": {
     "bills_prs": {
       "dataset_id": "bills_prs",
@@ -12,18 +12,18 @@
       "storage_path": "data/bills/metadata/",
       "format": "json",
       "schema_version": "1.0",
-      "record_count": 0,
-      "last_ingested_at": null,
-      "last_checked_at": null,
+      "record_count": 1,
+      "last_ingested_at": "2026-07-10T07:55:09.366685+00:00",
+      "last_checked_at": "2026-07-10T07:55:09.366685+00:00",
       "source_version": null,
       "checksum_md5": null,
-      "is_complete": false,
+      "is_complete": true,
       "coverage": {
         "start_year": null,
         "end_year": null,
         "houses": []
       },
-      "notes": "Primary source. Best structured metadata. Implemented in Task 1."
+      "notes": "Ingestion run completed. Added: 1, Updated: 0, Failed: 0"
     },
     "bills_lok_sabha": {
       "dataset_id": "bills_lok_sabha",
@@ -42,7 +42,9 @@
       "coverage": {
         "start_year": null,
         "end_year": null,
-        "houses": ["lok_sabha"]
+        "houses": [
+          "lok_sabha"
+        ]
       },
       "notes": "Official source for Lok Sabha bills. Implemented in Task 1."
     },
@@ -63,7 +65,9 @@
       "coverage": {
         "start_year": null,
         "end_year": null,
-        "houses": ["rajya_sabha"]
+        "houses": [
+          "rajya_sabha"
+        ]
       },
       "notes": "Official source for Rajya Sabha bills. Implemented in Task 1."
     },

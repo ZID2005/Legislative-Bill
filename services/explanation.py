@@ -21,6 +21,7 @@ logger = get_logger(__name__)
 # LLM Provider Abstract Interface (Extension Point for Groq)
 # ---------------------------------------------------------------------------
 
+
 class LLMProvider(ABC):
     """
     Abstract interface for LLM operations.
@@ -58,6 +59,7 @@ class LLMProvider(ABC):
 # ---------------------------------------------------------------------------
 # Explanation Service
 # ---------------------------------------------------------------------------
+
 
 class ExplanationService:
     """
@@ -119,7 +121,9 @@ class ExplanationService:
         """
         logger.info(
             "ExplanationService: explaining impact for bill=%s | company=%s | sector=%s",
-            bill_id, company_name, sector
+            bill_id,
+            company_name,
+            sector,
         )
         bill = self.bill_repo.get(bill_id)
         if not bill:
@@ -136,7 +140,9 @@ class ExplanationService:
         """
         Provide conversational QA answers based on legislative context.
         """
-        logger.info("ExplanationService: answering query with context of %d bills", len(context_bill_ids))
+        logger.info(
+            "ExplanationService: answering query with context of %d bills", len(context_bill_ids)
+        )
         contexts = []
         for bid in context_bill_ids:
             bill = self.bill_repo.get(bid)

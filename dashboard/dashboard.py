@@ -54,6 +54,4 @@ def run_dashboard() -> None:
 
     Full implementation planned for Task 10.
     """
-    raise NotImplementedError(
-        "Dashboard is not yet implemented.  See Task 10."
-    )
+    raise NotImplementedError("Dashboard is not yet implemented.  See Task 10.")

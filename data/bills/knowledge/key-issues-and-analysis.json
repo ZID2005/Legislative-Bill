@@ -1,0 +1,73 @@
+{
+  "bill_id": "key-issues-and-analysis",
+  "ministry": "Ministry of Communications",
+  "department": "Department of Telecommunications",
+  "policy_domain": "Telecom Policy",
+  "economic_domain": "Infrastructure",
+  "primary_sector": "Telecommunications",
+  "secondary_sectors": [
+    "Technology",
+    "Media"
+  ],
+  "stakeholder_groups": [
+    "Telecom Operators",
+    "Subscribers",
+    "Equipment Manufacturers"
+  ],
+  "regulatory_authority": "Telecom Regulatory Authority of India (TRAI)",
+  "geographic_scope": "National Capital Territory of Delhi",
+  "bill_type": "Ordinary Bill",
+  "keywords": [
+    "licence",
+    "permit",
+    "registration",
+    "grant",
+    "obligation",
+    "penalty",
+    "liquidation",
+    "telecom",
+    "spectrum",
+    "internet",
+    "interconnect",
+    "satellite",
+    "frequency"
+  ],
+  "related_acts": [
+    "Telecommunications Act, 2023",
+    "Indian Wireless Telegraphy Act, 1933",
+    "Indian Telegraph Act, 1885",
+    "Consumer Protection Act, 2019",
+    "Telecom Regulatory Authority of India Act, 1997",
+    "Aircraft Act, 1934",
+    "Indian Evidence Act, 1872",
+    "Zones Act, 1976",
+    "In the Telecom Regulatory Authority of India Act, 1997",
+    "Acts Indian Telegraph Act, 1885",
+    "Electricity Act, 2003",
+    "Telegraph Act, 1885",
+    "Telegraphy Act, 1933"
+  ],
+  "related_ministries": [
+    "Ministry of Electronics and Information Technology",
+    "Ministry of Commerce and Industry",
+    "Ministry of Education",
+    "Ministry of Law and Justice"
+  ],
+  "confidence_score": 0.7,
+  "searchable_tags": [
+    "ministry:Ministry of Communications",
+    "policy_domain:Telecom Policy",
+    "sector:Telecommunications",
+    "sector:Technology",
+    "sector:Media",
+    "stakeholder:Telecom Operators",
+    "stakeholder:Subscribers",
+    "stakeholder:Equipment Manufacturers",
+    "year:2024",
+    "status:draft"
+  ],
+  "generated_at": "2026-07-09T15:15:05.187873Z",
+  "rules_version": "1.0",
+  "source_metadata_checksum": "de74dd3a704d5f483c77e5307254ef11961e4eff288d4668d8c9115dbc479683",
+  "source_text_checksum": "302df7ba4ed69e9054202d55248f604d32d8568a22a2e5489ac3041478635577"
+}

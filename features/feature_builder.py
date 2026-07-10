@@ -58,6 +58,4 @@ class FeatureBuilder:
     """
 
     def __init__(self) -> None:
-        raise NotImplementedError(
-            "FeatureBuilder is not yet implemented.  See Task 7."
-        )
+        raise NotImplementedError("FeatureBuilder is not yet implemented.  See Task 7.")

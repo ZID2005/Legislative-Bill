@@ -1,0 +1,35 @@
+{
+  "bill_id": "the-constitution-129th-amendment-bill-2024-simultaneous-elections-one-nation-one-election",
+  "ministry": "Ministry of Law and Justice",
+  "department": "Department of Legal Affairs",
+  "policy_domain": "Governance & Public Administration",
+  "economic_domain": "Public Administration",
+  "primary_sector": "Governance & Public Administration",
+  "secondary_sectors": [],
+  "stakeholder_groups": [
+    "General Public",
+    "Government Employees",
+    "Local Bodies"
+  ],
+  "regulatory_authority": "Election Commission of India (ECI)",
+  "geographic_scope": "Union Territories",
+  "bill_type": "Amendment Bill",
+  "keywords": [],
+  "related_acts": [],
+  "related_ministries": [],
+  "confidence_score": 0.45,
+  "searchable_tags": [
+    "ministry:Ministry of Law and Justice",
+    "policy_domain:Governance & Public Administration",
+    "sector:Governance & Public Administration",
+    "stakeholder:General Public",
+    "stakeholder:Government Employees",
+    "stakeholder:Local Bodies",
+    "year:2024",
+    "status:in_committee"
+  ],
+  "generated_at": "2026-07-09T15:15:06.010722Z",
+  "rules_version": "1.0",
+  "source_metadata_checksum": "2dd438334bd9b0a2ddc502a9f6698076e5a30ae6184825726f7d41ff8d11dd0c",
+  "source_text_checksum": "f6f96507d7d6c2e984e6262bf9483a5d83dc9b9ed75ea064159165809fa56ada"
+}

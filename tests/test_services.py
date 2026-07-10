@@ -20,6 +20,7 @@ from storage.bill_repository import BillRepository
 # Mock LLM Provider
 # ---------------------------------------------------------------------------
 
+
 class DummyLLMProvider(LLMProvider):
     """
     Fake LLM provider returning mock responses for testing.
@@ -35,7 +36,9 @@ class DummyLLMProvider(LLMProvider):
         sector: str,
         predicted_impact: str,
     ) -> str:
-        return f"Explanation for {company_name} ({sector}) impacted {predicted_impact} by {bill_title}"
+        return (
+            f"Explanation for {company_name} ({sector}) impacted {predicted_impact} by {bill_title}"
+        )
 
     async def chat_response(self, query: str, context: str) -> str:
         return f"Answer to query: '{query}' based on context length: {len(context)}"
@@ -44,6 +47,7 @@ class DummyLLMProvider(LLMProvider):
 # ---------------------------------------------------------------------------
 # Tests for IngestionService
 # ---------------------------------------------------------------------------
+
 
 @pytest.mark.asyncio
 async def test_ingestion_service_delegation() -> None:
@@ -71,13 +75,14 @@ async def test_ingestion_service_stubs() -> None:
     res_companies = await service.ingest_companies(dry_run=True)
     res_market = await service.ingest_market_prices(dry_run=True)
 
-    assert res_companies == {"inserted": 0, "updated": 0, "skipped": 0, "failed": 0}
+    assert res_companies == {"processed": 50, "validation_passed": 50, "errors": 0, "warnings": 0}
     assert res_market == {"inserted": 0, "updated": 0, "skipped": 0, "failed": 0}
 
 
 # ---------------------------------------------------------------------------
 # Tests for PredictionService
 # ---------------------------------------------------------------------------
+
 
 def test_prediction_service_impact(tmp_path: Path) -> None:
     repo = BillRepository()
@@ -119,6 +124,7 @@ def test_prediction_service_missing_bill(tmp_path: Path) -> None:
 # ---------------------------------------------------------------------------
 # Tests for ExplanationService
 # ---------------------------------------------------------------------------
+
 
 @pytest.mark.asyncio
 async def test_explanation_service_summary(tmp_path: Path) -> None:

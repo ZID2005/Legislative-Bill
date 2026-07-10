@@ -1,0 +1,15 @@
+{
+  "bill_id": "the-bharatiya-vayuyan-vidheyak-2024",
+  "bill_title": "The Bharatiya Vayuyan Vidheyak, 2024",
+  "ministry": "Ministry of Civil Aviation",
+  "policy_domain": "Infrastructure Development",
+  "economic_domain": "Aviation",
+  "primary_sector": "Aviation",
+  "secondary_sectors": [
+    "Tourism",
+    "Trade"
+  ],
+  "candidate_companies": [],
+  "mapping_confidence": 0.0,
+  "mapping_reason": "No candidate companies found in the database matching primary sector 'Aviation' or secondary sectors."
+}

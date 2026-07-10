@@ -1,0 +1,79 @@
+{
+  "bill_id": "key-issues-and-analysis",
+  "bill_title": "KEY ISSUES AND ANALYSIS",
+  "ministry": "Ministry of Communications",
+  "policy_domain": "Telecom Policy",
+  "economic_domain": "Infrastructure",
+  "primary_sector": "Telecommunications",
+  "secondary_sectors": [
+    "Technology",
+    "Media"
+  ],
+  "candidate_companies": [
+    {
+      "isin": "INE397D01024",
+      "company_name": "Bharti Airtel Limited",
+      "ticker_nse": "BHARTIARTL",
+      "sector": "Telecommunications",
+      "industry": "Telecom Services",
+      "confidence": 0.7,
+      "reason": "Company sector 'Telecommunications' matches bill primary sector exactly; Ministry (Ministry of Communications) regulates/supports sector 'Telecommunications'."
+    },
+    {
+      "isin": "INE860A01027",
+      "company_name": "Hcl Technologies Limited",
+      "ticker_nse": "HCLTECH",
+      "sector": "Technology",
+      "industry": "IT Services",
+      "confidence": 0.5,
+      "reason": "Company sector 'Technology' matches bill secondary sector; Ministry (Ministry of Communications) regulates/supports sector 'Technology'."
+    },
+    {
+      "isin": "INE009A01021",
+      "company_name": "Infosys Limited",
+      "ticker_nse": "INFY",
+      "sector": "Technology & IT Services",
+      "industry": "IT Services",
+      "confidence": 0.5,
+      "reason": "Company sector 'Technology & IT Services' matches bill secondary sector; Ministry (Ministry of Communications) regulates/supports sector 'Technology & IT Services'."
+    },
+    {
+      "isin": "INE214G01026",
+      "company_name": "Ltimindtree Limited",
+      "ticker_nse": "LTIM",
+      "sector": "Technology",
+      "industry": "IT Services",
+      "confidence": 0.5,
+      "reason": "Company sector 'Technology' matches bill secondary sector; Ministry (Ministry of Communications) regulates/supports sector 'Technology'."
+    },
+    {
+      "isin": "INE467B01029",
+      "company_name": "Tata Consultancy Services Limited",
+      "ticker_nse": "TCS",
+      "sector": "Technology & IT Services",
+      "industry": "IT Services",
+      "confidence": 0.5,
+      "reason": "Company sector 'Technology & IT Services' matches bill secondary sector; Ministry (Ministry of Communications) regulates/supports sector 'Technology & IT Services'."
+    },
+    {
+      "isin": "INE669C01036",
+      "company_name": "Tech Mahindra Limited",
+      "ticker_nse": "TECHM",
+      "sector": "Technology",
+      "industry": "IT Services",
+      "confidence": 0.5,
+      "reason": "Company sector 'Technology' matches bill secondary sector; Ministry (Ministry of Communications) regulates/supports sector 'Technology'."
+    },
+    {
+      "isin": "INE075A01022",
+      "company_name": "Wipro Limited",
+      "ticker_nse": "WIPRO",
+      "sector": "Technology",
+      "industry": "IT Services",
+      "confidence": 0.5,
+      "reason": "Company sector 'Technology' matches bill secondary sector; Ministry (Ministry of Communications) regulates/supports sector 'Technology'."
+    }
+  ],
+  "mapping_confidence": 0.7,
+  "mapping_reason": "Mapped to 7 candidate companies in primary sector 'Telecommunications' and secondary sectors. Maximum confidence: 0.70."
+}

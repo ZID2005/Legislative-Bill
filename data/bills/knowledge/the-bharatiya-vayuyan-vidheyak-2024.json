@@ -1,0 +1,65 @@
+{
+  "bill_id": "the-bharatiya-vayuyan-vidheyak-2024",
+  "ministry": "Ministry of Civil Aviation",
+  "department": "Department of Civil Aviation",
+  "policy_domain": "Infrastructure Development",
+  "economic_domain": "Aviation",
+  "primary_sector": "Aviation",
+  "secondary_sectors": [
+    "Tourism",
+    "Trade"
+  ],
+  "stakeholder_groups": [
+    "Airlines",
+    "Passengers",
+    "Airport Operators",
+    "Logistics Companies"
+  ],
+  "regulatory_authority": "Directorate General of Civil Aviation (DGCA)",
+  "geographic_scope": "National",
+  "bill_type": "Ordinary Bill",
+  "keywords": [
+    "licence",
+    "registration",
+    "approval",
+    "grant",
+    "penalty"
+  ],
+  "related_acts": [
+    "Aircraft Act, 1934",
+    "The Aircraft Act, 1934",
+    "Aircraft Act",
+    "Airports Economic Regulatory Authority of India Act, 2008",
+    "Airports Authority of India Act, 1994",
+    "Authority of India Act, 2008",
+    "Telecommunications Act, 2023",
+    "Ports Act, 1908",
+    "Government Act",
+    "Arbitration and Conciliation Act, 1996",
+    "Merchant Shipping Act, 1958",
+    "Patents Act, 1970",
+    "STATEMENT OF OBJECTS AND REASONS The Aircraft Act, 1934",
+    "Indian Ports Act, 1908"
+  ],
+  "related_ministries": [
+    "Ministry of Ports Shipping and Waterways"
+  ],
+  "confidence_score": 0.55,
+  "searchable_tags": [
+    "ministry:Ministry of Civil Aviation",
+    "policy_domain:Infrastructure Development",
+    "sector:Aviation",
+    "sector:Tourism",
+    "sector:Trade",
+    "stakeholder:Airlines",
+    "stakeholder:Passengers",
+    "stakeholder:Airport Operators",
+    "stakeholder:Logistics Companies",
+    "year:2024",
+    "status:passed_both"
+  ],
+  "generated_at": "2026-07-09T15:15:05.477319Z",
+  "rules_version": "1.0",
+  "source_metadata_checksum": "84f352794efbdbf5fd36e1b861f47f84a042a55d989bc5c5a9805d43eecd8d0c",
+  "source_text_checksum": "0c7ba65e53f9ee6d0ea62f19a0d17f719ee1256a80e3f157298945f5bb2b7abc"
+}

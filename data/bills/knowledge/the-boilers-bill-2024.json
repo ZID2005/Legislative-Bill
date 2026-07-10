@@ -1,0 +1,65 @@
+{
+  "bill_id": "the-boilers-bill-2024",
+  "ministry": "Ministry of Commerce and Industry",
+  "department": "Department for Promotion of Industry and Internal Trade",
+  "policy_domain": "Trade Policy",
+  "economic_domain": "Commerce",
+  "primary_sector": "Trade & Manufacturing",
+  "secondary_sectors": [
+    "Technology",
+    "Energy"
+  ],
+  "stakeholder_groups": [
+    "Importers",
+    "Exporters",
+    "Domestic Industry"
+  ],
+  "regulatory_authority": "Central Board of Indirect Taxes and Customs (CBIC)",
+  "geographic_scope": "National Capital Territory of Delhi",
+  "bill_type": "Ordinary Bill",
+  "keywords": [
+    "permit",
+    "registration",
+    "approval",
+    "grant",
+    "penalty",
+    "power"
+  ],
+  "related_acts": [
+    "Boilers Act, 1923",
+    "The Boilers Act, 1923",
+    "Boilers Act, 2024",
+    "Factories Act, 1948",
+    "General Clauses Act, 1897",
+    "STATEMENT OF OBJECTS AND REASONS The Boilers Act, 1923"
+  ],
+  "related_ministries": [
+    "Ministry of Electronics and Information Technology",
+    "Ministry of Communications",
+    "Ministry of Education",
+    "Ministry of Petroleum and Natural Gas",
+    "Ministry of New and Renewable Energy",
+    "Ministry of Power",
+    "Ministry of Road Transport and Highways",
+    "Ministry of Ports Shipping and Waterways",
+    "Ministry of Mines",
+    "Ministry of Environment Forest and Climate Change"
+  ],
+  "confidence_score": 0.7,
+  "searchable_tags": [
+    "ministry:Ministry of Commerce and Industry",
+    "policy_domain:Trade Policy",
+    "sector:Trade & Manufacturing",
+    "sector:Technology",
+    "sector:Energy",
+    "stakeholder:Importers",
+    "stakeholder:Exporters",
+    "stakeholder:Domestic Industry",
+    "year:2024",
+    "status:passed_both"
+  ],
+  "generated_at": "2026-07-09T15:15:05.708088Z",
+  "rules_version": "1.0",
+  "source_metadata_checksum": "0fcc57ad8073641082e515369f50443602a5de3e91965334fd12732288e29346",
+  "source_text_checksum": "882308e5ba7cd8cc1068e3396d5084a21f6d1b483fe7063fc80b2d42d2b3900f"
+}

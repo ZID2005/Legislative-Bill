@@ -73,6 +73,4 @@ class Predictor:
     """
 
     def __init__(self) -> None:
-        raise NotImplementedError(
-            "Predictor is not yet implemented.  See Task 9."
-        )
+        raise NotImplementedError("Predictor is not yet implemented.  See Task 9.")

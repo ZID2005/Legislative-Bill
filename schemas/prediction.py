@@ -24,6 +24,7 @@ class ImpactLabel(str, Enum):
     *  Negative : CAR[0, +20] < -2%
     *  Neutral  : -2% ≤ CAR[0, +20] ≤ +2%
     """
+
     POSITIVE = "positive"
     NEGATIVE = "negative"
     NEUTRAL = "neutral"
@@ -33,25 +34,27 @@ class ImpactLabel(str, Enum):
 @dataclass
 class SectorImpact:
     """Impact assessment for a single sector."""
+
     sector: str
     impact_label: ImpactLabel
-    confidence: float               # 0.0 – 1.0
-    rationale: str = ""             # Human-readable explanation (SHAP-driven)
+    confidence: float  # 0.0 – 1.0
+    rationale: str = ""  # Human-readable explanation (SHAP-driven)
     top_features: list[str] = field(default_factory=list)
 
 
 @dataclass
 class CompanyImpact:
     """Impact assessment for a single listed company."""
+
     isin: str
     ticker: str
     company_name: str
     sector: str
     impact_label: ImpactLabel
-    confidence: float               # 0.0 – 1.0
-    car_predicted: float            # Predicted CAR[0, +20d]
-    car_lower: float = 0.0          # Lower bound of 95% CI
-    car_upper: float = 0.0          # Upper bound of 95% CI
+    confidence: float  # 0.0 – 1.0
+    car_predicted: float  # Predicted CAR[0, +20d]
+    car_lower: float = 0.0  # Lower bound of 95% CI
+    car_upper: float = 0.0  # Upper bound of 95% CI
     rationale: str = ""
     top_features: list[str] = field(default_factory=list)
 

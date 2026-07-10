@@ -1,0 +1,103 @@
+{
+  "bill_id": "service-bill",
+  "bill_title": "Service Bill 2026",
+  "ministry": "Ministry of Finance",
+  "policy_domain": "Financial Regulation",
+  "economic_domain": "Financial Services",
+  "primary_sector": "Banking & Financial Services",
+  "secondary_sectors": [],
+  "candidate_companies": [
+    {
+      "isin": "INE238A01034",
+      "company_name": "Axis Bank Limited",
+      "ticker_nse": "AXISBANK",
+      "sector": "Banking & Financial Services",
+      "industry": "Private Sector Bank",
+      "confidence": 0.7,
+      "reason": "Company sector 'Banking & Financial Services' matches bill primary sector exactly; Ministry (Ministry of Finance) regulates/supports sector 'Banking & Financial Services'."
+    },
+    {
+      "isin": "INE296A01024",
+      "company_name": "Bajaj Finance Limited",
+      "ticker_nse": "BAJFINANCE",
+      "sector": "Banking & Financial Services",
+      "industry": "NBFC",
+      "confidence": 0.7,
+      "reason": "Company sector 'Banking & Financial Services' matches bill primary sector exactly; Ministry (Ministry of Finance) regulates/supports sector 'Banking & Financial Services'."
+    },
+    {
+      "isin": "INE918I01018",
+      "company_name": "Bajaj Finserv Limited",
+      "ticker_nse": "BAJAJFINSV",
+      "sector": "Banking & Financial Services",
+      "industry": "NBFC",
+      "confidence": 0.7,
+      "reason": "Company sector 'Banking & Financial Services' matches bill primary sector exactly; Ministry (Ministry of Finance) regulates/supports sector 'Banking & Financial Services'."
+    },
+    {
+      "isin": "INE040A01034",
+      "company_name": "HDFC Bank Limited",
+      "ticker_nse": "",
+      "sector": "Banking & Financial Services",
+      "industry": "",
+      "confidence": 0.7,
+      "reason": "Company sector 'Banking & Financial Services' matches bill primary sector exactly; Ministry (Ministry of Finance) regulates/supports sector 'Banking & Financial Services'."
+    },
+    {
+      "isin": "INE795G01014",
+      "company_name": "HDFC Life Insurance Company Limited",
+      "ticker_nse": "HDFCLIFE",
+      "sector": "Banking & Financial Services",
+      "industry": "Life Insurance",
+      "confidence": 0.7,
+      "reason": "Company sector 'Banking & Financial Services' matches bill primary sector exactly; Ministry (Ministry of Finance) regulates/supports sector 'Banking & Financial Services'."
+    },
+    {
+      "isin": "INE090A01021",
+      "company_name": "ICICI Bank Limited",
+      "ticker_nse": "ICICIBANK",
+      "sector": "Banking & Financial Services",
+      "industry": "Private Sector Bank",
+      "confidence": 0.7,
+      "reason": "Company sector 'Banking & Financial Services' matches bill primary sector exactly; Ministry (Ministry of Finance) regulates/supports sector 'Banking & Financial Services'."
+    },
+    {
+      "isin": "INE237A01028",
+      "company_name": "Kotak Mahindra Bank Limited",
+      "ticker_nse": "KOTAKBANK",
+      "sector": "Banking & Financial Services",
+      "industry": "Private Sector Bank",
+      "confidence": 0.7,
+      "reason": "Company sector 'Banking & Financial Services' matches bill primary sector exactly; Ministry (Ministry of Finance) regulates/supports sector 'Banking & Financial Services'."
+    },
+    {
+      "isin": "INE00LIC01010",
+      "company_name": "Life Insurance Corporation of India",
+      "ticker_nse": "LICI",
+      "sector": "Banking & Financial Services",
+      "industry": "Life Insurance",
+      "confidence": 0.7,
+      "reason": "Company sector 'Banking & Financial Services' matches bill primary sector exactly; Ministry (Ministry of Finance) regulates/supports sector 'Banking & Financial Services'."
+    },
+    {
+      "isin": "INE123W01016",
+      "company_name": "SBI Life Insurance Company Limited",
+      "ticker_nse": "SBILIFE",
+      "sector": "Banking & Financial Services",
+      "industry": "Life Insurance",
+      "confidence": 0.7,
+      "reason": "Company sector 'Banking & Financial Services' matches bill primary sector exactly; Ministry (Ministry of Finance) regulates/supports sector 'Banking & Financial Services'."
+    },
+    {
+      "isin": "INE062A01020",
+      "company_name": "State Bank of India",
+      "ticker_nse": "SBIN",
+      "sector": "Banking & Financial Services",
+      "industry": "Public Sector Bank",
+      "confidence": 0.7,
+      "reason": "Company sector 'Banking & Financial Services' matches bill primary sector exactly; Ministry (Ministry of Finance) regulates/supports sector 'Banking & Financial Services'."
+    }
+  ],
+  "mapping_confidence": 0.7,
+  "mapping_reason": "Mapped to 10 candidate companies in primary sector 'Banking & Financial Services' and secondary sectors. Maximum confidence: 0.70."
+}

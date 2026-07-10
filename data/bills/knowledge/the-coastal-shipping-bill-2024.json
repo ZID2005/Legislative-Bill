@@ -1,0 +1,70 @@
+{
+  "bill_id": "the-coastal-shipping-bill-2024",
+  "ministry": "Ministry of Ports Shipping and Waterways",
+  "department": "Department of Shipping",
+  "policy_domain": "Infrastructure Development",
+  "economic_domain": "Shipping",
+  "primary_sector": "Ports & Shipping",
+  "secondary_sectors": [
+    "Energy",
+    "Trade"
+  ],
+  "stakeholder_groups": [
+    "Port Operators",
+    "Shipping Lines",
+    "Exporters",
+    "Importers"
+  ],
+  "regulatory_authority": "Ministry of Ports Shipping and Waterways",
+  "geographic_scope": "National",
+  "bill_type": "Ordinary Bill",
+  "keywords": [
+    "licence",
+    "permit",
+    "registration",
+    "approval",
+    "grant",
+    "obligation",
+    "penalty",
+    "power"
+  ],
+  "related_acts": [
+    "Merchant Shipping Act, 1958",
+    "Inland Vessels Act, 2021",
+    "Coastal Shipping Act, 2024",
+    "Exclusive Economic Zone and Other Maritime Zones Act, 1976",
+    "Customs Act, 1962",
+    "Inland Waterways Authority of India Act, 1985",
+    "Major Port Authority Act, 2021",
+    "General Clauses Act, 1897",
+    "Coasting Vessels Act, 1838"
+  ],
+  "related_ministries": [
+    "Ministry of Petroleum and Natural Gas",
+    "Ministry of New and Renewable Energy",
+    "Ministry of Power",
+    "Ministry of Road Transport and Highways",
+    "Ministry of Commerce and Industry",
+    "Ministry of Mines",
+    "Ministry of Environment Forest and Climate Change",
+    "Ministry of Civil Aviation"
+  ],
+  "confidence_score": 0.55,
+  "searchable_tags": [
+    "ministry:Ministry of Ports Shipping and Waterways",
+    "policy_domain:Infrastructure Development",
+    "sector:Ports & Shipping",
+    "sector:Energy",
+    "sector:Trade",
+    "stakeholder:Port Operators",
+    "stakeholder:Shipping Lines",
+    "stakeholder:Exporters",
+    "stakeholder:Importers",
+    "year:2024",
+    "status:passed_both"
+  ],
+  "generated_at": "2026-07-09T15:15:05.933963Z",
+  "rules_version": "1.0",
+  "source_metadata_checksum": "b367a7a2229c07018d5854ce63f614881de2218b54b345b1c9d58c8f38002f38",
+  "source_text_checksum": "a6ea5d22fc0bf1dc30459e3fa5b43449d833d6600e7c447fec03bbf5dc889d44"
+}

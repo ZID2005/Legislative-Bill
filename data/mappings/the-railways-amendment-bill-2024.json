@@ -1,0 +1,51 @@
+{
+  "bill_id": "the-railways-amendment-bill-2024",
+  "bill_title": "The Railways (Amendment) Bill, 2024",
+  "ministry": "Ministry of Railways",
+  "policy_domain": "Infrastructure Development",
+  "economic_domain": "Railways",
+  "primary_sector": "Railways",
+  "secondary_sectors": [
+    "Infrastructure"
+  ],
+  "candidate_companies": [
+    {
+      "isin": "INE423A01024",
+      "company_name": "Adani Enterprises Limited",
+      "ticker_nse": "ADANIENT",
+      "sector": "Infrastructure",
+      "industry": "Diversified Conglomerate",
+      "confidence": 0.5,
+      "reason": "Company sector 'Infrastructure' matches bill secondary sector; Ministry (Ministry of Railways) regulates/supports sector 'Infrastructure'."
+    },
+    {
+      "isin": "INE018A01030",
+      "company_name": "Larsen & Toubro Limited",
+      "ticker_nse": "LT",
+      "sector": "Infrastructure",
+      "industry": "Engineering & Construction",
+      "confidence": 0.5,
+      "reason": "Company sector 'Infrastructure' matches bill secondary sector; Ministry (Ministry of Railways) regulates/supports sector 'Infrastructure'."
+    },
+    {
+      "isin": "INE585B01010",
+      "company_name": "Maruti Suzuki India Limited",
+      "ticker_nse": "MARUTI",
+      "sector": "Infrastructure",
+      "industry": "Automobiles",
+      "confidence": 0.5,
+      "reason": "Company sector 'Infrastructure' matches bill secondary sector; Ministry (Ministry of Railways) regulates/supports sector 'Infrastructure'."
+    },
+    {
+      "isin": "INE481G01011",
+      "company_name": "Ultratech Cement Limited",
+      "ticker_nse": "ULTRACEMCO",
+      "sector": "Infrastructure",
+      "industry": "Cement",
+      "confidence": 0.5,
+      "reason": "Company sector 'Infrastructure' matches bill secondary sector; Ministry (Ministry of Railways) regulates/supports sector 'Infrastructure'."
+    }
+  ],
+  "mapping_confidence": 0.5,
+  "mapping_reason": "Mapped to 4 candidate companies in primary sector 'Railways' and secondary sectors. Maximum confidence: 0.50."
+}

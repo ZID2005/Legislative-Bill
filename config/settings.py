@@ -43,6 +43,7 @@ load_dotenv(_PROJECT_ROOT / ".env", override=False)
 # Helper
 # ---------------------------------------------------------------------------
 
+
 def _env(key: str, default: str | None = None) -> str:
     """Return an environment variable or a default; raise if neither exists."""
     value = os.getenv(key, default)
@@ -74,6 +75,7 @@ def _env_int(key: str, default: int = 0) -> int:
 # ---------------------------------------------------------------------------
 # Settings class
 # ---------------------------------------------------------------------------
+
 
 class Settings:
     """

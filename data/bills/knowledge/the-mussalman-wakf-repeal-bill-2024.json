@@ -1,0 +1,42 @@
+{
+  "bill_id": "the-mussalman-wakf-repeal-bill-2024",
+  "ministry": "Ministry of Minority Affairs",
+  "department": "Department of Minority Affairs",
+  "policy_domain": "Governance & Public Administration",
+  "economic_domain": "Public Administration",
+  "primary_sector": "Governance & Public Administration",
+  "secondary_sectors": [],
+  "stakeholder_groups": [
+    "General Public",
+    "Government Employees",
+    "Local Bodies"
+  ],
+  "regulatory_authority": "Central Waqf Council",
+  "geographic_scope": "National Capital Territory of Delhi",
+  "bill_type": "Repealing Bill",
+  "keywords": [
+    "obligation"
+  ],
+  "related_acts": [
+    "Mussalman Wakf Act, 1923",
+    "Waqf Act, 1995",
+    "The Mussalman Wakf Act, 1923",
+    "STATEMENT OF OBJECTS AND REASONS The Mussalman Wakf Act, 1923"
+  ],
+  "related_ministries": [],
+  "confidence_score": 0.55,
+  "searchable_tags": [
+    "ministry:Ministry of Minority Affairs",
+    "policy_domain:Governance & Public Administration",
+    "sector:Governance & Public Administration",
+    "stakeholder:General Public",
+    "stakeholder:Government Employees",
+    "stakeholder:Local Bodies",
+    "year:2024",
+    "status:passed_both"
+  ],
+  "generated_at": "2026-07-09T15:15:07.150484Z",
+  "rules_version": "1.0",
+  "source_metadata_checksum": "cd4acd641338df6f9d66a6592c1506c0db74804678cfd54747b4c4ea4afc5a75",
+  "source_text_checksum": "f3f79e79f42f75e810a15c6395c2ad8cde465ce3c20ad55897043dc5b0856f4c"
+}

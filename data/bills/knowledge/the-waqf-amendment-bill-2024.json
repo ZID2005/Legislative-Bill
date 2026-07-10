@@ -1,0 +1,52 @@
+{
+  "bill_id": "the-waqf-amendment-bill-2024",
+  "ministry": "Ministry of Minority Affairs",
+  "department": "Department of Minority Affairs",
+  "policy_domain": "Governance & Public Administration",
+  "economic_domain": "Public Administration",
+  "primary_sector": "Governance & Public Administration",
+  "secondary_sectors": [],
+  "stakeholder_groups": [
+    "General Public",
+    "Government Employees",
+    "Local Bodies"
+  ],
+  "regulatory_authority": "Central Waqf Council",
+  "geographic_scope": "Uttar Pradesh",
+  "bill_type": "Amendment Bill",
+  "keywords": [
+    "deduction",
+    "licence",
+    "registration",
+    "penalty"
+  ],
+  "related_acts": [
+    "Waqf Act, 1995",
+    "Land Acquisition Act, 1894",
+    "Rehabilitation and Resettlement Act, 2013",
+    "STATEMENT OF OBJECTS AND REASONS The Waqf Act, 1995",
+    "Efficiency and Development Act, 1995",
+    "Limitation Act, 1963",
+    "Land Acquisition Act",
+    "Indian Trusts Act, 1882",
+    "Societies Registration Act, 1860",
+    "Administration of Evacuee Property Act, 1950",
+    "Administration of Evacuee of Property Act, 1950"
+  ],
+  "related_ministries": [],
+  "confidence_score": 0.65,
+  "searchable_tags": [
+    "ministry:Ministry of Minority Affairs",
+    "policy_domain:Governance & Public Administration",
+    "sector:Governance & Public Administration",
+    "stakeholder:General Public",
+    "stakeholder:Government Employees",
+    "stakeholder:Local Bodies",
+    "year:2024",
+    "status:passed_both"
+  ],
+  "generated_at": "2026-07-09T15:15:07.731562Z",
+  "rules_version": "1.0",
+  "source_metadata_checksum": "2a08128ae35dd566dcd8bbd0842ff1ab0fea0a986a2911a0f574d01d114c637f",
+  "source_text_checksum": "786527c3eade831386d49f90d69a3a3d533d1d1f912c93b817637586d7afa812"
+}

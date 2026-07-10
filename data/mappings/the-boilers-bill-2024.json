@@ -1,0 +1,205 @@
+{
+  "bill_id": "the-boilers-bill-2024",
+  "bill_title": "The Boilers Bill, 2024",
+  "ministry": "Ministry of Commerce and Industry",
+  "policy_domain": "Trade Policy",
+  "economic_domain": "Commerce",
+  "primary_sector": "Trade & Manufacturing",
+  "secondary_sectors": [
+    "Technology",
+    "Energy"
+  ],
+  "candidate_companies": [
+    {
+      "isin": "INE117A01022",
+      "company_name": "Abb India Limited",
+      "ticker_nse": "ABB",
+      "sector": "Manufacturing",
+      "industry": "Capital Goods",
+      "confidence": 0.7,
+      "reason": "Company sector 'Manufacturing' matches bill primary sector exactly; Ministry (Ministry of Commerce and Industry) regulates/supports sector 'Manufacturing'."
+    },
+    {
+      "isin": "INE917I01010",
+      "company_name": "Bajaj Auto Limited",
+      "ticker_nse": "BAJAJ-AUTO",
+      "sector": "Manufacturing",
+      "industry": "Automobiles",
+      "confidence": 0.7,
+      "reason": "Company sector 'Manufacturing' matches bill primary sector exactly; Ministry (Ministry of Commerce and Industry) regulates/supports sector 'Manufacturing'."
+    },
+    {
+      "isin": "INE047A01021",
+      "company_name": "Grasim Industries Limited",
+      "ticker_nse": "GRASIM",
+      "sector": "Manufacturing",
+      "industry": "Diversified",
+      "confidence": 0.7,
+      "reason": "Company sector 'Manufacturing' matches bill primary sector exactly; Ministry (Ministry of Commerce and Industry) regulates/supports sector 'Manufacturing'."
+    },
+    {
+      "isin": "INE158A01026",
+      "company_name": "Hero Motocorp Limited",
+      "ticker_nse": "HEROMOTOCO",
+      "sector": "Manufacturing",
+      "industry": "Automobiles",
+      "confidence": 0.7,
+      "reason": "Company sector 'Manufacturing' matches bill primary sector exactly; Ministry (Ministry of Commerce and Industry) regulates/supports sector 'Manufacturing'."
+    },
+    {
+      "isin": "INE101A01026",
+      "company_name": "Mahindra & Mahindra Limited",
+      "ticker_nse": "M&M",
+      "sector": "Manufacturing",
+      "industry": "Automobiles",
+      "confidence": 0.7,
+      "reason": "Company sector 'Manufacturing' matches bill primary sector exactly; Ministry (Ministry of Commerce and Industry) regulates/supports sector 'Manufacturing'."
+    },
+    {
+      "isin": "INE003A01024",
+      "company_name": "Siemens Limited",
+      "ticker_nse": "SIEMENS",
+      "sector": "Manufacturing",
+      "industry": "Capital Goods",
+      "confidence": 0.7,
+      "reason": "Company sector 'Manufacturing' matches bill primary sector exactly; Ministry (Ministry of Commerce and Industry) regulates/supports sector 'Manufacturing'."
+    },
+    {
+      "isin": "INE155A01022",
+      "company_name": "Tata Motors Limited",
+      "ticker_nse": "TATAMOTORS",
+      "sector": "Manufacturing",
+      "industry": "Automobiles",
+      "confidence": 0.7,
+      "reason": "Company sector 'Manufacturing' matches bill primary sector exactly; Ministry (Ministry of Commerce and Industry) regulates/supports sector 'Manufacturing'."
+    },
+    {
+      "isin": "INE364U01010",
+      "company_name": "Adani Green Energy Limited",
+      "ticker_nse": "ADANIGREEN",
+      "sector": "Energy",
+      "industry": "Renewable Power",
+      "confidence": 0.5,
+      "reason": "Company sector 'Energy' matches bill secondary sector; Ministry (Ministry of Commerce and Industry) regulates/supports sector 'Energy'."
+    },
+    {
+      "isin": "INE814H01011",
+      "company_name": "Adani Power Limited",
+      "ticker_nse": "ADANIPOWER",
+      "sector": "Energy",
+      "industry": "Power Generation",
+      "confidence": 0.5,
+      "reason": "Company sector 'Energy' matches bill secondary sector; Ministry (Ministry of Commerce and Industry) regulates/supports sector 'Energy'."
+    },
+    {
+      "isin": "INE860A01027",
+      "company_name": "Hcl Technologies Limited",
+      "ticker_nse": "HCLTECH",
+      "sector": "Technology",
+      "industry": "IT Services",
+      "confidence": 0.5,
+      "reason": "Company sector 'Technology' matches bill secondary sector; Ministry (Ministry of Commerce and Industry) regulates/supports sector 'Technology'."
+    },
+    {
+      "isin": "INE030A01027",
+      "company_name": "Hindustan Unilever Limited",
+      "ticker_nse": "HINDUNILVR",
+      "sector": "Energy",
+      "industry": "FMCG",
+      "confidence": 0.5,
+      "reason": "Company sector 'Energy' matches bill secondary sector; Ministry (Ministry of Commerce and Industry) regulates/supports sector 'Energy'."
+    },
+    {
+      "isin": "INE009A01021",
+      "company_name": "Infosys Limited",
+      "ticker_nse": "INFY",
+      "sector": "Technology & IT Services",
+      "industry": "IT Services",
+      "confidence": 0.5,
+      "reason": "Company sector 'Technology & IT Services' matches bill secondary sector; Ministry (Ministry of Commerce and Industry) regulates/supports sector 'Technology & IT Services'."
+    },
+    {
+      "isin": "INE214G01026",
+      "company_name": "Ltimindtree Limited",
+      "ticker_nse": "LTIM",
+      "sector": "Technology",
+      "industry": "IT Services",
+      "confidence": 0.5,
+      "reason": "Company sector 'Technology' matches bill secondary sector; Ministry (Ministry of Commerce and Industry) regulates/supports sector 'Technology'."
+    },
+    {
+      "isin": "INE733E01010",
+      "company_name": "NTPC Limited",
+      "ticker_nse": "NTPC",
+      "sector": "Energy",
+      "industry": "Power Generation",
+      "confidence": 0.5,
+      "reason": "Company sector 'Energy' matches bill secondary sector; Ministry (Ministry of Commerce and Industry) regulates/supports sector 'Energy'."
+    },
+    {
+      "isin": "INE213A01029",
+      "company_name": "Oil and Natural Gas Corporation Limited",
+      "ticker_nse": "ONGC",
+      "sector": "Energy",
+      "industry": "Oil Exploration & Production",
+      "confidence": 0.5,
+      "reason": "Company sector 'Energy' matches bill secondary sector; Ministry (Ministry of Commerce and Industry) regulates/supports sector 'Energy'."
+    },
+    {
+      "isin": "INE752E01010",
+      "company_name": "Power Grid Corporation of India Limited",
+      "ticker_nse": "POWERGRID",
+      "sector": "Energy",
+      "industry": "Power Transmission",
+      "confidence": 0.5,
+      "reason": "Company sector 'Energy' matches bill secondary sector; Ministry (Ministry of Commerce and Industry) regulates/supports sector 'Energy'."
+    },
+    {
+      "isin": "INE002A01018",
+      "company_name": "Reliance Industries Limited",
+      "ticker_nse": "RELIANCE",
+      "sector": "Energy",
+      "industry": "Oil Gas & Fuels",
+      "confidence": 0.5,
+      "reason": "Company sector 'Energy' matches bill secondary sector; Ministry (Ministry of Commerce and Industry) regulates/supports sector 'Energy'."
+    },
+    {
+      "isin": "INE467B01029",
+      "company_name": "Tata Consultancy Services Limited",
+      "ticker_nse": "TCS",
+      "sector": "Technology & IT Services",
+      "industry": "IT Services",
+      "confidence": 0.5,
+      "reason": "Company sector 'Technology & IT Services' matches bill secondary sector; Ministry (Ministry of Commerce and Industry) regulates/supports sector 'Technology & IT Services'."
+    },
+    {
+      "isin": "INE245A01021",
+      "company_name": "Tata Power Company Limited",
+      "ticker_nse": "TATAPOWER",
+      "sector": "Energy",
+      "industry": "Power Utilities",
+      "confidence": 0.5,
+      "reason": "Company sector 'Energy' matches bill secondary sector; Ministry (Ministry of Commerce and Industry) regulates/supports sector 'Energy'."
+    },
+    {
+      "isin": "INE669C01036",
+      "company_name": "Tech Mahindra Limited",
+      "ticker_nse": "TECHM",
+      "sector": "Technology",
+      "industry": "IT Services",
+      "confidence": 0.5,
+      "reason": "Company sector 'Technology' matches bill secondary sector; Ministry (Ministry of Commerce and Industry) regulates/supports sector 'Technology'."
+    },
+    {
+      "isin": "INE075A01022",
+      "company_name": "Wipro Limited",
+      "ticker_nse": "WIPRO",
+      "sector": "Technology",
+      "industry": "IT Services",
+      "confidence": 0.5,
+      "reason": "Company sector 'Technology' matches bill secondary sector; Ministry (Ministry of Commerce and Industry) regulates/supports sector 'Technology'."
+    }
+  ],
+  "mapping_confidence": 0.7,
+  "mapping_reason": "Mapped to 21 candidate companies in primary sector 'Trade & Manufacturing' and secondary sectors. Maximum confidence: 0.70."
+}

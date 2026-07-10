@@ -20,6 +20,7 @@ class TestBillSchema:
 
     def _make_bill(self) -> object:
         from schemas.bill import Bill, BillHouse, BillStatus
+
         return Bill(
             bill_id="finance-bill-2024",
             title="The Finance Bill, 2024",
@@ -52,6 +53,7 @@ class TestBillSchema:
 
     def test_bill_from_dict_roundtrip(self) -> None:
         from schemas.bill import Bill
+
         bill = self._make_bill()
         d = bill.to_dict()
         restored = Bill.from_dict(d)
@@ -62,11 +64,13 @@ class TestBillSchema:
 
     def test_bill_status_enum_values(self) -> None:
         from schemas.bill import BillStatus
+
         assert BillStatus.PASSED_BOTH.value == "passed_both"
         assert BillStatus.LAPSED.value == "lapsed"
 
     def test_bill_house_enum_values(self) -> None:
         from schemas.bill import BillHouse
+
         assert BillHouse.LOK_SABHA.value == "lok_sabha"
         assert BillHouse.RAJYA_SABHA.value == "rajya_sabha"
 
@@ -80,6 +84,7 @@ class TestCompanySchema:
 
     def _make_company(self) -> object:
         from schemas.company import Company
+
         return Company(
             isin="INE009A01021",
             company_name="Infosys Limited",
@@ -108,6 +113,7 @@ class TestCompanySchema:
 
     def test_company_from_dict_roundtrip(self) -> None:
         from schemas.company import Company
+
         co = self._make_company()
         d = co.to_dict()
         restored = Company.from_dict(d)
@@ -117,6 +123,7 @@ class TestCompanySchema:
 
     def test_market_cap_category_enum(self) -> None:
         from schemas.company import MarketCapCategory
+
         assert MarketCapCategory.LARGE_CAP.value == "large_cap"
         assert MarketCapCategory.UNKNOWN.value == "unknown"
 
@@ -126,6 +133,7 @@ class TestPriceRecordSchema:
 
     def _make_price(self) -> object:
         from schemas.market import PriceRecord
+
         return PriceRecord(
             symbol="INFY",
             date=date(2024, 1, 15),
@@ -163,12 +171,14 @@ class TestPredictionSchema:
 
     def test_impact_label_enum(self) -> None:
         from schemas.prediction import ImpactLabel
+
         assert ImpactLabel.POSITIVE.value == "positive"
         assert ImpactLabel.NEGATIVE.value == "negative"
         assert ImpactLabel.NEUTRAL.value == "neutral"
 
     def test_prediction_instantiation(self) -> None:
         from schemas.prediction import ImpactLabel, Prediction
+
         pred = Prediction(
             bill_id="finance-bill-2024",
             model_version="v0.1.0",
@@ -181,6 +191,7 @@ class TestPredictionSchema:
 
     def test_prediction_to_dict(self) -> None:
         from schemas.prediction import ImpactLabel, Prediction
+
         pred = Prediction(
             bill_id="test-bill",
             model_version="v0.1",

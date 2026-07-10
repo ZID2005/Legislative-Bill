@@ -8,7 +8,17 @@ finance** techniques to produce market impact predictions.
 
 ---
 
-## Stage 1: Bill Text Understanding (NLP)
+## Stage 1: Ingest, Validate, and Extract (Corpus Generation)
+
+Before performing NLP, raw documents are parsed and validated:
+1. **Document Download**: Streaming chunked retrieval with Range Request support for partial-file resume.
+2. **Multi-Engine Extraction**: Converts PDFs using `pdfplumber` layout-preservation algorithms as primary, with a `PyPDF2` parser fallback.
+3. **Quality Filtering**: Blocks low-quality scanned image PDFs (<50 characters) to prevent database noise.
+4. **Text Normalization & Deduplication**:
+   - standardizes character encodings to NFKC.
+   - removes page numbers and headers/footers repeated on $>50\%$ of pages.
+
+## Stage 2: Bill Text Understanding (NLP)
 
 ### Approach
 We treat each bill as a structured legal document and extract:
@@ -19,20 +29,38 @@ We treat each bill as a structured legal document and extract:
 
 ### Models
 - **Primary**: Legal-RoBERTa (fine-tuned on Indian legal text)
-- **Supplementary**: FinBERT (for financial sentiment within bill clauses)
-- **Summarisation**: GPT-4 or open-source equivalent (Mistral 7B / Llama 3)
+- **Supplementary**: Fine-tuned FinBERT (sentiment)
+- **Summarisation**: Mistral 7B / Llama 3 / abstract LLM interface (Groq)
 
 ---
 
 ## Stage 2: Sector & Company Mapping
 
-### Phase A — Keyword-Based (Baseline)
-A curated keyword dictionary maps domain terms to sectors. Fast, interpretable,
-but brittle to novel language.
+### Phase A — Rule-Based Knowledge Generation (Task 1A.5)
+A deterministic rule engine converts legislative texts into structured domain knowledge.
+1. **Ministry and Category Lookups**: Canonical sponsoring ministry names and primary sector mappings are resolved using standard mapping catalogs (`ministry_mappings.csv` and `ministry_sector.csv`).
+2. **Hierarchy-Based Taxonomy Traversal**: Uses the parent-to-child relations defined in `taxonomy_hierarchy.csv` to traverse downstream from canonical ministry/primary sector nodes.
+3. **Word Boundary Keyword Frequency Checks**: Counts exact word occurrences (avoiding substring match errors like matching "oil" inside "boilers") to activate secondary sectors and policy/economic domains.
+4. **Geographic Scope and Bill Type Categorization**: Extracts scopes (e.g. State-specific vs. National) and bill types based on regex/keyword lookups.
+5. **Confidence Score Calculation**: Assigns confidence points programmatically based on the strength and provenance of mappings (e.g., raw ministry matching, category matching, keyword frequency, regulatory authority presence).
 
-### Phase B — Embedding-Based (Primary)
-Bill clause embeddings are compared against sector-description embeddings using
-cosine similarity. More robust to paraphrasing and novel provisions.
+### Phase B — Deterministic Bill-to-Company Mapping (Task 2.3)
+Once the knowledge record has been generated for a bill, the mapping engine maps the bill to listed companies in the Company Intelligence database using a scoring system:
+1. **Base Sector Match**:
+   - **Primary Sector**: `0.50` base confidence if the company's sector matches the bill's primary sector.
+   - **Secondary Sector**: `0.30` base confidence if the company's sector matches one of the bill's secondary sectors.
+2. **Deterministic Confidence Boosts**:
+   - **Industry Match (`+0.20`)**: Applied if the company's industry matches or is mentioned inside the bill title, summary, or corpus text, or is present in the bill's keywords. The match is plural-tolerant.
+   - **Sub-industry Match (`+0.10`)**: Applied if the industry did not match, but the company's sub-industry matches or is mentioned inside the bill's texts/keywords.
+   - **Sponsoring Ministry Mappings (`+0.20`)**: Applied if the company's sector is regulated by the sponsoring ministry (using `knowledge/ministry_sector.csv` mapping).
+   - **Direct Company Name/Alias Mention (`+0.10`)**: Applied if the company's normalized name (excluding suffixes like "Limited", "Ltd", etc.) or any of its aliases are explicitly mentioned in the bill text.
+3. **Capping & Rounding**:
+   - Total mapping confidence is capped at `1.0` and rounded to two decimal places.
+   - Candidate companies are sorted by confidence descending, then by name ascending.
+
+### Phase C — Embedding-Based Mapping (Future Stage)
+Bill clause embeddings will be compared against sector-description and company-profile embeddings using cosine similarity to capture semantic similarity beyond exact keywords and taxonomy lookups.
+
 
 ---
 

@@ -28,6 +28,10 @@ directions for future versions of the system.
 - Map gazette notifications back to the original bill
 - Track implementation lag (days between passage and notification)
 
+### Advanced Bill-to-Company Mapping
+- **Embedding-Based Semantic Mapping**: Embed bill clauses using domain-specific legal models (e.g. Legal-RoBERTa) and calculate similarity against vector embeddings of company business descriptions, annual reports, and regulatory filings. This enables discovery of implicit dependencies beyond taxonomy keywords.
+- **Supervised Confidence Calibration**: Leverage historical stock price reactions from event studies to train a machine learning model that automatically calibrates and weights mapping confidence, optimizing the decision boundary for mapping strength.
+
 ---
 
 ## Research Directions

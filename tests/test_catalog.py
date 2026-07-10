@@ -24,11 +24,13 @@ import pytest
 # DatasetEntry tests
 # ---------------------------------------------------------------------------
 
+
 class TestDatasetEntry:
     """Tests for the DatasetEntry value object."""
 
     def _make_entry(self, **overrides) -> object:
         from storage.catalog import DatasetEntry
+
         data = {
             "dataset_id": "test_dataset",
             "description": "A test dataset",
@@ -108,27 +110,32 @@ class TestDatasetEntry:
 # CatalogManager tests — using real catalog files
 # ---------------------------------------------------------------------------
 
+
 class TestCatalogManagerRealFiles:
     """Tests using the actual catalog JSON files in data/catalog/."""
 
     def test_bills_catalog_loads(self) -> None:
         from storage.catalog import CatalogManager
+
         cm = CatalogManager("bills")
         assert cm is not None
         assert len(cm.list_ids()) > 0
 
     def test_companies_catalog_loads(self) -> None:
         from storage.catalog import CatalogManager
+
         cm = CatalogManager("companies")
         assert len(cm.list_ids()) > 0
 
     def test_market_catalog_loads(self) -> None:
         from storage.catalog import CatalogManager
+
         cm = CatalogManager("market")
         assert len(cm.list_ids()) > 0
 
     def test_bills_catalog_has_prs_entry(self) -> None:
         from storage.catalog import CatalogManager
+
         cm = CatalogManager("bills")
         entry = cm.get("bills_prs")
         assert entry is not None
@@ -136,35 +143,57 @@ class TestCatalogManagerRealFiles:
 
     def test_company_master_unified_exists(self) -> None:
         from storage.catalog import CatalogManager
+
         cm = CatalogManager("companies")
         entry = cm.get("company_master_unified")
         assert entry is not None
 
     def test_nifty50_entry_exists(self) -> None:
         from storage.catalog import CatalogManager
+
         cm = CatalogManager("market")
         entry = cm.get("prices_nifty50")
         assert entry is not None
 
-    def test_fresh_catalog_is_stale(self) -> None:
+    def test_fresh_catalog_is_stale(self, tmp_path: Path) -> None:
         """All entries in a fresh catalog have never been ingested → stale."""
         from storage.catalog import CatalogManager
-        cm = CatalogManager("bills")
-        # bills_prs has never been ingested (record_count=0, last_ingested_at=null)
+        import json
+
+        catalog_data = {
+            "catalog_version": "1.0",
+            "dataset_group": "bills",
+            "last_updated": None,
+            "datasets": {
+                "bills_prs": {
+                    "dataset_id": "bills_prs",
+                    "description": "PRS",
+                    "source": "prs",
+                    "record_count": 0,
+                    "last_ingested_at": None,
+                }
+            },
+        }
+        catalog_file = tmp_path / "bill_catalog.json"
+        catalog_file.write_text(json.dumps(catalog_data, indent=2), encoding="utf-8")
+        cm = CatalogManager("bills", catalog_dir=tmp_path)
         assert cm.is_stale("bills_prs") is True
 
     def test_invalid_dataset_id_returns_none(self) -> None:
         from storage.catalog import CatalogManager
+
         cm = CatalogManager("bills")
         assert cm.get("nonexistent_dataset_xyz") is None
 
     def test_invalid_group_raises(self) -> None:
         from storage.catalog import CatalogManager
+
         with pytest.raises(ValueError, match="Unknown catalog group"):
             CatalogManager("nonexistent_group")
 
     def test_repr_contains_group(self) -> None:
         from storage.catalog import CatalogManager
+
         cm = CatalogManager("bills")
         assert "bills" in repr(cm)
 
@@ -173,12 +202,14 @@ class TestCatalogManagerRealFiles:
 # CatalogManager tests — using tmp_path (isolated, no side effects)
 # ---------------------------------------------------------------------------
 
+
 class TestCatalogManagerUpdate:
     """Tests for update() using a temporary catalog directory."""
 
     def _make_temp_catalog(self, tmp_path: Path, group: str = "bills") -> object:
         """Create a minimal catalog JSON in tmp_path and return a CatalogManager for it."""
         from storage.catalog import CatalogManager, _GROUP_FILENAME
+
         filename_prefix = _GROUP_FILENAME[group]
         catalog_file = tmp_path / f"{filename_prefix}_catalog.json"
         catalog_data = {
@@ -221,6 +252,7 @@ class TestCatalogManagerUpdate:
     def test_update_persists_to_disk(self, tmp_path: Path) -> None:
         """Changes must survive a fresh CatalogManager load."""
         from storage.catalog import _GROUP_FILENAME
+
         cm = self._make_temp_catalog(tmp_path)
         cm.update("test_ds", record_count=999, is_complete=True)
 
@@ -248,6 +280,7 @@ class TestCatalogManagerUpdate:
 
     def test_touch_updates_checked_at(self, tmp_path: Path) -> None:
         from storage.catalog import _GROUP_FILENAME
+
         cm = self._make_temp_catalog(tmp_path)
         cm.touch("test_ds")
         catalog_file = tmp_path / f"{_GROUP_FILENAME['bills']}_catalog.json"
@@ -259,11 +292,13 @@ class TestCatalogManagerUpdate:
 # compute_md5 tests
 # ---------------------------------------------------------------------------
 
+
 class TestComputeMd5:
     """Tests for the compute_md5 helper."""
 
     def test_md5_empty_file(self, tmp_path: Path) -> None:
         from storage.catalog import compute_md5
+
         f = tmp_path / "empty.bin"
         f.write_bytes(b"")
         digest = compute_md5(f)
@@ -271,6 +306,7 @@ class TestComputeMd5:
 
     def test_md5_known_content(self, tmp_path: Path) -> None:
         from storage.catalog import compute_md5
+
         f = tmp_path / "test.txt"
         f.write_bytes(b"hello world")
         digest = compute_md5(f)
@@ -279,6 +315,7 @@ class TestComputeMd5:
 
     def test_md5_returns_32_char_hex(self, tmp_path: Path) -> None:
         from storage.catalog import compute_md5
+
         f = tmp_path / "data.bin"
         f.write_bytes(b"some test data for md5")
         digest = compute_md5(f)

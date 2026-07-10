@@ -1,0 +1,22 @@
+{
+  "bill_id": "service-bill",
+  "ministry": "Ministry of Finance",
+  "department": "DFS",
+  "policy_domain": "Financial Regulation",
+  "economic_domain": "Financial Services",
+  "primary_sector": "Banking & Financial Services",
+  "secondary_sectors": [],
+  "stakeholder_groups": [],
+  "regulatory_authority": "",
+  "geographic_scope": "National",
+  "bill_type": "Ordinary Bill",
+  "keywords": [],
+  "related_acts": [],
+  "related_ministries": [],
+  "confidence_score": 0.0,
+  "searchable_tags": [],
+  "generated_at": "",
+  "rules_version": "1.0",
+  "source_metadata_checksum": null,
+  "source_text_checksum": null
+}

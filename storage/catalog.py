@@ -75,6 +75,7 @@ _GROUP_FILENAME: dict[str, str] = {
 # DatasetEntry — lightweight value object
 # ---------------------------------------------------------------------------
 
+
 class DatasetEntry:
     """
     A single dataset entry from the catalog.
@@ -162,7 +163,7 @@ class DatasetEntry:
         """
         age = self.age_days()
         if age is None:
-            return True          # Never ingested → always stale
+            return True  # Never ingested → always stale
         return age > max_age_days
 
     def to_dict(self) -> dict[str, Any]:
@@ -183,6 +184,7 @@ class DatasetEntry:
 # ---------------------------------------------------------------------------
 # CatalogManager
 # ---------------------------------------------------------------------------
+
 
 class CatalogManager:
     """
@@ -210,8 +212,7 @@ class CatalogManager:
     ) -> None:
         if group not in _VALID_GROUPS:
             raise ValueError(
-                f"Unknown catalog group {group!r}.  "
-                f"Must be one of: {sorted(_VALID_GROUPS)}"
+                f"Unknown catalog group {group!r}.  " f"Must be one of: {sorted(_VALID_GROUPS)}"
             )
         self._group = group
         self._catalog_dir = catalog_dir or _CATALOG_DIR
@@ -271,10 +272,7 @@ class CatalogManager:
 
     def get_all(self) -> dict[str, DatasetEntry]:
         """Return all registered datasets as a ``{dataset_id: DatasetEntry}`` dict."""
-        return {
-            k: DatasetEntry(v)
-            for k, v in self._data.get("datasets", {}).items()
-        }
+        return {k: DatasetEntry(v) for k, v in self._data.get("datasets", {}).items()}
 
     def list_ids(self) -> list[str]:
         """Return all registered dataset IDs."""
@@ -405,9 +403,7 @@ class CatalogManager:
         """
         datasets = self._data.setdefault("datasets", {})
         if dataset_id in datasets:
-            datasets[dataset_id]["last_checked_at"] = (
-                datetime.now(tz=timezone.utc).isoformat()
-            )
+            datasets[dataset_id]["last_checked_at"] = datetime.now(tz=timezone.utc).isoformat()
             self._save()
 
     # ------------------------------------------------------------------
@@ -444,6 +440,7 @@ class CatalogManager:
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
+
 
 def compute_md5(path: str | os.PathLike, chunk_size: int = 65536) -> str:
     """

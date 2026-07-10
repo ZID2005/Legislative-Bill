@@ -1,0 +1,57 @@
+{
+  "bill_id": "the-bills-of-lading-bill-2024",
+  "ministry": "Ministry of Ports Shipping and Waterways",
+  "department": "Department of Shipping",
+  "policy_domain": "Infrastructure Development",
+  "economic_domain": "Shipping",
+  "primary_sector": "Ports & Shipping",
+  "secondary_sectors": [
+    "Energy",
+    "Trade"
+  ],
+  "stakeholder_groups": [
+    "Port Operators",
+    "Shipping Lines",
+    "Exporters",
+    "Importers"
+  ],
+  "regulatory_authority": "Ministry of Ports Shipping and Waterways",
+  "geographic_scope": "National",
+  "bill_type": "Ordinary Bill",
+  "keywords": [
+    "obligation",
+    "penalty",
+    "power"
+  ],
+  "related_acts": [
+    "General Clauses Act, 1897"
+  ],
+  "related_ministries": [
+    "Ministry of Petroleum and Natural Gas",
+    "Ministry of New and Renewable Energy",
+    "Ministry of Power",
+    "Ministry of Road Transport and Highways",
+    "Ministry of Commerce and Industry",
+    "Ministry of Mines",
+    "Ministry of Environment Forest and Climate Change",
+    "Ministry of Civil Aviation"
+  ],
+  "confidence_score": 0.55,
+  "searchable_tags": [
+    "ministry:Ministry of Ports Shipping and Waterways",
+    "policy_domain:Infrastructure Development",
+    "sector:Ports & Shipping",
+    "sector:Energy",
+    "sector:Trade",
+    "stakeholder:Port Operators",
+    "stakeholder:Shipping Lines",
+    "stakeholder:Exporters",
+    "stakeholder:Importers",
+    "year:2024",
+    "status:passed_both"
+  ],
+  "generated_at": "2026-07-09T15:15:05.550768Z",
+  "rules_version": "1.0",
+  "source_metadata_checksum": "d5c29048b832ae49a5d0bdc1ce09ab4788a575293622249ac39537acbc4fc4f3",
+  "source_text_checksum": "f2014616c02ae24671855f98ee6aa94166c06019a252f504b440dec72dc10a82"
+}

@@ -1,0 +1,1506 @@
+AS INTRODUCED IN LOK SABHA
+Bill No. 98 of 2024
+THE DISASTER MANAGEMENT (AMENDMENT) BILL, 2024
+A
+BILL
+to amend the Disaster Management Act, 2005.
+BE it enacted by Parliament in the Seventy-fifth Year of the Republic of India
+as follows:––
+1. (1) This Act may be called the Disaster Management (Amendment) S hort title and
+commencement.
+Act, 2024.
+5 (2) It shall come into force on such date as the Central Government may, by
+notification in the Official Gazette, appoint.
+
+Amendment of 2. In section 2 of the Disaster Management Act, 2005 (hereinafter referred to 53 of 2005.
+section 2. as the principal Act),––
+(i) in clause (d), the following Explanation shall be inserted, namely:––
+‘Explanation.––For the removal of doubts, it is hereby clarified
+that the expression “man made causes” does not include any law and 5
+order related matter or situation, or any situation arising from a law and
+order related matter or situation;’;
+(ii) after clause (d), the following clause shall be inserted, namely:––
+‘(da) “disaster database” means a database which includes disaster
+assessment, fund allocation detail, expenditure, preparedness and 10
+mitigation plan, risk register according to type and severity of risk and
+such other relevant matters, in accordance with such policy, as may be
+determined by the Central Government;’;
+(iii) in clause (e),––
+(a) in sub-clause (viii), for the words “rehabilitation and 15
+reconstruction”, the words “rehabilitation, recovery and reconstruction”
+shall be substituted;
+(b) the following Explanation shall be inserted, namely:––
+‘Explanation.––For the purposes of this clause, the
+expression “disaster management” is inclusive of “disaster risk 20
+reduction”, that is, the practice of reducing disaster risk through
+systematic effort to analyse and manage the causal facts of disaster
+through––
+(i) reduced exposure to hazard;
+(ii) reduced vulnerability of people, property, infrastructure, 25
+economic activity, environmental and natural resource; and
+(iii) improved preparedness, resilience and capacity to
+manage and respond to adverse event;’;
+(iv) after clause (e), the following clause shall be inserted, namely:––
+‘(ea) “disaster risk” means the potential loss of life, injury, 30
+destroyed or damaged property, infrastructure and assets, economic and
+social disruption and environmental degradation, which could occur to
+a system, society or a community in a specific period of time, determined
+probabilistically as a function of hazard, exposure, vulnerability and
+capacity. 3 5
+Explanation.––For the purposes of this Act, the expression
+“infrastructure” refers to physical structures, facilities, networks,
+systems and assets, which provide services that are essential to the
+social, ecological and economic functioning of a community or
+society;’; 40
+(v) after clause (g), the following clauses shall be inserted, namely:––
+‘(ga) “evacuation” means moving people or assets temporarily to
+safer places before, during or after the occurrence of a hazardous event;
+(gb) “exposure” means the situation of people, buildings,
+infrastructure, production capacities and other tangible human assets, 45
+the environment and natural resources located in hazard-prone areas.
+Explanation.––For the purposes of this clause, the expression
+“hazard-prone areas” means those locations where different hazards are
+known to have occurred or likely to occur;
+
+(gc) “hazard” means a process or phenomenon relating to a disaster
+that may cause—
+(a) loss of life;
+(b) injury or other health impacts;
+5 (c) damage to property, buildings and infrastructure;
+(d) social and economic disruption; or
+(e) environmental degradation;
+(gd) “High Level Committee” means the Committee constituted
+under section 8B;’;
+1 0 (vi) in clause (h), after the words “Zila Parishad”, the words “or
+Autonomous District Council” shall be inserted;
+(vii) in clause (i), after the word “situation”, the words “including the
+provisioning of disaster-resilient infrastructure” shall be inserted;
+(viii) after clause (j), the following clause shall be inserted, namely:––
+15 ‘(ja) “National Crisis Management Committee” means the
+Committee constituted under section 8A;’;
+(ix) after clause (l), the following clause shall be inserted, namely:––
+‘(la) “National Policy” means a statement of guiding principles,
+and broad course of actions adopted by the Government at the national
+20 and state level in pursuit of,––
+(a) national objectives of reducing disaster risk and loss;
+(b) improving preparedness; and
+(c) ensuring resilient recovery from disaster;’;
+(x) for clause (m), the following clause shall be substituted, namely:––
+25 ‘(m) “preparedness” means the knowledge and capacity of
+Government, response and recovery organisation, community and
+individual to anticipate, respond to and recover from threatening disaster
+situation or disaster;’;
+(xi) after clause (n), the following clause shall be inserted, namely:––
+30 ‘(na) “prevention” means activity and measure to avoid potential
+adverse impact of disaster;’;
+(xii) for clause (o), the following clauses shall be substituted, namely:––
+‘(o) “reconstruction” means rebuilding and restoration of
+infrastructure, service, building and facility required for the functioning
+3 5 of a community affected by a disaster;
+(oa) “recovery” means the restoration or improvement of
+economic, physical, social, cultural and environmental assets, system
+and activity, of a disaster-affected community;
+(ob) “rehabilitation” means the restoration of basic service, facility
+40 and capacity for the functioning of a disaster-affected community;
+(oc) “resilience” means the ability of a system, community or
+society exposed to hazards to resist, absorb, respond to and recover from
+the effects of a hazard in a timely and efficient manner and the
+expression “resilient” shall be construed accordingly;’;
+
+(xiii) after clause (p), the following clause shall be inserted, namely:––
+‘(pa) “response” means the action taken directly before, during or
+after a disaster in order to save lives, reduce injury and health impact,
+ensure public safety and meet the basic subsistence needs of the people
+affected;’; 5
+(xiv) after clause (t), the following clauses shall be inserted, namely:––
+‘(u) “Urban Authority” means the Urban Disaster Management
+Authority constituted under sub-section (1) of section 41A;
+(v) “Urban Plan” means the plan for disaster management,
+prepared by the Urban Authority under sub-section (4) of section 41A; 10
+(w) “vulnerability” means the conditions determined by physical,
+social, economic and environmental factor or process which increase the
+susceptibility of an individual, a community, asset, infrastructure or
+system to the impact of hazard.’.
+Amendment of 3. In section 3 of the principal Act, after sub-section (3), the following 1 5
+section 3. sub-section shall be inserted, namely:––
+“(3A) The day-to-day functions of the National Authority shall be
+performed by the Vice-Chairperson and in the absence of the Vice-Chairperson,
+by a member designated by the Chairperson or, as the case may be, the
+Vice-Chairperson, of the National Authority.”. 20
+Substitution of 4. For section 5 of the principal Act, the following section shall be substituted,
+new section for namely:––
+section 5.
+“5. (1) The National Authority may, with the previous approval of the
+Appointment of
+officers and Central Government, specify the number, nature and category of officers and
+other employees other employees, as is necessary to carry out its functions. 25
+of National
+Authority. (2) The National Authority may also appoint experts and consultants as
+necessary to perform its functions.
+(3) The salaries and allowances payable to, and other terms and
+conditions of service of officers, other employees, experts and consultants of
+the National Authority, shall be such as may be prescribed by the Central
+Government.”. 30
+5. In section 6 of the principal Act, in sub-section (2),––
+Amendment of
+section 6. (i) for clause (b), the following clause shall be substituted, namely:––
+“(b) co-ordinate the preparation and approval of the National
+Plan;”;
+(ii) in clause (i), after the words “take such other measures”, the words 35
+“which includes providing technical guidance to State Governments and State
+Authorities” shall be inserted;
+(iii) after clause (j), the following clauses shall be inserted, namely:––
+‘(k) co-ordinate and monitor the implementation of the National
+Policy; 40
+(l) lay down guidelines for preparing disaster management plan by
+different Ministries or Departments of the Central Government and the
+State Authorities;
+(m) provide necessary technical guidance to the State Governments
+and the State Authorities for preparing their disaster management plans in 45
+accordance with the guidelines laid down by it;
+
+(n) provide necessary advice and technical guidance to different
+Ministries or Departments and agencies of the Government of India, and
+the State Governments regarding mitigation, preparedness, and recovery
+and reconstruction measures;
+5 (o) take stock of the entire range of disaster risks in the country
+periodically, including emerging disaster risks, and issue updated
+guidance for their mitigation.
+Explanation.––For the purposes of this clause, it is hereby clarified
+that the expression “emerging disaster risks” refer to risks of those
+disasters that may not have taken place, but may occur in future due to
+extreme climate events and other factors as may be determined by the
+National Authority;
+(p) plan and co-ordinate specialised training programmes for
+disaster management for different levels of officers, employees and
+15 voluntary rescue workers;
+(q) provide necessary technical guidance or give advice to the State
+Authorities, District Authorities and Urban Authorities for carrying out
+their functions under this Act;
+(r) promote general education and awareness in relation to disaster
+20 management;
+(s) monitor the implementation of the guidelines laid down by the
+National Authority for integrating disaster prevention and mitigation
+measures in the development plans and projects of Ministries or
+Departments of the Government of India;
+25 (t) undertake disaster preparedness assessment of each State
+periodically, in line with the National Plan and the guidelines laid down
+by it;
+(u) undertake in the aftermath of severe disaster in any State, post
+disaster audit of preparedness and response activities of the State;
+3 0 (v) create a national disaster database in accordance with such
+policy as may be determined by the Central Government;
+(w) recommend guidelines for the minimum standards of relief to
+be provided to persons affected by disaster, which may include,—
+(i) the minimum requirements to be provided in the relief
+3 5 camps in relation to shelter, food, drinking water, medical cover
+and sanitation;
+(ii) the special provision to be made for widows and orphans;
+(iii) ex gratia assistance on account of loss of life as also
+assistance on account of damage to houses and for restoration of
+40 means of livelihood; and
+(iv) such other reliefs as the National Authority may deem
+appropriate.’.
+6. After section 8 of the principal Act, the following sections shall be inserted, Insertion of new
+namely:–– sections 8A and
+8B.
+4 5 “8A. (1) The National Crisis Management Committee constituted by the National Crisis
+Government of India prior to the commencement of the Disaster Management Management
+Committee.
+(Amendment) Act, 2024, shall be the National Crisis Management Committee
+for the purposes of this Act and act as the nodal body to deal with the major
+disasters which have serious or national ramifications.
+
+(2) The National Crisis Management Committee referred to in
+sub-section (1) shall consist of the Cabinet Secretary as Chairperson and such
+other members as may be notified by the Central Government.
+(3) The Chairperson of the National Crisis Management Committee may
+invite any other officer of the Central Government or a State Government for 5
+taking part in any meeting of such Committee and shall exercise such powers
+and perform such functions as the Central Government may determine.
+(4) The procedure to be followed by the National Crisis Management
+Committee, in exercise of its powers and discharge of its functions, shall be
+such as may be prescribed by the Central Government. 10
+High Level 8B. (1) The High Level Committee constituted by the Government of
+Committee. India prior to the commencement of the Disaster Management (Amendment)
+Act, 2024, shall be the High Level Committee for the purposes of this Act
+which shall provide the financial assistance as envisaged under section 46 to
+the State Governments in the event of a disaster and approve the financial 15
+assistance for mitigation needs under section 47.
+(2) The High Level Committee referred to in sub-section (1) shall consist
+of the Minister in-charge of the Ministry or Department of the Central
+Government having administrative control over the disaster management as
+the Chairperson and such other members as may be notified by the Central 20
+Government.”.
+Amendment of 7. In section 10 of the principal Act, for sub-section (2), the following
+section 10. sub-section shall be substituted, namely:––
+‘(2) Without prejudice to the generality of the provisions contained in
+sub-section (1), the National Executive Committee may,–– 25
+(a) act as the coordinating body for disaster management;
+(b) monitor the implementation of the National Plan and the plans
+prepared by the Ministries or Departments of the Government of India;
+(c) monitor, co-ordinate and give directions regarding the mitigation
+and preparedness measures to be taken by different Ministries or 30
+Departments and agencies of the Government of India;
+(d) evaluate the preparedness at all governmental levels for the
+purpose of responding to any threatening disaster situation or disaster
+and provide necessary advice, where necessary, for enhancing such
+preparedness; 35
+(e) co-ordinate response in the event of any threatening disaster
+situation or disaster;
+(f) lay down guidelines, or give directions to, Ministries or
+Departments of the Government of India, the State Governments and the
+State Authorities concerned regarding measures to be taken by them in 40
+response to any threatening disaster situation or disaster;
+(g) require any Ministry or Department or agency of the
+Government to make available to the Central Government or State
+Government such men or material resources as are available with it for
+the purposes of emergency response, rescue and relief; 45
+(h) advise, assist and co-ordinate the activities of the Ministries or
+Departments of the Government of India, State Governments, statutory
+bodies, other governmental or non-governmental organisations and
+others engaged in disaster management;
+
+(i) in the event of a disaster or a threatening disaster situation
+affecting more than one State, issue directions for:—
+(i) coordination between the States concerned;
+(ii) containment measures as deemed necessary;
+(iii) monitoring and forecasting the effects of the disaster
+across multiple States;
+(iv) deployment of specialised teams, material resources and
+equipment;
+(v) requisitioning of necessary resources and technical
+1 0 capacities from public and private entities and their
+deployment towards reducing the impact of the disaster;
+(vi) adequate public awareness measures; and
+(vii) coordination of support to individuals and communities
+affected by containment measures; and
+15 (j) perform such other functions as it may deem appropriate.
+Explanation.––For the purposes of this section, it is hereby clarified that
+the expression “containment measures” means the actions and strategies
+adopted at the individual, community, district, State, multi-State or national
+levels aimed at controlling or slowing the spread of a disaster from its initial
+focal area.’.
+8. In section 11 of the principal Act,–– Amendment of
+section 11.
+(i) for sub-section (2), the following sub-section shall be substituted,
+namely:––
+“(2) The National Authority shall coordinate, in consultation with
+2 5 the Central Government and the State Governments and other
+stakeholders in the field of disaster management, for preparation and
+approval of the National Plan having regard to the National Policy.”;
+(ii) for sub-section (4), the following sub-section shall be substituted,
+namely:––
+30 “(4) The National Authority shall review the National Plan once in
+every three years and update at least once in every five years.”.
+9. Sections 12 and 13 of the principal Act shall be omitted. Omission of
+sections 12 and 13.
+10. In section 18 of the principal Act, in sub-section (2),–– A mendment of
+section 18.
+(i) for clause (b), the following clause shall be substituted, namely:––
+3 5 “(b) co-ordinate the preparation, and approve the State Plan in
+accordance with the guidelines laid down by the National Authority;”;
+(ii) after clause (c), the following clause shall be inserted, namely:––
+“(ca) approve the District Plan and Urban Plan, prepared by the
+District Authorities and Urban Authorities respectively, in accordance
+4 0 with the National Plan and State Plan;”;
+(iii) after clause (h), the following clauses shall be inserted, namely:––
+“(i) take stock of the entire range of disaster risks in the State,
+periodically including emerging disaster risks, and take necessary
+measures for their mitigation;
+45 (j) coordinate and monitor the implementation of the National
+Policy, the National Plan and the State Plan;
+
+(k) lay down guidelines for preparation of disaster management
+plan by the Departments of the Government of the State, the District
+Authorities and the Urban Authorities;
+(l) promote general education, awareness and community training
+in regard to the forms of disasters to which different parts of the State 5
+are vulnerable and the measures that may be taken by such community
+to prevent the disaster, mitigate and respond to such disaster;
+(m) provide necessary technical assistance or give advice to the
+District Authorities, local authorities and Urban Authorities for
+carrying out their functions effectively; 10
+(n) provide information to the National Authority relating to
+different aspects of disaster management;
+(o) lay down guidelines for standards of relief to persons affected
+by disasters in the State:
+Provided that such standards shall in no case be less than the 15
+minimum standards in the guidelines laid down by the National
+Authority in this regard;
+(p) maintain the State disaster database and provide inputs to the
+National disaster database.”.
+Omission of 11. Section 19 of the principal Act shall be omitted.
+section 19.
+Amendment of 12. In section 20 of the principal Act, in sub-section (2), after clause (b), the
+section 20. following clause shall be inserted, namely:––
+“(c) the Director General of Police of the State shall be member of the
+State Executive Committee, ex officio.”.
+Amendment of 13. In section 22 of the principal Act, in sub-section (2),–– 25
+section 22.
+(i) clauses (a) and (c) shall be omitted;
+(ii) in clause (d), for the words “and District Authorities”, the words
+“, the District Authorities and the Urban Authorities” shall be substituted;
+(iii) clause (i) shall be omitted;
+(iv) in clause (j), after the words “District Authorities”, the words 3 0
+“, Urban Authorities,” shall be inserted;
+(v) clause (k) shall be omitted;
+(vi) in clause (m), for the words “District Authority or the local
+authority”, the words “District Authority, Urban Authority or the local
+authority” shall be substituted; 35
+(vii) clause (n) shall be omitted.
+Amendment of 14. In section 23 of the principal Act,––
+section 23.
+(i) for sub-section (2), the following sub-section shall be substituted,
+namely:––
+“(2) The State Authority shall coordinate the preparation of the 40
+State Plan having regard to the National Plan and guidelines laid down
+by the National Authority, and in consultation with local authorities,
+District Authorities, Urban Authorities and the people’s representatives
+as the State Authority may deem fit.”;
+(ii) for sub-section (3), the following sub-section shall be substituted, 45
+namely:––
+“(3) The State Plan shall be approved by the State Authority.”;
+
+(iii) in sub-section (4), for clause (a), the following clause shall be
+substituted, namely:––
+“(a) the exposure of different parts of the State to different
+hazards and vulnerability of its people, assets, infrastructure, livelihood
+5 and economic activity to those hazards;”;
+(iv) for sub-section (5), the following sub-section shall be substituted,
+namely:––
+“(5) The State Authority shall review the State Plan once in every
+three years and update atleast once in every five years.”.
+10 15. In section 24 of the principal Act, in clause (e), after the words “any Amendment of
+District Authority”, the words “, any Urban Authority” shall be inserted. section 24.
+16. In section 25 of the principal Act, in sub-section (2), for clause (f), the Amendment of
+following clause shall be substituted, namely:–– section 25.
+“(f) not exceeding two other Members to be appointed by the State
+15 Government who may be taken from other district level officers, disaster
+management experts and civil society organisation.”.
+17. In section 31 of the principal Act, in sub-section (4), for the word Amendment of
+“annually”, the words “at least once in every two years or earlier as necessary” section 31.
+shall be substituted.
+20 18. In section 35 of the principal Act, in sub-section (2),–– Amendment of
+section 35.
+(i) in clause (a), for the words “coordination of actions”, the words
+“coordinate and monitor actions” shall be substituted;
+(ii) clauses (b) and (d) shall be omitted;
+(iii) after clause (h), the following clause shall be inserted, namely:––
+“(ha) notify the Ministries or Departments of the Government of
+India which shall have the responsibility for monitoring, early warning,
+prevention, mitigation, preparedness and capacity building with regard
+to disasters arising from various hazards;”.
+19. In section 36 of the principal Act,–– Amendment of
+section 36.
+30 (i) for clause (f), the following clause shall be substituted, namely:––
+“(f) provide assistance to the National Authority and State
+Government for drawing up mitigation, preparedness and response
+plans, capacity building, data collection and identification and training
+of personnel in relation to disaster management;”;
+35 (ii) in clause (g), after sub-clause (v), the following sub-clauses shall be
+inserted, namely:––
+“(vi) carrying out rescue and relief operations in the affected area;
+(vii) assessing the damage from any disaster; and
+(viii) carrying out the rehabilitation and re-construction;”.
+40 20. In section 38 of the principal Act, in sub-section (2),–– Amendment of
+section 38.
+(i) in clause (a),––
+(a) after the words “District Authorities”, the words “, Urban
+Authorities” shall be inserted;
+(b) for the words “local authority”, the words “local authorities”
+45 shall be substituted;
+
+(ii) in clause (b), for the words “and the District Authorities”, the
+words “the District Authorities and the Urban Authorities” shall be
+substituted;
+(iii) in clause (d), for the words “and the District Plans”, the words “,
+the District Plans and the Urban Plans” shall be substituted; 5
+(iv) in clause (i), for the words “and the District Authorities”, the words
+“, the District Authorities and the Urban Authorities” shall be substituted;
+(v) after clause (i), the following clause shall be inserted, namely:––
+“(ia) notify State-specific hazard-wise nodal Departments, which
+shall have the responsibility for monitoring, early warning, prevention, 10
+mitigation, preparedness and capacity building with regard to disasters
+arising from those State-specific hazards;”;
+(vi) in clause (j), for the words “or the District Authorities”, the words
+“, the District Authorities or the Urban Authorities” shall be substituted;
+(vii) for clause (k), the following clause shall be substituted, namely:–– 15
+“(k) provide recovery and reconstruction assistance to the victims
+of any disaster; and”.
+Amendment of 21. In section 39 of the principal Act,––
+section 39.
+(a) in clause (f), for the words “and District Authorities”, the words
+“District Authorities and Urban Authorities” shall be substituted; 20
+(b) in clause (g), after the words “authorities at the district level”, the
+words “and the Urban Plan by the Urban Authorities” shall be inserted;
+(c) in clause (h), after the words “District Authorities”, the words “or
+the Urban Authorities” shall be inserted.
+Amendment of 22. In section 41 of the principal Act, in sub-section (1), after clause (d), the 25
+section 41. following clause shall be inserted, namely:––
+“(e) prepare a disaster management plan as referred to in section 32.”.
+Insertion of new 23. After section 41 of the principal Act, the following section shall be
+section 41A.
+inserted, namely:––
+Urban Disaster ‘41A. (1) The State Government may, by notification in the Official 30
+Management
+Gazette, constitute a separate Urban Disaster Management Authority for
+Authority.
+their State capitals and all cities having a Municipal Corporation, except for
+the National Capital Territory of Delhi and Union territory of Chandigarh.
+(2) The Urban Authority constituted under sub-section (1) shall consist
+of the following, namely:–– 35
+(i) the Municipal Commissioner—Chairperson, ex officio;
+(ii) the District Collector of the District concerned—Vice
+Chairperson, ex officio; and
+(iii) such other members, with such pay and allowances as may
+be determined by the State Government—members. 40
+(3) The Urban Authority may have a separate Secretariat at such place
+in the district as may be determined by the State Government.
+(4) The Urban Authority shall be responsible for preparation of Urban
+Plan, which shall be approved by the State Authority.
+(5) The Urban Authority shall be responsible for coordinating the 45
+implementation of the Urban Plan.
+
+(6) The other functions and powers and such other matters relating to
+the Urban Authority shall be such as may be prescribed by the State
+Government.
+Explanation.––For the purposes of this section, the expression
+5 “Municipal Corporation” means a Municipal Corporation as referred to in
+clause (c) of article 243Q of the Constitution.’.
+24. For section 43 of the principal Act, the following section shall be Substitution of
+substituted, namely:— new section for
+section 43.
+“43. (1) The Central Government shall provide the National Institute of Officers,
+employees,
+10 Disaster Management with such officers, other employees and consultants,
+experts and
+as it considers necessary, for carrying out its functions. consultants of
+National
+(2) The National Institute may recruit experts as per norms approved Institute.
+by the Central Government to perform such functions as provided in
+sub-section (9) of section 42.
+15 (3) The salaries, allowances payable to officers and employees and the
+other terms and conditions of their service shall be such as may be
+prescribed.”.
+25. In Chapter VIII of the principal Act, for the heading, the heading Amendment of
+Chapter VIII.
+“DISASTER RESPONSE FORCE” shall be substituted.
+20 26. After section 44 of the principal Act, the following section shall be Insertion of new
+section 44A.
+inserted, namely:––
+“44A. (1) The State Government may, by notification in the Official State Disaster
+Response Force.
+Gazette, constitute a State Disaster Response Force for the purpose of
+specialist response to a threatening disaster situation or disaster.
+25 (2) Subject to the provisions of this Act, the State Disaster Response
+Force shall be constituted in such manner, with such functions and the terms
+and conditions of service of the members of such Force shall be such as may
+be prescribed by the State Government concerned.”.
+27. In section 46 of the principal Act,–– Amendment of
+section 46.
+(i) in sub-section (1), for the words “for meeting any threatening
+disaster situation or disaster”, the words “for meeting different aspects of
+disaster management” shall be substituted;
+(ii) for sub-section (2), the following sub-section shall be substituted,
+namely:––
+35 “(2) The Fund constituted under sub-section (1), shall be applied
+in accordance with the guidelines laid down by the Central
+Government in consultation with the National Authority.”.
+Amendment of
+28. In section 47 of the principal Act,––
+section 47.
+(i) in sub-section (1), for the words “for projects exclusively for the
+40 purpose of mitigation”, the words “for meeting disaster mitigation needs”
+shall be substituted;
+(ii) for sub-section (2), the following sub-section shall be substituted,
+namely:––
+“(2) The Fund constituted under sub-section (1), shall be applied
+in accordance with the guidelines laid down by the Central
+Government in consultation with the National Authority.”.
+Amendment of
+29. In section 48 of the principal Act, for sub-section (2), the following
+section 48.
+sub-section shall be substituted, namely:––
+
+“(2) The State Government shall ensure that the funds established––
+(i) under clauses (a) and (c) of sub-section (1) are available to the
+State Executive Committee and the State Authority respectively and
+are applied as per the guidelines issued by the Central Government in
+consultation with the National Authority; 5
+(ii) under clauses (b) and (d) of sub-section (1) are available to
+the District Authority.”.
+Amendment of 30. In section 50 of the principal Act,—
+section 50.
+(i) in the opening portion, after the words “or the District Authority”,
+the words “or the Urban Authority” shall be inserted; 10
+(ii) in clause (b), after the words “or District Authority”, the words “or
+Urban Authority” shall be inserted.
+Amendment of 31. In section 51 of the principal Act,––
+section 51.
+(i) in clause (a), after the words “or District Authority”, the words “or
+Urban Authority” shall be inserted; 15
+(ii) in clause (b), after the words “or the District Authority”, the words
+“or the Urban Authority” shall be inserted.
+Amendment of 32. In section 52 of the principal Act, for the words “or the District
+section 52. Authority”, the words “, the District Authority or the Urban Authority” shall be
+substituted. 20
+Amendment of 33. Section 56 of the principal Act shall be numbered as sub-section (1)
+section 56. thereof, and after sub-section (1) as so numbered, the following sub-section shall
+be inserted, namely:––
+“(2) Notwithstanding any action under sub-section (1), it shall be
+lawful for the State Government on its own or on the directions given by the 25
+Central Government to take such disciplinary action under the relevant rules,
+against any officer who ceases or refuses to perform or withdraws himself
+from the duties of his office or on grounds of insubordination or dereliction
+of duty during a disaster:
+Provided that the action taken by the State Government shall not be 30
+inconsistent with the directions given by the Central Government.”.
+Amendment of 34. In section 59 of the principal Act, for the word and figures “and 56”, the
+section 59. words, brackets and figures “and sub-section (1) of section 56” shall be
+substituted.
+Amendment of 35. In section 60 of the principal Act, in clause (a) and clause (b), after the 35
+section 60. words “the District Authority”, the words “, the Urban Authority” shall be
+inserted.
+Insertion of new 36. After section 60 of the principal Act, the following section shall be
+section 60A. inserted, namely:—
+Power of Central “60A.(1) The Central Government or the State Government may, by 40
+Government or notification in the Official Gazette, require any person to take any action or
+State
+refrain from taking any action, in relation to the nature of the hazard, which
+Government to
+take action in in the opinion of the Central Government or the State Government, as the
+relation to nature case may be, is required for reducing the impact of a disaster.
+of hazard and
+punishment for
+its
+contravention.
+
+(2) Any notification issued under this section shall be valid for a period
+specified therein or six months, whichever is earlier.
+(3) Whoever contravenes the provisions of this section shall be liable
+to pay a penalty as specified in the notification of the Central Government or
+5 the State Government, as the case may be:
+Provided that the penalty referred to in this sub-section shall not
+exceed ten thousand rupees.”.
+37. In section 61 of the principal Act, the words “compensation and” shall be Amendment of
+omitted. section 61.
+10 38. In section 63 of the principal Act, after the words “or District Authority”, Amendment of
+the words “or Urban Authority” shall be inserted. section 63.
+39. In section 64 of the principal Act, after the words “or the District Amendment of
+Authority”, the words “or the Urban Authority” shall be inserted.
+section 64.
+40. In section 65 of the principal Act,–– Amendment of
+section 65.
+15 (i) in sub-section (1), in the opening portion, after the words “or
+District Authority”, the words “or Urban Authority” shall be inserted;
+(ii) in sub-section (3), for clause (a), the following clause shall be
+substituted, namely:––
+“(a) “resources” includes human and material resources, and
+20 equipment;”.
+41. In section 67 of the principal Act, for the words “or a District Authority”, Amendment of
+the words “, a District Authority or an Urban Authority” shall be substituted. section 67.
+42. In section 68 of the principal Act, for the words “or the District Amendment of
+Authority” occurring at both the places, the words “, a District Authority or an section 68.
+25 Urban Authority” shall be substituted.
+43. In section 69 of the principal Act, after the words “State Executive Amendment of
+section 69.
+Committee”, the words “National Authority, State Authority, District Authority or
+Urban Authority” shall be inserted.
+44. In section 71 of the principal Act, for the words “or District Authority”, Amendment of
+section 71.
+30 the words “, District Authority or Urban Authority” shall be substituted.
+45. In section 73 of the principal Act, after the words “the District Authority” Amendment of
+section 73.
+occurring at both the places, the words “or the Urban Authority” shall be inserted.
+46. In section 74 of the principal Act, for the words “or District Authority”, Amendment of
+the words “, District Authority or Urban Authority” shall be substituted. section 74.
+35 47. In section 75 of the principal Act, in sub-section (2),–– Amendment of
+section 75.
+(i) after clause (a), the following clause shall be inserted, namely:––
+“(aa) the salaries, allowances and other terms and conditions of
+service of officers, other employees, experts and consultants of the
+National Authority under sub-section (3) of section 5;”;
+40 (ii) after clause (c), the following clause shall be inserted, namely:––
+“(ca) the procedure to be followed by the National Crisis
+Management Committee in exercise of its powers and discharging of
+its functions under sub-section (4) of section 8A;”;
+(iii) after clause (e), the following clause shall be inserted, namely:—
+“(ea) the salaries, allowances and the other terms and conditions
+of service of officers and other employees of the National Institute
+under sub-section (3) of section 43;”.
+
+Insertion of new 48. After section 76 of the principal Act, the following section shall be
+section 76A. inserted, namely:––
+Power of “76A. Without prejudice to the provisions of section 76, the National
+National Authority, with the previous approval of the Central Government may, by
+Authority to
+make notification in the Official Gazette, make regulations, other than regulations 5
+regulations. made under section 76, consistent with the provisions of this Act and the
+rules made thereunder to carry out the purposes of this Act.”.
+Amendment of 49. In section 77 of the principal Act, after the words “National Institute of
+section 77. Disaster Management”, the words “and the National Authority” shall be inserted.
+Amendment of 50. In section 78 of the principal Act, in sub-section (2), after clause (f), the 10
+section 78. following clauses shall be inserted, namely:––
+“(fa) the powers, functions and other matters relating to Urban
+Authority under sub-section (6) of section 41A;
+(fb) the manner of constitution of State Disaster Response Force, its
+functions and the terms and conditions of service of members of such Force 15
+under sub-section (2) of section 44A;”.
+51. In section 79 of the principal Act, after sub-section (1) and the proviso
+Amendment of
+section 79. thereunder, the following sub-section shall be inserted, namely:—
+“(1A) Notwithstanding anything contained in sub-section (1), if any
+difficulty arises in giving effect to the provisions of this Act as amended by 20
+the Disaster Management (Amendment) Act, 2024, the Central Government
+may, by order published in the Official Gazette, make such provisions not
+inconsistent with the provisions of this Act, as may appear to it to be
+necessary or expedient for removing the difficulty:
+Provided that no such order shall be made under this sub-section after 25
+the expiry of a period of three years from the date of commencement of the
+Disaster Management (Amendment) Act, 2024.”.
+
+STATEMENT OF OBJECTS AND REASONS
+The Disaster Management Act, 2005 (the Act) was enacted to provide for the
+effective management of disasters and for matters connected therewith or
+incidental thereto.
+2. The main purpose of the Act was to put in place necessary institutional
+mechanisms for drawing up and monitoring the implementation of disaster
+management plans, ensuring measures by various wings of Government for
+prevention of and mitigating the effects of disasters and for undertaking a holistic,
+coordinated and prompt response to any disaster or threatening disaster situation.
+3. For achieving the said purpose, certain Authorities and Committees were
+established at the national level, state level and District level. In addition, the Act
+enumerated the measures to be taken up by the Ministries and Departments of the
+Government of India and mandated that every Ministry or Department would carry
+out the nodal responsibilities in respect of disaster management.
+4. Due to the constant endeavour of the Central Government for
+mainstreaming the Disaster Management in the development plans, aligning with
+the recommendations of the Fifteenth Finance Commission, learnings from past
+disasters, and experience gained during the implementation of the Act, the Disaster
+Management Act, 2005 has been reviewed in consultation with all stakeholders
+including State Governments.
+5. In view of above, it has become necessary to amend certain provisions of
+the Act in the form of a Bill, namely, the Disaster Management (Amendment) Bill,
+2024 which, inter alia, provides for the following, namely:—
+(i) to bring more clarity and convergence in the roles of Authorities and
+Committees working in the field of disaster management;
+(ii) to provide statutory status to certain pre-Act organisations like the
+National Crisis Management Committee and the High Level Committee;
+(iii) to strengthen the efficient working of the National Disaster
+Management Authority and the State Disaster Management Authorities;
+(iv) to empower the National Disaster Management Authority and the
+State Disaster Management Authorities to prepare the disaster plan at
+national level and state level instead of the National Executive Committee
+and the State Executive Committee;
+(v) to provide for creation of disaster database at national and state
+level;
+(vi) to make provision for constitution of “Urban Disaster Management
+Authority” for State Capital and large cities having Municipal Corporation;
+and
+(vii) to make provision for constitution of “State Disaster Response
+Force” by the State Government.
+6. The Notes on Clauses explain in detail the various provisions contained in
+the Bill.
+7. The Bill seeks to achieve the above objectives.
+NEW DELHI; AMIT SHAH.
+The 30th July, 2024.
+
+Notes on Clauses
+Clause 1 of the Bill seeks to provide for short title and commencement of the
+proposed legislation.
+Clause 2 of the Bill seeks to modify and substitute some definitions and
+incorporate new definitions in section 2, such as disaster risk, evacuation, Exposure,
+recovery, rehabilitation, resilience, Urban Authority, etc.
+Clause 3 of the Bill seeks to insert a new sub-section (3A) in section 3 to
+authorise the Vice-Chairperson or any Member of the National Authority to perform
+the day-to-day functions of the Authority.
+Clause 4 of the Bill seeks to substitute section 5 related to appointment of
+officers, other employees, consultants and experts and to empower the Central
+Government to make rules with respect to their terms and conditions of service.
+Clause 5 of the Bill seeks to substitute clause (b) in sub-section (2) of
+section 6 for assigning the function of coordination of preparation of National Plan
+to the National Authority; to modify clause (i) in sub-section (2) of section 6 to bring
+more clarity on the type of measures to be taken by the National Authority under
+this clause; and to insert new clauses from (k) to (w) in sub-section (2) in section 6
+to bring more clarity on roles of National Authority, by assigning policy, plans and
+guidelines related functions of National Executive Committee and to assign new
+functions to the National Authority.
+Clause 6 of the Bill seeks to insert new section 8A in section 8, to bring the
+existing National Crisis Management Committee, a nodal body to deal with major
+disasters, under the Act and to insert a new section 8B, to bring the existing
+High Level Committee under the Act, for approval of financial assistance.
+Clause 7 of the Bill seeks to substitute sub-section (2) in section 10, to bring
+more clarity on roles of National Executive Committee, by retaining coordination
+and response related functions and assigning new functions to it in case of disasters
+or threatening disaster situation affecting more than one State.
+Clause 8 of the Bill seeks to substitute sub-section (2) in section 11 to make
+provision that the National Authority will coordinate the preparation of the
+National Plan and approve it; and to modify sub-section (4) in section 11 to make
+the review and updation of National Plan, every three years and at least once in five
+years respectively.
+Clause 9 of the Bill seeks to omit sections 12 and 13 related to “Guidelines
+for minimum standards of relief” and “Relief in loan repayment etc.” respectively.
+Clause 10 of the Bill seeks to modify clause (b) in sub-section (2) of
+section 18 for assigning the function of coordination of preparation of State Plan to
+the State Authority; to insert new clause (ca) in sub-section (2) of section 18, for
+assigning the role of approval of District Plan and Urban Plan, prepared by the
+District Authorities and Urban Authorities respectively, to State Authority; and to
+insert new clauses (i) to (p) in sub-section (2) of section 18 by assigning policy,
+plans and guidelines related functions of State Executive Committee and to assign
+new functions to State Authority.
+Clause 11 of the Bill seeks to omit section 19 related to “Guidelines for
+minimum standards of relief by State Authority”.
+Clause 12 of the Bill seeks to insert new clause (c) in sub-section (2) of
+section 20 making Director General of Police of the State a member of State
+Executive Committee, ex officio.
+
+Clause 13 of the Bill seeks to omit clauses (a), (c), (i), (k) and (n) in
+sub-section (2) of section 22, as these functions have been transferred to the State
+Authority; and to insert certain words related to Urban Authority in clauses (d), (j)
+and (m) of sub-section (2) of section 22.
+Clause 14 of the Bill seeks to substitute sub-sections (2) and (3) of section 23,
+for assigning the coordination, preparation and approval of State Plan to the State
+Authority; to substitute clause (a) under sub-section (4) in section 23, for including
+hazard and vulnerability profile of different parts of the State in the State Plan; and
+to substitute sub-section (5) of section 23 to make the review and updation of State
+Plan, every three years and at least once in five years.
+Clause 15 of the Bill seeks to insert the words “any Urban Authority” after the
+words “any District Authority” in clause (e) of section 24 and this amendment is
+consequential in nature.
+Clause 17 of the Bill seeks to modify sub-section (4) of section 31, in order to
+make the periodicity of revision of District Plan at least once in two years or earlier,
+if necessary.
+Clause 18 of the Bill seeks to modify clause (a) of sub-section (2) of
+section 35; to omit clauses (b) and (d) under sub-section (2) of section 35, as these
+functions are covered under section 10 (2) (c) and (d); and to insert new clause (ha)
+in sub-section (2) of section 35, to notify the Ministries or Departments of the
+Government of India for assigning responsibility for monitoring, early warning etc.
+of various hazards.
+Clause 19 of the Bill seeks to substitute clause (f) of section 36 to clearly
+demarcate the functions of National Disaster Management Authority and National
+Executive Committee; and to insert new clauses (vi), (vii) & (viii) after
+sub-clause (v) in clause (g) of section 36, by shifting certain responsibilities of
+Ministries or Department of Government of India towards the National Executive
+Committee.
+Clause 20 of the Bill seeks, inter-alia, to insert new clause (ia) in
+sub-section (2) of section 38, to notify State-specific hazard wise nodal Departments
+for assigning responsibility for monitoring, early warning etc. for State specific
+hazards; and to substitute the existing clause (k) in sub-section (2) in section 38, to
+change “rehabilitation and reconstruction assistance” to “recovery and
+reconstruction assistance”.
+Clause 21 of the Bill seeks, inter-alia, to insert the words “Urban Authorities”
+in clauses (f), (g) and (h) of section 39 and this amendment is consequential in
+nature.
+Clause 22 of the Bill seeks to insert new clause in sub-section (1) after
+clause (d) of section 41, to assign functions regarding preparation of disaster
+management plan to Urban Authority.
+Clause 23 of the Bill seeks to insert new section 41A to enable State
+Governments to constitute Urban Disaster Management Authority for State capitals
+and cities having Municipal Corporation, with its composition, functions and
+enabling provision for its Secretariat other than National Capital Territory of Delhi
+and Union territory of Chandigarh.
+Clause 24 of the Bill seeks to substitute section 43 relating to “Officers,
+employees, experts and consultants of National Institute of Disaster Management
+and to empower the Central Government to prescribe their terms and conditions of
+service.
+Clause 25 of the Bill seeks to amend the heading of Chapter VIII to “DISASTER
+RESPONSE FORCE”.
+
+Clause 26 of the Bill seeks to insert new section 44A to enable State
+Government to constitute the State Disaster Response Force for strengthening
+disaster response capability of States.
+Clause 27 of the Bill seeks to substitute certain words in sub-section (1) of
+section 46 related to constitution of National Disaster Response Fund by the Central
+Government for meeting different aspects of disaster management; and further to
+substitute sub-section (2) in section 46 to reflect the role of the laid down guidelines
+in application of Response Fund.
+Clause 28 of the Bill seeks to substitute certain words in sub-section (1) of
+section 47 related to disaster mitigation needs; and further to substitute
+sub-section (2) in section 47 to reflect the role of the laid guidelines in application
+of Mitigation Fund.
+Clause 29 of the Bill seeks to substitute sub-section (2) of section 48 to reflect
+the role of laid guidelines by the Central Government in application of State Disaster
+Response Fund and State Disaster Mitigation Fund.
+Clause 30 of the Bill seeks to insert the words “or Urban Authority” after the
+words “or the District Authority” in section 50 and the said amendment is
+consequential in nature.
+Clause 31 of the Bill seeks to insert the words “or Urban Authority” after the
+words “or the District Authority” in clauses (a) and (b) of section 51 and the said
+amendment is consequential in nature.
+Clause 32 of the Bill seeks to substitute certain words with the words “the
+District Authority or the Urban Authority” in section 52 and the said amendment is
+consequential in nature.
+Clause 33 of the Bill seeks to re-number section 56 as sub-section (1) of
+section 56; and further to insert sub-section (2) in section 56, to empower the State
+Government, on its own or on the directions given by the Central Government, to
+take such disciplinary action against any officer on grounds of insubordination or
+dereliction of duty etc. during a disaster, with a provision that action taken by the
+State Government shall not be inconsistent with the directions given by the Central
+Government in this regard.
+Clause 34 of the Bill seeks to substitute the figures “56” with “sub-section (1)
+of section 56” and the said amendment is consequential in nature.
+Clause 35 of the Bill seeks to insert the words “the Urban Authority” after the
+words “the District Authority” in clause (a) and clause (b) of section 60 and the said
+amendment is consequential in nature.
+Clause 36 of the Bill seeks to insert a new section 60A to empower the Central
+and the State Governments to direct any person to take any action or refrain from
+taking any action for reducing the impact of a disaster and to impose a penalty not
+exceeding ten thousand rupees.
+Clause 37 of the Bill seeks to omit the word "compensation" in section 61, as
+the Governments provide only relief and not compensation to the victims of
+disasters.
+Clause 38 of the Bill seeks to insert the words “or Urban Authority” after the
+words “or District Authority” in section 63 and the said amendment is consequential
+in nature.
+Clause 39 of the Bill seeks to insert the words “or the Urban Authority” after
+the words “or the District Authority” in section 64 and the said amendment is
+consequential in nature.
+
+Clause 40 of the Bill seeks to insert the words “or Urban Authority” after the
+words “or District Authority” in sub-section (1) of section 65; and to modify
+clause (a) of sub-section (3) of that section to include human and material resources
+and equipment.
+Clause 41 of the Bill seeks to substitute the words “, a District Authority or an
+Urban Authority” for the words “or a District Authority” in section 67 and the said
+amendment is consequential in nature.
+Clause 42 of the Bill seeks to substitute the words “, a District Authority or an
+Urban Authority” for the words “or the District Authority” occurring at both places
+in section 68 and the said amendment is consequential in nature.
+Clause 43 of the Bill seeks to insert the words “National Authority, State
+Authority, District Authority, Urban Authority” after the words “State Executive
+Committee” in section 69 to enable them to delegate power to their Chairperson.
+Clause 44 of the Bill seeks to substitute the words “, District Authority or
+Urban Authority” for the words “or District Authority” in section 71 and the said
+amendment is consequential in nature.
+Clause 45 of the Bill seeks to insert the words “or the Urban Authority” after
+the words “the District Authority” occurring at both places in section 73 and the said
+amendment is consequential in nature.
+Clause 46 of the Bill seeks to substitute the words “, District Authority or
+Urban Authority” for the words “or District Authority” in section 74 and the said
+amendment is consequential in nature.
+Clause 47 of the Bill empowers the Central Government to make rules in
+certain matters.
+Clause 48 of the Bill seeks to insert a new section 76A to empower the
+National Authority also to make regulations.
+Clause 49 of the Bill seeks to insert the words “and by the National Authority”
+after the words “National Institute of Disaster Management” in section 77 for laying
+the regulations made by the National Authority in Parliament.
+Clause 50 of the Bill seeks to empower the State Government to make rules
+in certain matters.
+Clause 51 of the Bill seeks to amend section 79 related to “Power to removal
+of difficulties”.
+
+--·
+FINANCIAL MEMORANDUM TO THE DISASTER MANAGEMENT
+(AMENDMENT) BILL, 2024
+The Bill seeks to amend the Disaster Management Act, 2005. The National
+Disaster Management Authority (NOMA) and National Institute of Disaster Management
+(NlDM) which have been set up under the Disaster Management Act, 2005 are already
+in existence. The expenditure of these bodies is met from yearly Government Budgetary
+Support.
+2. The provrsions regarding salaries and allowances payable to the officers, other
+employees and consultants of NOMA and NlDM are already in place under the Disaster
+Management Act, 2005 and these provisions are slightly modified without any
+substantive change. These provisions may result in expenditure in the discharge of
+statutory functions of the Government in regular course of business, which would be
+met from yearly budgetary support. However, any financial implication at this stage is
+not quantifiable.
+3. The expenditure for NOMA and NIDM constituted as statutory bodies under the
+Disaster Management Act, 2005 would continue to be met from the yearly Budgetary
+Support The Budget allocation for finandal year 2024-25 of NOMA and NIDM is Rs
+'149.07 crore. Rs. 86.24 crore under Revenue Head, Rs. 52.37 crore under the Capital
+Head and Rs. '10.~6 crore under Schemes. ---------·
+------~·~~--
+
+MEMORANDUM REGARDING DELEGATED LEGISLATION
+Section 75 of the Disaster Management Act, 2005 empowers the Central
+Government to make rules consistent with the provisions of the Act for carrying out
+the provisions of the Act. It is proposed to amend the said section [clause 47 of the
+Disaster Management (Amendment) Bill, 2024], so as to make rules in the following
+matters, namely:—
+(a) the salaries, allowances and other terms and conditions of service of
+officers, other employees, experts and consultants of the National Authority
+under sub-section (3) of section 5;
+(b) the procedure to be followed by the National Crisis Management
+Committee in exercise of its powers and discharging of its functions under
+sub-section (4) of section 8A;
+(c) the salaries, allowances and the other terms and conditions of service
+of officers and other employees of the National Institute under sub-section (3)
+of section 43.
+2. It is proposed to insert a new section 76A in the Act vide clause 48 of the
+Bill empowering the National Authority also to make regulations consistent with
+the provisions of this Act and the rules made thereunder to carry out the purposes of
+this Act.
+3. Section 78 of the Disaster Management Act, 2005 empowers the State
+Governments to make rules consistent with the provisions of the Act for carrying
+out the provisions of the Act. It is proposed to amend the said section [clause 50 of
+the Disaster Management (Amendment) Bill, 2024], so as to make rules in the
+following matters, namely:—
+(a) the powers, functions and other matters relating to Urban Authority
+under sub-section (6) of section 41A;
+(b) the manner of constitution of State Disaster Response Force and the
+terms and conditions of service of Members of such Force under
+sub-section (2) of section 44A.
+4. The matters in respect of which rules or regulations may be made are
+matters of procedure and administrative detail and it is not practicable to provide for
+them in the Bill itself. The delegation of legislative power is, therefore, of a normal
+character.
+
+ANNEXURE
+EXTRACTS FROM THE DISASTER MANAGEMENT ACT, 2005
+( 53 OF 2005)
+* * * * *
+Definitions. 2. In this Act, unless the context otherwise requires,—
+* * * * *
+(d) “disaster” means a catastrophe, mishap, calamity or grave
+occurrence in any area, arising from natural or man made causes, or by
+accident or negligence which results in substantial loss of life or human
+suffering or damage to, and destruction of, property, or damage to, or
+degradation of, environment, and is of such a nature or magnitude as to be
+beyond the coping capacity of the community of the affected area;
+(e) “disaster management” means a continuous and integrated process
+of planning, organising, coordinating and implementing measures which are
+necessary or expedient for—
+* * * * *
+(viii) rehabilitation and reconstruction;
+* * * * *
+(g) “District Plan” means the plan for disaster management for the
+district prepared under section 31;
+(h) “local authority” includes panchayati raj institutions,
+municipalities, a district board, cantonment board, town planning authority
+or Zila Parishad or any other body or authority, by whatever name called, for
+the time being invested by law, for rendering essential services or, with the
+control and management of civic services, within a specified local area;
+(i) “mitigation” means measures aimed at reducing the risk, impact or
+effects of a disaster or threatening disaster situation;
+* * * * *
+(m) “preparedness” means the state of readiness to deal with a
+threatening disaster situation or disaster and the effects thereof;
+* * * * *
+(o) “reconstruction” means construction or restoration of any property
+after a disaster;
+* * * * *
+Appointment of 5. The Central Government shall provide the National Authority with such
+officers and officers, consultants and employees, as it considers necessary for carrying out the
+other employees
+functions of the National Authority.
+of the National
+Authority.
+Powers and 6. (1) * * * * *
+functions of
+National (2) Without prejudice to generality of the provisions contained in sub-section (1),
+Authority. the National Authority may —
+* * * * *
+(b) approve the National Plan;
+* * * * *
+
+(i) take such other measures for the prevention of disaster, or the
+mitigation, or preparedness and capacity building for dealing with the
+threatening disaster situation or disaster as it may consider necessary;
+* * * * *
+10. (1) * * * * * Powers and
+functions of
+(2) Without prejudice to the generality of the provisions contained in National
+Executive
+sub-section (1), the National Executive Committee may—
+Committee.
+(a) act as the coordinating and monitoring body for disaster
+management;
+(b) prepare the National Plan to be approved by the National Authority;
+(c) coordinate and monitor the implementation of the National Policy;
+(d) lay down guidelines for preparing disaster management plans by
+different Ministries or Departments of the Government of India and the State
+Authorities;
+(e) provide necessary technical assistance to the State Governments
+and the State Authorities for preparing their disaster management plans in
+accordance with the guidelines laid down by the National Authority;
+(f) monitor the implementation of the National Plan and the plans
+prepared by the Ministries or Departments of the Government of India;
+(g) monitor the implementation of the guidelines laid down by the
+National Authority for integrating of measures for prevention of disasters
+and mitigation by the Ministries or Departments in their development plans
+and projects;
+(h) monitor, coordinate and give directions regarding the mitigation
+and preparedness measures to be taken by different Ministries or
+Departments and agencies of the Government;
+(i) evaluate the preparedness at all governmental levels for the purpose
+of responding to any threatening disaster situation or disaster and give
+directions, where necessary, for enhancing such preparedness;
+(j) plan and coordinate specialised training programme for disaster
+management for different levels of officers, employees and voluntary rescue
+workers;
+(k) coordinate response in the event of any threatening disaster
+situation or disaster;
+(l) lay down guidelines for, or give directions to, the concerned
+Ministries or Departments of the Government of India, the State
+Governments and the State Authorities regarding measures to be taken by
+them in response to any threatening disaster situation or disaster;
+(m) require any department or agency of the Government to make
+available to the National Authority or State Authorities such men or material
+resources as are available with it for the purposes of emergency response,
+rescue and relief;
+(n) advise, assist and coordinate the activities of the Ministries or
+Departments of the Government of India, State Authorities, statutory bodies,
+other governmental or non-governmental organisations and others engaged
+in disaster management;
+(o) provide necessary technical assistance or give advice to the State
+Authorities and District Authorities for carrying out their functions under
+this Act;
+
+(p) promote general education and awareness in relation to disaster
+management; and
+(q) perform such other functions as the National Authority may require
+it to perform.
+National Plan. 11. (1) * * * * *
+(2) The National Plan shall be prepared by the National Executive
+Committee having regard to the National Policy and in consultation with the State
+Governments and expert bodies or organisations in the field of disaster
+management to be approved by the National Authority.
+* * * * *
+(4) The National Plan shall be reviewed and updated annually.
+* * * * *
+Guidelines for 12. The National Authority shall recommend guidelines for the minimum
+minimum standards of relief to be provided to persons affected by disaster, which shall
+standards of
+include,—
+relief.
+(i) the minimum requirements to be provided in the relief camps in
+relation to shelter, food, drinking water, medical cover and sanitation;
+(ii) the special provisions to be made for widows and orphans;
+(iii) ex gratia assistance on account of loss of life as also assistance on
+account of damage to houses and for restoration of means of livelihood;
+(iv) such other relief as may be necessary.
+13. The National Authority may, in cases of disasters of severe magnitude,
+Relief in loan
+repayment, etc. recommend relief in repayment of loans or for grant of fresh loans to the persons
+affected by disaster on such concessional terms as may be appropriate.
+* * * * *
+18. (1) * * * * *
+Powers and
+functions of
+(2) Without prejudice to the generality of provisions contained in sub-section (1),
+State Authority.
+the State Authority may—
+* * * * *
+(b) approve the State Plan in accordance with the guidelines laid down
+by the National Authority;
+* * * * *
+19. The State Authority shall lay down detailed guidelines for providing
+Guidelines for
+minimum standards of relief to persons affected by disaster in the State:
+standard of relief
+by State Provided that such standards shall in no case be less than the minimum
+Authority. standards in the guidelines laid down by the National Authority in this regard.
+20. (1) * * * * *
+Constitution of
+State Executive
+(2) The State Executive Committee shall consist of the following members,
+Committee.
+namely:—
+* * * * *
+(b) four Secretaries to the Government of the State of such departments
+as the State Government may think fit, ex officio.
+* * * * *
+
+22. (1) * * * * * Functions of the
+State Executive
+(2) Without prejudice to the generality of the provisions of sub-section (1), Committee.
+the State Executive Committee may—
+(a) coordinate and monitor the implementation of the National
+Policy, the National Plan and the State Plan;
+* * * * *
+(c) lay down guidelines for preparation of disaster management plans
+by the departments of the Government of the State and the District
+Authorities;
+(d) monitor the implementation of disaster management plans prepared
+by the departments of the Government of the State and District Authorities;
+* * * * *
+(i) promote general education, awareness and community training in
+regard to the forms of disasters to which different parts of the State are
+vulnerable and the measures that may be taken by such community to
+prevent the disaster, mitigate and respond to such disaster;
+(j) advise, assist and coordinate the activities of the Departments of the
+Government of the State, District Authorities, statutory bodies and other
+governmental and non-governmental organisations engaged in disaster
+management;
+(k) provide necessary technical assistance or give advice to District
+Authorities and local authorities for carrying out their functions effectively;
+* * * * *
+(m) examine the construction, in any local area in the State and, if it is
+of the opinion that the standards laid for such construction for the prevention
+of disaster is not being or has not been followed, may direct the District
+Authority or the local authority, as the case may be, to take such action as
+may be necessary to secure compliance of such standards;
+(n) provide information to the National Authority relating to different
+aspects of disaster management;
+* * * * *
+23. (1) * * * * * State Plan.
+(2) The State Plan shall be prepared by the State Executive Committee
+having regard to the guidelines laid down by the National Authority and after such
+consultation with local authorities, district authorities and the people's
+representatives as the State Executive Committee may deem fit.
+(3) The State Plan prepared by the State Executive Committee under
+sub-section (2) shall be approved by the State Authority.
+(4) The State Plan shall include,—
+(a) the vulnerability of different parts of the State to different forms of
+disasters;
+* * * * *
+(5) The State Plan shall be reviewed and updated annually.
+* * * * *
+
+Powers and 24. For the purpose of, assisting and protecting the community affected by
+functions of disaster or providing relief to such community or, preventing or combating
+State Executive
+disruption or dealing with the effects of any threatening disaster situation, the State
+Committee in
+the event of Executive Committee may—
+threatening
+disaster * * * * *
+situation.
+(e) give direction to the concerned Department of the Government of
+the State, any District Authority or other authority, within the local limits of
+the State to take such measure or steps for rescue, evacuation or providing
+immediate relief saving lives or property, as may be necessary in its opinion;
+* * * * *
+CHAPTER IV
+DISTRICT DISASTER MANAGEMENT AUTHORITY
+Constitution of 25. (1) * * * * *
+District Disaster
+Management (2) The District Authority shall consist of the Chairperson and such number
+Authority. of other members, not exceeding seven, as may be prescribed by the State
+Government, and unless the rules otherwise provide, it shall consist of the
+following, namely:—
+* * * * *
+(f) not exceeding two other district level officers, to be appointed by
+the State Government.
+* * * * *
+District Plan. 31. (1) * * * * *
+(4) The District Plan shall be reviewed and updated annually.
+* * * * *
+CHAPTER V
+MEASURES BY THE GOVERNMENT FOR DISASTER MANAGEMENT
+Central 35 (1) * * * * *
+Government to
+(2) In particular and without prejudice to the generality of the provisions of
+take measures.
+sub-section (1), the measures which the Central Government may take under that
+sub-section include measures with respect to all or any of the following matters,
+namely:—
+(a) coordination of actions of the Ministries or Departments of the
+Government of India, State Governments, National Authority, State
+Authorities, governmental and non-governmental organisations in relation to
+disaster management;
+(b) ensure the integration of measures for prevention of disasters and
+mitigation by Ministries or Departments of the Government of India into
+their development plans and projects;
+* * * * *
+(d) ensure that the Ministries or Departments of the Government of
+India take necessary measures for preparedness to promptly and effectively
+respond to any threatening disaster situation or disaster;
+* * * * *
+36. It shall be the responsibility of every Ministry or Department of the
+Responsibilities
+of Ministries or Government of India to—
+Departments of
+Government of * * * * *
+India.
+
+(f) provide assistance to the National Authority and State Governments
+for—
+(i) drawing up mitigation, preparedness and response plans,
+capacity-building, data collection and identification and training of
+personnel in relation to disaster management;
+(ii) carrying out rescue and relief operations in the affected area;
+(iii) assessing the damage from any disaster;
+(iv) carrying out rehabilitation and reconstruction;
+* * * * *
+38. (1) * * * * * State
+Government to
+(2) The measures which the State Government may take under sub-section (1) take measures.
+include measures with respect to all or any of the following matters, namely:—
+(a) coordination of actions of different departments of the Government
+of the State, the State Authority, District Authorities, local authority and
+other non-governmental organisations;
+(b) cooperation and assistance in the disaster management to the
+National Authority and National Executive Committee, the State Authority
+and the State Executive Committee, and the District Authorities;
+* * * * *
+(d) allocation of funds for measures for prevention of disaster,
+mitigation, capacity-building and preparedness by the departments of the
+Government of the State in accordance with the provisions of the State Plan
+and the District Plans;
+* * * * *
+(i) ensure that different departments of the Government of the State and
+the District Authorities take appropriate preparedness measures;
+(j) ensure that in a threatening disaster situation or disaster, the
+resources of different departments of the Government of the State are made
+available to the National Executive Committee or the State Executive
+Committee or the District Authorities, as the case may be, for the purposes of
+effective response, rescue and relief in any threatening disaster situation or
+disaster;
+(k) provide rehabilitation and reconstruction assistance to the victims of
+any disaster; and
+* * * * *
+39. It shall be the responsibility of every department of the Government of a Responsibilities
+State to— of departments
+of the State
+* * * * * Government.
+(f) provide assistance, as required, by the National Executive
+Committee, the State Executive Committee and District Authorities, for—
+(i) drawing up mitigation, preparedness and response plans,
+capacity-building, data collection and identification and training of
+personnel in relation to disaster management;
+(ii) assessing the damage from any disaster;
+(iii) carrying out rehabilitation and reconstruction;
+
+(g) make provision for resources in consultation with the State Authority
+for the implementation of the District Plan by its authorities at the district level;
+(h) make available its resources to the National Executive Committee or
+the State Executive Committee or the District Authorities for the purposes of
+responding promptly and effectively to any disaster in the State, including
+measures for—
+(i) providing emergency communication with a vulnerable or
+affected area;
+(ii) transporting personnel and relief goods to and from the affected
+area;
+(iii) providing evacuation, rescue, temporary shelter or other
+immediate relief;
+(iv) carrying out evacuation of persons or live-stock from an area of
+any threatening disaster situation or disaster;
+(v) setting up temporary bridges, jetties and landing places;
+(vi) providing drinking water, essential provisions, healthcare and
+services in an affected area;
+* * * * *
+CHAPTER VI
+LOCAL AUTHORITIES
+Functions of the 41. (1) Subject to the directions of the District Authority, a local authority
+local authority. shall—
+(a) ensure that its officers and employees are trained for disaster
+management;
+(b) ensure that resources relating to disaster management are so maintained
+as to be readily available for use in the event of any threatening disaster situation
+or disaster;
+(c) ensure all construction projects under it or within its jurisdiction
+conform to the standards and specifications laid down for prevention of disasters
+and mitigation by the National Authority, State Authority and the District
+Authority;
+(d) carry out relief, rehabilitation and reconstruction activities in the
+affected area in accordance with the State Plan and the District Plan.
+* * * * *
+43. The Central Government shall provide the National Institute of Disaster
+Officers and
+other employees Management with such officers, consultants and other employees, as it considers
+of the National necessary, for carrying out its functions.
+Institute.
+* * * * *
+CHAPTER VIII
+NATIONAL DISASTER RESPONSE FORCE
+* * * * *
+CHAPTER IX
+FINANCE, ACCOUNTS AND AUDIT
+46.(1) The Central Government may, by notification in the Official Gazette,
+National
+Disaster constitute a fund to be called the National Disaster Response Fund for meeting any
+Response Fund. threatening disaster situation or disaster and there shall be credited thereto—
+
+(a) an amount which the Central Government may, after due appropriation
+made by Parliament by law in this behalf provide;
+(b) any grants that may be made by any person or institution for the
+purpose of disaster management.
+(2) The National Disaster Response Fund shall be made available to the National
+Executive Committee to be applied towards meeting the expenses for emergency
+response, relief and rehabilitation in accordance with the guidelines laid down by the
+Central Government in consultation with the National Authority.
+47. (1) The Central Government may, by notification in the Official Gazette, National
+constitute a Fund to be called the National Disaster Mitigation Fund for projects Disaster
+Mitigation Fund.
+exclusively for the purpose of mitigation and there shall be credited thereto such
+amount which the Central Government may, after due appropriation made by
+Parliament by law in this behalf, provide.
+(2) The National Disaster Mitigation Fund shall be applied by the National
+Authority.
+48. (1) * * * * * Establishment of
+funds by State
+(2) The State Government shall ensure that the funds established— Government.
+(i) under clause (a) of sub-section (1) is available to the State Executive
+Committee;
+(ii) under sub-clause (c) of sub-section (1) is available to the State
+Authority;
+(iii) under clauses (b) and (d) of sub-section (1) are available to the District
+Authority.
+* * * * *
+50. Where by reason of any threatening disaster situation or disaster, the Emergency
+National Authority or the State Authority or the District Authority is satisfied that procurement and
+accounting.
+immediate procurement of provisions or materials or the immediate application of
+resources are necessary for rescue or relief,—
+(a) it may authorise the concerned department or authority to make the
+emergency procurement and in such case, the standard procedure requiring
+inviting of tenders shall be deemed to be waived;
+(b) a certificate about utilisation of provisions or materials by the
+controlling officer authorised by the National Authority, State Authority or
+District Authority, as the case may be, shall be deemed to be a valid document or
+voucher for the purpose of accounting of emergency, procurement of such
+provisions or materials.
+CHAPTER X
+OFFENCES AND PENALTIES
+51. Whoever, without reasonable cause— Punishment for
+obstruction, etc
+(a) obstructs any officer or employee of the Central Government or the
+State Government, or a person authorised by the National Authority or State
+Authority or District Authority in the discharge of his functions under this Act;
+or
+(b) refuses to comply with any direction given by or on behalf of the
+Central Government or the State Government or the National Executive
+Committee or the State Executive Committee or the District Authority under this
+Act,
+
+shall on conviction be punishable with imprisonment for a term which may
+extend to one year or with fine, or with both, and if such obstruction or
+refusal to comply with directions results in loss of lives or imminent danger
+thereof, shall on conviction be punishable with imprisonment for a term
+which may extend to two years.
+Punishment for 52. Whoever knowingly makes a claim which he knows or has reason to
+false claim. believe to be false for obtaining any relief, assistance, repair, reconstruction or
+other benefits consequent to disaster from any officer of the Central Government,
+the State Government, the National Authority,
+the State Authority or the District Authority, shall, on conviction be punishable
+with imprisonment for a term which may extend to two years, and also with fine.
+* * * * *
+59. No prosecution for offences punishable under sections 55 and 56 shall be
+Previous
+sanction for instituted except with the previous sanction of the Central Government or the State
+prosecution. Government, as the case may be, or of any officer authorised in this behalf, by
+general or special order, by such Government.
+Cognizance of 60. No court shall take cognizance of an offence under this Act except on a
+offences. complaint made by—
+(a) the National Authority, the State Authority, the Central
+Government, the State Government, the District Authority or any other
+authority or officer authorised in this behalf by that Authority or
+Government, as the case may be; or
+(b) any person who has given notice of not less than thirty days in the
+manner prescribed, of the alleged offence and his intention to make a
+complaint to the National Authority, the State Authority, the Central
+Government, the State Government, the District Authority or any other
+authority or officer authorised as aforesaid.
+* * * * *
+CHAPTER XI
+MISCELLANEOUS
+Prohibition 61. While providing compensation and relief to the victims of disaster, there
+against shall be no discrimination on the ground of sex, caste, community, descent or
+discrimination. religion.
+* * * * *
+63. Any officer or authority of the Union or a State, when requested by the
+Powers to be
+made available National Executive Committee, any State Executive Committee or District
+for rescue Authority or any person authorised by such Committee or Authority in this behalf,
+operations.
+shall make available to that Committee or authority or person, such officers and
+employees as requested for, to perform any of the functions in connection with the
+prevention of disaster or mitigation or rescue or relief work.
+Making or 64. Subject to the provisions of this Act, if it appears to the National
+amending rules, Executive Committee, State Executive Committee or the District Authority, as the
+etc., in certain
+case may be, that provisions of any rule, regulation, notification, guideline,
+circumstances.
+instruction, order, scheme or bye-laws, as the case may be, are required to be made
+or amended for the purposes of prevention of disasters or the mitigation thereof, it
+may require the amendment of such rules, regulation, 25 notification, guidelines,
+instruction, order, scheme or bye-laws, as the case may be, for that purpose, and
+the appropriate department or authority shall take necessary action to comply with
+the requirements.
+
+65. (1) If it appears to the National Executive Committee, State Executive Power of
+Committee or District Authority or any officer as may be authorised by it in this requisition of
+resources,
+behalf that—
+provisions,
+vehicles, etc., for
+(a) any resources with any authority or person are needed for the
+rescue
+purpose of prompt response; operations, etc.
+(b) any premises are needed or likely to be needed for the purpose of
+rescue operations; or
+(c) any vehicle is needed or is likely to be needed for the purposes of
+transport of' resources from disaster affected areas or transport of resources
+to the affected area or transport in connection with rescue, rehabilitation or
+reconstruction, such authority may, by order in writing, requisition such
+resources or premises or such vehicle, as the case may be, and may make
+such further orders as may appear to it to be necessary or expedient in
+connection with the requisitioning.
+* * * * *
+(3) In this section,—
+(a) “resources” includes men and material resources;
+* * * * *
+67. The National Authority, the State Authority, or a District Authority may Direction to
+recommend to the Government to give direction to any authority or person in media for
+communication
+control of any audio or audio-visual media or such other means of communication
+of warnings, etc.
+as may be available to carry any warning or advisories regarding any threatening
+disaster situation or disaster, and the said means of communication and media as
+designated shall comply with such direction.
+68. Every order or decision of the National Authority or the National Authentication
+of orders or
+Executive Committee, the State Authority, or the State Executive Committee or
+decisions.
+the District Authority, shall be authenticated by such officers of the National
+Authority or the National Executive Committee or, the State Executive
+Committee, or the District Authority, as may be authorised by it in this behalf.
+69. The National Executive Committee, State Executive Committee, as the Delegation of
+case may be, by general or special order in writing, may delegate to the powers.
+Chairperson or any other member or to any officer, subject to such conditions and
+limitations, if any, as may be specified in the order, such of its powers and
+functions under this Act as it may deem necessary.
+* * * * *
+71. No court (except the Supreme Court or a High Court) shall have Bar of
+jurisdiction to entertain any suit or proceeding in respect of anything done, action jurisdiction of
+court.
+taken, orders made, direction, instruction or guidelines issued by the Central
+Government, National Authority, State Government, State Authority or District
+Authority in pursuance of any power conferred by, or in relation to its functions,
+by this Act.
+* * * * *
+73. No suit or prosecution or other proceeding shall lie in any court against Action taken in
+the Central Government or the National Authority or the State Government or the good faith.
+State Authority or the District Authority or local authority or any officer or
+employee of the Central Government or the National Authority or the State
+Government or the State Authority or the District Authority or local authority or
+any person working for on behalf of such Government or authority in respect of
+any work done or purported to have been done or intended to be done in good faith
+by such authority or Government or such officer or employee or such person under
+the provisions of this Act or the rules or regulations made thereunder.
+
+Immunity from 74. Officers and employees of the Central Government, National
+legal process. Authority, National Executive Committee, State Government, State Authority,
+State Executive Committee or District Authority shall be immune from legal
+process in regard to any warning in respect of any impending disaster
+communicated or disseminated by them in their official capacity or any action
+taken or direction issued by them in pursuance of such communication or
+dissemination.
+* * * * *
+Rules and 77. Every rule made by the Central Government and every regulation
+regulations to be made by the National Institute of Disaster Management under this Act shall be
+laid before
+laid, as soon as may be after it is made, before each House of Parliament, while it
+Parliament.
+is in session, for a total period of thirty days which may be comprised of one
+session or in two or more successive sessions, and if, before the expiry of the
+session immediately following the session or the successive sessions aforesaid,
+both Houses agree in making any modification in the rule or regulation or both
+Houses agree that the rule or regulation should not be made, the rule or regulation
+shall thereafter have effect only in such modified form or be of no effect, as the
+case may be; so, however, that any such modification or annulment shall be
+without prejudice to the validity of anything previously done under that rule or
+regulation.
+* * * * *
+———
+
+LOK SABHA
+————
+A
+BILL
+to amend the Disaster Management Act, 2005.
+————
+(Shri Amit Shah, Minister Home Affairs and Cooperation)

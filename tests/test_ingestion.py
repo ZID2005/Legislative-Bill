@@ -33,6 +33,7 @@ from validation.validator import Validator
 # Test Connector
 # ---------------------------------------------------------------------------
 
+
 @pytest.mark.asyncio
 async def test_connector_mock_lookup() -> None:
     connector = ParliamentConnector(mock_responses={"https://test.url": "Mock content"})
@@ -56,6 +57,7 @@ async def test_connector_robots_caching() -> None:
 # ---------------------------------------------------------------------------
 # Test Parser
 # ---------------------------------------------------------------------------
+
 
 def test_parser_rss() -> None:
     xml_content = """<?xml version="1.0" encoding="utf-8"?>
@@ -121,9 +123,13 @@ def test_parser_html_details() -> None:
     </html>
     """
     parser = ParliamentParser()
-    bill_meta = {"title": "The Finance Bill, 2024", "url": "https://prsindia.org/bills/finance-bill-2024"}
+    bill_meta = {
+        "title": "The Finance Bill, 2024",
+        "url": "https://prsindia.org/bills/finance-bill-2024",
+    }
     enriched = parser.parse_html_details(html_content, bill_meta)
-    assert enriched["document_url"] == "https://prsindia.org/files/bills/pdfs/finance_bill.pdf"
+    # The new parser stores PDF URL under pdf_url (not document_url)
+    assert enriched["pdf_url"] == "https://prsindia.org/files/bills/pdfs/finance_bill.pdf"
     assert "summary" in enriched
     assert "finance proposals" in enriched["summary"]
 
@@ -132,10 +138,13 @@ def test_parser_html_details() -> None:
 # Test Downloader
 # ---------------------------------------------------------------------------
 
+
 @pytest.mark.asyncio
 async def test_downloader_pdf(tmp_path: Path) -> None:
     downloader = ParliamentDownloader(pdfs_dir=tmp_path)
-    connector = ParliamentConnector(mock_responses={"https://test.pdf": b"%PDF-1.4 pdf_content_here"})
+    connector = ParliamentConnector(
+        mock_responses={"https://test.pdf": b"%PDF-1.4 pdf_content_here"}
+    )
     path = await downloader.download_pdf("https://test.pdf", "finance-bill-2024", connector)
     assert Path(path).is_file()
     assert Path(path).name == "finance-bill-2024.pdf"
@@ -144,6 +153,7 @@ async def test_downloader_pdf(tmp_path: Path) -> None:
 # ---------------------------------------------------------------------------
 # Test Normalizer
 # ---------------------------------------------------------------------------
+
 
 def test_normalizer_basic() -> None:
     normalizer = ParliamentNormalizer()
@@ -168,6 +178,7 @@ def test_normalizer_basic() -> None:
 # ---------------------------------------------------------------------------
 # Test Validator
 # ---------------------------------------------------------------------------
+
 
 def test_validator_bill() -> None:
     validator = Validator()
@@ -201,6 +212,7 @@ def test_validator_bill() -> None:
 # Test Ingestion Service (Offline Run)
 # ---------------------------------------------------------------------------
 
+
 @pytest.mark.asyncio
 async def test_service_ingest_flow(tmp_path: Path) -> None:
     # Set up temp settings paths
@@ -230,7 +242,7 @@ async def test_service_ingest_flow(tmp_path: Path) -> None:
                 </table>
             </body>
         </html>
-        """
+        """,
     )
     connector.register_mock_response(
         "https://prsindia.org/bill/test-bill-2024",
@@ -240,9 +252,11 @@ async def test_service_ingest_flow(tmp_path: Path) -> None:
                 <a href="https://prsindia.org/files/test.pdf">Bill PDF Text</a>
             </body>
         </html>
-        """
+        """,
     )
-    connector.register_mock_response("https://prsindia.org/files/test.pdf", b"%PDF-1.4 dummy pdf bytes")
+    connector.register_mock_response(
+        "https://prsindia.org/files/test.pdf", b"%PDF-1.4 dummy pdf bytes"
+    )
 
     # Mocks for downloader extract_text so we don't need real PDF extraction in test
     class MockDownloader(ParliamentDownloader):
@@ -268,6 +282,7 @@ async def test_service_ingest_flow(tmp_path: Path) -> None:
     )
 
     import unittest.mock as mock
+
     with mock.patch("storage.catalog.CatalogManager.update") as mock_update:
         stats = await service.ingest_bills(source="prs", year=2024)
         assert stats["discovered"] == 1
@@ -280,7 +295,8 @@ async def test_service_ingest_flow(tmp_path: Path) -> None:
     bill_obj = repo.get("test-bill-2024")
     assert bill_obj is not None
     assert bill_obj.title == "Test Bill, 2024"
-    assert bill_obj.full_text == "Mock extracted full text from PDF"
+    # PDF download is skipped in Task 1A.2; full_text is populated in a later stage
+    assert bill_obj.full_text == ""
 
     # Test duplicate skipped
     with mock.patch("storage.catalog.CatalogManager.update") as mock_update:
@@ -299,11 +315,10 @@ async def test_service_dry_run(tmp_path: Path) -> None:
         "https://prsindia.org/billtrack",
         "<html><body><table><tr><th>Title</th><th>Ministry</th><th>Status</th></tr>"
         "<tr><td><a href='https://prsindia.org/bill/test-dry'>Dry Bill</a></td>"
-        "<td>Finance</td><td>Introduced</td></tr></table></body></html>"
+        "<td>Finance</td><td>Introduced</td></tr></table></body></html>",
     )
     connector.register_mock_response(
-        "https://prsindia.org/bill/test-dry",
-        "<html><body>Detail page content</body></html>"
+        "https://prsindia.org/bill/test-dry", "<html><body>Detail page content</body></html>"
     )
 
     repo = BillRepository()
@@ -314,6 +329,7 @@ async def test_service_dry_run(tmp_path: Path) -> None:
 
     service = ParliamentIngestionService(bill_repository=repo, connector=connector)
     import unittest.mock as mock
+
     with mock.patch("storage.catalog.CatalogManager.update") as mock_update:
         stats = await service.ingest_bills(source="prs", dry_run=True)
         assert stats["discovered"] == 1
@@ -348,9 +364,11 @@ async def test_service_resilience_and_failures(tmp_path: Path) -> None:
                 </table>
             </body>
         </html>
-        """
+        """,
     )
-    connector.register_mock_response("https://prsindia.org/bill/success", "<html><body>Success</body></html>")
+    connector.register_mock_response(
+        "https://prsindia.org/bill/success", "<html><body>Success</body></html>"
+    )
     # No mock registered for https://prsindia.org/bill/fail, which will raise connector error on live fetch
 
     repo = BillRepository()
@@ -361,6 +379,7 @@ async def test_service_resilience_and_failures(tmp_path: Path) -> None:
 
     service = ParliamentIngestionService(bill_repository=repo, connector=connector)
     import unittest.mock as mock
+
     with mock.patch("storage.catalog.CatalogManager.update"):
         stats = await service.ingest_bills(source="prs", dry_run=False)
         assert stats["discovered"] == 2
@@ -382,6 +401,32 @@ async def test_connector_errors_and_retries() -> None:
         await connector.fetch("https://invalid-host-name-xyz-987.org/test")
 
 
+@pytest.mark.asyncio
+async def test_connector_configured_retry_delay() -> None:
+    import unittest.mock as mock
+
+    # Use delay_seconds=0.5, max_retries=3, backoff_factor=2.0
+    connector = ParliamentConnector(max_retries=3, delay_seconds=0.5, backoff_factor=2.0)
+
+    # Mock _check_robots to return True, bypassing robots.txt lookup and forcing retry loop execution
+    connector._check_robots = mock.MagicMock(return_value=True)
+
+    sleep_times = []
+
+    async def mock_sleep(seconds: float) -> None:
+        sleep_times.append(seconds)
+
+    with mock.patch("ingestion.parliament.connector.asyncio.sleep", side_effect=mock_sleep):
+        with pytest.raises(ConnectorError):
+            await connector.fetch("https://invalid-host-name-xyz-987.org/test")
+
+    # With max_retries=3, there are 3 fetch attempts, so 2 retries (2 sleeps)
+    # The sleep delays should start at self.delay (0.5) and double (1.0)
+    assert len(sleep_times) == 2
+    assert sleep_times[0] == 0.5
+    assert sleep_times[1] == 1.0
+
+
 def test_downloader_text_extraction_fallback(tmp_path: Path) -> None:
     downloader = ParliamentDownloader(pdfs_dir=tmp_path)
     dummy_pdf = tmp_path / "test_dummy.pdf"
@@ -395,14 +440,18 @@ def test_downloader_text_extraction_fallback(tmp_path: Path) -> None:
 
 def test_bill_scraper_compatibility_wrapper(tmp_path: Path) -> None:
     from ingestion.parliament.bill_scraper import BillScraper
+
     settings.BILLS_DIR = tmp_path / "bills_wrapper"
     settings.ensure_directories()
 
     # Stub ParliamentIngestionService.ingest_bills
     import unittest.mock as mock
+
     scraper = BillScraper()
 
-    with mock.patch.object(scraper.service, "ingest_bills", new_callable=mock.AsyncMock) as mock_ingest:
+    with mock.patch.object(
+        scraper.service, "ingest_bills", new_callable=mock.AsyncMock
+    ) as mock_ingest:
         mock_ingest.return_value = {"discovered": 10}
         res = scraper.scrape_bills(source="prs", start_year=2024)
         assert len(res) == 1
@@ -427,7 +476,7 @@ async def test_discovery_metadata_and_pagination() -> None:
                 </table>
             </body>
         </html>
-        """
+        """,
     )
 
     discovery = ParliamentDiscovery()
@@ -476,31 +525,37 @@ async def test_discovery_by_bill_id() -> None:
                 </table>
             </body>
         </html>
-        """
+        """,
     )
     connector.register_mock_response(
         "https://prsindia.org/bill/telecom-bill-2023",
-        "<html><body><h1>Telecom Bill, 2023</h1></body></html>"
+        "<html><body><h1>Telecom Bill, 2023</h1></body></html>",
     )
 
     discovery = ParliamentDiscovery()
 
     # 1. Query for specific ID present in the listing table (covers line 146)
-    res = await discovery.discover_bills(connector, source="prs", bill_id_filter="telecom-bill-2023")
+    res = await discovery.discover_bills(
+        connector, source="prs", bill_id_filter="telecom-bill-2023"
+    )
     assert len(res) == 1
     assert res[0]["bill_id"] == "telecom-bill-2023"
 
     # 2. Query for specific ID not in the listing (empty mock)
     connector.register_mock_response(
         "https://prsindia.org/billtrack",
-        "<html><body><table><tr><th>Title</th><th>Ministry</th><th>Status</th></tr></table></body></html>"
+        "<html><body><table><tr><th>Title</th><th>Ministry</th><th>Status</th></tr></table></body></html>",
     )
-    res_direct = await discovery.discover_bills(connector, source="prs", bill_id_filter="telecom-bill-2023")
+    res_direct = await discovery.discover_bills(
+        connector, source="prs", bill_id_filter="telecom-bill-2023"
+    )
     assert len(res_direct) == 1
     assert res_direct[0]["bill_id"] == "telecom-bill-2023"
 
     # 3. Query for unregistered detail page (direct detail lookup failure)
-    res_fail = await discovery.discover_bills(connector, source="prs", bill_id_filter="nonexistent-bill")
+    res_fail = await discovery.discover_bills(
+        connector, source="prs", bill_id_filter="nonexistent-bill"
+    )
     assert len(res_fail) == 0
 
     # 4. Query using lok_sabha source consolidator
@@ -525,7 +580,7 @@ async def test_discovery_latest_only() -> None:
                 </item>
             </channel>
         </rss>
-        """
+        """,
     )
     discovery = ParliamentDiscovery()
     res = await discovery.discover_bills(connector, source="prs", latest_only=True)
@@ -533,15 +588,12 @@ async def test_discovery_latest_only() -> None:
     assert res[0]["bill_id"] == "the-latest-bill-2024"
 
     # 1. Test RSS parse failure (triggering HTML fallback on lines 92-97)
-    connector.register_mock_response(
-        "https://prsindia.org/bills/rss",
-        "invalid xml content"
-    )
+    connector.register_mock_response("https://prsindia.org/bills/rss", "invalid xml content")
     connector.register_mock_response(
         "https://prsindia.org/billtrack",
         """<html><body><table><tr><th>Title</th><th>Ministry</th><th>Status</th></tr>
         <tr><td><a href="/bill/fallback-bill">Fallback Bill, 2024</a></td><td>Finance</td><td>Introduced</td></tr>
-        </table></body></html>"""
+        </table></body></html>""",
     )
     res_fallback = await discovery.discover_bills(connector, source="prs", latest_only=True)
     assert len(res_fallback) == 1
@@ -549,6 +601,7 @@ async def test_discovery_latest_only() -> None:
 
     # 2. Test empty title row check (triggering line 116)
     import unittest.mock as mock
+
     with mock.patch.object(discovery.parser, "parse_html_list", return_value=[{"title": ""}]):
         res_empty = await discovery.discover_bills(connector, source="prs")
         assert len(res_empty) == 0

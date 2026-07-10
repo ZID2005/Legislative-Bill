@@ -1,0 +1,78 @@
+{
+  "bill_id": "the-banking-laws-amendment-bill-2024",
+  "ministry": "Ministry of Finance",
+  "department": "Department of Financial Services",
+  "policy_domain": "Financial Regulation",
+  "economic_domain": "Financial Services",
+  "primary_sector": "Banking & Financial Services",
+  "secondary_sectors": [
+    "Capital Markets",
+    "Insurance",
+    "Taxation"
+  ],
+  "stakeholder_groups": [
+    "Banks",
+    "NBFCs",
+    "Borrowers",
+    "Depositors",
+    "Investors"
+  ],
+  "regulatory_authority": "Reserve Bank of India (RBI)",
+  "geographic_scope": "National",
+  "bill_type": "Amendment Bill",
+  "keywords": [
+    "bank",
+    "banking",
+    "RBI",
+    "Reserve Bank",
+    "deposit",
+    "cooperative bank",
+    "bond",
+    "investor",
+    "shareholding",
+    "claim"
+  ],
+  "related_acts": [
+    "Banking Regulation Act, 1949",
+    "State Bank of India Act, 1955",
+    "Under the RBI Act",
+    "Banking Regulation Act",
+    "The Banking Regulation Act",
+    "Under the Banking Regulation Act",
+    "Reserve Bank of India Act, 1934",
+    "In the Reserve Bank of India Act, 1934",
+    "In the Banking Regulation Act, 1949",
+    "In the Banking Regulation Act",
+    "In the State Bank of India Act, 1955",
+    "Companies Act, 2013",
+    "Companies Act, 1956",
+    "BR Act",
+    "Negotiable Instruments Act, 1881",
+    "India Act, 1934",
+    "PART V APPLICATION OF THE ACT TO CO-OPERATIVE BANKS Act"
+  ],
+  "related_ministries": [
+    "Ministry of Corporate Affairs",
+    "Ministry of Health and Family Welfare"
+  ],
+  "confidence_score": 0.8,
+  "searchable_tags": [
+    "ministry:Ministry of Finance",
+    "policy_domain:Financial Regulation",
+    "sector:Banking & Financial Services",
+    "sector:Capital Markets",
+    "sector:Insurance",
+    "sector:Taxation",
+    "stakeholder:Banks",
+    "stakeholder:NBFCs",
+    "stakeholder:Borrowers",
+    "stakeholder:Depositors",
+    "stakeholder:Investors",
+    "year:2024",
+    "status:passed_both"
+  ],
+  "generated_at": "2026-07-09T15:15:05.361359Z",
+  "rules_version": "1.0",
+  "source_metadata_checksum": "4fb441c413a6bd72e5daea0d7438460b662495220435a7fc723504ea46ae372f",
+  "source_text_checksum": "2513542fc6de506afb876208d855e323cedb9981acc97761e468867a62a939b6"
+}

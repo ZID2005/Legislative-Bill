@@ -1,0 +1,42 @@
+{
+  "bill_id": "the-disaster-management-amendment-bill-2024",
+  "ministry": "Ministry of Home Affairs",
+  "department": "Department of Home",
+  "policy_domain": "Governance & Public Administration",
+  "economic_domain": "Public Administration",
+  "primary_sector": "Governance & Public Administration",
+  "secondary_sectors": [],
+  "stakeholder_groups": [
+    "General Public",
+    "Government Employees",
+    "Local Bodies"
+  ],
+  "regulatory_authority": "National Disaster Management Authority (NDMA)",
+  "geographic_scope": "National",
+  "bill_type": "Amendment Bill",
+  "keywords": [
+    "approval",
+    "grant",
+    "penalty"
+  ],
+  "related_acts": [
+    "Disaster Management Act, 2005",
+    "STATEMENT OF OBJECTS AND REASONS The Disaster Management Act, 2005"
+  ],
+  "related_ministries": [],
+  "confidence_score": 0.65,
+  "searchable_tags": [
+    "ministry:Ministry of Home Affairs",
+    "policy_domain:Governance & Public Administration",
+    "sector:Governance & Public Administration",
+    "stakeholder:General Public",
+    "stakeholder:Government Employees",
+    "stakeholder:Local Bodies",
+    "year:2024",
+    "status:passed_both"
+  ],
+  "generated_at": "2026-07-09T15:15:06.302589Z",
+  "rules_version": "1.0",
+  "source_metadata_checksum": "9d984c603dde70f114afa62ecb1ba24408e85cc4585b640c6cb8cae411b8b561",
+  "source_text_checksum": "3f93a2540edb89af97dc9524889d7c09e52d1d4e44a0025494c9558546631de5"
+}

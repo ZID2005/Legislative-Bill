@@ -40,6 +40,8 @@ from schemas.bill import Bill, BillStatus, BillHouse
 from schemas.company import Company, MarketCapCategory
 from schemas.market import PriceRecord
 from schemas.prediction import Prediction, ImpactLabel
+from schemas.knowledge_record import KnowledgeRecord
+from schemas.mapping_record import BillCompanyMapping
 
 __all__ = [
     # Bill
@@ -54,4 +56,8 @@ __all__ = [
     # Prediction
     "Prediction",
     "ImpactLabel",
+    # Knowledge Record
+    "KnowledgeRecord",
+    # Mapping Record
+    "BillCompanyMapping",
 ]

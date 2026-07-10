@@ -205,6 +205,27 @@ python main.py status
 # Show all commands
 python main.py --help
 
+# Discover and ingest bill metadata (Task 1A.1 & 1A.2)
+python main.py ingest --source prs --year 2024
+
+# Download official PDF documents for ingested bills (Task 1A.3)
+python main.py download-docs --year 2024
+
+# Extract text and generate the legislative corpus (Task 1A.4)
+python main.py extract-text --year 2024
+
+# Build knowledge records from corpus (Task 1A.5 & 1A.5.1)
+python main.py build-knowledge --year 2024
+
+# Ingest and normalize company master records (Task 2.1 & 2.2)
+python main.py ingest-companies
+
+# Ingest and normalize historical market prices and indices (Task 3.1)
+python main.py ingest-market --all --start-date 2024-01-01
+
+# Build deterministic bill-company mappings (Task 2.3)
+python main.py build-mappings --year 2024
+
 # Run tests
 pytest tests/ -v
 
@@ -226,10 +247,10 @@ black .
 |-------|------|--------|
 | **Task 0** | Project Foundation & Architecture | ✅ Complete |
 | **Task 1** | Bill Data Ingestion (Scraping + Storage) | ✅ Complete |
-| **Task 2** | Company & Market Data Acquisition | 🔲 Planned |
-| **Task 3** | Data Validation & Schema Enforcement | 🔲 Planned |
+| **Task 2** | Company & Market Data Acquisition | ✅ Complete |
+| **Task 3** | Data Validation & Schema Enforcement | ✅ Complete |
 | **Task 4** | NLP Pipeline (Legal Text Understanding) | 🔲 Planned |
-| **Task 5** | Sector & Company Mapping | 🔲 Planned |
+| **Task 5** | Sector & Company Mapping | ✅ Complete |
 | **Task 6** | Ground-Truth Label Generation (Event Study) | 🔲 Planned |
 | **Task 7** | Feature Engineering | 🔲 Planned |
 | **Task 8** | Model Training & Evaluation | 🔲 Planned |

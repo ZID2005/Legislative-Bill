@@ -68,10 +68,7 @@ class PriceRecord:
         }
 
     def __repr__(self) -> str:
-        return (
-            f"<PriceRecord symbol={self.symbol!r} date={self.date} "
-            f"close={self.close:.2f}>"
-        )
+        return f"<PriceRecord symbol={self.symbol!r} date={self.date} " f"close={self.close:.2f}>"
 
 
 @dataclass

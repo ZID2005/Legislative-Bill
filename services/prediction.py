@@ -43,7 +43,9 @@ class PredictionService:
         Prediction
             canonical Prediction schema object.
         """
-        logger.info("PredictionService: predicting impact for bill=%s | company=%s", bill_id, company_isin)
+        logger.info(
+            "PredictionService: predicting impact for bill=%s | company=%s", bill_id, company_isin
+        )
         bill = self.bill_repo.get(bill_id)
         if not bill:
             raise ValueError(f"Bill not found in repository: {bill_id}")

@@ -1,0 +1,57 @@
+{
+  "bill_id": "the-railways-amendment-bill-2024",
+  "ministry": "Ministry of Railways",
+  "department": "Department of Railways",
+  "policy_domain": "Infrastructure Development",
+  "economic_domain": "Railways",
+  "primary_sector": "Railways",
+  "secondary_sectors": [
+    "Infrastructure"
+  ],
+  "stakeholder_groups": [
+    "Commuters",
+    "Logistics Companies",
+    "Railway Employees"
+  ],
+  "regulatory_authority": "Ministry of Railways",
+  "geographic_scope": "National",
+  "bill_type": "Amendment Bill",
+  "keywords": [
+    "approval",
+    "penalty",
+    "railway"
+  ],
+  "related_acts": [
+    "Railways Act, 1989",
+    "The Indian Railway Board Act, 1905",
+    "The Indian Railways Act, 1890",
+    "Board Act, 1905",
+    "Indian Railways Act, 1890",
+    "Indian Railway Board Act, 1905",
+    "The Railway Board Act, 1905"
+  ],
+  "related_ministries": [
+    "Ministry of Petroleum and Natural Gas",
+    "Ministry of New and Renewable Energy",
+    "Ministry of Power",
+    "Ministry of Road Transport and Highways",
+    "Ministry of Steel",
+    "Ministry of Mines"
+  ],
+  "confidence_score": 0.55,
+  "searchable_tags": [
+    "ministry:Ministry of Railways",
+    "policy_domain:Infrastructure Development",
+    "sector:Railways",
+    "sector:Infrastructure",
+    "stakeholder:Commuters",
+    "stakeholder:Logistics Companies",
+    "stakeholder:Railway Employees",
+    "year:2024",
+    "status:passed_both"
+  ],
+  "generated_at": "2026-07-09T15:15:07.413164Z",
+  "rules_version": "1.0",
+  "source_metadata_checksum": "4dbbedece388a3e98b38cdd98ee06f2ac8dab12e3efa083fd562d1cb39637a4b",
+  "source_text_checksum": "d960443bb8b53ab208db1b3197079babf18968c8f1767994a2c04fe5b3cdb405"
+}

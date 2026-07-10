@@ -1,0 +1,41 @@
+{
+  "bill_id": "the-public-examinations-prevention-of-unfair-means-bill-2024",
+  "ministry": "Ministry of Personnel Public Grievances and Pensions",
+  "department": "Department of Personnel and Training",
+  "policy_domain": "Governance & Public Administration",
+  "economic_domain": "Public Administration",
+  "primary_sector": "Governance & Public Administration",
+  "secondary_sectors": [],
+  "stakeholder_groups": [
+    "General Public",
+    "Government Employees",
+    "Local Bodies"
+  ],
+  "regulatory_authority": "Ministry of Personnel, Public Grievances and Pensions",
+  "geographic_scope": "National",
+  "bill_type": "Ordinary Bill",
+  "keywords": [
+    "approval"
+  ],
+  "related_acts": [
+    "Information Technology Act, 2000",
+    "Companies Act, 2013",
+    "Limited Liability Partnership Act, 2008"
+  ],
+  "related_ministries": [],
+  "confidence_score": 0.55,
+  "searchable_tags": [
+    "ministry:Ministry of Personnel Public Grievances and Pensions",
+    "policy_domain:Governance & Public Administration",
+    "sector:Governance & Public Administration",
+    "stakeholder:General Public",
+    "stakeholder:Government Employees",
+    "stakeholder:Local Bodies",
+    "year:2024",
+    "status:passed_both"
+  ],
+  "generated_at": "2026-07-09T15:15:07.338056Z",
+  "rules_version": "1.0",
+  "source_metadata_checksum": "76f7d7a3926c59e3fe3372725349c46f8655a344cf14987a565c1eeff1cd7154",
+  "source_text_checksum": "4118eb291bca026ba6f4ff30843f5b04ccfbcbadecf675d5d38844ccca3fae39"
+}

@@ -7,10 +7,10 @@
 
 ### Phase 2: Data Acquisition
 - [x] **Task 1** — Bill ingestion from PRS / Lok Sabha / Rajya Sabha
-- [ ] **Task 2** — Company master (BSE/NSE) + historical market prices
+- [x] **Task 2** — Company master (BSE/NSE) + historical market prices
 
 ### Phase 3: Data Quality
-- [ ] **Task 3** — Validation layer (pydantic schemas, data quality checks)
+- [x] **Task 3** — Validation layer (pydantic schemas, data quality checks)
 
 ### Phase 4: NLP Intelligence
 - [ ] **Task 4** — Legal text NLP pipeline
@@ -21,7 +21,7 @@
   - Bill summarisation (GPT-4 / open-source LLM)
 
 ### Phase 5: Domain Mapping
-- [ ] **Task 5** — Sector and company mapping
+- [x] **Task 5** — Sector and company mapping
   - Keyword-based mapping (Phase A)
   - Embedding-based mapping (Phase B)
 

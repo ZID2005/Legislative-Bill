@@ -62,3 +62,7 @@ These CSV files should be reviewed and updated:
 DO NOT auto-generate these files from ML outputs.  They must remain
 human-curated to serve as reliable ground truth.
 """
+
+from knowledge.engine import RuleEngine
+
+__all__ = ["RuleEngine"]

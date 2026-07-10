@@ -26,27 +26,36 @@ from typing import Optional
 # Enums
 # ---------------------------------------------------------------------------
 
+
 class BillStatus(str, Enum):
     """Life-cycle status of a bill in Parliament."""
-    INTRODUCED = "introduced"       # Tabled in either house, debate not started
-    PENDING = "pending"             # Under committee review or floor debate
+
+    INTRODUCED = "introduced"  # Tabled in either house, debate not started
+    PENDING = "pending"  # Under committee review or floor debate
     PASSED_LOK_SABHA = "passed_lok_sabha"
     PASSED_RAJYA_SABHA = "passed_rajya_sabha"
-    PASSED_BOTH = "passed_both"     # Passed both houses; awaiting Presidential assent
-    ASSENTED = "assented"           # Presidential assent received; now an Act
-    LAPSED = "lapsed"               # Lapsed due to dissolution of Lok Sabha
+    PASSED_BOTH = "passed_both"  # Passed both houses; awaiting Presidential assent
+    ASSENTED = "assented"  # Presidential assent received; now an Act
+    LAPSED = "lapsed"  # Lapsed due to dissolution of Lok Sabha
     WITHDRAWN = "withdrawn"
+    IN_COMMITTEE = "in_committee"  # Referred to a Parliamentary Standing Committee
+    NEGATIVED = "negatived"  # Voted down / negatived by Parliament
+    ORDINANCE = "ordinance"  # Presidential Ordinance (not a standard bill)
+    DRAFT = "draft"  # Pre-introduction draft stage
 
 
 class BillHouse(str, Enum):
     """House in which the bill was first introduced."""
+
     LOK_SABHA = "lok_sabha"
     RAJYA_SABHA = "rajya_sabha"
+    UNKNOWN = "unknown"
 
 
 # ---------------------------------------------------------------------------
 # Bill schema
 # ---------------------------------------------------------------------------
+
 
 @dataclass
 class Bill:
@@ -62,10 +71,11 @@ class Bill:
         Official full title of the bill.
     bill_number : str
         Parliament bill number, e.g. ``"7/2024"`` or ``"Bill No. 125-C of 2023"``.
-    year : int
-        Year the bill was introduced.
+    year : int | None
+        Year the bill was introduced. None if unknown — NULL is preferred
+        over an invented year.
     ministry : str
-        Ministry or department sponsoring the bill.
+        Ministry or department sponsoring the bill. Empty string if unavailable.
     house : BillHouse
         House of first introduction (Lok Sabha or Rajya Sabha).
     status : BillStatus
@@ -76,14 +86,30 @@ class Bill:
         Date of Presidential assent (if applicable).
     gazette_date : date | None
         Date of notification in the Official Gazette.
+    last_updated : date | None
+        Date this record was last updated on the source portal (PRS).
     url : str
-        Canonical URL to the official bill document or PRS summary.
+        Canonical URL to the official bill page on PRS or Parliament portals.
+    pdf_url : str | None
+        Official URL to the bill PDF document (URL only; NOT a local path).
+        Populated by Task 1A.2. PDF download happens in a later task.
     pdf_path : str | None
-        Local filesystem path to the downloaded bill PDF.
+        Local filesystem path to the downloaded bill PDF (populated by PDF downloader task).
     summary : str
-        Short AI-generated or manually written summary (2–5 sentences).
+        Official summary extracted from source (NOT AI-generated).
     full_text : str
         Complete extracted text of the bill (from PDF or HTML).
+    session : str
+        Parliamentary session in which the bill was introduced,
+        e.g. ``"Budget Session, 2024"``.
+    sponsor : str
+        Name of the minister or member who introduced the bill.
+    related_bills : list[str]
+        Slugs of related bills linked on the detail page.
+    related_acts : list[str]
+        Names of related acts mentioned on the detail page.
+    language : str
+        Document language. Default: ``"English"``.
     sectors : list[str]
         Economic sectors affected (populated by mapping module, Task 5).
     keywords : list[str]
@@ -94,23 +120,57 @@ class Bill:
         Date the record was first ingested into the system.
     """
 
-    # Required fields
+    # Required identity fields
     bill_id: str
     title: str
-    year: int
-    ministry: str
     house: BillHouse
     status: BillStatus
     url: str
+
+    # Year: Optional — None is preferable to an invented year
+    year: Optional[int] = None
+
+    # Ministry: collected from detail page; empty string if unavailable
+    ministry: str = ""
 
     # Optional fields (populated progressively by different pipeline stages)
     bill_number: str = ""
     introduction_date: Optional[date] = None
     assent_date: Optional[date] = None
     gazette_date: Optional[date] = None
-    pdf_path: Optional[str] = None
+    last_updated: Optional[date] = None
+
+    # Document references
+    pdf_url: Optional[str] = None  # URL to official PDF (Task 1A.2)
+    pdf_path: Optional[str] = None  # Local path after download (future task)
+    document_path: Optional[str] = None
+    document_size: Optional[int] = None
+    document_checksum: Optional[str] = None
+    download_timestamp: Optional[str] = None
+    download_status: Optional[str] = None
+
+    # Corpus / text extraction fields (populated by Task 1A.4)
+    text_path: Optional[str] = None  # Local path to extracted .txt corpus file
+    text_checksum: Optional[str] = None  # SHA-256 of the extracted text file
+    text_size: Optional[int] = None  # Byte size of extracted text file
+    text_status: Optional[str] = None  # success | scanned_pdf | failed | missing_pdf | empty
+    extraction_method: Optional[str] = None  # pdfplumber | pypdf2 | none
+    extraction_timestamp: Optional[str] = None  # ISO-8601 UTC timestamp of last extraction
+    page_count: Optional[int] = None  # Number of pages in the source PDF
+    quality_metrics: Optional[dict] = (
+        None  # {char_count, word_count, avg_chars_per_page, empty_page_count}
+    )
+
+    # Content (populated in later pipeline stages)
     summary: str = ""
     full_text: str = ""
+
+    # Provenance & classification
+    session: str = ""
+    sponsor: str = ""
+    related_bills: list[str] = field(default_factory=list)
+    related_acts: list[str] = field(default_factory=list)
+    language: str = "English"
     sectors: list[str] = field(default_factory=list)
     keywords: list[str] = field(default_factory=list)
     source: str = "unknown"
@@ -126,42 +186,95 @@ class Bill:
             "ministry": self.ministry,
             "house": self.house.value,
             "status": self.status.value,
-            "introduction_date": self.introduction_date.isoformat() if self.introduction_date else None,
+            "introduction_date": (
+                self.introduction_date.isoformat() if self.introduction_date else None
+            ),
             "assent_date": self.assent_date.isoformat() if self.assent_date else None,
             "gazette_date": self.gazette_date.isoformat() if self.gazette_date else None,
+            "last_updated": self.last_updated.isoformat() if self.last_updated else None,
             "url": self.url,
+            "pdf_url": self.pdf_url,
             "pdf_path": self.pdf_path,
+            "document_path": self.document_path,
+            "document_size": self.document_size,
+            "document_checksum": self.document_checksum,
+            "download_timestamp": self.download_timestamp,
+            "download_status": self.download_status,
             "summary": self.summary,
             "full_text": self.full_text,
+            "session": self.session,
+            "sponsor": self.sponsor,
+            "related_bills": self.related_bills,
+            "related_acts": self.related_acts,
+            "language": self.language,
             "sectors": self.sectors,
             "keywords": self.keywords,
             "source": self.source,
             "ingested_at": self.ingested_at.isoformat() if self.ingested_at else None,
+            # Task 1A.4 text extraction fields
+            "text_path": self.text_path,
+            "text_checksum": self.text_checksum,
+            "text_size": self.text_size,
+            "text_status": self.text_status,
+            "extraction_method": self.extraction_method,
+            "extraction_timestamp": self.extraction_timestamp,
+            "page_count": self.page_count,
+            "quality_metrics": self.quality_metrics,
         }
 
     @classmethod
     def from_dict(cls, data: dict) -> "Bill":
         """Deserialise a Bill from a dictionary (e.g. loaded from JSON)."""
         from utils.date_utils import parse_date  # noqa: PLC0415
+
+        raw_year = data.get("year")
+        year: Optional[int] = None
+        if raw_year is not None:
+            try:
+                year = int(raw_year)
+            except (ValueError, TypeError):
+                year = None
+
         return cls(
             bill_id=data["bill_id"],
             title=data["title"],
             bill_number=data.get("bill_number", ""),
-            year=int(data["year"]),
-            ministry=data["ministry"],
+            year=year,
+            ministry=data.get("ministry", ""),
             house=BillHouse(data["house"]),
             status=BillStatus(data["status"]),
             introduction_date=parse_date(data.get("introduction_date", "")),
             assent_date=parse_date(data.get("assent_date", "")),
             gazette_date=parse_date(data.get("gazette_date", "")),
+            last_updated=parse_date(data.get("last_updated", "")),
             url=data.get("url", ""),
+            pdf_url=data.get("pdf_url"),
             pdf_path=data.get("pdf_path"),
+            document_path=data.get("document_path"),
+            document_size=data.get("document_size"),
+            document_checksum=data.get("document_checksum"),
+            download_timestamp=data.get("download_timestamp"),
+            download_status=data.get("download_status"),
             summary=data.get("summary", ""),
             full_text=data.get("full_text", ""),
+            session=data.get("session", ""),
+            sponsor=data.get("sponsor", ""),
+            related_bills=data.get("related_bills", []),
+            related_acts=data.get("related_acts", []),
+            language=data.get("language", "English"),
             sectors=data.get("sectors", []),
             keywords=data.get("keywords", []),
             source=data.get("source", "unknown"),
             ingested_at=parse_date(data.get("ingested_at", "")),
+            # Task 1A.4 text extraction fields
+            text_path=data.get("text_path"),
+            text_checksum=data.get("text_checksum"),
+            text_size=data.get("text_size"),
+            text_status=data.get("text_status"),
+            extraction_method=data.get("extraction_method"),
+            extraction_timestamp=data.get("extraction_timestamp"),
+            page_count=data.get("page_count"),
+            quality_metrics=data.get("quality_metrics"),
         )
 
     def __repr__(self) -> str:

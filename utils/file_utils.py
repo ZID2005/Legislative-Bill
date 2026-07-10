@@ -37,6 +37,7 @@ PathLike = str | os.PathLike
 # Directory helpers
 # ---------------------------------------------------------------------------
 
+
 def ensure_dir(path: PathLike) -> Path:
     """
     Create *path* (and all intermediate parents) if it does not exist.
@@ -60,6 +61,7 @@ def ensure_dir(path: PathLike) -> Path:
 # ---------------------------------------------------------------------------
 # JSON helpers
 # ---------------------------------------------------------------------------
+
 
 def save_json(data: Any, path: PathLike, indent: int = 2) -> Path:
     """
@@ -139,6 +141,7 @@ def load_json(path: PathLike) -> Any:
 # CSV helpers
 # ---------------------------------------------------------------------------
 
+
 def save_csv(
     rows: list[dict[str, Any]],
     path: PathLike,
@@ -205,6 +208,7 @@ def iter_csv(path: PathLike) -> Iterator[dict[str, str]]:
 # ---------------------------------------------------------------------------
 # Generic helpers
 # ---------------------------------------------------------------------------
+
 
 def file_exists(path: PathLike) -> bool:
     """Return ``True`` if *path* points to an existing file."""

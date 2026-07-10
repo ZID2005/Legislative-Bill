@@ -33,6 +33,7 @@ class ParliamentDiscovery:
         """
         if prs_base_url is None:
             from config.settings import settings
+
             self.prs_base_url = settings.PRS_BASE_URL
         else:
             self.prs_base_url = prs_base_url
@@ -147,26 +148,32 @@ class ParliamentDiscovery:
 
             # Fallback: query detail page directly if not found in table listing
             direct_url = f"{self.prs_base_url}/bill/{bill_id_filter}"
-            logger.info("Direct bill ID query not in list. Fetching detail page directly: %s", direct_url)
+            logger.info(
+                "Direct bill ID query not in list. Fetching detail page directly: %s", direct_url
+            )
             try:
                 html_content = await connector.fetch(direct_url)
                 soup = BeautifulSoup(html_content, "html.parser")
                 title_el = soup.find(["h1", "h2"])
-                title = title_el.text.strip() if title_el else bill_id_filter.replace("-", " ").title()
+                title = (
+                    title_el.text.strip() if title_el else bill_id_filter.replace("-", " ").title()
+                )
 
                 year_val = date.today().year
                 year_match = re.search(r"\b(19|20)\d{2}\b", title)
                 if year_match:
                     year_val = int(year_match.group(0))
 
-                return [{
-                    "bill_id": bill_id_filter,
-                    "title": title,
-                    "year": year_val,
-                    "source_url": direct_url,
-                    "url": direct_url,
-                    "status": "introduced",
-                }]
+                return [
+                    {
+                        "bill_id": bill_id_filter,
+                        "title": title,
+                        "year": year_val,
+                        "source_url": direct_url,
+                        "url": direct_url,
+                        "status": "introduced",
+                    }
+                ]
             except Exception as e:
                 logger.warning("Direct bill page fetch failed for ID %s: %s", bill_id_filter, e)
                 return []

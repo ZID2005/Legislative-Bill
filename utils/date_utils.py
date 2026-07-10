@@ -27,20 +27,21 @@ logger = get_logger(__name__)
 # Supported date formats (ordered from most to least specific)
 # ---------------------------------------------------------------------------
 _DATE_FORMATS: list[str] = [
-    "%d-%m-%Y",       # 31-12-2024   (common Indian format)
-    "%d/%m/%Y",       # 31/12/2024
-    "%Y-%m-%d",       # 2024-12-31   (ISO 8601)
-    "%d %B %Y",       # 31 December 2024
-    "%d %b %Y",       # 31 Dec 2024
-    "%B %d, %Y",      # December 31, 2024
-    "%b %d, %Y",      # Dec 31, 2024
-    "%Y%m%d",         # 20241231     (compact)
+    "%d-%m-%Y",  # 31-12-2024   (common Indian format)
+    "%d/%m/%Y",  # 31/12/2024
+    "%Y-%m-%d",  # 2024-12-31   (ISO 8601)
+    "%d %B %Y",  # 31 December 2024
+    "%d %b %Y",  # 31 Dec 2024
+    "%B %d, %Y",  # December 31, 2024
+    "%b %d, %Y",  # Dec 31, 2024
+    "%Y%m%d",  # 20241231     (compact)
 ]
 
 
 # ---------------------------------------------------------------------------
 # Parsing
 # ---------------------------------------------------------------------------
+
 
 def parse_date(raw: str) -> Optional[date]:
     """
@@ -100,9 +101,9 @@ def parse_datetime(raw: str) -> Optional[datetime]:
         return None
     raw = raw.strip()
     datetime_formats = [
-        "%Y-%m-%dT%H:%M:%S",       # ISO 8601 without timezone
-        "%Y-%m-%dT%H:%M:%SZ",      # ISO 8601 UTC
-        "%Y-%m-%d %H:%M:%S",       # Common database format
+        "%Y-%m-%dT%H:%M:%S",  # ISO 8601 without timezone
+        "%Y-%m-%dT%H:%M:%SZ",  # ISO 8601 UTC
+        "%Y-%m-%d %H:%M:%S",  # Common database format
         "%d-%m-%Y %H:%M:%S",
         "%d/%m/%Y %H:%M:%S",
     ]
@@ -122,6 +123,7 @@ def parse_datetime(raw: str) -> Optional[datetime]:
 # ---------------------------------------------------------------------------
 # Formatting
 # ---------------------------------------------------------------------------
+
 
 def today_str(fmt: str = "%Y-%m-%d") -> str:
     """

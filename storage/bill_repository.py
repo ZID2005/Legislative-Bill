@@ -28,6 +28,7 @@ class BillRepository:
 
     def __init__(self) -> None:
         from config.settings import settings
+
         self._metadata_dir = settings.BILLS_DIR / "metadata"
         self._pdfs_dir = settings.BILLS_DIR / "pdfs"
         ensure_dir(self._metadata_dir)

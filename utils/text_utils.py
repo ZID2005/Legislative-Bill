@@ -18,13 +18,16 @@ packages.  Here we only do deterministic string transformations.
 
 from __future__ import annotations
 
+from datetime import date
 import re
+from typing import Any, Optional, Union
 import unicodedata
 
 
 # ---------------------------------------------------------------------------
 # Text cleaning
 # ---------------------------------------------------------------------------
+
 
 def clean_text(text: str) -> str:
     """
@@ -110,6 +113,7 @@ def normalise_whitespace(text: str) -> str:
 # Slug / identifier generation
 # ---------------------------------------------------------------------------
 
+
 def slugify(text: str, separator: str = "-", max_length: int = 100) -> str:
     """
     Convert *text* into a URL/filename-safe slug.
@@ -151,6 +155,7 @@ def slugify(text: str, separator: str = "-", max_length: int = 100) -> str:
 # Truncation
 # ---------------------------------------------------------------------------
 
+
 def truncate(text: str, max_length: int = 200, ellipsis: str = "…") -> str:
     """
     Truncate *text* to *max_length* characters, appending *ellipsis*.
@@ -191,27 +196,76 @@ def truncate(text: str, max_length: int = 200, ellipsis: str = "…") -> str:
 # Bill-specific helpers
 # ---------------------------------------------------------------------------
 
-def extract_bill_year(title: str) -> int | None:
+
+def extract_bill_year(
+    title: Optional[str] = None,
+    introduction_date: Optional[Union[str, date]] = None,
+    metadata: Optional[dict[str, Any]] = None,
+    url: Optional[str] = None,
+) -> int | None:
     """
-    Extract a four-digit year from a bill title string.
+    Authoritative single source of year extraction for legislative bills.
+
+    Priority order:
+    1. Introduction Date (date object or string containing year)
+    2. Metadata (e.g. metadata dict containing 'year', 'pub_date', etc.)
+    3. URL (string containing year)
+    4. Title (string containing year)
+    5. NULL (returns None; never defaults to current year)
 
     Parameters
     ----------
-    title : str
-        E.g. ``"The Finance Bill, 2024"`` or ``"Digital Data Protection Act 2023"``.
+    title : str | None
+    introduction_date : str | date | None
+    metadata : dict | None
+    url : str | None
 
     Returns
     -------
     int | None
-        Extracted year, or ``None`` if not found.
-
-    Examples
-    --------
-    >>> extract_bill_year("The Finance Bill, 2024")
-    2024
+        Extracted year, or None if not found.
     """
-    match = re.search(r"\b(19|20)\d{2}\b", title or "")
-    return int(match.group()) if match else None
+    # Priority 1: Introduction Date
+    if introduction_date:
+        if isinstance(introduction_date, date):
+            return introduction_date.year
+        match = re.search(r"\b(19|20)\d{2}\b", str(introduction_date))
+        if match:
+            return int(match.group())
+
+    # Priority 2: Metadata dict
+    if metadata and isinstance(metadata, dict):
+        raw_year = metadata.get("year")
+        if raw_year is not None:
+            try:
+                yr = int(raw_year)
+                if 1900 <= yr <= 2100:
+                    return yr
+            except (ValueError, TypeError):
+                pass
+        for field in ["pub_date", "publication_date", "last_updated"]:
+            val = metadata.get(field)
+            if val:
+                if isinstance(val, date):
+                    return val.year
+                match = re.search(r"\b(19|20)\d{2}\b", str(val))
+                if match:
+                    return int(match.group())
+
+    # Priority 3: URL
+    if url:
+        match = re.search(r"\b(19|20)\d{2}\b", url)
+        if match:
+            return int(match.group())
+
+    # Priority 4: Title
+    if title:
+        match = re.search(r"\b(19|20)\d{2}\b", title)
+        if match:
+            return int(match.group())
+
+    # Priority 5: NULL
+    return None
 
 
 def normalise_company_name(name: str) -> str:
@@ -235,9 +289,16 @@ def normalise_company_name(name: str) -> str:
     'TATA CONSULTANCY SERVICES'
     """
     suffixes = (
-        r"\bLIMITED\b", r"\bLTD\.?", r"\bPRIVATE\b", r"\bPVT\.?",
-        r"\bINC\.?", r"\bCORPORATION\b", r"\bCORP\.?", r"\bCO\.?",
-        r"\bLLP\b", r"\bLLC\b",
+        r"\bLIMITED\b",
+        r"\bLTD\.?",
+        r"\bPRIVATE\b",
+        r"\bPVT\.?",
+        r"\bINC\.?",
+        r"\bCORPORATION\b",
+        r"\bCORP\.?",
+        r"\bCO\.?",
+        r"\bLLP\b",
+        r"\bLLC\b",
     )
     result = name.upper().strip()
     for suffix in suffixes:

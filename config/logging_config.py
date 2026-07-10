@@ -51,6 +51,7 @@ _ROOT_LOGGER_NAME: str = "legislative_intel"
 # Public API
 # ---------------------------------------------------------------------------
 
+
 def configure_logging(
     log_level: str = "INFO",
     log_format: str = "%(asctime)s | %(levelname)-8s | %(name)s | %(message)s",
@@ -143,6 +144,7 @@ def get_logger(name: str) -> logging.Logger:
     if not _configured:
         try:
             from config.settings import settings  # noqa: PLC0415
+
             configure_logging(
                 log_level=settings.LOG_LEVEL,
                 log_format=settings.LOG_FORMAT,
@@ -161,6 +163,7 @@ def get_logger(name: str) -> logging.Logger:
 # ---------------------------------------------------------------------------
 try:
     from config.settings import settings as _settings  # noqa: PLC0415
+
     configure_logging(
         log_level=_settings.LOG_LEVEL,
         log_format=_settings.LOG_FORMAT,

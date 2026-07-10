@@ -1,0 +1,61 @@
+{
+  "bill_id": "the-water-prevention-and-control-of-pollution-amendment-bill-2024",
+  "ministry": "Ministry of Environment Forest and Climate Change",
+  "department": "Department of Environment",
+  "policy_domain": "Environmental Policy",
+  "economic_domain": "Environment",
+  "primary_sector": "Environment",
+  "secondary_sectors": [
+    "Energy",
+    "Agriculture"
+  ],
+  "stakeholder_groups": [
+    "General Public",
+    "Industries",
+    "NGOs"
+  ],
+  "regulatory_authority": "Ministry of Environment Forest and Climate Change",
+  "geographic_scope": "Rajasthan",
+  "bill_type": "Amendment Bill",
+  "keywords": [
+    "grant",
+    "penalty",
+    "environment",
+    "pollution",
+    "climate",
+    "forest",
+    "green",
+    "power"
+  ],
+  "related_acts": [
+    "National Green Tribunal Act, 2010"
+  ],
+  "related_ministries": [
+    "Ministry of Petroleum and Natural Gas",
+    "Ministry of New and Renewable Energy",
+    "Ministry of Power",
+    "Ministry of Road Transport and Highways",
+    "Ministry of Ports Shipping and Waterways",
+    "Ministry of Commerce and Industry",
+    "Ministry of Mines",
+    "Ministry of Agriculture and Farmers Welfare",
+    "Ministry of Food Processing Industries"
+  ],
+  "confidence_score": 0.7,
+  "searchable_tags": [
+    "ministry:Ministry of Environment Forest and Climate Change",
+    "policy_domain:Environmental Policy",
+    "sector:Environment",
+    "sector:Energy",
+    "sector:Agriculture",
+    "stakeholder:General Public",
+    "stakeholder:Industries",
+    "stakeholder:NGOs",
+    "year:2024",
+    "status:passed_both"
+  ],
+  "generated_at": "2026-07-09T15:15:07.862028Z",
+  "rules_version": "1.0",
+  "source_metadata_checksum": "1e53d6dd2ae778d81bf64418ee6000fb853805b9e8ed326a81e487e9db5a05d7",
+  "source_text_checksum": "780d19e74f0851ffa4464a1ee45dd5fd4f4a53e7bade4a7a04fff90b11bb6cd2"
+}

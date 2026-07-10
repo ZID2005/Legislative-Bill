@@ -1,0 +1,66 @@
+{
+  "bill_id": "the-oilfields-regulation-and-development-amendment-bill-2024",
+  "ministry": "Ministry of Petroleum and Natural Gas",
+  "department": "Department of Petroleum and Natural Gas",
+  "policy_domain": "Energy Policy",
+  "economic_domain": "Utilities",
+  "primary_sector": "Energy",
+  "secondary_sectors": [
+    "Infrastructure",
+    "Chemicals"
+  ],
+  "stakeholder_groups": [
+    "Power Producers",
+    "Discoms",
+    "Consumers",
+    "Industrial Users"
+  ],
+  "regulatory_authority": "Central Electricity Regulatory Commission (CERC)",
+  "geographic_scope": "National Capital Territory of Delhi",
+  "bill_type": "Amendment Bill",
+  "keywords": [
+    "levy",
+    "grant",
+    "penalty",
+    "energy",
+    "power",
+    "wind",
+    "renewable",
+    "coal",
+    "oil",
+    "gas",
+    "petroleum",
+    "infrastructure"
+  ],
+  "related_acts": [
+    "Petroleum and Natural Gas Regulatory Board Act, 2006",
+    "Gas Regulatory Board Act, 2006"
+  ],
+  "related_ministries": [
+    "Ministry of New and Renewable Energy",
+    "Ministry of Power",
+    "Ministry of Road Transport and Highways",
+    "Ministry of Railways",
+    "Ministry of Steel",
+    "Ministry of Mines",
+    "Ministry of Agriculture and Farmers Welfare"
+  ],
+  "confidence_score": 0.7,
+  "searchable_tags": [
+    "ministry:Ministry of Petroleum and Natural Gas",
+    "policy_domain:Energy Policy",
+    "sector:Energy",
+    "sector:Infrastructure",
+    "sector:Chemicals",
+    "stakeholder:Power Producers",
+    "stakeholder:Discoms",
+    "stakeholder:Consumers",
+    "stakeholder:Industrial Users",
+    "year:2024",
+    "status:passed_both"
+  ],
+  "generated_at": "2026-07-09T15:15:07.257976Z",
+  "rules_version": "1.0",
+  "source_metadata_checksum": "ecb28667a62a08a32059b6f3d14eb5c9446acfee5bf02228a8f6be7153cb8106",
+  "source_text_checksum": "11c6b2970665e9139b2a424e433eec7e59be2ecb6c6441a493422676ce77f53a"
+}

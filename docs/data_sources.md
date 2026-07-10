@@ -16,26 +16,34 @@
 | Source | Type | Format | Notes |
 |--------|------|--------|-------|
 | BSE India | Company master, price data | CSV download | Free bulk downloads available |
-| NSE India | Equity symbol list, price data | CSV download | `nseindia.com/market-data/securities-available-for-trading` |
+| NSE India | Equity symbol list | CSV download | [NSE Live Feed](https://archives.nseindia.com/content/equities/EQUITY_L_CO_ME.csv) - parsed dynamically via `CompanyLoader` |
+| Local Seed Database | Enrichment metadata | In-memory JSON | Fallback seed list containing 50+ major companies across NIFTY 50, NIFTY Next 50, and key sector leaders to enrich symbols with sectors, industries, websites, and HQ locations. |
 | MCA (Ministry of Corporate Affairs) | Company registration data | Web | Can supplement with CIN numbers |
 
 ## Market Price Data
 
 | Source | Type | Access | Notes |
 |--------|------|--------|-------|
-| Yahoo Finance (`yfinance`) | OHLCV, adjusted prices | Free API | Good historical coverage; may have gaps |
+| Yahoo Finance (`yfinance`) | OHLCV, adjusted prices | Free API | Integrated dynamically via `MarketLoader`. Resolves NSE equities to `<symbol>.NS` and BSE to `<symbol>.BO` |
 | NSE historical data | OHLCV | Bulk CSV downloads | Official but manual |
 | Quandl / Nasdaq Data Link | Clean historical data | Paid API | Best quality; requires subscription |
 | Alpha Vantage | OHLCV, fundamentals | Freemium API | Limited calls on free tier |
 
 ## Macroeconomic / Index Data
 
-| Source | Description |
-|--------|-------------|
-| Nifty 50 (^NSEI) | Benchmark index via `yfinance` |
-| India VIX | Volatility index via NSE |
-| Sector indices | Nifty Bank, Nifty IT, Nifty Pharma, etc. |
-| RBI data | Interest rates, inflation, money supply |
+Supported indices via Yahoo Finance:
+
+| Index Name | Yahoo Ticker | Description |
+|------------|--------------|-------------|
+| **NIFTY 50** | `^NSEI` | Benchmark index |
+| **NIFTY Bank** | `^NSEBANK` | Banking index |
+| **NIFTY IT** | `^CNXIT` | Information Technology index |
+| **NIFTY Pharma** | `^CNXPHARMA` | Pharmaceutical index |
+| **NIFTY Auto** | `^CNXAUTO` | Automobile index |
+| **NIFTY FMCG** | `^CNXFMCG` | Fast-Moving Consumer Goods index |
+| **NIFTY Energy** | `^CNXENERGY` | Energy and power utilities index |
+| **NIFTY Infrastructure** | `^CNXINFRA` | Infrastructure and construction index |
+
 
 ## Supplementary / Enrichment Data
 
@@ -73,3 +81,21 @@
 | Company master | Monthly | Monthly refresh |
 | Price history | Daily | Nightly batch |
 | Model artefacts | Quarterly | After each retraining cycle |
+
+---
+
+## Document Storage Layout
+
+Official bill PDFs are organized by the introduction year of the bill to avoid single-directory congestion. The layout is managed inside the project `data/` directory:
+
+```
+data/
+└── bills/
+    └── documents/
+        ├── 2024/
+        │   ├── the-finance-bill-2024.pdf
+        │   └── digital-personal-data-protection-bill-2024.pdf
+        └── unknown/
+            └── some-undated-bill.pdf
+```
+

@@ -24,6 +24,7 @@ class MarketCapCategory(str, Enum):
     *  Mid-cap    : 101st–250th companies by market cap
     *  Small-cap  : 251st and below
     """
+
     LARGE_CAP = "large_cap"
     MID_CAP = "mid_cap"
     SMALL_CAP = "small_cap"
@@ -75,12 +76,19 @@ class Company:
 
     # Classification
     industry: str = ""
+    sub_industry: str = ""
     market_cap_category: MarketCapCategory = MarketCapCategory.UNKNOWN
     market_cap_cr: Optional[float] = None
+
+    # Location & Information
+    hq_state: str = ""
+    hq_city: str = ""
+    website: str = ""
 
     # Lifecycle
     listing_date: Optional[date] = None
     is_active: bool = True
+    listing_status: str = "Listed"
 
     # Enrichment (populated by later pipeline stages)
     aliases: list[str] = field(default_factory=list)  # normalised name variants
@@ -95,10 +103,15 @@ class Company:
             "bse_code": self.bse_code,
             "sector": self.sector,
             "industry": self.industry,
+            "sub_industry": self.sub_industry,
             "market_cap_category": self.market_cap_category.value,
             "market_cap_cr": self.market_cap_cr,
+            "hq_state": self.hq_state,
+            "hq_city": self.hq_city,
+            "website": self.website,
             "listing_date": self.listing_date.isoformat() if self.listing_date else None,
             "is_active": self.is_active,
+            "listing_status": self.listing_status,
             "aliases": self.aliases,
         }
 
@@ -106,6 +119,7 @@ class Company:
     def from_dict(cls, data: dict) -> "Company":
         """Deserialise from a dictionary."""
         from utils.date_utils import parse_date  # noqa: PLC0415
+
         return cls(
             isin=data["isin"],
             company_name=data["company_name"],
@@ -114,17 +128,17 @@ class Company:
             bse_code=data.get("bse_code", ""),
             sector=data.get("sector", ""),
             industry=data.get("industry", ""),
-            market_cap_category=MarketCapCategory(
-                data.get("market_cap_category", "unknown")
-            ),
+            sub_industry=data.get("sub_industry", ""),
+            market_cap_category=MarketCapCategory(data.get("market_cap_category", "unknown")),
             market_cap_cr=data.get("market_cap_cr"),
+            hq_state=data.get("hq_state", ""),
+            hq_city=data.get("hq_city", ""),
+            website=data.get("website", ""),
             listing_date=parse_date(data.get("listing_date", "")),
             is_active=data.get("is_active", True),
+            listing_status=data.get("listing_status", "Listed"),
             aliases=data.get("aliases", []),
         )
 
     def __repr__(self) -> str:
-        return (
-            f"<Company isin={self.isin!r} ticker={self.ticker_nse!r} "
-            f"sector={self.sector!r}>"
-        )
+        return f"<Company isin={self.isin!r} ticker={self.ticker_nse!r} " f"sector={self.sector!r}>"

@@ -1,0 +1,42 @@
+{
+  "bill_id": "the-readjustment-of-representation-of-scheduled-tribes-in-assembly-constituencies-of-the-state-of-go",
+  "ministry": "Ministry of Law and Justice",
+  "department": "Department of Legal Affairs",
+  "policy_domain": "Governance & Public Administration",
+  "economic_domain": "Public Administration",
+  "primary_sector": "Governance & Public Administration",
+  "secondary_sectors": [],
+  "stakeholder_groups": [
+    "General Public",
+    "Government Employees",
+    "Local Bodies"
+  ],
+  "regulatory_authority": "Election Commission of India (ECI)",
+  "geographic_scope": "Goa",
+  "bill_type": "Ordinary Bill",
+  "keywords": [],
+  "related_acts": [
+    "Census Act, 1948",
+    "State of Goa Act, 2024",
+    "Delimitation Act",
+    "Delimitation Act, 2002",
+    "People Act, 1950",
+    "People Act, 1951"
+  ],
+  "related_ministries": [],
+  "confidence_score": 0.55,
+  "searchable_tags": [
+    "ministry:Ministry of Law and Justice",
+    "policy_domain:Governance & Public Administration",
+    "sector:Governance & Public Administration",
+    "stakeholder:General Public",
+    "stakeholder:Government Employees",
+    "stakeholder:Local Bodies",
+    "year:2024",
+    "status:passed_both"
+  ],
+  "generated_at": "2026-07-09T15:15:07.501364Z",
+  "rules_version": "1.0",
+  "source_metadata_checksum": "e6bc4d29e8ac2fec469f39da10c83d53abe05e500ee9176a1e712ef6975bf038",
+  "source_text_checksum": "e57e842e41764c46dccc1006c1018bc095ed0282fb7c034ba25142e5a5e6a8d6"
+}

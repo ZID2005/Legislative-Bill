@@ -1,0 +1,88 @@
+{
+  "bill_id": "the-bills-of-lading-bill-2024",
+  "bill_title": "The Bills of Lading Bill, 2024",
+  "ministry": "Ministry of Ports Shipping and Waterways",
+  "policy_domain": "Infrastructure Development",
+  "economic_domain": "Shipping",
+  "primary_sector": "Ports & Shipping",
+  "secondary_sectors": [
+    "Energy",
+    "Trade"
+  ],
+  "candidate_companies": [
+    {
+      "isin": "INE364U01010",
+      "company_name": "Adani Green Energy Limited",
+      "ticker_nse": "ADANIGREEN",
+      "sector": "Energy",
+      "industry": "Renewable Power",
+      "confidence": 0.5,
+      "reason": "Company sector 'Energy' matches bill secondary sector; Ministry (Ministry of Ports Shipping and Waterways) regulates/supports sector 'Energy'."
+    },
+    {
+      "isin": "INE814H01011",
+      "company_name": "Adani Power Limited",
+      "ticker_nse": "ADANIPOWER",
+      "sector": "Energy",
+      "industry": "Power Generation",
+      "confidence": 0.5,
+      "reason": "Company sector 'Energy' matches bill secondary sector; Ministry (Ministry of Ports Shipping and Waterways) regulates/supports sector 'Energy'."
+    },
+    {
+      "isin": "INE030A01027",
+      "company_name": "Hindustan Unilever Limited",
+      "ticker_nse": "HINDUNILVR",
+      "sector": "Energy",
+      "industry": "FMCG",
+      "confidence": 0.5,
+      "reason": "Company sector 'Energy' matches bill secondary sector; Ministry (Ministry of Ports Shipping and Waterways) regulates/supports sector 'Energy'."
+    },
+    {
+      "isin": "INE733E01010",
+      "company_name": "NTPC Limited",
+      "ticker_nse": "NTPC",
+      "sector": "Energy",
+      "industry": "Power Generation",
+      "confidence": 0.5,
+      "reason": "Company sector 'Energy' matches bill secondary sector; Ministry (Ministry of Ports Shipping and Waterways) regulates/supports sector 'Energy'."
+    },
+    {
+      "isin": "INE213A01029",
+      "company_name": "Oil and Natural Gas Corporation Limited",
+      "ticker_nse": "ONGC",
+      "sector": "Energy",
+      "industry": "Oil Exploration & Production",
+      "confidence": 0.5,
+      "reason": "Company sector 'Energy' matches bill secondary sector; Ministry (Ministry of Ports Shipping and Waterways) regulates/supports sector 'Energy'."
+    },
+    {
+      "isin": "INE752E01010",
+      "company_name": "Power Grid Corporation of India Limited",
+      "ticker_nse": "POWERGRID",
+      "sector": "Energy",
+      "industry": "Power Transmission",
+      "confidence": 0.5,
+      "reason": "Company sector 'Energy' matches bill secondary sector; Ministry (Ministry of Ports Shipping and Waterways) regulates/supports sector 'Energy'."
+    },
+    {
+      "isin": "INE002A01018",
+      "company_name": "Reliance Industries Limited",
+      "ticker_nse": "RELIANCE",
+      "sector": "Energy",
+      "industry": "Oil Gas & Fuels",
+      "confidence": 0.5,
+      "reason": "Company sector 'Energy' matches bill secondary sector; Ministry (Ministry of Ports Shipping and Waterways) regulates/supports sector 'Energy'."
+    },
+    {
+      "isin": "INE245A01021",
+      "company_name": "Tata Power Company Limited",
+      "ticker_nse": "TATAPOWER",
+      "sector": "Energy",
+      "industry": "Power Utilities",
+      "confidence": 0.5,
+      "reason": "Company sector 'Energy' matches bill secondary sector; Ministry (Ministry of Ports Shipping and Waterways) regulates/supports sector 'Energy'."
+    }
+  ],
+  "mapping_confidence": 0.5,
+  "mapping_reason": "Mapped to 8 candidate companies in primary sector 'Ports & Shipping' and secondary sectors. Maximum confidence: 0.50."
+}

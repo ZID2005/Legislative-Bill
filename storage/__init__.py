@@ -52,6 +52,8 @@ backends incrementally as each data ingestion task is completed.
 from storage.bill_repository import BillRepository
 from storage.company_repository import CompanyRepository
 from storage.market_repository import MarketRepository
+from storage.knowledge_repository import KnowledgeRepository
+from storage.mapping_repository import MappingRepository
 from storage.catalog import CatalogManager, DatasetEntry, compute_md5
 
 
@@ -61,6 +63,8 @@ from storage.catalog import CatalogManager, DatasetEntry, compute_md5
 bill_repo: BillRepository = BillRepository()
 company_repo: CompanyRepository = CompanyRepository()
 market_repo: MarketRepository = MarketRepository()
+knowledge_repo: KnowledgeRepository = KnowledgeRepository()
+mapping_repo: MappingRepository = MappingRepository()
 
 
 # ---------------------------------------------------------------------------
@@ -93,9 +97,13 @@ __all__ = [
     "BillRepository",
     "CompanyRepository",
     "MarketRepository",
+    "KnowledgeRepository",
+    "MappingRepository",
     "bill_repo",
     "company_repo",
     "market_repo",
+    "knowledge_repo",
+    "mapping_repo",
     # Catalog
     "CatalogManager",
     "DatasetEntry",

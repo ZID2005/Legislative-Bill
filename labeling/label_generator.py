@@ -78,6 +78,4 @@ class LabelGenerator:
     """
 
     def __init__(self) -> None:
-        raise NotImplementedError(
-            "LabelGenerator is not yet implemented.  See Task 6."
-        )
+        raise NotImplementedError("LabelGenerator is not yet implemented.  See Task 6.")

@@ -1,0 +1,35 @@
+{
+  "bill_id": "the-constitution-scheduled-castes-and-scheduled-tribes-orders-amendment-bill-2024",
+  "ministry": "Ministry of Tribal Affairs",
+  "department": "Department of Tribal Affairs",
+  "policy_domain": "Governance & Public Administration",
+  "economic_domain": "Public Administration",
+  "primary_sector": "Governance & Public Administration",
+  "secondary_sectors": [],
+  "stakeholder_groups": [
+    "General Public",
+    "Government Employees",
+    "Local Bodies"
+  ],
+  "regulatory_authority": "Ministry of Tribal Affairs",
+  "geographic_scope": "Odisha",
+  "bill_type": "Amendment Bill",
+  "keywords": [],
+  "related_acts": [],
+  "related_ministries": [],
+  "confidence_score": 0.45,
+  "searchable_tags": [
+    "ministry:Ministry of Tribal Affairs",
+    "policy_domain:Governance & Public Administration",
+    "sector:Governance & Public Administration",
+    "stakeholder:General Public",
+    "stakeholder:Government Employees",
+    "stakeholder:Local Bodies",
+    "year:2024",
+    "status:passed_both"
+  ],
+  "generated_at": "2026-07-09T15:15:06.102728Z",
+  "rules_version": "1.0",
+  "source_metadata_checksum": "cdb62d37f285fbea2c51ef670508bf051beb310ff781e3426e3aca26ed11f2c5",
+  "source_text_checksum": "4507411c707382a045788fc6368988d80a698c6c0cbd55e33aec02deffc80a25"
+}

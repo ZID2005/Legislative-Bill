@@ -52,6 +52,7 @@ def _read_csv(filename: str) -> list[dict[str, str]]:
 # Ministry → Sector
 # ---------------------------------------------------------------------------
 
+
 @lru_cache(maxsize=1)
 def _load_ministry_sector() -> dict[str, list[str]]:
     rows = _read_csv("ministry_sector.csv")
@@ -94,6 +95,7 @@ def list_ministries() -> list[str]:
 # Sector → Keywords
 # ---------------------------------------------------------------------------
 
+
 @lru_cache(maxsize=1)
 def _load_sector_keywords() -> dict[str, list[str]]:
     rows = _read_csv("sector_keywords.csv")
@@ -132,6 +134,7 @@ def list_sectors() -> list[str]:
 # Policy keywords
 # ---------------------------------------------------------------------------
 
+
 @lru_cache(maxsize=1)
 def _load_policy_keywords() -> list[dict[str, str]]:
     return _read_csv("policy_keywords.csv")
@@ -150,6 +153,7 @@ def get_policy_keywords() -> list[dict[str, str]]:
 # ---------------------------------------------------------------------------
 # Bill categories
 # ---------------------------------------------------------------------------
+
 
 @lru_cache(maxsize=1)
 def _load_bill_categories() -> list[dict[str, str]]:
@@ -172,19 +176,25 @@ def get_bill_category(title: str) -> dict[str, str] | None:
     dict | None
         The best-matching category row, or None if no match found.
     """
+    import re
+
     title_lower = title.lower()
     for row in _load_bill_categories():
         keywords_raw = row.get("title_keywords", "")
         for keyword in keywords_raw.split(","):
-            if keyword.strip().lower() in title_lower:
-                logger.debug("Bill title %r matched category %r", title, row.get("bill_type"))
-                return row
+            kw_clean = keyword.strip().lower()
+            if kw_clean:
+                pattern = r"\b" + re.escape(kw_clean) + r"\b"
+                if re.search(pattern, title_lower):
+                    logger.debug("Bill title %r matched category %r", title, row.get("bill_type"))
+                    return row
     return None
 
 
 # ---------------------------------------------------------------------------
 # Company sector overrides
 # ---------------------------------------------------------------------------
+
 
 @lru_cache(maxsize=1)
 def _load_company_sector_overrides() -> dict[str, str]:

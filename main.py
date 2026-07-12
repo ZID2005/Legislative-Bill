@@ -246,10 +246,139 @@ def cmd_ingest_market(args: argparse.Namespace) -> int:
         return 1
 
 
+def cmd_estimate_market_models(args: argparse.Namespace) -> int:
+    """
+    Trigger Market Model parameter estimation.
+    """
+    logger.info("Initializing MarketModelService for expected returns estimation...")
+    from services.market_model_service import MarketModelService
+
+    service = MarketModelService()
+    try:
+        stats = service.run_estimation(
+            year=args.year,
+            bill_id_filter=args.bill_id,
+            benchmark_symbol=args.benchmark,
+            force_refresh=args.force_refresh,
+        )
+        print("\n=== Market Model Estimation Stats ===")
+        for k, v in stats.items():
+            if k == "errors":
+                if v:
+                    print(f"  {k:<20}: {len(v)} errors")
+                    for key, errs in list(v.items())[:5]:
+                        print(f"    - {key}: {errs}")
+            else:
+                print(f"  {k:<20}: {v}")
+        print("=====================================\n")
+        return 0
+    except Exception as e:
+        logger.error("Market model estimation failed: %s", e, exc_info=True)
+        return 1
+
+
+def cmd_run_event_study(args: argparse.Namespace) -> int:
+    """
+    Trigger Event Study calculations.
+    """
+    logger.info("Initializing EventStudyService for event study calculations...")
+    from services.event_study_service import EventStudyService
+
+    service = EventStudyService()
+    try:
+        stats = service.run_all_studies(
+            year=args.year,
+            bill_id_filter=args.bill_id,
+            company_isin_filter=args.company_isin,
+            window_filter=args.window,
+            force_refresh=args.force_refresh,
+        )
+        print("\n=== Event Study Estimation Stats ===")
+        for k, v in stats.items():
+            if k == "errors":
+                if v:
+                    print(f"  {k:<20}: {len(v)} errors")
+                    for key, errs in list(v.items())[:5]:
+                        print(f"    - {key}: {errs}")
+            else:
+                print(f"  {k:<20}: {v}")
+        print("====================================\n")
+        return 0
+    except Exception as e:
+        logger.error("Event study calculations failed: %s", e, exc_info=True)
+        return 1
+
+
+def cmd_run_statistical_significance(args: argparse.Namespace) -> int:
+    """
+    Trigger statistical significance calculations for event studies.
+    """
+    logger.info("Initializing StatisticalSignificanceService for significance calculations...")
+    from services.statistical_service import StatisticalSignificanceService
+
+    service = StatisticalSignificanceService()
+    try:
+        stats = service.run_calculations(
+            year=args.year,
+            bill_id_filter=args.bill_id,
+            company_isin_filter=args.company_isin,
+            window_filter=args.window,
+            force_refresh=args.force_refresh,
+        )
+        print("\n=== Statistical Significance Stats ===")
+        for k, v in stats.items():
+            if k == "errors":
+                if v:
+                    print(f"  {k:<20}: {len(v)} errors")
+                    for key, errs in list(v.items())[:5]:
+                        print(f"    - {key}: {errs}")
+            else:
+                print(f"  {k:<20}: {v}")
+        print("=======================================\n")
+        return 0
+    except Exception as e:
+        logger.error("Statistical significance calculations failed: %s", e, exc_info=True)
+        return 1
+
+
 def cmd_validate(args: argparse.Namespace) -> int:  # noqa: ARG001
     """Placeholder: will trigger data validation (Task 3)."""
     logger.warning("Validation pipeline not yet implemented.  See Task 3.")
     return 1
+
+
+def cmd_generate_labels(args: argparse.Namespace) -> int:
+    """
+    Generate ground-truth ML labels from statistical significance results (Task 4.4).
+    """
+    logger.info("Initializing LabelGenerationService...")
+    from services.label_service import LabelGenerationService
+
+    service = LabelGenerationService()
+    try:
+        summary = service.run(
+            year=getattr(args, "year", None),
+            bill_id=getattr(args, "bill_id", None),
+            event_window=getattr(args, "window", None),
+            force_refresh=getattr(args, "force_refresh", False),
+        )
+        print("\n=== Label Generation Summary ===")
+        print(f"  {'processed':<20}: {summary['processed']}")
+        print(f"  {'generated':<20}: {summary['generated']}")
+        print(f"  {'skipped':<20}: {summary['skipped']}")
+        print(f"  {'rejected':<20}: {summary['rejected']}")
+        if summary["rejections"]:
+            print("\n  Rejected records:")
+            for report in summary["rejections"][:10]:  # Show first 10
+                print(
+                    f"    - bill={report.bill_id} company={report.company} "
+                    f"window={report.event_window}: {report.rejection_reason}"
+                )
+        print("================================\n")
+        return 0
+    except Exception as exc:
+        logger.error("Label generation failed: %s", exc, exc_info=True)
+        return 1
 
 
 def cmd_train(args: argparse.Namespace) -> int:  # noqa: ARG001
@@ -486,6 +615,138 @@ def build_parser() -> argparse.ArgumentParser:
         help="Force download full history instead of incremental syncing.",
     )
     market_parser.set_defaults(func=cmd_ingest_market)
+
+    # estimate-market-models
+    est_parser = subparsers.add_parser(
+        "estimate-market-models",
+        help="Estimate expected returns parameters using OLS market model.",
+    )
+    est_parser.add_argument(
+        "--year",
+        type=int,
+        default=None,
+        help="Year of bills to process.",
+    )
+    est_parser.add_argument(
+        "--bill-id",
+        type=str,
+        default=None,
+        help="Specific Bill ID slug to filter on.",
+    )
+    est_parser.add_argument(
+        "--benchmark",
+        type=str,
+        default="^NSEI",
+        help="Benchmark yfinance symbol (default: ^NSEI for NIFTY 50).",
+    )
+    est_parser.add_argument(
+        "--force-refresh",
+        action="store_true",
+        help="Force recomputation of OLS models, overwriting existing records.",
+    )
+    est_parser.set_defaults(func=cmd_estimate_market_models)
+
+    # run-event-study
+    es_parser = subparsers.add_parser(
+        "run-event-study",
+        help="Run advanced event study calculations for bill-company pairs.",
+    )
+    es_parser.add_argument(
+        "--year",
+        type=int,
+        default=None,
+        help="Year of bills to process.",
+    )
+    es_parser.add_argument(
+        "--bill-id",
+        type=str,
+        default=None,
+        help="Specific Bill ID slug to filter on.",
+    )
+    es_parser.add_argument(
+        "--company-isin",
+        type=str,
+        default=None,
+        help="Specific Company ISIN to filter on.",
+    )
+    es_parser.add_argument(
+        "--window",
+        type=str,
+        default=None,
+        help="Comma-separated list of event windows to run (default: all standard windows).",
+    )
+    es_parser.add_argument(
+        "--force-refresh",
+        action="store_true",
+        help="Force recomputation of event studies, overwriting existing records.",
+    )
+    es_parser.set_defaults(func=cmd_run_event_study)
+
+    # run-statistical-significance
+    stat_parser = subparsers.add_parser(
+        "run-statistical-significance",
+        help="Compute statistical significance of event study CARs (Task 4.3).",
+    )
+    stat_parser.add_argument(
+        "--year",
+        type=int,
+        default=None,
+        help="Year of bills to process.",
+    )
+    stat_parser.add_argument(
+        "--bill-id",
+        type=str,
+        default=None,
+        help="Specific Bill ID slug to filter on.",
+    )
+    stat_parser.add_argument(
+        "--company-isin",
+        type=str,
+        default=None,
+        help="Specific Company ISIN to filter on.",
+    )
+    stat_parser.add_argument(
+        "--window",
+        type=str,
+        default=None,
+        help="Specific event window to filter on (e.g. [-5,+5]).",
+    )
+    stat_parser.add_argument(
+        "--force-refresh",
+        action="store_true",
+        help="Force recalculation, overwriting existing records.",
+    )
+    stat_parser.set_defaults(func=cmd_run_statistical_significance)
+
+    # generate-labels
+    label_parser = subparsers.add_parser(
+        "generate-labels",
+        help="Generate ground-truth ML labels from event-study results (Task 4.4).",
+    )
+    label_parser.add_argument(
+        "--year",
+        type=int,
+        default=None,
+        help="Year of bills to process.",
+    )
+    label_parser.add_argument(
+        "--bill-id",
+        type=str,
+        default=None,
+        help="Specific Bill ID slug to filter on.",
+    )
+    label_parser.add_argument(
+        "--window",
+        type=str,
+        default=None,
+        help="Specific event window to filter on (e.g. [-5,+5]).",
+    )
+    label_parser.add_argument(
+        "--force-refresh",
+        action="store_true",
+        help="Regenerate labels, overwriting any existing records.",
+    )
+    label_parser.set_defaults(func=cmd_generate_labels)
 
     # train
     train_parser = subparsers.add_parser(

@@ -150,6 +150,7 @@ class MarketLoader:
         """
         Incrementally sync historical data for a symbol.
         Checks existing data range and only downloads missing dates.
+        Supports both backward expansion and forward incremental updates.
         """
         # Determine actual end date
         today_str = datetime.date.today().strftime("%Y-%m-%d")
@@ -168,65 +169,118 @@ class MarketLoader:
             )
             return 0
 
-        # Check existing data in repository
-        date_range = self.market_repo.get_date_range(symbol)
-
-        if date_range and not force_refresh:
-            min_date, max_date = date_range
-            max_dt = datetime.datetime.strptime(max_date, "%Y-%m-%d")
-
-            # Check if we already have data up to the requested end date
-            if max_dt >= end_dt:
-                logger.info(
-                    "Symbol '%s' already up-to-date (data exists up to %s)", symbol, max_date
-                )
-                return 0
-
-            # Incremental start date is max_date + 1 day
-            inc_start_dt = max_dt + datetime.timedelta(days=1)
-            inc_start = inc_start_dt.strftime("%Y-%m-%d")
-
-            logger.info(
-                "Symbol '%s' has existing data up to %s. Performing incremental sync from %s",
-                symbol,
-                max_date,
-                inc_start,
-            )
-            df = self.download_symbol(symbol, inc_start, actual_end)
-        else:
-            logger.info(
-                "No existing data or force_refresh=True for symbol '%s'. "
-                "Downloading full range from %s",
-                symbol,
-                start_date,
-            )
-            df = self.download_symbol(symbol, start_date, actual_end)
-
-        if df.empty:
-            return 0
-
-        # Validate before upserting
+        # Import Validator here
         from validation.validator import Validator
 
         validator = Validator()
-        report = validator.validate_market_df(df)
-        if not report.is_valid:
-            logger.error(
-                "Validation failed for downloaded data of symbol '%s': %s", symbol, report.errors
-            )
-            # Skip if there are actual schema errors, warning is okay.
-            has_critical_error = any(
-                "Missing required column" in err or "Non-numeric" in err for err in report.errors
-            )
-            if has_critical_error:
-                logger.error(
-                    "Skipping save for symbol '%s' due to critical validation errors.", symbol
-                )
-                return 0
 
-        new_rows = self.market_repo.upsert_prices(symbol, df)
-        logger.info("Upserted %d new rows for symbol '%s'", new_rows, symbol)
-        return new_rows
+        # Check existing data in repository
+        date_range = self.market_repo.get_date_range(symbol)
+        symbol_dir = self.market_repo._market_dir / symbol
+        metadata_path = symbol_dir / ".earliest_sync"
+
+        total_rows_added = 0
+
+        if date_range and not force_refresh:
+            min_date, max_date = date_range
+            min_dt = datetime.datetime.strptime(min_date, "%Y-%m-%d")
+            max_dt = datetime.datetime.strptime(max_date, "%Y-%m-%d")
+
+            # Check if we need to sync backward
+            needs_backward = start_dt < min_dt
+            if needs_backward and metadata_path.exists():
+                try:
+                    earliest_sync = metadata_path.read_text().strip()
+                    earliest_sync_dt = datetime.datetime.strptime(earliest_sync, "%Y-%m-%d")
+                    if start_dt >= earliest_sync_dt:
+                        # Already tried syncing back to at least start_dt
+                        needs_backward = False
+                except Exception:
+                    pass
+
+            # 1. Sync backward if needed
+            if needs_backward:
+                back_end_dt = min_dt - datetime.timedelta(days=1)
+                back_end = back_end_dt.strftime("%Y-%m-%d")
+                logger.info(
+                    "Symbol '%s' has missing historical data. Syncing backward from %s to %s",
+                    symbol,
+                    start_date,
+                    back_end,
+                )
+                df_back = self.download_symbol(symbol, start_date, back_end)
+                if not df_back.empty:
+                    report = validator.validate_market_df(df_back)
+                    has_critical_error = any(
+                        "Missing required column" in err or "Non-numeric" in err for err in report.errors
+                    )
+                    if not has_critical_error:
+                        added = self.market_repo.upsert_prices(symbol, df_back)
+                        total_rows_added += added
+                        logger.info("Backward sync added %d rows for symbol '%s'", added, symbol)
+                # Write marker to avoid re-syncing this range
+                try:
+                    symbol_dir.mkdir(parents=True, exist_ok=True)
+                    metadata_path.write_text(start_date)
+                except Exception as e:
+                    logger.error("Failed to write .earliest_sync metadata: %s", e)
+
+            # 2. Sync forward if needed
+            if max_dt < end_dt:
+                inc_start_dt = max_dt + datetime.timedelta(days=1)
+                inc_start = inc_start_dt.strftime("%Y-%m-%d")
+                logger.info(
+                    "Symbol '%s' has missing forward data. Syncing forward from %s to %s",
+                    symbol,
+                    inc_start,
+                    actual_end,
+                )
+                df_forward = self.download_symbol(symbol, inc_start, actual_end)
+                if not df_forward.empty:
+                    report = validator.validate_market_df(df_forward)
+                    has_critical_error = any(
+                        "Missing required column" in err or "Non-numeric" in err for err in report.errors
+                    )
+                    if not has_critical_error:
+                        added = self.market_repo.upsert_prices(symbol, df_forward)
+                        total_rows_added += added
+                        logger.info("Forward sync added %d rows for symbol '%s'", added, symbol)
+
+            if not needs_backward and max_dt >= end_dt:
+                logger.info(
+                    "Symbol '%s' already fully synchronized from %s to %s (existing range: %s to %s)",
+                    symbol,
+                    start_date,
+                    actual_end,
+                    min_date,
+                    max_date,
+                )
+        else:
+            # Full download or force refresh
+            logger.info(
+                "No existing data or force_refresh=True for symbol '%s'. Downloading full range from %s to %s",
+                symbol,
+                start_date,
+                actual_end,
+            )
+            df = self.download_symbol(symbol, start_date, actual_end)
+            if not df.empty:
+                report = validator.validate_market_df(df)
+                has_critical_error = any(
+                    "Missing required column" in err or "Non-numeric" in err for err in report.errors
+                )
+                if not has_critical_error:
+                    added = self.market_repo.upsert_prices(symbol, df)
+                    total_rows_added += added
+                    logger.info("Full sync added %d rows for symbol '%s'", added, symbol)
+            # Write marker
+            try:
+                symbol_dir.mkdir(parents=True, exist_ok=True)
+                metadata_path.write_text(start_date)
+            except Exception as e:
+                logger.error("Failed to write .earliest_sync metadata: %s", e)
+
+        return total_rows_added
 
     def sync_all(
         self,
@@ -239,6 +293,8 @@ class MarketLoader:
         """
         Sync all supported assets (indices and active companies).
         """
+        import time  # noqa: PLC0415
+
         targets = []
 
         # 1. Resolve Indices
@@ -291,6 +347,7 @@ class MarketLoader:
                 rows = self.sync_symbol(symbol, start_date, end_date, force_refresh)
                 stats["succeeded"] += 1
                 stats["rows_added"] += rows
+                time.sleep(0.5)  # Respect rate limit
             except Exception as e:
                 logger.exception("Failed to sync symbol '%s'", symbol)
                 stats["failed"] += 1

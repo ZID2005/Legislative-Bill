@@ -1,0 +1,8 @@
+keyword,bill_type
+Amendment,Amendment Bill
+Repeal,Repealing Bill
+Finance,Money Bill
+Appropriation,Money Bill
+Constitution,Constitution Amendment Bill
+Validation,Validation Bill
+Ordinary,Ordinary Bill

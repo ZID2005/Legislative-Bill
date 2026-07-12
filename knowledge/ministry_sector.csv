@@ -1,0 +1,30 @@
+ministry,primary_sector,secondary_sectors,notes
+Ministry of Finance,Banking & Financial Services,"Capital Markets,Insurance,Taxation","Covers RBI regulation, SEBI oversight, tax policy"
+Ministry of Corporate Affairs,Capital Markets,"Manufacturing,Services","Company law, insolvency, audit regulation"
+Ministry of Electronics and Information Technology,Technology,"Telecommunications,E-Commerce,AI","IT Act, Data Protection, Cybersecurity"
+Ministry of Communications,Telecommunications,"Technology,Media","Telecom licensing, spectrum, postal services"
+Ministry of Health and Family Welfare,Healthcare & Pharmaceuticals,"Medical Devices,Insurance",
+Ministry of Pharmaceuticals,Healthcare & Pharmaceuticals,,Drug pricing, pharma regulation
+Ministry of Petroleum and Natural Gas,Energy,"Infrastructure,Chemicals",Oil & gas exploration and pricing
+Ministry of New and Renewable Energy,Energy,"Infrastructure,Environment",Solar, wind, green hydrogen
+Ministry of Power,Energy,Infrastructure,Electricity Act, tariff regulation
+Ministry of Road Transport and Highways,Infrastructure,"Manufacturing,Energy",Road construction, vehicle regulation
+Ministry of Railways,Railways,Infrastructure,Railway privatisation, freight policy
+Ministry of Ports Shipping and Waterways,Ports & Shipping,"Energy,Trade",
+Ministry of Civil Aviation,Aviation,"Tourism,Trade",
+Ministry of Agriculture and Farmers Welfare,Agriculture,"Food Processing,Chemicals","Farm laws, MSP, crop insurance"
+Ministry of Food Processing Industries,Agriculture,Consumer Goods,
+Ministry of Commerce and Industry,Trade & Manufacturing,"Technology,Energy","FDI, export-import, SEZ, PLI schemes"
+Ministry of Textiles,Manufacturing,,"Yarn, garment, technical textiles"
+Ministry of Steel,Manufacturing,Infrastructure,
+Ministry of Mines,Manufacturing,"Energy,Infrastructure",Mining regulation, critical minerals
+Ministry of Environment Forest and Climate Change,Environment,"Energy,Agriculture",Carbon credits, environmental clearances
+Ministry of Education,Education,Technology,NEP implementation
+Ministry of Skill Development and Entrepreneurship,Education,Manufacturing,
+Ministry of Labour and Employment,Labour & Employment,,Labour codes affecting all companies
+Ministry of Home Affairs,Governance & Public Administration,,National security; can affect tech and telecom
+Ministry of Law and Justice,Governance & Public Administration,,"Constitutional amendments, electoral laws"
+Ministry of Tribal Affairs,Governance & Public Administration,,"Welfare and reservation of Scheduled Tribes"
+Ministry of Minority Affairs,Governance & Public Administration,,Waqf regulation and minority welfare
+Ministry of Personnel Public Grievances and Pensions,Governance & Public Administration,,"Public services, government administration"
+

@@ -33,6 +33,9 @@ Key services defined:
 1. **`IngestionService`**: A single point of coordination for parliament bills, company masters, and stock price histories. Delegates parliament workflows to `ParliamentIngestionService` and triggers validation and catalog indexing.
 2. **`PredictionService`**: Handles feature extraction and triggers ML models (LightGBM/FinBERT) to evaluate market impact on public companies.
 3. **`ExplanationService`**: Uses a pluggable abstract `LLMProvider` interface to generate plain-language bill summaries, market event explanations, and power conversational QA bots. This serves as the primary extension point where **Groq** will later integrate.
+4. **`MarketModelService`**: Coordinates the estimation of expected stock returns using the classical OLS market model baseline parameters.
+5. **`EventStudyService`**: Implements the Advanced Event Study Engine to compute expected returns, observed actual returns, Daily Abnormal Returns (AR), Running CAR, and Final CAR across multiple configurable event windows. Also calculates summary quality metrics.
+6. **`StatisticalSignificanceService`**: Orchestrates hypothesis testing on Event Study CARs, calculating p-values, t-statistics, 95% confidence intervals, and effect sizes. Integrates with `StatisticalValidator` to ensure mathematical sanity and manages caching and incremental runs via `StatisticalRepository`.
 
 ## Design Principles
 
@@ -84,10 +87,10 @@ To add another source (e.g. Ministry press releases or Lok Sabha committee repor
 4. **Re-run the ingestion** from the CLI specifying the new source: `python main.py ingest --source <new_source>`.
 
 ## How Repositories Interact
-Repositories (e.g., `BillRepository`) abstract file system interactions:
+Repositories (e.g., `BillRepository`, `MarketModelRepository`, `EventStudyRepository`, `StatisticalRepository`) abstract file system interactions:
 - They load configurations from `config.settings`.
-- They read and write standardized schema objects (`Bill`, `Company`, `PriceRecord`), shielding ingestion and NLP pipeline modules from physical file formats and directory structures.
-- Swapping to a relational database backend in Task 3 will only require changing the repository's internal save/load implementations without touching any ingestion logic.
+- They read and write standardized schema objects (`Bill`, `Company`, `PriceRecord`, `MarketModelRecord`, `EventStudyRecord`, `StatisticalResult`), shielding ingestion, quantitative finance engines, and prediction pipeline modules from physical file formats and directory structures.
+- Swapping to a database or cloud storage backend will only require changing the repository's internal save/load implementations without touching any business or service layer logic.
 
 ## How Schemas are Used
 - Every file in the pipelines must adhere to standard data schemas under `schemas/`.
@@ -261,7 +264,14 @@ The `MarketLoader` class orchestrates the download and incremental syncing of ma
    - Resets index and standardizes date formats to `YYYY-MM-DD`.
    - Maps yfinance columns to a canonical schema: `Date`, `Open`, `High`, `Low`, `Close`, `Adjusted Close`, `Volume`.
    - Clears missing records and ignores non-trading holiday intervals.
-4. **Incremental Synchronization**: Automatically reads existing date ranges in the repository. Downloads only the missing trailing dates (starting from `max_date + 1 day`) to prevent redundant API queries.
+4. **Incremental & Bidirectional Synchronization**: Automatically reads existing date ranges in the repository. If the target start date is earlier than the locally stored minimum date, it performs a backward sync (downloading only the missing earlier periods up to `min_date - 1 day`). If the target end date is after the locally stored maximum date, it performs a forward sync (downloading from `max_date + 1 day` to the target end date). If the target range is already covered, it skips the download. This bidirectional capability preserves all existing data while expanding coverage.
+5. **Earliest Sync Cache**: Uses a local, non-invasive `.earliest_sync` marker file in the symbol's directory to record the earliest attempted synchronization date. This prevents redundant backward sync attempts and yfinance API queries for companies listed after the target start date (which would otherwise return empty data).
+6. **Rate Limiting & Throttle Control**: Introduces a deterministic 0.5-second sleep delay between successive asset downloads to respect Yahoo Finance's rate limits and prevent API throttling.
+
+### Expanded Historical Coverage (01 January 2014 onwards)
+To support robust event studies and long-term backtesting, the market ingestion pipeline has been expanded to download and sync historical data starting from **01 January 2014** (or the earliest listing date for more recently listed assets).
+- **Estimation Window Robustness**: Downstream Event Study estimation windows require stable baseline returns parameter estimation (typically -120 to -10 trading days relative to a bill's introduction). Expanding the price series back to 2014 guarantees that bills introduced in 2014–2016 have adequate, non-overlapping historical data to calculate alpha and beta parameters.
+- **Backtesting and Out-of-Sample Validation**: Provides a 12-year historical testing canvas to backtest market-impact prediction algorithms, run out-of-sample statistical tests, and validate expected returns models across multiple economic cycles.
 
 ### Market Data Validation Rules
 Validator logic (`validate_market_df`) executes before any persistence operation to screen data quality:
@@ -272,7 +282,100 @@ Validator logic (`validate_market_df`) executes before any persistence operation
 - **Trading Day Gaps**: Warns if consecutive calendar day gaps exceed 5 days (excluding weekends), detecting potential historical data omissions.
 
 
+## Market Model Engine (Task 4.1)
 
+The Market Model Engine manages the Ordinary Least Squares (OLS) estimation of expected asset returns against the NIFTY 50 index benchmark. This forms the mathematical basis for future event studies.
 
+### Market Model Repository (`MarketModelRepository`)
+The `MarketModelRepository` provides a decoupled access layer for reading, writing, and checking the existence of OLS regression results.
+- **JSON File Storage**: Stores records under `data/market_models/` using the unique naming convention `{bill_slug}_{company_isin}.json` to guarantee no collisions.
+- **Single and Batch Queries**: Implements CRUD methods along with specialized filtering (`get_by_bill`, `get_by_company`).
 
+### Market Model Validator (`MarketModelValidator`)
+A strict validation gate that ensures statistical significance and numerical safety:
+- **Input Validation**: Rejects runs with missing bills, companies, or price series.
+- **Overlap Validation**: Rejects estimations with fewer than 60 overlapping trading observations.
+- **Variance Check**: Rejects regressions where the benchmark returns variance is near-zero (< $10^{-9}$), avoiding singular/undefined slopes.
 
+### Market Model Service (`MarketModelService`)
+Coordinates the estimation pipeline:
+1. **Event Day Calendar Resolution**: Maps the bill introduction date to the actual trading calendar of the benchmark index (NIFTY 50/`^NSEI`). Resolves non-trading event days to the next active trading session.
+2. **Estimation Window Alignment**: Dynamically computes the index bounds for the configurable estimation window (default: $T = -120$ to $T = -10$ trading days relative to the event).
+3. **Benchmark Returns Caching**: Caches full benchmark daily log returns in memory to bypass redundant Parquet read operations during batch runs.
+4. **OLS Engine**: Triggers the OLS regression and persists the output.
+5. **Incremental Synced Execution**: Skips already estimated bill-company pairs unless a force-refresh is requested.
+
+---
+
+## Label Generation Engine (Task 4.4)
+
+The Label Generation Engine converts completed ``StatisticalResult`` records (from Task 4.3) into authoritative ground-truth labels for supervised machine learning.  No ML training is performed in this layer — it is a pure data-transformation pipeline.
+
+### Label Types
+
+Four labels are computed per (bill × company × event-window) triple:
+
+| Label | Type | Values |
+|-------|------|--------|
+| `direction` | Categorical | `POSITIVE`, `NEGATIVE`, `NEUTRAL` |
+| `market_moving` | Binary | `True`, `False` |
+| `impact_strength` | Ordinal | `LOW`, `MEDIUM`, `HIGH`, `VERY_HIGH` |
+| `confidence` | Ordinal | `HIGH`, `MEDIUM`, `LOW` |
+
+### Classification Rules
+
+**Direction Label** (configurable via `LABEL_POSITIVE_CAR_THRESHOLD`, `LABEL_NEGATIVE_CAR_THRESHOLD`):
+- `POSITIVE`: CAR > +threshold **AND** `significant == True`
+- `NEGATIVE`: CAR < −threshold **AND** `significant == True`
+- `NEUTRAL`: all other cases (insignificant result, or |CAR| below threshold)
+
+**Market-Moving Label** (configurable via `LABEL_MARKET_MOVING_CAR_THRESHOLD`):
+- `True` if `significant == True` AND `|CAR| > threshold`
+
+**Impact Strength** (configurable via `LABEL_STRENGTH_LOW_MAX`, `LABEL_STRENGTH_MEDIUM_MAX`, `LABEL_STRENGTH_HIGH_MAX`):
+
+| Strength | Condition |
+|----------|-----------|
+| `LOW` | `|CAR| < 1%` (default) |
+| `MEDIUM` | `1% ≤ |CAR| < 3%` |
+| `HIGH` | `3% ≤ |CAR| < 6%` |
+| `VERY_HIGH` | `|CAR| ≥ 6%` |
+
+**Confidence Label** (composite of p-value and effect size):
+
+| Confidence | Condition |
+|------------|-----------|
+| `HIGH` | `p_value ≤ 0.01` **AND** `effect_size == "Large"` |
+| `MEDIUM` | `p_value ≤ 0.05` **OR** `effect_size ∈ {Medium, Large}` |
+| `LOW` | everything else |
+
+### Validation
+
+A label is **rejected** and replaced by a `LabelValidationReport` if:
+- The source `StatisticalResult` is `None`
+- The CAR value is `NaN` or `±Inf`
+- The p-value is `NaN` or `±Inf`
+
+### Label Repository (`LabelRepository`)
+- JSON file storage under `data/labels/` (configurable via `settings.LABELS_DIR`)
+- Naming convention: `{bill_id}_{company_isin}_{sanitized_window}.json`
+- Implements the same Repository Pattern as `StatisticalRepository`
+- Supports full CRUD plus `get_by_bill` and `get_by_company` filtered queries
+
+### Label Generation Service (`LabelGenerationService`)
+Orchestrates the full pipeline:
+1. **Load**: Reads all `StatisticalResult` records from `StatisticalRepository`
+2. **Filter**: Applies optional bill ID, year, and event-window filters
+3. **Incremental Skip**: Skips already-labelled records (unless `force_refresh=True`)
+4. **Generate**: Delegates to `LabelGenerator` for all four label computations
+5. **Persist**: Saves valid `LabelRecord` objects to `LabelRepository`
+6. **Audit**: Collects `LabelValidationReport` objects for rejected records
+7. **Summarise**: Returns a dict with `processed`, `generated`, `skipped`, `rejected` counts
+
+### Ground Truth Strategy
+
+Labels produced by this engine are derived exclusively from **observed historical market data** and **statistically validated event-study results**.  This ensures:
+- **Objectivity**: No analyst judgement or heuristics are used
+- **Reproducibility**: Labels regenerate deterministically from the same inputs
+- **Auditability**: Every label carries a `decision_reason` and `calculation_timestamp`
+- **Configurability**: All thresholds are environment-variable-driven

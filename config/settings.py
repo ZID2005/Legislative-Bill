@@ -141,6 +141,7 @@ class Settings:
     MARKET_DIR: Path = _env_path("MARKET_DIR", str(_PROJECT_ROOT / "data" / "market"))
     EXTERNAL_DIR: Path = _env_path("EXTERNAL_DIR", str(_PROJECT_ROOT / "data" / "external"))
     LOGS_DIR: Path = _env_path("LOGS_DIR", str(_PROJECT_ROOT / "logs"))
+    STAT_RESULTS_DIR: Path = _env_path("STAT_RESULTS_DIR", str(_PROJECT_ROOT / "data" / "statistical_results"))
 
     # ------------------------------------------------------------------
     # Logging
@@ -189,6 +190,53 @@ class Settings:
     RANDOM_SEED: int = _env_int("RANDOM_SEED", 42)
     TEST_SIZE: float = float(_env("TEST_SIZE", "0.2"))
 
+    # ------------------------------------------------------------------
+    # Statistical Significance Settings
+    # ------------------------------------------------------------------
+    STAT_SIGNIFICANCE_ALPHA: float = float(os.getenv("STAT_SIGNIFICANCE_ALPHA", "0.05"))
+    STAT_SIGNIFICANCE_T_THRESHOLD: float = float(os.getenv("STAT_SIGNIFICANCE_T_THRESHOLD", "1.96"))
+    EFFECT_SIZE_MEDIUM_THRESHOLD: float = float(os.getenv("EFFECT_SIZE_MEDIUM_THRESHOLD", "0.02"))
+    EFFECT_SIZE_LARGE_THRESHOLD: float = float(os.getenv("EFFECT_SIZE_LARGE_THRESHOLD", "0.05"))
+
+    # ------------------------------------------------------------------
+    # Label Generation Settings (Task 4.4)
+    # ------------------------------------------------------------------
+
+    # Directory where LabelRecord JSON files are persisted
+    LABELS_DIR: Path = _env_path("LABELS_DIR", str(_PROJECT_ROOT / "data" / "labels"))
+
+    # Direction label thresholds (fraction, e.g. 0.02 = 2%)
+    # CAR > +LABEL_POSITIVE_CAR_THRESHOLD AND significant → POSITIVE
+    LABEL_POSITIVE_CAR_THRESHOLD: float = float(os.getenv("LABEL_POSITIVE_CAR_THRESHOLD", "0.02"))
+    # CAR < −LABEL_NEGATIVE_CAR_THRESHOLD AND significant → NEGATIVE
+    LABEL_NEGATIVE_CAR_THRESHOLD: float = float(os.getenv("LABEL_NEGATIVE_CAR_THRESHOLD", "0.02"))
+
+    # Market-moving label threshold (fraction)
+    # True if significant AND |CAR| > threshold
+    LABEL_MARKET_MOVING_CAR_THRESHOLD: float = float(
+        os.getenv("LABEL_MARKET_MOVING_CAR_THRESHOLD", "0.02")
+    )
+
+    # Impact-strength CAR range boundaries (absolute CAR fractions)
+    # |CAR| < LOW_MAX                     → LOW
+    # LOW_MAX  ≤ |CAR| < MEDIUM_MAX       → MEDIUM
+    # MEDIUM_MAX ≤ |CAR| < HIGH_MAX       → HIGH
+    # |CAR| ≥ HIGH_MAX                    → VERY_HIGH
+    LABEL_STRENGTH_LOW_MAX: float = float(os.getenv("LABEL_STRENGTH_LOW_MAX", "0.01"))
+    LABEL_STRENGTH_MEDIUM_MAX: float = float(os.getenv("LABEL_STRENGTH_MEDIUM_MAX", "0.03"))
+    LABEL_STRENGTH_HIGH_MAX: float = float(os.getenv("LABEL_STRENGTH_HIGH_MAX", "0.06"))
+
+    # Confidence label p-value thresholds
+    # HIGH   : p_value ≤ CONFIDENCE_HIGH_PVALUE  AND effect_size == "Large"
+    # MEDIUM : p_value ≤ CONFIDENCE_MEDIUM_PVALUE OR  effect_size in {Medium, Large}
+    # LOW    : everything else
+    LABEL_CONFIDENCE_HIGH_PVALUE: float = float(
+        os.getenv("LABEL_CONFIDENCE_HIGH_PVALUE", "0.01")
+    )
+    LABEL_CONFIDENCE_MEDIUM_PVALUE: float = float(
+        os.getenv("LABEL_CONFIDENCE_MEDIUM_PVALUE", "0.05")
+    )
+
     def ensure_directories(self) -> None:
         """Create all required project directories if they do not already exist."""
         dirs = [
@@ -201,6 +249,8 @@ class Settings:
             self.EXTERNAL_DIR,
             self.LOGS_DIR,
             self.MODEL_DIR,
+            self.STAT_RESULTS_DIR,
+            self.LABELS_DIR,
         ]
         for directory in dirs:
             directory.mkdir(parents=True, exist_ok=True)

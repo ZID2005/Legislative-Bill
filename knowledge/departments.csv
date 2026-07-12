@@ -1,0 +1,34 @@
+ministry,sector,department
+Ministry of Finance,Banking & Financial Services,Department of Financial Services
+Ministry of Finance,Capital Markets,Department of Economic Affairs
+Ministry of Finance,Insurance,Department of Financial Services
+Ministry of Finance,Taxation,Department of Revenue
+Ministry of Finance,*,Department of Economic Affairs
+Ministry of Corporate Affairs,*,Department of Corporate Affairs
+Ministry of Electronics and Information Technology,*,Department of Electronics and Information Technology
+Ministry of Communications,*,Department of Telecommunications
+Ministry of Health and Family Welfare,*,Department of Health and Family Welfare
+Ministry of Pharmaceuticals,*,Department of Pharmaceuticals
+Ministry of Petroleum and Natural Gas,*,Department of Petroleum and Natural Gas
+Ministry of New and Renewable Energy,*,Department of New and Renewable Energy
+Ministry of Power,*,Department of Power
+Ministry of Road Transport and Highways,*,Department of Road Transport and Highways
+Ministry of Railways,*,Department of Railways
+Ministry of Ports Shipping and Waterways,*,Department of Shipping
+Ministry of Civil Aviation,*,Department of Civil Aviation
+Ministry of Agriculture and Farmers Welfare,*,Department of Agriculture and Cooperation
+Ministry of Food Processing Industries,*,Department of Food Processing Industries
+Ministry of Commerce and Industry,*,Department for Promotion of Industry and Internal Trade
+Ministry of Textiles,*,Department of Textiles
+Ministry of Steel,*,Department of Steel
+Ministry of Mines,*,Department of Mines
+Ministry of Environment Forest and Climate Change,*,Department of Environment
+Ministry of Education,*,Department of School Education and Literacy
+Ministry of Skill Development and Entrepreneurship,*,Department of Skill Development
+Ministry of Labour and Employment,*,Department of Labour
+Ministry of Home Affairs,*,Department of Home
+Ministry of Law and Justice,*,Department of Legal Affairs
+Ministry of Minority Affairs,*,Department of Minority Affairs
+Ministry of Tribal Affairs,*,Department of Tribal Affairs
+Ministry of Personnel Public Grievances and Pensions,*,Department of Personnel and Training
+Prime Minister's Office,*,Prime Minister's Office

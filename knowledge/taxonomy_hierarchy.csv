@@ -1,0 +1,10 @@
+parent,child,level
+Ministry of Finance,Financial Services,economic_domain
+Financial Services,Banking,primary_sector
+Banking,NBFC,sub_sector
+NBFC,Insurance,sub_sector
+Insurance,Capital Markets,sub_sector
+Environment,Mining,primary_sector
+Mining,Energy,sub_sector
+Energy,Steel,sub_sector
+Steel,Cement,sub_sector

@@ -26,10 +26,10 @@
   - Embedding-based mapping (Phase B)
 
 ### Phase 6: Label Generation
-- [ ] **Task 6** — Event-study labels
-  - Market model estimation
-  - CAR computation
-  - Statistical significance testing
+- [/] **Task 6** — Event-study labels
+  - [x] Market model estimation
+  - [x] CAR computation
+  - [ ] Statistical significance testing
 
 ### Phase 7: Feature Engineering
 - [ ] **Task 7** — Feature matrix construction

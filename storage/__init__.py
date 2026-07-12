@@ -54,6 +54,10 @@ from storage.company_repository import CompanyRepository
 from storage.market_repository import MarketRepository
 from storage.knowledge_repository import KnowledgeRepository
 from storage.mapping_repository import MappingRepository
+from storage.market_model_repository import MarketModelRepository
+from storage.event_study_repository import EventStudyRepository
+from storage.statistical_repository import StatisticalRepository
+from storage.label_repository import LabelRepository
 from storage.catalog import CatalogManager, DatasetEntry, compute_md5
 
 
@@ -65,6 +69,10 @@ company_repo: CompanyRepository = CompanyRepository()
 market_repo: MarketRepository = MarketRepository()
 knowledge_repo: KnowledgeRepository = KnowledgeRepository()
 mapping_repo: MappingRepository = MappingRepository()
+market_model_repo: MarketModelRepository = MarketModelRepository()
+event_study_repo: EventStudyRepository = EventStudyRepository()
+statistical_repo: StatisticalRepository = StatisticalRepository()
+label_repo: LabelRepository = LabelRepository()
 
 
 # ---------------------------------------------------------------------------
@@ -99,11 +107,19 @@ __all__ = [
     "MarketRepository",
     "KnowledgeRepository",
     "MappingRepository",
+    "MarketModelRepository",
+    "EventStudyRepository",
+    "StatisticalRepository",
+    "LabelRepository",
     "bill_repo",
     "company_repo",
     "market_repo",
     "knowledge_repo",
     "mapping_repo",
+    "market_model_repo",
+    "event_study_repo",
+    "statistical_repo",
+    "label_repo",
     # Catalog
     "CatalogManager",
     "DatasetEntry",

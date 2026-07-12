@@ -92,12 +92,17 @@ ipython_config.py
 # ---------------------------------------------------------------------------
 data/raw/
 data/processed/
-data/bills/pdfs/
-data/bills/metadata/
 data/companies/
 data/market/
 data/external/
+data/event_studies/
+data/market_models/
+data/statistical_results/
+data/labels/
+data/mappings/
 *.csv
+!knowledge/*.csv
+!knowledge/**/*.csv
 *.parquet
 *.xlsx
 *.xls
@@ -113,6 +118,10 @@ data/external/
 !data/companies/.gitkeep
 !data/market/.gitkeep
 !data/external/.gitkeep
+!data/event_studies/.gitkeep
+!data/market_models/.gitkeep
+!data/statistical_results/.gitkeep
+!data/labels/.gitkeep
 
 # ---------------------------------------------------------------------------
 # Logs
@@ -146,6 +155,7 @@ mlartifacts/
 *~
 .tmp/
 tmp/
+scratch/
 
 # ---------------------------------------------------------------------------
 # PDFs (bill documents — too large for git)

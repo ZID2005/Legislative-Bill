@@ -1,0 +1,21 @@
+bill_type,title_keywords,primary_sector,secondary_sectors,notes
+Finance Bill,"Finance Bill,Finance Act",Banking & Financial Services,"Capital Markets,Insurance,Taxation","Annual budget legislation; widest market impact"
+Banking Regulation,"Banking Regulation,Bank Nationalisation,SARFAESI,Insolvency and Bankruptcy",Banking & Financial Services,"Capital Markets,Insurance",
+Securities Law,"Securities and Exchange Board,SEBI,Securities Contract,Depositories",Capital Markets,,
+Insurance Law,"Insurance Act,IRDAI,Insurance Regulatory",Insurance,,
+Telecom Law,"Telecommunication,Telecom Regulatory,Spectrum,DoT",Telecommunications,,
+Data Protection,"Personal Data,Data Protection,DPDP,Privacy",Data Protection & Privacy,Technology & IT Services,
+Technology Law,"Information Technology,IT Act,Cybercrime,Digital",Technology & IT Services,Data Protection & Privacy,
+AI Regulation,"Artificial Intelligence,AI Regulation,Algorithm",Technology & IT Services,,
+Healthcare Law,"Health,Pharmaceutical,Drug,Medicine,CDSCO,Clinical Trial",Healthcare & Pharmaceuticals,,
+Medical Device,"Medical Device,Drugs and Cosmetics",Healthcare & Pharmaceuticals,,
+Energy Law,"Electricity Act,Power,Energy,Petroleum,Coal",Energy,,
+Renewable Energy,"Renewable Energy,Solar,Wind,Green Hydrogen",Energy,Environment,
+Agriculture Law,"Agriculture,Farmers,Crop,APMC,MSP",Agriculture,,
+Environmental Law,"Environment Protection,Forest Conservation,Wildlife,Carbon",Environment,Energy,
+Infrastructure Law,"Road Transport,National Highway,Railway,Airport,Port",Infrastructure,,
+Labour Law,"Labour Code,Workers,Employment,Industrial Relations,PF,ESIC",Labour & Employment,,"Affects all listed companies with employees"
+Companies Law,"Companies Act,LLP,Insolvency,MCA,Corporate Governance",Capital Markets,All Sectors,
+GST,"GST,Goods and Services Tax,IGST,CGST,SGST",All Sectors,,"Affects all sectors; sector-specific rate changes most impactful"
+Customs Law,"Customs Act,Import Duty,Export Duty,Anti-Dumping",Trade & Manufacturing,,
+Competition Law,"Competition Act,CCI,Antitrust,Monopoly,Merger",All Sectors,,

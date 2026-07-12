@@ -1,0 +1,11 @@
+isin,company_name,override_sector,reason
+INE009A01021,Infosys Limited,Technology & IT Services,Exchange lists as IT; confirmed Technology
+INE467B01029,Tata Consultancy Services Limited,Technology & IT Services,
+INE040A01034,HDFC Bank Limited,Banking & Financial Services,
+INE001A01036,State Bank of India,Banking & Financial Services,
+INE030A01027,Reliance Industries Limited,Energy,"Diversified; primary revenue from O&G and refining"
+INE079A01024,Tata Motors Limited,Manufacturing,"Automotive; exchange classification is correct"
+INE066A01021,Sun Pharmaceutical Industries Limited,Healthcare & Pharmaceuticals,
+INE585B01010,Adani Ports and Special Economic Zone Limited,Infrastructure,
+INE028A01039,Bajaj Finance Limited,Banking & Financial Services,NBFC classified under BFSI
+INE918I01026,Adani Green Energy Limited,Energy,"Renewable energy; primary sector Energy"

@@ -611,3 +611,63 @@ class TestMarketLoader:
             (symbol_dir / "2024.parquet").unlink()
         except Exception:
             pass
+
+    def test_market_loader_historical_expansion_sync(
+        self,
+        market_repo: MarketRepository,
+        mock_company_repo: CompanyRepository,
+    ):
+        """Test that sync_symbol successfully back-fills historical data and utilizes earliest_sync metadata."""
+        loader = MarketLoader(market_repository=market_repo, company_repository=mock_company_repo)
+        symbol = "RELIANCE.NS"
+
+        # 1. Write some initial data for 2024
+        df_2024 = pd.DataFrame({
+            "Date": ["2024-01-02", "2024-01-03"],
+            "Open": [2000.0, 2010.0],
+            "High": [2020.0, 2030.0],
+            "Low": [1990.0, 2000.0],
+            "Close": [2010.0, 2020.0],
+            "Adjusted Close": [2010.0, 2020.0],
+            "Volume": [100000.0, 150000.0]
+        })
+        market_repo.upsert_prices(symbol, df_2024)
+
+        # Confirm 2024 data is there
+        date_range = market_repo.get_date_range(symbol)
+        assert date_range == ("2024-01-02", "2024-01-03")
+
+        # 2. Mock yfinance download for backward period (2014)
+        df_back = pd.DataFrame({
+            "Date": ["2014-01-02", "2014-01-03"],
+            "Open": [1000.0, 1010.0],
+            "High": [1020.0, 1030.0],
+            "Low": [990.0, 1000.0],
+            "Close": [1010.0, 1020.0],
+            "Adjusted Close": [1010.0, 1020.0],
+            "Volume": [100000.0, 150000.0]
+        })
+
+        with patch.object(loader, "download_symbol", return_value=df_back) as mock_download:
+            # Sync backward
+            added = loader.sync_symbol(symbol, start_date="2014-01-01", end_date="2024-01-03")
+            
+            # Should have called download for the missing backward period: 2014-01-01 to 2024-01-01
+            mock_download.assert_called_once_with(symbol, "2014-01-01", "2024-01-01")
+            assert added == 2
+
+        # 3. Verify date range has expanded
+        new_range = market_repo.get_date_range(symbol)
+        assert new_range == ("2014-01-02", "2024-01-03")
+
+        # Verify earliest_sync metadata file exists and contains start_date
+        metadata_file = market_repo._market_dir / symbol / ".earliest_sync"
+        assert metadata_file.exists()
+        assert metadata_file.read_text().strip() == "2014-01-01"
+
+        # 4. Verify that running it again with start_date >= 2014-01-01 skips the backward download
+        with patch.object(loader, "download_symbol") as mock_download2:
+            added2 = loader.sync_symbol(symbol, start_date="2014-01-01", end_date="2024-01-03")
+            mock_download2.assert_not_called()
+            assert added2 == 0
+

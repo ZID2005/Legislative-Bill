@@ -42,6 +42,11 @@ from schemas.market import PriceRecord
 from schemas.prediction import Prediction, ImpactLabel
 from schemas.knowledge_record import KnowledgeRecord
 from schemas.mapping_record import BillCompanyMapping
+from schemas.market_model import MarketModelRecord
+from schemas.event_study import EventStudyRecord
+from schemas.statistical_result import StatisticalResult
+from schemas.label_record import LabelRecord, DirectionLabel, ImpactStrength, ConfidenceLabel
+from schemas.validation_report import LabelValidationReport
 
 __all__ = [
     # Bill
@@ -60,4 +65,17 @@ __all__ = [
     "KnowledgeRecord",
     # Mapping Record
     "BillCompanyMapping",
+    # Market Model Record
+    "MarketModelRecord",
+    # Event Study Record
+    "EventStudyRecord",
+    # Statistical Result
+    "StatisticalResult",
+    # Label Records
+    "LabelRecord",
+    "DirectionLabel",
+    "ImpactStrength",
+    "ConfidenceLabel",
+    # Validation Report
+    "LabelValidationReport",
 ]

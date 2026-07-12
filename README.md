@@ -107,7 +107,7 @@ Legislative-bill/
 │
 ├── labeling/                # Ground-truth label generation
 │   ├── __init__.py
-│   └── label_generator.py   # [Task 6] Event-study CAR computation
+│   └── label_generator.py   # [Task 4.4] LabelGenerator — converts StatisticalResults to labels
 │
 ├── models/                  # Model definitions and training
 │   ├── __init__.py
@@ -220,11 +220,27 @@ python main.py build-knowledge --year 2024
 # Ingest and normalize company master records (Task 2.1 & 2.2)
 python main.py ingest-companies
 
-# Ingest and normalize historical market prices and indices (Task 3.1)
-python main.py ingest-market --all --start-date 2024-01-01
+# Ingest and normalize historical market prices and indices back to 2014 (Task 3.1 & Enhancement)
+# Downloads historical daily prices from 01 January 2014 through today for all indices and companies.
+python main.py ingest-market --start-date 2014-01-01
 
 # Build deterministic bill-company mappings (Task 2.3)
 python main.py build-mappings --year 2024
+
+# Estimate expected returns parameters using OLS market model (Task 4.1)
+python main.py estimate-market-models --year 2024
+
+# Compute abnormal returns and CARs via Advanced Event Study Engine (Task 4.2)
+python main.py run-event-study --year 2024
+
+# Compute statistical significance of event study CARs (Task 4.3)
+python main.py run-statistical-significance --year 2024
+
+# Generate ground-truth ML labels from statistical results (Task 4.4)
+python main.py generate-labels --year 2024
+
+# Regenerate all labels (overwrite existing)
+python main.py generate-labels --year 2024 --force-refresh
 
 # Run tests
 pytest tests/ -v
@@ -250,8 +266,12 @@ black .
 | **Task 2** | Company & Market Data Acquisition | ✅ Complete |
 | **Task 3** | Data Validation & Schema Enforcement | ✅ Complete |
 | **Task 4** | NLP Pipeline (Legal Text Understanding) | 🔲 Planned |
+| **Task 4.1** | Market Model Engine (OLS) | ✅ Complete |
+| **Task 4.2** | Advanced Event Study Engine | ✅ Complete |
+| **Task 4.3** | Statistical Significance Engine | ✅ Complete |
+| **Task 4.4** | Label Generation Engine (Ground Truth) | ✅ Complete |
 | **Task 5** | Sector & Company Mapping | ✅ Complete |
-| **Task 6** | Ground-Truth Label Generation (Event Study) | 🔲 Planned |
+| **Task 6** | Ground-Truth Label Generation (Event Study) | ⚠️ In Progress |
 | **Task 7** | Feature Engineering | 🔲 Planned |
 | **Task 8** | Model Training & Evaluation | 🔲 Planned |
 | **Task 9** | Prediction API | 🔲 Planned |

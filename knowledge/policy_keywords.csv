@@ -1,0 +1,18 @@
+policy_type,keywords,likely_impact_direction,notes
+Tax Increase,"surcharge,cess,levy,increase in tax,higher tax,additional duty,enhanced duty,raised tax",negative,"Tax increases reduce corporate earnings"
+Tax Reduction,"tax exemption,tax relief,deduction,tax holiday,reduced rate,nil duty,concessional rate,rebate",positive,"Tax cuts boost corporate earnings"
+Import Duty Increase,"import duty,customs duty,anti-dumping,safeguard duty,protective tariff,import restriction",mixed,"Positive for domestic producers; negative for importers"
+Import Duty Reduction,"reduced customs,zero duty,duty-free,trade facilitation,tariff reduction",mixed,"Negative for domestic producers; positive for importers"
+FDI Liberalisation,"FDI limit,foreign direct investment,automatic route,FIPB,equity cap increased",positive,"More foreign capital inflow; positive for sector"
+FDI Restriction,"FDI cap,equity cap reduced,prohibited sector,strategic restriction",negative,
+Price Control,"price cap,price ceiling,MRP,price control,administered price,regulated price",negative,"Limits pricing power and margins"
+Price Deregulation,"price deregulation,market-determined price,free pricing,MRP removed",positive,
+Licensing Requirement,"licence,permit,registration,approval,clearance required,regulatory approval",negative,"Compliance cost and entry barrier"
+Licensing Relaxation,"licence removed,self-certification,deemed approval,single window,ease of compliance",positive,
+PLI Scheme,"production linked incentive,PLI,manufacturing incentive,output incentive",positive,"Direct government subsidy for production"
+Subsidy Increase,"subsidy,grant,support price,financial assistance increased",positive,
+Subsidy Reduction,"subsidy withdrawn,subsidy reduced,fiscal rationalisation",negative,
+Mandatory Compliance,"mandatory,compulsory,obligation,must comply,penal provision,penalty",negative,"Increases compliance burden and risk"
+Environmental Restriction,"emission limit,pollution cap,environmental clearance,green norms,carbon tax",negative,"Compliance costs; may restrict capacity"
+Data Localisation,"data localisation,store locally,cross-border restriction,data sovereignty",mixed,"Cost for foreign tech; opportunity for domestic cloud"
+Insolvency Provision,"insolvency,liquidation,resolution plan,creditor rights,IBC amendment",mixed,"Reduces credit risk long-term; short-term operational disruption"

@@ -80,6 +80,21 @@ class LabelRepository:
         sanitized_win = _sanitize_window(event_window)
         return self._label_dir / f"{sanitized_bill}_{company_isin}_{sanitized_win}.json"
 
+    def _parse_filename(self, filename: str) -> Optional[tuple[str, str, str]]:
+        """
+        Parse a label record filename into (sanitized_bill, company_isin, sanitized_window).
+
+        Returns None if the filename does not conform to the expected pattern:
+        {sanitized_bill}_{company_isin}_{sanitized_window}.json
+        """
+        if not filename.endswith(".json"):
+            return None
+        stem = filename[:-5]
+        parts = stem.rsplit("_", 2)
+        if len(parts) != 3:
+            return None
+        return parts[0], parts[1], parts[2]
+
     # ------------------------------------------------------------------
     # Write
     # ------------------------------------------------------------------
@@ -169,10 +184,14 @@ class LabelRepository:
         try:
             sanitized = bill_id.replace("/", "_").replace("\\", "_")
             for f in list_files(self._label_dir, f"{sanitized}_*.json"):
-                try:
-                    records.append(LabelRecord.from_dict(load_json(f)))
-                except Exception as exc:
-                    logger.error("Failed to load label file %s: %s", f.name, exc)
+                parsed = self._parse_filename(f.name)
+                if parsed is not None:
+                    parsed_bill, parsed_isin, parsed_win = parsed
+                    if parsed_bill == sanitized:
+                        try:
+                            records.append(LabelRecord.from_dict(load_json(f)))
+                        except Exception as exc:
+                            logger.error("Failed to load label file %s: %s", f.name, exc)
         except Exception as exc:
             logger.error(
                 "Failed to filter label records by bill %s: %s", bill_id, exc
@@ -184,11 +203,14 @@ class LabelRepository:
         records: list[LabelRecord] = []
         try:
             for f in list_files(self._label_dir, "*.json"):
-                if company_isin in f.name:
-                    try:
-                        records.append(LabelRecord.from_dict(load_json(f)))
-                    except Exception as exc:
-                        logger.error("Failed to load label file %s: %s", f.name, exc)
+                parsed = self._parse_filename(f.name)
+                if parsed is not None:
+                    parsed_bill, parsed_isin, parsed_win = parsed
+                    if parsed_isin == company_isin:
+                        try:
+                            records.append(LabelRecord.from_dict(load_json(f)))
+                        except Exception as exc:
+                            logger.error("Failed to load label file %s: %s", f.name, exc)
         except Exception as exc:
             logger.error(
                 "Failed to filter label records by company %s: %s",

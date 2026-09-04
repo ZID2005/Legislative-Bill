@@ -113,11 +113,26 @@ Legislative-bill/
 │   ├── __init__.py
 │   ├── artefacts/           # Serialised model files (git-ignored)
 │   ├── trainer.py           # [Task 8] Training pipeline (LightGBM + Optuna)
-│   └── predictor.py         # [Task 9] Inference engine
+│   ├── predictor.py         # [Task 9] Inference engine
+│   └── explainability/      # [Task 6.3] SHAP explainability engine
+│
+├── explainability/          # SHAP outputs (git-ignored)
+│   ├── <target>/
+│   │   └── <model_type>/
+│   │       ├── shap_values.parquet
+│   │       ├── feature_importance.csv
+│   │       ├── local_explanations.json
+│   │       ├── summary_plot.png
+│   │       ├── bar_plot.png
+│   │       └── dependence_plots/
+│   ├── global_summary.json
+│   ├── model_comparison.json
+│   └── feature_comparison.png
 │
 ├── features/                # Feature engineering pipelines
 │   ├── __init__.py
-│   └── feature_builder.py   # [Task 7] Feature matrix construction
+│   ├── feature_builder.py   # [Task 5.1] FeatureBuilder — public entry-point
+│   └── feature_engine.py    # [Task 5.1] FeatureEngineeringEngine — merge + validate + persist
 │
 ├── dashboard/               # UI layer (Streamlit / FastAPI)
 │   ├── __init__.py
@@ -242,8 +257,114 @@ python main.py generate-labels --year 2024
 # Regenerate all labels (overwrite existing)
 python main.py generate-labels --year 2024 --force-refresh
 
+# Build unified ML feature dataset — Parquet + optional CSV (Task 5.1)
+python main.py build-features
+
+# Full rebuild of feature dataset (ignore existing records)
+python main.py build-features --rebuild
+
+# Export feature dataset to CSV
+python main.py build-features --export-csv
+
+# Generate reusable NLP embeddings for bills (Task 5.2)
+python main.py generate-embeddings --model finbert --pooling mean
+
+# Regenerate embeddings (overwrite existing cache)
+python main.py generate-embeddings --model finbert --force-refresh
+
+# Perform feature fusion combining structured features and embeddings (Task 5.3)
+# Supported modes: structured, finbert, legal, structured-finbert, structured-legal, hybrid
+python main.py build-fusion --mode hybrid
+
+# Build all six fusion modes in sequence
+python main.py build-fusion --all
+
+# Force full rebuild of fusion datasets, ignoring existing records
+python main.py build-fusion --mode hybrid --rebuild
+
+# Run feature selection to prune uninformative features (Task 5.4)
+python main.py select-features --mode structured
+
+# Train ML classifiers to predict legislative market impact (Task 6.1)
+# Trains 4 targets × 3 models = 12 classifiers with chronological TimeSeriesSplit
+python main.py train --mode structured
+
+# Train a single target with a specific model
+python main.py train --target direction --model-type lgbm
+
+# Force rebuild of training datasets before training
+python main.py train --rebuild-datasets
+
+# Skip models already trained
+python main.py train --skip-existing
+
+# Evaluate every trained model and compare performance (Task 6.2)
+python main.py evaluate-models --mode structured
+
+# Rebuild datasets prior to running evaluation
+python main.py evaluate-models --rebuild-dataset
+
+# Generate SHAP global and local explanations for all trained models (Task 6.3)
+python main.py explain-models --all
+
+# Explain only the direction classifier with all model types
+python main.py explain-models --target direction
+
+# Explain only LightGBM models across all targets
+python main.py explain-models --model lgbm
+
+# Explain a single (target, model) combination
+python main.py explain-models --target market_moving --model xgboost
+
+# Run chronological walk-forward historical backtesting (Task 6.4)
+python main.py backtest-models --all
+
+# Run pre-event anticipation bias and information leakage analysis (Task 6.5)
+python main.py analyze-anticipation
+
+# Force refresh anticipation records
+python main.py analyze-anticipation --force-refresh
+
+# Generate final predictions (Task 7.1)
+python main.py generate-predictions --year 2024
+
+# Force re-infer and refresh cached predictions
+python main.py generate-predictions --year 2024 --force-refresh
+
+# Generate decision support and composite risk scoring (Task 7.2)
+python main.py generate-decision-support --year 2024
+
+# Force regenerate decision support interpretations
+python main.py generate-decision-support --year 2024 --force-refresh
+
+# Generate decision support for a specific bill and company
+python main.py generate-decision-support --bill-id the-telecom-act-2024 --company-isin INE002A01018
+
+# Generate stakeholder reports for Investors, Businesses, and the Public (Task 7.3)
+python main.py generate-reports --stakeholder investor
+
+# Generate reports for a specific bill in Markdown format
+python main.py generate-reports --bill-id the-telecom-act-2024 --format markdown
+
+# Generate business perspective for a specific company in CSV format
+python main.py generate-reports --company-isin INE002A01018 --stakeholder business --format csv
+
+# Generate aggregate bill-level report across all mapped companies
+python main.py generate-reports --bill-id the-telecom-act-2024 --generate-bill-report
+
+# Generate aggregate company legislative exposure report
+python main.py generate-reports --company-isin INE002A01018 --generate-company-report
+
+# Force full regeneration of stakeholder reports
+python main.py generate-reports --force-refresh
+
 # Run tests
 pytest tests/ -v
+
+# Run ML training tests specifically
+python main.py test --cov=models/training --cov=storage/model_repository.py (placeholder, or pytest)
+pytest tests/test_ml_training.py -v
+pytest tests/test_model_evaluation.py -v --cov=models/evaluation --cov=storage/evaluation_repository.py
 
 # Run tests with coverage
 pytest tests/ --cov=. --cov-report=html
@@ -265,19 +386,58 @@ black .
 | **Task 1** | Bill Data Ingestion (Scraping + Storage) | ✅ Complete |
 | **Task 2** | Company & Market Data Acquisition | ✅ Complete |
 | **Task 3** | Data Validation & Schema Enforcement | ✅ Complete |
-| **Task 4** | NLP Pipeline (Legal Text Understanding) | 🔲 Planned |
+| **Task 4** | NLP Pipeline (Legal Text Understanding) | ⚠️ In Progress |
 | **Task 4.1** | Market Model Engine (OLS) | ✅ Complete |
 | **Task 4.2** | Advanced Event Study Engine | ✅ Complete |
 | **Task 4.3** | Statistical Significance Engine | ✅ Complete |
 | **Task 4.4** | Label Generation Engine (Ground Truth) | ✅ Complete |
 | **Task 5** | Sector & Company Mapping | ✅ Complete |
-| **Task 6** | Ground-Truth Label Generation (Event Study) | ⚠️ In Progress |
-| **Task 7** | Feature Engineering | 🔲 Planned |
-| **Task 8** | Model Training & Evaluation | 🔲 Planned |
-| **Task 9** | Prediction API | 🔲 Planned |
-| **Task 10** | Knowledge Dashboard | 🔲 Planned |
+| **Task 5.1** | Unified Feature Engineering Engine | ✅ Complete |
+| **Task 5.2** | NLP Embedding Engine | ✅ Complete |
+| **Task 5.3** | Feature Fusion Engine | ✅ Complete |
+| **Task 5.4** | Feature Selection Engine | ✅ Complete |
+| **Task 6** | Ground-Truth Label Generation (Event Study) | ✅ Complete |
+| **Task 6.1** | ML Training Engine (4 classifiers × 3 models) | ✅ Complete |
+| **Task 6.2** | ML Evaluation Engine (Comparative Rankings + Errors) | ✅ Complete |
+| **Task 6.3** | Explainability Engine (SHAP Global + Local Explanations) | ✅ Complete |
+| **Task 6.4** | Historical Backtesting Engine (Walk-Forward, Anti-Leakage) | ✅ Complete |
+| **Task 6.5** | Anticipation Bias / Pre-Event Information Analysis Engine | ✅ Complete |
+| **Task 7.1** | Final Prediction & Decision Engine (Forward Inference) | ✅ Complete |
+| **Task 7.2** | Decision Support & Risk Scoring Engine (Stakeholder Perspectives) | ✅ Complete |
+| **Task 7.3** | Stakeholder Reporting Engine (Investor, Business, Public) | ✅ Complete |
+| **Task 7.4** | Interactive Dashboard & Decision-Support Interface (Streamlit) | ✅ Complete |
 
 See [docs/roadmap.md](docs/roadmap.md) for full details.
+
+---
+
+## 🖥️ Interactive Dashboard (Task 7.4)
+
+Launch the multi-stakeholder Streamlit decision-support dashboard:
+
+```bash
+# Launch on default port 8501
+python main.py serve
+
+# Launch on custom port and host
+python main.py serve --port 8080 --host 0.0.0.0
+
+# Using alias
+python main.py dashboard
+```
+
+### Dashboard Exploration Lenses
+1. **Global Overview**: Portfolio KPIs, summary metrics, and scope reconciliation diagnostics.
+2. **Bill Explorer**: Full legislative dossier, company exposures, and bill-level reports.
+3. **Company Explorer**: Corporate risk profiles, relevant bills, and company-level reports.
+4. **Investor View**: Probabilistic directional return, market-moving odds, and pricing-in discounts.
+5. **Business View**: Operational risk, compliance implications, and ministerial oversight.
+6. **Public View**: Plain-English societal significance and economic context.
+7. **Risk Overview**: Statistical distributions, summary stats, and interactive 2D risk matrices.
+8. **Anticipation Overview**: Pre-event information diffusion auditing and non-insider-trading legal notice.
+9. **Model Explainability**: Pre-computed SHAP global feature importances and cross-model rankings.
+10. **Backtesting Summary**: Walk-forward Sharpe ratios, drawdowns, and model vs strategy distinctions.
+11. **Methodology**: 10-stage architecture flow and governance invariants.
 
 ---
 

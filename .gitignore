@@ -8,6 +8,14 @@
 .env
 .env.*
 !.env.example
+*.pem
+*.key
+*.pfx
+*.p12
+credentials.json
+client_secret*.json
+id_rsa*
+id_ed25519*
 
 # ---------------------------------------------------------------------------
 # Python
@@ -88,40 +96,74 @@ profile_default/
 ipython_config.py
 
 # ---------------------------------------------------------------------------
-# Data files (raw and processed data — too large for git)
+# Data files (raw, processed, and generated pipeline data — too large for git)
 # ---------------------------------------------------------------------------
-data/raw/
-data/processed/
-data/companies/
-data/market/
-data/external/
-data/event_studies/
-data/market_models/
-data/statistical_results/
-data/labels/
-data/mappings/
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+data/bills/*
+!data/bills/.gitkeep
+data/companies/*
+!data/companies/.gitkeep
+data/market/*
+!data/market/.gitkeep
+data/external/*
+!data/external/.gitkeep
+data/event_studies/*
+!data/event_studies/.gitkeep
+data/market_models/*
+!data/market_models/.gitkeep
+data/statistical_results/*
+!data/statistical_results/.gitkeep
+data/labels/*
+!data/labels/.gitkeep
+data/mappings/*
+!data/mappings/.gitkeep
+data/anticipation/*
+!data/anticipation/.gitkeep
+data/backtests/*
+!data/backtests/.gitkeep
+data/decision_support/*
+!data/decision_support/.gitkeep
+data/embeddings/*
+!data/embeddings/.gitkeep
+data/feature_selection/*
+!data/feature_selection/.gitkeep
+data/features/*
+!data/features/.gitkeep
+data/fused/*
+!data/fused/.gitkeep
+data/ml/*
+!data/ml/.gitkeep
+data/predictions/*
+!data/predictions/.gitkeep
+data/evaluation/*
+!data/evaluation/.gitkeep
+data/explainability/*
+!data/explainability/.gitkeep
+data/reports/*
+!data/reports/.gitkeep
+
+# Keep catalog & base gitkeep
+!data/.gitkeep
+!data/catalog/bill_catalog.json
+!data/catalog/company_catalog.json
+!data/catalog/market_catalog.json
+
 *.csv
 !knowledge/*.csv
 !knowledge/**/*.csv
 *.parquet
+*.feather
+*.arrow
+*.npy
+*.npz
 *.xlsx
 *.xls
 *.db
 *.sqlite
 *.sqlite3
-
-# But keep the directory structure
-!data/.gitkeep
-!data/raw/.gitkeep
-!data/processed/.gitkeep
-!data/bills/.gitkeep
-!data/companies/.gitkeep
-!data/market/.gitkeep
-!data/external/.gitkeep
-!data/event_studies/.gitkeep
-!data/market_models/.gitkeep
-!data/statistical_results/.gitkeep
-!data/labels/.gitkeep
 
 # ---------------------------------------------------------------------------
 # Logs
@@ -131,9 +173,16 @@ logs/
 *.log.*
 
 # ---------------------------------------------------------------------------
-# Model artefacts
+# Model artefacts & Explainability outputs (root output directories)
 # ---------------------------------------------------------------------------
-models/artefacts/
+/models/artefacts/
+/models/saved/
+/models/confidence/
+/models/direction/
+/models/impact_strength/
+/models/market_moving/
+/explainability/
+/evaluation/
 *.pkl
 *.joblib
 *.pt
@@ -141,11 +190,19 @@ models/artefacts/
 *.bin
 *.onnx
 *.h5
+*.hdf5
+*.safetensors
+*.ckpt
+*.keras
+*.tflite
 mlruns/
 mlartifacts/
+wandb/
+catboost_info/
+lightning_logs/
 
 # ---------------------------------------------------------------------------
-# Temporary files
+# Temporary & audit files
 # ---------------------------------------------------------------------------
 *.tmp
 *.temp
@@ -156,6 +213,15 @@ mlartifacts/
 .tmp/
 tmp/
 scratch/
+*_audit.json
+*audit*.json
+.system_generated/
+.cache/
+
+# ---------------------------------------------------------------------------
+# Streamlit & Web Dashboards
+# ---------------------------------------------------------------------------
+.streamlit/secrets.toml
 
 # ---------------------------------------------------------------------------
 # PDFs (bill documents — too large for git)
@@ -163,12 +229,21 @@ scratch/
 *.pdf
 
 # ---------------------------------------------------------------------------
-# IDE / Editor
+# IDE / Editor / Agent environments
 # ---------------------------------------------------------------------------
+.gemini/
+.agents/
+.cursor/
+.claude/
+.windsurf/
+.continue/
+.antigravity/
 
-# VS Code
+# Visual Studio / VS Code
 .vscode/
 *.code-workspace
+.vs/
+.history/
 
 # PyCharm
 .idea/

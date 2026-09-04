@@ -65,22 +65,30 @@ class CompanyRepository:
         else:
             self._db_file = self._companies_dir / "companies.json"
 
+        self._cache: Optional[list[Company]] = None
         logger.debug("CompanyRepository initialised | file=%s", self._db_file)
 
     def _load_data(self) -> list[Company]:
         import json
         from schemas.company import Company
 
+        if self._cache is not None:
+            return self._cache
+
         if not self._db_file.is_file():
+            self._cache = []
             return []
         try:
             with self._db_file.open("r", encoding="utf-8") as f:
                 data = json.load(f)
                 if not isinstance(data, list):
+                    self._cache = []
                     return []
-                return [Company.from_dict(item) for item in data]
+                self._cache = [Company.from_dict(item) for item in data]
+                return self._cache
         except Exception as e:
             logger.error("Failed to load company records: %s", e)
+            self._cache = []
             return []
 
     def _save_data(self, companies: list[Company]) -> None:
@@ -90,6 +98,7 @@ class CompanyRepository:
         try:
             with self._db_file.open("w", encoding="utf-8") as f:
                 json.dump([c.to_dict() for c in companies], f, indent=2)
+            self._cache = list(companies)
         except Exception as e:
             logger.error("Failed to save company records: %s", e)
             raise e
@@ -101,6 +110,10 @@ class CompanyRepository:
             if company.isin.upper() == isin_upper:
                 return company
         return None
+
+    def get(self, isin: str) -> Company | None:
+        """Alias for get_by_isin."""
+        return self.get_by_isin(isin)
 
     def get_by_ticker(self, ticker: str, exchange: str = "NSE") -> Company | None:
         """Return a company record by ticker symbol and exchange."""

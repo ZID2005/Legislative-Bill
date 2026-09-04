@@ -13,10 +13,13 @@ embeddings/  : Text embedding generation (FinBERT, Legal-RoBERTa).
                Converts bill text into dense vector representations.
                Implemented in Task 7 (alongside feature engineering).
 
-training/    : Model training pipeline.
-               Implements LightGBM training, Optuna hyperparameter search,
-               and MLflow experiment tracking.
-               Implemented in Task 8.
+training/    : Model training pipeline (Task 6.1).
+               Implements:
+               * DatasetBuilder  -- leakage-free training/research split
+               * MLTrainer       -- trains 4 targets x 3 algorithms
+               * Chronological TimeSeriesSplit validation
+               * GridSearchCV hyperparameter selection
+               * ModelRepository integration
 
 prediction/  : Inference engine.
                Loads trained artefacts and produces ``Prediction`` schema
@@ -30,9 +33,17 @@ evaluation/  : Model evaluation and backtesting.
 
 Artefacts
 ---------
-Trained model files are stored under ``models/artefacts/`` (git-ignored).
+Trained model files are stored under ``models/<target>/<model_type>/``.
 Each artefact set includes:
-*  ``<name>_<date>.pkl`` — the trained model (joblib-serialised)
-*  ``<name>_<date>_schema.json`` — the FeatureSchema used at training time
-*  ``<name>_<date>_metrics.json`` — evaluation metrics on the held-out test set
+*  ``model.pkl``            -- the trained estimator bundle (joblib-serialised)
+*  ``preprocessor.pkl``     -- the fitted ColumnTransformer
+*  ``features.json``        -- ordered feature column list
+*  ``metadata.json``        -- training metadata
+*  ``training_report.json`` -- complete training metrics report
+
+Datasets
+--------
+ML-ready datasets are stored under ``data/ml/``:
+*  ``training_dataset.parquet`` -- leakage-free (pre-event features + labels)
+*  ``research_dataset.parquet`` -- full feature set (for academic analysis only)
 """

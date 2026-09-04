@@ -1,12 +1,31 @@
 """
 features package
 ================
-Feature engineering pipeline.
+Unified Feature Engineering Engine — Task 5.1
 
 Responsibility
 --------------
-Transform cleaned bill text, company metadata, sector mappings, and market
-data into numerical feature vectors suitable for model training and inference.
+Combine every upstream repository (bill, knowledge, company, mapping,
+market model, event study, statistical, label) into a single master
+ML feature table and persist it in Parquet.
 
-This package is implemented in Task 7.
+Public API
+----------
+``FeatureBuilder``         — high-level entry-point (thin wrapper)
+``FeatureEngineeringEngine`` — core engine (merge, validate, persist)
+``FeatureBuildResult``     — summary dataclass returned by build()
 """
+
+from features.feature_engine import FeatureBuildResult, FeatureEngineeringEngine
+from features.feature_builder import FeatureBuilder
+from features.fusion_engine import FeatureFusionEngine
+from features.selection_engine import FeatureSelectionEngine
+
+__all__ = [
+    "FeatureBuilder",
+    "FeatureEngineeringEngine",
+    "FeatureBuildResult",
+    "FeatureFusionEngine",
+    "FeatureSelectionEngine",
+]
+

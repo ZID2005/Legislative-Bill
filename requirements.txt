@@ -39,10 +39,10 @@ PyPDF2~=3.0               # PDF metadata extraction
 # ---------------------------------------------------------------------------
 # Task 2 — Market & Company Data
 # ---------------------------------------------------------------------------
-# pandas~=2.2               # DataFrame operations
+pandas~=2.2               # DataFrame operations
 # yfinance~=0.2             # Yahoo Finance market data
 # openpyxl~=3.1             # Excel file reading (exchange downloads)
-# pyarrow~=16.0             # Parquet read/write
+pyarrow>=17.0             # Parquet read/write (Feature Engineering — Task 5.1)
 
 # ---------------------------------------------------------------------------
 # Task 3 — Validation
@@ -76,12 +76,14 @@ PyPDF2~=3.0               # PDF metadata extraction
 # (covered by pandas, numpy, scikit-learn from above tasks)
 
 # ---------------------------------------------------------------------------
-# Task 8 — Model Training
+# Task 6.1 / Task 8 — Model Training
 # ---------------------------------------------------------------------------
-# lightgbm~=4.4             # Gradient-boosted trees
-# optuna~=3.6               # Hyperparameter optimisation
-# mlflow~=2.14              # Experiment tracking
-# joblib~=1.4               # Model serialisation
+lightgbm~=4.4             # Gradient-boosted trees (primary model)
+xgboost~=2.1              # Gradient-boosted trees (secondary model)
+scikit-learn>=1.5.0       # Preprocessing, Random Forest, GridSearchCV, TimeSeriesSplit
+joblib~=1.4               # Model serialisation
+numpy>=2.1.0              # Numerical operations (Python 3.14 compatible)
+scipy>=1.14.0             # Statistical tests (Python 3.14 compatible)
 
 # ---------------------------------------------------------------------------
 # Task 9 — Prediction API
@@ -91,7 +93,7 @@ PyPDF2~=3.0               # PDF metadata extraction
 # shap~=0.45                # SHAP values for explainability
 
 # ---------------------------------------------------------------------------
-# Task 10 — Dashboard
+# Task 7.4 / Task 10 — Dashboard
 # ---------------------------------------------------------------------------
-# streamlit~=1.36           # Interactive dashboard (Option A)
-# plotly~=5.22              # Interactive charts
+streamlit>=1.36.0           # Interactive dashboard
+plotly>=5.22.0              # Interactive charts

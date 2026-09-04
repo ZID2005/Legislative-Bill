@@ -58,6 +58,13 @@ from storage.market_model_repository import MarketModelRepository
 from storage.event_study_repository import EventStudyRepository
 from storage.statistical_repository import StatisticalRepository
 from storage.label_repository import LabelRepository
+from storage.feature_repository import FeatureRepository
+from storage.fusion_repository import FusionRepository
+from storage.feature_selection_repository import FeatureSelectionRepository
+from storage.anticipation_repository import AnticipationRepository
+from storage.prediction_repository import PredictionRepository
+from storage.decision_repository import DecisionRepository
+from storage.report_repository import ReportRepository
 from storage.catalog import CatalogManager, DatasetEntry, compute_md5
 
 
@@ -73,6 +80,13 @@ market_model_repo: MarketModelRepository = MarketModelRepository()
 event_study_repo: EventStudyRepository = EventStudyRepository()
 statistical_repo: StatisticalRepository = StatisticalRepository()
 label_repo: LabelRepository = LabelRepository()
+feature_repo: FeatureRepository = FeatureRepository()
+fusion_repo: FusionRepository = FusionRepository()
+feature_selection_repo: FeatureSelectionRepository = FeatureSelectionRepository()
+anticipation_repo: AnticipationRepository = AnticipationRepository()
+prediction_repo: PredictionRepository = PredictionRepository()
+decision_repo: DecisionRepository = DecisionRepository()
+report_repo: ReportRepository = ReportRepository()
 
 
 # ---------------------------------------------------------------------------
@@ -111,6 +125,13 @@ __all__ = [
     "EventStudyRepository",
     "StatisticalRepository",
     "LabelRepository",
+    "FeatureRepository",
+    "FusionRepository",
+    "FeatureSelectionRepository",
+    "AnticipationRepository",
+    "PredictionRepository",
+    "DecisionRepository",
+    "ReportRepository",
     "bill_repo",
     "company_repo",
     "market_repo",
@@ -120,6 +141,13 @@ __all__ = [
     "event_study_repo",
     "statistical_repo",
     "label_repo",
+    "feature_repo",
+    "fusion_repo",
+    "feature_selection_repo",
+    "anticipation_repo",
+    "prediction_repo",
+    "decision_repo",
+    "report_repo",
     # Catalog
     "CatalogManager",
     "DatasetEntry",

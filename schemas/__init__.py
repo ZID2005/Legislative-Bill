@@ -38,8 +38,16 @@ prediction  : Model prediction output for a (bill, company) pair
 
 from schemas.bill import Bill, BillStatus, BillHouse
 from schemas.company import Company, MarketCapCategory
-from schemas.market import PriceRecord
-from schemas.prediction import Prediction, ImpactLabel
+from schemas.prediction import (
+    Prediction,
+    ImpactLabel,
+    PredictionRecord,
+    PredictionValidationReport,
+    DirectionPrediction,
+    ImpactStrengthPrediction,
+    ConfidencePrediction,
+    make_prediction_id,
+)
 from schemas.knowledge_record import KnowledgeRecord
 from schemas.mapping_record import BillCompanyMapping
 from schemas.market_model import MarketModelRecord
@@ -47,6 +55,28 @@ from schemas.event_study import EventStudyRecord
 from schemas.statistical_result import StatisticalResult
 from schemas.label_record import LabelRecord, DirectionLabel, ImpactStrength, ConfidenceLabel
 from schemas.validation_report import LabelValidationReport
+from schemas.feature_record import FeatureRecord, make_record_id
+from schemas.feature_validation_report import FeatureValidationReport
+from schemas.fusion_validation_report import FusionValidationReport
+from schemas.feature_selection_validation_report import FeatureSelectionValidationReport
+from schemas.anticipation import (
+    AnticipationClassification,
+    AnticipationScore,
+    AnticipationValidationReport,
+    BillAnticipationRecord,
+    EvidenceConfidence,
+    EvidenceType,
+    InformationEvidence,
+    PreEventWindowStats,
+)
+from schemas.decision import (
+    DecisionSupportRecord,
+    DecisionValidationReport,
+    PricingInRisk,
+    RiskCategory,
+    StakeholderPerspective,
+    make_decision_id,
+)
 
 __all__ = [
     # Bill
@@ -61,6 +91,12 @@ __all__ = [
     # Prediction
     "Prediction",
     "ImpactLabel",
+    "PredictionRecord",
+    "PredictionValidationReport",
+    "DirectionPrediction",
+    "ImpactStrengthPrediction",
+    "ConfidencePrediction",
+    "make_prediction_id",
     # Knowledge Record
     "KnowledgeRecord",
     # Mapping Record
@@ -78,4 +114,27 @@ __all__ = [
     "ConfidenceLabel",
     # Validation Report
     "LabelValidationReport",
+    # Feature Engineering (Task 5.1)
+    "FeatureRecord",
+    "make_record_id",
+    "FeatureValidationReport",
+    "FusionValidationReport",
+    "FeatureSelectionValidationReport",
+    # Anticipation Bias (Task 6.5)
+    "PreEventWindowStats",
+    "InformationEvidence",
+    "EvidenceType",
+    "EvidenceConfidence",
+    "AnticipationClassification",
+    "AnticipationScore",
+    "BillAnticipationRecord",
+    "AnticipationValidationReport",
+    # Decision Support (Task 7.2)
+    "DecisionSupportRecord",
+    "DecisionValidationReport",
+    "RiskCategory",
+    "PricingInRisk",
+    "StakeholderPerspective",
+    "make_decision_id",
 ]
+

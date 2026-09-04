@@ -39,3 +39,8 @@
 *.dll binary
 *.pyd binary
 *.so binary
+*.parquet binary
+*.feather binary
+*.arrow binary
+*.safetensors binary
+*.onnx binary

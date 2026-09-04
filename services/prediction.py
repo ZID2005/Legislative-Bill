@@ -1,70 +1,99 @@
 """
 services/prediction.py
 ======================
-Orchestration service for running model predictions and impact assessments.
+Service layer orchestrator for Task 7.1 — Final Prediction & Decision Engine.
 """
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
-from typing import Optional
+from typing import Any, Optional
 
 from config.logging_config import get_logger
-from schemas.prediction import ImpactLabel, Prediction, CompanyImpact
-from storage.bill_repository import BillRepository
+from prediction.engine import FinalPredictionEngine
+from schemas.prediction import PredictionRecord, PredictionValidationReport
+from storage.prediction_repository import PredictionRepository
 
 logger = get_logger(__name__)
 
 
 class PredictionService:
     """
-    Coordinates feature generation and runs model inference to predict bill market impact.
+    Service coordinating execution of forward-looking predictions and decision-support generation.
     """
 
-    def __init__(self, bill_repository: Optional[BillRepository] = None) -> None:
-        """
-        Initialize the prediction service.
-        """
-        self.bill_repo = bill_repository or BillRepository()
+    def __init__(
+        self,
+        engine: Optional[FinalPredictionEngine] = None,
+        repository: Optional[PredictionRepository] = None,
+    ) -> None:
+        self.engine = engine or FinalPredictionEngine()
+        self.repository = repository or PredictionRepository()
 
-    def predict_impact(self, bill_id: str, company_isin: str) -> Prediction:
+    def generate_predictions(
+        self,
+        bill_id: Optional[str] = None,
+        company_isin: Optional[str] = None,
+        year: Optional[int] = None,
+        event_window: Optional[str] = None,
+        force_refresh: bool = False,
+        mode: str = "structured",
+    ) -> dict[str, Any]:
         """
-        Predict impact of a legislative bill on a specific listed company.
+        Execute prediction pipeline across matching bills and companies.
 
         Parameters
         ----------
-        bill_id : str
-            Unique bill ID slug.
-        company_isin : str
-            Target company ISIN code.
+        bill_id : str, optional
+        company_isin : str, optional
+        year : int, optional
+        event_window : str, optional
+        force_refresh : bool
+        mode : str
 
         Returns
         -------
-        Prediction
-            canonical Prediction schema object.
+        dict[str, Any]
+            Execution statistics and prediction records.
         """
         logger.info(
-            "PredictionService: predicting impact for bill=%s | company=%s", bill_id, company_isin
+            "PredictionService: generating predictions | bill=%s isin=%s year=%s window=%s force=%s mode=%s",
+            bill_id,
+            company_isin,
+            year,
+            event_window,
+            force_refresh,
+            mode,
         )
-        bill = self.bill_repo.get(bill_id)
-        if not bill:
-            raise ValueError(f"Bill not found in repository: {bill_id}")
+        return self.engine.run_all(
+            bill_id_filter=bill_id,
+            company_isin_filter=company_isin,
+            year_filter=year,
+            event_window_filter=event_window,
+            force_refresh=force_refresh,
+            feature_mode=mode,
+        )
 
-        company_impact = CompanyImpact(
-            isin=company_isin,
-            ticker="MOCK",
-            company_name="Mock Company",
-            sector="Mock Sector",
-            impact_label=ImpactLabel.NEUTRAL,
-            confidence=0.5,
-            car_predicted=0.0,
-            top_features=["bill_length"],
+    def predict_observation(
+        self,
+        feature_dict: dict[str, Any],
+        force_refresh: bool = False,
+    ) -> tuple[Optional[PredictionRecord], Optional[PredictionValidationReport]]:
+        """
+        Generate prediction for a single feature dictionary observation.
+        """
+        return self.engine.predict_observation(
+            feature_dict=feature_dict,
+            force_refresh=force_refresh,
         )
 
-        return Prediction(
-            bill_id=bill_id,
-            model_version="1.0-stub",
-            predicted_at=datetime.now(tz=timezone.utc),
-            companies=[company_impact],
-            overall_impact=ImpactLabel.NEUTRAL,
-        )
+    def get_predictions_for_bill(self, bill_id: str) -> list[PredictionRecord]:
+        """Retrieve all persisted predictions for a bill."""
+        return self.repository.get_by_bill(bill_id)
+
+    def get_predictions_for_company(self, company_isin: str) -> list[PredictionRecord]:
+        """Retrieve all persisted predictions for a company."""
+        return self.repository.get_by_company(company_isin)
+
+    def get_all_predictions(self) -> list[PredictionRecord]:
+        """Retrieve all stored predictions."""
+        return self.repository.load_all()

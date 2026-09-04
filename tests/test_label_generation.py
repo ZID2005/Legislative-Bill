@@ -819,3 +819,161 @@ class TestLabelConfig:
         result = gen.generate(stat)
         assert isinstance(result, LabelRecord)
         assert result.direction == DirectionLabel.NEUTRAL
+
+
+# ===========================================================================
+# 14. LabelGenerationService
+# ===========================================================================
+
+
+class TestLabelGenerationService:
+    """Tests for LabelGenerationService orchestration."""
+
+    @pytest.fixture
+    def service_setup(self, tmp_path: Path) -> tuple[StatisticalRepository, LabelRepository, LabelGenerationService]:
+        from storage.statistical_repository import StatisticalRepository
+        from services.label_service import LabelGenerationService
+
+        stat_dir = tmp_path / "stats"
+        stat_dir.mkdir()
+        stat_repo = StatisticalRepository(result_dir=stat_dir)
+
+        label_dir = tmp_path / "labels"
+        label_dir.mkdir()
+        label_repo = LabelRepository(label_dir=label_dir)
+
+        service = LabelGenerationService(
+            stat_repo=stat_repo,
+            label_repo=label_repo,
+            label_config=_CFG,
+        )
+        return stat_repo, label_repo, service
+
+    def test_default_instantiation(self) -> None:
+        from services.label_service import LabelGenerationService
+        service = LabelGenerationService()
+        assert service._stat_repo is not None
+        assert service._label_repo is not None
+
+    def test_normal_generation(self, service_setup) -> None:
+        stat_repo, label_repo, service = service_setup
+        stat = _make_stat_result(bill_id="bill-1", company="INE001A01036", event_window="[-5,+5]", car=0.03)
+        stat_repo.save(stat)
+
+        summary = service.run()
+        assert summary["processed"] == 1
+        assert summary["generated"] == 1
+        assert summary["skipped"] == 0
+        assert summary["rejected"] == 0
+        assert len(summary["rejections"]) == 0
+
+        assert label_repo.count() == 1
+        record = label_repo.get("bill-1", "INE001A01036", "[-5,+5]")
+        assert record is not None
+        assert record.car == 0.03
+
+    def test_incremental_execution(self, service_setup) -> None:
+        stat_repo, label_repo, service = service_setup
+        stat = _make_stat_result(bill_id="bill-1", company="INE001A01036", event_window="[-5,+5]", car=0.03)
+        stat_repo.save(stat)
+
+        # First run: generates
+        summary1 = service.run(force_refresh=False)
+        assert summary1["processed"] == 1
+        assert summary1["generated"] == 1
+        assert summary1["skipped"] == 0
+        assert summary1["rejected"] == 0
+
+        # Second run: skips
+        summary2 = service.run(force_refresh=False)
+        assert summary2["processed"] == 1
+        assert summary2["generated"] == 0
+        assert summary2["skipped"] == 1
+        assert summary2["rejected"] == 0
+
+    def test_force_refresh(self, service_setup) -> None:
+        stat_repo, label_repo, service = service_setup
+        stat = _make_stat_result(bill_id="bill-1", company="INE001A01036", event_window="[-5,+5]", car=0.03)
+        stat_repo.save(stat)
+
+        # First run: generates
+        summary1 = service.run(force_refresh=False)
+        assert summary1["generated"] == 1
+
+        # Second run: generates again (overwrites) due to force_refresh=True
+        summary2 = service.run(force_refresh=True)
+        assert summary2["processed"] == 1
+        assert summary2["generated"] == 1
+        assert summary2["skipped"] == 0
+        assert summary2["rejected"] == 0
+
+    def test_repository_filtering(self, service_setup) -> None:
+        stat_repo, label_repo, service = service_setup
+        stat1 = _make_stat_result(bill_id="test-bill-2024", company="INE001A01036", event_window="[-5,+5]", car=0.03)
+        stat2 = _make_stat_result(bill_id="other-bill-2025", company="INE002A01018", event_window="[0,+10]", car=0.04)
+        stat_repo.save(stat1)
+        stat_repo.save(stat2)
+
+        # Filter by bill_id
+        sum_bill = service.run(bill_id="test-bill-2024", force_refresh=True)
+        assert sum_bill["processed"] == 1
+        assert sum_bill["generated"] == 1
+
+        # Filter by event_window
+        sum_win = service.run(event_window="[0,+10]", force_refresh=True)
+        assert sum_win["processed"] == 1
+        assert sum_win["generated"] == 1
+
+        # Filter by year
+        sum_year = service.run(year=2025, force_refresh=True)
+        assert sum_year["processed"] == 1
+        assert sum_year["generated"] == 1
+
+    def test_validation_rejection(self, service_setup) -> None:
+        stat_repo, label_repo, service = service_setup
+        # NaN CAR causes validation rejection
+        stat = _make_stat_result(bill_id="bill-1", company="INE001A01036", event_window="[-5,+5]", car=float("nan"))
+        stat_repo.save(stat)
+
+        summary = service.run()
+        assert summary["processed"] == 1
+        assert summary["generated"] == 0
+        assert summary["skipped"] == 0
+        assert summary["rejected"] == 1
+        assert len(summary["rejections"]) == 1
+        assert "CAR is not a finite number" in summary["rejections"][0].rejection_reason
+
+    def test_none_stat_result(self, service_setup) -> None:
+        stat_repo, label_repo, service = service_setup
+        # We manually inject a None into the results by patching the stat_repo.get_all method
+        with patch.object(stat_repo, "get_all", return_value=[None]):
+            summary = service.run()
+            assert summary["processed"] == 1
+            assert summary["generated"] == 0
+            assert summary["skipped"] == 0
+            assert summary["rejected"] == 1
+            assert len(summary["rejections"]) == 1
+            assert "StatisticalResult is None" in summary["rejections"][0].rejection_reason
+
+    def test_exact_bill_and_company_lookup(self, service_setup) -> None:
+        stat_repo, label_repo, service = service_setup
+        # Let's verify that get_by_company and get_by_bill are deterministic
+        # Create records where one is a substring prefix of another
+        stat1 = _make_stat_result(bill_id="bill-1", company="INE001A01036", event_window="[-5,+5]")
+        stat2 = _make_stat_result(bill_id="bill-10", company="INE001A0103", event_window="[-5,+5]")
+        stat_repo.save(stat1)
+        stat_repo.save(stat2)
+
+        # Run service to generate and save labels
+        service.run(force_refresh=True)
+        assert label_repo.count() == 2
+
+        # Verify get_by_company returns exactly the record matching ISIN
+        by_company = label_repo.get_by_company("INE001A01036")
+        assert len(by_company) == 1
+        assert by_company[0].company == "INE001A01036"
+
+        # Verify get_by_bill returns exactly the record matching bill_id
+        by_bill = label_repo.get_by_bill("bill-1")
+        assert len(by_bill) == 1
+        assert by_bill[0].bill_id == "bill-1"

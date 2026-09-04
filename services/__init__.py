@@ -17,10 +17,13 @@ from services.event_study_service import EventStudyService
 from services.market_model_service import MarketModelService
 from services.statistical_service import StatisticalSignificanceService
 from services.label_service import LabelGenerationService
+from services.anticipation_service import AnticipationService
+from services.decision_service import DecisionSupportService
 
 __all__ = [
     "IngestionService",
     "PredictionService",
+    "DecisionSupportService",
     "ExplanationService",
     "LLMProvider",
     "KnowledgeService",
@@ -29,4 +32,5 @@ __all__ = [
     "MarketModelService",
     "StatisticalSignificanceService",
     "LabelGenerationService",
+    "AnticipationService",
 ]

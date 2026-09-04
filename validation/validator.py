@@ -838,3 +838,22 @@ class Validator:
             rec_report = self.validate_mapping_record(rec, company_repo)
             report.merge(rec_report)
         return report
+
+    def validate_backtest_run(
+        self,
+        records: list[Any],
+        feature_columns_used: list[str],
+        training_cutoff_map: Optional[dict[str, str]] = None,
+    ) -> tuple[ValidationReport, Any]:
+        """
+        Validate a backtest run using BacktestValidator.
+        """
+        from validation.backtest_validator import BacktestValidator
+
+        validator = BacktestValidator()
+        return validator.validate_backtest_execution(
+            records=records,
+            feature_columns_used=feature_columns_used,
+            training_cutoff_map=training_cutoff_map,
+        )
+

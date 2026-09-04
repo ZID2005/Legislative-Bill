@@ -127,25 +127,53 @@ class LabelGenerationService:
         skip_fn = None if force_refresh else self._label_repo.exists
 
         # --- 3. Delegate to LabelGenerator ---------------------------------
-        valid_labels, rejected_reports = self._generator.generate_many(
-            stat_results=stat_results,
-            skip_if_exists=skip_fn,
-        )
+        valid_labels = []
+        rejected_reports = []
+        n_processed = 0
+        n_skipped = 0
+        n_generated = 0
+        n_rejected = 0
+
+        for stat_result in stat_results:
+            n_processed += 1
+            if stat_result is None:
+                outcome = self._generator.generate(stat_result)
+                if isinstance(outcome, LabelRecord):
+                    valid_labels.append(outcome)
+                    n_generated += 1
+                else:
+                    rejected_reports.append(outcome)
+                    n_rejected += 1
+                continue
+
+            if skip_fn is not None and skip_fn(
+                stat_result.bill_id, stat_result.company, stat_result.event_window
+            ):
+                n_skipped += 1
+                logger.debug(
+                    "Skipping existing label: bill=%s company=%s window=%s",
+                    stat_result.bill_id,
+                    stat_result.company,
+                    stat_result.event_window,
+                )
+                continue
+
+            outcome = self._generator.generate(stat_result)
+            if isinstance(outcome, LabelRecord):
+                valid_labels.append(outcome)
+                n_generated += 1
+            else:
+                rejected_reports.append(outcome)
+                n_rejected += 1
 
         # --- 4. Persist valid labels ----------------------------------------
         self._label_repo.save_many(valid_labels)
 
         # --- 5. Compute summary --------------------------------------------
-        n_processed = len(stat_results)
-        n_generated = len(valid_labels)
-        n_rejected = len(rejected_reports)
-        # Skipped = processed - generated - rejected (records that existed)
-        n_skipped = n_processed - n_generated - n_rejected
-
         summary = {
             "processed": n_processed,
             "generated": n_generated,
-            "skipped": max(n_skipped, 0),
+            "skipped": n_skipped,
             "rejected": n_rejected,
             "rejections": rejected_reports,
         }
@@ -155,7 +183,7 @@ class LabelGenerationService:
             "skipped=%d rejected=%d",
             n_processed,
             n_generated,
-            max(n_skipped, 0),
+            n_skipped,
             n_rejected,
         )
 

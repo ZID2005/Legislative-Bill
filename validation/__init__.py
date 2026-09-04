@@ -14,6 +14,8 @@ from validation.validator import Validator, ValidationReport
 from validation.event_study_validator import EventStudyValidator
 from validation.market_model_validator import MarketModelValidator
 from validation.statistical_validator import StatisticalValidator
+from validation.backtest_validator import BacktestValidator
+from validation.anticipation_validator import AnticipationValidator
 
 __all__ = [
     "Validator",
@@ -21,4 +23,7 @@ __all__ = [
     "EventStudyValidator",
     "MarketModelValidator",
     "StatisticalValidator",
+    "BacktestValidator",
+    "AnticipationValidator",
 ]
+

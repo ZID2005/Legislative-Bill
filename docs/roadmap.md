@@ -12,50 +12,41 @@
 ### Phase 3: Data Quality
 - [x] **Task 3** — Validation layer (pydantic schemas, data quality checks)
 
-### Phase 4: NLP Intelligence
-- [ ] **Task 4** — Legal text NLP pipeline
-  - PDF text extraction (pdfplumber)
-  - Sentence segmentation
-  - Bill clause extraction
-  - Zero-shot sector classification (Legal-RoBERTa)
-  - Bill summarisation (GPT-4 / open-source LLM)
+### Phase 4: NLP Intelligence & Text Processing
+- [x] **Task 4.1** — Document downloading & management
+- [x] **Task 4.2** — Text extraction & corpus construction
 
-### Phase 5: Domain Mapping
-- [x] **Task 5** — Sector and company mapping
-  - Keyword-based mapping (Phase A)
-  - Embedding-based mapping (Phase B)
+### Phase 5: Knowledge Layer & Domain Mapping
+- [x] **Task 5.1** — Legislative Knowledge Layer Engine
+- [x] **Task 5.2** — Company Intelligence & Master Dataset
+- [x] **Task 5.3** — Bill to Company Mapping Engine
 
-### Phase 6: Label Generation
-- [/] **Task 6** — Event-study labels
-  - [x] Market model estimation
-  - [x] CAR computation
-  - [ ] Statistical significance testing
+### Phase 6: Market Modeling & Label Generation
+- [x] **Task 6.1** — Market Data Pipeline (OHLCV & Index)
+- [x] **Task 6.2** — Market Model Estimation Engine
+- [x] **Task 6.3** — Event Study Engine
+- [x] **Task 6.4** — Statistical Significance Engine
+- [x] **Task 6.5** — Label Generation Engine
 
-### Phase 7: Feature Engineering
-- [ ] **Task 7** — Feature matrix construction
-  - Text features (FinBERT embeddings)
-  - Bill metadata features
-  - Market context features
-  - Company/sector features
+### Phase 7: Feature Engineering & Fusion
+- [x] **Task 7.1** — Feature Engineering Engine
+- [x] **Task 7.2** — NLP Text Embedding Engine (FinBERT & Legal-RoBERTa)
+- [x] **Task 7.3** — Feature Fusion Engine
+- [x] **Task 7.4** — Feature Selection Engine
 
-### Phase 8: Modelling
-- [ ] **Task 8** — Model training & evaluation
-  - Baseline: Logistic Regression, Random Forest
-  - Primary: LightGBM + Optuna
-  - Advanced: FinBERT fine-tune
+### Phase 8: Machine Learning & Modeling
+- [x] **Task 8.1** — ML Training Engine (Task 6.1)
+- [x] **Task 8.2** — Model Evaluation Engine (Task 6.2)
+- [x] **Task 8.3** — Explainability Engine (SHAP) (Task 6.3)
+- [x] **Task 8.4** — Historical Backtesting Engine (Task 6.4)
+- [x] **Task 6.5** — Anticipation Bias / Pre-Event Information Analysis Engine
+- [x] **Task 7.1** — Final Prediction & Decision Engine (Forward-Looking Multi-Target Inference & Decision Support)
+- [x] **Task 7.2** — Decision Support & Risk Scoring Engine (Multi-Stakeholder Qualitative Perspectives & Composite Risk Scoring)
+- [x] **Task 7.3** — Stakeholder Reporting & Presentation Layer (Investor / Business / Public structured reports, bill/company aggregation, JSON/Markdown/CSV output)
+- [x] **Task 7.4** — Interactive Decision-Support Dashboard (Streamlit & Plotly Multi-Lens Knowledge Interface)
 
-### Phase 9: Inference API
-- [ ] **Task 9** — Prediction API (FastAPI)
-  - `/predict` endpoint
-  - SHAP explanations
-  - Response caching
-
-### Phase 10: Dashboard
-- [ ] **Task 10** — Knowledge platform UI
-  - Bill explorer
-  - Historical impact view
-  - AI prediction view
-  - Knowledge centre
+### Phase 9: Real-Time Inference API (Future Scope)
+- [ ] **Task 9** — Real-Time Prediction API (FastAPI)
 
 ---
 
@@ -76,5 +67,5 @@
 
 - White-label API for institutional clients
 - Integration with Bloomberg / Reuters data feeds
-- Backtesting framework for investment strategies
+- Automated portfolio rebalancing on legislative signals
 - Regulatory compliance monitoring

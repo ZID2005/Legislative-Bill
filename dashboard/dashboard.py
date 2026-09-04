@@ -1,57 +1,63 @@
 """
 dashboard/dashboard.py
 ======================
-Interactive knowledge dashboard — **Task 10 placeholder**.
+Interactive knowledge and decision-support dashboard — Task 7.4.
 
-Future Responsibility
----------------------
-This module will implement the end-user-facing web dashboard that serves as
-the primary interface for the Legislative Intelligence platform.
-
-Planned features:
-
-1.  **Bill explorer**
-    *  Browse all ingested Central Government bills
-    *  Filter by year, ministry, sector, status
-    *  Full-text search across bill titles and summaries
-    *  View AI-generated bill summaries and key provisions
-
-2.  **Market impact view (historical)**
-    *  For a selected bill, display the historical market reaction
-    *  Sector-level heatmap of cumulative abnormal returns
-    *  Company-level detail view with event charts
-    *  Statistical significance indicators
-
-3.  **AI prediction view (new bills)**
-    *  For newly introduced bills, display model predictions
-    *  Sector and company impact rankings
-    *  Confidence intervals and SHAP-based explanations
-
-4.  **Knowledge centre**
-    *  Timeline of major legislative events and market reactions
-    *  Educational content on how bills affect markets
-    *  Glossary of legislative and financial terms
-
-Technology Stack Options (to be finalised in Task 10)
-------------------------------------------------------
-*  **Streamlit** — rapid prototyping, minimal front-end code
-*  **Dash (Plotly)** — richer interactivity
-*  **FastAPI + React** — full-stack production-grade option
-
-Dependencies (to be finalised in Task 10)
-------------------------------------------
-*  streamlit  OR  dash  OR  fastapi + react
-*  plotly
-*  pandas
+Provides Python API entry point for launching the Streamlit application.
 """
 
-# TODO (Task 10): Implement the dashboard application.
+from __future__ import annotations
+
+import subprocess
+import sys
+from pathlib import Path
+
+from config.logging_config import get_logger
+
+logger = get_logger(__name__)
+
+_DASHBOARD_APP_PATH = Path(__file__).resolve().parent / "app.py"
 
 
-def run_dashboard() -> None:
+def run_dashboard(port: int = 8501, host: str = "localhost") -> int:
     """
-    Entry point for the dashboard application.
+    Launch the Streamlit interactive dashboard application.
 
-    Full implementation planned for Task 10.
+    Parameters
+    ----------
+    port : int, optional
+        Port to serve the dashboard on (default: 8501).
+    host : str, optional
+        Host address (default: "localhost").
+
+    Returns
+    -------
+    int
+        Process return code.
     """
-    raise NotImplementedError("Dashboard is not yet implemented.  See Task 10.")
+    logger.info("Starting Legislative Intelligence Dashboard on %s:%d...", host, port)
+    app_path = str(_DASHBOARD_APP_PATH)
+
+    cmd = [
+        sys.executable,
+        "-m",
+        "streamlit",
+        "run",
+        app_path,
+        "--server.port",
+        str(port),
+        "--server.address",
+        host,
+        "--browser.gatherUsageStats",
+        "false",
+    ]
+
+    try:
+        proc = subprocess.run(cmd, check=False)
+        return proc.returncode
+    except KeyboardInterrupt:
+        logger.info("Dashboard stopped by user.")
+        return 0
+    except Exception as exc:
+        logger.error("Failed to start dashboard: %s", exc)
+        return 1

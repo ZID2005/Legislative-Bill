@@ -144,6 +144,35 @@ class Settings:
     STAT_RESULTS_DIR: Path = _env_path("STAT_RESULTS_DIR", str(_PROJECT_ROOT / "data" / "statistical_results"))
 
     # ------------------------------------------------------------------
+    # Feature Engineering (Task 5.1)
+    # ------------------------------------------------------------------
+    # Root directory for feature dataset artefacts (Parquet + CSV)
+    FEATURES_DIR: Path = _env_path("FEATURES_DIR", str(_PROJECT_ROOT / "data" / "features"))
+    # Filename (without extension) for the master feature dataset
+    FEATURE_DATASET_NAME: str = _env("FEATURE_DATASET_NAME", "master_feature_dataset")
+    # Root directory for fused datasets (Task 5.3)
+    FUSED_DIR: Path = _env_path("FUSED_DIR", str(_PROJECT_ROOT / "data" / "fused"))
+
+    # ------------------------------------------------------------------
+    # NLP Embedding Engine (Task 5.2)
+    # ------------------------------------------------------------------
+    EMBEDDINGS_DIR: Path = _env_path("EMBEDDINGS_DIR", str(_PROJECT_ROOT / "data" / "embeddings"))
+    DEFAULT_EMBEDDING_MODEL: str = os.getenv("DEFAULT_EMBEDDING_MODEL", "finbert")
+    DEFAULT_POOLING_STRATEGY: str = os.getenv("DEFAULT_POOLING_STRATEGY", "mean")
+
+    # Model mapping from user-friendly name to Hugging Face model IDs
+    MODEL_MAPPING: dict[str, str] = {
+        "finbert": "ProsusAI/finbert",
+        "legal-roberta": "lexlms/legal-roberta-base"
+    }
+
+    # Model dimensions
+    EMBEDDING_DIMENSIONS: dict[str, int] = {
+        "finbert": 768,
+        "legal-roberta": 768
+    }
+
+    # ------------------------------------------------------------------
     # Logging
     # ------------------------------------------------------------------
     LOG_LEVEL: str = _env("LOG_LEVEL", "INFO").upper()
@@ -189,6 +218,47 @@ class Settings:
     MODEL_DIR: Path = _env_path("MODEL_DIR", str(_PROJECT_ROOT / "models" / "artefacts"))
     RANDOM_SEED: int = _env_int("RANDOM_SEED", 42)
     TEST_SIZE: float = float(_env("TEST_SIZE", "0.2"))
+
+    # ------------------------------------------------------------------
+    # ML Training Engine (Task 6.1)
+    # ------------------------------------------------------------------
+    # Root directory for ML-ready datasets (training + research splits)
+    ML_DATA_DIR: Path = _env_path("ML_DATA_DIR", str(_PROJECT_ROOT / "data" / "ml"))
+    # Root directory for trained model artefacts per target
+    ML_MODELS_DIR: Path = _env_path("ML_MODELS_DIR", str(_PROJECT_ROOT / "models"))
+    # Feature-selection mode to load as input to training
+    ML_DEFAULT_MODE: str = _env("ML_DEFAULT_MODE", "structured")
+    # Number of chronological folds for TimeSeriesSplit
+    ML_N_SPLITS: int = _env_int("ML_N_SPLITS", 5)
+    # Random seed for reproducibility
+    ML_RANDOM_SEED: int = _env_int("ML_RANDOM_SEED", 42)
+    # Root directory for ML model evaluation reports (Task 6.2)
+    ML_EVAL_DIR: Path = _env_path("ML_EVAL_DIR", str(_PROJECT_ROOT / "evaluation"))
+
+    # ------------------------------------------------------------------
+    # Explainability Engine (Task 6.3)
+    # ------------------------------------------------------------------
+    # Root directory for SHAP explanations, feature importance, and plots
+    EXPLAINABILITY_DIR: Path = _env_path(
+        "EXPLAINABILITY_DIR", str(_PROJECT_ROOT / "explainability")
+    )
+
+    # ------------------------------------------------------------------
+    # Historical Backtesting Engine (Task 6.4)
+    # ------------------------------------------------------------------
+    # Root directory for backtest run outputs, metrics, and plots
+    BACKTEST_DIR: Path = _env_path(
+        "BACKTEST_DIR", str(_PROJECT_ROOT / "data" / "backtests")
+    )
+    DEFAULT_TRANSACTION_COST: float = float(
+        os.getenv("DEFAULT_TRANSACTION_COST", "0.0010")
+    )  # 10 bps
+    DEFAULT_BROKERAGE: float = float(
+        os.getenv("DEFAULT_BROKERAGE", "0.0005")
+    )  # 5 bps
+    DEFAULT_SLIPPAGE: float = float(
+        os.getenv("DEFAULT_SLIPPAGE", "0.0005")
+    )  # 5 bps
 
     # ------------------------------------------------------------------
     # Statistical Significance Settings
@@ -237,6 +307,124 @@ class Settings:
         os.getenv("LABEL_CONFIDENCE_MEDIUM_PVALUE", "0.05")
     )
 
+    # ------------------------------------------------------------------
+    # Anticipation Bias / Pre-Event Analysis Engine (Task 6.5)
+    # ------------------------------------------------------------------
+    # Root directory for anticipation scores, statistics, and validation reports
+    ANTICIPATION_DIR: Path = _env_path(
+        "ANTICIPATION_DIR", str(_PROJECT_ROOT / "data" / "anticipation")
+    )
+    # Pre-event analysis windows (trading-day offsets)
+    ANTICIPATION_WINDOWS: list[str] = [
+        "[-30,-21]",
+        "[-20,-11]",
+        "[-10,-6]",
+        "[-5,-3]",
+        "[-2,-1]",
+    ]
+    ANTICIPATION_CUMULATIVE_WINDOW: str = "[-30,-1]"
+
+    # Configurable detection thresholds
+    ANTICIPATION_Z_THRESHOLD: float = float(
+        os.getenv("ANTICIPATION_Z_THRESHOLD", "1.96")
+    )
+    ANTICIPATION_CAR_MAGNITUDE_THRESHOLD: float = float(
+        os.getenv("ANTICIPATION_CAR_MAGNITUDE_THRESHOLD", "0.02")
+    )  # 2.0%
+    ANTICIPATION_SUSTAINED_DIRECTION_RATIO: float = float(
+        os.getenv("ANTICIPATION_SUSTAINED_DIRECTION_RATIO", "0.70")
+    )  # 70%
+    ANTICIPATION_IMMEDIATE_CAR_THRESHOLD: float = float(
+        os.getenv("ANTICIPATION_IMMEDIATE_CAR_THRESHOLD", "0.015")
+    )  # 1.5%
+    ANTICIPATION_FLAG_THRESHOLD: float = float(
+        os.getenv("ANTICIPATION_FLAG_THRESHOLD", "0.50")
+    )
+
+    # Classification thresholds
+    ANTICIPATION_STRONG_THRESHOLD: float = float(
+        os.getenv("ANTICIPATION_STRONG_THRESHOLD", "0.75")
+    )
+    ANTICIPATION_MODERATE_THRESHOLD: float = float(
+        os.getenv("ANTICIPATION_MODERATE_THRESHOLD", "0.50")
+    )
+    ANTICIPATION_WEAK_THRESHOLD: float = float(
+        os.getenv("ANTICIPATION_WEAK_THRESHOLD", "0.25")
+    )
+
+    # Observation thresholds
+    ANTICIPATION_MIN_OBSERVATIONS_PER_WINDOW: int = _env_int(
+        "ANTICIPATION_MIN_OBSERVATIONS_PER_WINDOW", 2
+    )
+    ANTICIPATION_MIN_CUMULATIVE_OBSERVATIONS: int = _env_int(
+        "ANTICIPATION_MIN_CUMULATIVE_OBSERVATIONS", 15
+    )
+
+    # ------------------------------------------------------------------
+    # Final Prediction & Decision Engine (Task 7.1)
+    # ------------------------------------------------------------------
+    PREDICTIONS_DIR: Path = _env_path(
+        "PREDICTIONS_DIR", str(_PROJECT_ROOT / "data" / "predictions")
+    )
+    PREDICTION_DEFAULT_EVENT_WINDOW: str = os.getenv(
+        "PREDICTION_DEFAULT_EVENT_WINDOW", "[-20,+20]"
+    )
+
+    # ------------------------------------------------------------------
+    # Decision Support & Risk Scoring Engine (Task 7.2)
+    # ------------------------------------------------------------------
+    DECISION_SUPPORT_DIR: Path = _env_path(
+        "DECISION_SUPPORT_DIR", str(_PROJECT_ROOT / "data" / "decision_support")
+    )
+    DECISION_VERSION: str = os.getenv("DECISION_VERSION", "v1.0")
+
+    # ------------------------------------------------------------------
+    # Stakeholder Reporting Engine (Task 7.3)
+    # ------------------------------------------------------------------
+    REPORTS_DIR: Path = _env_path(
+        "REPORTS_DIR", str(_PROJECT_ROOT / "data" / "reports")
+    )
+    REPORT_VERSION: str = os.getenv("REPORT_VERSION", "v1.0")
+
+    # Impact scoring weights & parameters
+    DECISION_WEIGHT_DIRECTION_POLARITY: float = float(
+        os.getenv("DECISION_WEIGHT_DIRECTION_POLARITY", "0.50")
+    )
+    DECISION_WEIGHT_IMPACT_STRENGTH: float = float(
+        os.getenv("DECISION_WEIGHT_IMPACT_STRENGTH", "0.50")
+    )
+    DECISION_ANTICIPATION_DISCOUNT_FACTOR: float = float(
+        os.getenv("DECISION_ANTICIPATION_DISCOUNT_FACTOR", "0.30")
+    )
+
+    # Risk scoring composite component weights (sum to 1.0)
+    DECISION_RISK_UNCERTAINTY_WEIGHT: float = float(
+        os.getenv("DECISION_RISK_UNCERTAINTY_WEIGHT", "0.30")
+    )
+    DECISION_RISK_ANTICIPATION_WEIGHT: float = float(
+        os.getenv("DECISION_RISK_ANTICIPATION_WEIGHT", "0.25")
+    )
+    DECISION_RISK_TAIL_MAGNITUDE_WEIGHT: float = float(
+        os.getenv("DECISION_RISK_TAIL_MAGNITUDE_WEIGHT", "0.25")
+    )
+    DECISION_RISK_DIRECTIONAL_CONFLICT_WEIGHT: float = float(
+        os.getenv("DECISION_RISK_DIRECTIONAL_CONFLICT_WEIGHT", "0.20")
+    )
+
+    # Risk category threshold boundaries
+    RISK_THRESHOLD_VERY_LOW: float = float(
+        os.getenv("RISK_THRESHOLD_VERY_LOW", "0.20")
+    )
+    RISK_THRESHOLD_LOW: float = float(
+        os.getenv("RISK_THRESHOLD_LOW", "0.40")
+    )
+    RISK_THRESHOLD_MODERATE: float = float(
+        os.getenv("RISK_THRESHOLD_MODERATE", "0.60")
+    )
+    RISK_THRESHOLD_HIGH: float = float(
+        os.getenv("RISK_THRESHOLD_HIGH", "0.80")
+    )
+
     def ensure_directories(self) -> None:
         """Create all required project directories if they do not already exist."""
         dirs = [
@@ -251,6 +439,26 @@ class Settings:
             self.MODEL_DIR,
             self.STAT_RESULTS_DIR,
             self.LABELS_DIR,
+            self.FEATURES_DIR,
+            self.EMBEDDINGS_DIR,
+            self.FUSED_DIR,
+            # Task 6.1 — ML Training
+            self.ML_DATA_DIR,
+            self.ML_MODELS_DIR,
+            # Task 6.2 — ML Evaluation
+            self.ML_EVAL_DIR,
+            # Task 6.3 — Explainability Engine
+            self.EXPLAINABILITY_DIR,
+            # Task 6.4 — Historical Backtesting Engine
+            self.BACKTEST_DIR,
+            # Task 6.5 — Anticipation Bias Engine
+            self.ANTICIPATION_DIR,
+            # Task 7.1 — Final Prediction Engine
+            self.PREDICTIONS_DIR,
+            # Task 7.2 — Decision Support Engine
+            self.DECISION_SUPPORT_DIR,
+            # Task 7.3 — Stakeholder Reporting Engine
+            self.REPORTS_DIR,
         ]
         for directory in dirs:
             directory.mkdir(parents=True, exist_ok=True)

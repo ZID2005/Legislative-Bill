@@ -1,0 +1,896 @@
+[
+  {
+    "bill_id": "andhra-pradesh-vs-bill-11-2025",
+    "state": "Andhra Pradesh",
+    "company_id": "INE002A01018",
+    "company_name": "Reliance Industries Limited",
+    "ticker": "RELIANCE",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Labour & Employment",
+    "sub_sector": "Industrial Manufacturing Labour",
+    "business_activity": "Gas processing",
+    "state_presence": [
+      "plant",
+      "infrastructure",
+      "retail",
+      "logistics"
+    ],
+    "presence_type": "manufacturing",
+    "exposure_type": "labour",
+    "exposure_direction": "mixed",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "compliance",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Provisions amending factory working hours, overtime, and safety norms",
+        "claim": "Regulates factory shift timing, overtime compensation, and statutory compliance registers for industrial establishments.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Annual Report 2023-24 (Oil & Gas operations / Jio network disclosure)",
+        "claim": "Reliance Industries Limited operates industrial manufacturing factories in Andhra Pradesh at Kakinada, Visakhapatnam, Vijayawada.",
+        "url": "https://www.ril.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://aplegislature.org/web/aplegislature/bills",
+      "https://www.ril.com"
+    ],
+    "missing_information": [
+      "Count of industrial shopfloor workforce in Andhra Pradesh affected by revised overtime caps."
+    ],
+    "verified_at": "2026-09-09T18:30:07.281647+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "andhra-pradesh-vs-bill-11-2025",
+    "state": "Andhra Pradesh",
+    "company_id": "INE089A01023",
+    "company_name": "Dr. Reddy's Laboratories Limited",
+    "ticker": "DRREDDY",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Labour & Employment",
+    "sub_sector": "Industrial Manufacturing Labour",
+    "business_activity": "Pharmaceutical manufacturing",
+    "state_presence": [
+      "manufacturing",
+      "plant"
+    ],
+    "presence_type": "manufacturing",
+    "exposure_type": "labour",
+    "exposure_direction": "mixed",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "compliance",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Provisions amending factory working hours, overtime, and safety norms",
+        "claim": "Regulates factory shift timing, overtime compensation, and statutory compliance registers for industrial establishments.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Dr. Reddy's Annual Report 2023-24 (Manufacturing Locations)",
+        "claim": "Dr. Reddy's Laboratories Limited operates industrial manufacturing factories in Andhra Pradesh at Srikakulam, Visakhapatnam.",
+        "url": "https://www.drreddys.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://aplegislature.org/web/aplegislature/bills",
+      "https://www.drreddys.com"
+    ],
+    "missing_information": [
+      "Count of industrial shopfloor workforce in Andhra Pradesh affected by revised overtime caps."
+    ],
+    "verified_at": "2026-09-09T18:30:07.283029+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "andhra-pradesh-vs-bill-11-2025",
+    "state": "Andhra Pradesh",
+    "company_id": "INE481G01011",
+    "company_name": "Ultratech Cement Limited",
+    "ticker": "ULTRACEMCO",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Labour & Employment",
+    "sub_sector": "Industrial Manufacturing Labour",
+    "business_activity": "Cement manufacturing",
+    "state_presence": [
+      "manufacturing",
+      "plant",
+      "mining"
+    ],
+    "presence_type": "manufacturing",
+    "exposure_type": "labour",
+    "exposure_direction": "mixed",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "compliance",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Provisions amending factory working hours, overtime, and safety norms",
+        "claim": "Regulates factory shift timing, overtime compensation, and statutory compliance registers for industrial establishments.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "UltraTech Annual Report 2023-24 (Manufacturing Unit Footprint)",
+        "claim": "Ultratech Cement Limited operates industrial manufacturing factories in Andhra Pradesh at Tadipatri (Anantapur), Dachepalli (Palnadu).",
+        "url": "https://www.ultratechcement.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://aplegislature.org/web/aplegislature/bills",
+      "https://www.ultratechcement.com"
+    ],
+    "missing_information": [
+      "Count of industrial shopfloor workforce in Andhra Pradesh affected by revised overtime caps."
+    ],
+    "verified_at": "2026-09-09T18:30:07.283446+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "andhra-pradesh-vs-bill-11-2025",
+    "state": "Andhra Pradesh",
+    "company_id": "INE733E01010",
+    "company_name": "NTPC Limited",
+    "ticker": "NTPC",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Labour & Employment",
+    "sub_sector": "Industrial Manufacturing Labour",
+    "business_activity": "Thermal power generation",
+    "state_presence": [
+      "power_generation",
+      "plant"
+    ],
+    "presence_type": "manufacturing",
+    "exposure_type": "labour",
+    "exposure_direction": "mixed",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "compliance",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Provisions amending factory working hours, overtime, and safety norms",
+        "claim": "Regulates factory shift timing, overtime compensation, and statutory compliance registers for industrial establishments.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "NTPC Annual Report 2023-24",
+        "claim": "NTPC Limited operates industrial manufacturing factories in Andhra Pradesh at Simhadri (Visakhapatnam).",
+        "url": "https://www.ntpc.co.in"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://aplegislature.org/web/aplegislature/bills",
+      "https://www.ntpc.co.in"
+    ],
+    "missing_information": [
+      "Count of industrial shopfloor workforce in Andhra Pradesh affected by revised overtime caps."
+    ],
+    "verified_at": "2026-09-09T18:30:07.283746+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "andhra-pradesh-vs-bill-11-2025",
+    "state": "Andhra Pradesh",
+    "company_id": "INE245A01021",
+    "company_name": "Tata Power Company Limited",
+    "ticker": "TATAPOWER",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Labour & Employment",
+    "sub_sector": "Industrial Manufacturing Labour",
+    "business_activity": "Solar power generation",
+    "state_presence": [
+      "power_generation",
+      "plant"
+    ],
+    "presence_type": "manufacturing",
+    "exposure_type": "labour",
+    "exposure_direction": "mixed",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "compliance",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Provisions amending factory working hours, overtime, and safety norms",
+        "claim": "Regulates factory shift timing, overtime compensation, and statutory compliance registers for industrial establishments.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Tata Power Annual Report 2023-24",
+        "claim": "Tata Power Company Limited operates industrial manufacturing factories in Andhra Pradesh at Ananthapuramu.",
+        "url": "https://www.tatapower.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://aplegislature.org/web/aplegislature/bills",
+      "https://www.tatapower.com"
+    ],
+    "missing_information": [
+      "Count of industrial shopfloor workforce in Andhra Pradesh affected by revised overtime caps."
+    ],
+    "verified_at": "2026-09-09T18:30:07.284011+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "andhra-pradesh-vs-bill-11-2025",
+    "state": "Andhra Pradesh",
+    "company_id": "INE437A01024",
+    "company_name": "Apollo Hospitals Enterprise Limited",
+    "ticker": "APOLLOHOSP",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Labour & Employment",
+    "sub_sector": "Industrial Manufacturing Labour",
+    "business_activity": "Hospital services",
+    "state_presence": [
+      "plant",
+      "service_operation",
+      "retail"
+    ],
+    "presence_type": "manufacturing",
+    "exposure_type": "labour",
+    "exposure_direction": "mixed",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "compliance",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Provisions amending factory working hours, overtime, and safety norms",
+        "claim": "Regulates factory shift timing, overtime compensation, and statutory compliance registers for industrial establishments.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Apollo Hospitals Annual Report 2023-24",
+        "claim": "Apollo Hospitals Enterprise Limited operates industrial manufacturing factories in Andhra Pradesh at Visakhapatnam, Nellore, Chittoor.",
+        "url": "https://www.apollohospitals.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://aplegislature.org/web/aplegislature/bills",
+      "https://www.apollohospitals.com"
+    ],
+    "missing_information": [
+      "Count of industrial shopfloor workforce in Andhra Pradesh affected by revised overtime caps."
+    ],
+    "verified_at": "2026-09-09T18:30:07.284269+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "andhra-pradesh-vs-bill-11-2025",
+    "state": "Andhra Pradesh",
+    "company_id": "INE154A01025",
+    "company_name": "ITC Limited",
+    "ticker": "ITC",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Labour & Employment",
+    "sub_sector": "Industrial Manufacturing Labour",
+    "business_activity": "Paperboard manufacturing",
+    "state_presence": [
+      "manufacturing",
+      "plant",
+      "supplier_relationship"
+    ],
+    "presence_type": "manufacturing",
+    "exposure_type": "labour",
+    "exposure_direction": "mixed",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "compliance",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Provisions amending factory working hours, overtime, and safety norms",
+        "claim": "Regulates factory shift timing, overtime compensation, and statutory compliance registers for industrial establishments.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "ITC Annual Report 2023-24",
+        "claim": "ITC Limited operates industrial manufacturing factories in Andhra Pradesh at Chirala, Guntur, Rajahmundry.",
+        "url": "https://www.itcportal.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://aplegislature.org/web/aplegislature/bills",
+      "https://www.itcportal.com"
+    ],
+    "missing_information": [
+      "Count of industrial shopfloor workforce in Andhra Pradesh affected by revised overtime caps."
+    ],
+    "verified_at": "2026-09-09T18:30:07.284549+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "andhra-pradesh-vs-bill-11-2025",
+    "state": "Andhra Pradesh",
+    "company_id": "INE216A01030",
+    "company_name": "Britannia Industries Limited",
+    "ticker": "BRITANNIA",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Labour & Employment",
+    "sub_sector": "Industrial Manufacturing Labour",
+    "business_activity": "Bakery manufacturing",
+    "state_presence": [
+      "manufacturing",
+      "plant"
+    ],
+    "presence_type": "manufacturing",
+    "exposure_type": "labour",
+    "exposure_direction": "mixed",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "compliance",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Provisions amending factory working hours, overtime, and safety norms",
+        "claim": "Regulates factory shift timing, overtime compensation, and statutory compliance registers for industrial establishments.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Britannia Annual Report 2023-24",
+        "claim": "Britannia Industries Limited operates industrial manufacturing factories in Andhra Pradesh at Chittoor.",
+        "url": "https://www.britannia.co.in"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://aplegislature.org/web/aplegislature/bills",
+      "https://www.britannia.co.in"
+    ],
+    "missing_information": [
+      "Count of industrial shopfloor workforce in Andhra Pradesh affected by revised overtime caps."
+    ],
+    "verified_at": "2026-09-09T18:30:07.284852+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "andhra-pradesh-vs-bill-11-2025",
+    "state": "Andhra Pradesh",
+    "company_id": "INE361B01024",
+    "company_name": "Divi's Laboratories Limited",
+    "ticker": "DIVISLAB",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Labour & Employment",
+    "sub_sector": "Industrial Manufacturing Labour",
+    "business_activity": "Active pharmaceutical ingredients",
+    "state_presence": [
+      "manufacturing",
+      "plant"
+    ],
+    "presence_type": "manufacturing",
+    "exposure_type": "labour",
+    "exposure_direction": "mixed",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "compliance",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Provisions amending factory working hours, overtime, and safety norms",
+        "claim": "Regulates factory shift timing, overtime compensation, and statutory compliance registers for industrial establishments.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Divi's Laboratories Annual Report 2023-24 (Unit 2 Disclosures)",
+        "claim": "Divi's Laboratories Limited operates industrial manufacturing factories in Andhra Pradesh at Chippada (Visakhapatnam).",
+        "url": "https://www.divislabs.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://aplegislature.org/web/aplegislature/bills",
+      "https://www.divislabs.com"
+    ],
+    "missing_information": [
+      "Count of industrial shopfloor workforce in Andhra Pradesh affected by revised overtime caps."
+    ],
+    "verified_at": "2026-09-09T18:30:07.285138+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "andhra-pradesh-vs-bill-11-2025",
+    "state": "Andhra Pradesh",
+    "company_id": "INE406A01037",
+    "company_name": "Aurobindo Pharma Limited",
+    "ticker": "AUROPHARMA",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Labour & Employment",
+    "sub_sector": "Industrial Manufacturing Labour",
+    "business_activity": "Generic formulation",
+    "state_presence": [
+      "manufacturing",
+      "plant"
+    ],
+    "presence_type": "manufacturing",
+    "exposure_type": "labour",
+    "exposure_direction": "mixed",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "compliance",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Provisions amending factory working hours, overtime, and safety norms",
+        "claim": "Regulates factory shift timing, overtime compensation, and statutory compliance registers for industrial establishments.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Aurobindo Pharma Annual Report 2023-24",
+        "claim": "Aurobindo Pharma Limited operates industrial manufacturing factories in Andhra Pradesh at Pydibhimavaram (Srikakulam), Visakhapatnam.",
+        "url": "https://www.aurobindo.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://aplegislature.org/web/aplegislature/bills",
+      "https://www.aurobindo.com"
+    ],
+    "missing_information": [
+      "Count of industrial shopfloor workforce in Andhra Pradesh affected by revised overtime caps."
+    ],
+    "verified_at": "2026-09-09T18:30:07.285462+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "andhra-pradesh-vs-bill-11-2025",
+    "state": "Andhra Pradesh",
+    "company_id": "INE885A01032",
+    "company_name": "Amara Raja Energy & Mobility Limited",
+    "ticker": "ARE&M",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Labour & Employment",
+    "sub_sector": "Industrial Manufacturing Labour",
+    "business_activity": "Automotive battery manufacturing",
+    "state_presence": [
+      "headquarters",
+      "manufacturing",
+      "plant"
+    ],
+    "presence_type": "manufacturing",
+    "exposure_type": "labour",
+    "exposure_direction": "mixed",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "compliance",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Provisions amending factory working hours, overtime, and safety norms",
+        "claim": "Regulates factory shift timing, overtime compensation, and statutory compliance registers for industrial establishments.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Amara Raja Annual Report 2023-24 (Operational Plants Schedule)",
+        "claim": "Amara Raja Energy & Mobility Limited operates industrial manufacturing factories in Andhra Pradesh at Tirupati, Karakambadi, Nunegundlapalli (Chittoor).",
+        "url": "https://www.amararaja.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://aplegislature.org/web/aplegislature/bills",
+      "https://www.amararaja.com"
+    ],
+    "missing_information": [
+      "Count of industrial shopfloor workforce in Andhra Pradesh affected by revised overtime caps."
+    ],
+    "verified_at": "2026-09-09T18:30:07.285766+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "andhra-pradesh-vs-bill-11-2025",
+    "state": "Andhra Pradesh",
+    "company_id": "INE376G01013",
+    "company_name": "Biocon Limited",
+    "ticker": "BIOCON",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Labour & Employment",
+    "sub_sector": "Industrial Manufacturing Labour",
+    "business_activity": "Biopharmaceutical manufacturing",
+    "state_presence": [
+      "manufacturing",
+      "plant"
+    ],
+    "presence_type": "manufacturing",
+    "exposure_type": "labour",
+    "exposure_direction": "mixed",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "compliance",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Provisions amending factory working hours, overtime, and safety norms",
+        "claim": "Regulates factory shift timing, overtime compensation, and statutory compliance registers for industrial establishments.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Biocon Integrated Annual Report 2023-24",
+        "claim": "Biocon Limited operates industrial manufacturing factories in Andhra Pradesh at Visakhapatnam.",
+        "url": "https://www.biocon.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://aplegislature.org/web/aplegislature/bills",
+      "https://www.biocon.com"
+    ],
+    "missing_information": [
+      "Count of industrial shopfloor workforce in Andhra Pradesh affected by revised overtime caps."
+    ],
+    "verified_at": "2026-09-09T18:30:07.286141+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "andhra-pradesh-vs-bill-11-2025",
+    "state": "Andhra Pradesh",
+    "company_id": "INE914M01019",
+    "company_name": "Aster DM Healthcare Limited",
+    "ticker": "ASTERDM",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Labour & Employment",
+    "sub_sector": "Industrial Manufacturing Labour",
+    "business_activity": "Hospital clinical operations",
+    "state_presence": [
+      "plant",
+      "service_operation"
+    ],
+    "presence_type": "manufacturing",
+    "exposure_type": "labour",
+    "exposure_direction": "mixed",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "compliance",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Provisions amending factory working hours, overtime, and safety norms",
+        "claim": "Regulates factory shift timing, overtime compensation, and statutory compliance registers for industrial establishments.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Aster DM Healthcare Annual Report 2023-24",
+        "claim": "Aster DM Healthcare Limited operates industrial manufacturing factories in Andhra Pradesh at Tirupati.",
+        "url": "https://www.asterdmhealthcare.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://aplegislature.org/web/aplegislature/bills",
+      "https://www.asterdmhealthcare.com"
+    ],
+    "missing_information": [
+      "Count of industrial shopfloor workforce in Andhra Pradesh affected by revised overtime caps."
+    ],
+    "verified_at": "2026-09-09T18:30:07.286423+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "andhra-pradesh-vs-bill-11-2025",
+    "state": "Andhra Pradesh",
+    "company_id": "INE346W01013",
+    "company_name": "Apex Frozen Foods Limited",
+    "ticker": "APEX",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Labour & Employment",
+    "sub_sector": "Industrial Manufacturing Labour",
+    "business_activity": "Aquaculture shrimp processing",
+    "state_presence": [
+      "headquarters",
+      "manufacturing",
+      "plant",
+      "supplier_relationship"
+    ],
+    "presence_type": "manufacturing",
+    "exposure_type": "labour",
+    "exposure_direction": "mixed",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "compliance",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Provisions amending factory working hours, overtime, and safety norms",
+        "claim": "Regulates factory shift timing, overtime compensation, and statutory compliance registers for industrial establishments.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Apex Frozen Foods Annual Report 2023-24 (Operations Review)",
+        "claim": "Apex Frozen Foods Limited operates industrial manufacturing factories in Andhra Pradesh at Kakinada, Raparru (Kakinada district).",
+        "url": "https://www.apexfrozenfoods.in"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://aplegislature.org/web/aplegislature/bills",
+      "https://www.apexfrozenfoods.in"
+    ],
+    "missing_information": [
+      "Count of industrial shopfloor workforce in Andhra Pradesh affected by revised overtime caps."
+    ],
+    "verified_at": "2026-09-09T18:30:07.286705+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "andhra-pradesh-vs-bill-11-2025",
+    "state": "Andhra Pradesh",
+    "company_id": "INE731F01041",
+    "company_name": "Avanti Feeds Limited",
+    "ticker": "AVANTIFEED",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Labour & Employment",
+    "sub_sector": "Industrial Manufacturing Labour",
+    "business_activity": "Shrimp feed manufacturing",
+    "state_presence": [
+      "headquarters",
+      "manufacturing",
+      "plant"
+    ],
+    "presence_type": "manufacturing",
+    "exposure_type": "labour",
+    "exposure_direction": "mixed",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "compliance",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Provisions amending factory working hours, overtime, and safety norms",
+        "claim": "Regulates factory shift timing, overtime compensation, and statutory compliance registers for industrial establishments.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Avanti Feeds Annual Report 2023-24 (Manufacturing Locations)",
+        "claim": "Avanti Feeds Limited operates industrial manufacturing factories in Andhra Pradesh at Kovvur (West Godavari), Vemuluru, Visakhapatnam.",
+        "url": "https://www.avantifeeds.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://aplegislature.org/web/aplegislature/bills",
+      "https://www.avantifeeds.com"
+    ],
+    "missing_information": [
+      "Count of industrial shopfloor workforce in Andhra Pradesh affected by revised overtime caps."
+    ],
+    "verified_at": "2026-09-09T18:30:07.287006+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "andhra-pradesh-vs-bill-11-2025",
+    "state": "Andhra Pradesh",
+    "company_id": "INE021A01026",
+    "company_name": "Asian Paints Limited",
+    "ticker": "ASIANPAINT",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Labour & Employment",
+    "sub_sector": "Industrial Manufacturing Labour",
+    "business_activity": "Paint manufacturing",
+    "state_presence": [
+      "manufacturing",
+      "plant"
+    ],
+    "presence_type": "manufacturing",
+    "exposure_type": "labour",
+    "exposure_direction": "mixed",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "compliance",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Provisions amending factory working hours, overtime, and safety norms",
+        "claim": "Regulates factory shift timing, overtime compensation, and statutory compliance registers for industrial establishments.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Asian Paints Annual Report 2023-24 (Manufacturing Locations)",
+        "claim": "Asian Paints Limited operates industrial manufacturing factories in Andhra Pradesh at Visakhapatnam.",
+        "url": "https://www.asianpaints.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://aplegislature.org/web/aplegislature/bills",
+      "https://www.asianpaints.com"
+    ],
+    "missing_information": [
+      "Count of industrial shopfloor workforce in Andhra Pradesh affected by revised overtime caps."
+    ],
+    "verified_at": "2026-09-09T18:30:07.287367+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "andhra-pradesh-vs-bill-11-2025",
+    "state": "Andhra Pradesh",
+    "company_id": "UNLISTED-AP-GENCO",
+    "company_name": "Andhra Pradesh Power Generation Corporation Limited",
+    "ticker": "",
+    "exchange": "",
+    "listed_status": "unlisted",
+    "sector": "Labour & Employment",
+    "sub_sector": "Industrial Manufacturing Labour",
+    "business_activity": "Thermal power generation",
+    "state_presence": [
+      "headquarters",
+      "power_generation",
+      "plant"
+    ],
+    "presence_type": "manufacturing",
+    "exposure_type": "labour",
+    "exposure_direction": "mixed",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "compliance",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Provisions amending factory working hours, overtime, and safety norms",
+        "claim": "Regulates factory shift timing, overtime compensation, and statutory compliance registers for industrial establishments.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Official APGENCO Operational Capacity Reports & APERC Filings",
+        "claim": "Andhra Pradesh Power Generation Corporation Limited operates industrial manufacturing factories in Andhra Pradesh at Vijayawada (Dr NTTPS), Muddanur (RTPP - YSR Kadapa), Krishnapatnam (SDSTPS).",
+        "url": "https://www.apgenco.gov.in"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://aplegislature.org/web/aplegislature/bills",
+      "https://www.apgenco.gov.in"
+    ],
+    "missing_information": [
+      "Count of industrial shopfloor workforce in Andhra Pradesh affected by revised overtime caps."
+    ],
+    "verified_at": "2026-09-09T18:30:07.287676+00:00",
+    "schema_version": "1.0.0"
+  }
+]

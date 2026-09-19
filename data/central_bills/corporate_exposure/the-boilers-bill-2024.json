@@ -1,0 +1,108 @@
+[
+  {
+    "bill_id": "the-boilers-bill-2024",
+    "state": "Central",
+    "company_id": "UNLISTED-AP-GENCO",
+    "company_name": "Andhra Pradesh Power Generation Corporation Limited",
+    "ticker": "",
+    "exchange": "",
+    "listed_status": "unlisted",
+    "sector": "Energy",
+    "sub_sector": "Thermal Power Generation",
+    "business_activity": "Thermal power generation using high-pressure steam utility boilers",
+    "state_presence": [
+      "national"
+    ],
+    "presence_type": "plant",
+    "exposure_type": "regulatory",
+    "exposure_direction": "neutral",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "national",
+    "mechanism": "compliance_cost",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Clauses 4-12 (Inspection, certification, boiler safety standards & attendant qualifications)",
+        "claim": "Replaces the Boilers Act, 1923 to introduce safety inspection protocols, certified boiler attendants, and statutory overhaul schedules for utility-scale high-pressure boilers.",
+        "url": null
+      },
+      {
+        "source_type": "government_record",
+        "reference": "APGENCO Official Disclosures (Rayalaseema & Dr. NTTPS Thermal Power Units)",
+        "claim": "APGENCO operates large-scale thermal generating stations (Dr. Narla Tata Rao TPS and Rayalaseema TPS) equipped with high-pressure supercritical and subcritical steam boilers governed by the statutory Boilers regime.",
+        "url": "https://www.apgenco.gov.in"
+      }
+    ],
+    "confidence": "HIGH",
+    "jurisdiction": "central",
+    "market_relevance": "LOW",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_evidence": "OFFICIAL_PUBLIC_RECORD",
+      "exposure_chain": "THERMAL_UTILITY_BOILER_SAFETY_REGULATION"
+    },
+    "source_urls": [
+      "https://prsindia.org/billtrack/the-boilers-bill-2024",
+      "https://www.apgenco.gov.in"
+    ],
+    "missing_information": [
+      "Overhaul shutdown schedules required under revised statutory boiler inspection frequencies."
+    ],
+    "verified_at": "2026-09-16T07:17:31.445697+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "the-boilers-bill-2024",
+    "state": "Central",
+    "company_id": "UNLISTED-TS-GENCO",
+    "company_name": "Telangana State Power Generation Corporation Limited",
+    "ticker": "",
+    "exchange": "",
+    "listed_status": "unlisted",
+    "sector": "Energy",
+    "sub_sector": "Thermal Power Generation",
+    "business_activity": "Thermal power generation using high-pressure steam utility boilers",
+    "state_presence": [
+      "national"
+    ],
+    "presence_type": "plant",
+    "exposure_type": "regulatory",
+    "exposure_direction": "neutral",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "national",
+    "mechanism": "compliance_cost",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Clauses 4-12 (Statutory boiler inspection, attendant licensing & safety norms)",
+        "claim": "Regulates manufacturing, erection, registration, inspection, and maintenance of high-pressure boilers used in industrial steam and power generation.",
+        "url": null
+      },
+      {
+        "source_type": "government_record",
+        "reference": "TSGENCO Official Disclosures (Kothagudem & Bhadradri Thermal Power Stations)",
+        "claim": "TSGENCO operates over 5,000 MW of thermal power generation capacity (KTPS and BTPS) with high-capacity utility boilers subject to statutory boiler inspection certification.",
+        "url": "https://www.tsgenco.telangana.gov.in"
+      }
+    ],
+    "confidence": "HIGH",
+    "jurisdiction": "central",
+    "market_relevance": "LOW",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_evidence": "OFFICIAL_PUBLIC_RECORD",
+      "exposure_chain": "THERMAL_UTILITY_BOILER_SAFETY_REGULATION"
+    },
+    "source_urls": [
+      "https://prsindia.org/billtrack/the-boilers-bill-2024",
+      "https://www.tsgenco.telangana.gov.in"
+    ],
+    "missing_information": [
+      "Certified boiler attendant staffing headcount per thermal unit shift."
+    ],
+    "verified_at": "2026-09-16T07:17:31.446233+00:00",
+    "schema_version": "1.0.0"
+  }
+]

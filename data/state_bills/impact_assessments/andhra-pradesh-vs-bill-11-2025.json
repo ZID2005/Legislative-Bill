@@ -1,0 +1,141 @@
+{
+  "bill_id": "andhra-pradesh-vs-bill-11-2025",
+  "state": "Andhra Pradesh",
+  "title": "The Andhra Pradesh Shops and Establishments (Amendment) Bill, 2025",
+  "bill_number": "L.A. Bill No. 11 of 2025",
+  "economic_mechanisms": [
+    "compliance_cost",
+    "employment",
+    "labour_cost",
+    "licensing",
+    "regulation",
+    "taxation",
+    "transportation_cost"
+  ],
+  "economic_direction": "mixed",
+  "economic_strength": "HIGH",
+  "market_relevance": "MEDIUM",
+  "modeling_eligibility": "CONDITIONALLY_ELIGIBLE",
+  "data_sufficiency": "PARTIAL",
+  "event_date_quality": "MEDIUM",
+  "primary_event_date": {
+    "role": "assent",
+    "date": "2025-10-21",
+    "source": "official_gazette",
+    "is_primary": true
+  },
+  "alternative_event_dates": [],
+  "anticipation_readiness": "PARTIAL",
+  "candidate_anticipation_channels": [
+    "public_announcements",
+    "legislative_leaks",
+    "government_consultations",
+    "committee_discussions",
+    "media_coverage",
+    "gdelt",
+    "google_trends"
+  ],
+  "market_data_readiness": {
+    "candidate_companies_count": 17,
+    "listed_companies_count": 16,
+    "unlisted_companies_count": 1,
+    "companies_with_market_data": [
+      "APOLLOHOSP",
+      "ASIANPAINT",
+      "BRITANNIA",
+      "DRREDDY",
+      "ITC",
+      "NTPC",
+      "RELIANCE",
+      "TATAPOWER",
+      "ULTRACEMCO"
+    ],
+    "companies_missing_market_data": [
+      "APEX",
+      "ARE&M",
+      "ASTERDM",
+      "AUROPHARMA",
+      "AVANTIFEED",
+      "BIOCON",
+      "DIVISLAB"
+    ],
+    "benchmark_available": true,
+    "benchmark_ticker": "^NSEI",
+    "trading_calendar_coverage": "PARTIAL"
+  },
+  "listed_company_count": 16,
+  "exposure_count": 17,
+  "direct_exposure_count": 17,
+  "indirect_exposure_count": 0,
+  "missing_requirements": [
+    "Historical market price data missing in local store for: APEX, ARE&M, ASTERDM, AUROPHARMA, AVANTIFEED, BIOCON, DIVISLAB.",
+    "Live anticipation crawling and sentiment signal ingestion not connected."
+  ],
+  "scorecard": {
+    "bill_identity_verified": true,
+    "state_jurisdiction_verified": true,
+    "event_date_verified": true,
+    "economic_mechanism_identified": true,
+    "corporate_exposure_verified": true,
+    "listed_company_verified": true,
+    "historical_market_data_available": true,
+    "benchmark_data_available": true,
+    "event_date_identifiable": true,
+    "anticipation_readiness_sufficient": true,
+    "result": "CONDITIONALLY_ELIGIBLE",
+    "notes": [
+      "Anticipation framework defined, but external live news/GDELT crawlers not attached."
+    ]
+  },
+  "evidence": [
+    {
+      "source_type": "official_bill_summary",
+      "reference": "Statement of Objects and Reasons / Metadata",
+      "claim": "Statutory summary indicates policy in Labour, Employment & Gig Economy."
+    },
+    {
+      "source_type": "statutory_mechanism",
+      "reference": "Taxonomy::compliance_cost",
+      "claim": "Statutory impact channel identified as 'compliance_cost'."
+    },
+    {
+      "source_type": "statutory_mechanism",
+      "reference": "Taxonomy::employment",
+      "claim": "Statutory impact channel identified as 'employment'."
+    },
+    {
+      "source_type": "statutory_mechanism",
+      "reference": "Taxonomy::labour_cost",
+      "claim": "Statutory impact channel identified as 'labour_cost'."
+    },
+    {
+      "source_type": "statutory_mechanism",
+      "reference": "Taxonomy::licensing",
+      "claim": "Statutory impact channel identified as 'licensing'."
+    },
+    {
+      "source_type": "statutory_mechanism",
+      "reference": "Taxonomy::regulation",
+      "claim": "Statutory impact channel identified as 'regulation'."
+    },
+    {
+      "source_type": "statutory_mechanism",
+      "reference": "Taxonomy::taxation",
+      "claim": "Statutory impact channel identified as 'taxation'."
+    },
+    {
+      "source_type": "statutory_mechanism",
+      "reference": "Taxonomy::transportation_cost",
+      "claim": "Statutory impact channel identified as 'transportation_cost'."
+    }
+  ],
+  "confidence": "MEDIUM",
+  "provenance": {
+    "economic_taxonomy": "STATE_ECONOMIC_MECHANISMS_V1",
+    "market_relevance": "GROUNDED_CORPORATE_EXPOSURE_MATCH",
+    "eligibility_scorecard": "DETERMINISTIC_10_POINT_SCORECARD",
+    "market_data_audit": "LOCAL_PARQUET_STORE_VERIFIED"
+  },
+  "schema_version": "1.0.0",
+  "generated_at": "2026-09-10T16:03:44.642378+00:00"
+}

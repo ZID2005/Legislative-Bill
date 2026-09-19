@@ -1,0 +1,216 @@
+[
+  {
+    "bill_id": "andhra-pradesh-vs-bill-3-2026",
+    "state": "Andhra Pradesh",
+    "company_id": "INE481G01011",
+    "company_name": "Ultratech Cement Limited",
+    "ticker": "ULTRACEMCO",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Electricity",
+    "sub_sector": "Industrial Energy Consumption",
+    "business_activity": "Heavy industrial manufacturing with captive electricity generation",
+    "state_presence": [
+      "manufacturing",
+      "plant",
+      "mining"
+    ],
+    "presence_type": "manufacturing",
+    "exposure_type": "energy",
+    "exposure_direction": "negative",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "taxation",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Duty on Captive Energy Consumption Provisions",
+        "claim": "Alters duty payable by heavy industrial establishments utilizing captive power units.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "UltraTech Annual Report 2023-24 (Manufacturing Unit Footprint)",
+        "claim": "Ultratech Cement Limited operates heavy manufacturing facilities with captive power units at Tadipatri (Anantapur), Dachepalli (Palnadu).",
+        "url": "https://www.ultratechcement.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://aplegislature.org/web/aplegislature/bills",
+      "https://www.ultratechcement.com"
+    ],
+    "missing_information": [
+      "Specific captive energy generation volume in Andhra Pradesh units.",
+      "Effective electricity duty impact per unit of output."
+    ],
+    "verified_at": "2026-09-09T18:30:08.663108+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "andhra-pradesh-vs-bill-3-2026",
+    "state": "Andhra Pradesh",
+    "company_id": "INE733E01010",
+    "company_name": "NTPC Limited",
+    "ticker": "NTPC",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Electricity",
+    "sub_sector": "Power Generation & Transmission",
+    "business_activity": "Electricity generation & captive power dispatch",
+    "state_presence": [
+      "power_generation",
+      "plant"
+    ],
+    "presence_type": "power_generation",
+    "exposure_type": "taxation",
+    "exposure_direction": "mixed",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "taxation",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Clauses amending Electricity Duty rates & captive consumption schedules",
+        "claim": "Adjusts state statutory duty rates on electricity generated, sold, or consumed for industrial and captive purposes in Andhra Pradesh.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "NTPC Annual Report 2023-24",
+        "claim": "NTPC Limited owns and operates generation facilities in Andhra Pradesh at Simhadri (Visakhapatnam).",
+        "url": "https://www.ntpc.co.in"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_FILING",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://aplegislature.org/web/aplegislature/bills",
+      "https://www.ntpc.co.in"
+    ],
+    "missing_information": [
+      "Captive power consumption vs commercial grid export ratio in Andhra Pradesh.",
+      "Power purchase agreement (PPA) pass-through clauses with State DISCOMs."
+    ],
+    "verified_at": "2026-09-09T18:30:08.663454+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "andhra-pradesh-vs-bill-3-2026",
+    "state": "Andhra Pradesh",
+    "company_id": "INE245A01021",
+    "company_name": "Tata Power Company Limited",
+    "ticker": "TATAPOWER",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Electricity",
+    "sub_sector": "Power Generation & Transmission",
+    "business_activity": "Electricity generation & captive power dispatch",
+    "state_presence": [
+      "power_generation",
+      "plant"
+    ],
+    "presence_type": "power_generation",
+    "exposure_type": "taxation",
+    "exposure_direction": "mixed",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "taxation",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Clauses amending Electricity Duty rates & captive consumption schedules",
+        "claim": "Adjusts state statutory duty rates on electricity generated, sold, or consumed for industrial and captive purposes in Andhra Pradesh.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Tata Power Annual Report 2023-24",
+        "claim": "Tata Power Company Limited owns and operates generation facilities in Andhra Pradesh at Ananthapuramu.",
+        "url": "https://www.tatapower.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_FILING",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://aplegislature.org/web/aplegislature/bills",
+      "https://www.tatapower.com"
+    ],
+    "missing_information": [
+      "Captive power consumption vs commercial grid export ratio in Andhra Pradesh.",
+      "Power purchase agreement (PPA) pass-through clauses with State DISCOMs."
+    ],
+    "verified_at": "2026-09-09T18:30:08.663787+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "andhra-pradesh-vs-bill-3-2026",
+    "state": "Andhra Pradesh",
+    "company_id": "UNLISTED-AP-GENCO",
+    "company_name": "Andhra Pradesh Power Generation Corporation Limited",
+    "ticker": "",
+    "exchange": "",
+    "listed_status": "unlisted",
+    "sector": "Electricity",
+    "sub_sector": "Power Generation & Transmission",
+    "business_activity": "Electricity generation & captive power dispatch",
+    "state_presence": [
+      "headquarters",
+      "power_generation",
+      "plant"
+    ],
+    "presence_type": "power_generation",
+    "exposure_type": "taxation",
+    "exposure_direction": "mixed",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "taxation",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Clauses amending Electricity Duty rates & captive consumption schedules",
+        "claim": "Adjusts state statutory duty rates on electricity generated, sold, or consumed for industrial and captive purposes in Andhra Pradesh.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Official APGENCO Operational Capacity Reports & APERC Filings",
+        "claim": "Andhra Pradesh Power Generation Corporation Limited owns and operates generation facilities in Andhra Pradesh at Vijayawada (Dr NTTPS), Muddanur (RTPP - YSR Kadapa), Krishnapatnam (SDSTPS).",
+        "url": "https://www.apgenco.gov.in"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_FILING",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://aplegislature.org/web/aplegislature/bills",
+      "https://www.apgenco.gov.in"
+    ],
+    "missing_information": [
+      "Captive power consumption vs commercial grid export ratio in Andhra Pradesh.",
+      "Power purchase agreement (PPA) pass-through clauses with State DISCOMs."
+    ],
+    "verified_at": "2026-09-09T18:30:08.664399+00:00",
+    "schema_version": "1.0.0"
+  }
+]

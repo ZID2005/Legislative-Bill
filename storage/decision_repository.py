@@ -166,10 +166,20 @@ class DecisionRepository:
 
     def get_by_bill(self, bill_id: str) -> list[DecisionSupportRecord]:
         """
-        Retrieve all DecisionSupportRecord objects associated with a specific bill_id.
+        Retrieve all DecisionSupportRecord objects associated with a specific bill ID.
         """
-        all_records = self.load_all()
-        return [rec for rec in all_records if rec.bill_id == bill_id]
+        s_id = sanitize_id(bill_id)
+        matching = [f for f in self._root.glob(f"dec_{s_id}_*.json")]
+        if matching:
+            records: list[DecisionSupportRecord] = []
+            for filepath in matching:
+                try:
+                    data = load_json(filepath)
+                    records.append(DecisionSupportRecord.from_dict(data))
+                except Exception:
+                    pass
+            return records
+        return []
 
     def get_by_company(self, company_isin: str) -> list[DecisionSupportRecord]:
         """

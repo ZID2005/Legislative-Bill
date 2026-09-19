@@ -1,0 +1,108 @@
+[
+  {
+    "bill_id": "the-railways-amendment-bill-2024",
+    "state": "Central",
+    "company_id": "INE399C01030",
+    "company_name": "Container Corporation of India Limited",
+    "ticker": "CONCOR",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Logistics & Transportation",
+    "sub_sector": "Rail Container Freight",
+    "business_activity": "Container train operation on national rail tracks and railway land leasing",
+    "state_presence": [
+      "national"
+    ],
+    "presence_type": "infrastructure",
+    "exposure_type": "infrastructure",
+    "exposure_direction": "mixed",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "national",
+    "mechanism": "infrastructure_access",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Clauses 3-5 (Rail freight operational safety, RLDA land development & track access)",
+        "claim": "Expands powers for railway infrastructure, land commercialisation, and statutory standards for rolling stock and freight train operation on national rail lines.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "CONCOR Annual Report 2023-24 (Railway Haulage Charges & Land License Fee Disclosures)",
+        "claim": "CONCOR runs scheduled container train services on Indian Railways track infrastructure under a formal haulage charges agreement and leases substantial railway land parcels for its ICD terminals.",
+        "url": "https://www.concorindia.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "jurisdiction": "central",
+    "market_relevance": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_evidence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "RAILWAY_TRACK_ACCESS_AND_LAND_LICENSE"
+    },
+    "source_urls": [
+      "https://prsindia.org/billtrack/the-railways-amendment-bill-2024",
+      "https://www.concorindia.com"
+    ],
+    "missing_information": [
+      "Revisions to Land License Fee (LLF) regime for terminals situated on Railway land."
+    ],
+    "verified_at": "2026-09-16T07:17:32.728153+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "the-railways-amendment-bill-2024",
+    "state": "Central",
+    "company_id": "INE053F01010",
+    "company_name": "Indian Railway Finance Corporation Limited",
+    "ticker": "IRFC",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Banking & Financial Services",
+    "sub_sector": "Railway Capital Finance",
+    "business_activity": "Market borrowing and lease financing of railway rolling stock and infrastructure",
+    "state_presence": [
+      "national"
+    ],
+    "presence_type": "office",
+    "exposure_type": "infrastructure",
+    "exposure_direction": "positive",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "national",
+    "mechanism": "financing",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Clauses 2-6 (Rail Land Development Authority powers & railway infrastructure development)",
+        "claim": "Amends the Railways Act, 1989 to enhance statutory powers for railway infrastructure execution, commercial railway land development, and capital project governance.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "IRFC Annual Report 2023-24 (Financing Lease Agreement with Ministry of Railways)",
+        "claim": "IRFC is the dedicated market borrowing arm of the Ministry of Railways, holding over Rs. 4.5 lakh crore in cumulative financing of rolling stock and railway infrastructure under standard lease agreements.",
+        "url": "https://www.irfc.nic.in"
+      }
+    ],
+    "confidence": "HIGH",
+    "jurisdiction": "central",
+    "market_relevance": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_evidence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "RAILWAY_CAPITAL_FINANCING_FRAMEWORK"
+    },
+    "source_urls": [
+      "https://prsindia.org/billtrack/the-railways-amendment-bill-2024",
+      "https://www.irfc.nic.in"
+    ],
+    "missing_information": [
+      "Annual rolling stock leasing capital disbursement target set by Railway Board."
+    ],
+    "verified_at": "2026-09-16T07:17:32.728775+00:00",
+    "schema_version": "1.0.0"
+  }
+]

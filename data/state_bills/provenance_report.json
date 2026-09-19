@@ -1,0 +1,3767 @@
+{
+  "total_state_bills": 44,
+  "field_summary": {
+    "authoritative": {
+      "title": 44,
+      "jurisdiction": 44,
+      "state": 44,
+      "bill_number": 44,
+      "house": 44,
+      "pdf_url": 44,
+      "status": 44,
+      "assent_date": 14,
+      "introduction_date": 32
+    },
+    "derived": {
+      "year": 44,
+      "bill_id": 44
+    },
+    "unavailable": {
+      "introduction_date": 12,
+      "assent_date": 30,
+      "department": 44
+    }
+  },
+  "records": [
+    {
+      "bill_id": "andhra-pradesh-vs-bill-21-2026",
+      "state": "Andhra Pradesh",
+      "legislature": "Andhra Pradesh Legislative Assembly",
+      "source_url": "https://aplegislature.org/web/aplegislature/bills",
+      "coverage": {
+        "authoritative": 7,
+        "derived": 2,
+        "unavailable": 3
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Andhra Pradesh Omnibus (Speed of Doing Business) Bill, 2026",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Andhra Pradesh",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "L.A. Bill No. 21 of 2026",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Introduction date omitted in listing"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Assent date unavailable"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://legislation.aplegislature.org/PreviewPage.do?filePath=basePath&fileName=Bills/PassedBills/English/Eng_passbill_21_16_33__407_v_1.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2026",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "andhra-pradesh-vs-bill-21-2026",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "andhra-pradesh-vs-bill-3-2026",
+      "state": "Andhra Pradesh",
+      "legislature": "Andhra Pradesh Legislative Assembly",
+      "source_url": "https://aplegislature.org/web/aplegislature/bills",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Andhra Pradesh Electricity Duty (Amendment) Bill, 2026",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Andhra Pradesh",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "L.A. Bill No. 3 of 2026",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Introduction date omitted in listing"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "authoritative",
+          "value": "2026-03-23",
+          "source_detail": "Official assent date recorded"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://legislation.aplegislature.org/PreviewPage.do?filePath=basePath&fileName=Bills/PassedBills/English/Eng_passbill_bill-3_16_31__387_v_1.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2026",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "andhra-pradesh-vs-bill-3-2026",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "andhra-pradesh-vs-bill-14-2026",
+      "state": "Andhra Pradesh",
+      "legislature": "Andhra Pradesh Legislative Assembly",
+      "source_url": "https://aplegislature.org/web/aplegislature/bills",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Andhra Pradesh Motor Vehicles Taxation (Amendment) Bill, 2026",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Andhra Pradesh",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "L.A. Bill No. 14 of 2026",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Introduction date omitted in listing"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "authoritative",
+          "value": "2026-03-26",
+          "source_detail": "Official assent date recorded"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://legislation.aplegislature.org/PreviewPage.do?filePath=basePath&fileName=Bills/PassedBills/English/Eng_passbill_bill-14_16_31__398_v_1.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2026",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "andhra-pradesh-vs-bill-14-2026",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "andhra-pradesh-vs-bill-18-2026",
+      "state": "Andhra Pradesh",
+      "legislature": "Andhra Pradesh Legislative Assembly",
+      "source_url": "https://aplegislature.org/web/aplegislature/bills",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Andhra Pradesh Value Added Tax (Amendment) Bill, 2026",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Andhra Pradesh",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "L.A. Bill No. 18 of 2026",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Introduction date omitted in listing"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "authoritative",
+          "value": "2026-04-01",
+          "source_detail": "Official assent date recorded"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://legislation.aplegislature.org/PreviewPage.do?filePath=basePath&fileName=Bills/PassedBills/English/Eng_passbill_bill-18_16_31__402_v_1.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2026",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "andhra-pradesh-vs-bill-18-2026",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "andhra-pradesh-vs-bill-1-2026",
+      "state": "Andhra Pradesh",
+      "legislature": "Andhra Pradesh Legislative Assembly",
+      "source_url": "https://aplegislature.org/web/aplegislature/bills",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Andhra Pradesh Municipal Laws (Amendment) Bill, 2026",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Andhra Pradesh",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "L.A. Bill No. 1 of 2026",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Introduction date omitted in listing"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "authoritative",
+          "value": "2026-03-26",
+          "source_detail": "Official assent date recorded"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://legislation.aplegislature.org/PreviewPage.do?filePath=basePath&fileName=Bills/PassedBills/English/Eng_passbill_bill-1_16_31__385_v_1.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2026",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "andhra-pradesh-vs-bill-1-2026",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "andhra-pradesh-vs-bill-32-2025",
+      "state": "Andhra Pradesh",
+      "legislature": "Andhra Pradesh Legislative Assembly",
+      "source_url": "https://aplegislature.org/web/aplegislature/bills",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Andhra Pradesh Goods and Services Tax (Amendment) Bill, 2025",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Andhra Pradesh",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "L.A. Bill No. 32 of 2025",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Introduction date omitted in listing"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "authoritative",
+          "value": "2025-10-31",
+          "source_detail": "Official assent date recorded"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://legislation.aplegislature.org/PreviewPage.do?filePath=basePath&fileName=Bills/PassedBills/English/Eng_passbill_BillNo_16_30__384_v_1.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2025",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "andhra-pradesh-vs-bill-32-2025",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "andhra-pradesh-vs-bill-11-2025",
+      "state": "Andhra Pradesh",
+      "legislature": "Andhra Pradesh Legislative Assembly",
+      "source_url": "https://aplegislature.org/web/aplegislature/bills",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Andhra Pradesh Shops and Establishments (Amendment) Bill, 2025",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Andhra Pradesh",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "L.A. Bill No. 11 of 2025",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Introduction date omitted in listing"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "authoritative",
+          "value": "2025-10-21",
+          "source_detail": "Official assent date recorded"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://legislation.aplegislature.org/PreviewPage.do?filePath=basePath&fileName=Bills/PassedBills/English/Eng_passbill_BillNo_16_30__364_v_1.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2025",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "andhra-pradesh-vs-bill-11-2025",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "andhra-pradesh-vs-bill-14-2025",
+      "state": "Andhra Pradesh",
+      "legislature": "Andhra Pradesh Legislative Assembly",
+      "source_url": "https://aplegislature.org/web/aplegislature/bills",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Factories (Andhra Pradesh Amendment) Bill, 2025",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Andhra Pradesh",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "L.A. Bill No. 14 of 2025",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Introduction date omitted in listing"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "authoritative",
+          "value": "2025-10-21",
+          "source_detail": "Official assent date recorded"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://legislation.aplegislature.org/PreviewPage.do?filePath=basePath&fileName=Bills/PassedBills/English/Eng_passbill_BillNo_16_30__367_v_1.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2025",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "andhra-pradesh-vs-bill-14-2025",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "andhra-pradesh-vs-bill-20-2025",
+      "state": "Andhra Pradesh",
+      "legislature": "Andhra Pradesh Legislative Assembly",
+      "source_url": "https://aplegislature.org/web/aplegislature/bills",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Andhra Pradesh State Aquaculture Development Authority (Amendment) Bill, 2025",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Andhra Pradesh",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "L.A. Bill No. 20 of 2025",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Introduction date omitted in listing"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "authoritative",
+          "value": "2025-11-07",
+          "source_detail": "Official assent date recorded"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://legislation.aplegislature.org/PreviewPage.do?filePath=basePath&fileName=Bills/PassedBills/English/Eng_passbill_BillNo_16_30__373_v_1.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2025",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "andhra-pradesh-vs-bill-20-2025",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "andhra-pradesh-vs-bill-23-2026",
+      "state": "Andhra Pradesh",
+      "legislature": "Andhra Pradesh Legislative Assembly",
+      "source_url": "https://aplegislature.org/web/aplegislature/bills",
+      "coverage": {
+        "authoritative": 7,
+        "derived": 2,
+        "unavailable": 3
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Andhra Pradesh Private Universities (Establishment and Regulation) (Amendment) Bill, 2026",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Andhra Pradesh",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "L.A. Bill No. 23 of 2026",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Introduction date omitted in listing"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Assent date unavailable"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://legislation.aplegislature.org/PreviewPage.do?filePath=basePath&fileName=Bills/PassedBills/English/Eng_passbill_23_16_33__409_v_1.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2026",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "andhra-pradesh-vs-bill-23-2026",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "andhra-pradesh-vs-bill-29-2026",
+      "state": "Andhra Pradesh",
+      "legislature": "Andhra Pradesh Legislative Assembly",
+      "source_url": "https://aplegislature.org/web/aplegislature/bills",
+      "coverage": {
+        "authoritative": 7,
+        "derived": 2,
+        "unavailable": 3
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Andhra Pradesh Panchayat Raj (Second Amendment) Bill, 2026",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Andhra Pradesh",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "L.A. Bill No. 29 of 2026",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Introduction date omitted in listing"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Assent date unavailable"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://legislation.aplegislature.org/PreviewPage.do?filePath=basePath&fileName=Bills/PassedBills/English/Eng_passbill_29_16_33__415_v_1.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2026",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "andhra-pradesh-vs-bill-29-2026",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "andhra-pradesh-vs-bill-13-2026",
+      "state": "Andhra Pradesh",
+      "legislature": "Andhra Pradesh Legislative Assembly",
+      "source_url": "https://aplegislature.org/web/aplegislature/bills",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Andhra Pradesh Jan Vishwas (Amendment of Provisions) Bill, 2026",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Andhra Pradesh",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "L.A. Bill No. 13 of 2026",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Introduction date omitted in listing"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "authoritative",
+          "value": "2026-03-24",
+          "source_detail": "Official assent date recorded"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://legislation.aplegislature.org/PreviewPage.do?filePath=basePath&fileName=Bills/PassedBills/English/Eng_passbill_bill-13_16_31__397_v_1.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2026",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "andhra-pradesh-vs-bill-13-2026",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "karnataka-vs-bill-29-2024",
+      "state": "Karnataka",
+      "legislature": "Karnataka Legislative Assembly",
+      "source_url": "https://kla.kar.nic.in/assembly/bills/bills1640.htm",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Karnataka Goods and Services Tax (Amendment) Bill, 2024",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Karnataka",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "Bill No. 29 of 2024",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "authoritative",
+          "value": "2024-07-19",
+          "source_detail": "Listing date column"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Assent date unavailable"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://kla.kar.nic.in/assembly/bills/bill1640_29.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2024",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "karnataka-vs-bill-29-2024",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "karnataka-vs-bill-27-2024",
+      "state": "Karnataka",
+      "legislature": "Karnataka Legislative Assembly",
+      "source_url": "https://kla.kar.nic.in/assembly/bills/bills1640.htm",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Karnataka Legislature (Prevention of Disqualification) (Second Amendment) Bill, 2024",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Karnataka",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "Bill No. 27 of 2024",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "authoritative",
+          "value": "2024-07-19",
+          "source_detail": "Listing date column"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Assent date unavailable"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://kla.kar.nic.in/assembly/bills/bill1640_27.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2024",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "karnataka-vs-bill-27-2024",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "karnataka-vs-bill-28-2024",
+      "state": "Karnataka",
+      "legislature": "Karnataka Legislative Assembly",
+      "source_url": "https://kla.kar.nic.in/assembly/bills/bills1640.htm",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Karnataka Cine and Cultural Activists (Welfare) Bill, 2024",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Karnataka",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "Bill No. 28 of 2024",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "authoritative",
+          "value": "2024-07-19",
+          "source_detail": "Listing date column"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Assent date unavailable"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://kla.kar.nic.in/assembly/bills/bill1640_28.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2024",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "karnataka-vs-bill-28-2024",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "karnataka-vs-bill-32-2024",
+      "state": "Karnataka",
+      "legislature": "Karnataka Legislative Assembly",
+      "source_url": "https://kla.kar.nic.in/assembly/bills/bills1640.htm",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Karnataka Irrigation (Amendment) Bill, 2024",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Karnataka",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "Bill No. 32 of 2024",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "authoritative",
+          "value": "2024-07-22",
+          "source_detail": "Listing date column"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Assent date unavailable"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://kla.kar.nic.in/assembly/bills/bill1640_32.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2024",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "karnataka-vs-bill-32-2024",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "karnataka-vs-bill-31-2024",
+      "state": "Karnataka",
+      "legislature": "Karnataka Legislative Assembly",
+      "source_url": "https://kla.kar.nic.in/assembly/bills/bills1640.htm",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Karnataka Municipalities and Certain Other Law (Amendment) Bill, 2024",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Karnataka",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "Bill No. 31 of 2024",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "authoritative",
+          "value": "2024-07-22",
+          "source_detail": "Listing date column"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Assent date unavailable"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://kla.kar.nic.in/assembly/bills/bill1640_31.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2024",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "karnataka-vs-bill-31-2024",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "karnataka-vs-bill-34-2024",
+      "state": "Karnataka",
+      "legislature": "Karnataka Legislative Assembly",
+      "source_url": "https://kla.kar.nic.in/assembly/bills/bills1640.htm",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Greater Bengaluru Governance Bill, 2024",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Karnataka",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "Bill No. 34 of 2024",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "authoritative",
+          "value": "2024-07-23",
+          "source_detail": "Listing date column"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Assent date unavailable"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://kla.kar.nic.in/assembly/bills/bill1640_34.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2024",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "karnataka-vs-bill-34-2024",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "karnataka-vs-bill-33-2024",
+      "state": "Karnataka",
+      "legislature": "Karnataka Legislative Assembly",
+      "source_url": "https://kla.kar.nic.in/assembly/bills/bills1640.htm",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Karnataka Appropriation (No. 4) Bill, 2024",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Karnataka",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "Bill No. 33 of 2024",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "authoritative",
+          "value": "2024-07-24",
+          "source_detail": "Listing date column"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Assent date unavailable"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://kla.kar.nic.in/assembly/bills/bill1640_33.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2024",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "karnataka-vs-bill-33-2024",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "karnataka-vs-bill-35-2024",
+      "state": "Karnataka",
+      "legislature": "Karnataka Legislative Assembly",
+      "source_url": "https://kla.kar.nic.in/assembly/bills/bills1640.htm",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Karnataka Land Revenue (Second Amendment) Bill, 2024",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Karnataka",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "Bill No. 35 of 2024",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "authoritative",
+          "value": "2024-07-24",
+          "source_detail": "Listing date column"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Assent date unavailable"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://kla.kar.nic.in/assembly/bills/bill1640_35.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2024",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "karnataka-vs-bill-35-2024",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "karnataka-vs-bill-36-2024",
+      "state": "Karnataka",
+      "legislature": "Karnataka Legislative Assembly",
+      "source_url": "https://kla.kar.nic.in/assembly/bills/bills1640.htm",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Karnataka Ancient and Historical Monuments and Archaeological Sites and Remains (Amendment) Bill, 2024",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Karnataka",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "Bill No. 36 of 2024",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "authoritative",
+          "value": "2024-07-24",
+          "source_detail": "Listing date column"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Assent date unavailable"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://kla.kar.nic.in/assembly/bills/bill1640_36.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2024",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "karnataka-vs-bill-36-2024",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "karnataka-vs-bill-37-2024",
+      "state": "Karnataka",
+      "legislature": "Karnataka Legislative Assembly",
+      "source_url": "https://kla.kar.nic.in/assembly/bills/bills1640.htm",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Karnataka Medical Registration and Certain Other Law (Amendment) Bill, 2024",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Karnataka",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "Bill No. 37 of 2024",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "authoritative",
+          "value": "2024-07-24",
+          "source_detail": "Listing date column"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Assent date unavailable"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://kla.kar.nic.in/assembly/bills/bill1640_37.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2024",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "karnataka-vs-bill-37-2024",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "karnataka-vs-bill-39-2024",
+      "state": "Karnataka",
+      "legislature": "Karnataka Legislative Assembly",
+      "source_url": "https://kla.kar.nic.in/assembly/bills/bills1640.htm",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Karnataka Scheduled Castes, Scheduled Tribes and Other Backward Classes (Reservation of Appointments, etc.) (Amendment) Bill, 2024",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Karnataka",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "Bill No. 39 of 2024",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "authoritative",
+          "value": "2024-07-24",
+          "source_detail": "Listing date column"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Assent date unavailable"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://kla.kar.nic.in/assembly/bills/bill1640_39.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2024",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "karnataka-vs-bill-39-2024",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "kerala-vs-bill-250-2025",
+      "state": "Kerala",
+      "legislature": "Kerala Legislative Assembly",
+      "source_url": "https://www.niyamasabha.nic.in/index.php/bills/bills_details/250",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Kerala Finance Bill, 2025",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Kerala",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "Bill No. 250 of 2025",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "authoritative",
+          "value": "2025-02-10",
+          "source_detail": "Listing date column"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Assent date unavailable"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://www.niyamasabha.nic.in/bills/2025/Bill_250_2025.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2025",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "kerala-vs-bill-250-2025",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "kerala-vs-bill-271-2025",
+      "state": "Kerala",
+      "legislature": "Kerala Legislative Assembly",
+      "source_url": "https://www.niyamasabha.nic.in/index.php/bills/bills_details/271",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Prevention of Cruelty to Animals (Kerala Amendment) Bill, 2025",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Kerala",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "Bill No. 271 of 2025",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "authoritative",
+          "value": "2025-03-03",
+          "source_detail": "Listing date column"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Assent date unavailable"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://www.niyamasabha.nic.in/bills/2025/Bill_271_2025.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "introduced",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2025",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "kerala-vs-bill-271-2025",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "kerala-vs-bill-220-2024",
+      "state": "Kerala",
+      "legislature": "Kerala Legislative Assembly",
+      "source_url": "https://www.niyamasabha.nic.in/index.php/bills/bills_details/220",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Kerala Repealing and Saving Bill, 2024",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Kerala",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "Bill No. 220 of 2024",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "authoritative",
+          "value": "2024-10-07",
+          "source_detail": "Listing date column"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Assent date unavailable"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://www.niyamasabha.nic.in/bills/2024/Bill_220_2024.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2024",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "kerala-vs-bill-220-2024",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "kerala-vs-bill-196-2024",
+      "state": "Kerala",
+      "legislature": "Kerala Legislative Assembly",
+      "source_url": "https://www.niyamasabha.nic.in/index.php/bills/bills_details/196",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Kerala Panchayat Raj (Second Amendment) Bill, 2024",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Kerala",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "Bill No. 196 of 2024",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "authoritative",
+          "value": "2024-06-24",
+          "source_detail": "Listing date column"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Assent date unavailable"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://www.niyamasabha.nic.in/bills/2024/Bill_196_2024.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2024",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "kerala-vs-bill-196-2024",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "kerala-vs-bill-223-2024",
+      "state": "Kerala",
+      "legislature": "Kerala Legislative Assembly",
+      "source_url": "https://www.niyamasabha.nic.in/index.php/bills/bills_details/223",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Kerala Clinical Establishments (Registration and Regulation) Amendment Bill, 2024",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Kerala",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "Bill No. 223 of 2024",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "authoritative",
+          "value": "2024-10-10",
+          "source_detail": "Listing date column"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Assent date unavailable"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://www.niyamasabha.nic.in/bills/2024/Bill_223_2024.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2024",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "kerala-vs-bill-223-2024",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "kerala-vs-bill-213-2024",
+      "state": "Kerala",
+      "legislature": "Kerala Legislative Assembly",
+      "source_url": "https://www.niyamasabha.nic.in/index.php/bills/bills_details/213",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Non-Resident Keralites' Welfare (Amendment) Bill, 2024",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Kerala",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "Bill No. 213 of 2024",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "authoritative",
+          "value": "2024-07-08",
+          "source_detail": "Listing date column"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Assent date unavailable"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://www.niyamasabha.nic.in/bills/2024/Bill_213_2024.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2024",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "kerala-vs-bill-213-2024",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "kerala-vs-bill-174-2023",
+      "state": "Kerala",
+      "legislature": "Kerala Legislative Assembly",
+      "source_url": "https://www.niyamasabha.nic.in/index.php/bills/bills_details/174",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Kerala Public Records Bill, 2023",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Kerala",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "Bill No. 174 of 2023",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "authoritative",
+          "value": "2023-08-21",
+          "source_detail": "Listing date column"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Assent date unavailable"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://www.niyamasabha.nic.in/bills/2023/Bill_174_2023.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2023",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "kerala-vs-bill-174-2023",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "kerala-vs-bill-179-2023",
+      "state": "Kerala",
+      "legislature": "Kerala Legislative Assembly",
+      "source_url": "https://www.niyamasabha.nic.in/index.php/bills/bills_details/179",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Kerala Veterinary and Animal Sciences University (Amendment) Bill, 2023",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Kerala",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "Bill No. 179 of 2023",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "authoritative",
+          "value": "2023-09-11",
+          "source_detail": "Listing date column"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Assent date unavailable"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://www.niyamasabha.nic.in/bills/2023/Bill_179_2023.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2023",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "kerala-vs-bill-179-2023",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "kerala-vs-bill-180-2023",
+      "state": "Kerala",
+      "legislature": "Kerala Legislative Assembly",
+      "source_url": "https://www.niyamasabha.nic.in/index.php/bills/bills_details/180",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Kerala Bovine Breeding Bill, 2023",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Kerala",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "Bill No. 180 of 2023",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "authoritative",
+          "value": "2023-09-12",
+          "source_detail": "Listing date column"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Assent date unavailable"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://www.niyamasabha.nic.in/bills/2023/Bill_180_2023.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2023",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "kerala-vs-bill-180-2023",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "kerala-vs-bill-167-2023",
+      "state": "Kerala",
+      "legislature": "Kerala Legislative Assembly",
+      "source_url": "https://www.niyamasabha.nic.in/index.php/bills/bills_details/167",
+      "coverage": {
+        "authoritative": 9,
+        "derived": 2,
+        "unavailable": 1
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Indian Partnership (Kerala Amendment) Bill, 2023",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Kerala",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "Bill No. 167 of 2023",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "authoritative",
+          "value": "2023-03-14",
+          "source_detail": "Listing date column"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "authoritative",
+          "value": "2023-08-18",
+          "source_detail": "Official assent date recorded"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://www.niyamasabha.nic.in/bills/2023/Bill_167_2023.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2023",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "kerala-vs-bill-167-2023",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "kerala-vs-bill-168-2023",
+      "state": "Kerala",
+      "legislature": "Kerala Legislative Assembly",
+      "source_url": "https://www.niyamasabha.nic.in/index.php/bills/bills_details/168",
+      "coverage": {
+        "authoritative": 9,
+        "derived": 2,
+        "unavailable": 1
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Kerala Building Tax (Amendment) Bill, 2023",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Kerala",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "Bill No. 168 of 2023",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "authoritative",
+          "value": "2023-03-15",
+          "source_detail": "Listing date column"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "authoritative",
+          "value": "2023-08-22",
+          "source_detail": "Official assent date recorded"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://www.niyamasabha.nic.in/bills/2023/Bill_168_2023.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2023",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "kerala-vs-bill-168-2023",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "telangana-vs-bill-1-2026",
+      "state": "Telangana",
+      "legislature": "Telangana Legislative Assembly",
+      "source_url": "https://legislature.telangana.gov.in/bills/detail/1-2026",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Telangana Hate Speech and Hate Crimes (Prevention) Bill, 2026",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Telangana",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "L.A. Bill No. 1 of 2026",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "authoritative",
+          "value": "2026-03-02",
+          "source_detail": "Listing date column"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Assent date unavailable"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://legislature.telangana.gov.in/legislation/bills/2026/Bill_1_2026.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "introduced",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2026",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "telangana-vs-bill-1-2026",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "telangana-vs-bill-2-2026",
+      "state": "Telangana",
+      "legislature": "Telangana Legislative Assembly",
+      "source_url": "https://legislature.telangana.gov.in/bills/detail/2-2026",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Telangana Goods and Services Tax (Second Amendment) Bill, 2026",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Telangana",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "L.A. Bill No. 2 of 2026",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "authoritative",
+          "value": "2026-03-04",
+          "source_detail": "Listing date column"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Assent date unavailable"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://legislature.telangana.gov.in/legislation/bills/2026/Bill_2_2026.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2026",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "telangana-vs-bill-2-2026",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "telangana-vs-bill-3-2024",
+      "state": "Telangana",
+      "legislature": "Telangana Legislative Assembly",
+      "source_url": "https://legislature.telangana.gov.in/bills/detail/3-2024",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Telangana Panchayat Raj (Amendment) Bill, 2024",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Telangana",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "L.A. Bill No. 3 of 2024",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "authoritative",
+          "value": "2024-02-12",
+          "source_detail": "Listing date column"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Assent date unavailable"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://legislature.telangana.gov.in/legislation/bills/2024/Bill_3_2024.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2024",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "telangana-vs-bill-3-2024",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "telangana-vs-bill-4-2024",
+      "state": "Telangana",
+      "legislature": "Telangana Legislative Assembly",
+      "source_url": "https://legislature.telangana.gov.in/bills/detail/4-2024",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Telangana Municipalities (Amendment) Bill, 2024",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Telangana",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "L.A. Bill No. 4 of 2024",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "authoritative",
+          "value": "2024-02-14",
+          "source_detail": "Listing date column"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Assent date unavailable"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://legislature.telangana.gov.in/legislation/bills/2024/Bill_4_2024.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2024",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "telangana-vs-bill-4-2024",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "telangana-vs-bill-8-2024",
+      "state": "Telangana",
+      "legislature": "Telangana Legislative Assembly",
+      "source_url": "https://legislature.telangana.gov.in/bills/detail/8-2024",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Telangana Motor Vehicles Taxation (Amendment) Bill, 2024",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Telangana",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "L.A. Bill No. 8 of 2024",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "authoritative",
+          "value": "2024-07-24",
+          "source_detail": "Listing date column"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Assent date unavailable"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://legislature.telangana.gov.in/legislation/bills/2024/Bill_8_2024.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2024",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "telangana-vs-bill-8-2024",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "telangana-vs-bill-11-2024",
+      "state": "Telangana",
+      "legislature": "Telangana Legislative Assembly",
+      "source_url": "https://legislature.telangana.gov.in/bills/detail/11-2024",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Telangana Gig and Platform Workers (Registration and Welfare) Bill, 2024",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Telangana",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "L.A. Bill No. 11 of 2024",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "authoritative",
+          "value": "2024-07-26",
+          "source_detail": "Listing date column"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Assent date unavailable"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://legislature.telangana.gov.in/legislation/bills/2024/Bill_11_2024.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2024",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "telangana-vs-bill-11-2024",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "telangana-vs-bill-12-2024",
+      "state": "Telangana",
+      "legislature": "Telangana Legislative Assembly",
+      "source_url": "https://legislature.telangana.gov.in/bills/detail/12-2024",
+      "coverage": {
+        "authoritative": 8,
+        "derived": 2,
+        "unavailable": 2
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Telangana Electricity Duty (Amendment) Bill, 2024",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Telangana",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "L.A. Bill No. 12 of 2024",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "authoritative",
+          "value": "2024-07-29",
+          "source_detail": "Listing date column"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Assent date unavailable"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://legislature.telangana.gov.in/legislation/bills/2024/Bill_12_2024.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2024",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "telangana-vs-bill-12-2024",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "telangana-vs-bill-5-2023",
+      "state": "Telangana",
+      "legislature": "Telangana Legislative Assembly",
+      "source_url": "https://legislature.telangana.gov.in/bills/detail/5-2023",
+      "coverage": {
+        "authoritative": 9,
+        "derived": 2,
+        "unavailable": 1
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Telangana Private Universities (Establishment and Regulation) (Amendment) Bill, 2023",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Telangana",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "L.A. Bill No. 5 of 2023",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "authoritative",
+          "value": "2023-08-04",
+          "source_detail": "Listing date column"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "authoritative",
+          "value": "2023-09-15",
+          "source_detail": "Official assent date recorded"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://legislature.telangana.gov.in/legislation/bills/2023/Bill_5_2023.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2023",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "telangana-vs-bill-5-2023",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "telangana-vs-bill-7-2023",
+      "state": "Telangana",
+      "legislature": "Telangana Legislative Assembly",
+      "source_url": "https://legislature.telangana.gov.in/bills/detail/7-2023",
+      "coverage": {
+        "authoritative": 9,
+        "derived": 2,
+        "unavailable": 1
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Telangana Agriculture Produce and Livestock Markets (Amendment) Bill, 2023",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Telangana",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "L.A. Bill No. 7 of 2023",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "authoritative",
+          "value": "2023-08-05",
+          "source_detail": "Listing date column"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "authoritative",
+          "value": "2023-09-20",
+          "source_detail": "Official assent date recorded"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://legislature.telangana.gov.in/legislation/bills/2023/Bill_7_2023.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2023",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "telangana-vs-bill-7-2023",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    },
+    {
+      "bill_id": "telangana-vs-bill-9-2023",
+      "state": "Telangana",
+      "legislature": "Telangana Legislative Assembly",
+      "source_url": "https://legislature.telangana.gov.in/bills/detail/9-2023",
+      "coverage": {
+        "authoritative": 9,
+        "derived": 2,
+        "unavailable": 1
+      },
+      "fields": {
+        "title": {
+          "field_name": "title",
+          "level": "authoritative",
+          "value": "The Telangana Public Health and Epidemics (Amendment) Bill, 2023",
+          "source_detail": "Official bill listing/detail"
+        },
+        "jurisdiction": {
+          "field_name": "jurisdiction",
+          "level": "authoritative",
+          "value": "state",
+          "source_detail": "State legislative source"
+        },
+        "state": {
+          "field_name": "state",
+          "level": "authoritative",
+          "value": "Telangana",
+          "source_detail": "Authoritative state attribution"
+        },
+        "bill_number": {
+          "field_name": "bill_number",
+          "level": "authoritative",
+          "value": "L.A. Bill No. 9 of 2023",
+          "source_detail": "Official legislature bill number"
+        },
+        "house": {
+          "field_name": "house",
+          "level": "authoritative",
+          "value": "vidhan_sabha",
+          "source_detail": "Chamber specification in portal"
+        },
+        "introduction_date": {
+          "field_name": "introduction_date",
+          "level": "authoritative",
+          "value": "2023-08-06",
+          "source_detail": "Listing date column"
+        },
+        "assent_date": {
+          "field_name": "assent_date",
+          "level": "authoritative",
+          "value": "2023-09-25",
+          "source_detail": "Official assent date recorded"
+        },
+        "pdf_url": {
+          "field_name": "pdf_url",
+          "level": "authoritative",
+          "value": "https://legislature.telangana.gov.in/legislation/bills/2023/Bill_9_2023.pdf",
+          "source_detail": "Official document download link"
+        },
+        "status": {
+          "field_name": "status",
+          "level": "authoritative",
+          "value": "passed_both",
+          "source_detail": "Official portal status/remarks"
+        },
+        "department": {
+          "field_name": "department",
+          "level": "unavailable",
+          "value": null,
+          "source_detail": "Department not listed"
+        },
+        "year": {
+          "field_name": "year",
+          "level": "derived",
+          "value": "2023",
+          "source_detail": "Extracted deterministically from bill title/date"
+        },
+        "bill_id": {
+          "field_name": "bill_id",
+          "level": "derived",
+          "value": "telangana-vs-bill-9-2023",
+          "source_detail": "Deterministic canonical slug"
+        }
+      }
+    }
+  ]
+}

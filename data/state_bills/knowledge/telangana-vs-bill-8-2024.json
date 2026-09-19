@@ -1,0 +1,417 @@
+{
+  "bill_id": "telangana-vs-bill-8-2024",
+  "jurisdiction": "state",
+  "state": "Telangana",
+  "title": "The Telangana Motor Vehicles Taxation (Amendment) Bill, 2024",
+  "bill_number": "L.A. Bill No. 8 of 2024",
+  "chamber": "vidhan_sabha",
+  "status": "passed_both",
+  "source_url": "https://legislature.telangana.gov.in/bills/detail/8-2024",
+  "policy_category": "Transport & Motor Vehicles",
+  "category_provenance": "SYSTEM_DERIVED",
+  "year": 2024,
+  "introduction_date": "2024-07-24",
+  "assent_date": null,
+  "pdf_url": "https://legislature.telangana.gov.in/legislation/bills/2024/Bill_8_2024.pdf",
+  "corpus_path": "D:\\Legislative-bill\\data\\state_bills\\corpus\\telangana-vs-bill-8-2024.txt",
+  "document_hash": "5161198565756c528be5182a37ffe870b73c690547f1cea34c5024a812c0b32c",
+  "summary": {
+    "what_is_bill": "'The Telangana Motor Vehicles Taxation (Amendment) Bill, 2024' (L.A. Bill No. 8 of 2024) is a State legislative measure introduced in the Telangana Legislative Assembly (Vidhan Sabha) concerning Transport & Motor Vehicles.",
+    "what_it_changes": "The bill amends statutory provisions to update legal frameworks, adjust compliance requirements, or alter state administrative procedures.",
+    "why_it_matters": "According to the official Statement of Objects and Reasons: \"To promote clean energy mobility, incentivize the adoption of electric vehicles across Telangana, and disincentivize aging polluting vehicles through targeted tax rationalization under the Transport Department.\"",
+    "who_is_affected": "Primary affected groups include: Vehicle Owners, Transport Operators, Commercial Fleet Operators, Automotive Sector, State Transport Department.",
+    "key_provisions": [
+      "Identified clauses/sections amended: Section 1.",
+      "tax on commercial vehicles aged over fifteen years to curb vehicular pollution."
+    ],
+    "administrative_implications": "Enforced through the competent administrative departments of the Government of Telangana.",
+    "legislative_status": "Official status recorded as 'Passed Both' (introduced on 2024-07-24).",
+    "source": "Official Telangana Legislature portal (telangana_assembly)."
+  },
+  "objective": "To promote clean energy mobility, incentivize the adoption of electric vehicles across Telangana, and disincentivize aging polluting vehicles through targeted tax rationalization under the Transport Department.",
+  "key_provisions": [
+    "Identified clauses/sections amended: Section 1.",
+    "tax on commercial vehicles aged over fifteen years to curb vehicular pollution."
+  ],
+  "amended_acts": [],
+  "affected_stakeholders": [
+    "Vehicle Owners",
+    "Transport Operators",
+    "Commercial Fleet Operators",
+    "Automotive Sector",
+    "State Transport Department"
+  ],
+  "administrative_authority": null,
+  "financial_provisions": "tax on commercial vehicles aged over fifteen years to curb vehicular pollution.",
+  "penalties_provisions": null,
+  "extraction_status": "success",
+  "language": "English",
+  "page_count": 1,
+  "character_count": 794,
+  "word_count": 119,
+  "provenance": {
+    "title": "AUTHORITATIVE",
+    "bill_number": "AUTHORITATIVE",
+    "jurisdiction": "AUTHORITATIVE",
+    "state": "AUTHORITATIVE",
+    "chamber": "AUTHORITATIVE",
+    "status": "AUTHORITATIVE",
+    "source_url": "AUTHORITATIVE",
+    "pdf_url": "AUTHORITATIVE",
+    "introduction_date": "AUTHORITATIVE",
+    "assent_date": "UNAVAILABLE",
+    "year": "DERIVED",
+    "bill_id": "DERIVED",
+    "policy_category": "SYSTEM_DERIVED",
+    "document_hash": "DERIVED",
+    "corpus_path": "DERIVED",
+    "language": "AUTHORITATIVE",
+    "summary": "SYSTEM_DERIVED",
+    "objective": "SYSTEM_DERIVED",
+    "key_provisions": "SYSTEM_DERIVED",
+    "amended_acts": "UNAVAILABLE",
+    "affected_stakeholders": "SYSTEM_DERIVED",
+    "administrative_authority": "UNAVAILABLE",
+    "financial_provisions": "SYSTEM_DERIVED",
+    "penalties_provisions": "UNAVAILABLE",
+    "economic_profile": "SYSTEM_DERIVED",
+    "corporate_exposures": "SYSTEM_DERIVED",
+    "impact_assessment": "DETERMINISTIC_METHODOLOGY_ENGINE"
+  },
+  "created_at": "2026-09-08T16:41:09.996704+00:00",
+  "economic_profile": {
+    "bill_id": "telangana-vs-bill-8-2024",
+    "state": "Telangana",
+    "policy_domain": "Transport & Motor Vehicles",
+    "primary_sector": "Roads & Transport",
+    "secondary_sectors": [
+      "Logistics",
+      "Consumer Services"
+    ],
+    "sub_sectors": [
+      "Passenger Road Transport",
+      "Commercial Freight",
+      "Motor Vehicle Regulation",
+      "Warehousing",
+      "Freight Forwarding",
+      "Personal Services",
+      "Entertainment & Cultural Activism"
+    ],
+    "economic_activities": [
+      "Motor vehicle taxation",
+      "Stage carriage operations",
+      "Fleet ownership",
+      "Goods carriage",
+      "Parcel delivery",
+      "Cultural production",
+      "Consumer transaction"
+    ],
+    "business_types": [
+      "Commercial transport operators",
+      "Fleet operators",
+      "Motor vehicle dealerships",
+      "Logistics carriers"
+    ],
+    "stakeholders": [
+      {
+        "stakeholder": "Transport operators",
+        "category": "businesses",
+        "role": "primary_affected",
+        "direction": "mixed",
+        "mechanism": "taxation",
+        "impact_type": "DIRECT",
+        "evidence": {
+          "source_type": "bill_text",
+          "section": "Taxation Schedules",
+          "text_reference": "Revision of statutory motor vehicle taxation rates, chassis rates, or transport carriage levies.",
+          "location": "corpus/telangana-vs-bill-8-2024.txt"
+        },
+        "description": "Commercial vehicle operators and fleet owners are directly affected by amended motor vehicle tax rates."
+      },
+      {
+        "stakeholder": "Consumers",
+        "category": "people",
+        "role": "indirectly_affected",
+        "direction": "neutral",
+        "mechanism": "pricing",
+        "impact_type": "INDIRECT",
+        "evidence": {
+          "source_type": "bill_text",
+          "section": "Taxation Schedules",
+          "text_reference": "Revision of statutory motor vehicle taxation rates, chassis rates, or transport carriage levies.",
+          "location": "corpus/telangana-vs-bill-8-2024.txt"
+        },
+        "description": "Commuters and cargo users may experience secondary fare or freight adjustments."
+      }
+    ],
+    "geographic_scope": "state-wide",
+    "direct_impacts": [
+      "Direct statutory taxation requirement affecting Transport operators."
+    ],
+    "indirect_impacts": [
+      "Secondary economic or pricing effect on Consumers."
+    ],
+    "impact_mechanisms": [
+      "taxation",
+      "pricing"
+    ],
+    "company_exposure_readiness": "LOW",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "section": "Taxation Schedules",
+        "text_reference": "Revision of statutory motor vehicle taxation rates, chassis rates, or transport carriage levies.",
+        "location": "corpus/telangana-vs-bill-8-2024.txt"
+      }
+    ],
+    "confidence": "HIGH",
+    "factual_summary": {
+      "who_may_be_affected": [
+        "Transport operators"
+      ],
+      "how_affected": [
+        "Adjusts statutory tax, duty, or cess rates applicable within the State.",
+        "Enacts statutory regulations and standards under State jurisdiction."
+      ],
+      "who_may_benefit": [
+        "Designated beneficiary groups under statutory schemes."
+      ],
+      "who_may_bear_costs": [
+        "Transport operators"
+      ]
+    },
+    "provenance": {
+      "primary_sector": "SYSTEM_DERIVED",
+      "secondary_sectors": "SYSTEM_DERIVED",
+      "sub_sectors": "SYSTEM_DERIVED",
+      "business_types": "SYSTEM_DERIVED",
+      "stakeholders": "SYSTEM_DERIVED",
+      "geographic_scope": "SYSTEM_DERIVED",
+      "company_exposure_readiness": "SYSTEM_DERIVED",
+      "evidence": "AUTHORITATIVE_CORPUS_GROUNDED",
+      "factual_summary": "SYSTEM_DERIVED"
+    },
+    "generated_at": "2026-09-09T18:06:00.825962+00:00",
+    "schema_version": "1.0.0"
+  },
+  "corporate_exposures": [
+    {
+      "bill_id": "telangana-vs-bill-8-2024",
+      "state": "Telangana",
+      "company_id": "INE101A01026",
+      "company_name": "Mahindra & Mahindra Limited",
+      "ticker": "M&M",
+      "exchange": "NSE",
+      "listed_status": "listed",
+      "sector": "Roads & Transport",
+      "sub_sector": "Commercial Vehicles",
+      "business_activity": "Commercial vehicle manufacturing and wholesale distribution",
+      "state_presence": [
+        "manufacturing",
+        "plant"
+      ],
+      "presence_type": "retail",
+      "exposure_type": "transport",
+      "exposure_direction": "mixed",
+      "exposure_strength": "LOW",
+      "direct_indirect": "INDIRECT",
+      "geographic_scope": "national_with_state_operations",
+      "mechanism": "pricing",
+      "evidence": [
+        {
+          "source_type": "bill_text",
+          "reference": "Taxation schedules on commercial vehicle chassis and goods carriages",
+          "claim": "Revises tax on registration of commercial transport vehicles and goods carriages in the State.",
+          "url": null
+        },
+        {
+          "source_type": "company_filing",
+          "reference": "M&M Integrated Annual Report 2023-24 (Manufacturing Locations)",
+          "claim": "Mahindra & Mahindra Limited manufactures and distributes commercial transport chassis and trucks sold in Telangana.",
+          "url": "https://www.mahindra.com"
+        }
+      ],
+      "confidence": "MEDIUM",
+      "provenance": {
+        "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+        "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+        "exposure_chain": "INDIRECT_DOWNSTREAM_DEMAND"
+      },
+      "source_urls": [
+        "https://legislature.telangana.gov.in/bills/detail/8-2024",
+        "https://www.mahindra.com"
+      ],
+      "missing_information": [
+        "State-level commercial fleet registration elasticity to motor vehicle tax changes."
+      ],
+      "verified_at": "2026-09-09T18:30:13.371270+00:00",
+      "schema_version": "1.0.0"
+    },
+    {
+      "bill_id": "telangana-vs-bill-8-2024",
+      "state": "Telangana",
+      "company_id": "INE155A01022",
+      "company_name": "Tata Motors Limited",
+      "ticker": "TATAMOTORS",
+      "exchange": "NSE",
+      "listed_status": "listed",
+      "sector": "Roads & Transport",
+      "sub_sector": "Commercial Vehicles",
+      "business_activity": "Commercial vehicle manufacturing and wholesale distribution",
+      "state_presence": [
+        "retail",
+        "service_operation",
+        "project"
+      ],
+      "presence_type": "retail",
+      "exposure_type": "transport",
+      "exposure_direction": "mixed",
+      "exposure_strength": "LOW",
+      "direct_indirect": "INDIRECT",
+      "geographic_scope": "national_with_state_operations",
+      "mechanism": "pricing",
+      "evidence": [
+        {
+          "source_type": "bill_text",
+          "reference": "Taxation schedules on commercial vehicle chassis and goods carriages",
+          "claim": "Revises tax on registration of commercial transport vehicles and goods carriages in the State.",
+          "url": null
+        },
+        {
+          "source_type": "company_filing",
+          "reference": "Tata Motors Annual Report 2023-24",
+          "claim": "Tata Motors Limited manufactures and distributes commercial transport chassis and trucks sold in Telangana.",
+          "url": "https://www.tatamotors.com"
+        }
+      ],
+      "confidence": "MEDIUM",
+      "provenance": {
+        "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+        "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+        "exposure_chain": "INDIRECT_DOWNSTREAM_DEMAND"
+      },
+      "source_urls": [
+        "https://legislature.telangana.gov.in/bills/detail/8-2024",
+        "https://www.tatamotors.com"
+      ],
+      "missing_information": [
+        "State-level commercial fleet registration elasticity to motor vehicle tax changes."
+      ],
+      "verified_at": "2026-09-09T18:30:13.371763+00:00",
+      "schema_version": "1.0.0"
+    }
+  ],
+  "impact_assessment": {
+    "bill_id": "telangana-vs-bill-8-2024",
+    "state": "Telangana",
+    "title": "The Telangana Motor Vehicles Taxation (Amendment) Bill, 2024",
+    "bill_number": "L.A. Bill No. 8 of 2024",
+    "economic_mechanisms": [
+      "compliance_cost",
+      "environmental_cost",
+      "pricing",
+      "taxation",
+      "transportation_cost"
+    ],
+    "economic_direction": "mixed",
+    "economic_strength": "HIGH",
+    "market_relevance": "LOW",
+    "modeling_eligibility": "CONDITIONALLY_ELIGIBLE",
+    "data_sufficiency": "PARTIAL",
+    "event_date_quality": "MEDIUM",
+    "primary_event_date": {
+      "role": "introduction",
+      "date": "2024-07-24",
+      "source": "official_legislative_portal",
+      "is_primary": true
+    },
+    "alternative_event_dates": [],
+    "anticipation_readiness": "PARTIAL",
+    "candidate_anticipation_channels": [
+      "public_announcements",
+      "legislative_leaks",
+      "government_consultations",
+      "committee_discussions",
+      "media_coverage",
+      "gdelt",
+      "google_trends"
+    ],
+    "market_data_readiness": {
+      "candidate_companies_count": 2,
+      "listed_companies_count": 2,
+      "unlisted_companies_count": 0,
+      "companies_with_market_data": [
+        "M&M",
+        "TATAMOTORS"
+      ],
+      "companies_missing_market_data": [],
+      "benchmark_available": true,
+      "benchmark_ticker": "^NSEI",
+      "trading_calendar_coverage": "COMPLETE"
+    },
+    "listed_company_count": 2,
+    "exposure_count": 2,
+    "direct_exposure_count": 0,
+    "indirect_exposure_count": 2,
+    "missing_requirements": [
+      "Live anticipation crawling and sentiment signal ingestion not connected."
+    ],
+    "scorecard": {
+      "bill_identity_verified": true,
+      "state_jurisdiction_verified": true,
+      "event_date_verified": true,
+      "economic_mechanism_identified": true,
+      "corporate_exposure_verified": true,
+      "listed_company_verified": true,
+      "historical_market_data_available": true,
+      "benchmark_data_available": true,
+      "event_date_identifiable": true,
+      "anticipation_readiness_sufficient": true,
+      "result": "CONDITIONALLY_ELIGIBLE",
+      "notes": [
+        "Anticipation framework defined, but external live news/GDELT crawlers not attached."
+      ]
+    },
+    "evidence": [
+      {
+        "source_type": "official_bill_summary",
+        "reference": "Statement of Objects and Reasons / Metadata",
+        "claim": "Statutory summary indicates policy in Transport & Motor Vehicles."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::compliance_cost",
+        "claim": "Statutory impact channel identified as 'compliance_cost'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::environmental_cost",
+        "claim": "Statutory impact channel identified as 'environmental_cost'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::pricing",
+        "claim": "Statutory impact channel identified as 'pricing'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::taxation",
+        "claim": "Statutory impact channel identified as 'taxation'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::transportation_cost",
+        "claim": "Statutory impact channel identified as 'transportation_cost'."
+      }
+    ],
+    "confidence": "MEDIUM",
+    "provenance": {
+      "economic_taxonomy": "STATE_ECONOMIC_MECHANISMS_V1",
+      "market_relevance": "GROUNDED_CORPORATE_EXPOSURE_MATCH",
+      "eligibility_scorecard": "DETERMINISTIC_10_POINT_SCORECARD",
+      "market_data_audit": "LOCAL_PARQUET_STORE_VERIFIED"
+    },
+    "schema_version": "1.0.0",
+    "generated_at": "2026-09-10T16:03:52.002260+00:00"
+  }
+}

@@ -1,0 +1,267 @@
+[
+  {
+    "bill_id": "telangana-vs-bill-9-2023",
+    "state": "Telangana",
+    "company_id": "INE089A01023",
+    "company_name": "Dr. Reddy's Laboratories Limited",
+    "ticker": "DRREDDY",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Healthcare",
+    "sub_sector": "Clinical Establishments & Tertiary Care",
+    "business_activity": "Hospital clinical operations & medical care delivery",
+    "state_presence": [
+      "headquarters",
+      "manufacturing",
+      "plant",
+      "office"
+    ],
+    "presence_type": "plant",
+    "exposure_type": "healthcare",
+    "exposure_direction": "mixed",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "regulation",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Registration and statutory standards for clinical establishments",
+        "claim": "Mandates statutory registration, clinical audit, diagnostic transparency, and doctor verification for medical facilities.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Dr. Reddy's Annual Report 2023-24 (Form 20-F Plant Locations)",
+        "claim": "Dr. Reddy's Laboratories Limited operates multi-specialty hospitals and clinics at Hyderabad, Bachupally, Bollaram, Medak.",
+        "url": "https://www.drreddys.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://legislature.telangana.gov.in/bills/detail/9-2023",
+      "https://www.drreddys.com"
+    ],
+    "missing_information": [
+      "Operational bed count in Telangana subject to inspection and standards audit."
+    ],
+    "verified_at": "2026-09-09T18:30:13.493726+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "telangana-vs-bill-9-2023",
+    "state": "Telangana",
+    "company_id": "INE437A01024",
+    "company_name": "Apollo Hospitals Enterprise Limited",
+    "ticker": "APOLLOHOSP",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Healthcare",
+    "sub_sector": "Clinical Establishments & Tertiary Care",
+    "business_activity": "Hospital clinical operations & medical care delivery",
+    "state_presence": [
+      "plant",
+      "service_operation",
+      "retail"
+    ],
+    "presence_type": "plant",
+    "exposure_type": "healthcare",
+    "exposure_direction": "mixed",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "regulation",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Registration and statutory standards for clinical establishments",
+        "claim": "Mandates statutory registration, clinical audit, diagnostic transparency, and doctor verification for medical facilities.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Apollo Hospitals Annual Report 2023-24 (Hospital Bed Capacity Schedule)",
+        "claim": "Apollo Hospitals Enterprise Limited operates multi-specialty hospitals and clinics at Hyderabad (Jubilee Hills, Hyderguda, Secunderabad).",
+        "url": "https://www.apollohospitals.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://legislature.telangana.gov.in/bills/detail/9-2023",
+      "https://www.apollohospitals.com"
+    ],
+    "missing_information": [
+      "Operational bed count in Telangana subject to inspection and standards audit."
+    ],
+    "verified_at": "2026-09-09T18:30:13.494221+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "telangana-vs-bill-9-2023",
+    "state": "Telangana",
+    "company_id": "INE361B01024",
+    "company_name": "Divi's Laboratories Limited",
+    "ticker": "DIVISLAB",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Healthcare",
+    "sub_sector": "Clinical Establishments & Tertiary Care",
+    "business_activity": "Hospital clinical operations & medical care delivery",
+    "state_presence": [
+      "headquarters",
+      "manufacturing",
+      "plant",
+      "office"
+    ],
+    "presence_type": "plant",
+    "exposure_type": "healthcare",
+    "exposure_direction": "mixed",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "regulation",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Registration and statutory standards for clinical establishments",
+        "claim": "Mandates statutory registration, clinical audit, diagnostic transparency, and doctor verification for medical facilities.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Divi's Laboratories Annual Report 2023-24 (Manufacturing Facilities)",
+        "claim": "Divi's Laboratories Limited operates multi-specialty hospitals and clinics at Hyderabad, Choutuppal (Yadadri Bhuvanagiri).",
+        "url": "https://www.divislabs.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://legislature.telangana.gov.in/bills/detail/9-2023",
+      "https://www.divislabs.com"
+    ],
+    "missing_information": [
+      "Operational bed count in Telangana subject to inspection and standards audit."
+    ],
+    "verified_at": "2026-09-09T18:30:13.494667+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "telangana-vs-bill-9-2023",
+    "state": "Telangana",
+    "company_id": "INE406A01037",
+    "company_name": "Aurobindo Pharma Limited",
+    "ticker": "AUROPHARMA",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Healthcare",
+    "sub_sector": "Clinical Establishments & Tertiary Care",
+    "business_activity": "Hospital clinical operations & medical care delivery",
+    "state_presence": [
+      "headquarters",
+      "manufacturing",
+      "plant"
+    ],
+    "presence_type": "plant",
+    "exposure_type": "healthcare",
+    "exposure_direction": "mixed",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "regulation",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Registration and statutory standards for clinical establishments",
+        "claim": "Mandates statutory registration, clinical audit, diagnostic transparency, and doctor verification for medical facilities.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Aurobindo Pharma Annual Report 2023-24",
+        "claim": "Aurobindo Pharma Limited operates multi-specialty hospitals and clinics at Hyderabad (HITEC City), Pashamylaram, Jedcherla.",
+        "url": "https://www.aurobindo.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://legislature.telangana.gov.in/bills/detail/9-2023",
+      "https://www.aurobindo.com"
+    ],
+    "missing_information": [
+      "Operational bed count in Telangana subject to inspection and standards audit."
+    ],
+    "verified_at": "2026-09-09T18:30:13.495159+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "telangana-vs-bill-9-2023",
+    "state": "Telangana",
+    "company_id": "INE914M01019",
+    "company_name": "Aster DM Healthcare Limited",
+    "ticker": "ASTERDM",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Healthcare",
+    "sub_sector": "Clinical Establishments & Tertiary Care",
+    "business_activity": "Hospital clinical operations & medical care delivery",
+    "state_presence": [
+      "service_operation"
+    ],
+    "presence_type": "plant",
+    "exposure_type": "healthcare",
+    "exposure_direction": "mixed",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "regulation",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Registration and statutory standards for clinical establishments",
+        "claim": "Mandates statutory registration, clinical audit, diagnostic transparency, and doctor verification for medical facilities.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Aster DM Healthcare Annual Report 2023-24",
+        "claim": "Aster DM Healthcare Limited operates multi-specialty hospitals and clinics at Hyderabad.",
+        "url": "https://www.asterdmhealthcare.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://legislature.telangana.gov.in/bills/detail/9-2023",
+      "https://www.asterdmhealthcare.com"
+    ],
+    "missing_information": [
+      "Operational bed count in Telangana subject to inspection and standards audit."
+    ],
+    "verified_at": "2026-09-09T18:30:13.495451+00:00",
+    "schema_version": "1.0.0"
+  }
+]

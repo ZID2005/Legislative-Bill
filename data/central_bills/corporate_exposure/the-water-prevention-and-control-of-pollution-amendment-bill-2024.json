@@ -1,0 +1,108 @@
+[
+  {
+    "bill_id": "the-water-prevention-and-control-of-pollution-amendment-bill-2024",
+    "state": "Central",
+    "company_id": "INE061F01013",
+    "company_name": "Fortis Healthcare Limited",
+    "ticker": "FORTIS",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Healthcare & Pharmaceuticals",
+    "sub_sector": "Healthcare Services",
+    "business_activity": "Hospital operations with effluent treatment plant (ETP) and SPCB discharge consent",
+    "state_presence": [
+      "national"
+    ],
+    "presence_type": "plant",
+    "exposure_type": "environmental",
+    "exposure_direction": "positive",
+    "exposure_strength": "LOW",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "national",
+    "mechanism": "compliance_cost",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Clauses 4-8 (Consent to Establish/Operate exemptions & penalty adjudication framework)",
+        "claim": "Amends Water Act, 1974 to decriminalise minor pollution offences, replace criminal prosecution with civil penalties, and standardise State Pollution Control Board (SPCB) consent guidelines.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Fortis Healthcare Annual Report 2023-24 (Environmental Management & ETP Disclosures)",
+        "claim": "Fortis Healthcare operates tertiary hospitals across India generating medical liquid waste requiring SPCB consent to establish/operate and on-site Effluent Treatment Plants (ETPs).",
+        "url": "https://www.fortishealthcare.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "jurisdiction": "central",
+    "market_relevance": "LOW",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_evidence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "HOSPITAL_EFFLUENT_SPCB_CONSENT_REGULATION"
+    },
+    "source_urls": [
+      "https://prsindia.org/billtrack/the-water-prevention-and-control-of-pollution-bill-2024",
+      "https://www.fortishealthcare.com"
+    ],
+    "missing_information": [
+      "State-by-state variations in SPCB online consent renewal fee schedules."
+    ],
+    "verified_at": "2026-09-16T07:17:33.062273+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "the-water-prevention-and-control-of-pollution-amendment-bill-2024",
+    "state": "Central",
+    "company_id": "INE027H01010",
+    "company_name": "Max Healthcare Institute Limited",
+    "ticker": "MAXHEALTH",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Healthcare & Pharmaceuticals",
+    "sub_sector": "Healthcare Services",
+    "business_activity": "Hospital operations with effluent treatment plant (ETP) and SPCB discharge consent",
+    "state_presence": [
+      "national"
+    ],
+    "presence_type": "plant",
+    "exposure_type": "environmental",
+    "exposure_direction": "positive",
+    "exposure_strength": "LOW",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "national",
+    "mechanism": "compliance_cost",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Clauses 4-8 (Decriminalisation of statutory consent defaults & civil penalty mechanism)",
+        "claim": "Standardises central guidelines for state pollution control boards regarding discharge standards and establishment consent procedures.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Max Healthcare Annual Report 2023-24 (ESG Report / Environmental Compliance Disclosures)",
+        "claim": "Max Healthcare operates 17+ hospital facilities with dedicated sewage and effluent treatment plants subject to statutory state pollution control board environmental permits.",
+        "url": "https://www.maxhealthcare.in"
+      }
+    ],
+    "confidence": "HIGH",
+    "jurisdiction": "central",
+    "market_relevance": "LOW",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_evidence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "HOSPITAL_EFFLUENT_SPCB_CONSENT_REGULATION"
+    },
+    "source_urls": [
+      "https://prsindia.org/billtrack/the-water-prevention-and-control-of-pollution-bill-2024",
+      "https://www.maxhealthcare.in"
+    ],
+    "missing_information": [
+      "Effluent discharge volume across NCR hospital network."
+    ],
+    "verified_at": "2026-09-16T07:17:33.062500+00:00",
+    "schema_version": "1.0.0"
+  }
+]

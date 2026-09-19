@@ -50,6 +50,10 @@ backends incrementally as each data ingestion task is completed.
 """
 
 from storage.bill_repository import BillRepository
+from storage.state_bill_repository import StateBillRepository
+from storage.state_knowledge_repository import StateKnowledgeRepository
+from storage.state_corporate_exposure_repository import StateCorporateExposureRepository
+from storage.company_exposure_repository import CompanyExposureRepository
 from storage.company_repository import CompanyRepository
 from storage.market_repository import MarketRepository
 from storage.knowledge_repository import KnowledgeRepository
@@ -66,12 +70,23 @@ from storage.prediction_repository import PredictionRepository
 from storage.decision_repository import DecisionRepository
 from storage.report_repository import ReportRepository
 from storage.catalog import CatalogManager, DatasetEntry, compute_md5
+from storage.user_repository import UserRepository
+from storage.watchlist_repository import WatchlistRepository
+from storage.alert_rule_repository import AlertRuleRepository
+from storage.alert_event_repository import AlertEventRepository
+from storage.notification_repository import NotificationRepository
+from storage.alert_preference_repository import AlertPreferenceRepository
+from storage.alert_group_repository import AlertGroupRepository
 
 
 # ---------------------------------------------------------------------------
 # Repository singletons
 # ---------------------------------------------------------------------------
 bill_repo: BillRepository = BillRepository()
+state_bill_repo: StateBillRepository = StateBillRepository()
+state_knowledge_repo: StateKnowledgeRepository = StateKnowledgeRepository()
+state_corporate_exposure_repo: StateCorporateExposureRepository = StateCorporateExposureRepository()
+company_exposure_repo: CompanyExposureRepository = CompanyExposureRepository()
 company_repo: CompanyRepository = CompanyRepository()
 market_repo: MarketRepository = MarketRepository()
 knowledge_repo: KnowledgeRepository = KnowledgeRepository()
@@ -87,6 +102,13 @@ anticipation_repo: AnticipationRepository = AnticipationRepository()
 prediction_repo: PredictionRepository = PredictionRepository()
 decision_repo: DecisionRepository = DecisionRepository()
 report_repo: ReportRepository = ReportRepository()
+user_repo: UserRepository = UserRepository()
+watchlist_repo: WatchlistRepository = WatchlistRepository()
+alert_rule_repo: AlertRuleRepository = AlertRuleRepository()
+alert_event_repo: AlertEventRepository = AlertEventRepository()
+notification_repo: NotificationRepository = NotificationRepository()
+alert_preference_repo: AlertPreferenceRepository = AlertPreferenceRepository()
+alert_group_repo: AlertGroupRepository = AlertGroupRepository()
 
 
 # ---------------------------------------------------------------------------
@@ -117,6 +139,10 @@ catalog: _Catalog = _Catalog()
 __all__ = [
     # Repositories
     "BillRepository",
+    "StateBillRepository",
+    "StateKnowledgeRepository",
+    "StateCorporateExposureRepository",
+    "CompanyExposureRepository",
     "CompanyRepository",
     "MarketRepository",
     "KnowledgeRepository",
@@ -132,7 +158,18 @@ __all__ = [
     "PredictionRepository",
     "DecisionRepository",
     "ReportRepository",
+    "UserRepository",
+    "WatchlistRepository",
+    "AlertRuleRepository",
+    "AlertEventRepository",
+    "NotificationRepository",
+    "AlertPreferenceRepository",
+    "AlertGroupRepository",
     "bill_repo",
+    "state_bill_repo",
+    "state_knowledge_repo",
+    "state_corporate_exposure_repo",
+    "company_exposure_repo",
     "company_repo",
     "market_repo",
     "knowledge_repo",
@@ -148,6 +185,13 @@ __all__ = [
     "prediction_repo",
     "decision_repo",
     "report_repo",
+    "user_repo",
+    "watchlist_repo",
+    "alert_rule_repo",
+    "alert_event_repo",
+    "notification_repo",
+    "alert_preference_repo",
+    "alert_group_repo",
     # Catalog
     "CatalogManager",
     "DatasetEntry",

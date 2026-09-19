@@ -97,3 +97,9 @@ scipy>=1.14.0             # Statistical tests (Python 3.14 compatible)
 # ---------------------------------------------------------------------------
 streamlit>=1.36.0           # Interactive dashboard
 plotly>=5.22.0              # Interactive charts
+
+# ---------------------------------------------------------------------------
+# Task 8.10 — Groq AI Intelligence & Explanation Layer
+# ---------------------------------------------------------------------------
+groq>=1.0.0                 # Groq cloud AI inference provider
+

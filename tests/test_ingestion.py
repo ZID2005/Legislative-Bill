@@ -50,8 +50,16 @@ async def test_connector_binary_fetch() -> None:
 
 @pytest.mark.asyncio
 async def test_connector_robots_caching() -> None:
+    from urllib.robotparser import RobotFileParser
+    from unittest.mock import patch
+
+    def mock_read(self):
+        self.parse(["User-agent: *", "Allow: /"])
+
     connector = ParliamentConnector()
-    assert connector._check_robots("https://prsindia.org/bills") is True
+    with patch.object(RobotFileParser, "read", mock_read):
+        assert connector._check_robots("https://prsindia.org/bills") is True
+        assert "https://prsindia.org" in connector._robots_parsers
 
 
 # ---------------------------------------------------------------------------
@@ -214,9 +222,9 @@ def test_validator_bill() -> None:
 
 
 @pytest.mark.asyncio
-async def test_service_ingest_flow(tmp_path: Path) -> None:
+async def test_service_ingest_flow(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     # Set up temp settings paths
-    settings.BILLS_DIR = tmp_path / "bills"
+    monkeypatch.setattr(settings, "BILLS_DIR", tmp_path / "bills")
     settings.ensure_directories()
 
     # Stub connector mock responses
@@ -306,8 +314,8 @@ async def test_service_ingest_flow(tmp_path: Path) -> None:
 
 
 @pytest.mark.asyncio
-async def test_service_dry_run(tmp_path: Path) -> None:
-    settings.BILLS_DIR = tmp_path / "bills_dry"
+async def test_service_dry_run(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(settings, "BILLS_DIR", tmp_path / "bills_dry")
     settings.ensure_directories()
 
     connector = ParliamentConnector()
@@ -340,8 +348,8 @@ async def test_service_dry_run(tmp_path: Path) -> None:
 
 
 @pytest.mark.asyncio
-async def test_service_resilience_and_failures(tmp_path: Path) -> None:
-    settings.BILLS_DIR = tmp_path / "bills_fail"
+async def test_service_resilience_and_failures(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(settings, "BILLS_DIR", tmp_path / "bills_fail")
     settings.ensure_directories()
 
     connector = ParliamentConnector()
@@ -438,10 +446,10 @@ def test_downloader_text_extraction_fallback(tmp_path: Path) -> None:
         downloader.extract_text_from_pdf(str(tmp_path / "nonexistent.pdf"))
 
 
-def test_bill_scraper_compatibility_wrapper(tmp_path: Path) -> None:
+def test_bill_scraper_compatibility_wrapper(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     from ingestion.parliament.bill_scraper import BillScraper
 
-    settings.BILLS_DIR = tmp_path / "bills_wrapper"
+    monkeypatch.setattr(settings, "BILLS_DIR", tmp_path / "bills_wrapper")
     settings.ensure_directories()
 
     # Stub ParliamentIngestionService.ingest_bills

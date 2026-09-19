@@ -1,0 +1,108 @@
+[
+  {
+    "bill_id": "key-issues-and-analysis",
+    "state": "Central",
+    "company_id": "SOE-BSNL-UNLISTED",
+    "company_name": "Bharat Sanchar Nigam Limited",
+    "ticker": "",
+    "exchange": "",
+    "listed_status": "unlisted",
+    "sector": "Telecommunications",
+    "sub_sector": "Public Sector Telecommunications",
+    "business_activity": "Sovereign fixed-line and mobile network services, USOF rural connectivity, and 4G rollout",
+    "state_presence": [
+      "national"
+    ],
+    "presence_type": "infrastructure",
+    "exposure_type": "regulatory",
+    "exposure_direction": "positive",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "national",
+    "mechanism": "procurement",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Public Sector Telecom Revival & Connectivity Mandates",
+        "claim": "Addresses public sector telecom revival funding, 4G sovereign spectrum reservation, and government infrastructure projects including BharatNet.",
+        "url": null
+      },
+      {
+        "source_type": "government_record",
+        "reference": "BSNL Annual Report 2023-24 (DoT Revival Package & USOF Project Execution)",
+        "claim": "BSNL is a wholly owned Government of India public enterprise executing sovereign telecom connectivity, 4G indigenous rollout, and universal service obligation mandates across India.",
+        "url": "https://www.bsnl.co.in"
+      }
+    ],
+    "confidence": "HIGH",
+    "jurisdiction": "central",
+    "market_relevance": "MEDIUM",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_evidence": "OFFICIAL_PUBLIC_RECORD",
+      "exposure_chain": "SOVEREIGN_TELECOM_PSU_REVIVAL_AND_USOF"
+    },
+    "source_urls": [
+      "https://prsindia.org/billtrack/2024-draft-telecom-rules-on-interception-temporary-suspension-of-services-and-cyber-security",
+      "https://www.bsnl.co.in"
+    ],
+    "missing_information": [
+      "Quarterly disbursement schedule of central revival capex grants."
+    ],
+    "verified_at": "2026-09-16T07:17:30.887062+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "key-issues-and-analysis",
+    "state": "Central",
+    "company_id": "INE669E01016",
+    "company_name": "Vodafone Idea Limited",
+    "ticker": "IDEA",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Telecommunications",
+    "sub_sector": "Mobile Telecommunications",
+    "business_activity": "Cellular mobile telecom services, spectrum allocation, and license fee compliance",
+    "state_presence": [
+      "national"
+    ],
+    "presence_type": "service_operation",
+    "exposure_type": "regulatory",
+    "exposure_direction": "mixed",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "national",
+    "mechanism": "licensing",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Telecom Statutory and Policy Review Sections (Spectrum allocation, USOF & licensing)",
+        "claim": "Examines telecom statutory overhaul, Unified License conditions, spectrum pricing, Adjusted Gross Revenue (AGR) liabilities, and Universal Service Obligation Fund (USOF) contributions.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Vodafone Idea Annual Report 2023-24 (Regulatory Framework & Government Liabilities)",
+        "claim": "Vodafone Idea is one of India's three major private telecom service providers with nationwide access spectrum licenses and substantial statutory spectrum and AGR liabilities.",
+        "url": "https://www.myvi.in"
+      }
+    ],
+    "confidence": "HIGH",
+    "jurisdiction": "central",
+    "market_relevance": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_evidence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "TELECOM_LICENSING_AND_SPECTRUM_FRAMEWORK"
+    },
+    "source_urls": [
+      "https://prsindia.org/billtrack/2024-draft-telecom-rules-on-interception-temporary-suspension-of-services-and-cyber-security",
+      "https://www.myvi.in"
+    ],
+    "missing_information": [
+      "Annual moratorium interest calculations for deferred spectrum installments."
+    ],
+    "verified_at": "2026-09-16T07:17:30.887614+00:00",
+    "schema_version": "1.0.0"
+  }
+]

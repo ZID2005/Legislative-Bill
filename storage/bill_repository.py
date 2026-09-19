@@ -15,8 +15,9 @@ from pathlib import Path
 from typing import Optional
 
 from config.logging_config import get_logger
-from schemas.bill import Bill
+from schemas.bill import Bill, BillJurisdiction
 from utils.file_utils import ensure_dir, file_exists, list_files, load_json, save_json
+from utils.state_normalizer import normalize_state
 
 logger = get_logger(__name__)
 
@@ -26,11 +27,17 @@ class BillRepository:
     Repository for bill metadata and full text.
     """
 
-    def __init__(self) -> None:
+    def __init__(
+        self,
+        bills_dir: Optional[Path] = None,
+        metadata_dir: Optional[Path] = None,
+        pdfs_dir: Optional[Path] = None,
+    ) -> None:
         from config.settings import settings
 
-        self._metadata_dir = settings.BILLS_DIR / "metadata"
-        self._pdfs_dir = settings.BILLS_DIR / "pdfs"
+        base_dir = Path(bills_dir) if bills_dir else settings.BILLS_DIR
+        self._metadata_dir = Path(metadata_dir) if metadata_dir else (base_dir / "metadata")
+        self._pdfs_dir = Path(pdfs_dir) if pdfs_dir else (base_dir / "pdfs")
         ensure_dir(self._metadata_dir)
         ensure_dir(self._pdfs_dir)
         logger.debug("BillRepository initialised | metadata_dir=%s", self._metadata_dir)
@@ -116,6 +123,53 @@ class BillRepository:
         """Return bills mapped to a given economic sector."""
         s_lower = sector.strip().lower()
         return [b for b in self.get_all() if any(s.strip().lower() == s_lower for s in b.sectors)]
+
+    def get_by_jurisdiction(self, jurisdiction: str | BillJurisdiction) -> list[Bill]:
+        """
+        Return bills filtered by jurisdiction ('central' or 'state').
+
+        Parameters
+        ----------
+        jurisdiction : str | BillJurisdiction
+            Target jurisdiction. Accepts 'central', 'state', or BillJurisdiction enum.
+        """
+        if isinstance(jurisdiction, BillJurisdiction):
+            target = jurisdiction.value
+        else:
+            target = str(jurisdiction).strip().lower()
+
+        return [
+            b
+            for b in self.get_all()
+            if (
+                b.jurisdiction.value
+                if isinstance(b.jurisdiction, BillJurisdiction)
+                else str(b.jurisdiction).strip().lower()
+            )
+            == target
+        ]
+
+    def get_by_state(self, state: str) -> list[Bill]:
+        """
+        Return bills for a particular Indian state (case-insensitive, normalized).
+
+        Parameters
+        ----------
+        state : str
+            State name, alias, or abbreviation (e.g., 'Karnataka', 'karnataka', 'KA').
+        """
+        target_norm = normalize_state(state)
+        target_str = (target_norm or state).strip().lower()
+
+        results = []
+        for b in self.get_all():
+            if not b.state:
+                continue
+            b_state_norm = normalize_state(b.state)
+            b_state_str = (b_state_norm or b.state).strip().lower()
+            if b_state_str == target_str:
+                results.append(b)
+        return results
 
     def get_all_ids(self) -> list[str]:
         """Return a list of all stored bill IDs."""

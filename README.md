@@ -20,8 +20,8 @@ The **Legislative Intelligence & Market Impact Prediction System** is an AI-powe
    - The general public
 3. **Serve as a knowledge platform** where users can learn about existing bills, newly introduced bills, historical market reactions, and AI-predicted future impacts.
 
-> **Version 1 (MVP)** focuses exclusively on **Central Government Bills**.  
-> State-level bills are planned for a future release.
+> **Version 1 (MVP)** focuses on **Central Government Bills** for full quantitative market impact modeling.  
+> **State Bill Knowledge Layer (Task 8)** provides isolated document ingestion, text extraction, state policy classification, provision parsing, and grounded summaries for 23 State bills across Andhra Pradesh and Karnataka (with strictly zero market predictions).
 
 ---
 

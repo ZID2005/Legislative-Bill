@@ -1,0 +1,365 @@
+{
+  "bill_id": "andhra-pradesh-vs-bill-18-2026",
+  "jurisdiction": "state",
+  "state": "Andhra Pradesh",
+  "title": "The Andhra Pradesh Value Added Tax (Amendment) Bill, 2026",
+  "bill_number": "L.A. Bill No. 18 of 2026",
+  "chamber": "vidhan_sabha",
+  "status": "passed_both",
+  "source_url": "https://aplegislature.org/web/aplegislature/bills",
+  "policy_category": "State Finance / Taxation",
+  "category_provenance": "SYSTEM_DERIVED",
+  "year": 2026,
+  "introduction_date": null,
+  "assent_date": "2026-04-01",
+  "pdf_url": "https://legislation.aplegislature.org/PreviewPage.do?filePath=basePath&fileName=Bills/PassedBills/English/Eng_passbill_bill-18_16_31__402_v_1.pdf",
+  "corpus_path": "D:\\Legislative-bill\\data\\state_bills\\corpus\\andhra-pradesh-vs-bill-18-2026.txt",
+  "document_hash": "24453968212a2f8a027c97a0d8a5458cd8df50d14fc9a91cdc8e8e4fbb9a538f",
+  "summary": {
+    "what_is_bill": "'The Andhra Pradesh Value Added Tax (Amendment) Bill, 2026' (L.A. Bill No. 18 of 2026) is a State legislative measure introduced in the Andhra Pradesh Legislative Assembly (Vidhan Sabha) concerning State Finance / Taxation.",
+    "what_it_changes": "The bill amends statutory provisions to update legal frameworks, adjust compliance requirements, or alter state administrative procedures.",
+    "why_it_matters": "According to the official Statement of Objects and Reasons: \"The Andhra Pradesh Value Added Tax Act, 2005 (Act No.5 of 2005) was introduced in the State with effect from 01.04.2005 providing for levy and collection of tax on intra state sales and purchases of Goods. After introduction of Andhra Pradesh Goods and Services Tax Act,2017 (Act No. 16 of 2017) with effect from 01.07.2017, all the Goods except five...\"",
+    "who_is_affected": "Primary affected groups include: Taxpayers, Commercial Enterprises, Traders & Merchants, State Revenue Department, Taxpayers & Commercial Merchants.",
+    "key_provisions": [
+      "rates at the point of first sale in the State."
+    ],
+    "administrative_implications": "Administered and enforced under the authority of Commissioner of Printing at A and designated state officials.",
+    "legislative_status": "Official status recorded as 'Passed Both' (assented on 2026-04-01).",
+    "source": "Official Andhra Pradesh Legislature portal (andhra_pradesh_assembly)."
+  },
+  "objective": "The Andhra Pradesh Value Added Tax Act, 2005 (Act No.5 of 2005) was introduced in the State with effect from 01.04.2005 providing for levy and collection of tax on intra state sales and purchases of Goods. After introduction of Andhra Pradesh Goods and Services Tax Act,2017 (Act No. 16 of 2017) with effect from 01.07.2017, all the Goods except five petroleum products namely Crude Oil, Petrol, Diesel, Natural Gas and Aviation Turbine Fuel (ATF) and Liquor for human consumption were subsumed in GST. The state continues to levy taxes on the non-GST Goods specified above. The five petroleum products i.e. Crude Oil, Petrol, Diesel, Natural Gas and Aviation Turbine Fuel (ATF) are taxable under Schedule VI of the APVAT Act at different rates at the point of first sale in the State. However the sale by an Oil Company to another Oil Company which are listed under Explanation IV of Schedule VI shall not be treated as first sale and only a sale by an Oil Company to a person other than Oil Company shall be deemed to be the first sale in the State. There are presently 14 dealers listed from (a) to (o) as Oil Companies under Explanation IV. In exercise of the powers conferred by sub Section (1) ",
+  "key_provisions": [
+    "rates at the point of first sale in the State."
+  ],
+  "amended_acts": [],
+  "affected_stakeholders": [
+    "Taxpayers",
+    "Commercial Enterprises",
+    "Traders & Merchants",
+    "State Revenue Department",
+    "Taxpayers & Commercial Merchants"
+  ],
+  "administrative_authority": "Commissioner of Printing at A",
+  "financial_provisions": "rates at the point of first sale in the State.",
+  "penalties_provisions": null,
+  "extraction_status": "success",
+  "language": "English",
+  "page_count": 1,
+  "character_count": 5154,
+  "word_count": 788,
+  "provenance": {
+    "title": "AUTHORITATIVE",
+    "bill_number": "AUTHORITATIVE",
+    "jurisdiction": "AUTHORITATIVE",
+    "state": "AUTHORITATIVE",
+    "chamber": "AUTHORITATIVE",
+    "status": "AUTHORITATIVE",
+    "source_url": "AUTHORITATIVE",
+    "pdf_url": "AUTHORITATIVE",
+    "introduction_date": "UNAVAILABLE",
+    "assent_date": "AUTHORITATIVE",
+    "year": "DERIVED",
+    "bill_id": "DERIVED",
+    "policy_category": "SYSTEM_DERIVED",
+    "document_hash": "DERIVED",
+    "corpus_path": "DERIVED",
+    "language": "AUTHORITATIVE",
+    "summary": "SYSTEM_DERIVED",
+    "objective": "SYSTEM_DERIVED",
+    "key_provisions": "SYSTEM_DERIVED",
+    "amended_acts": "UNAVAILABLE",
+    "affected_stakeholders": "SYSTEM_DERIVED",
+    "administrative_authority": "SYSTEM_DERIVED",
+    "financial_provisions": "SYSTEM_DERIVED",
+    "penalties_provisions": "UNAVAILABLE",
+    "economic_profile": "SYSTEM_DERIVED",
+    "corporate_exposures": "SYSTEM_DERIVED",
+    "impact_assessment": "DETERMINISTIC_METHODOLOGY_ENGINE"
+  },
+  "created_at": "2026-09-08T16:40:46.890541+00:00",
+  "economic_profile": {
+    "bill_id": "andhra-pradesh-vs-bill-18-2026",
+    "state": "Andhra Pradesh",
+    "policy_domain": "State Finance / Taxation",
+    "primary_sector": "Banking & Finance",
+    "secondary_sectors": [
+      "Retail",
+      "Wholesale",
+      "MSME"
+    ],
+    "sub_sectors": [
+      "Commercial Banking",
+      "Cooperative Credit",
+      "NBFCs",
+      "Departmental Stores",
+      "Shops & Commercial Outlets",
+      "Commodity Wholesale",
+      "Agricultural Wholesale"
+    ],
+    "economic_activities": [
+      "Lending",
+      "Deposit mobilization",
+      "Financial intermediation",
+      "Over-the-counter retail",
+      "Shop establishment registration",
+      "Bulk goods trading",
+      "Wholesale distribution"
+    ],
+    "business_types": [
+      "Registered dealers",
+      "Wholesale distributors",
+      "Commercial merchants",
+      "Financial institutions",
+      "Retail trade establishments"
+    ],
+    "stakeholders": [
+      {
+        "stakeholder": "Taxpayers",
+        "category": "economic_groups",
+        "role": "primary_affected",
+        "direction": "mixed",
+        "mechanism": "taxation",
+        "impact_type": "DIRECT",
+        "evidence": {
+          "source_type": "bill_text",
+          "section": "Statutory Tax Schedules",
+          "text_reference": "Revision of tax rates, procedural audit compliance, input tax credit mechanisms, or appropriation authorizations.",
+          "location": "corpus/andhra-pradesh-vs-bill-18-2026.txt"
+        },
+        "description": "Registered tax dealers, merchants, and taxable persons must adhere to updated statutory filing and tax obligations."
+      },
+      {
+        "stakeholder": "MSMEs",
+        "category": "businesses",
+        "role": "potential_cost_bearer",
+        "direction": "mixed",
+        "mechanism": "compliance",
+        "impact_type": "DIRECT",
+        "evidence": {
+          "source_type": "bill_text",
+          "section": "Statutory Tax Schedules",
+          "text_reference": "Revision of tax rates, procedural audit compliance, input tax credit mechanisms, or appropriation authorizations.",
+          "location": "corpus/andhra-pradesh-vs-bill-18-2026.txt"
+        },
+        "description": "Covered businesses must update accounting and statutory reporting systems to maintain compliance."
+      },
+      {
+        "stakeholder": "State Government",
+        "category": "institutions",
+        "role": "potential_beneficiary",
+        "direction": "positive",
+        "mechanism": "taxation",
+        "impact_type": "DIRECT",
+        "evidence": {
+          "source_type": "bill_text",
+          "section": "Statutory Tax Schedules",
+          "text_reference": "Revision of tax rates, procedural audit compliance, input tax credit mechanisms, or appropriation authorizations.",
+          "location": "corpus/andhra-pradesh-vs-bill-18-2026.txt"
+        },
+        "description": "The State exchequer secures regulatory alignment and statutory revenue collection frameworks."
+      }
+    ],
+    "geographic_scope": "state-wide",
+    "direct_impacts": [
+      "Direct statutory taxation requirement affecting Taxpayers.",
+      "Direct statutory compliance requirement affecting MSMEs.",
+      "Direct statutory taxation requirement affecting State Government."
+    ],
+    "indirect_impacts": [
+      "Indirect compliance and downstream market adjustment effects."
+    ],
+    "impact_mechanisms": [
+      "taxation",
+      "compliance"
+    ],
+    "company_exposure_readiness": "HIGH",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "section": "Statutory Tax Schedules",
+        "text_reference": "Revision of tax rates, procedural audit compliance, input tax credit mechanisms, or appropriation authorizations.",
+        "location": "corpus/andhra-pradesh-vs-bill-18-2026.txt"
+      }
+    ],
+    "confidence": "HIGH",
+    "factual_summary": {
+      "who_may_be_affected": [
+        "Taxpayers"
+      ],
+      "how_affected": [
+        "Adjusts statutory tax, duty, or cess rates applicable within the State.",
+        "Establishes updated compliance, record-keeping, and reporting obligations."
+      ],
+      "who_may_benefit": [
+        "State Government"
+      ],
+      "who_may_bear_costs": [
+        "Taxpayers",
+        "MSMEs"
+      ]
+    },
+    "provenance": {
+      "primary_sector": "SYSTEM_DERIVED",
+      "secondary_sectors": "SYSTEM_DERIVED",
+      "sub_sectors": "SYSTEM_DERIVED",
+      "business_types": "SYSTEM_DERIVED",
+      "stakeholders": "SYSTEM_DERIVED",
+      "geographic_scope": "SYSTEM_DERIVED",
+      "company_exposure_readiness": "SYSTEM_DERIVED",
+      "evidence": "AUTHORITATIVE_CORPUS_GROUNDED",
+      "factual_summary": "SYSTEM_DERIVED"
+    },
+    "generated_at": "2026-09-09T18:05:54.275989+00:00",
+    "schema_version": "1.0.0"
+  },
+  "corporate_exposures": [
+    {
+      "bill_id": "andhra-pradesh-vs-bill-18-2026",
+      "state": "Andhra Pradesh",
+      "company_id": "INE002A01018",
+      "company_name": "Reliance Industries Limited",
+      "ticker": "RELIANCE",
+      "exchange": "NSE",
+      "listed_status": "listed",
+      "sector": "Banking & Finance",
+      "sub_sector": "State Sales Tax & VAT",
+      "business_activity": "Petroleum refining, wholesale distribution, and fuel retailing",
+      "state_presence": [
+        "plant",
+        "infrastructure",
+        "retail",
+        "logistics"
+      ],
+      "presence_type": "plant",
+      "exposure_type": "taxation",
+      "exposure_direction": "mixed",
+      "exposure_strength": "HIGH",
+      "direct_indirect": "DIRECT",
+      "geographic_scope": "state_specific",
+      "mechanism": "taxation",
+      "evidence": [
+        {
+          "source_type": "bill_text",
+          "reference": "VAT schedules on petroleum products and natural gas",
+          "claim": "Amends Andhra Pradesh Value Added Tax rates, returns, and assessment on non-GST commodities.",
+          "url": null
+        },
+        {
+          "source_type": "company_filing",
+          "reference": "Annual Report 2023-24 (Oil & Gas operations / Jio network disclosure)",
+          "claim": "Reliance Industries Limited processes, distributes, and retails petroleum and gas fuels in Andhra Pradesh.",
+          "url": "https://www.ril.com"
+        }
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+        "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+        "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+      },
+      "source_urls": [
+        "https://aplegislature.org/web/aplegislature/bills",
+        "https://www.ril.com"
+      ],
+      "missing_information": [
+        "State VAT gross revenue contribution from fuel sales in Andhra Pradesh."
+      ],
+      "verified_at": "2026-09-09T18:30:07.944923+00:00",
+      "schema_version": "1.0.0"
+    }
+  ],
+  "impact_assessment": {
+    "bill_id": "andhra-pradesh-vs-bill-18-2026",
+    "state": "Andhra Pradesh",
+    "title": "The Andhra Pradesh Value Added Tax (Amendment) Bill, 2026",
+    "bill_number": "L.A. Bill No. 18 of 2026",
+    "economic_mechanisms": [
+      "compliance_cost",
+      "taxation"
+    ],
+    "economic_direction": "positive",
+    "economic_strength": "HIGH",
+    "market_relevance": "HIGH",
+    "modeling_eligibility": "CONDITIONALLY_ELIGIBLE",
+    "data_sufficiency": "PARTIAL",
+    "event_date_quality": "MEDIUM",
+    "primary_event_date": {
+      "role": "assent",
+      "date": "2026-04-01",
+      "source": "official_gazette",
+      "is_primary": true
+    },
+    "alternative_event_dates": [],
+    "anticipation_readiness": "PARTIAL",
+    "candidate_anticipation_channels": [
+      "public_announcements",
+      "legislative_leaks",
+      "government_consultations",
+      "committee_discussions",
+      "media_coverage",
+      "gdelt",
+      "google_trends"
+    ],
+    "market_data_readiness": {
+      "candidate_companies_count": 1,
+      "listed_companies_count": 1,
+      "unlisted_companies_count": 0,
+      "companies_with_market_data": [
+        "RELIANCE"
+      ],
+      "companies_missing_market_data": [],
+      "benchmark_available": true,
+      "benchmark_ticker": "^NSEI",
+      "trading_calendar_coverage": "COMPLETE"
+    },
+    "listed_company_count": 1,
+    "exposure_count": 1,
+    "direct_exposure_count": 1,
+    "indirect_exposure_count": 0,
+    "missing_requirements": [
+      "Live anticipation crawling and sentiment signal ingestion not connected."
+    ],
+    "scorecard": {
+      "bill_identity_verified": true,
+      "state_jurisdiction_verified": true,
+      "event_date_verified": true,
+      "economic_mechanism_identified": true,
+      "corporate_exposure_verified": true,
+      "listed_company_verified": true,
+      "historical_market_data_available": true,
+      "benchmark_data_available": true,
+      "event_date_identifiable": true,
+      "anticipation_readiness_sufficient": true,
+      "result": "CONDITIONALLY_ELIGIBLE",
+      "notes": [
+        "Anticipation framework defined, but external live news/GDELT crawlers not attached."
+      ]
+    },
+    "evidence": [
+      {
+        "source_type": "official_bill_summary",
+        "reference": "Statement of Objects and Reasons / Metadata",
+        "claim": "Statutory summary indicates policy in State Finance / Taxation."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::compliance_cost",
+        "claim": "Statutory impact channel identified as 'compliance_cost'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::taxation",
+        "claim": "Statutory impact channel identified as 'taxation'."
+      }
+    ],
+    "confidence": "MEDIUM",
+    "provenance": {
+      "economic_taxonomy": "STATE_ECONOMIC_MECHANISMS_V1",
+      "market_relevance": "GROUNDED_CORPORATE_EXPOSURE_MATCH",
+      "eligibility_scorecard": "DETERMINISTIC_10_POINT_SCORECARD",
+      "market_data_audit": "LOCAL_PARQUET_STORE_VERIFIED"
+    },
+    "schema_version": "1.0.0",
+    "generated_at": "2026-09-10T16:03:45.416198+00:00"
+  }
+}

@@ -144,6 +144,18 @@ data/explainability/*
 !data/explainability/.gitkeep
 data/reports/*
 !data/reports/.gitkeep
+data/ai_cache/*
+!data/ai_cache/.gitkeep
+
+# Storage layer runtime files (alerts, watchlists, monitoring, users)
+storage/alerts/*
+!storage/alerts/.gitkeep
+storage/watchlists/*
+!storage/watchlists/.gitkeep
+storage/monitoring/*
+!storage/monitoring/.gitkeep
+storage/users/*
+!storage/users/.gitkeep
 
 # Keep catalog & base gitkeep
 !data/.gitkeep

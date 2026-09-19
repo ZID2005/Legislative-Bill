@@ -1,0 +1,108 @@
+[
+  {
+    "bill_id": "the-carriage-of-goods-by-sea-bill-2024",
+    "state": "Central",
+    "company_id": "INE742F01042",
+    "company_name": "Adani Ports and Special Economic Zone Limited",
+    "ticker": "ADANIPORTS",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Infrastructure",
+    "sub_sector": "Ports & Shipping",
+    "business_activity": "Marine stevedoring and berth terminal operations",
+    "state_presence": [
+      "national"
+    ],
+    "presence_type": "infrastructure",
+    "exposure_type": "regulatory",
+    "exposure_direction": "neutral",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "national",
+    "mechanism": "regulation",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Clauses 4-9 (Carrier responsibilities, liabilities & seaworthiness standards)",
+        "claim": "Replaces the Indian Carriage of Goods by Sea Act, 1925 to define carrier liabilities, statutory exemptions, and carrier-port interface responsibilities for goods shipped from Indian ports.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "APSEZ Annual Report 2023-24 (Port Terminal Operations & Stevedoring Contracts)",
+        "claim": "APSEZ conducts marine cargo stevedoring, container loading/unloading, and terminal storage across 15 commercial ports with carrier liability interface under maritime statutes.",
+        "url": "https://www.adaniports.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "jurisdiction": "central",
+    "market_relevance": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_evidence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "SEA_CARRIAGE_TERMINAL_INTERFACE"
+    },
+    "source_urls": [
+      "https://prsindia.org/billtrack/the-carriage-of-goods-by-sea-bill-2024",
+      "https://www.adaniports.com"
+    ],
+    "missing_information": [
+      "Contractual indemnity provisions between shipping lines and terminal operating companies."
+    ],
+    "verified_at": "2026-09-16T07:17:31.565100+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "the-carriage-of-goods-by-sea-bill-2024",
+    "state": "Central",
+    "company_id": "INE399C01030",
+    "company_name": "Container Corporation of India Limited",
+    "ticker": "CONCOR",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Logistics & Transportation",
+    "sub_sector": "Intermodal Container Logistics",
+    "business_activity": "Coastal shipping and intermodal sea-rail container logistics",
+    "state_presence": [
+      "national"
+    ],
+    "presence_type": "logistics",
+    "exposure_type": "regulatory",
+    "exposure_direction": "neutral",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "national",
+    "mechanism": "supply_chain",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Clauses 5-8 (Carrier obligations for containerised cargo during sea transport)",
+        "claim": "Regulates responsibilities and liabilities of carriers for loading, handling, stowage, carriage, custody, and discharge of containerised goods shipped from Indian ports.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "CONCOR Annual Report 2023-24 (Coastal Shipping & Intermodal Sea-Rail Freight)",
+        "claim": "CONCOR provides sea-rail intermodal container services and coastal freight operations directly subject to statutory maritime carriage liability regimes.",
+        "url": "https://www.concorindia.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "jurisdiction": "central",
+    "market_relevance": "MEDIUM",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_evidence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "INTERMODAL_SEA_RAIL_CARRIAGE"
+    },
+    "source_urls": [
+      "https://prsindia.org/billtrack/the-carriage-of-goods-by-sea-bill-2024",
+      "https://www.concorindia.com"
+    ],
+    "missing_information": [
+      "Marine insurance claims ratio for domestic container coastal transit."
+    ],
+    "verified_at": "2026-09-16T07:17:31.565567+00:00",
+    "schema_version": "1.0.0"
+  }
+]

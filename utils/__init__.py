@@ -19,6 +19,13 @@ Usage
 from utils.file_utils import ensure_dir, load_json, save_json
 from utils.date_utils import parse_date, today_str, is_business_day
 from utils.text_utils import clean_text, slugify, truncate
+from utils.state_normalizer import (
+    normalize_state,
+    is_valid_state,
+    get_canonical_states,
+    get_canonical_uts,
+    get_all_states_and_uts,
+)
 
 __all__ = [
     # file
@@ -33,4 +40,10 @@ __all__ = [
     "clean_text",
     "slugify",
     "truncate",
+    # state
+    "normalize_state",
+    "is_valid_state",
+    "get_canonical_states",
+    "get_canonical_uts",
+    "get_all_states_and_uts",
 ]

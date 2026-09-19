@@ -1,0 +1,323 @@
+{
+  "bill_id": "karnataka-vs-bill-39-2024",
+  "jurisdiction": "state",
+  "state": "Karnataka",
+  "title": "The Karnataka Scheduled Castes, Scheduled Tribes and Other Backward Classes (Reservation of Appointments, etc.) (Amendment) Bill, 2024",
+  "bill_number": "Bill No. 39 of 2024",
+  "chamber": "vidhan_sabha",
+  "status": "passed_both",
+  "source_url": "https://kla.kar.nic.in/assembly/bills/bills1640.htm",
+  "policy_category": "State Finance / Taxation",
+  "category_provenance": "SYSTEM_DERIVED",
+  "year": 2024,
+  "introduction_date": "2024-07-24",
+  "assent_date": null,
+  "pdf_url": "https://kla.kar.nic.in/assembly/bills/bill1640_39.pdf",
+  "corpus_path": "D:\\Legislative-bill\\data\\state_bills\\corpus\\karnataka-vs-bill-39-2024.txt",
+  "document_hash": "c04505dc30f3a7d911b973f5bde9ec5f114df65e3be97fb70a1d39bed556961a",
+  "summary": {
+    "what_is_bill": "'The Karnataka Scheduled Castes, Scheduled Tribes and Other Backward Classes (Reservation of Appointments, etc.) (Amendment) Bill, 2024' (Bill No. 39 of 2024) is a State legislative measure introduced in the Karnataka Legislative Assembly (Vidhan Sabha) concerning State Finance / Taxation.",
+    "what_it_changes": "The bill introduces statutory amendments to existing state legislation, primarily modifying Act, 1990 (Karnataka Act; Amendment) Act, 2004; In section 3 of the principal Act across 10 identified sections/clauses.",
+    "why_it_matters": "According to the official Statement of Objects and Reasons: \"It is considered necessary to amend the Karnataka Scheduled Castes, Scheduled Tribes and other Backward Classes (Reservation of Appointments etc,.) Act, 1990 to provide for,- (i) define “tenure posts” to remove the ambiguity in the Act; (ii) define “ unfilled vacancies” so that it is a continuing process; (iii) provide reservation so as to create various employment opportunities to the...\"",
+    "who_is_affected": "Primary affected groups include: Taxpayers, Commercial Enterprises, Traders & Merchants, State Revenue Department.",
+    "key_provisions": [
+      "Statutory modification of Act, 1990 (Karnataka Act, Amendment) Act, 2004.",
+      "Identified clauses/sections amended: 2, 3, 4, 4A, 4D.",
+      "Contains statutory fee, tax, or duty rate provisions.",
+      "imprisonment for a lesser term or lesser fine."
+    ],
+    "administrative_implications": "Administered and enforced under the authority of Commissioner shall place them under suspension and designated state officials.",
+    "legislative_status": "Official status recorded as 'Passed Both' (introduced on 2024-07-24).",
+    "source": "Official Karnataka Legislature portal (karnataka_assembly)."
+  },
+  "objective": "It is considered necessary to amend the Karnataka Scheduled Castes, Scheduled Tribes and other Backward Classes (Reservation of Appointments etc,.) Act, 1990 to provide for,- (i) define “tenure posts” to remove the ambiguity in the Act; (ii) define “ unfilled vacancies” so that it is a continuing process; (iii) provide reservation so as to create various employment opportunities to the Scheduled Castes, Scheduled Tribes and other Backward Classes Reservation in the process of appointment on contract basis in Government departments, Boards, Corporations and Universities etc; (iv) follow the reservation in the appointment of the posts on outsource basis against direct recruitment quota; and (v) such other consequential amendments are also made. Hence, the Bill. 6",
+  "key_provisions": [
+    "Statutory modification of Act, 1990 (Karnataka Act, Amendment) Act, 2004.",
+    "Identified clauses/sections amended: 2, 3, 4, 4A, 4D.",
+    "Contains statutory fee, tax, or duty rate provisions.",
+    "imprisonment for a lesser term or lesser fine."
+  ],
+  "amended_acts": [
+    "Act, 1990 (Karnataka Act",
+    "Amendment) Act, 2004",
+    "In section 3 of the principal Act",
+    "In section 4 of the principal Act",
+    "In section 4A of the principal Act",
+    "In section 4D of the Principal Act"
+  ],
+  "affected_stakeholders": [
+    "Taxpayers",
+    "Commercial Enterprises",
+    "Traders & Merchants",
+    "State Revenue Department"
+  ],
+  "administrative_authority": "Commissioner shall place them under suspension",
+  "financial_provisions": "Contains statutory fee, tax, or duty rate provisions.",
+  "penalties_provisions": "imprisonment for a lesser term or lesser fine.",
+  "extraction_status": "success",
+  "language": "Bilingual (English / Kannada)",
+  "page_count": 1,
+  "character_count": 98800,
+  "word_count": 7278,
+  "provenance": {
+    "title": "AUTHORITATIVE",
+    "bill_number": "AUTHORITATIVE",
+    "jurisdiction": "AUTHORITATIVE",
+    "state": "AUTHORITATIVE",
+    "chamber": "AUTHORITATIVE",
+    "status": "AUTHORITATIVE",
+    "source_url": "AUTHORITATIVE",
+    "pdf_url": "AUTHORITATIVE",
+    "introduction_date": "AUTHORITATIVE",
+    "assent_date": "UNAVAILABLE",
+    "year": "DERIVED",
+    "bill_id": "DERIVED",
+    "policy_category": "SYSTEM_DERIVED",
+    "document_hash": "DERIVED",
+    "corpus_path": "DERIVED",
+    "language": "AUTHORITATIVE",
+    "summary": "SYSTEM_DERIVED",
+    "objective": "SYSTEM_DERIVED",
+    "key_provisions": "SYSTEM_DERIVED",
+    "amended_acts": "SYSTEM_DERIVED",
+    "affected_stakeholders": "SYSTEM_DERIVED",
+    "administrative_authority": "SYSTEM_DERIVED",
+    "financial_provisions": "SYSTEM_DERIVED",
+    "penalties_provisions": "SYSTEM_DERIVED",
+    "economic_profile": "SYSTEM_DERIVED",
+    "corporate_exposures": "NONE",
+    "impact_assessment": "DETERMINISTIC_METHODOLOGY_ENGINE"
+  },
+  "created_at": "2026-09-08T16:41:05.764185+00:00",
+  "economic_profile": {
+    "bill_id": "karnataka-vs-bill-39-2024",
+    "state": "Karnataka",
+    "policy_domain": "State Finance / Taxation",
+    "primary_sector": "Public Administration",
+    "secondary_sectors": [
+      "Rural Development",
+      "Housing"
+    ],
+    "sub_sectors": [
+      "State Secretariat",
+      "District Administration",
+      "Statutory Boards",
+      "Panchayati Raj",
+      "Rural Infrastructure",
+      "Affordable Housing",
+      "Tenancy & Rent Control"
+    ],
+    "economic_activities": [
+      "Statute enforcement",
+      "Disqualification administration",
+      "Public record keeping",
+      "Panchayat governance",
+      "Rural taxation",
+      "Residential allotment",
+      "Building tax compliance"
+    ],
+    "business_types": [
+      "Government contractors",
+      "Regulated statutory entities",
+      "Public service providers"
+    ],
+    "stakeholders": [
+      {
+        "stakeholder": "State Government",
+        "category": "institutions",
+        "role": "regulator/implementer",
+        "direction": "neutral",
+        "mechanism": "regulation",
+        "impact_type": "DIRECT",
+        "evidence": {
+          "source_type": "metadata",
+          "section": "General Provisions",
+          "text_reference": "Statutory measures enacted under 'The Karnataka Scheduled Castes, Scheduled Tribes and Other Backward Classes (Reservation of Appointments, etc.) (Amendment) Bill, 2024'.",
+          "location": "corpus/karnataka-vs-bill-39-2024.txt"
+        },
+        "description": "The State Government and executive authorities oversee administration of the statutory enactment."
+      },
+      {
+        "stakeholder": "Employers",
+        "category": "businesses",
+        "role": "affected",
+        "direction": "neutral",
+        "mechanism": "compliance",
+        "impact_type": "INDIRECT",
+        "evidence": {
+          "source_type": "metadata",
+          "section": "General Provisions",
+          "text_reference": "Statutory measures enacted under 'The Karnataka Scheduled Castes, Scheduled Tribes and Other Backward Classes (Reservation of Appointments, etc.) (Amendment) Bill, 2024'.",
+          "location": "corpus/karnataka-vs-bill-39-2024.txt"
+        },
+        "description": "Covered commercial and institutional entities must comply with relevant legal procedures."
+      }
+    ],
+    "geographic_scope": "state-wide",
+    "direct_impacts": [
+      "Direct statutory regulation requirement affecting State Government."
+    ],
+    "indirect_impacts": [
+      "Secondary economic or pricing effect on Employers."
+    ],
+    "impact_mechanisms": [
+      "regulation",
+      "compliance"
+    ],
+    "company_exposure_readiness": "LOW",
+    "evidence": [
+      {
+        "source_type": "metadata",
+        "section": "General Provisions",
+        "text_reference": "Statutory measures enacted under 'The Karnataka Scheduled Castes, Scheduled Tribes and Other Backward Classes (Reservation of Appointments, etc.) (Amendment) Bill, 2024'.",
+        "location": "corpus/karnataka-vs-bill-39-2024.txt"
+      }
+    ],
+    "confidence": "HIGH",
+    "factual_summary": {
+      "who_may_be_affected": [
+        "Employers"
+      ],
+      "how_affected": [
+        "Enacts statutory regulations and standards under State jurisdiction.",
+        "Establishes updated compliance, record-keeping, and reporting obligations."
+      ],
+      "who_may_benefit": [
+        "Designated beneficiary groups under statutory schemes."
+      ],
+      "who_may_bear_costs": [
+        "Covered commercial or institutional establishments."
+      ]
+    },
+    "provenance": {
+      "primary_sector": "SYSTEM_DERIVED",
+      "secondary_sectors": "SYSTEM_DERIVED",
+      "sub_sectors": "SYSTEM_DERIVED",
+      "business_types": "SYSTEM_DERIVED",
+      "stakeholders": "SYSTEM_DERIVED",
+      "geographic_scope": "SYSTEM_DERIVED",
+      "company_exposure_readiness": "SYSTEM_DERIVED",
+      "evidence": "AUTHORITATIVE_CORPUS_GROUNDED",
+      "factual_summary": "SYSTEM_DERIVED"
+    },
+    "generated_at": "2026-09-09T18:05:57.700452+00:00",
+    "schema_version": "1.0.0"
+  },
+  "impact_assessment": {
+    "bill_id": "karnataka-vs-bill-39-2024",
+    "state": "Karnataka",
+    "title": "The Karnataka Scheduled Castes, Scheduled Tribes and Other Backward Classes (Reservation of Appointments, etc.) (Amendment) Bill, 2024",
+    "bill_number": "Bill No. 39 of 2024",
+    "economic_mechanisms": [
+      "compliance_cost",
+      "employment",
+      "labour_cost",
+      "procurement",
+      "regulation",
+      "taxation"
+    ],
+    "economic_direction": "mixed",
+    "economic_strength": "HIGH",
+    "market_relevance": "NONE",
+    "modeling_eligibility": "NOT_ELIGIBLE",
+    "data_sufficiency": "INSUFFICIENT",
+    "event_date_quality": "MEDIUM",
+    "primary_event_date": {
+      "role": "introduction",
+      "date": "2024-07-24",
+      "source": "official_legislative_portal",
+      "is_primary": true
+    },
+    "alternative_event_dates": [],
+    "anticipation_readiness": "PARTIAL",
+    "candidate_anticipation_channels": [
+      "public_announcements",
+      "legislative_leaks",
+      "government_consultations",
+      "committee_discussions",
+      "media_coverage",
+      "gdelt",
+      "google_trends"
+    ],
+    "market_data_readiness": {
+      "candidate_companies_count": 0,
+      "listed_companies_count": 0,
+      "unlisted_companies_count": 0,
+      "companies_with_market_data": [],
+      "companies_missing_market_data": [],
+      "benchmark_available": true,
+      "benchmark_ticker": "^NSEI",
+      "trading_calendar_coverage": "INSUFFICIENT"
+    },
+    "listed_company_count": 0,
+    "exposure_count": 0,
+    "direct_exposure_count": 0,
+    "indirect_exposure_count": 0,
+    "missing_requirements": [
+      "No grounded corporate exposure identified for this State bill.",
+      "Live anticipation crawling and sentiment signal ingestion not connected."
+    ],
+    "scorecard": {
+      "bill_identity_verified": true,
+      "state_jurisdiction_verified": true,
+      "event_date_verified": true,
+      "economic_mechanism_identified": true,
+      "corporate_exposure_verified": false,
+      "listed_company_verified": false,
+      "historical_market_data_available": false,
+      "benchmark_data_available": true,
+      "event_date_identifiable": true,
+      "anticipation_readiness_sufficient": true,
+      "result": "NOT_ELIGIBLE",
+      "notes": [
+        "Bill has no listed corporate exposure; remains strictly economic-only."
+      ]
+    },
+    "evidence": [
+      {
+        "source_type": "official_bill_summary",
+        "reference": "Statement of Objects and Reasons / Metadata",
+        "claim": "Statutory summary indicates policy in State Finance / Taxation."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::compliance_cost",
+        "claim": "Statutory impact channel identified as 'compliance_cost'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::employment",
+        "claim": "Statutory impact channel identified as 'employment'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::labour_cost",
+        "claim": "Statutory impact channel identified as 'labour_cost'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::procurement",
+        "claim": "Statutory impact channel identified as 'procurement'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::regulation",
+        "claim": "Statutory impact channel identified as 'regulation'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::taxation",
+        "claim": "Statutory impact channel identified as 'taxation'."
+      }
+    ],
+    "confidence": "MEDIUM",
+    "provenance": {
+      "economic_taxonomy": "STATE_ECONOMIC_MECHANISMS_V1",
+      "market_relevance": "GROUNDED_CORPORATE_EXPOSURE_MATCH",
+      "eligibility_scorecard": "DETERMINISTIC_10_POINT_SCORECARD",
+      "market_data_audit": "LOCAL_PARQUET_STORE_VERIFIED"
+    },
+    "schema_version": "1.0.0",
+    "generated_at": "2026-09-10T16:03:48.624918+00:00"
+  }
+}

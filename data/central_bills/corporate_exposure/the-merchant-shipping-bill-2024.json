@@ -1,0 +1,55 @@
+[
+  {
+    "bill_id": "the-merchant-shipping-bill-2024",
+    "state": "Central",
+    "company_id": "INE742F01042",
+    "company_name": "Adani Ports and Special Economic Zone Limited",
+    "ticker": "ADANIPORTS",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Infrastructure",
+    "sub_sector": "Ports & Marine Services",
+    "business_activity": "Harbour marine fleet and MARPOL port waste reception facilities",
+    "state_presence": [
+      "national"
+    ],
+    "presence_type": "infrastructure",
+    "exposure_type": "regulatory",
+    "exposure_direction": "mixed",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "national",
+    "mechanism": "compliance_cost",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Clauses 18-35 (Vessel registration, marine pollution prevention & port reception facilities)",
+        "claim": "Repeals Merchant Shipping Act, 1958. Mandates port state control, harbour craft registration, and port reception facilities for shipboard marine waste under MARPOL conventions.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "APSEZ Annual Report 2023-24 (Marine Services Fleet & Green Port Disclosures)",
+        "claim": "APSEZ owns and operates a commercial fleet of over 60 marine vessels (tugs, pilot boats, dredgers) and statutory reception facilities for ship-generated waste across all 15 port locations.",
+        "url": "https://www.adaniports.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "jurisdiction": "central",
+    "market_relevance": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_evidence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "PORT_MARINE_SERVICES_AND_MARPOL_COMPLIANCE"
+    },
+    "source_urls": [
+      "https://prsindia.org/billtrack/the-merchant-shipping-bill-2024",
+      "https://www.adaniports.com"
+    ],
+    "missing_information": [
+      "Marine fleet renewal capex required to meet updated vessel emission and safety standards."
+    ],
+    "verified_at": "2026-09-16T07:17:32.305434+00:00",
+    "schema_version": "1.0.0"
+  }
+]

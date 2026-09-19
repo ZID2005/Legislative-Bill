@@ -1,0 +1,54 @@
+[
+  {
+    "bill_id": "kerala-vs-bill-223-2024",
+    "state": "Kerala",
+    "company_id": "INE914M01019",
+    "company_name": "Aster DM Healthcare Limited",
+    "ticker": "ASTERDM",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Healthcare",
+    "sub_sector": "Clinical Establishments & Tertiary Care",
+    "business_activity": "Hospital clinical operations & medical care delivery",
+    "state_presence": [
+      "plant",
+      "service_operation"
+    ],
+    "presence_type": "plant",
+    "exposure_type": "healthcare",
+    "exposure_direction": "mixed",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "regulation",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Registration and statutory standards for clinical establishments",
+        "claim": "Mandates statutory registration, clinical audit, diagnostic transparency, and doctor verification for medical facilities.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Aster DM Healthcare Annual Report 2023-24 (Hospital Facilities Schedule)",
+        "claim": "Aster DM Healthcare Limited operates multi-specialty hospitals and clinics at Kochi (Aster Medcity), Kozhikode (Aster MIMS), Kottakkal, Wayanad, Kannur.",
+        "url": "https://www.asterdmhealthcare.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://www.niyamasabha.nic.in/index.php/bills/bills_details/223",
+      "https://www.asterdmhealthcare.com"
+    ],
+    "missing_information": [
+      "Operational bed count in Kerala subject to inspection and standards audit."
+    ],
+    "verified_at": "2026-09-09T18:30:11.777896+00:00",
+    "schema_version": "1.0.0"
+  }
+]

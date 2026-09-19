@@ -1,0 +1,55 @@
+[
+  {
+    "bill_id": "telangana-vs-bill-7-2023",
+    "state": "Telangana",
+    "company_id": "INE154A01025",
+    "company_name": "ITC Limited",
+    "ticker": "ITC",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Agriculture",
+    "sub_sector": "Agricultural Trading & Mandis",
+    "business_activity": "Direct farmer agricultural procurement and mandi commodity trade",
+    "state_presence": [
+      "manufacturing",
+      "plant",
+      "logistics"
+    ],
+    "presence_type": "supplier_relationship",
+    "exposure_type": "agriculture",
+    "exposure_direction": "mixed",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "compliance",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Market fee and agricultural mandi procurement regulations",
+        "claim": "Regulates market committee fees and licensing for direct agricultural commodity procurement from farmers.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "ITC Annual Report 2023-24 (Paperboards & Specialty Papers Division)",
+        "claim": "ITC Limited operates extensive agri-business procurement networks and processing facilities in Bhadrachalam, Hyderabad.",
+        "url": "https://www.itcportal.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://legislature.telangana.gov.in/bills/detail/7-2023",
+      "https://www.itcportal.com"
+    ],
+    "missing_information": [
+      "Direct mandi procurement volumes in Telangana compared to contract farming."
+    ],
+    "verified_at": "2026-09-09T18:30:13.203749+00:00",
+    "schema_version": "1.0.0"
+  }
+]

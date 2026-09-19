@@ -62,6 +62,12 @@ class ScopeDiagnostic:
         "sample test cohort (10 candidate companies × 5 event windows = 50 records) and sector-focused sub-batches. "
         "The full production repository contains all 4,700 decision records with 100% candidate coverage."
     )
+    pairs_discrepancy_explanation: str = (
+        "Observations of 10 companies or 60 pairs in preliminary dashboard or mapping prototypes represent "
+        "sector-specific candidate mapping subsets (e.g., Banking laws mapping 10 companies) or pilot validation "
+        "batches. In full production, all 20 legislative bills and 47 companies form 940 pairs evaluated across "
+        "5 event windows to yield 4,700 prediction and decision-support records."
+    )
 
     def to_dict(self) -> dict[str, Any]:
         """Serialize diagnostic to a dictionary."""

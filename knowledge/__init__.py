@@ -64,5 +64,27 @@ human-curated to serve as reliable ground truth.
 """
 
 from knowledge.engine import RuleEngine
+from knowledge.state_economic_intelligence import StateEconomicIntelligenceEngine
+from knowledge.state_economic_taxonomy import (
+    STATE_ECONOMIC_SECTORS,
+    CompanyExposureReadiness,
+    GeographicScope,
+    ImpactDirection,
+    ImpactMechanism,
+    ImpactType,
+    SectorLevel,
+    StakeholderRole,
+)
 
-__all__ = ["RuleEngine"]
+__all__ = [
+    "RuleEngine",
+    "StateEconomicIntelligenceEngine",
+    "STATE_ECONOMIC_SECTORS",
+    "CompanyExposureReadiness",
+    "GeographicScope",
+    "ImpactDirection",
+    "ImpactMechanism",
+    "ImpactType",
+    "SectorLevel",
+    "StakeholderRole",
+]

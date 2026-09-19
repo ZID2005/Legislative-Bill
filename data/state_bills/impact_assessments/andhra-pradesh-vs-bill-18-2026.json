@@ -1,0 +1,94 @@
+{
+  "bill_id": "andhra-pradesh-vs-bill-18-2026",
+  "state": "Andhra Pradesh",
+  "title": "The Andhra Pradesh Value Added Tax (Amendment) Bill, 2026",
+  "bill_number": "L.A. Bill No. 18 of 2026",
+  "economic_mechanisms": [
+    "compliance_cost",
+    "taxation"
+  ],
+  "economic_direction": "positive",
+  "economic_strength": "HIGH",
+  "market_relevance": "HIGH",
+  "modeling_eligibility": "CONDITIONALLY_ELIGIBLE",
+  "data_sufficiency": "PARTIAL",
+  "event_date_quality": "MEDIUM",
+  "primary_event_date": {
+    "role": "assent",
+    "date": "2026-04-01",
+    "source": "official_gazette",
+    "is_primary": true
+  },
+  "alternative_event_dates": [],
+  "anticipation_readiness": "PARTIAL",
+  "candidate_anticipation_channels": [
+    "public_announcements",
+    "legislative_leaks",
+    "government_consultations",
+    "committee_discussions",
+    "media_coverage",
+    "gdelt",
+    "google_trends"
+  ],
+  "market_data_readiness": {
+    "candidate_companies_count": 1,
+    "listed_companies_count": 1,
+    "unlisted_companies_count": 0,
+    "companies_with_market_data": [
+      "RELIANCE"
+    ],
+    "companies_missing_market_data": [],
+    "benchmark_available": true,
+    "benchmark_ticker": "^NSEI",
+    "trading_calendar_coverage": "COMPLETE"
+  },
+  "listed_company_count": 1,
+  "exposure_count": 1,
+  "direct_exposure_count": 1,
+  "indirect_exposure_count": 0,
+  "missing_requirements": [
+    "Live anticipation crawling and sentiment signal ingestion not connected."
+  ],
+  "scorecard": {
+    "bill_identity_verified": true,
+    "state_jurisdiction_verified": true,
+    "event_date_verified": true,
+    "economic_mechanism_identified": true,
+    "corporate_exposure_verified": true,
+    "listed_company_verified": true,
+    "historical_market_data_available": true,
+    "benchmark_data_available": true,
+    "event_date_identifiable": true,
+    "anticipation_readiness_sufficient": true,
+    "result": "CONDITIONALLY_ELIGIBLE",
+    "notes": [
+      "Anticipation framework defined, but external live news/GDELT crawlers not attached."
+    ]
+  },
+  "evidence": [
+    {
+      "source_type": "official_bill_summary",
+      "reference": "Statement of Objects and Reasons / Metadata",
+      "claim": "Statutory summary indicates policy in State Finance / Taxation."
+    },
+    {
+      "source_type": "statutory_mechanism",
+      "reference": "Taxonomy::compliance_cost",
+      "claim": "Statutory impact channel identified as 'compliance_cost'."
+    },
+    {
+      "source_type": "statutory_mechanism",
+      "reference": "Taxonomy::taxation",
+      "claim": "Statutory impact channel identified as 'taxation'."
+    }
+  ],
+  "confidence": "MEDIUM",
+  "provenance": {
+    "economic_taxonomy": "STATE_ECONOMIC_MECHANISMS_V1",
+    "market_relevance": "GROUNDED_CORPORATE_EXPOSURE_MATCH",
+    "eligibility_scorecard": "DETERMINISTIC_10_POINT_SCORECARD",
+    "market_data_audit": "LOCAL_PARQUET_STORE_VERIFIED"
+  },
+  "schema_version": "1.0.0",
+  "generated_at": "2026-09-10T16:03:45.416198+00:00"
+}

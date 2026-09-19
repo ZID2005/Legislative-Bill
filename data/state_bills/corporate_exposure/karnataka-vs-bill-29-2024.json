@@ -1,0 +1,317 @@
+[
+  {
+    "bill_id": "karnataka-vs-bill-29-2024",
+    "state": "Karnataka",
+    "company_id": "INE154A01025",
+    "company_name": "ITC Limited",
+    "ticker": "ITC",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Banking & Finance",
+    "sub_sector": "State GST Compliance",
+    "business_activity": "Commercial retail and service billing in the State",
+    "state_presence": [
+      "manufacturing",
+      "plant",
+      "office"
+    ],
+    "presence_type": "manufacturing",
+    "exposure_type": "taxation",
+    "exposure_direction": "neutral",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "national_with_state_operations",
+    "mechanism": "compliance",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Input tax credit (ITC) and audit assessment harmonization clauses",
+        "claim": "Aligns Karnataka SGST statutory procedures, input tax credit disallowances, and electronic summons with national GST Council decisions.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "ITC Annual Report 2023-24",
+        "claim": "ITC Limited operates commercial branches, retail outlets, and distribution in Karnataka.",
+        "url": "https://www.itcportal.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+      "exposure_chain": "GENERAL_STATUTORY_COMPLIANCE"
+    },
+    "source_urls": [
+      "https://kla.kar.nic.in/assembly/bills/bills1640.htm",
+      "https://www.itcportal.com"
+    ],
+    "missing_information": [
+      "Input tax credit volume claimed under Karnataka SGST jurisdiction."
+    ],
+    "verified_at": "2026-09-09T18:30:09.270370+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "karnataka-vs-bill-29-2024",
+    "state": "Karnataka",
+    "company_id": "INE062A01020",
+    "company_name": "State Bank of India",
+    "ticker": "SBIN",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Banking & Finance",
+    "sub_sector": "State GST Compliance",
+    "business_activity": "Commercial retail and service billing in the State",
+    "state_presence": [
+      "branch",
+      "service_operation"
+    ],
+    "presence_type": "branch",
+    "exposure_type": "taxation",
+    "exposure_direction": "neutral",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "national_with_state_operations",
+    "mechanism": "compliance",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Input tax credit (ITC) and audit assessment harmonization clauses",
+        "claim": "Aligns Karnataka SGST statutory procedures, input tax credit disallowances, and electronic summons with national GST Council decisions.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "SBI Annual Report 2023-24",
+        "claim": "State Bank of India operates commercial branches, retail outlets, and distribution in Karnataka.",
+        "url": "https://www.sbi.co.in"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+      "exposure_chain": "GENERAL_STATUTORY_COMPLIANCE"
+    },
+    "source_urls": [
+      "https://kla.kar.nic.in/assembly/bills/bills1640.htm",
+      "https://www.sbi.co.in"
+    ],
+    "missing_information": [
+      "Input tax credit volume claimed under Karnataka SGST jurisdiction."
+    ],
+    "verified_at": "2026-09-09T18:30:09.270930+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "karnataka-vs-bill-29-2024",
+    "state": "Karnataka",
+    "company_id": "INE040A01034",
+    "company_name": "HDFC Bank Limited",
+    "ticker": "HDFCBANK",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Banking & Finance",
+    "sub_sector": "State GST Compliance",
+    "business_activity": "Commercial retail and service billing in the State",
+    "state_presence": [
+      "branch",
+      "service_operation",
+      "office"
+    ],
+    "presence_type": "branch",
+    "exposure_type": "taxation",
+    "exposure_direction": "neutral",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "national_with_state_operations",
+    "mechanism": "compliance",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Input tax credit (ITC) and audit assessment harmonization clauses",
+        "claim": "Aligns Karnataka SGST statutory procedures, input tax credit disallowances, and electronic summons with national GST Council decisions.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "HDFC Bank Annual Report 2023-24",
+        "claim": "HDFC Bank Limited operates commercial branches, retail outlets, and distribution in Karnataka.",
+        "url": "https://www.hdfcbank.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+      "exposure_chain": "GENERAL_STATUTORY_COMPLIANCE"
+    },
+    "source_urls": [
+      "https://kla.kar.nic.in/assembly/bills/bills1640.htm",
+      "https://www.hdfcbank.com"
+    ],
+    "missing_information": [
+      "Input tax credit volume claimed under Karnataka SGST jurisdiction."
+    ],
+    "verified_at": "2026-09-09T18:30:09.271494+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "karnataka-vs-bill-29-2024",
+    "state": "Karnataka",
+    "company_id": "INE090A01021",
+    "company_name": "ICICI Bank Limited",
+    "ticker": "ICICIBANK",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Banking & Finance",
+    "sub_sector": "State GST Compliance",
+    "business_activity": "Commercial retail and service billing in the State",
+    "state_presence": [
+      "branch",
+      "service_operation"
+    ],
+    "presence_type": "branch",
+    "exposure_type": "taxation",
+    "exposure_direction": "neutral",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "national_with_state_operations",
+    "mechanism": "compliance",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Input tax credit (ITC) and audit assessment harmonization clauses",
+        "claim": "Aligns Karnataka SGST statutory procedures, input tax credit disallowances, and electronic summons with national GST Council decisions.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "ICICI Bank Annual Report 2023-24",
+        "claim": "ICICI Bank Limited operates commercial branches, retail outlets, and distribution in Karnataka.",
+        "url": "https://www.icicibank.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+      "exposure_chain": "GENERAL_STATUTORY_COMPLIANCE"
+    },
+    "source_urls": [
+      "https://kla.kar.nic.in/assembly/bills/bills1640.htm",
+      "https://www.icicibank.com"
+    ],
+    "missing_information": [
+      "Input tax credit volume claimed under Karnataka SGST jurisdiction."
+    ],
+    "verified_at": "2026-09-09T18:30:09.272042+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "karnataka-vs-bill-29-2024",
+    "state": "Karnataka",
+    "company_id": "INE171A01029",
+    "company_name": "Federal Bank Limited",
+    "ticker": "FEDERALBNK",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Banking & Finance",
+    "sub_sector": "State GST Compliance",
+    "business_activity": "Commercial retail and service billing in the State",
+    "state_presence": [
+      "branch",
+      "service_operation"
+    ],
+    "presence_type": "branch",
+    "exposure_type": "taxation",
+    "exposure_direction": "neutral",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "national_with_state_operations",
+    "mechanism": "compliance",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Input tax credit (ITC) and audit assessment harmonization clauses",
+        "claim": "Aligns Karnataka SGST statutory procedures, input tax credit disallowances, and electronic summons with national GST Council decisions.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Federal Bank Annual Report 2023-24",
+        "claim": "Federal Bank Limited operates commercial branches, retail outlets, and distribution in Karnataka.",
+        "url": "https://www.federalbank.co.in"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+      "exposure_chain": "GENERAL_STATUTORY_COMPLIANCE"
+    },
+    "source_urls": [
+      "https://kla.kar.nic.in/assembly/bills/bills1640.htm",
+      "https://www.federalbank.co.in"
+    ],
+    "missing_information": [
+      "Input tax credit volume claimed under Karnataka SGST jurisdiction."
+    ],
+    "verified_at": "2026-09-09T18:30:09.272485+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "karnataka-vs-bill-29-2024",
+    "state": "Karnataka",
+    "company_id": "INE030A01027",
+    "company_name": "Hindustan Unilever Limited",
+    "ticker": "HINDUNILVR",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Banking & Finance",
+    "sub_sector": "State GST Compliance",
+    "business_activity": "Commercial retail and service billing in the State",
+    "state_presence": [
+      "manufacturing",
+      "plant",
+      "office"
+    ],
+    "presence_type": "manufacturing",
+    "exposure_type": "taxation",
+    "exposure_direction": "neutral",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "national_with_state_operations",
+    "mechanism": "compliance",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Input tax credit (ITC) and audit assessment harmonization clauses",
+        "claim": "Aligns Karnataka SGST statutory procedures, input tax credit disallowances, and electronic summons with national GST Council decisions.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "HUL Annual Report 2023-24",
+        "claim": "Hindustan Unilever Limited operates commercial branches, retail outlets, and distribution in Karnataka.",
+        "url": "https://www.hul.co.in"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+      "exposure_chain": "GENERAL_STATUTORY_COMPLIANCE"
+    },
+    "source_urls": [
+      "https://kla.kar.nic.in/assembly/bills/bills1640.htm",
+      "https://www.hul.co.in"
+    ],
+    "missing_information": [
+      "Input tax credit volume claimed under Karnataka SGST jurisdiction."
+    ],
+    "verified_at": "2026-09-09T18:30:09.272918+00:00",
+    "schema_version": "1.0.0"
+  }
+]

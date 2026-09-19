@@ -73,6 +73,14 @@ class TestBillSchema:
 
         assert BillHouse.LOK_SABHA.value == "lok_sabha"
         assert BillHouse.RAJYA_SABHA.value == "rajya_sabha"
+        assert BillHouse.VIDHAN_SABHA.value == "vidhan_sabha"
+        assert BillHouse.VIDHAN_PARISHAD.value == "vidhan_parishad"
+
+    def test_bill_jurisdiction_enum_values(self) -> None:
+        from schemas.bill import BillJurisdiction
+
+        assert BillJurisdiction.CENTRAL.value == "central"
+        assert BillJurisdiction.STATE.value == "state"
 
     def test_bill_repr(self) -> None:
         bill = self._make_bill()

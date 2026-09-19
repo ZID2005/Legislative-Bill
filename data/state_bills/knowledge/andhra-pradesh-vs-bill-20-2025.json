@@ -1,0 +1,428 @@
+{
+  "bill_id": "andhra-pradesh-vs-bill-20-2025",
+  "jurisdiction": "state",
+  "state": "Andhra Pradesh",
+  "title": "The Andhra Pradesh State Aquaculture Development Authority (Amendment) Bill, 2025",
+  "bill_number": "L.A. Bill No. 20 of 2025",
+  "chamber": "vidhan_sabha",
+  "status": "passed_both",
+  "source_url": "https://aplegislature.org/web/aplegislature/bills",
+  "policy_category": "Agriculture & Allied Sectors",
+  "category_provenance": "SYSTEM_DERIVED",
+  "year": 2025,
+  "introduction_date": null,
+  "assent_date": "2025-11-07",
+  "pdf_url": "https://legislation.aplegislature.org/PreviewPage.do?filePath=basePath&fileName=Bills/PassedBills/English/Eng_passbill_BillNo_16_30__373_v_1.pdf",
+  "corpus_path": "D:\\Legislative-bill\\data\\state_bills\\corpus\\andhra-pradesh-vs-bill-20-2025.txt",
+  "document_hash": "d64f22808297e3d51b5c2a5f1c749cb944757cc3a8ea1b4847162f0355edeaa7",
+  "summary": {
+    "what_is_bill": "'The Andhra Pradesh State Aquaculture Development Authority (Amendment) Bill, 2025' (L.A. Bill No. 20 of 2025) is a State legislative measure introduced in the Andhra Pradesh Legislative Assembly (Vidhan Sabha) concerning Agriculture & Allied Sectors.",
+    "what_it_changes": "The bill introduces statutory amendments to existing state legislation, primarily modifying In the Andhra Pradesh State Aquaculture Development Authority Act, 2020; In the Principal Act across 4 identified sections/clauses.",
+    "why_it_matters": "According to the official Statement of Objects and Reasons: \"The proposed amendments to the Andhra Pradesh State Aquaculture Development Authority Act, 2020 aim to streamline Aquaculture and Aquaculture business operations within the aquaculture sector, simplify licensing procedures, and update existing terminology. The core motivations for the proposed aquaculture amendments stem from a combination of stakeholder feedback, operational challenges with the existing Act, and the need to enhance the sector’s...\"",
+    "who_is_affected": "Primary affected groups include: Farmers, Aquaculture Operators & Fishers, Agricultural Laborers, Agribusinesses, State Agriculture & Fisheries Departments, Builders & Real Estate Developers.",
+    "key_provisions": [
+      "Statutory modification of In the Andhra Pradesh State Aquaculture Development Authority Act, 2020, In the Principal Act.",
+      "Identified clauses/sections amended: 6, 22, 29, 36.",
+      "fee equivalent to 50% of the license fee."
+    ],
+    "administrative_implications": "Administered and enforced under the authority of Authority Act and designated state officials.",
+    "legislative_status": "Official status recorded as 'Passed Both' (assented on 2025-11-07).",
+    "source": "Official Andhra Pradesh Legislature portal (andhra_pradesh_assembly)."
+  },
+  "objective": "The proposed amendments to the Andhra Pradesh State Aquaculture Development Authority Act, 2020 aim to streamline Aquaculture and Aquaculture business operations within the aquaculture sector, simplify licensing procedures, and update existing terminology. The core motivations for the proposed aquaculture amendments stem from a combination of stakeholder feedback, operational challenges with the existing Act, and the need to enhance the sector’s sustainability and economic efficiency in light of ease of doing business. Various stakeholders have requested amendments to make the existing Act simpler and more user-friendly, leading to a series of stakeholder meetings where these requests were discussed. Approximately 20% of aqua farmers did not endorse their old registrations within the stipulated time, necessitating a provision to facilitate these endorsements. For which, facilitate the endorsement of old registrations by introducing a provision for endorsement with the payment of the license fee plus a late fee of 50% of the license fee, benefiting approximately 20% of aqua farmers. In light of the licenses issued under the provisions of the Coastal Aquaculture Authority Act, 2005 (",
+  "key_provisions": [
+    "Statutory modification of In the Andhra Pradesh State Aquaculture Development Authority Act, 2020, In the Principal Act.",
+    "Identified clauses/sections amended: 6, 22, 29, 36.",
+    "fee equivalent to 50% of the license fee."
+  ],
+  "amended_acts": [
+    "In the Andhra Pradesh State Aquaculture Development Authority Act, 2020",
+    "In the Principal Act"
+  ],
+  "affected_stakeholders": [
+    "Farmers",
+    "Aquaculture Operators & Fishers",
+    "Agricultural Laborers",
+    "Agribusinesses",
+    "State Agriculture & Fisheries Departments",
+    "Builders & Real Estate Developers"
+  ],
+  "administrative_authority": "Authority Act",
+  "financial_provisions": "fee equivalent to 50% of the license fee.",
+  "penalties_provisions": null,
+  "extraction_status": "success",
+  "language": "English",
+  "page_count": 1,
+  "character_count": 9694,
+  "word_count": 1403,
+  "provenance": {
+    "title": "AUTHORITATIVE",
+    "bill_number": "AUTHORITATIVE",
+    "jurisdiction": "AUTHORITATIVE",
+    "state": "AUTHORITATIVE",
+    "chamber": "AUTHORITATIVE",
+    "status": "AUTHORITATIVE",
+    "source_url": "AUTHORITATIVE",
+    "pdf_url": "AUTHORITATIVE",
+    "introduction_date": "UNAVAILABLE",
+    "assent_date": "AUTHORITATIVE",
+    "year": "DERIVED",
+    "bill_id": "DERIVED",
+    "policy_category": "SYSTEM_DERIVED",
+    "document_hash": "DERIVED",
+    "corpus_path": "DERIVED",
+    "language": "AUTHORITATIVE",
+    "summary": "SYSTEM_DERIVED",
+    "objective": "SYSTEM_DERIVED",
+    "key_provisions": "SYSTEM_DERIVED",
+    "amended_acts": "SYSTEM_DERIVED",
+    "affected_stakeholders": "SYSTEM_DERIVED",
+    "administrative_authority": "SYSTEM_DERIVED",
+    "financial_provisions": "SYSTEM_DERIVED",
+    "penalties_provisions": "UNAVAILABLE",
+    "economic_profile": "SYSTEM_DERIVED",
+    "corporate_exposures": "SYSTEM_DERIVED",
+    "impact_assessment": "DETERMINISTIC_METHODOLOGY_ENGINE"
+  },
+  "created_at": "2026-09-08T16:40:47.195377+00:00",
+  "economic_profile": {
+    "bill_id": "andhra-pradesh-vs-bill-20-2025",
+    "state": "Andhra Pradesh",
+    "policy_domain": "Agriculture & Allied Sectors",
+    "primary_sector": "Fisheries",
+    "secondary_sectors": [
+      "Agriculture",
+      "Food Processing"
+    ],
+    "sub_sectors": [
+      "Aquaculture",
+      "Inland Fisheries",
+      "Marine Fisheries",
+      "Farming",
+      "Horticulture",
+      "Grain Milling",
+      "Dairy Processing"
+    ],
+    "economic_activities": [
+      "Shrimp and prawn farming",
+      "Fish cultivation",
+      "Aquaculture licensing",
+      "Crop cultivation",
+      "Agricultural produce trading",
+      "Food preservation",
+      "Packaging"
+    ],
+    "business_types": [
+      "Aquaculture farm operators",
+      "Hatchery owners",
+      "Seafood exporters",
+      "Feed processing units"
+    ],
+    "stakeholders": [
+      {
+        "stakeholder": "Aquaculture operators",
+        "category": "businesses",
+        "role": "primary_affected",
+        "direction": "mixed",
+        "mechanism": "licensing",
+        "impact_type": "DIRECT",
+        "evidence": {
+          "source_type": "bill_text",
+          "section": "Aquaculture Authority Regulatory Powers",
+          "text_reference": "Establishment or enhancement of state aquaculture development authority, licensing, and hatchery standards.",
+          "location": "corpus/andhra-pradesh-vs-bill-20-2025.txt"
+        },
+        "description": "Aqua farmers and hatchery operators must comply with quality standards and statutory registration."
+      },
+      {
+        "stakeholder": "Farmers",
+        "category": "people",
+        "role": "potential_beneficiary",
+        "direction": "positive",
+        "mechanism": "regulation",
+        "impact_type": "DIRECT",
+        "evidence": {
+          "source_type": "bill_text",
+          "section": "Aquaculture Authority Regulatory Powers",
+          "text_reference": "Establishment or enhancement of state aquaculture development authority, licensing, and hatchery standards.",
+          "location": "corpus/andhra-pradesh-vs-bill-20-2025.txt"
+        },
+        "description": "Aquaculture cultivators may benefit from institutionalized technical support and disease-free seed regulation."
+      }
+    ],
+    "geographic_scope": "sector-specific geography",
+    "direct_impacts": [
+      "Direct statutory licensing requirement affecting Aquaculture operators.",
+      "Direct statutory regulation requirement affecting Farmers."
+    ],
+    "indirect_impacts": [
+      "Indirect compliance and downstream market adjustment effects."
+    ],
+    "impact_mechanisms": [
+      "licensing",
+      "regulation"
+    ],
+    "company_exposure_readiness": "MEDIUM",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "section": "Aquaculture Authority Regulatory Powers",
+        "text_reference": "Establishment or enhancement of state aquaculture development authority, licensing, and hatchery standards.",
+        "location": "corpus/andhra-pradesh-vs-bill-20-2025.txt"
+      }
+    ],
+    "confidence": "HIGH",
+    "factual_summary": {
+      "who_may_be_affected": [
+        "Aquaculture operators"
+      ],
+      "how_affected": [
+        "Requires state authorization, licensing, or registration for covered entities.",
+        "Enacts statutory regulations and standards under State jurisdiction."
+      ],
+      "who_may_benefit": [
+        "Farmers"
+      ],
+      "who_may_bear_costs": [
+        "Aquaculture operators"
+      ]
+    },
+    "provenance": {
+      "primary_sector": "SYSTEM_DERIVED",
+      "secondary_sectors": "SYSTEM_DERIVED",
+      "sub_sectors": "SYSTEM_DERIVED",
+      "business_types": "SYSTEM_DERIVED",
+      "stakeholders": "SYSTEM_DERIVED",
+      "geographic_scope": "SYSTEM_DERIVED",
+      "company_exposure_readiness": "SYSTEM_DERIVED",
+      "evidence": "AUTHORITATIVE_CORPUS_GROUNDED",
+      "factual_summary": "SYSTEM_DERIVED"
+    },
+    "generated_at": "2026-09-09T18:05:54.444481+00:00",
+    "schema_version": "1.0.0"
+  },
+  "corporate_exposures": [
+    {
+      "bill_id": "andhra-pradesh-vs-bill-20-2025",
+      "state": "Andhra Pradesh",
+      "company_id": "INE346W01013",
+      "company_name": "Apex Frozen Foods Limited",
+      "ticker": "APEX",
+      "exchange": "NSE",
+      "listed_status": "listed",
+      "sector": "Fisheries",
+      "sub_sector": "Aquaculture & Processing",
+      "business_activity": "Shrimp hatchery, farming, and processing operations",
+      "state_presence": [
+        "headquarters",
+        "manufacturing",
+        "plant",
+        "supplier_relationship"
+      ],
+      "presence_type": "manufacturing",
+      "exposure_type": "regulatory",
+      "exposure_direction": "positive",
+      "exposure_strength": "HIGH",
+      "direct_indirect": "DIRECT",
+      "geographic_scope": "state_specific",
+      "mechanism": "regulation",
+      "evidence": [
+        {
+          "source_type": "bill_text",
+          "reference": "Regulatory clauses establishing Aquaculture Development Authority standards",
+          "claim": "Establishes statutory quality standards, hatchery certifications, and processing inspection mechanisms.",
+          "url": null
+        },
+        {
+          "source_type": "company_filing",
+          "reference": "Apex Frozen Foods Annual Report 2023-24 (Operations Review)",
+          "claim": "Apex Frozen Foods Limited operates shrimp processing, hatcheries, and feed facilities in Kakinada, Raparru (Kakinada district).",
+          "url": "https://www.apexfrozenfoods.in"
+        }
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+        "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+        "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+      },
+      "source_urls": [
+        "https://aplegislature.org/web/aplegislature/bills",
+        "https://www.apexfrozenfoods.in"
+      ],
+      "missing_information": [
+        "Proportion of export procurement directly registered with Andhra Pradesh Aquaculture Authority."
+      ],
+      "verified_at": "2026-09-09T18:30:08.067513+00:00",
+      "schema_version": "1.0.0"
+    },
+    {
+      "bill_id": "andhra-pradesh-vs-bill-20-2025",
+      "state": "Andhra Pradesh",
+      "company_id": "INE731F01041",
+      "company_name": "Avanti Feeds Limited",
+      "ticker": "AVANTIFEED",
+      "exchange": "NSE",
+      "listed_status": "listed",
+      "sector": "Fisheries",
+      "sub_sector": "Aquaculture & Processing",
+      "business_activity": "Shrimp hatchery, farming, and processing operations",
+      "state_presence": [
+        "headquarters",
+        "manufacturing",
+        "plant"
+      ],
+      "presence_type": "manufacturing",
+      "exposure_type": "regulatory",
+      "exposure_direction": "positive",
+      "exposure_strength": "HIGH",
+      "direct_indirect": "DIRECT",
+      "geographic_scope": "state_specific",
+      "mechanism": "regulation",
+      "evidence": [
+        {
+          "source_type": "bill_text",
+          "reference": "Regulatory clauses establishing Aquaculture Development Authority standards",
+          "claim": "Establishes statutory quality standards, hatchery certifications, and processing inspection mechanisms.",
+          "url": null
+        },
+        {
+          "source_type": "company_filing",
+          "reference": "Avanti Feeds Annual Report 2023-24 (Manufacturing Locations)",
+          "claim": "Avanti Feeds Limited operates shrimp processing, hatcheries, and feed facilities in Kovvur (West Godavari), Vemuluru, Visakhapatnam.",
+          "url": "https://www.avantifeeds.com"
+        }
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+        "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+        "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+      },
+      "source_urls": [
+        "https://aplegislature.org/web/aplegislature/bills",
+        "https://www.avantifeeds.com"
+      ],
+      "missing_information": [
+        "Proportion of export procurement directly registered with Andhra Pradesh Aquaculture Authority."
+      ],
+      "verified_at": "2026-09-09T18:30:08.067857+00:00",
+      "schema_version": "1.0.0"
+    }
+  ],
+  "impact_assessment": {
+    "bill_id": "andhra-pradesh-vs-bill-20-2025",
+    "state": "Andhra Pradesh",
+    "title": "The Andhra Pradesh State Aquaculture Development Authority (Amendment) Bill, 2025",
+    "bill_number": "L.A. Bill No. 20 of 2025",
+    "economic_mechanisms": [
+      "compliance_cost",
+      "licensing",
+      "other",
+      "regulation",
+      "taxation"
+    ],
+    "economic_direction": "positive",
+    "economic_strength": "HIGH",
+    "market_relevance": "HIGH",
+    "modeling_eligibility": "CONDITIONALLY_ELIGIBLE",
+    "data_sufficiency": "INSUFFICIENT",
+    "event_date_quality": "MEDIUM",
+    "primary_event_date": {
+      "role": "assent",
+      "date": "2025-11-07",
+      "source": "official_gazette",
+      "is_primary": true
+    },
+    "alternative_event_dates": [],
+    "anticipation_readiness": "PARTIAL",
+    "candidate_anticipation_channels": [
+      "public_announcements",
+      "legislative_leaks",
+      "government_consultations",
+      "committee_discussions",
+      "media_coverage",
+      "gdelt",
+      "google_trends"
+    ],
+    "market_data_readiness": {
+      "candidate_companies_count": 2,
+      "listed_companies_count": 2,
+      "unlisted_companies_count": 0,
+      "companies_with_market_data": [],
+      "companies_missing_market_data": [
+        "APEX",
+        "AVANTIFEED"
+      ],
+      "benchmark_available": true,
+      "benchmark_ticker": "^NSEI",
+      "trading_calendar_coverage": "INSUFFICIENT"
+    },
+    "listed_company_count": 2,
+    "exposure_count": 2,
+    "direct_exposure_count": 2,
+    "indirect_exposure_count": 0,
+    "missing_requirements": [
+      "Historical market price data missing in local store for: APEX, AVANTIFEED.",
+      "Live anticipation crawling and sentiment signal ingestion not connected."
+    ],
+    "scorecard": {
+      "bill_identity_verified": true,
+      "state_jurisdiction_verified": true,
+      "event_date_verified": true,
+      "economic_mechanism_identified": true,
+      "corporate_exposure_verified": true,
+      "listed_company_verified": true,
+      "historical_market_data_available": false,
+      "benchmark_data_available": true,
+      "event_date_identifiable": true,
+      "anticipation_readiness_sufficient": true,
+      "result": "CONDITIONALLY_ELIGIBLE",
+      "notes": [
+        "Candidate tickers are listed but historical parquets are pending download.",
+        "Anticipation framework defined, but external live news/GDELT crawlers not attached."
+      ]
+    },
+    "evidence": [
+      {
+        "source_type": "official_bill_summary",
+        "reference": "Statement of Objects and Reasons / Metadata",
+        "claim": "Statutory summary indicates policy in Agriculture & Allied Sectors."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::compliance_cost",
+        "claim": "Statutory impact channel identified as 'compliance_cost'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::licensing",
+        "claim": "Statutory impact channel identified as 'licensing'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::other",
+        "claim": "Statutory impact channel identified as 'other'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::regulation",
+        "claim": "Statutory impact channel identified as 'regulation'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::taxation",
+        "claim": "Statutory impact channel identified as 'taxation'."
+      }
+    ],
+    "confidence": "MEDIUM",
+    "provenance": {
+      "economic_taxonomy": "STATE_ECONOMIC_MECHANISMS_V1",
+      "market_relevance": "GROUNDED_CORPORATE_EXPOSURE_MATCH",
+      "eligibility_scorecard": "DETERMINISTIC_10_POINT_SCORECARD",
+      "market_data_audit": "LOCAL_PARQUET_STORE_VERIFIED"
+    },
+    "schema_version": "1.0.0",
+    "generated_at": "2026-09-10T16:03:45.618410+00:00"
+  }
+}

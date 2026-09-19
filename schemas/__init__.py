@@ -36,8 +36,14 @@ market      : Market price record (OHLCV)
 prediction  : Model prediction output for a (bill, company) pair
 """
 
-from schemas.bill import Bill, BillStatus, BillHouse
-from schemas.company import Company, MarketCapCategory
+from schemas.bill import Bill, BillStatus, BillHouse, BillJurisdiction
+from schemas.company import (
+    Company,
+    MarketCapCategory,
+    UniverseType,
+    EntityType,
+    OwnershipType,
+)
 from schemas.prediction import (
     Prediction,
     ImpactLabel,
@@ -77,15 +83,69 @@ from schemas.decision import (
     StakeholderPerspective,
     make_decision_id,
 )
+from schemas.state_knowledge import (
+    StateBillKnowledge,
+    StateBillSummary,
+)
+from schemas.state_economic_profile import (
+    EvidenceReference,
+    FactualStakeholderSummary,
+    StakeholderImpact,
+    StateBillEconomicProfile,
+)
+from schemas.state_corporate_exposure import (
+    CorporateExposureEvidence,
+    StateCorporateExposure,
+    StatePresenceRecord,
+    CompanyExposureRecord,
+)
+from schemas.unified_bill_record import UnifiedBillRecord
+from schemas.user import User
+from schemas.watchlist import (
+    Watchlist,
+    WatchlistItem,
+    WatchlistEntityType,
+    validate_entity_reference,
+)
+from schemas.alert import (
+    AlertRule,
+    AlertEvent,
+    Notification,
+    AlertPreference,
+    AlertType,
+    AlertSeverity,
+    NotificationChannel,
+    NotificationStatus,
+    NotificationType,
+    NotificationSourceType,
+    DigestFrequency,
+    compute_dedup_key,
+    compute_notification_dedup_key,
+    build_deep_link,
+)
+from schemas.alert_group import (
+    AlertGroup,
+    AlertGroupType,
+    AlertGroupStatus,
+    compute_aggregation_key,
+)
+from schemas.alert_digest import (
+    AlertDigest,
+    DigestType,
+)
 
 __all__ = [
     # Bill
     "Bill",
     "BillStatus",
     "BillHouse",
+    "BillJurisdiction",
     # Company
     "Company",
     "MarketCapCategory",
+    "UniverseType",
+    "EntityType",
+    "OwnershipType",
     # Market
     "PriceRecord",
     # Prediction
@@ -136,5 +196,49 @@ __all__ = [
     "PricingInRisk",
     "StakeholderPerspective",
     "make_decision_id",
+    # State Knowledge (Task 8.4)
+    "StateBillKnowledge",
+    "StateBillSummary",
+    # State Economic Intelligence (Task 8.6)
+    "EvidenceReference",
+    "FactualStakeholderSummary",
+    "StakeholderImpact",
+    "StateBillEconomicProfile",
+    # State Corporate Exposure (Task 8.7)
+    "CorporateExposureEvidence",
+    "StateCorporateExposure",
+    "StatePresenceRecord",
+    "CompanyExposureRecord",
+    # Unified Discovery (Task 8.9)
+    "UnifiedBillRecord",
+    # User (Task 8.13.2)
+    "User",
+    # Watchlist (Task 8.13.2)
+    "Watchlist",
+    "WatchlistItem",
+    "WatchlistEntityType",
+    "validate_entity_reference",
+    # Alert (Task 8.13.2)
+    "AlertRule",
+    "AlertEvent",
+    "Notification",
+    "AlertPreference",
+    "AlertType",
+    "AlertSeverity",
+    "NotificationChannel",
+    "NotificationStatus",
+    "NotificationType",
+    "NotificationSourceType",
+    "DigestFrequency",
+    "compute_dedup_key",
+    "compute_notification_dedup_key",
+    "build_deep_link",
+    # Alert Group & Digest (Task 8.13.5)
+    "AlertGroup",
+    "AlertGroupType",
+    "AlertGroupStatus",
+    "compute_aggregation_key",
+    "AlertDigest",
+    "DigestType",
 ]
 

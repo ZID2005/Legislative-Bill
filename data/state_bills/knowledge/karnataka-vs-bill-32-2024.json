@@ -1,0 +1,319 @@
+{
+  "bill_id": "karnataka-vs-bill-32-2024",
+  "jurisdiction": "state",
+  "state": "Karnataka",
+  "title": "The Karnataka Irrigation (Amendment) Bill, 2024",
+  "bill_number": "Bill No. 32 of 2024",
+  "chamber": "vidhan_sabha",
+  "status": "passed_both",
+  "source_url": "https://kla.kar.nic.in/assembly/bills/bills1640.htm",
+  "policy_category": "Other / Unclassified",
+  "category_provenance": "SYSTEM_DERIVED",
+  "year": 2024,
+  "introduction_date": "2024-07-22",
+  "assent_date": null,
+  "pdf_url": "https://kla.kar.nic.in/assembly/bills/bill1640_32.pdf",
+  "corpus_path": "D:\\Legislative-bill\\data\\state_bills\\corpus\\karnataka-vs-bill-32-2024.txt",
+  "document_hash": "1c873375d3798d26c1cee65bb71a95c76f29147a0b7c1e17def30638f51213b6",
+  "summary": {
+    "what_is_bill": "'The Karnataka Irrigation (Amendment) Bill, 2024' (Bill No. 32 of 2024) is a State legislative measure introduced in the Karnataka Legislative Assembly (Vidhan Sabha) concerning Other / Unclassified.",
+    "what_it_changes": "The bill introduces statutory amendments to existing state legislation, primarily modifying Whereas it is expedient further to amend the Karnataka Irrigation Act, 1965; Karnataka Act 16 of 1965) (hereinafter referred to as the principal Act; In section 6 of the principal Act across 10 identified sections/clauses.",
+    "why_it_matters": "According to the official Statement of Objects and Reasons: \"It is considered necessary to amend the Karnataka Irrigation Act, 1965 (Karnataka Act 16 of 1965) to prevent illegal tapping of water and Ensure water reaches the end user accordingly,- (i) define new expressions of “agricultural equipments”, “canal”, “command area”, “irrigation court”, “task force” and “unauthorized use of water from canal”; (ii) substitute “the Right to Fair Compensation and Transparency...\"",
+    "who_is_affected": "Primary affected groups include: Citizens, State Government, Farmers & Agricultural Landowners, Property Owners & Real Estate Buyers, Builders & Real Estate Developers.",
+    "key_provisions": [
+      "Statutory modification of Whereas it is expedient further to amend the Karnataka Irrigation Act, 1965, Karnataka Act 16 of 1965) (hereinafter referred to as the principal Act.",
+      "Identified clauses/sections amended: 6, 16, 28, 28A, 29.",
+      "Contains statutory fee, tax, or duty rate provisions.",
+      "Penalty for contravention of section 28A and 28B."
+    ],
+    "administrative_implications": "Administered and enforced under the authority of Authority is satisfied that it shall not be and designated state officials.",
+    "legislative_status": "Official status recorded as 'Passed Both' (introduced on 2024-07-22).",
+    "source": "Official Karnataka Legislature portal (karnataka_assembly)."
+  },
+  "objective": "It is considered necessary to amend the Karnataka Irrigation Act, 1965 (Karnataka Act 16 of 1965) to prevent illegal tapping of water and Ensure water reaches the end user accordingly,- (i) define new expressions of “agricultural equipments”, “canal”, “command area”, “irrigation court”, “task force” and “unauthorized use of water from canal”; (ii) substitute “the Right to Fair Compensation and Transparency in Land Acquisition, Rehabilitation and Resettlement Act, 2013 (Central Act 30 of 2013)” instead of the Land Acquisition Act, 1894 (Central Act 01 of 1994 )”. (iii) grant permit to extract and use of ground water, registration of existing groundwater users and penalty for contravention of sections 28A and 28B; (iv) enhance the period of punishment, extend the duration of punishment and increase the amount of penalty on conviction of an offence; (v) insert the Irrigation Court, Savings of inherent powers of the irrigation court, place of inquiry, procedure of evidence, summoning and inquiry etc.,; (vi) application of Limitation Act and fix the duration of 6 months for speedy disposal of proceedings; - and certain other consequential amendments. Hence the Bill. 11",
+  "key_provisions": [
+    "Statutory modification of Whereas it is expedient further to amend the Karnataka Irrigation Act, 1965, Karnataka Act 16 of 1965) (hereinafter referred to as the principal Act.",
+    "Identified clauses/sections amended: 6, 16, 28, 28A, 29.",
+    "Contains statutory fee, tax, or duty rate provisions.",
+    "Penalty for contravention of section 28A and 28B."
+  ],
+  "amended_acts": [
+    "Whereas it is expedient further to amend the Karnataka Irrigation Act, 1965",
+    "Karnataka Act 16 of 1965) (hereinafter referred to as the principal Act",
+    "In section 6 of the principal Act",
+    "In section 16 of the principal Act",
+    "In section 28 of the Principal Act",
+    "In section 29 of the principal Act"
+  ],
+  "affected_stakeholders": [
+    "Citizens",
+    "State Government",
+    "Farmers & Agricultural Landowners",
+    "Property Owners & Real Estate Buyers",
+    "Builders & Real Estate Developers"
+  ],
+  "administrative_authority": "Authority is satisfied that it shall not be",
+  "financial_provisions": "Contains statutory fee, tax, or duty rate provisions.",
+  "penalties_provisions": "Penalty for contravention of section 28A and 28B.",
+  "extraction_status": "success",
+  "language": "Bilingual (English / Kannada)",
+  "page_count": 1,
+  "character_count": 155829,
+  "word_count": 11659,
+  "provenance": {
+    "title": "AUTHORITATIVE",
+    "bill_number": "AUTHORITATIVE",
+    "jurisdiction": "AUTHORITATIVE",
+    "state": "AUTHORITATIVE",
+    "chamber": "AUTHORITATIVE",
+    "status": "AUTHORITATIVE",
+    "source_url": "AUTHORITATIVE",
+    "pdf_url": "AUTHORITATIVE",
+    "introduction_date": "AUTHORITATIVE",
+    "assent_date": "UNAVAILABLE",
+    "year": "DERIVED",
+    "bill_id": "DERIVED",
+    "policy_category": "SYSTEM_DERIVED",
+    "document_hash": "DERIVED",
+    "corpus_path": "DERIVED",
+    "language": "AUTHORITATIVE",
+    "summary": "SYSTEM_DERIVED",
+    "objective": "SYSTEM_DERIVED",
+    "key_provisions": "SYSTEM_DERIVED",
+    "amended_acts": "SYSTEM_DERIVED",
+    "affected_stakeholders": "SYSTEM_DERIVED",
+    "administrative_authority": "SYSTEM_DERIVED",
+    "financial_provisions": "SYSTEM_DERIVED",
+    "penalties_provisions": "SYSTEM_DERIVED",
+    "economic_profile": "SYSTEM_DERIVED",
+    "corporate_exposures": "NONE",
+    "impact_assessment": "DETERMINISTIC_METHODOLOGY_ENGINE"
+  },
+  "created_at": "2026-09-08T16:40:54.901116+00:00",
+  "economic_profile": {
+    "bill_id": "karnataka-vs-bill-32-2024",
+    "state": "Karnataka",
+    "policy_domain": "Other / Unclassified",
+    "primary_sector": "Water",
+    "secondary_sectors": [
+      "Agriculture",
+      "Infrastructure"
+    ],
+    "sub_sectors": [
+      "Irrigation & Canals",
+      "Groundwater Regulation",
+      "Drinking Water Supply",
+      "Farming",
+      "Horticulture",
+      "Urban Infrastructure",
+      "Industrial Corridors"
+    ],
+    "economic_activities": [
+      "Canal water management",
+      "Irrigation cess collection",
+      "Water extraction licensing",
+      "Crop cultivation",
+      "Agricultural produce trading",
+      "Canal construction",
+      "Water distribution works"
+    ],
+    "business_types": [
+      "Irrigation contractors",
+      "Industrial water users",
+      "Canal maintenance firms",
+      "Agri-farms"
+    ],
+    "stakeholders": [
+      {
+        "stakeholder": "State Government",
+        "category": "institutions",
+        "role": "regulator/implementer",
+        "direction": "neutral",
+        "mechanism": "regulation",
+        "impact_type": "DIRECT",
+        "evidence": {
+          "source_type": "metadata",
+          "section": "General Provisions",
+          "text_reference": "Statutory measures enacted under 'The Karnataka Irrigation (Amendment) Bill, 2024'.",
+          "location": "corpus/karnataka-vs-bill-32-2024.txt"
+        },
+        "description": "The State Government and executive authorities oversee administration of the statutory enactment."
+      },
+      {
+        "stakeholder": "Employers",
+        "category": "businesses",
+        "role": "affected",
+        "direction": "neutral",
+        "mechanism": "compliance",
+        "impact_type": "INDIRECT",
+        "evidence": {
+          "source_type": "metadata",
+          "section": "General Provisions",
+          "text_reference": "Statutory measures enacted under 'The Karnataka Irrigation (Amendment) Bill, 2024'.",
+          "location": "corpus/karnataka-vs-bill-32-2024.txt"
+        },
+        "description": "Covered commercial and institutional entities must comply with relevant legal procedures."
+      }
+    ],
+    "geographic_scope": "regional",
+    "direct_impacts": [
+      "Direct statutory regulation requirement affecting State Government."
+    ],
+    "indirect_impacts": [
+      "Secondary economic or pricing effect on Employers."
+    ],
+    "impact_mechanisms": [
+      "regulation",
+      "compliance"
+    ],
+    "company_exposure_readiness": "MEDIUM",
+    "evidence": [
+      {
+        "source_type": "metadata",
+        "section": "General Provisions",
+        "text_reference": "Statutory measures enacted under 'The Karnataka Irrigation (Amendment) Bill, 2024'.",
+        "location": "corpus/karnataka-vs-bill-32-2024.txt"
+      }
+    ],
+    "confidence": "HIGH",
+    "factual_summary": {
+      "who_may_be_affected": [
+        "Employers"
+      ],
+      "how_affected": [
+        "Enacts statutory regulations and standards under State jurisdiction.",
+        "Establishes updated compliance, record-keeping, and reporting obligations."
+      ],
+      "who_may_benefit": [
+        "Designated beneficiary groups under statutory schemes."
+      ],
+      "who_may_bear_costs": [
+        "Covered commercial or institutional establishments."
+      ]
+    },
+    "provenance": {
+      "primary_sector": "SYSTEM_DERIVED",
+      "secondary_sectors": "SYSTEM_DERIVED",
+      "sub_sectors": "SYSTEM_DERIVED",
+      "business_types": "SYSTEM_DERIVED",
+      "stakeholders": "SYSTEM_DERIVED",
+      "geographic_scope": "SYSTEM_DERIVED",
+      "company_exposure_readiness": "SYSTEM_DERIVED",
+      "evidence": "AUTHORITATIVE_CORPUS_GROUNDED",
+      "factual_summary": "SYSTEM_DERIVED"
+    },
+    "generated_at": "2026-09-09T18:05:56.203081+00:00",
+    "schema_version": "1.0.0"
+  },
+  "impact_assessment": {
+    "bill_id": "karnataka-vs-bill-32-2024",
+    "state": "Karnataka",
+    "title": "The Karnataka Irrigation (Amendment) Bill, 2024",
+    "bill_number": "Bill No. 32 of 2024",
+    "economic_mechanisms": [
+      "compliance_cost",
+      "land",
+      "licensing",
+      "regulation",
+      "taxation"
+    ],
+    "economic_direction": "neutral",
+    "economic_strength": "HIGH",
+    "market_relevance": "NONE",
+    "modeling_eligibility": "NOT_ELIGIBLE",
+    "data_sufficiency": "INSUFFICIENT",
+    "event_date_quality": "MEDIUM",
+    "primary_event_date": {
+      "role": "introduction",
+      "date": "2024-07-22",
+      "source": "official_legislative_portal",
+      "is_primary": true
+    },
+    "alternative_event_dates": [],
+    "anticipation_readiness": "PARTIAL",
+    "candidate_anticipation_channels": [
+      "public_announcements",
+      "legislative_leaks",
+      "government_consultations",
+      "committee_discussions",
+      "media_coverage",
+      "gdelt",
+      "google_trends"
+    ],
+    "market_data_readiness": {
+      "candidate_companies_count": 0,
+      "listed_companies_count": 0,
+      "unlisted_companies_count": 0,
+      "companies_with_market_data": [],
+      "companies_missing_market_data": [],
+      "benchmark_available": true,
+      "benchmark_ticker": "^NSEI",
+      "trading_calendar_coverage": "INSUFFICIENT"
+    },
+    "listed_company_count": 0,
+    "exposure_count": 0,
+    "direct_exposure_count": 0,
+    "indirect_exposure_count": 0,
+    "missing_requirements": [
+      "No grounded corporate exposure identified for this State bill.",
+      "Live anticipation crawling and sentiment signal ingestion not connected."
+    ],
+    "scorecard": {
+      "bill_identity_verified": true,
+      "state_jurisdiction_verified": true,
+      "event_date_verified": true,
+      "economic_mechanism_identified": true,
+      "corporate_exposure_verified": false,
+      "listed_company_verified": false,
+      "historical_market_data_available": false,
+      "benchmark_data_available": true,
+      "event_date_identifiable": true,
+      "anticipation_readiness_sufficient": true,
+      "result": "NOT_ELIGIBLE",
+      "notes": [
+        "Bill has no listed corporate exposure; remains strictly economic-only."
+      ]
+    },
+    "evidence": [
+      {
+        "source_type": "official_bill_summary",
+        "reference": "Statement of Objects and Reasons / Metadata",
+        "claim": "Statutory summary indicates policy in Other / Unclassified."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::compliance_cost",
+        "claim": "Statutory impact channel identified as 'compliance_cost'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::land",
+        "claim": "Statutory impact channel identified as 'land'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::licensing",
+        "claim": "Statutory impact channel identified as 'licensing'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::regulation",
+        "claim": "Statutory impact channel identified as 'regulation'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::taxation",
+        "claim": "Statutory impact channel identified as 'taxation'."
+      }
+    ],
+    "confidence": "MEDIUM",
+    "provenance": {
+      "economic_taxonomy": "STATE_ECONOMIC_MECHANISMS_V1",
+      "market_relevance": "GROUNDED_CORPORATE_EXPOSURE_MATCH",
+      "eligibility_scorecard": "DETERMINISTIC_10_POINT_SCORECARD",
+      "market_data_audit": "LOCAL_PARQUET_STORE_VERIFIED"
+    },
+    "schema_version": "1.0.0",
+    "generated_at": "2026-09-10T16:03:47.473116+00:00"
+  }
+}

@@ -1,0 +1,161 @@
+[
+  {
+    "bill_id": "the-bills-of-lading-bill-2024",
+    "state": "Central",
+    "company_id": "INE201M01025",
+    "company_name": "Delhivery Limited",
+    "ticker": "DELHIVERY",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Logistics & Transportation",
+    "sub_sector": "Freight Forwarding",
+    "business_activity": "Cross-border ocean freight forwarding and documentation",
+    "state_presence": [
+      "national"
+    ],
+    "presence_type": "service_operation",
+    "exposure_type": "regulatory",
+    "exposure_direction": "positive",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "INDIRECT",
+    "geographic_scope": "national",
+    "mechanism": "supply_chain",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Clauses 3-5 (Electronic bills of lading and consignee documentation)",
+        "claim": "Modernises statutory framework for paperless digital bills of lading and freight forwarding cargo title transfers.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Delhivery Annual Report 2023-24 (Cross-Border & Supply Chain Services)",
+        "claim": "Delhivery provides cross-border ocean freight forwarding and customs clearance requiring compliance with statutory bill of lading documentation.",
+        "url": "https://www.delhivery.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "jurisdiction": "central",
+    "market_relevance": "LOW",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_evidence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "FREIGHT_FORWARDING_DOCUMENTATION"
+    },
+    "source_urls": [
+      "https://prsindia.org/billtrack/the-bills-of-lading-bill-2024",
+      "https://www.delhivery.com"
+    ],
+    "missing_information": [
+      "Volume of ocean cargo vs express air parcel freight in cross-border segment."
+    ],
+    "verified_at": "2026-09-16T07:17:31.352172+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "the-bills-of-lading-bill-2024",
+    "state": "Central",
+    "company_id": "INE742F01042",
+    "company_name": "Adani Ports and Special Economic Zone Limited",
+    "ticker": "ADANIPORTS",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Infrastructure",
+    "sub_sector": "Ports & Shipping",
+    "business_activity": "Port operations and container cargo handling",
+    "state_presence": [
+      "national"
+    ],
+    "presence_type": "infrastructure",
+    "exposure_type": "regulatory",
+    "exposure_direction": "positive",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "national",
+    "mechanism": "regulation",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Clauses 3-7 (Transfer of rights, electronic bills of lading & carrier liability)",
+        "claim": "Replaces the Indian Bills of Lading Act, 1856 to establish statutory recognition of electronic bills of lading, evidentiary presumptions, and liabilities of carriers and port terminal operators upon cargo delivery endorsement.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "APSEZ Annual Report 2023-24 (Cargo Throughput Disclosures)",
+        "claim": "APSEZ is India's largest commercial port operator handling over 420 MMT of cargo across 15 container and multi-purpose port terminals governed by maritime bills of lading.",
+        "url": "https://www.adaniports.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "jurisdiction": "central",
+    "market_relevance": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_evidence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "MARITIME_CARGO_DOCUMENTATION_REFORM"
+    },
+    "source_urls": [
+      "https://prsindia.org/billtrack/the-bills-of-lading-bill-2024",
+      "https://www.adaniports.com"
+    ],
+    "missing_information": [
+      "Adoption timeline for electronic bills of lading across private port terminals."
+    ],
+    "verified_at": "2026-09-16T07:17:31.352369+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "the-bills-of-lading-bill-2024",
+    "state": "Central",
+    "company_id": "INE399C01030",
+    "company_name": "Container Corporation of India Limited",
+    "ticker": "CONCOR",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Logistics & Transportation",
+    "sub_sector": "Rail Freight & Multimodal Logistics",
+    "business_activity": "Multimodal container transport and ICD terminal operations",
+    "state_presence": [
+      "national"
+    ],
+    "presence_type": "logistics",
+    "exposure_type": "regulatory",
+    "exposure_direction": "positive",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "national",
+    "mechanism": "regulation",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Clauses 4-8 (Multimodal transport documentation & cargo transfer)",
+        "claim": "Governs legal title, liabilities, and electronic document interchange for negotiable bills of lading used in multimodal logistics connecting gateway ports to inland container depots.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "CONCOR Annual Report 2023-24 (EXIM Business Segment Disclosures)",
+        "claim": "CONCOR operates 60+ Inland Container Depots (ICDs) and multi-modal logistics terminals handling over 3.5 million TEUs under through bills of lading in partnership with ocean shipping lines.",
+        "url": "https://www.concorindia.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "jurisdiction": "central",
+    "market_relevance": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_evidence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "MULTIMODAL_CONTAINER_DOCUMENTATION"
+    },
+    "source_urls": [
+      "https://prsindia.org/billtrack/the-bills-of-lading-bill-2024",
+      "https://www.concorindia.com"
+    ],
+    "missing_information": [
+      "Proportion of EXIM throughput utilizing digital vs physical documentation."
+    ],
+    "verified_at": "2026-09-16T07:17:31.352559+00:00",
+    "schema_version": "1.0.0"
+  }
+]

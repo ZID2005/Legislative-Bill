@@ -1,0 +1,535 @@
+{
+  "bill_id": "andhra-pradesh-vs-bill-3-2026",
+  "jurisdiction": "state",
+  "state": "Andhra Pradesh",
+  "title": "The Andhra Pradesh Electricity Duty (Amendment) Bill, 2026",
+  "bill_number": "L.A. Bill No. 3 of 2026",
+  "chamber": "vidhan_sabha",
+  "status": "passed_both",
+  "source_url": "https://aplegislature.org/web/aplegislature/bills",
+  "policy_category": "Electricity / Energy",
+  "category_provenance": "SYSTEM_DERIVED",
+  "year": 2026,
+  "introduction_date": null,
+  "assent_date": "2026-03-23",
+  "pdf_url": "https://legislation.aplegislature.org/PreviewPage.do?filePath=basePath&fileName=Bills/PassedBills/English/Eng_passbill_bill-3_16_31__387_v_1.pdf",
+  "corpus_path": "D:\\Legislative-bill\\data\\state_bills\\corpus\\andhra-pradesh-vs-bill-3-2026.txt",
+  "document_hash": "624c258c53b924b22a14abff7b8a82845565207bae0a460c372367e78488e3a2",
+  "summary": {
+    "what_is_bill": "'The Andhra Pradesh Electricity Duty (Amendment) Bill, 2026' (L.A. Bill No. 3 of 2026) is a State legislative measure introduced in the Andhra Pradesh Legislative Assembly (Vidhan Sabha) concerning Electricity / Energy.",
+    "what_it_changes": "The bill introduces statutory amendments to existing state legislation, primarily modifying In the Principal Act; Principal Act as amended by this Act; Andhra Pradesh Electricity Duty Act, 1939.",
+    "why_it_matters": "According to the official Statement of Objects and Reasons: \"Sub-section (1) of section 3 of the Andhra Pradesh Electricity Duty Act, 1939 provided for the levy of electricity duty at the rate of four paise per unit on all sales of electrical energy by the licensee to consumers, other than Railways and the Centra! Government. The duty at the rate of 6 paise per unit sale had been levied...\"",
+    "who_is_affected": "Primary affected groups include: Electricity Consumers, Power Generation Companies, Distribution Companies (Discoms), Renewable Energy Developers, State Energy Department.",
+    "key_provisions": [
+      "Statutory modification of In the Principal Act, Principal Act as amended by this Act.",
+      "duty which shall not be less than 6 paise (Rs. 0."
+    ],
+    "administrative_implications": "Administered and enforced under the authority of State Government and designated state officials.",
+    "legislative_status": "Official status recorded as 'Passed Both' (assented on 2026-03-23).",
+    "source": "Official Andhra Pradesh Legislature portal (andhra_pradesh_assembly)."
+  },
+  "objective": "Sub-section (1) of section 3 of the Andhra Pradesh Electricity Duty Act, 1939 provided for the levy of electricity duty at the rate of four paise per unit on all sales of electrical energy by the licensee to consumers, other than Railways and the Centra! Government. The duty at the rate of 6 paise per unit sale had been levied with effect from 1st December, 1993, by way of the Andhra Pradesh Electricity Duty (Amendment) Act, 1994 (Act No.l of 1994). Since then, the same rate of duty has continued for about 28 years. The Government, considering the substantial gap of 28 years in electricity duty revision, and after duly studying the current rates of levy of duty across other States like Gujarat, Karnataka, Madhya Pradesh, Maharashtra, Himachal Pradesh, Kerala, Manipur, Punjab, West Bengal, and Jammu & Kashmir where the rate of duty varies from 14 paise to 180 paise per unit sale of energy on different categories of consumers, felt it necessary to enhance the duty rates under the Andhra Pradesh Electricity Duty Act, 1939. Further, the term “Licensee” under sub-section (b) of section 2 of the Andhra Pradesh Electricity Duty Act, 1939 was defined in terms of the licensee referable to t",
+  "key_provisions": [
+    "Statutory modification of In the Principal Act, Principal Act as amended by this Act.",
+    "duty which shall not be less than 6 paise (Rs. 0."
+  ],
+  "amended_acts": [
+    "In the Principal Act",
+    "Principal Act as amended by this Act",
+    "Andhra Pradesh Electricity Duty Act, 1939",
+    "Therefore, it is considered necessary to amend the Act"
+  ],
+  "affected_stakeholders": [
+    "Electricity Consumers",
+    "Power Generation Companies",
+    "Distribution Companies (Discoms)",
+    "Renewable Energy Developers",
+    "State Energy Department"
+  ],
+  "administrative_authority": "State Government",
+  "financial_provisions": "duty which shall not be less than 6 paise (Rs. 0.",
+  "penalties_provisions": null,
+  "extraction_status": "success",
+  "language": "English",
+  "page_count": 1,
+  "character_count": 16595,
+  "word_count": 2685,
+  "provenance": {
+    "title": "AUTHORITATIVE",
+    "bill_number": "AUTHORITATIVE",
+    "jurisdiction": "AUTHORITATIVE",
+    "state": "AUTHORITATIVE",
+    "chamber": "AUTHORITATIVE",
+    "status": "AUTHORITATIVE",
+    "source_url": "AUTHORITATIVE",
+    "pdf_url": "AUTHORITATIVE",
+    "introduction_date": "UNAVAILABLE",
+    "assent_date": "AUTHORITATIVE",
+    "year": "DERIVED",
+    "bill_id": "DERIVED",
+    "policy_category": "SYSTEM_DERIVED",
+    "document_hash": "DERIVED",
+    "corpus_path": "DERIVED",
+    "language": "AUTHORITATIVE",
+    "summary": "SYSTEM_DERIVED",
+    "objective": "SYSTEM_DERIVED",
+    "key_provisions": "SYSTEM_DERIVED",
+    "amended_acts": "SYSTEM_DERIVED",
+    "affected_stakeholders": "SYSTEM_DERIVED",
+    "administrative_authority": "SYSTEM_DERIVED",
+    "financial_provisions": "SYSTEM_DERIVED",
+    "penalties_provisions": "UNAVAILABLE",
+    "economic_profile": "SYSTEM_DERIVED",
+    "corporate_exposures": "SYSTEM_DERIVED",
+    "impact_assessment": "DETERMINISTIC_METHODOLOGY_ENGINE"
+  },
+  "created_at": "2026-09-08T16:40:51.344452+00:00",
+  "economic_profile": {
+    "bill_id": "andhra-pradesh-vs-bill-3-2026",
+    "state": "Andhra Pradesh",
+    "policy_domain": "Electricity / Energy",
+    "primary_sector": "Electricity",
+    "secondary_sectors": [
+      "Energy",
+      "Manufacturing"
+    ],
+    "sub_sectors": [
+      "Discom Operations",
+      "Tariff Regulation",
+      "High Tension Supply",
+      "Power Generation",
+      "Power Transmission",
+      "Heavy Engineering",
+      "Automotive"
+    ],
+    "economic_activities": [
+      "Electricity duty compliance",
+      "Power grid connection",
+      "Metering and billing",
+      "Energy generation",
+      "Power wheeling",
+      "Factory production",
+      "Industrial assembly"
+    ],
+    "business_types": [
+      "Power generation companies",
+      "High-tension industrial consumers",
+      "Captive power units",
+      "Renewable energy producers",
+      "Factory operators"
+    ],
+    "stakeholders": [
+      {
+        "stakeholder": "Power generation companies",
+        "category": "businesses",
+        "role": "primary_affected",
+        "direction": "mixed",
+        "mechanism": "taxation",
+        "impact_type": "DIRECT",
+        "evidence": {
+          "source_type": "bill_text",
+          "section": "Tariff / Duty Rate Amendments",
+          "text_reference": "Adjustment of electricity duty rates, captive consumption duties, or transmission levies.",
+          "location": "corpus/andhra-pradesh-vs-bill-3-2026.txt"
+        },
+        "description": "Power generating and distribution companies must collect and remit statutory duty under modified schedules."
+      },
+      {
+        "stakeholder": "Large enterprises",
+        "category": "businesses",
+        "role": "potential_cost_bearer",
+        "direction": "mixed",
+        "mechanism": "compliance",
+        "impact_type": "DIRECT",
+        "evidence": {
+          "source_type": "bill_text",
+          "section": "Tariff / Duty Rate Amendments",
+          "text_reference": "Adjustment of electricity duty rates, captive consumption duties, or transmission levies.",
+          "location": "corpus/andhra-pradesh-vs-bill-3-2026.txt"
+        },
+        "description": "Industrial and commercial high-tension power consumers may see altered statutory power costs."
+      }
+    ],
+    "geographic_scope": "state-wide",
+    "direct_impacts": [
+      "Direct statutory taxation requirement affecting Power generation companies.",
+      "Direct statutory compliance requirement affecting Large enterprises."
+    ],
+    "indirect_impacts": [
+      "Indirect compliance and downstream market adjustment effects."
+    ],
+    "impact_mechanisms": [
+      "taxation",
+      "compliance"
+    ],
+    "company_exposure_readiness": "HIGH",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "section": "Tariff / Duty Rate Amendments",
+        "text_reference": "Adjustment of electricity duty rates, captive consumption duties, or transmission levies.",
+        "location": "corpus/andhra-pradesh-vs-bill-3-2026.txt"
+      }
+    ],
+    "confidence": "HIGH",
+    "factual_summary": {
+      "who_may_be_affected": [
+        "Power generation companies"
+      ],
+      "how_affected": [
+        "Adjusts statutory tax, duty, or cess rates applicable within the State.",
+        "Establishes updated compliance, record-keeping, and reporting obligations."
+      ],
+      "who_may_benefit": [
+        "Designated beneficiary groups under statutory schemes."
+      ],
+      "who_may_bear_costs": [
+        "Power generation companies",
+        "Large enterprises"
+      ]
+    },
+    "provenance": {
+      "primary_sector": "SYSTEM_DERIVED",
+      "secondary_sectors": "SYSTEM_DERIVED",
+      "sub_sectors": "SYSTEM_DERIVED",
+      "business_types": "SYSTEM_DERIVED",
+      "stakeholders": "SYSTEM_DERIVED",
+      "geographic_scope": "SYSTEM_DERIVED",
+      "company_exposure_readiness": "SYSTEM_DERIVED",
+      "evidence": "AUTHORITATIVE_CORPUS_GROUNDED",
+      "factual_summary": "SYSTEM_DERIVED"
+    },
+    "generated_at": "2026-09-09T18:05:55.066103+00:00",
+    "schema_version": "1.0.0"
+  },
+  "corporate_exposures": [
+    {
+      "bill_id": "andhra-pradesh-vs-bill-3-2026",
+      "state": "Andhra Pradesh",
+      "company_id": "INE481G01011",
+      "company_name": "Ultratech Cement Limited",
+      "ticker": "ULTRACEMCO",
+      "exchange": "NSE",
+      "listed_status": "listed",
+      "sector": "Electricity",
+      "sub_sector": "Industrial Energy Consumption",
+      "business_activity": "Heavy industrial manufacturing with captive electricity generation",
+      "state_presence": [
+        "manufacturing",
+        "plant",
+        "mining"
+      ],
+      "presence_type": "manufacturing",
+      "exposure_type": "energy",
+      "exposure_direction": "negative",
+      "exposure_strength": "HIGH",
+      "direct_indirect": "DIRECT",
+      "geographic_scope": "state_specific",
+      "mechanism": "taxation",
+      "evidence": [
+        {
+          "source_type": "bill_text",
+          "reference": "Duty on Captive Energy Consumption Provisions",
+          "claim": "Alters duty payable by heavy industrial establishments utilizing captive power units.",
+          "url": null
+        },
+        {
+          "source_type": "company_filing",
+          "reference": "UltraTech Annual Report 2023-24 (Manufacturing Unit Footprint)",
+          "claim": "Ultratech Cement Limited operates heavy manufacturing facilities with captive power units at Tadipatri (Anantapur), Dachepalli (Palnadu).",
+          "url": "https://www.ultratechcement.com"
+        }
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+        "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+        "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+      },
+      "source_urls": [
+        "https://aplegislature.org/web/aplegislature/bills",
+        "https://www.ultratechcement.com"
+      ],
+      "missing_information": [
+        "Specific captive energy generation volume in Andhra Pradesh units.",
+        "Effective electricity duty impact per unit of output."
+      ],
+      "verified_at": "2026-09-09T18:30:08.663108+00:00",
+      "schema_version": "1.0.0"
+    },
+    {
+      "bill_id": "andhra-pradesh-vs-bill-3-2026",
+      "state": "Andhra Pradesh",
+      "company_id": "INE733E01010",
+      "company_name": "NTPC Limited",
+      "ticker": "NTPC",
+      "exchange": "NSE",
+      "listed_status": "listed",
+      "sector": "Electricity",
+      "sub_sector": "Power Generation & Transmission",
+      "business_activity": "Electricity generation & captive power dispatch",
+      "state_presence": [
+        "power_generation",
+        "plant"
+      ],
+      "presence_type": "power_generation",
+      "exposure_type": "taxation",
+      "exposure_direction": "mixed",
+      "exposure_strength": "HIGH",
+      "direct_indirect": "DIRECT",
+      "geographic_scope": "state_specific",
+      "mechanism": "taxation",
+      "evidence": [
+        {
+          "source_type": "bill_text",
+          "reference": "Clauses amending Electricity Duty rates & captive consumption schedules",
+          "claim": "Adjusts state statutory duty rates on electricity generated, sold, or consumed for industrial and captive purposes in Andhra Pradesh.",
+          "url": null
+        },
+        {
+          "source_type": "company_filing",
+          "reference": "NTPC Annual Report 2023-24",
+          "claim": "NTPC Limited owns and operates generation facilities in Andhra Pradesh at Simhadri (Visakhapatnam).",
+          "url": "https://www.ntpc.co.in"
+        }
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+        "company_presence": "AUTHORITATIVE_FILING",
+        "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+      },
+      "source_urls": [
+        "https://aplegislature.org/web/aplegislature/bills",
+        "https://www.ntpc.co.in"
+      ],
+      "missing_information": [
+        "Captive power consumption vs commercial grid export ratio in Andhra Pradesh.",
+        "Power purchase agreement (PPA) pass-through clauses with State DISCOMs."
+      ],
+      "verified_at": "2026-09-09T18:30:08.663454+00:00",
+      "schema_version": "1.0.0"
+    },
+    {
+      "bill_id": "andhra-pradesh-vs-bill-3-2026",
+      "state": "Andhra Pradesh",
+      "company_id": "INE245A01021",
+      "company_name": "Tata Power Company Limited",
+      "ticker": "TATAPOWER",
+      "exchange": "NSE",
+      "listed_status": "listed",
+      "sector": "Electricity",
+      "sub_sector": "Power Generation & Transmission",
+      "business_activity": "Electricity generation & captive power dispatch",
+      "state_presence": [
+        "power_generation",
+        "plant"
+      ],
+      "presence_type": "power_generation",
+      "exposure_type": "taxation",
+      "exposure_direction": "mixed",
+      "exposure_strength": "HIGH",
+      "direct_indirect": "DIRECT",
+      "geographic_scope": "state_specific",
+      "mechanism": "taxation",
+      "evidence": [
+        {
+          "source_type": "bill_text",
+          "reference": "Clauses amending Electricity Duty rates & captive consumption schedules",
+          "claim": "Adjusts state statutory duty rates on electricity generated, sold, or consumed for industrial and captive purposes in Andhra Pradesh.",
+          "url": null
+        },
+        {
+          "source_type": "company_filing",
+          "reference": "Tata Power Annual Report 2023-24",
+          "claim": "Tata Power Company Limited owns and operates generation facilities in Andhra Pradesh at Ananthapuramu.",
+          "url": "https://www.tatapower.com"
+        }
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+        "company_presence": "AUTHORITATIVE_FILING",
+        "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+      },
+      "source_urls": [
+        "https://aplegislature.org/web/aplegislature/bills",
+        "https://www.tatapower.com"
+      ],
+      "missing_information": [
+        "Captive power consumption vs commercial grid export ratio in Andhra Pradesh.",
+        "Power purchase agreement (PPA) pass-through clauses with State DISCOMs."
+      ],
+      "verified_at": "2026-09-09T18:30:08.663787+00:00",
+      "schema_version": "1.0.0"
+    },
+    {
+      "bill_id": "andhra-pradesh-vs-bill-3-2026",
+      "state": "Andhra Pradesh",
+      "company_id": "UNLISTED-AP-GENCO",
+      "company_name": "Andhra Pradesh Power Generation Corporation Limited",
+      "ticker": "",
+      "exchange": "",
+      "listed_status": "unlisted",
+      "sector": "Electricity",
+      "sub_sector": "Power Generation & Transmission",
+      "business_activity": "Electricity generation & captive power dispatch",
+      "state_presence": [
+        "headquarters",
+        "power_generation",
+        "plant"
+      ],
+      "presence_type": "power_generation",
+      "exposure_type": "taxation",
+      "exposure_direction": "mixed",
+      "exposure_strength": "HIGH",
+      "direct_indirect": "DIRECT",
+      "geographic_scope": "state_specific",
+      "mechanism": "taxation",
+      "evidence": [
+        {
+          "source_type": "bill_text",
+          "reference": "Clauses amending Electricity Duty rates & captive consumption schedules",
+          "claim": "Adjusts state statutory duty rates on electricity generated, sold, or consumed for industrial and captive purposes in Andhra Pradesh.",
+          "url": null
+        },
+        {
+          "source_type": "company_filing",
+          "reference": "Official APGENCO Operational Capacity Reports & APERC Filings",
+          "claim": "Andhra Pradesh Power Generation Corporation Limited owns and operates generation facilities in Andhra Pradesh at Vijayawada (Dr NTTPS), Muddanur (RTPP - YSR Kadapa), Krishnapatnam (SDSTPS).",
+          "url": "https://www.apgenco.gov.in"
+        }
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+        "company_presence": "AUTHORITATIVE_FILING",
+        "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+      },
+      "source_urls": [
+        "https://aplegislature.org/web/aplegislature/bills",
+        "https://www.apgenco.gov.in"
+      ],
+      "missing_information": [
+        "Captive power consumption vs commercial grid export ratio in Andhra Pradesh.",
+        "Power purchase agreement (PPA) pass-through clauses with State DISCOMs."
+      ],
+      "verified_at": "2026-09-09T18:30:08.664399+00:00",
+      "schema_version": "1.0.0"
+    }
+  ],
+  "impact_assessment": {
+    "bill_id": "andhra-pradesh-vs-bill-3-2026",
+    "state": "Andhra Pradesh",
+    "title": "The Andhra Pradesh Electricity Duty (Amendment) Bill, 2026",
+    "bill_number": "L.A. Bill No. 3 of 2026",
+    "economic_mechanisms": [
+      "compliance_cost",
+      "electricity_cost",
+      "licensing",
+      "other",
+      "taxation"
+    ],
+    "economic_direction": "mixed",
+    "economic_strength": "HIGH",
+    "market_relevance": "HIGH",
+    "modeling_eligibility": "CONDITIONALLY_ELIGIBLE",
+    "data_sufficiency": "PARTIAL",
+    "event_date_quality": "MEDIUM",
+    "primary_event_date": {
+      "role": "assent",
+      "date": "2026-03-23",
+      "source": "official_gazette",
+      "is_primary": true
+    },
+    "alternative_event_dates": [],
+    "anticipation_readiness": "PARTIAL",
+    "candidate_anticipation_channels": [
+      "public_announcements",
+      "legislative_leaks",
+      "government_consultations",
+      "committee_discussions",
+      "media_coverage",
+      "gdelt",
+      "google_trends"
+    ],
+    "market_data_readiness": {
+      "candidate_companies_count": 4,
+      "listed_companies_count": 3,
+      "unlisted_companies_count": 1,
+      "companies_with_market_data": [
+        "NTPC",
+        "TATAPOWER",
+        "ULTRACEMCO"
+      ],
+      "companies_missing_market_data": [],
+      "benchmark_available": true,
+      "benchmark_ticker": "^NSEI",
+      "trading_calendar_coverage": "COMPLETE"
+    },
+    "listed_company_count": 3,
+    "exposure_count": 4,
+    "direct_exposure_count": 4,
+    "indirect_exposure_count": 0,
+    "missing_requirements": [
+      "Live anticipation crawling and sentiment signal ingestion not connected."
+    ],
+    "scorecard": {
+      "bill_identity_verified": true,
+      "state_jurisdiction_verified": true,
+      "event_date_verified": true,
+      "economic_mechanism_identified": true,
+      "corporate_exposure_verified": true,
+      "listed_company_verified": true,
+      "historical_market_data_available": true,
+      "benchmark_data_available": true,
+      "event_date_identifiable": true,
+      "anticipation_readiness_sufficient": true,
+      "result": "CONDITIONALLY_ELIGIBLE",
+      "notes": [
+        "Anticipation framework defined, but external live news/GDELT crawlers not attached."
+      ]
+    },
+    "evidence": [
+      {
+        "source_type": "official_bill_summary",
+        "reference": "Statement of Objects and Reasons / Metadata",
+        "claim": "Statutory summary indicates policy in Electricity / Energy."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::compliance_cost",
+        "claim": "Statutory impact channel identified as 'compliance_cost'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::electricity_cost",
+        "claim": "Statutory impact channel identified as 'electricity_cost'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::licensing",
+        "claim": "Statutory impact channel identified as 'licensing'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::other",
+        "claim": "Statutory impact channel identified as 'other'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::taxation",
+        "claim": "Statutory impact channel identified as 'taxation'."
+      }
+    ],
+    "confidence": "MEDIUM",
+    "provenance": {
+      "economic_taxonomy": "STATE_ECONOMIC_MECHANISMS_V1",
+      "market_relevance": "GROUNDED_CORPORATE_EXPOSURE_MATCH",
+      "eligibility_scorecard": "DETERMINISTIC_10_POINT_SCORECARD",
+      "market_data_audit": "LOCAL_PARQUET_STORE_VERIFIED"
+    },
+    "schema_version": "1.0.0",
+    "generated_at": "2026-09-10T16:03:46.320640+00:00"
+  }
+}

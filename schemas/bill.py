@@ -44,11 +44,20 @@ class BillStatus(str, Enum):
     DRAFT = "draft"  # Pre-introduction draft stage
 
 
+class BillJurisdiction(str, Enum):
+    """Jurisdiction of the legislative bill."""
+
+    CENTRAL = "central"
+    STATE = "state"
+
+
 class BillHouse(str, Enum):
-    """House in which the bill was first introduced."""
+    """House/chamber in which the bill was first introduced."""
 
     LOK_SABHA = "lok_sabha"
     RAJYA_SABHA = "rajya_sabha"
+    VIDHAN_SABHA = "vidhan_sabha"  # Legislative Assembly (Lower House / Unicameral)
+    VIDHAN_PARISHAD = "vidhan_parishad"  # Legislative Council (Upper House)
     UNKNOWN = "unknown"
 
 
@@ -133,6 +142,10 @@ class Bill:
     # Ministry: collected from detail page; empty string if unavailable
     ministry: str = ""
 
+    # Jurisdiction & State (Task 8.2)
+    jurisdiction: BillJurisdiction = BillJurisdiction.CENTRAL
+    state: Optional[str] = None
+
     # Optional fields (populated progressively by different pipeline stages)
     bill_number: str = ""
     introduction_date: Optional[date] = None
@@ -176,6 +189,28 @@ class Bill:
     source: str = "unknown"
     ingested_at: Optional[date] = None
 
+    def __post_init__(self) -> None:
+        """Coerce enum fields and normalise state name if needed."""
+        from utils.state_normalizer import normalize_state  # noqa: PLC0415
+
+        if isinstance(self.jurisdiction, str):
+            try:
+                self.jurisdiction = BillJurisdiction(self.jurisdiction.strip().lower())
+            except ValueError:
+                self.jurisdiction = BillJurisdiction.CENTRAL
+        if isinstance(self.house, str):
+            try:
+                self.house = BillHouse(self.house.strip().lower())
+            except ValueError:
+                self.house = BillHouse.UNKNOWN
+        if isinstance(self.status, str):
+            try:
+                self.status = BillStatus(self.status.strip().lower())
+            except ValueError:
+                pass
+        if self.state:
+            self.state = normalize_state(self.state) or self.state.strip()
+
     def to_dict(self) -> dict:
         """Serialise the Bill to a JSON-compatible dictionary."""
         return {
@@ -186,6 +221,12 @@ class Bill:
             "ministry": self.ministry,
             "house": self.house.value,
             "status": self.status.value,
+            "jurisdiction": (
+                self.jurisdiction.value
+                if isinstance(self.jurisdiction, Enum)
+                else self.jurisdiction
+            ),
+            "state": self.state,
             "introduction_date": (
                 self.introduction_date.isoformat() if self.introduction_date else None
             ),
@@ -226,6 +267,7 @@ class Bill:
     def from_dict(cls, data: dict) -> "Bill":
         """Deserialise a Bill from a dictionary (e.g. loaded from JSON)."""
         from utils.date_utils import parse_date  # noqa: PLC0415
+        from utils.state_normalizer import normalize_state  # noqa: PLC0415
 
         raw_year = data.get("year")
         year: Optional[int] = None
@@ -235,6 +277,20 @@ class Bill:
             except (ValueError, TypeError):
                 year = None
 
+        raw_jurisdiction = data.get("jurisdiction")
+        if isinstance(raw_jurisdiction, BillJurisdiction):
+            jurisdiction = raw_jurisdiction
+        elif raw_jurisdiction:
+            try:
+                jurisdiction = BillJurisdiction(str(raw_jurisdiction).strip().lower())
+            except ValueError:
+                jurisdiction = BillJurisdiction.CENTRAL
+        else:
+            jurisdiction = BillJurisdiction.CENTRAL
+
+        raw_state = data.get("state")
+        state: Optional[str] = normalize_state(str(raw_state)) if raw_state else None
+
         return cls(
             bill_id=data["bill_id"],
             title=data["title"],
@@ -243,6 +299,8 @@ class Bill:
             ministry=data.get("ministry", ""),
             house=BillHouse(data["house"]),
             status=BillStatus(data["status"]),
+            jurisdiction=jurisdiction,
+            state=state,
             introduction_date=parse_date(data.get("introduction_date", "")),
             assent_date=parse_date(data.get("assent_date", "")),
             gazette_date=parse_date(data.get("gazette_date", "")),
@@ -278,7 +336,8 @@ class Bill:
         )
 
     def __repr__(self) -> str:
+        state_str = f" state={self.state!r}" if self.state else ""
         return (
-            f"<Bill bill_id={self.bill_id!r} year={self.year} "
-            f"status={self.status.value!r} ministry={self.ministry!r}>"
+            f"<Bill bill_id={self.bill_id!r} jurisdiction={self.jurisdiction.value!r}{state_str} "
+            f"year={self.year} status={self.status.value!r} ministry={self.ministry!r}>"
         )

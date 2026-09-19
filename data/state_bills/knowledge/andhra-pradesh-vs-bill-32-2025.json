@@ -1,0 +1,540 @@
+{
+  "bill_id": "andhra-pradesh-vs-bill-32-2025",
+  "jurisdiction": "state",
+  "state": "Andhra Pradesh",
+  "title": "The Andhra Pradesh Goods and Services Tax (Amendment) Bill, 2025",
+  "bill_number": "L.A. Bill No. 32 of 2025",
+  "chamber": "vidhan_sabha",
+  "status": "passed_both",
+  "source_url": "https://aplegislature.org/web/aplegislature/bills",
+  "policy_category": "State Finance / Taxation",
+  "category_provenance": "SYSTEM_DERIVED",
+  "year": 2025,
+  "introduction_date": null,
+  "assent_date": "2025-10-31",
+  "pdf_url": "https://legislation.aplegislature.org/PreviewPage.do?filePath=basePath&fileName=Bills/PassedBills/English/Eng_passbill_BillNo_16_30__384_v_1.pdf",
+  "corpus_path": "D:\\Legislative-bill\\data\\state_bills\\corpus\\andhra-pradesh-vs-bill-32-2025.txt",
+  "document_hash": "0855547b62ed46b4e056e3ff82767f5b979b14f2103d8ff8d9abe5815c12084b",
+  "summary": {
+    "what_is_bill": "'The Andhra Pradesh Goods and Services Tax (Amendment) Bill, 2025' (L.A. Bill No. 32 of 2025) is a State legislative measure introduced in the Andhra Pradesh Legislative Assembly (Vidhan Sabha) concerning State Finance / Taxation.",
+    "what_it_changes": "The bill introduces statutory amendments to existing state legislation, primarily modifying In the Andhra Pradesh Goods and Services Tax Act, 2017; In the Principal Act across 5 identified sections/clauses.",
+    "why_it_matters": "According to the official Statement of Objects and Reasons: \"The Andhra Pradesh Goods and Services Tax Act, 2017 (Act No. 16 of 2017) came into effect from 01.07.2017. It provides for levy and collection of Taxes on Intra State supply of Goods and Services by the State Government. A Similar Act by name the Central Goods and Services Tax Act, 2017 (Central Act No. 12 of 2017) also came...\"",
+    "who_is_affected": "Primary affected groups include: Taxpayers, Commercial Enterprises, Traders & Merchants, State Revenue Department, Taxpayers & Commercial Merchants.",
+    "key_provisions": [
+      "Statutory modification of In the Andhra Pradesh Goods and Services Tax Act, 2017, In the Principal Act.",
+      "Identified clauses/sections amended: 2, 34, 39, 148A, 122B.",
+      "tax evasion or to reduce the compliance burden of the tax payers.",
+      "Penalty for failure to “122B."
+    ],
+    "administrative_implications": "Administered and enforced under the authority of State Government and designated state officials.",
+    "legislative_status": "Official status recorded as 'Passed Both' (assented on 2025-10-31).",
+    "source": "Official Andhra Pradesh Legislature portal (andhra_pradesh_assembly)."
+  },
+  "objective": "The Andhra Pradesh Goods and Services Tax Act, 2017 (Act No. 16 of 2017) came into effect from 01.07.2017. It provides for levy and collection of Taxes on Intra State supply of Goods and Services by the State Government. A Similar Act by name the Central Goods and Services Tax Act, 2017 (Central Act No. 12 of 2017) also came into effect from 01.07.2017 for the identical purpose of levy tax on intra state supply of Goods and Services by the Central Government. In the Past 7 years of implementation of the two Acts, it has been noticed that certain provisions of the Act need to be rationalized, for checking tax evasion or to reduce the compliance burden of the tax payers. Towards this end, the Government of India had already effected amendments to the Central Goods and Services Tax Act, 2017 through the Finance Act, 2025(Act No.7 of 2025), following the recommendations of the Goods and Services Tax Council and advised the State Government to amend the Andhra Pradesh Goods and Services Tax Act, 2017 (Act No. 16 of 2017) also on similar lines. Accordingly, the following Amendments to the Andhra Pradesh Goods and Services Tax Act, 2017 are proposed: (i). Section2 of the APGST Act, 2017 i",
+  "key_provisions": [
+    "Statutory modification of In the Andhra Pradesh Goods and Services Tax Act, 2017, In the Principal Act.",
+    "Identified clauses/sections amended: 2, 34, 39, 148A, 122B.",
+    "tax evasion or to reduce the compliance burden of the tax payers.",
+    "Penalty for failure to “122B."
+  ],
+  "amended_acts": [
+    "In the Andhra Pradesh Goods and Services Tax Act, 2017",
+    "In the Principal Act"
+  ],
+  "affected_stakeholders": [
+    "Taxpayers",
+    "Commercial Enterprises",
+    "Traders & Merchants",
+    "State Revenue Department",
+    "Taxpayers & Commercial Merchants"
+  ],
+  "administrative_authority": "State Government",
+  "financial_provisions": "tax evasion or to reduce the compliance burden of the tax payers.",
+  "penalties_provisions": "Penalty for failure to “122B.",
+  "extraction_status": "success",
+  "language": "English",
+  "page_count": 1,
+  "character_count": 23125,
+  "word_count": 3755,
+  "provenance": {
+    "title": "AUTHORITATIVE",
+    "bill_number": "AUTHORITATIVE",
+    "jurisdiction": "AUTHORITATIVE",
+    "state": "AUTHORITATIVE",
+    "chamber": "AUTHORITATIVE",
+    "status": "AUTHORITATIVE",
+    "source_url": "AUTHORITATIVE",
+    "pdf_url": "AUTHORITATIVE",
+    "introduction_date": "UNAVAILABLE",
+    "assent_date": "AUTHORITATIVE",
+    "year": "DERIVED",
+    "bill_id": "DERIVED",
+    "policy_category": "SYSTEM_DERIVED",
+    "document_hash": "DERIVED",
+    "corpus_path": "DERIVED",
+    "language": "AUTHORITATIVE",
+    "summary": "SYSTEM_DERIVED",
+    "objective": "SYSTEM_DERIVED",
+    "key_provisions": "SYSTEM_DERIVED",
+    "amended_acts": "SYSTEM_DERIVED",
+    "affected_stakeholders": "SYSTEM_DERIVED",
+    "administrative_authority": "SYSTEM_DERIVED",
+    "financial_provisions": "SYSTEM_DERIVED",
+    "penalties_provisions": "SYSTEM_DERIVED",
+    "economic_profile": "SYSTEM_DERIVED",
+    "corporate_exposures": "SYSTEM_DERIVED",
+    "impact_assessment": "DETERMINISTIC_METHODOLOGY_ENGINE"
+  },
+  "created_at": "2026-09-08T16:40:51.764707+00:00",
+  "economic_profile": {
+    "bill_id": "andhra-pradesh-vs-bill-32-2025",
+    "state": "Andhra Pradesh",
+    "policy_domain": "State Finance / Taxation",
+    "primary_sector": "Banking & Finance",
+    "secondary_sectors": [
+      "Retail",
+      "Wholesale",
+      "MSME"
+    ],
+    "sub_sectors": [
+      "Commercial Banking",
+      "Cooperative Credit",
+      "NBFCs",
+      "Departmental Stores",
+      "Shops & Commercial Outlets",
+      "Commodity Wholesale",
+      "Agricultural Wholesale"
+    ],
+    "economic_activities": [
+      "Lending",
+      "Deposit mobilization",
+      "Financial intermediation",
+      "Over-the-counter retail",
+      "Shop establishment registration",
+      "Bulk goods trading",
+      "Wholesale distribution"
+    ],
+    "business_types": [
+      "Registered dealers",
+      "Wholesale distributors",
+      "Commercial merchants",
+      "Financial institutions",
+      "Retail trade establishments"
+    ],
+    "stakeholders": [
+      {
+        "stakeholder": "Taxpayers",
+        "category": "economic_groups",
+        "role": "primary_affected",
+        "direction": "mixed",
+        "mechanism": "taxation",
+        "impact_type": "DIRECT",
+        "evidence": {
+          "source_type": "bill_text",
+          "section": "Statutory Tax Schedules",
+          "text_reference": "Revision of tax rates, procedural audit compliance, input tax credit mechanisms, or appropriation authorizations.",
+          "location": "corpus/andhra-pradesh-vs-bill-32-2025.txt"
+        },
+        "description": "Registered tax dealers, merchants, and taxable persons must adhere to updated statutory filing and tax obligations."
+      },
+      {
+        "stakeholder": "MSMEs",
+        "category": "businesses",
+        "role": "potential_cost_bearer",
+        "direction": "mixed",
+        "mechanism": "compliance",
+        "impact_type": "DIRECT",
+        "evidence": {
+          "source_type": "bill_text",
+          "section": "Statutory Tax Schedules",
+          "text_reference": "Revision of tax rates, procedural audit compliance, input tax credit mechanisms, or appropriation authorizations.",
+          "location": "corpus/andhra-pradesh-vs-bill-32-2025.txt"
+        },
+        "description": "Covered businesses must update accounting and statutory reporting systems to maintain compliance."
+      },
+      {
+        "stakeholder": "State Government",
+        "category": "institutions",
+        "role": "potential_beneficiary",
+        "direction": "positive",
+        "mechanism": "taxation",
+        "impact_type": "DIRECT",
+        "evidence": {
+          "source_type": "bill_text",
+          "section": "Statutory Tax Schedules",
+          "text_reference": "Revision of tax rates, procedural audit compliance, input tax credit mechanisms, or appropriation authorizations.",
+          "location": "corpus/andhra-pradesh-vs-bill-32-2025.txt"
+        },
+        "description": "The State exchequer secures regulatory alignment and statutory revenue collection frameworks."
+      }
+    ],
+    "geographic_scope": "state-wide",
+    "direct_impacts": [
+      "Direct statutory taxation requirement affecting Taxpayers.",
+      "Direct statutory compliance requirement affecting MSMEs.",
+      "Direct statutory taxation requirement affecting State Government."
+    ],
+    "indirect_impacts": [
+      "Indirect compliance and downstream market adjustment effects."
+    ],
+    "impact_mechanisms": [
+      "taxation",
+      "compliance"
+    ],
+    "company_exposure_readiness": "HIGH",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "section": "Statutory Tax Schedules",
+        "text_reference": "Revision of tax rates, procedural audit compliance, input tax credit mechanisms, or appropriation authorizations.",
+        "location": "corpus/andhra-pradesh-vs-bill-32-2025.txt"
+      }
+    ],
+    "confidence": "HIGH",
+    "factual_summary": {
+      "who_may_be_affected": [
+        "Taxpayers"
+      ],
+      "how_affected": [
+        "Adjusts statutory tax, duty, or cess rates applicable within the State.",
+        "Establishes updated compliance, record-keeping, and reporting obligations."
+      ],
+      "who_may_benefit": [
+        "State Government"
+      ],
+      "who_may_bear_costs": [
+        "Taxpayers",
+        "MSMEs"
+      ]
+    },
+    "provenance": {
+      "primary_sector": "SYSTEM_DERIVED",
+      "secondary_sectors": "SYSTEM_DERIVED",
+      "sub_sectors": "SYSTEM_DERIVED",
+      "business_types": "SYSTEM_DERIVED",
+      "stakeholders": "SYSTEM_DERIVED",
+      "geographic_scope": "SYSTEM_DERIVED",
+      "company_exposure_readiness": "SYSTEM_DERIVED",
+      "evidence": "AUTHORITATIVE_CORPUS_GROUNDED",
+      "factual_summary": "SYSTEM_DERIVED"
+    },
+    "generated_at": "2026-09-09T18:05:55.261191+00:00",
+    "schema_version": "1.0.0"
+  },
+  "corporate_exposures": [
+    {
+      "bill_id": "andhra-pradesh-vs-bill-32-2025",
+      "state": "Andhra Pradesh",
+      "company_id": "INE154A01025",
+      "company_name": "ITC Limited",
+      "ticker": "ITC",
+      "exchange": "NSE",
+      "listed_status": "listed",
+      "sector": "Banking & Finance",
+      "sub_sector": "State GST Compliance",
+      "business_activity": "Commercial retail and service billing in the State",
+      "state_presence": [
+        "manufacturing",
+        "plant",
+        "supplier_relationship"
+      ],
+      "presence_type": "manufacturing",
+      "exposure_type": "taxation",
+      "exposure_direction": "neutral",
+      "exposure_strength": "MEDIUM",
+      "direct_indirect": "DIRECT",
+      "geographic_scope": "national_with_state_operations",
+      "mechanism": "compliance",
+      "evidence": [
+        {
+          "source_type": "bill_text",
+          "reference": "Input tax credit (ITC) and audit assessment harmonization clauses",
+          "claim": "Aligns Andhra Pradesh SGST statutory procedures, input tax credit disallowances, and electronic summons with national GST Council decisions.",
+          "url": null
+        },
+        {
+          "source_type": "company_filing",
+          "reference": "ITC Annual Report 2023-24",
+          "claim": "ITC Limited operates commercial branches, retail outlets, and distribution in Andhra Pradesh.",
+          "url": "https://www.itcportal.com"
+        }
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+        "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+        "exposure_chain": "GENERAL_STATUTORY_COMPLIANCE"
+      },
+      "source_urls": [
+        "https://aplegislature.org/web/aplegislature/bills",
+        "https://www.itcportal.com"
+      ],
+      "missing_information": [
+        "Input tax credit volume claimed under Andhra Pradesh SGST jurisdiction."
+      ],
+      "verified_at": "2026-09-09T18:30:08.810434+00:00",
+      "schema_version": "1.0.0"
+    },
+    {
+      "bill_id": "andhra-pradesh-vs-bill-32-2025",
+      "state": "Andhra Pradesh",
+      "company_id": "INE062A01020",
+      "company_name": "State Bank of India",
+      "ticker": "SBIN",
+      "exchange": "NSE",
+      "listed_status": "listed",
+      "sector": "Banking & Finance",
+      "sub_sector": "State GST Compliance",
+      "business_activity": "Commercial retail and service billing in the State",
+      "state_presence": [
+        "branch",
+        "service_operation"
+      ],
+      "presence_type": "branch",
+      "exposure_type": "taxation",
+      "exposure_direction": "neutral",
+      "exposure_strength": "MEDIUM",
+      "direct_indirect": "DIRECT",
+      "geographic_scope": "national_with_state_operations",
+      "mechanism": "compliance",
+      "evidence": [
+        {
+          "source_type": "bill_text",
+          "reference": "Input tax credit (ITC) and audit assessment harmonization clauses",
+          "claim": "Aligns Andhra Pradesh SGST statutory procedures, input tax credit disallowances, and electronic summons with national GST Council decisions.",
+          "url": null
+        },
+        {
+          "source_type": "company_filing",
+          "reference": "SBI Annual Report 2023-24 (Circle Network Disclosures)",
+          "claim": "State Bank of India operates commercial branches, retail outlets, and distribution in Andhra Pradesh.",
+          "url": "https://www.sbi.co.in"
+        }
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+        "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+        "exposure_chain": "GENERAL_STATUTORY_COMPLIANCE"
+      },
+      "source_urls": [
+        "https://aplegislature.org/web/aplegislature/bills",
+        "https://www.sbi.co.in"
+      ],
+      "missing_information": [
+        "Input tax credit volume claimed under Andhra Pradesh SGST jurisdiction."
+      ],
+      "verified_at": "2026-09-09T18:30:08.810759+00:00",
+      "schema_version": "1.0.0"
+    },
+    {
+      "bill_id": "andhra-pradesh-vs-bill-32-2025",
+      "state": "Andhra Pradesh",
+      "company_id": "INE040A01034",
+      "company_name": "HDFC Bank Limited",
+      "ticker": "HDFCBANK",
+      "exchange": "NSE",
+      "listed_status": "listed",
+      "sector": "Banking & Finance",
+      "sub_sector": "State GST Compliance",
+      "business_activity": "Commercial retail and service billing in the State",
+      "state_presence": [
+        "branch",
+        "service_operation"
+      ],
+      "presence_type": "branch",
+      "exposure_type": "taxation",
+      "exposure_direction": "neutral",
+      "exposure_strength": "MEDIUM",
+      "direct_indirect": "DIRECT",
+      "geographic_scope": "national_with_state_operations",
+      "mechanism": "compliance",
+      "evidence": [
+        {
+          "source_type": "bill_text",
+          "reference": "Input tax credit (ITC) and audit assessment harmonization clauses",
+          "claim": "Aligns Andhra Pradesh SGST statutory procedures, input tax credit disallowances, and electronic summons with national GST Council decisions.",
+          "url": null
+        },
+        {
+          "source_type": "company_filing",
+          "reference": "HDFC Bank Annual Report 2023-24",
+          "claim": "HDFC Bank Limited operates commercial branches, retail outlets, and distribution in Andhra Pradesh.",
+          "url": "https://www.hdfcbank.com"
+        }
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+        "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+        "exposure_chain": "GENERAL_STATUTORY_COMPLIANCE"
+      },
+      "source_urls": [
+        "https://aplegislature.org/web/aplegislature/bills",
+        "https://www.hdfcbank.com"
+      ],
+      "missing_information": [
+        "Input tax credit volume claimed under Andhra Pradesh SGST jurisdiction."
+      ],
+      "verified_at": "2026-09-09T18:30:08.811115+00:00",
+      "schema_version": "1.0.0"
+    },
+    {
+      "bill_id": "andhra-pradesh-vs-bill-32-2025",
+      "state": "Andhra Pradesh",
+      "company_id": "INE030A01027",
+      "company_name": "Hindustan Unilever Limited",
+      "ticker": "HINDUNILVR",
+      "exchange": "NSE",
+      "listed_status": "listed",
+      "sector": "Banking & Finance",
+      "sub_sector": "State GST Compliance",
+      "business_activity": "Commercial retail and service billing in the State",
+      "state_presence": [
+        "logistics",
+        "retail"
+      ],
+      "presence_type": "logistics",
+      "exposure_type": "taxation",
+      "exposure_direction": "neutral",
+      "exposure_strength": "MEDIUM",
+      "direct_indirect": "DIRECT",
+      "geographic_scope": "national_with_state_operations",
+      "mechanism": "compliance",
+      "evidence": [
+        {
+          "source_type": "bill_text",
+          "reference": "Input tax credit (ITC) and audit assessment harmonization clauses",
+          "claim": "Aligns Andhra Pradesh SGST statutory procedures, input tax credit disallowances, and electronic summons with national GST Council decisions.",
+          "url": null
+        },
+        {
+          "source_type": "company_filing",
+          "reference": "HUL Annual Report 2023-24",
+          "claim": "Hindustan Unilever Limited operates commercial branches, retail outlets, and distribution in Andhra Pradesh.",
+          "url": "https://www.hul.co.in"
+        }
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+        "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+        "exposure_chain": "GENERAL_STATUTORY_COMPLIANCE"
+      },
+      "source_urls": [
+        "https://aplegislature.org/web/aplegislature/bills",
+        "https://www.hul.co.in"
+      ],
+      "missing_information": [
+        "Input tax credit volume claimed under Andhra Pradesh SGST jurisdiction."
+      ],
+      "verified_at": "2026-09-09T18:30:08.811527+00:00",
+      "schema_version": "1.0.0"
+    }
+  ],
+  "impact_assessment": {
+    "bill_id": "andhra-pradesh-vs-bill-32-2025",
+    "state": "Andhra Pradesh",
+    "title": "The Andhra Pradesh Goods and Services Tax (Amendment) Bill, 2025",
+    "bill_number": "L.A. Bill No. 32 of 2025",
+    "economic_mechanisms": [
+      "compliance_cost",
+      "licensing",
+      "taxation"
+    ],
+    "economic_direction": "positive",
+    "economic_strength": "HIGH",
+    "market_relevance": "MEDIUM",
+    "modeling_eligibility": "CONDITIONALLY_ELIGIBLE",
+    "data_sufficiency": "PARTIAL",
+    "event_date_quality": "MEDIUM",
+    "primary_event_date": {
+      "role": "assent",
+      "date": "2025-10-31",
+      "source": "official_gazette",
+      "is_primary": true
+    },
+    "alternative_event_dates": [],
+    "anticipation_readiness": "PARTIAL",
+    "candidate_anticipation_channels": [
+      "public_announcements",
+      "legislative_leaks",
+      "government_consultations",
+      "committee_discussions",
+      "media_coverage",
+      "gdelt",
+      "google_trends"
+    ],
+    "market_data_readiness": {
+      "candidate_companies_count": 4,
+      "listed_companies_count": 4,
+      "unlisted_companies_count": 0,
+      "companies_with_market_data": [
+        "HINDUNILVR",
+        "ITC",
+        "SBIN"
+      ],
+      "companies_missing_market_data": [
+        "HDFCBANK"
+      ],
+      "benchmark_available": true,
+      "benchmark_ticker": "^NSEI",
+      "trading_calendar_coverage": "PARTIAL"
+    },
+    "listed_company_count": 4,
+    "exposure_count": 4,
+    "direct_exposure_count": 4,
+    "indirect_exposure_count": 0,
+    "missing_requirements": [
+      "Historical market price data missing in local store for: HDFCBANK.",
+      "Live anticipation crawling and sentiment signal ingestion not connected."
+    ],
+    "scorecard": {
+      "bill_identity_verified": true,
+      "state_jurisdiction_verified": true,
+      "event_date_verified": true,
+      "economic_mechanism_identified": true,
+      "corporate_exposure_verified": true,
+      "listed_company_verified": true,
+      "historical_market_data_available": true,
+      "benchmark_data_available": true,
+      "event_date_identifiable": true,
+      "anticipation_readiness_sufficient": true,
+      "result": "CONDITIONALLY_ELIGIBLE",
+      "notes": [
+        "Anticipation framework defined, but external live news/GDELT crawlers not attached."
+      ]
+    },
+    "evidence": [
+      {
+        "source_type": "official_bill_summary",
+        "reference": "Statement of Objects and Reasons / Metadata",
+        "claim": "Statutory summary indicates policy in State Finance / Taxation."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::compliance_cost",
+        "claim": "Statutory impact channel identified as 'compliance_cost'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::licensing",
+        "claim": "Statutory impact channel identified as 'licensing'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::taxation",
+        "claim": "Statutory impact channel identified as 'taxation'."
+      }
+    ],
+    "confidence": "MEDIUM",
+    "provenance": {
+      "economic_taxonomy": "STATE_ECONOMIC_MECHANISMS_V1",
+      "market_relevance": "GROUNDED_CORPORATE_EXPOSURE_MATCH",
+      "eligibility_scorecard": "DETERMINISTIC_10_POINT_SCORECARD",
+      "market_data_audit": "LOCAL_PARQUET_STORE_VERIFIED"
+    },
+    "schema_version": "1.0.0",
+    "generated_at": "2026-09-10T16:03:46.494516+00:00"
+  }
+}

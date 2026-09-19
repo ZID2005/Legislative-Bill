@@ -6,6 +6,8 @@
   "ministry": "Finance",
   "house": "lok_sabha",
   "status": "passed_both",
+  "jurisdiction": "central",
+  "state": null,
   "introduction_date": "2024-08-09",
   "assent_date": null,
   "gazette_date": null,

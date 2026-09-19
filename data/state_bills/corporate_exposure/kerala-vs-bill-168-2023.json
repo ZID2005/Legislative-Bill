@@ -1,0 +1,108 @@
+[
+  {
+    "bill_id": "kerala-vs-bill-168-2023",
+    "state": "Kerala",
+    "company_id": "INE671H01015",
+    "company_name": "Sobha Limited",
+    "ticker": "SOBHA",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Real Estate",
+    "sub_sector": "Urban Property & Commercial Development",
+    "business_activity": "Real estate development and property asset management",
+    "state_presence": [
+      "project",
+      "office"
+    ],
+    "presence_type": "project",
+    "exposure_type": "land",
+    "exposure_direction": "mixed",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "compliance",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Provisions governing urban property tax assessment, municipal licensing, and land classification",
+        "claim": "Modifies property taxation, layout approvals, civic amenities assessment, or land revenue conversion standards.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Sobha Limited Annual Report 2023-24",
+        "claim": "Sobha Limited holds active real estate projects, development land, and commercial properties in Kochi, Thrissur, Kozhikode, Thiruvananthapuram.",
+        "url": "https://www.sobha.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://www.niyamasabha.nic.in/index.php/bills/bills_details/168",
+      "https://www.sobha.com"
+    ],
+    "missing_information": [
+      "Developable land bank acreage in Kerala undergoing municipal conversion.",
+      "Total annual property tax burden variation under new municipal schedule."
+    ],
+    "verified_at": "2026-09-09T18:30:10.743986+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "kerala-vs-bill-168-2023",
+    "state": "Kerala",
+    "company_id": "INE811K01011",
+    "company_name": "Prestige Estates Projects Limited",
+    "ticker": "PRESTIGE",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Real Estate",
+    "sub_sector": "Urban Property & Commercial Development",
+    "business_activity": "Real estate development and property asset management",
+    "state_presence": [
+      "project",
+      "retail"
+    ],
+    "presence_type": "project",
+    "exposure_type": "land",
+    "exposure_direction": "mixed",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "compliance",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Provisions governing urban property tax assessment, municipal licensing, and land classification",
+        "claim": "Modifies property taxation, layout approvals, civic amenities assessment, or land revenue conversion standards.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Prestige Estates Annual Report 2023-24",
+        "claim": "Prestige Estates Projects Limited holds active real estate projects, development land, and commercial properties in Kochi, Kozhikode.",
+        "url": "https://www.prestigeconstructions.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://www.niyamasabha.nic.in/index.php/bills/bills_details/168",
+      "https://www.prestigeconstructions.com"
+    ],
+    "missing_information": [
+      "Developable land bank acreage in Kerala undergoing municipal conversion.",
+      "Total annual property tax burden variation under new municipal schedule."
+    ],
+    "verified_at": "2026-09-09T18:30:10.744336+00:00",
+    "schema_version": "1.0.0"
+  }
+]

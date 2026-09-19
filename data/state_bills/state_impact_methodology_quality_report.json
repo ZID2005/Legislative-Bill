@@ -1,0 +1,230 @@
+{
+  "metadata": {
+    "task": "8.8",
+    "name": "State Economic & Market Impact Methodology Quality Audit Report",
+    "generated_at": "2026-09-10T16:03:52.365486+00:00",
+    "schema_version": "1.0.0"
+  },
+  "executive_summary": {
+    "total_bills_assessed": 44,
+    "target_total_bills": 44,
+    "bills_with_corporate_exposure": 21,
+    "bills_without_corporate_exposure": 23,
+    "total_corporate_exposures": 86,
+    "direct_corporate_exposures": 82,
+    "indirect_corporate_exposures": 4,
+    "total_listed_company_exposures": 82,
+    "state_predictions_generated": 0,
+    "target_state_predictions": 0,
+    "unsupported_claims_count": 0,
+    "central_baseline_frozen": true
+  },
+  "distributions": {
+    "economic_impact_strength": {
+      "HIGH": 35,
+      "MEDIUM": 8,
+      "LOW": 1
+    },
+    "economic_impact_direction": {
+      "positive": 22,
+      "mixed": 9,
+      "neutral": 13
+    },
+    "market_relevance": {
+      "NONE": 23,
+      "MEDIUM": 7,
+      "HIGH": 12,
+      "LOW": 2
+    },
+    "modeling_eligibility": {
+      "NOT_ELIGIBLE": 23,
+      "CONDITIONALLY_ELIGIBLE": 21
+    },
+    "data_sufficiency": {
+      "INSUFFICIENT": 31,
+      "PARTIAL": 13
+    },
+    "event_date_quality": {
+      "MEDIUM": 36,
+      "NONE": 3,
+      "HIGH": 5
+    },
+    "anticipation_readiness": {
+      "PARTIAL": 41,
+      "NOT_AVAILABLE": 3
+    },
+    "economic_mechanisms_frequency": {
+      "compliance_cost": 43,
+      "taxation": 34,
+      "regulation": 32,
+      "licensing": 15,
+      "land": 13,
+      "public_spending": 10,
+      "employment": 7,
+      "labour_cost": 7,
+      "other": 7,
+      "transportation_cost": 5,
+      "investment": 4,
+      "procurement": 4,
+      "environmental_cost": 4,
+      "market_access": 4,
+      "subsidy": 3,
+      "pricing": 2,
+      "electricity_cost": 2
+    }
+  },
+  "state_wise_analysis": {
+    "Andhra Pradesh": {
+      "total_bills": 12,
+      "economic_strength_distribution": {
+        "HIGH": 12
+      },
+      "economic_direction_distribution": {
+        "positive": 6,
+        "mixed": 4,
+        "neutral": 2
+      },
+      "market_relevance_distribution": {
+        "NONE": 5,
+        "MEDIUM": 2,
+        "HIGH": 4,
+        "LOW": 1
+      },
+      "modeling_eligibility_distribution": {
+        "NOT_ELIGIBLE": 5,
+        "CONDITIONALLY_ELIGIBLE": 7
+      },
+      "data_sufficiency_distribution": {
+        "INSUFFICIENT": 6,
+        "PARTIAL": 6
+      },
+      "event_date_quality_distribution": {
+        "MEDIUM": 9,
+        "NONE": 3
+      },
+      "total_corporate_exposures": 47,
+      "total_listed_companies_exposed": 44,
+      "bills_with_corporate_exposure": 7,
+      "bills_without_corporate_exposure": 5
+    },
+    "Karnataka": {
+      "total_bills": 11,
+      "economic_strength_distribution": {
+        "HIGH": 11
+      },
+      "economic_direction_distribution": {
+        "neutral": 3,
+        "positive": 6,
+        "mixed": 2
+      },
+      "market_relevance_distribution": {
+        "NONE": 6,
+        "MEDIUM": 2,
+        "HIGH": 3
+      },
+      "modeling_eligibility_distribution": {
+        "NOT_ELIGIBLE": 6,
+        "CONDITIONALLY_ELIGIBLE": 5
+      },
+      "data_sufficiency_distribution": {
+        "INSUFFICIENT": 9,
+        "PARTIAL": 2
+      },
+      "event_date_quality_distribution": {
+        "MEDIUM": 11
+      },
+      "total_corporate_exposures": 16,
+      "total_listed_companies_exposed": 16,
+      "bills_with_corporate_exposure": 5,
+      "bills_without_corporate_exposure": 6
+    },
+    "Kerala": {
+      "total_bills": 11,
+      "economic_strength_distribution": {
+        "MEDIUM": 6,
+        "HIGH": 4,
+        "LOW": 1
+      },
+      "economic_direction_distribution": {
+        "neutral": 6,
+        "positive": 5
+      },
+      "market_relevance_distribution": {
+        "NONE": 9,
+        "MEDIUM": 1,
+        "HIGH": 1
+      },
+      "modeling_eligibility_distribution": {
+        "NOT_ELIGIBLE": 9,
+        "CONDITIONALLY_ELIGIBLE": 2
+      },
+      "data_sufficiency_distribution": {
+        "INSUFFICIENT": 11
+      },
+      "event_date_quality_distribution": {
+        "HIGH": 2,
+        "MEDIUM": 9
+      },
+      "total_corporate_exposures": 3,
+      "total_listed_companies_exposed": 3,
+      "bills_with_corporate_exposure": 2,
+      "bills_without_corporate_exposure": 9
+    },
+    "Telangana": {
+      "total_bills": 10,
+      "economic_strength_distribution": {
+        "MEDIUM": 2,
+        "HIGH": 8
+      },
+      "economic_direction_distribution": {
+        "neutral": 2,
+        "mixed": 3,
+        "positive": 5
+      },
+      "market_relevance_distribution": {
+        "NONE": 3,
+        "HIGH": 4,
+        "MEDIUM": 2,
+        "LOW": 1
+      },
+      "modeling_eligibility_distribution": {
+        "NOT_ELIGIBLE": 3,
+        "CONDITIONALLY_ELIGIBLE": 7
+      },
+      "data_sufficiency_distribution": {
+        "INSUFFICIENT": 5,
+        "PARTIAL": 5
+      },
+      "event_date_quality_distribution": {
+        "MEDIUM": 7,
+        "HIGH": 3
+      },
+      "total_corporate_exposures": 20,
+      "total_listed_companies_exposed": 19,
+      "bills_with_corporate_exposure": 7,
+      "bills_without_corporate_exposure": 3
+    }
+  },
+  "missing_requirements_summary": {
+    "Live anticipation crawling and sentiment signal ingestion not connected.": 44,
+    "No grounded corporate exposure identified for this State bill.": 23,
+    "Historical market price data missing in local store for: PRESTIGE, SOBHA.": 4,
+    "Verified bill event date (introduction or assent date) is missing.": 3,
+    "Historical market price data missing in local store for: APEX, ARE&M, ASTERDM, AUROPHARMA, AVANTIFEED, BIOCON, DIVISLAB.": 2,
+    "Historical market price data missing in local store for: HDFCBANK.": 2,
+    "Historical market price data missing in local store for: APEX, AVANTIFEED.": 1,
+    "Historical market price data missing in local store for: FEDERALBNK, HDFCBANK.": 1,
+    "Historical market price data missing in local store for: ASTERDM, BIOCON.": 1,
+    "Historical market price data missing in local store for: ASTERDM.": 1,
+    "Historical market price data missing in local store for: SWIGGY, ZOMATO.": 1,
+    "Historical market price data missing in local store for: PRESTIGE.": 1,
+    "Historical market price data missing in local store for: ASTERDM, AUROPHARMA, DIVISLAB.": 1
+  },
+  "validation_status": {
+    "all_bills_assessed": true,
+    "state_predictions_zero": true,
+    "central_baseline_intact": true,
+    "guardrails_passed": true,
+    "overall_status": "PASS"
+  }
+}

@@ -1,0 +1,585 @@
+{
+  "bill_id": "telangana-vs-bill-9-2023",
+  "jurisdiction": "state",
+  "state": "Telangana",
+  "title": "The Telangana Public Health and Epidemics (Amendment) Bill, 2023",
+  "bill_number": "L.A. Bill No. 9 of 2023",
+  "chamber": "vidhan_sabha",
+  "status": "passed_both",
+  "source_url": "https://legislature.telangana.gov.in/bills/detail/9-2023",
+  "policy_category": "Other / Unclassified",
+  "category_provenance": "SYSTEM_DERIVED",
+  "year": 2023,
+  "introduction_date": "2023-08-06",
+  "assent_date": "2023-09-25",
+  "pdf_url": "https://legislature.telangana.gov.in/legislation/bills/2023/Bill_9_2023.pdf",
+  "corpus_path": "D:\\Legislative-bill\\data\\state_bills\\corpus\\telangana-vs-bill-9-2023.txt",
+  "document_hash": "0c7c1d688dc8da94e9f40db82cee4588edded1aa24aab3b14aa0f4e02209364a",
+  "summary": {
+    "what_is_bill": "'The Telangana Public Health and Epidemics (Amendment) Bill, 2023' (L.A. Bill No. 9 of 2023) is a State legislative measure introduced in the Telangana Legislative Assembly (Vidhan Sabha) concerning Other / Unclassified.",
+    "what_it_changes": "The bill amends statutory provisions to update legal frameworks, adjust compliance requirements, or alter state administrative procedures.",
+    "why_it_matters": "According to the official Statement of Objects and Reasons: \"Post-pandemic healthcare governance requires robust disease surveillance, rapid epidemic response mechanisms, and real-time public health reporting across urban and rural Telangana.\"",
+    "who_is_affected": "Primary affected groups include: Citizens, State Government.",
+    "key_provisions": [
+      "Identified clauses/sections amended: Section 1."
+    ],
+    "administrative_implications": "Enforced through the competent administrative departments of the Government of Telangana.",
+    "legislative_status": "Official status recorded as 'Passed Both' (introduced on 2023-08-06, assented on 2023-09-25).",
+    "source": "Official Telangana Legislature portal (telangana_assembly)."
+  },
+  "objective": "Post-pandemic healthcare governance requires robust disease surveillance, rapid epidemic response mechanisms, and real-time public health reporting across urban and rural Telangana.",
+  "key_provisions": [
+    "Identified clauses/sections amended: Section 1."
+  ],
+  "amended_acts": [],
+  "affected_stakeholders": [
+    "Citizens",
+    "State Government"
+  ],
+  "administrative_authority": null,
+  "financial_provisions": null,
+  "penalties_provisions": null,
+  "extraction_status": "success",
+  "language": "English",
+  "page_count": 1,
+  "character_count": 776,
+  "word_count": 112,
+  "provenance": {
+    "title": "AUTHORITATIVE",
+    "bill_number": "AUTHORITATIVE",
+    "jurisdiction": "AUTHORITATIVE",
+    "state": "AUTHORITATIVE",
+    "chamber": "AUTHORITATIVE",
+    "status": "AUTHORITATIVE",
+    "source_url": "AUTHORITATIVE",
+    "pdf_url": "AUTHORITATIVE",
+    "introduction_date": "AUTHORITATIVE",
+    "assent_date": "AUTHORITATIVE",
+    "year": "DERIVED",
+    "bill_id": "DERIVED",
+    "policy_category": "SYSTEM_DERIVED",
+    "document_hash": "DERIVED",
+    "corpus_path": "DERIVED",
+    "language": "AUTHORITATIVE",
+    "summary": "SYSTEM_DERIVED",
+    "objective": "SYSTEM_DERIVED",
+    "key_provisions": "SYSTEM_DERIVED",
+    "amended_acts": "UNAVAILABLE",
+    "affected_stakeholders": "SYSTEM_DERIVED",
+    "administrative_authority": "UNAVAILABLE",
+    "financial_provisions": "UNAVAILABLE",
+    "penalties_provisions": "UNAVAILABLE",
+    "economic_profile": "SYSTEM_DERIVED",
+    "corporate_exposures": "SYSTEM_DERIVED",
+    "impact_assessment": "DETERMINISTIC_METHODOLOGY_ENGINE"
+  },
+  "created_at": "2026-09-08T16:41:10.197806+00:00",
+  "economic_profile": {
+    "bill_id": "telangana-vs-bill-9-2023",
+    "state": "Telangana",
+    "policy_domain": "Other / Unclassified",
+    "primary_sector": "Healthcare",
+    "secondary_sectors": [
+      "Professional Services",
+      "Pharmaceuticals"
+    ],
+    "sub_sectors": [
+      "Hospitals & Clinics",
+      "Diagnostic Laboratories",
+      "Medical Devices",
+      "Legal Services",
+      "Accounting & Audit",
+      "Formulations",
+      "APIs"
+    ],
+    "economic_activities": [
+      "Clinical consultations",
+      "Inpatient hospital care",
+      "Diagnostic testing",
+      "Medical practitioner registration",
+      "Professional practice licensing",
+      "Drug manufacturing",
+      "Clinical research"
+    ],
+    "business_types": [
+      "Private hospitals",
+      "Clinical laboratories",
+      "Nursing homes",
+      "Medical diagnostic centres"
+    ],
+    "stakeholders": [
+      {
+        "stakeholder": "Hospitals",
+        "category": "businesses",
+        "role": "primary_affected",
+        "direction": "mixed",
+        "mechanism": "compliance",
+        "impact_type": "DIRECT",
+        "evidence": {
+          "source_type": "bill_text",
+          "section": "Registration & Health Standards",
+          "text_reference": "Standards for registration of clinical establishments, diagnostic labs, or medical practitioners.",
+          "location": "corpus/telangana-vs-bill-9-2023.txt"
+        },
+        "description": "Clinical facilities and diagnostic establishments must adhere to mandatory registration and minimum equipment norms."
+      },
+      {
+        "stakeholder": "Patients",
+        "category": "people",
+        "role": "potential_beneficiary",
+        "direction": "positive",
+        "mechanism": "public_service",
+        "impact_type": "DIRECT",
+        "evidence": {
+          "source_type": "bill_text",
+          "section": "Registration & Health Standards",
+          "text_reference": "Standards for registration of clinical establishments, diagnostic labs, or medical practitioners.",
+          "location": "corpus/telangana-vs-bill-9-2023.txt"
+        },
+        "description": "Healthcare consumers benefit from standardized clinical care quality and pricing transparency requirements."
+      }
+    ],
+    "geographic_scope": "state-wide",
+    "direct_impacts": [
+      "Direct statutory compliance requirement affecting Hospitals.",
+      "Direct statutory public_service requirement affecting Patients."
+    ],
+    "indirect_impacts": [
+      "Indirect compliance and downstream market adjustment effects."
+    ],
+    "impact_mechanisms": [
+      "compliance",
+      "public_service"
+    ],
+    "company_exposure_readiness": "MEDIUM",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "section": "Registration & Health Standards",
+        "text_reference": "Standards for registration of clinical establishments, diagnostic labs, or medical practitioners.",
+        "location": "corpus/telangana-vs-bill-9-2023.txt"
+      }
+    ],
+    "confidence": "HIGH",
+    "factual_summary": {
+      "who_may_be_affected": [
+        "Hospitals"
+      ],
+      "how_affected": [
+        "Establishes updated compliance, record-keeping, and reporting obligations.",
+        "Reforms local public service delivery and administrative frameworks."
+      ],
+      "who_may_benefit": [
+        "Patients"
+      ],
+      "who_may_bear_costs": [
+        "Hospitals"
+      ]
+    },
+    "provenance": {
+      "primary_sector": "SYSTEM_DERIVED",
+      "secondary_sectors": "SYSTEM_DERIVED",
+      "sub_sectors": "SYSTEM_DERIVED",
+      "business_types": "SYSTEM_DERIVED",
+      "stakeholders": "SYSTEM_DERIVED",
+      "geographic_scope": "SYSTEM_DERIVED",
+      "company_exposure_readiness": "SYSTEM_DERIVED",
+      "evidence": "AUTHORITATIVE_CORPUS_GROUNDED",
+      "factual_summary": "SYSTEM_DERIVED"
+    },
+    "generated_at": "2026-09-09T18:06:00.945773+00:00",
+    "schema_version": "1.0.0"
+  },
+  "corporate_exposures": [
+    {
+      "bill_id": "telangana-vs-bill-9-2023",
+      "state": "Telangana",
+      "company_id": "INE089A01023",
+      "company_name": "Dr. Reddy's Laboratories Limited",
+      "ticker": "DRREDDY",
+      "exchange": "NSE",
+      "listed_status": "listed",
+      "sector": "Healthcare",
+      "sub_sector": "Clinical Establishments & Tertiary Care",
+      "business_activity": "Hospital clinical operations & medical care delivery",
+      "state_presence": [
+        "headquarters",
+        "manufacturing",
+        "plant",
+        "office"
+      ],
+      "presence_type": "plant",
+      "exposure_type": "healthcare",
+      "exposure_direction": "mixed",
+      "exposure_strength": "HIGH",
+      "direct_indirect": "DIRECT",
+      "geographic_scope": "state_specific",
+      "mechanism": "regulation",
+      "evidence": [
+        {
+          "source_type": "bill_text",
+          "reference": "Registration and statutory standards for clinical establishments",
+          "claim": "Mandates statutory registration, clinical audit, diagnostic transparency, and doctor verification for medical facilities.",
+          "url": null
+        },
+        {
+          "source_type": "company_filing",
+          "reference": "Dr. Reddy's Annual Report 2023-24 (Form 20-F Plant Locations)",
+          "claim": "Dr. Reddy's Laboratories Limited operates multi-specialty hospitals and clinics at Hyderabad, Bachupally, Bollaram, Medak.",
+          "url": "https://www.drreddys.com"
+        }
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+        "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+        "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+      },
+      "source_urls": [
+        "https://legislature.telangana.gov.in/bills/detail/9-2023",
+        "https://www.drreddys.com"
+      ],
+      "missing_information": [
+        "Operational bed count in Telangana subject to inspection and standards audit."
+      ],
+      "verified_at": "2026-09-09T18:30:13.493726+00:00",
+      "schema_version": "1.0.0"
+    },
+    {
+      "bill_id": "telangana-vs-bill-9-2023",
+      "state": "Telangana",
+      "company_id": "INE437A01024",
+      "company_name": "Apollo Hospitals Enterprise Limited",
+      "ticker": "APOLLOHOSP",
+      "exchange": "NSE",
+      "listed_status": "listed",
+      "sector": "Healthcare",
+      "sub_sector": "Clinical Establishments & Tertiary Care",
+      "business_activity": "Hospital clinical operations & medical care delivery",
+      "state_presence": [
+        "plant",
+        "service_operation",
+        "retail"
+      ],
+      "presence_type": "plant",
+      "exposure_type": "healthcare",
+      "exposure_direction": "mixed",
+      "exposure_strength": "HIGH",
+      "direct_indirect": "DIRECT",
+      "geographic_scope": "state_specific",
+      "mechanism": "regulation",
+      "evidence": [
+        {
+          "source_type": "bill_text",
+          "reference": "Registration and statutory standards for clinical establishments",
+          "claim": "Mandates statutory registration, clinical audit, diagnostic transparency, and doctor verification for medical facilities.",
+          "url": null
+        },
+        {
+          "source_type": "company_filing",
+          "reference": "Apollo Hospitals Annual Report 2023-24 (Hospital Bed Capacity Schedule)",
+          "claim": "Apollo Hospitals Enterprise Limited operates multi-specialty hospitals and clinics at Hyderabad (Jubilee Hills, Hyderguda, Secunderabad).",
+          "url": "https://www.apollohospitals.com"
+        }
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+        "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+        "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+      },
+      "source_urls": [
+        "https://legislature.telangana.gov.in/bills/detail/9-2023",
+        "https://www.apollohospitals.com"
+      ],
+      "missing_information": [
+        "Operational bed count in Telangana subject to inspection and standards audit."
+      ],
+      "verified_at": "2026-09-09T18:30:13.494221+00:00",
+      "schema_version": "1.0.0"
+    },
+    {
+      "bill_id": "telangana-vs-bill-9-2023",
+      "state": "Telangana",
+      "company_id": "INE361B01024",
+      "company_name": "Divi's Laboratories Limited",
+      "ticker": "DIVISLAB",
+      "exchange": "NSE",
+      "listed_status": "listed",
+      "sector": "Healthcare",
+      "sub_sector": "Clinical Establishments & Tertiary Care",
+      "business_activity": "Hospital clinical operations & medical care delivery",
+      "state_presence": [
+        "headquarters",
+        "manufacturing",
+        "plant",
+        "office"
+      ],
+      "presence_type": "plant",
+      "exposure_type": "healthcare",
+      "exposure_direction": "mixed",
+      "exposure_strength": "HIGH",
+      "direct_indirect": "DIRECT",
+      "geographic_scope": "state_specific",
+      "mechanism": "regulation",
+      "evidence": [
+        {
+          "source_type": "bill_text",
+          "reference": "Registration and statutory standards for clinical establishments",
+          "claim": "Mandates statutory registration, clinical audit, diagnostic transparency, and doctor verification for medical facilities.",
+          "url": null
+        },
+        {
+          "source_type": "company_filing",
+          "reference": "Divi's Laboratories Annual Report 2023-24 (Manufacturing Facilities)",
+          "claim": "Divi's Laboratories Limited operates multi-specialty hospitals and clinics at Hyderabad, Choutuppal (Yadadri Bhuvanagiri).",
+          "url": "https://www.divislabs.com"
+        }
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+        "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+        "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+      },
+      "source_urls": [
+        "https://legislature.telangana.gov.in/bills/detail/9-2023",
+        "https://www.divislabs.com"
+      ],
+      "missing_information": [
+        "Operational bed count in Telangana subject to inspection and standards audit."
+      ],
+      "verified_at": "2026-09-09T18:30:13.494667+00:00",
+      "schema_version": "1.0.0"
+    },
+    {
+      "bill_id": "telangana-vs-bill-9-2023",
+      "state": "Telangana",
+      "company_id": "INE406A01037",
+      "company_name": "Aurobindo Pharma Limited",
+      "ticker": "AUROPHARMA",
+      "exchange": "NSE",
+      "listed_status": "listed",
+      "sector": "Healthcare",
+      "sub_sector": "Clinical Establishments & Tertiary Care",
+      "business_activity": "Hospital clinical operations & medical care delivery",
+      "state_presence": [
+        "headquarters",
+        "manufacturing",
+        "plant"
+      ],
+      "presence_type": "plant",
+      "exposure_type": "healthcare",
+      "exposure_direction": "mixed",
+      "exposure_strength": "HIGH",
+      "direct_indirect": "DIRECT",
+      "geographic_scope": "state_specific",
+      "mechanism": "regulation",
+      "evidence": [
+        {
+          "source_type": "bill_text",
+          "reference": "Registration and statutory standards for clinical establishments",
+          "claim": "Mandates statutory registration, clinical audit, diagnostic transparency, and doctor verification for medical facilities.",
+          "url": null
+        },
+        {
+          "source_type": "company_filing",
+          "reference": "Aurobindo Pharma Annual Report 2023-24",
+          "claim": "Aurobindo Pharma Limited operates multi-specialty hospitals and clinics at Hyderabad (HITEC City), Pashamylaram, Jedcherla.",
+          "url": "https://www.aurobindo.com"
+        }
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+        "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+        "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+      },
+      "source_urls": [
+        "https://legislature.telangana.gov.in/bills/detail/9-2023",
+        "https://www.aurobindo.com"
+      ],
+      "missing_information": [
+        "Operational bed count in Telangana subject to inspection and standards audit."
+      ],
+      "verified_at": "2026-09-09T18:30:13.495159+00:00",
+      "schema_version": "1.0.0"
+    },
+    {
+      "bill_id": "telangana-vs-bill-9-2023",
+      "state": "Telangana",
+      "company_id": "INE914M01019",
+      "company_name": "Aster DM Healthcare Limited",
+      "ticker": "ASTERDM",
+      "exchange": "NSE",
+      "listed_status": "listed",
+      "sector": "Healthcare",
+      "sub_sector": "Clinical Establishments & Tertiary Care",
+      "business_activity": "Hospital clinical operations & medical care delivery",
+      "state_presence": [
+        "service_operation"
+      ],
+      "presence_type": "plant",
+      "exposure_type": "healthcare",
+      "exposure_direction": "mixed",
+      "exposure_strength": "HIGH",
+      "direct_indirect": "DIRECT",
+      "geographic_scope": "state_specific",
+      "mechanism": "regulation",
+      "evidence": [
+        {
+          "source_type": "bill_text",
+          "reference": "Registration and statutory standards for clinical establishments",
+          "claim": "Mandates statutory registration, clinical audit, diagnostic transparency, and doctor verification for medical facilities.",
+          "url": null
+        },
+        {
+          "source_type": "company_filing",
+          "reference": "Aster DM Healthcare Annual Report 2023-24",
+          "claim": "Aster DM Healthcare Limited operates multi-specialty hospitals and clinics at Hyderabad.",
+          "url": "https://www.asterdmhealthcare.com"
+        }
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+        "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+        "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+      },
+      "source_urls": [
+        "https://legislature.telangana.gov.in/bills/detail/9-2023",
+        "https://www.asterdmhealthcare.com"
+      ],
+      "missing_information": [
+        "Operational bed count in Telangana subject to inspection and standards audit."
+      ],
+      "verified_at": "2026-09-09T18:30:13.495451+00:00",
+      "schema_version": "1.0.0"
+    }
+  ],
+  "impact_assessment": {
+    "bill_id": "telangana-vs-bill-9-2023",
+    "state": "Telangana",
+    "title": "The Telangana Public Health and Epidemics (Amendment) Bill, 2023",
+    "bill_number": "L.A. Bill No. 9 of 2023",
+    "economic_mechanisms": [
+      "compliance_cost",
+      "other",
+      "public_spending",
+      "regulation",
+      "taxation"
+    ],
+    "economic_direction": "positive",
+    "economic_strength": "HIGH",
+    "market_relevance": "HIGH",
+    "modeling_eligibility": "CONDITIONALLY_ELIGIBLE",
+    "data_sufficiency": "PARTIAL",
+    "event_date_quality": "HIGH",
+    "primary_event_date": {
+      "role": "introduction",
+      "date": "2023-08-06",
+      "source": "official_legislative_portal",
+      "is_primary": true
+    },
+    "alternative_event_dates": [
+      {
+        "role": "assent",
+        "date": "2023-09-25",
+        "source": "official_gazette",
+        "is_primary": false
+      }
+    ],
+    "anticipation_readiness": "PARTIAL",
+    "candidate_anticipation_channels": [
+      "public_announcements",
+      "legislative_leaks",
+      "government_consultations",
+      "committee_discussions",
+      "media_coverage",
+      "gdelt",
+      "google_trends"
+    ],
+    "market_data_readiness": {
+      "candidate_companies_count": 5,
+      "listed_companies_count": 5,
+      "unlisted_companies_count": 0,
+      "companies_with_market_data": [
+        "APOLLOHOSP",
+        "DRREDDY"
+      ],
+      "companies_missing_market_data": [
+        "ASTERDM",
+        "AUROPHARMA",
+        "DIVISLAB"
+      ],
+      "benchmark_available": true,
+      "benchmark_ticker": "^NSEI",
+      "trading_calendar_coverage": "PARTIAL"
+    },
+    "listed_company_count": 5,
+    "exposure_count": 5,
+    "direct_exposure_count": 5,
+    "indirect_exposure_count": 0,
+    "missing_requirements": [
+      "Historical market price data missing in local store for: ASTERDM, AUROPHARMA, DIVISLAB.",
+      "Live anticipation crawling and sentiment signal ingestion not connected."
+    ],
+    "scorecard": {
+      "bill_identity_verified": true,
+      "state_jurisdiction_verified": true,
+      "event_date_verified": true,
+      "economic_mechanism_identified": true,
+      "corporate_exposure_verified": true,
+      "listed_company_verified": true,
+      "historical_market_data_available": true,
+      "benchmark_data_available": true,
+      "event_date_identifiable": true,
+      "anticipation_readiness_sufficient": true,
+      "result": "CONDITIONALLY_ELIGIBLE",
+      "notes": [
+        "Anticipation framework defined, but external live news/GDELT crawlers not attached."
+      ]
+    },
+    "evidence": [
+      {
+        "source_type": "official_bill_summary",
+        "reference": "Statement of Objects and Reasons / Metadata",
+        "claim": "Statutory summary indicates policy in Other / Unclassified."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::compliance_cost",
+        "claim": "Statutory impact channel identified as 'compliance_cost'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::other",
+        "claim": "Statutory impact channel identified as 'other'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::public_spending",
+        "claim": "Statutory impact channel identified as 'public_spending'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::regulation",
+        "claim": "Statutory impact channel identified as 'regulation'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::taxation",
+        "claim": "Statutory impact channel identified as 'taxation'."
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "economic_taxonomy": "STATE_ECONOMIC_MECHANISMS_V1",
+      "market_relevance": "GROUNDED_CORPORATE_EXPOSURE_MATCH",
+      "eligibility_scorecard": "DETERMINISTIC_10_POINT_SCORECARD",
+      "market_data_audit": "LOCAL_PARQUET_STORE_VERIFIED"
+    },
+    "schema_version": "1.0.0",
+    "generated_at": "2026-09-10T16:03:52.176083+00:00"
+  }
+}

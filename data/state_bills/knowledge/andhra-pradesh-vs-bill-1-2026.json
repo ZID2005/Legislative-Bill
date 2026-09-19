@@ -1,0 +1,326 @@
+{
+  "bill_id": "andhra-pradesh-vs-bill-1-2026",
+  "jurisdiction": "state",
+  "state": "Andhra Pradesh",
+  "title": "The Andhra Pradesh Municipal Laws (Amendment) Bill, 2026",
+  "bill_number": "L.A. Bill No. 1 of 2026",
+  "chamber": "vidhan_sabha",
+  "status": "passed_both",
+  "source_url": "https://aplegislature.org/web/aplegislature/bills",
+  "policy_category": "Municipal Administration & Urban Development",
+  "category_provenance": "SYSTEM_DERIVED",
+  "year": 2026,
+  "introduction_date": null,
+  "assent_date": "2026-03-26",
+  "pdf_url": "https://legislation.aplegislature.org/PreviewPage.do?filePath=basePath&fileName=Bills/PassedBills/English/Eng_passbill_bill-1_16_31__385_v_1.pdf",
+  "corpus_path": "D:\\Legislative-bill\\data\\state_bills\\corpus\\andhra-pradesh-vs-bill-1-2026.txt",
+  "document_hash": "bfd4d53c7f447642848a4bde055ac1c811df3263b763566a1005b9166b52d75a",
+  "summary": {
+    "what_is_bill": "'The Andhra Pradesh Municipal Laws (Amendment) Bill, 2026' (L.A. Bill No. 1 of 2026) is a State legislative measure introduced in the Andhra Pradesh Legislative Assembly (Vidhan Sabha) concerning Municipal Administration & Urban Development.",
+    "what_it_changes": "The bill amends statutory provisions to update legal frameworks, adjust compliance requirements, or alter state administrative procedures.",
+    "why_it_matters": "According to the official Statement of Objects and Reasons: \"The Hon’ble Supreme Court in WP.No.83/2010 in its orders dated.07.05.2025 observed that the continuation of discriminatory/ derogatory and demeaning provisions in various statutes against “Leprosy” affected /cured persons and directed to all the State Governments to look into their legislations and carryout the necessary exercise, leaving no scope of discrimination. It is a time bound program and status report has...\"",
+    "who_is_affected": "Primary affected groups include: Urban Residents, Property Owners, Municipal Corporations & Urban Local Bodies, Builders & Real Estate Developers.",
+    "key_provisions": [
+      "Identified clauses/sections amended: 2, 22, 15, 16.",
+      "Contains statutory fee, tax, or duty rate provisions."
+    ],
+    "administrative_implications": "Administered and enforced under the authority of Commissioner of Printing at A and designated state officials.",
+    "legislative_status": "Official status recorded as 'Passed Both' (assented on 2026-03-26).",
+    "source": "Official Andhra Pradesh Legislature portal (andhra_pradesh_assembly)."
+  },
+  "objective": "The Hon’ble Supreme Court in WP.No.83/2010 in its orders dated.07.05.2025 observed that the continuation of discriminatory/ derogatory and demeaning provisions in various statutes against “Leprosy” affected /cured persons and directed to all the State Governments to look into their legislations and carryout the necessary exercise, leaving no scope of discrimination. It is a time bound program and status report has to be filed before the Hon’ble Supreme Court. Certain provisions have been identified in the Municipal Corporations Act, 1955 and the Andhra Pradesh Municipalities Act, 1965 which are derogatory in respect of Leprosy effected or cured persons. It is necessary to omit such provisions. Accordingly, it has been decided to amend the said Acts, suitably. This bill seeks to give effect to the above decision. PONGURU NARAYANA MINISTER FOR MUNICIPAL ADMINISTRATION & URBAN DEVELOPMENT 4 ANDHRA PRADESH GAZETTE EXTRAORDINARY [PART IV-A 13th FEBRUARY, 2026] ANDHRA PRADESH GAZETTE EXTRAORDINARY 5 MEMORANDUM UNDER RULE 95 OF THE RULES OF PROCEDURE AND CONDUCT OF BUSINESS IN THE ANDHRA PRADESH LEGISLATIVE ASSEMBLY. The Andhra Pradesh Municipal Laws (Amendment) Bill, 2026, after it is pa",
+  "key_provisions": [
+    "Identified clauses/sections amended: 2, 22, 15, 16.",
+    "Contains statutory fee, tax, or duty rate provisions."
+  ],
+  "amended_acts": [],
+  "affected_stakeholders": [
+    "Urban Residents",
+    "Property Owners",
+    "Municipal Corporations & Urban Local Bodies",
+    "Builders & Real Estate Developers"
+  ],
+  "administrative_authority": "Commissioner of Printing at A",
+  "financial_provisions": "Contains statutory fee, tax, or duty rate provisions.",
+  "penalties_provisions": null,
+  "extraction_status": "success",
+  "language": "English",
+  "page_count": 1,
+  "character_count": 5072,
+  "word_count": 744,
+  "provenance": {
+    "title": "AUTHORITATIVE",
+    "bill_number": "AUTHORITATIVE",
+    "jurisdiction": "AUTHORITATIVE",
+    "state": "AUTHORITATIVE",
+    "chamber": "AUTHORITATIVE",
+    "status": "AUTHORITATIVE",
+    "source_url": "AUTHORITATIVE",
+    "pdf_url": "AUTHORITATIVE",
+    "introduction_date": "UNAVAILABLE",
+    "assent_date": "AUTHORITATIVE",
+    "year": "DERIVED",
+    "bill_id": "DERIVED",
+    "policy_category": "SYSTEM_DERIVED",
+    "document_hash": "DERIVED",
+    "corpus_path": "DERIVED",
+    "language": "AUTHORITATIVE",
+    "summary": "SYSTEM_DERIVED",
+    "objective": "SYSTEM_DERIVED",
+    "key_provisions": "SYSTEM_DERIVED",
+    "amended_acts": "UNAVAILABLE",
+    "affected_stakeholders": "SYSTEM_DERIVED",
+    "administrative_authority": "SYSTEM_DERIVED",
+    "financial_provisions": "SYSTEM_DERIVED",
+    "penalties_provisions": "UNAVAILABLE",
+    "economic_profile": "SYSTEM_DERIVED",
+    "corporate_exposures": "NONE",
+    "impact_assessment": "DETERMINISTIC_METHODOLOGY_ENGINE"
+  },
+  "created_at": "2026-09-08T16:40:43.586619+00:00",
+  "economic_profile": {
+    "bill_id": "andhra-pradesh-vs-bill-1-2026",
+    "state": "Andhra Pradesh",
+    "policy_domain": "Municipal Administration & Urban Development",
+    "primary_sector": "Municipal Services",
+    "secondary_sectors": [
+      "Urban Development",
+      "Construction",
+      "Real Estate"
+    ],
+    "sub_sectors": [
+      "Urban Civic Bodies",
+      "Town Planning",
+      "Solid Waste Management",
+      "Metropolitan Planning",
+      "Zoning Authorities",
+      "Civil Infrastructure",
+      "Commercial Building"
+    ],
+    "economic_activities": [
+      "Municipal taxation",
+      "Building plan approvals",
+      "Property assessment",
+      "Master planning",
+      "Zoning compliance",
+      "Building erection",
+      "Public works contracting"
+    ],
+    "business_types": [
+      "Urban commercial establishments",
+      "Real estate developers",
+      "Property owners",
+      "Civil contractors"
+    ],
+    "stakeholders": [
+      {
+        "stakeholder": "Municipal bodies",
+        "category": "institutions",
+        "role": "regulator/implementer",
+        "direction": "positive",
+        "mechanism": "regulation",
+        "impact_type": "DIRECT",
+        "evidence": {
+          "source_type": "bill_text",
+          "section": "Civic Administration & Tax Provisions",
+          "text_reference": "Modifications to municipal governance structures, property tax assessments, or civic authority powers.",
+          "location": "corpus/andhra-pradesh-vs-bill-1-2026.txt"
+        },
+        "description": "Municipal corporations and urban local bodies receive updated regulatory, zoning, and revenue powers."
+      },
+      {
+        "stakeholder": "Property buyers",
+        "category": "people",
+        "role": "secondary_affected",
+        "direction": "neutral",
+        "mechanism": "land_use",
+        "impact_type": "DIRECT",
+        "evidence": {
+          "source_type": "bill_text",
+          "section": "Civic Administration & Tax Provisions",
+          "text_reference": "Modifications to municipal governance structures, property tax assessments, or civic authority powers.",
+          "location": "corpus/andhra-pradesh-vs-bill-1-2026.txt"
+        },
+        "description": "Urban property owners and developers are subject to modified civic assessment and planning requirements."
+      },
+      {
+        "stakeholder": "Urban residents",
+        "category": "people",
+        "role": "potential_beneficiary",
+        "direction": "positive",
+        "mechanism": "public_service",
+        "impact_type": "INDIRECT",
+        "evidence": {
+          "source_type": "bill_text",
+          "section": "Civic Administration & Tax Provisions",
+          "text_reference": "Modifications to municipal governance structures, property tax assessments, or civic authority powers.",
+          "location": "corpus/andhra-pradesh-vs-bill-1-2026.txt"
+        },
+        "description": "Citizens in covered urban areas may benefit from streamlined municipal governance and infrastructure services."
+      }
+    ],
+    "geographic_scope": "urban",
+    "direct_impacts": [
+      "Direct statutory regulation requirement affecting Municipal bodies.",
+      "Direct statutory land_use requirement affecting Property buyers."
+    ],
+    "indirect_impacts": [
+      "Secondary economic or pricing effect on Urban residents."
+    ],
+    "impact_mechanisms": [
+      "regulation",
+      "land_use",
+      "public_service"
+    ],
+    "company_exposure_readiness": "MEDIUM",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "section": "Civic Administration & Tax Provisions",
+        "text_reference": "Modifications to municipal governance structures, property tax assessments, or civic authority powers.",
+        "location": "corpus/andhra-pradesh-vs-bill-1-2026.txt"
+      }
+    ],
+    "confidence": "HIGH",
+    "factual_summary": {
+      "who_may_be_affected": [
+        "Property buyers"
+      ],
+      "how_affected": [
+        "Enacts statutory regulations and standards under State jurisdiction.",
+        "Reforms local public service delivery and administrative frameworks."
+      ],
+      "who_may_benefit": [
+        "Municipal bodies",
+        "Urban residents"
+      ],
+      "who_may_bear_costs": [
+        "Covered commercial or institutional establishments."
+      ]
+    },
+    "provenance": {
+      "primary_sector": "SYSTEM_DERIVED",
+      "secondary_sectors": "SYSTEM_DERIVED",
+      "sub_sectors": "SYSTEM_DERIVED",
+      "business_types": "SYSTEM_DERIVED",
+      "stakeholders": "SYSTEM_DERIVED",
+      "geographic_scope": "SYSTEM_DERIVED",
+      "company_exposure_readiness": "SYSTEM_DERIVED",
+      "evidence": "AUTHORITATIVE_CORPUS_GROUNDED",
+      "factual_summary": "SYSTEM_DERIVED"
+    },
+    "generated_at": "2026-09-09T18:05:53.398164+00:00",
+    "schema_version": "1.0.0"
+  },
+  "impact_assessment": {
+    "bill_id": "andhra-pradesh-vs-bill-1-2026",
+    "state": "Andhra Pradesh",
+    "title": "The Andhra Pradesh Municipal Laws (Amendment) Bill, 2026",
+    "bill_number": "L.A. Bill No. 1 of 2026",
+    "economic_mechanisms": [
+      "compliance_cost",
+      "land",
+      "public_spending",
+      "regulation",
+      "taxation"
+    ],
+    "economic_direction": "positive",
+    "economic_strength": "HIGH",
+    "market_relevance": "NONE",
+    "modeling_eligibility": "NOT_ELIGIBLE",
+    "data_sufficiency": "INSUFFICIENT",
+    "event_date_quality": "MEDIUM",
+    "primary_event_date": {
+      "role": "assent",
+      "date": "2026-03-26",
+      "source": "official_gazette",
+      "is_primary": true
+    },
+    "alternative_event_dates": [],
+    "anticipation_readiness": "PARTIAL",
+    "candidate_anticipation_channels": [
+      "public_announcements",
+      "legislative_leaks",
+      "government_consultations",
+      "committee_discussions",
+      "media_coverage",
+      "gdelt",
+      "google_trends"
+    ],
+    "market_data_readiness": {
+      "candidate_companies_count": 0,
+      "listed_companies_count": 0,
+      "unlisted_companies_count": 0,
+      "companies_with_market_data": [],
+      "companies_missing_market_data": [],
+      "benchmark_available": true,
+      "benchmark_ticker": "^NSEI",
+      "trading_calendar_coverage": "INSUFFICIENT"
+    },
+    "listed_company_count": 0,
+    "exposure_count": 0,
+    "direct_exposure_count": 0,
+    "indirect_exposure_count": 0,
+    "missing_requirements": [
+      "No grounded corporate exposure identified for this State bill.",
+      "Live anticipation crawling and sentiment signal ingestion not connected."
+    ],
+    "scorecard": {
+      "bill_identity_verified": true,
+      "state_jurisdiction_verified": true,
+      "event_date_verified": true,
+      "economic_mechanism_identified": true,
+      "corporate_exposure_verified": false,
+      "listed_company_verified": false,
+      "historical_market_data_available": false,
+      "benchmark_data_available": true,
+      "event_date_identifiable": true,
+      "anticipation_readiness_sufficient": true,
+      "result": "NOT_ELIGIBLE",
+      "notes": [
+        "Bill has no listed corporate exposure; remains strictly economic-only."
+      ]
+    },
+    "evidence": [
+      {
+        "source_type": "official_bill_summary",
+        "reference": "Statement of Objects and Reasons / Metadata",
+        "claim": "Statutory summary indicates policy in Municipal Administration & Urban Development."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::compliance_cost",
+        "claim": "Statutory impact channel identified as 'compliance_cost'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::land",
+        "claim": "Statutory impact channel identified as 'land'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::public_spending",
+        "claim": "Statutory impact channel identified as 'public_spending'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::regulation",
+        "claim": "Statutory impact channel identified as 'regulation'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::taxation",
+        "claim": "Statutory impact channel identified as 'taxation'."
+      }
+    ],
+    "confidence": "MEDIUM",
+    "provenance": {
+      "economic_taxonomy": "STATE_ECONOMIC_MECHANISMS_V1",
+      "market_relevance": "GROUNDED_CORPORATE_EXPOSURE_MATCH",
+      "eligibility_scorecard": "DETERMINISTIC_10_POINT_SCORECARD",
+      "market_data_audit": "LOCAL_PARQUET_STORE_VERIFIED"
+    },
+    "schema_version": "1.0.0",
+    "generated_at": "2026-09-10T16:03:44.401450+00:00"
+  }
+}

@@ -1,0 +1,626 @@
+{
+  "total_bills_analyzed": 44,
+  "primary_sector_classified": 44,
+  "secondary_sectors_classified": 44,
+  "stakeholder_classifications_count": 100,
+  "evidence_references_count": 46,
+  "direct_impacts_count": 75,
+  "indirect_impacts_count": 44,
+  "geographic_scope_classified": 44,
+  "company_exposure_readiness_counts": {
+    "HIGH": 7,
+    "MEDIUM": 24,
+    "LOW": 8,
+    "NONE": 5,
+    "UNKNOWN": 0
+  },
+  "geographic_scope_distribution": {
+    "urban": 3,
+    "state-wide": 35,
+    "sector-specific geography": 1,
+    "rural": 3,
+    "regional": 1,
+    "city/municipal": 1
+  },
+  "primary_sector_distribution": {
+    "Municipal Services": 4,
+    "Labour & Employment": 5,
+    "MSME": 2,
+    "Roads & Transport": 2,
+    "Banking & Finance": 6,
+    "Fisheries": 1,
+    "Education": 2,
+    "Rural Development": 3,
+    "Electricity": 2,
+    "Public Administration": 5,
+    "Water": 1,
+    "Real Estate": 2,
+    "Tourism": 1,
+    "Healthcare": 3,
+    "Professional Services": 1,
+    "Livestock": 2,
+    "Agriculture": 2
+  },
+  "unsupported_claim_count": 0,
+  "state_predictions_generated": 0,
+  "bills": {
+    "andhra-pradesh-vs-bill-1-2026": {
+      "state": "Andhra Pradesh",
+      "title": "The Andhra Pradesh Municipal Laws (Amendment) Bill, 2026",
+      "primary_sector": "Municipal Services",
+      "secondary_sectors": [
+        "Urban Development",
+        "Construction",
+        "Real Estate"
+      ],
+      "geographic_scope": "urban",
+      "readiness": "MEDIUM",
+      "stakeholders_count": 3,
+      "evidence_count": 1
+    },
+    "andhra-pradesh-vs-bill-11-2025": {
+      "state": "Andhra Pradesh",
+      "title": "The Andhra Pradesh Shops and Establishments (Amendment) Bill, 2025",
+      "primary_sector": "Labour & Employment",
+      "secondary_sectors": [
+        "Retail",
+        "Manufacturing",
+        "MSME"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "MEDIUM",
+      "stakeholders_count": 2,
+      "evidence_count": 1
+    },
+    "andhra-pradesh-vs-bill-13-2026": {
+      "state": "Andhra Pradesh",
+      "title": "The Andhra Pradesh Jan Vishwas (Amendment of Provisions) Bill, 2026",
+      "primary_sector": "MSME",
+      "secondary_sectors": [
+        "Manufacturing",
+        "Retail",
+        "Professional Services"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "MEDIUM",
+      "stakeholders_count": 2,
+      "evidence_count": 1
+    },
+    "andhra-pradesh-vs-bill-14-2025": {
+      "state": "Andhra Pradesh",
+      "title": "The Factories (Andhra Pradesh Amendment) Bill, 2025",
+      "primary_sector": "Labour & Employment",
+      "secondary_sectors": [
+        "Retail",
+        "Manufacturing",
+        "MSME"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "MEDIUM",
+      "stakeholders_count": 2,
+      "evidence_count": 1
+    },
+    "andhra-pradesh-vs-bill-14-2026": {
+      "state": "Andhra Pradesh",
+      "title": "The Andhra Pradesh Motor Vehicles Taxation (Amendment) Bill, 2026",
+      "primary_sector": "Roads & Transport",
+      "secondary_sectors": [
+        "Logistics",
+        "Consumer Services"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "LOW",
+      "stakeholders_count": 2,
+      "evidence_count": 1
+    },
+    "andhra-pradesh-vs-bill-18-2026": {
+      "state": "Andhra Pradesh",
+      "title": "The Andhra Pradesh Value Added Tax (Amendment) Bill, 2026",
+      "primary_sector": "Banking & Finance",
+      "secondary_sectors": [
+        "Retail",
+        "Wholesale",
+        "MSME"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "HIGH",
+      "stakeholders_count": 3,
+      "evidence_count": 1
+    },
+    "andhra-pradesh-vs-bill-20-2025": {
+      "state": "Andhra Pradesh",
+      "title": "The Andhra Pradesh State Aquaculture Development Authority (Amendment) Bill, 2025",
+      "primary_sector": "Fisheries",
+      "secondary_sectors": [
+        "Agriculture",
+        "Food Processing"
+      ],
+      "geographic_scope": "sector-specific geography",
+      "readiness": "MEDIUM",
+      "stakeholders_count": 2,
+      "evidence_count": 1
+    },
+    "andhra-pradesh-vs-bill-21-2026": {
+      "state": "Andhra Pradesh",
+      "title": "The Andhra Pradesh Omnibus (Speed of Doing Business) Bill, 2026",
+      "primary_sector": "MSME",
+      "secondary_sectors": [
+        "Manufacturing",
+        "Retail",
+        "Professional Services"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "MEDIUM",
+      "stakeholders_count": 2,
+      "evidence_count": 1
+    },
+    "andhra-pradesh-vs-bill-23-2026": {
+      "state": "Andhra Pradesh",
+      "title": "The Andhra Pradesh Private Universities (Establishment and Regulation) (Amendment) Bill, 2026",
+      "primary_sector": "Education",
+      "secondary_sectors": [
+        "Professional Services"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "MEDIUM",
+      "stakeholders_count": 2,
+      "evidence_count": 1
+    },
+    "andhra-pradesh-vs-bill-29-2026": {
+      "state": "Andhra Pradesh",
+      "title": "The Andhra Pradesh Panchayat Raj (Second Amendment) Bill, 2026",
+      "primary_sector": "Rural Development",
+      "secondary_sectors": [
+        "Public Administration"
+      ],
+      "geographic_scope": "rural",
+      "readiness": "LOW",
+      "stakeholders_count": 2,
+      "evidence_count": 1
+    },
+    "andhra-pradesh-vs-bill-3-2026": {
+      "state": "Andhra Pradesh",
+      "title": "The Andhra Pradesh Electricity Duty (Amendment) Bill, 2026",
+      "primary_sector": "Electricity",
+      "secondary_sectors": [
+        "Energy",
+        "Manufacturing"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "HIGH",
+      "stakeholders_count": 2,
+      "evidence_count": 1
+    },
+    "andhra-pradesh-vs-bill-32-2025": {
+      "state": "Andhra Pradesh",
+      "title": "The Andhra Pradesh Goods and Services Tax (Amendment) Bill, 2025",
+      "primary_sector": "Banking & Finance",
+      "secondary_sectors": [
+        "Retail",
+        "Wholesale",
+        "MSME"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "HIGH",
+      "stakeholders_count": 3,
+      "evidence_count": 1
+    },
+    "karnataka-vs-bill-27-2024": {
+      "state": "Karnataka",
+      "title": "The Karnataka Legislature (Prevention of Disqualification) (Second Amendment) Bill, 2024",
+      "primary_sector": "Public Administration",
+      "secondary_sectors": [
+        "Other"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "NONE",
+      "stakeholders_count": 2,
+      "evidence_count": 1
+    },
+    "karnataka-vs-bill-28-2024": {
+      "state": "Karnataka",
+      "title": "The Karnataka Cine and Cultural Activists (Welfare) Bill, 2024",
+      "primary_sector": "Labour & Employment",
+      "secondary_sectors": [
+        "Consumer Services",
+        "Consumer Services"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "LOW",
+      "stakeholders_count": 2,
+      "evidence_count": 1
+    },
+    "karnataka-vs-bill-29-2024": {
+      "state": "Karnataka",
+      "title": "The Karnataka Goods and Services Tax (Amendment) Bill, 2024",
+      "primary_sector": "Banking & Finance",
+      "secondary_sectors": [
+        "Retail",
+        "Wholesale",
+        "MSME"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "HIGH",
+      "stakeholders_count": 3,
+      "evidence_count": 1
+    },
+    "karnataka-vs-bill-31-2024": {
+      "state": "Karnataka",
+      "title": "The Karnataka Municipalities and Certain Other Law (Amendment) Bill, 2024",
+      "primary_sector": "Municipal Services",
+      "secondary_sectors": [
+        "Urban Development",
+        "Construction",
+        "Real Estate"
+      ],
+      "geographic_scope": "urban",
+      "readiness": "MEDIUM",
+      "stakeholders_count": 3,
+      "evidence_count": 1
+    },
+    "karnataka-vs-bill-32-2024": {
+      "state": "Karnataka",
+      "title": "The Karnataka Irrigation (Amendment) Bill, 2024",
+      "primary_sector": "Water",
+      "secondary_sectors": [
+        "Agriculture",
+        "Infrastructure"
+      ],
+      "geographic_scope": "regional",
+      "readiness": "MEDIUM",
+      "stakeholders_count": 2,
+      "evidence_count": 1
+    },
+    "karnataka-vs-bill-33-2024": {
+      "state": "Karnataka",
+      "title": "The Karnataka Appropriation (No. 4) Bill, 2024",
+      "primary_sector": "Banking & Finance",
+      "secondary_sectors": [
+        "Retail",
+        "Wholesale",
+        "MSME"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "MEDIUM",
+      "stakeholders_count": 3,
+      "evidence_count": 1
+    },
+    "karnataka-vs-bill-34-2024": {
+      "state": "Karnataka",
+      "title": "The Greater Bengaluru Governance Bill, 2024",
+      "primary_sector": "Municipal Services",
+      "secondary_sectors": [
+        "Urban Development",
+        "Construction",
+        "Real Estate"
+      ],
+      "geographic_scope": "city/municipal",
+      "readiness": "MEDIUM",
+      "stakeholders_count": 3,
+      "evidence_count": 1
+    },
+    "karnataka-vs-bill-35-2024": {
+      "state": "Karnataka",
+      "title": "The Karnataka Land Revenue (Second Amendment) Bill, 2024",
+      "primary_sector": "Real Estate",
+      "secondary_sectors": [
+        "Agriculture",
+        "Housing"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "MEDIUM",
+      "stakeholders_count": 2,
+      "evidence_count": 1
+    },
+    "karnataka-vs-bill-36-2024": {
+      "state": "Karnataka",
+      "title": "The Karnataka Ancient and Historical Monuments and Archaeological Sites and Remains (Amendment) Bill, 2024",
+      "primary_sector": "Tourism",
+      "secondary_sectors": [
+        "Public Administration"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "NONE",
+      "stakeholders_count": 2,
+      "evidence_count": 1
+    },
+    "karnataka-vs-bill-37-2024": {
+      "state": "Karnataka",
+      "title": "The Karnataka Medical Registration and Certain Other Law (Amendment) Bill, 2024",
+      "primary_sector": "Healthcare",
+      "secondary_sectors": [
+        "Professional Services",
+        "Pharmaceuticals"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "MEDIUM",
+      "stakeholders_count": 2,
+      "evidence_count": 1
+    },
+    "karnataka-vs-bill-39-2024": {
+      "state": "Karnataka",
+      "title": "The Karnataka Scheduled Castes, Scheduled Tribes and Other Backward Classes (Reservation of Appointments, etc.) (Amendment) Bill, 2024",
+      "primary_sector": "Public Administration",
+      "secondary_sectors": [
+        "Rural Development",
+        "Housing"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "LOW",
+      "stakeholders_count": 2,
+      "evidence_count": 1
+    },
+    "kerala-vs-bill-167-2023": {
+      "state": "Kerala",
+      "title": "The Indian Partnership (Kerala Amendment) Bill, 2023",
+      "primary_sector": "Professional Services",
+      "secondary_sectors": [
+        "MSME",
+        "Retail"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "MEDIUM",
+      "stakeholders_count": 2,
+      "evidence_count": 1
+    },
+    "kerala-vs-bill-168-2023": {
+      "state": "Kerala",
+      "title": "The Kerala Building Tax (Amendment) Bill, 2023",
+      "primary_sector": "Real Estate",
+      "secondary_sectors": [
+        "Housing",
+        "Construction"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "MEDIUM",
+      "stakeholders_count": 3,
+      "evidence_count": 1
+    },
+    "kerala-vs-bill-174-2023": {
+      "state": "Kerala",
+      "title": "The Kerala Public Records Bill, 2023",
+      "primary_sector": "Public Administration",
+      "secondary_sectors": [
+        "Other"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "NONE",
+      "stakeholders_count": 2,
+      "evidence_count": 1
+    },
+    "kerala-vs-bill-179-2023": {
+      "state": "Kerala",
+      "title": "The Kerala Veterinary and Animal Sciences University (Amendment) Bill, 2023",
+      "primary_sector": "Livestock",
+      "secondary_sectors": [
+        "Education",
+        "Healthcare",
+        "Environment"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "MEDIUM",
+      "stakeholders_count": 2,
+      "evidence_count": 1
+    },
+    "kerala-vs-bill-180-2023": {
+      "state": "Kerala",
+      "title": "The Kerala Bovine Breeding Bill, 2023",
+      "primary_sector": "Agriculture",
+      "secondary_sectors": [
+        "Livestock",
+        "Wholesale"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "MEDIUM",
+      "stakeholders_count": 2,
+      "evidence_count": 1
+    },
+    "kerala-vs-bill-196-2024": {
+      "state": "Kerala",
+      "title": "The Kerala Panchayat Raj (Second Amendment) Bill, 2024",
+      "primary_sector": "Rural Development",
+      "secondary_sectors": [
+        "Public Administration"
+      ],
+      "geographic_scope": "rural",
+      "readiness": "LOW",
+      "stakeholders_count": 2,
+      "evidence_count": 1
+    },
+    "kerala-vs-bill-213-2024": {
+      "state": "Kerala",
+      "title": "The Non-Resident Keralites' Welfare (Amendment) Bill, 2024",
+      "primary_sector": "Labour & Employment",
+      "secondary_sectors": [
+        "Consumer Services"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "LOW",
+      "stakeholders_count": 2,
+      "evidence_count": 1
+    },
+    "kerala-vs-bill-220-2024": {
+      "state": "Kerala",
+      "title": "The Kerala Repealing and Saving Bill, 2024",
+      "primary_sector": "Public Administration",
+      "secondary_sectors": [
+        "Other"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "NONE",
+      "stakeholders_count": 2,
+      "evidence_count": 1
+    },
+    "kerala-vs-bill-223-2024": {
+      "state": "Kerala",
+      "title": "The Kerala Clinical Establishments (Registration and Regulation) Amendment Bill, 2024",
+      "primary_sector": "Healthcare",
+      "secondary_sectors": [
+        "Professional Services",
+        "Pharmaceuticals"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "MEDIUM",
+      "stakeholders_count": 2,
+      "evidence_count": 1
+    },
+    "kerala-vs-bill-250-2025": {
+      "state": "Kerala",
+      "title": "The Kerala Finance Bill, 2025",
+      "primary_sector": "Banking & Finance",
+      "secondary_sectors": [
+        "Retail",
+        "Wholesale",
+        "MSME"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "MEDIUM",
+      "stakeholders_count": 3,
+      "evidence_count": 1
+    },
+    "kerala-vs-bill-271-2025": {
+      "state": "Kerala",
+      "title": "The Prevention of Cruelty to Animals (Kerala Amendment) Bill, 2025",
+      "primary_sector": "Livestock",
+      "secondary_sectors": [
+        "Education",
+        "Healthcare",
+        "Environment"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "MEDIUM",
+      "stakeholders_count": 2,
+      "evidence_count": 1
+    },
+    "telangana-vs-bill-1-2026": {
+      "state": "Telangana",
+      "title": "The Telangana Hate Speech and Hate Crimes (Prevention) Bill, 2026",
+      "primary_sector": "Public Administration",
+      "secondary_sectors": [
+        "Other"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "NONE",
+      "stakeholders_count": 2,
+      "evidence_count": 1
+    },
+    "telangana-vs-bill-11-2024": {
+      "state": "Telangana",
+      "title": "The Telangana Gig and Platform Workers (Registration and Welfare) Bill, 2024",
+      "primary_sector": "Labour & Employment",
+      "secondary_sectors": [
+        "Gig Economy",
+        "Consumer Services",
+        "IT & Digital Services"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "HIGH",
+      "stakeholders_count": 3,
+      "evidence_count": 3
+    },
+    "telangana-vs-bill-12-2024": {
+      "state": "Telangana",
+      "title": "The Telangana Electricity Duty (Amendment) Bill, 2024",
+      "primary_sector": "Electricity",
+      "secondary_sectors": [
+        "Energy",
+        "Manufacturing"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "HIGH",
+      "stakeholders_count": 2,
+      "evidence_count": 1
+    },
+    "telangana-vs-bill-2-2026": {
+      "state": "Telangana",
+      "title": "The Telangana Goods and Services Tax (Second Amendment) Bill, 2026",
+      "primary_sector": "Banking & Finance",
+      "secondary_sectors": [
+        "Retail",
+        "Wholesale",
+        "MSME"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "HIGH",
+      "stakeholders_count": 3,
+      "evidence_count": 1
+    },
+    "telangana-vs-bill-3-2024": {
+      "state": "Telangana",
+      "title": "The Telangana Panchayat Raj (Amendment) Bill, 2024",
+      "primary_sector": "Rural Development",
+      "secondary_sectors": [
+        "Public Administration"
+      ],
+      "geographic_scope": "rural",
+      "readiness": "LOW",
+      "stakeholders_count": 2,
+      "evidence_count": 1
+    },
+    "telangana-vs-bill-4-2024": {
+      "state": "Telangana",
+      "title": "The Telangana Municipalities (Amendment) Bill, 2024",
+      "primary_sector": "Municipal Services",
+      "secondary_sectors": [
+        "Urban Development",
+        "Construction",
+        "Real Estate"
+      ],
+      "geographic_scope": "urban",
+      "readiness": "MEDIUM",
+      "stakeholders_count": 3,
+      "evidence_count": 1
+    },
+    "telangana-vs-bill-5-2023": {
+      "state": "Telangana",
+      "title": "The Telangana Private Universities (Establishment and Regulation) (Amendment) Bill, 2023",
+      "primary_sector": "Education",
+      "secondary_sectors": [
+        "Professional Services"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "MEDIUM",
+      "stakeholders_count": 2,
+      "evidence_count": 1
+    },
+    "telangana-vs-bill-7-2023": {
+      "state": "Telangana",
+      "title": "The Telangana Agriculture Produce and Livestock Markets (Amendment) Bill, 2023",
+      "primary_sector": "Agriculture",
+      "secondary_sectors": [
+        "Livestock",
+        "Wholesale"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "MEDIUM",
+      "stakeholders_count": 2,
+      "evidence_count": 1
+    },
+    "telangana-vs-bill-8-2024": {
+      "state": "Telangana",
+      "title": "The Telangana Motor Vehicles Taxation (Amendment) Bill, 2024",
+      "primary_sector": "Roads & Transport",
+      "secondary_sectors": [
+        "Logistics",
+        "Consumer Services"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "LOW",
+      "stakeholders_count": 2,
+      "evidence_count": 1
+    },
+    "telangana-vs-bill-9-2023": {
+      "state": "Telangana",
+      "title": "The Telangana Public Health and Epidemics (Amendment) Bill, 2023",
+      "primary_sector": "Healthcare",
+      "secondary_sectors": [
+        "Professional Services",
+        "Pharmaceuticals"
+      ],
+      "geographic_scope": "state-wide",
+      "readiness": "MEDIUM",
+      "stakeholders_count": 2,
+      "evidence_count": 1
+    }
+  }
+}

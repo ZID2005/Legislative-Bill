@@ -1,0 +1,81 @@
+{
+  "metadata": {
+    "generated_at": "2026-09-09T18:30:13.656713+00:00",
+    "schema_version": "1.0.0",
+    "task": "Task 8.7 — State Corporate Exposure Intelligence",
+    "platform": "India Legislative Intelligence & Market Impact Prediction Platform"
+  },
+  "company_universe": {
+    "total_candidate_companies": 51,
+    "verified_companies": 51,
+    "listed_companies": 46,
+    "unlisted_companies": 5
+  },
+  "exposure_summary": {
+    "total_state_bills": 44,
+    "bills_with_exposure": 21,
+    "bills_without_exposure": 23,
+    "total_bill_company_exposures": 86,
+    "direct_exposures": 82,
+    "indirect_exposures": 4,
+    "unknown_directness": 0
+  },
+  "exposure_strength": {
+    "high_strength": 45,
+    "medium_strength": 37,
+    "low_strength": 4,
+    "unknown_strength": 0
+  },
+  "confidence_scoring": {
+    "high_confidence": 82,
+    "medium_confidence": 4,
+    "low_confidence": 0
+  },
+  "evidence_audit": {
+    "mappings_with_bill_evidence": 86,
+    "mappings_with_company_evidence": 86,
+    "mappings_with_both": 86,
+    "unsupported_mappings": 0,
+    "rejected_mappings": 23
+  },
+  "state_breakdown": {
+    "Andhra Pradesh": {
+      "total_exposures": 47,
+      "direct": 45,
+      "indirect": 2,
+      "high_strength": 24,
+      "medium_strength": 21,
+      "low_strength": 2
+    },
+    "Karnataka": {
+      "total_exposures": 16,
+      "direct": 16,
+      "indirect": 0,
+      "high_strength": 8,
+      "medium_strength": 8,
+      "low_strength": 0
+    },
+    "Kerala": {
+      "total_exposures": 3,
+      "direct": 3,
+      "indirect": 0,
+      "high_strength": 1,
+      "medium_strength": 2,
+      "low_strength": 0
+    },
+    "Telangana": {
+      "total_exposures": 20,
+      "direct": 18,
+      "indirect": 2,
+      "high_strength": 12,
+      "medium_strength": 6,
+      "low_strength": 2
+    }
+  },
+  "isolation_and_predictions": {
+    "central_metadata_bills": 22,
+    "central_predictions_count": 4700,
+    "state_market_predictions": 0,
+    "central_pipeline_frozen": true
+  }
+}

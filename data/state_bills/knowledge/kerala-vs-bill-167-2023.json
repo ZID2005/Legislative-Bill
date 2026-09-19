@@ -1,0 +1,302 @@
+{
+  "bill_id": "kerala-vs-bill-167-2023",
+  "jurisdiction": "state",
+  "state": "Kerala",
+  "title": "The Indian Partnership (Kerala Amendment) Bill, 2023",
+  "bill_number": "Bill No. 167 of 2023",
+  "chamber": "vidhan_sabha",
+  "status": "passed_both",
+  "source_url": "https://www.niyamasabha.nic.in/index.php/bills/bills_details/167",
+  "policy_category": "Other / Unclassified",
+  "category_provenance": "SYSTEM_DERIVED",
+  "year": 2023,
+  "introduction_date": "2023-03-14",
+  "assent_date": "2023-08-18",
+  "pdf_url": "https://www.niyamasabha.nic.in/bills/2023/Bill_167_2023.pdf",
+  "corpus_path": "D:\\Legislative-bill\\data\\state_bills\\corpus\\kerala-vs-bill-167-2023.txt",
+  "document_hash": "0569d2193559a0b47e22c124b0a5277315fd82b009f2cf49c628f88df3da0875",
+  "summary": {
+    "what_is_bill": "'The Indian Partnership (Kerala Amendment) Bill, 2023' (Bill No. 167 of 2023) is a State legislative measure introduced in the Kerala Legislative Assembly (Vidhan Sabha) concerning Other / Unclassified.",
+    "what_it_changes": "The bill amends statutory provisions to update legal frameworks, adjust compliance requirements, or alter state administrative procedures.",
+    "why_it_matters": "According to the official Statement of Objects and Reasons: \"The statutory fees prescribed under Schedule I of the Central Act of 1932 had become severely outdated. This amendment revises registration fee schedules and enables end-to-end electronic filing.\"",
+    "who_is_affected": "Primary affected groups include: Citizens, State Government, Property Owners & Real Estate Buyers.",
+    "key_provisions": [
+      "Identified clauses/sections amended: Section 1, Section 2.",
+      "fees for registration of partnership firms, alteration of firm names, and inspection of registers."
+    ],
+    "administrative_implications": "Enforced through the competent administrative departments of the Government of Kerala.",
+    "legislative_status": "Official status recorded as 'Passed Both' (introduced on 2023-03-14, assented on 2023-08-18).",
+    "source": "Official Kerala Legislature portal (kerala_niyamasabha)."
+  },
+  "objective": "The statutory fees prescribed under Schedule I of the Central Act of 1932 had become severely outdated. This amendment revises registration fee schedules and enables end-to-end electronic filing.",
+  "key_provisions": [
+    "Identified clauses/sections amended: Section 1, Section 2.",
+    "fees for registration of partnership firms, alteration of firm names, and inspection of registers."
+  ],
+  "amended_acts": [],
+  "affected_stakeholders": [
+    "Citizens",
+    "State Government",
+    "Property Owners & Real Estate Buyers"
+  ],
+  "administrative_authority": null,
+  "financial_provisions": "fees for registration of partnership firms, alteration of firm names, and inspection of registers.",
+  "penalties_provisions": null,
+  "extraction_status": "success",
+  "language": "English",
+  "page_count": 1,
+  "character_count": 829,
+  "word_count": 127,
+  "provenance": {
+    "title": "AUTHORITATIVE",
+    "bill_number": "AUTHORITATIVE",
+    "jurisdiction": "AUTHORITATIVE",
+    "state": "AUTHORITATIVE",
+    "chamber": "AUTHORITATIVE",
+    "status": "AUTHORITATIVE",
+    "source_url": "AUTHORITATIVE",
+    "pdf_url": "AUTHORITATIVE",
+    "introduction_date": "AUTHORITATIVE",
+    "assent_date": "AUTHORITATIVE",
+    "year": "DERIVED",
+    "bill_id": "DERIVED",
+    "policy_category": "SYSTEM_DERIVED",
+    "document_hash": "DERIVED",
+    "corpus_path": "DERIVED",
+    "language": "AUTHORITATIVE",
+    "summary": "SYSTEM_DERIVED",
+    "objective": "SYSTEM_DERIVED",
+    "key_provisions": "SYSTEM_DERIVED",
+    "amended_acts": "UNAVAILABLE",
+    "affected_stakeholders": "SYSTEM_DERIVED",
+    "administrative_authority": "UNAVAILABLE",
+    "financial_provisions": "SYSTEM_DERIVED",
+    "penalties_provisions": "UNAVAILABLE",
+    "economic_profile": "SYSTEM_DERIVED",
+    "corporate_exposures": "NONE",
+    "impact_assessment": "DETERMINISTIC_METHODOLOGY_ENGINE"
+  },
+  "created_at": "2026-09-08T16:41:06.002377+00:00",
+  "economic_profile": {
+    "bill_id": "kerala-vs-bill-167-2023",
+    "state": "Kerala",
+    "policy_domain": "Other / Unclassified",
+    "primary_sector": "Professional Services",
+    "secondary_sectors": [
+      "MSME",
+      "Retail"
+    ],
+    "sub_sectors": [
+      "Legal Services",
+      "Accounting & Audit",
+      "Medical Practice",
+      "Micro Enterprises",
+      "Small Enterprises",
+      "Departmental Stores",
+      "Shops & Commercial Outlets"
+    ],
+    "economic_activities": [
+      "Medical practitioner registration",
+      "Professional practice licensing",
+      "Partnership firm registration",
+      "Small-scale fabrication",
+      "Job-work manufacturing",
+      "Over-the-counter retail",
+      "Shop establishment registration"
+    ],
+    "business_types": [
+      "Partnership firms",
+      "Professional consultancies",
+      "Medical practice clinics",
+      "Chartered firms",
+      "Retail trade establishments"
+    ],
+    "stakeholders": [
+      {
+        "stakeholder": "State Government",
+        "category": "institutions",
+        "role": "regulator/implementer",
+        "direction": "neutral",
+        "mechanism": "regulation",
+        "impact_type": "DIRECT",
+        "evidence": {
+          "source_type": "metadata",
+          "section": "General Provisions",
+          "text_reference": "Statutory measures enacted under 'The Indian Partnership (Kerala Amendment) Bill, 2023'.",
+          "location": "corpus/kerala-vs-bill-167-2023.txt"
+        },
+        "description": "The State Government and executive authorities oversee administration of the statutory enactment."
+      },
+      {
+        "stakeholder": "Employers",
+        "category": "businesses",
+        "role": "affected",
+        "direction": "neutral",
+        "mechanism": "compliance",
+        "impact_type": "INDIRECT",
+        "evidence": {
+          "source_type": "metadata",
+          "section": "General Provisions",
+          "text_reference": "Statutory measures enacted under 'The Indian Partnership (Kerala Amendment) Bill, 2023'.",
+          "location": "corpus/kerala-vs-bill-167-2023.txt"
+        },
+        "description": "Covered commercial and institutional entities must comply with relevant legal procedures."
+      }
+    ],
+    "geographic_scope": "state-wide",
+    "direct_impacts": [
+      "Direct statutory regulation requirement affecting State Government."
+    ],
+    "indirect_impacts": [
+      "Secondary economic or pricing effect on Employers."
+    ],
+    "impact_mechanisms": [
+      "regulation",
+      "compliance"
+    ],
+    "company_exposure_readiness": "MEDIUM",
+    "evidence": [
+      {
+        "source_type": "metadata",
+        "section": "General Provisions",
+        "text_reference": "Statutory measures enacted under 'The Indian Partnership (Kerala Amendment) Bill, 2023'.",
+        "location": "corpus/kerala-vs-bill-167-2023.txt"
+      }
+    ],
+    "confidence": "HIGH",
+    "factual_summary": {
+      "who_may_be_affected": [
+        "Employers"
+      ],
+      "how_affected": [
+        "Enacts statutory regulations and standards under State jurisdiction.",
+        "Establishes updated compliance, record-keeping, and reporting obligations."
+      ],
+      "who_may_benefit": [
+        "Designated beneficiary groups under statutory schemes."
+      ],
+      "who_may_bear_costs": [
+        "Covered commercial or institutional establishments."
+      ]
+    },
+    "provenance": {
+      "primary_sector": "SYSTEM_DERIVED",
+      "secondary_sectors": "SYSTEM_DERIVED",
+      "sub_sectors": "SYSTEM_DERIVED",
+      "business_types": "SYSTEM_DERIVED",
+      "stakeholders": "SYSTEM_DERIVED",
+      "geographic_scope": "SYSTEM_DERIVED",
+      "company_exposure_readiness": "SYSTEM_DERIVED",
+      "evidence": "AUTHORITATIVE_CORPUS_GROUNDED",
+      "factual_summary": "SYSTEM_DERIVED"
+    },
+    "generated_at": "2026-09-09T18:05:57.821272+00:00",
+    "schema_version": "1.0.0"
+  },
+  "impact_assessment": {
+    "bill_id": "kerala-vs-bill-167-2023",
+    "state": "Kerala",
+    "title": "The Indian Partnership (Kerala Amendment) Bill, 2023",
+    "bill_number": "Bill No. 167 of 2023",
+    "economic_mechanisms": [
+      "compliance_cost",
+      "licensing",
+      "regulation"
+    ],
+    "economic_direction": "neutral",
+    "economic_strength": "MEDIUM",
+    "market_relevance": "NONE",
+    "modeling_eligibility": "NOT_ELIGIBLE",
+    "data_sufficiency": "INSUFFICIENT",
+    "event_date_quality": "HIGH",
+    "primary_event_date": {
+      "role": "introduction",
+      "date": "2023-03-14",
+      "source": "official_legislative_portal",
+      "is_primary": true
+    },
+    "alternative_event_dates": [
+      {
+        "role": "assent",
+        "date": "2023-08-18",
+        "source": "official_gazette",
+        "is_primary": false
+      }
+    ],
+    "anticipation_readiness": "PARTIAL",
+    "candidate_anticipation_channels": [
+      "public_announcements",
+      "legislative_leaks",
+      "government_consultations",
+      "committee_discussions",
+      "media_coverage",
+      "gdelt",
+      "google_trends"
+    ],
+    "market_data_readiness": {
+      "candidate_companies_count": 0,
+      "listed_companies_count": 0,
+      "unlisted_companies_count": 0,
+      "companies_with_market_data": [],
+      "companies_missing_market_data": [],
+      "benchmark_available": true,
+      "benchmark_ticker": "^NSEI",
+      "trading_calendar_coverage": "INSUFFICIENT"
+    },
+    "listed_company_count": 0,
+    "exposure_count": 0,
+    "direct_exposure_count": 0,
+    "indirect_exposure_count": 0,
+    "missing_requirements": [
+      "No grounded corporate exposure identified for this State bill.",
+      "Live anticipation crawling and sentiment signal ingestion not connected."
+    ],
+    "scorecard": {
+      "bill_identity_verified": true,
+      "state_jurisdiction_verified": true,
+      "event_date_verified": true,
+      "economic_mechanism_identified": true,
+      "corporate_exposure_verified": false,
+      "listed_company_verified": false,
+      "historical_market_data_available": false,
+      "benchmark_data_available": true,
+      "event_date_identifiable": true,
+      "anticipation_readiness_sufficient": true,
+      "result": "NOT_ELIGIBLE",
+      "notes": [
+        "Bill has no listed corporate exposure; remains strictly economic-only."
+      ]
+    },
+    "evidence": [
+      {
+        "source_type": "official_bill_summary",
+        "reference": "Statement of Objects and Reasons / Metadata",
+        "claim": "Statutory summary indicates policy in Other / Unclassified."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::compliance_cost",
+        "claim": "Statutory impact channel identified as 'compliance_cost'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::licensing",
+        "claim": "Statutory impact channel identified as 'licensing'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::regulation",
+        "claim": "Statutory impact channel identified as 'regulation'."
+      }
+    ],
+    "confidence": "MEDIUM",
+    "provenance": {
+      "economic_taxonomy": "STATE_ECONOMIC_MECHANISMS_V1",
+      "market_relevance": "GROUNDED_CORPORATE_EXPOSURE_MATCH",
+      "eligibility_scorecard": "DETERMINISTIC_10_POINT_SCORECARD",
+      "market_data_audit": "LOCAL_PARQUET_STORE_VERIFIED"
+    },
+    "schema_version": "1.0.0",
+    "generated_at": "2026-09-10T16:03:48.778086+00:00"
+  }
+}

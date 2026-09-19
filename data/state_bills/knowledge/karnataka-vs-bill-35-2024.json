@@ -1,0 +1,424 @@
+{
+  "bill_id": "karnataka-vs-bill-35-2024",
+  "jurisdiction": "state",
+  "state": "Karnataka",
+  "title": "The Karnataka Land Revenue (Second Amendment) Bill, 2024",
+  "bill_number": "Bill No. 35 of 2024",
+  "chamber": "vidhan_sabha",
+  "status": "passed_both",
+  "source_url": "https://kla.kar.nic.in/assembly/bills/bills1640.htm",
+  "policy_category": "Other / Unclassified",
+  "category_provenance": "SYSTEM_DERIVED",
+  "year": 2024,
+  "introduction_date": "2024-07-24",
+  "assent_date": null,
+  "pdf_url": "https://kla.kar.nic.in/assembly/bills/bill1640_35.pdf",
+  "corpus_path": "D:\\Legislative-bill\\data\\state_bills\\corpus\\karnataka-vs-bill-35-2024.txt",
+  "document_hash": "c3733629ba1381629241dff40b78f71ce9a11165e6ade6f71c82533e72f5b51b",
+  "summary": {
+    "what_is_bill": "'The Karnataka Land Revenue (Second Amendment) Bill, 2024' (Bill No. 35 of 2024) is a State legislative measure introduced in the Karnataka Legislative Assembly (Vidhan Sabha) concerning Other / Unclassified.",
+    "what_it_changes": "The bill introduces statutory amendments to existing state legislation, primarily modifying Whereas it is expedient further to amend the Karnataka Land Revenue Act; In the Karnataka Land Revenue Act, 1964; In the Principal Act across 9 identified sections/clauses.",
+    "why_it_matters": "According to the official Statement of Objects and Reasons: \"The Revenue Commissionerate is established in the state, therefore It is considered necessary further to amend the Karnataka Land Revenue Act, 1964 (Karnataka Act 12 of 1964) to Provide a provision regarding appointment, duties and functions of the Revenue commissionerate and certain other consequential amendments are made. Hence, the Bill. 5...\"",
+    "who_is_affected": "Primary affected groups include: Citizens, State Government.",
+    "key_provisions": [
+      "Statutory modification of Whereas it is expedient further to amend the Karnataka Land Revenue Act, In the Karnataka Land Revenue Act, 1964.",
+      "Identified clauses/sections amended: 7, 8, 9, 10, 13.",
+      "Contains statutory fee, tax, or duty rate provisions."
+    ],
+    "administrative_implications": "Administered and enforced under the authority of State Government shall and designated state officials.",
+    "legislative_status": "Official status recorded as 'Passed Both' (introduced on 2024-07-24).",
+    "source": "Official Karnataka Legislature portal (karnataka_assembly)."
+  },
+  "objective": "The Revenue Commissionerate is established in the state, therefore It is considered necessary further to amend the Karnataka Land Revenue Act, 1964 (Karnataka Act 12 of 1964) to Provide a provision regarding appointment, duties and functions of the Revenue commissionerate and certain other consequential amendments are made. Hence, the Bill. 5",
+  "key_provisions": [
+    "Statutory modification of Whereas it is expedient further to amend the Karnataka Land Revenue Act, In the Karnataka Land Revenue Act, 1964.",
+    "Identified clauses/sections amended: 7, 8, 9, 10, 13.",
+    "Contains statutory fee, tax, or duty rate provisions."
+  ],
+  "amended_acts": [
+    "Whereas it is expedient further to amend the Karnataka Land Revenue Act",
+    "In the Karnataka Land Revenue Act, 1964",
+    "In the Principal Act",
+    "In section 8 of the Principal Act",
+    "In section 9 of the Principal Act",
+    "In section 10 of the Principal Act"
+  ],
+  "affected_stakeholders": [
+    "Citizens",
+    "State Government"
+  ],
+  "administrative_authority": "State Government shall",
+  "financial_provisions": "Contains statutory fee, tax, or duty rate provisions.",
+  "penalties_provisions": null,
+  "extraction_status": "success",
+  "language": "Bilingual (English / Kannada)",
+  "page_count": 1,
+  "character_count": 67589,
+  "word_count": 4972,
+  "provenance": {
+    "title": "AUTHORITATIVE",
+    "bill_number": "AUTHORITATIVE",
+    "jurisdiction": "AUTHORITATIVE",
+    "state": "AUTHORITATIVE",
+    "chamber": "AUTHORITATIVE",
+    "status": "AUTHORITATIVE",
+    "source_url": "AUTHORITATIVE",
+    "pdf_url": "AUTHORITATIVE",
+    "introduction_date": "AUTHORITATIVE",
+    "assent_date": "UNAVAILABLE",
+    "year": "DERIVED",
+    "bill_id": "DERIVED",
+    "policy_category": "SYSTEM_DERIVED",
+    "document_hash": "DERIVED",
+    "corpus_path": "DERIVED",
+    "language": "AUTHORITATIVE",
+    "summary": "SYSTEM_DERIVED",
+    "objective": "SYSTEM_DERIVED",
+    "key_provisions": "SYSTEM_DERIVED",
+    "amended_acts": "SYSTEM_DERIVED",
+    "affected_stakeholders": "SYSTEM_DERIVED",
+    "administrative_authority": "SYSTEM_DERIVED",
+    "financial_provisions": "SYSTEM_DERIVED",
+    "penalties_provisions": "UNAVAILABLE",
+    "economic_profile": "SYSTEM_DERIVED",
+    "corporate_exposures": "SYSTEM_DERIVED",
+    "impact_assessment": "DETERMINISTIC_METHODOLOGY_ENGINE"
+  },
+  "created_at": "2026-09-08T16:41:03.413751+00:00",
+  "economic_profile": {
+    "bill_id": "karnataka-vs-bill-35-2024",
+    "state": "Karnataka",
+    "policy_domain": "Other / Unclassified",
+    "primary_sector": "Real Estate",
+    "secondary_sectors": [
+      "Agriculture",
+      "Housing"
+    ],
+    "sub_sectors": [
+      "Residential Real Estate",
+      "Commercial Real Estate",
+      "Land Development",
+      "Farming",
+      "Horticulture",
+      "Affordable Housing",
+      "Tenancy & Rent Control"
+    ],
+    "economic_activities": [
+      "Property registration",
+      "Plot layout development",
+      "Stamp duty valuation",
+      "Crop cultivation",
+      "Agricultural produce trading",
+      "Residential allotment",
+      "Building tax compliance"
+    ],
+    "business_types": [
+      "Real estate builders",
+      "Property developers",
+      "Commercial property owners",
+      "Housing societies"
+    ],
+    "stakeholders": [
+      {
+        "stakeholder": "State Government",
+        "category": "institutions",
+        "role": "regulator/implementer",
+        "direction": "neutral",
+        "mechanism": "regulation",
+        "impact_type": "DIRECT",
+        "evidence": {
+          "source_type": "metadata",
+          "section": "General Provisions",
+          "text_reference": "Statutory measures enacted under 'The Karnataka Land Revenue (Second Amendment) Bill, 2024'.",
+          "location": "corpus/karnataka-vs-bill-35-2024.txt"
+        },
+        "description": "The State Government and executive authorities oversee administration of the statutory enactment."
+      },
+      {
+        "stakeholder": "Employers",
+        "category": "businesses",
+        "role": "affected",
+        "direction": "neutral",
+        "mechanism": "compliance",
+        "impact_type": "INDIRECT",
+        "evidence": {
+          "source_type": "metadata",
+          "section": "General Provisions",
+          "text_reference": "Statutory measures enacted under 'The Karnataka Land Revenue (Second Amendment) Bill, 2024'.",
+          "location": "corpus/karnataka-vs-bill-35-2024.txt"
+        },
+        "description": "Covered commercial and institutional entities must comply with relevant legal procedures."
+      }
+    ],
+    "geographic_scope": "state-wide",
+    "direct_impacts": [
+      "Direct statutory regulation requirement affecting State Government."
+    ],
+    "indirect_impacts": [
+      "Secondary economic or pricing effect on Employers."
+    ],
+    "impact_mechanisms": [
+      "regulation",
+      "compliance"
+    ],
+    "company_exposure_readiness": "MEDIUM",
+    "evidence": [
+      {
+        "source_type": "metadata",
+        "section": "General Provisions",
+        "text_reference": "Statutory measures enacted under 'The Karnataka Land Revenue (Second Amendment) Bill, 2024'.",
+        "location": "corpus/karnataka-vs-bill-35-2024.txt"
+      }
+    ],
+    "confidence": "HIGH",
+    "factual_summary": {
+      "who_may_be_affected": [
+        "Employers"
+      ],
+      "how_affected": [
+        "Enacts statutory regulations and standards under State jurisdiction.",
+        "Establishes updated compliance, record-keeping, and reporting obligations."
+      ],
+      "who_may_benefit": [
+        "Designated beneficiary groups under statutory schemes."
+      ],
+      "who_may_bear_costs": [
+        "Covered commercial or institutional establishments."
+      ]
+    },
+    "provenance": {
+      "primary_sector": "SYSTEM_DERIVED",
+      "secondary_sectors": "SYSTEM_DERIVED",
+      "sub_sectors": "SYSTEM_DERIVED",
+      "business_types": "SYSTEM_DERIVED",
+      "stakeholders": "SYSTEM_DERIVED",
+      "geographic_scope": "SYSTEM_DERIVED",
+      "company_exposure_readiness": "SYSTEM_DERIVED",
+      "evidence": "AUTHORITATIVE_CORPUS_GROUNDED",
+      "factual_summary": "SYSTEM_DERIVED"
+    },
+    "generated_at": "2026-09-09T18:05:57.156073+00:00",
+    "schema_version": "1.0.0"
+  },
+  "corporate_exposures": [
+    {
+      "bill_id": "karnataka-vs-bill-35-2024",
+      "state": "Karnataka",
+      "company_id": "INE671H01015",
+      "company_name": "Sobha Limited",
+      "ticker": "SOBHA",
+      "exchange": "NSE",
+      "listed_status": "listed",
+      "sector": "Real Estate",
+      "sub_sector": "Urban Property & Commercial Development",
+      "business_activity": "Real estate development and property asset management",
+      "state_presence": [
+        "headquarters",
+        "project",
+        "manufacturing",
+        "office"
+      ],
+      "presence_type": "project",
+      "exposure_type": "land",
+      "exposure_direction": "mixed",
+      "exposure_strength": "HIGH",
+      "direct_indirect": "DIRECT",
+      "geographic_scope": "state_specific",
+      "mechanism": "compliance",
+      "evidence": [
+        {
+          "source_type": "bill_text",
+          "reference": "Provisions governing urban property tax assessment, municipal licensing, and land classification",
+          "claim": "Modifies property taxation, layout approvals, civic amenities assessment, or land revenue conversion standards.",
+          "url": null
+        },
+        {
+          "source_type": "company_filing",
+          "reference": "Sobha Limited Annual Report 2023-24",
+          "claim": "Sobha Limited holds active real estate projects, development land, and commercial properties in Bengaluru.",
+          "url": "https://www.sobha.com"
+        }
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+        "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+        "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+      },
+      "source_urls": [
+        "https://kla.kar.nic.in/assembly/bills/bills1640.htm",
+        "https://www.sobha.com"
+      ],
+      "missing_information": [
+        "Developable land bank acreage in Karnataka undergoing municipal conversion.",
+        "Total annual property tax burden variation under new municipal schedule."
+      ],
+      "verified_at": "2026-09-09T18:30:10.014965+00:00",
+      "schema_version": "1.0.0"
+    },
+    {
+      "bill_id": "karnataka-vs-bill-35-2024",
+      "state": "Karnataka",
+      "company_id": "INE811K01011",
+      "company_name": "Prestige Estates Projects Limited",
+      "ticker": "PRESTIGE",
+      "exchange": "NSE",
+      "listed_status": "listed",
+      "sector": "Real Estate",
+      "sub_sector": "Urban Property & Commercial Development",
+      "business_activity": "Real estate development and property asset management",
+      "state_presence": [
+        "headquarters",
+        "project",
+        "retail",
+        "office"
+      ],
+      "presence_type": "project",
+      "exposure_type": "land",
+      "exposure_direction": "mixed",
+      "exposure_strength": "HIGH",
+      "direct_indirect": "DIRECT",
+      "geographic_scope": "state_specific",
+      "mechanism": "compliance",
+      "evidence": [
+        {
+          "source_type": "bill_text",
+          "reference": "Provisions governing urban property tax assessment, municipal licensing, and land classification",
+          "claim": "Modifies property taxation, layout approvals, civic amenities assessment, or land revenue conversion standards.",
+          "url": null
+        },
+        {
+          "source_type": "company_filing",
+          "reference": "Prestige Estates Annual Report 2023-24",
+          "claim": "Prestige Estates Projects Limited holds active real estate projects, development land, and commercial properties in Bengaluru.",
+          "url": "https://www.prestigeconstructions.com"
+        }
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+        "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+        "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+      },
+      "source_urls": [
+        "https://kla.kar.nic.in/assembly/bills/bills1640.htm",
+        "https://www.prestigeconstructions.com"
+      ],
+      "missing_information": [
+        "Developable land bank acreage in Karnataka undergoing municipal conversion.",
+        "Total annual property tax burden variation under new municipal schedule."
+      ],
+      "verified_at": "2026-09-09T18:30:10.015259+00:00",
+      "schema_version": "1.0.0"
+    }
+  ],
+  "impact_assessment": {
+    "bill_id": "karnataka-vs-bill-35-2024",
+    "state": "Karnataka",
+    "title": "The Karnataka Land Revenue (Second Amendment) Bill, 2024",
+    "bill_number": "Bill No. 35 of 2024",
+    "economic_mechanisms": [
+      "compliance_cost",
+      "land",
+      "regulation",
+      "taxation"
+    ],
+    "economic_direction": "mixed",
+    "economic_strength": "HIGH",
+    "market_relevance": "HIGH",
+    "modeling_eligibility": "CONDITIONALLY_ELIGIBLE",
+    "data_sufficiency": "INSUFFICIENT",
+    "event_date_quality": "MEDIUM",
+    "primary_event_date": {
+      "role": "introduction",
+      "date": "2024-07-24",
+      "source": "official_legislative_portal",
+      "is_primary": true
+    },
+    "alternative_event_dates": [],
+    "anticipation_readiness": "PARTIAL",
+    "candidate_anticipation_channels": [
+      "public_announcements",
+      "legislative_leaks",
+      "government_consultations",
+      "committee_discussions",
+      "media_coverage",
+      "gdelt",
+      "google_trends"
+    ],
+    "market_data_readiness": {
+      "candidate_companies_count": 2,
+      "listed_companies_count": 2,
+      "unlisted_companies_count": 0,
+      "companies_with_market_data": [],
+      "companies_missing_market_data": [
+        "PRESTIGE",
+        "SOBHA"
+      ],
+      "benchmark_available": true,
+      "benchmark_ticker": "^NSEI",
+      "trading_calendar_coverage": "INSUFFICIENT"
+    },
+    "listed_company_count": 2,
+    "exposure_count": 2,
+    "direct_exposure_count": 2,
+    "indirect_exposure_count": 0,
+    "missing_requirements": [
+      "Historical market price data missing in local store for: PRESTIGE, SOBHA.",
+      "Live anticipation crawling and sentiment signal ingestion not connected."
+    ],
+    "scorecard": {
+      "bill_identity_verified": true,
+      "state_jurisdiction_verified": true,
+      "event_date_verified": true,
+      "economic_mechanism_identified": true,
+      "corporate_exposure_verified": true,
+      "listed_company_verified": true,
+      "historical_market_data_available": false,
+      "benchmark_data_available": true,
+      "event_date_identifiable": true,
+      "anticipation_readiness_sufficient": true,
+      "result": "CONDITIONALLY_ELIGIBLE",
+      "notes": [
+        "Candidate tickers are listed but historical parquets are pending download.",
+        "Anticipation framework defined, but external live news/GDELT crawlers not attached."
+      ]
+    },
+    "evidence": [
+      {
+        "source_type": "official_bill_summary",
+        "reference": "Statement of Objects and Reasons / Metadata",
+        "claim": "Statutory summary indicates policy in Other / Unclassified."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::compliance_cost",
+        "claim": "Statutory impact channel identified as 'compliance_cost'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::land",
+        "claim": "Statutory impact channel identified as 'land'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::regulation",
+        "claim": "Statutory impact channel identified as 'regulation'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::taxation",
+        "claim": "Statutory impact channel identified as 'taxation'."
+      }
+    ],
+    "confidence": "MEDIUM",
+    "provenance": {
+      "economic_taxonomy": "STATE_ECONOMIC_MECHANISMS_V1",
+      "market_relevance": "GROUNDED_CORPORATE_EXPOSURE_MATCH",
+      "eligibility_scorecard": "DETERMINISTIC_10_POINT_SCORECARD",
+      "market_data_audit": "LOCAL_PARQUET_STORE_VERIFIED"
+    },
+    "schema_version": "1.0.0",
+    "generated_at": "2026-09-10T16:03:48.077425+00:00"
+  }
+}

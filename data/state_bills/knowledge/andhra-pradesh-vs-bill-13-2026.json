@@ -1,0 +1,319 @@
+{
+  "bill_id": "andhra-pradesh-vs-bill-13-2026",
+  "jurisdiction": "state",
+  "state": "Andhra Pradesh",
+  "title": "The Andhra Pradesh Jan Vishwas (Amendment of Provisions) Bill, 2026",
+  "bill_number": "L.A. Bill No. 13 of 2026",
+  "chamber": "vidhan_sabha",
+  "status": "passed_both",
+  "source_url": "https://aplegislature.org/web/aplegislature/bills",
+  "policy_category": "Other / Unclassified",
+  "category_provenance": "SYSTEM_DERIVED",
+  "year": 2026,
+  "introduction_date": null,
+  "assent_date": "2026-03-24",
+  "pdf_url": "https://legislation.aplegislature.org/PreviewPage.do?filePath=basePath&fileName=Bills/PassedBills/English/Eng_passbill_bill-13_16_31__397_v_1.pdf",
+  "corpus_path": "D:\\Legislative-bill\\data\\state_bills\\corpus\\andhra-pradesh-vs-bill-13-2026.txt",
+  "document_hash": "0cf34e4ea73d836e6528b4ebab70b9826e39a6b139cf4524db3655c5f07a54cd",
+  "summary": {
+    "what_is_bill": "'The Andhra Pradesh Jan Vishwas (Amendment of Provisions) Bill, 2026' (L.A. Bill No. 13 of 2026) is a State legislative measure introduced in the Andhra Pradesh Legislative Assembly (Vidhan Sabha) concerning Other / Unclassified.",
+    "what_it_changes": "The bill introduces statutory amendments to existing state legislation, primarily modifying The Government of India has enacted the Jan Vishwas (Amendment of Provisions) Act.",
+    "why_it_matters": "According to the official Statement of Objects and Reasons: \"The Government of Andhra Pradesh is committed to promoting trust-based governance, improving ease of living for citizens, and facilitating ease of doing business in the State. It has been observed that several State enactments contain criminal provisions prescribing imprisonment for procedural, technical and regulatory defaults. Such provisions, though intended to ensure compliance, often result in avoidable litigation, burden on courts,...\"",
+    "who_is_affected": "Primary affected groups include: Citizens, State Government, Farmers & Agricultural Landowners, Builders & Real Estate Developers.",
+    "key_provisions": [
+      "Statutory modification of The Government of India has enacted the Jan Vishwas (Amendment of Provisions) Act.",
+      "Contains statutory fee, tax, or duty rate provisions.",
+      "imprisonment for procedural, technical and regulatory defaults."
+    ],
+    "administrative_implications": "Administered and enforced under the authority of Authority Act and designated state officials.",
+    "legislative_status": "Official status recorded as 'Passed Both' (assented on 2026-03-24).",
+    "source": "Official Andhra Pradesh Legislature portal (andhra_pradesh_assembly)."
+  },
+  "objective": "The Government of Andhra Pradesh is committed to promoting trust-based governance, improving ease of living for citizens, and facilitating ease of doing business in the State. It has been observed that several State enactments contain criminal provisions prescribing imprisonment for procedural, technical and regulatory defaults. Such provisions, though intended to ensure compliance, often result in avoidable litigation, burden on courts, and deterrence to investment and economic activity. The Government of India has enacted the Jan Vishwas (Amendment of Provisions) Act, 2023 to decriminalise and rationalise minor offences under various Central enactments with a view to fostering greater trust in governance. On similar lines, it is considered necessary to review certain State enactments and substitute provisions of imprisonment with monetary penalties, enhance fines commensurate with present-day economic realities, and provide for compounding of specified offences and to repeal obsolete and redundant Laws. Accordingly, it has been decided to make amendments to the certain provisions of the following Acts, namely,- (1) The Municipal Corporations Act, 1955 (2) The Andhra Pradesh Munic",
+  "key_provisions": [
+    "Statutory modification of The Government of India has enacted the Jan Vishwas (Amendment of Provisions) Act.",
+    "Contains statutory fee, tax, or duty rate provisions.",
+    "imprisonment for procedural, technical and regulatory defaults."
+  ],
+  "amended_acts": [
+    "The Government of India has enacted the Jan Vishwas (Amendment of Provisions) Act"
+  ],
+  "affected_stakeholders": [
+    "Citizens",
+    "State Government",
+    "Farmers & Agricultural Landowners",
+    "Builders & Real Estate Developers"
+  ],
+  "administrative_authority": "Authority Act",
+  "financial_provisions": "Contains statutory fee, tax, or duty rate provisions.",
+  "penalties_provisions": "imprisonment for procedural, technical and regulatory defaults.",
+  "extraction_status": "success",
+  "language": "English",
+  "page_count": 1,
+  "character_count": 8506,
+  "word_count": 1216,
+  "provenance": {
+    "title": "AUTHORITATIVE",
+    "bill_number": "AUTHORITATIVE",
+    "jurisdiction": "AUTHORITATIVE",
+    "state": "AUTHORITATIVE",
+    "chamber": "AUTHORITATIVE",
+    "status": "AUTHORITATIVE",
+    "source_url": "AUTHORITATIVE",
+    "pdf_url": "AUTHORITATIVE",
+    "introduction_date": "UNAVAILABLE",
+    "assent_date": "AUTHORITATIVE",
+    "year": "DERIVED",
+    "bill_id": "DERIVED",
+    "policy_category": "SYSTEM_DERIVED",
+    "document_hash": "DERIVED",
+    "corpus_path": "DERIVED",
+    "language": "AUTHORITATIVE",
+    "summary": "SYSTEM_DERIVED",
+    "objective": "SYSTEM_DERIVED",
+    "key_provisions": "SYSTEM_DERIVED",
+    "amended_acts": "SYSTEM_DERIVED",
+    "affected_stakeholders": "SYSTEM_DERIVED",
+    "administrative_authority": "SYSTEM_DERIVED",
+    "financial_provisions": "SYSTEM_DERIVED",
+    "penalties_provisions": "SYSTEM_DERIVED",
+    "economic_profile": "SYSTEM_DERIVED",
+    "corporate_exposures": "NONE",
+    "impact_assessment": "DETERMINISTIC_METHODOLOGY_ENGINE"
+  },
+  "created_at": "2026-09-08T16:40:45.835244+00:00",
+  "economic_profile": {
+    "bill_id": "andhra-pradesh-vs-bill-13-2026",
+    "state": "Andhra Pradesh",
+    "policy_domain": "Other / Unclassified",
+    "primary_sector": "MSME",
+    "secondary_sectors": [
+      "Manufacturing",
+      "Retail",
+      "Professional Services"
+    ],
+    "sub_sectors": [
+      "Micro Enterprises",
+      "Small Enterprises",
+      "Medium Enterprises",
+      "Heavy Engineering",
+      "Automotive",
+      "Departmental Stores",
+      "Shops & Commercial Outlets"
+    ],
+    "economic_activities": [
+      "Small-scale fabrication",
+      "Job-work manufacturing",
+      "Cottage production",
+      "Factory production",
+      "Industrial assembly",
+      "Over-the-counter retail",
+      "Shop establishment registration"
+    ],
+    "business_types": [
+      "Micro and small enterprises",
+      "Medium manufacturing units",
+      "Service startups",
+      "Industrial undertakings",
+      "Factory operators"
+    ],
+    "stakeholders": [
+      {
+        "stakeholder": "State Government",
+        "category": "institutions",
+        "role": "regulator/implementer",
+        "direction": "neutral",
+        "mechanism": "regulation",
+        "impact_type": "DIRECT",
+        "evidence": {
+          "source_type": "metadata",
+          "section": "General Provisions",
+          "text_reference": "Statutory measures enacted under 'The Andhra Pradesh Jan Vishwas (Amendment of Provisions) Bill, 2026'.",
+          "location": "corpus/andhra-pradesh-vs-bill-13-2026.txt"
+        },
+        "description": "The State Government and executive authorities oversee administration of the statutory enactment."
+      },
+      {
+        "stakeholder": "Employers",
+        "category": "businesses",
+        "role": "affected",
+        "direction": "neutral",
+        "mechanism": "compliance",
+        "impact_type": "INDIRECT",
+        "evidence": {
+          "source_type": "metadata",
+          "section": "General Provisions",
+          "text_reference": "Statutory measures enacted under 'The Andhra Pradesh Jan Vishwas (Amendment of Provisions) Bill, 2026'.",
+          "location": "corpus/andhra-pradesh-vs-bill-13-2026.txt"
+        },
+        "description": "Covered commercial and institutional entities must comply with relevant legal procedures."
+      }
+    ],
+    "geographic_scope": "state-wide",
+    "direct_impacts": [
+      "Direct statutory regulation requirement affecting State Government."
+    ],
+    "indirect_impacts": [
+      "Secondary economic or pricing effect on Employers."
+    ],
+    "impact_mechanisms": [
+      "regulation",
+      "compliance"
+    ],
+    "company_exposure_readiness": "MEDIUM",
+    "evidence": [
+      {
+        "source_type": "metadata",
+        "section": "General Provisions",
+        "text_reference": "Statutory measures enacted under 'The Andhra Pradesh Jan Vishwas (Amendment of Provisions) Bill, 2026'.",
+        "location": "corpus/andhra-pradesh-vs-bill-13-2026.txt"
+      }
+    ],
+    "confidence": "HIGH",
+    "factual_summary": {
+      "who_may_be_affected": [
+        "Employers"
+      ],
+      "how_affected": [
+        "Enacts statutory regulations and standards under State jurisdiction.",
+        "Establishes updated compliance, record-keeping, and reporting obligations."
+      ],
+      "who_may_benefit": [
+        "Designated beneficiary groups under statutory schemes."
+      ],
+      "who_may_bear_costs": [
+        "Covered commercial or institutional establishments."
+      ]
+    },
+    "provenance": {
+      "primary_sector": "SYSTEM_DERIVED",
+      "secondary_sectors": "SYSTEM_DERIVED",
+      "sub_sectors": "SYSTEM_DERIVED",
+      "business_types": "SYSTEM_DERIVED",
+      "stakeholders": "SYSTEM_DERIVED",
+      "geographic_scope": "SYSTEM_DERIVED",
+      "company_exposure_readiness": "SYSTEM_DERIVED",
+      "evidence": "AUTHORITATIVE_CORPUS_GROUNDED",
+      "factual_summary": "SYSTEM_DERIVED"
+    },
+    "generated_at": "2026-09-09T18:05:53.783028+00:00",
+    "schema_version": "1.0.0"
+  },
+  "impact_assessment": {
+    "bill_id": "andhra-pradesh-vs-bill-13-2026",
+    "state": "Andhra Pradesh",
+    "title": "The Andhra Pradesh Jan Vishwas (Amendment of Provisions) Bill, 2026",
+    "bill_number": "L.A. Bill No. 13 of 2026",
+    "economic_mechanisms": [
+      "compliance_cost",
+      "investment",
+      "land",
+      "procurement",
+      "regulation",
+      "taxation"
+    ],
+    "economic_direction": "neutral",
+    "economic_strength": "HIGH",
+    "market_relevance": "NONE",
+    "modeling_eligibility": "NOT_ELIGIBLE",
+    "data_sufficiency": "INSUFFICIENT",
+    "event_date_quality": "MEDIUM",
+    "primary_event_date": {
+      "role": "assent",
+      "date": "2026-03-24",
+      "source": "official_gazette",
+      "is_primary": true
+    },
+    "alternative_event_dates": [],
+    "anticipation_readiness": "PARTIAL",
+    "candidate_anticipation_channels": [
+      "public_announcements",
+      "legislative_leaks",
+      "government_consultations",
+      "committee_discussions",
+      "media_coverage",
+      "gdelt",
+      "google_trends"
+    ],
+    "market_data_readiness": {
+      "candidate_companies_count": 0,
+      "listed_companies_count": 0,
+      "unlisted_companies_count": 0,
+      "companies_with_market_data": [],
+      "companies_missing_market_data": [],
+      "benchmark_available": true,
+      "benchmark_ticker": "^NSEI",
+      "trading_calendar_coverage": "INSUFFICIENT"
+    },
+    "listed_company_count": 0,
+    "exposure_count": 0,
+    "direct_exposure_count": 0,
+    "indirect_exposure_count": 0,
+    "missing_requirements": [
+      "No grounded corporate exposure identified for this State bill.",
+      "Live anticipation crawling and sentiment signal ingestion not connected."
+    ],
+    "scorecard": {
+      "bill_identity_verified": true,
+      "state_jurisdiction_verified": true,
+      "event_date_verified": true,
+      "economic_mechanism_identified": true,
+      "corporate_exposure_verified": false,
+      "listed_company_verified": false,
+      "historical_market_data_available": false,
+      "benchmark_data_available": true,
+      "event_date_identifiable": true,
+      "anticipation_readiness_sufficient": true,
+      "result": "NOT_ELIGIBLE",
+      "notes": [
+        "Bill has no listed corporate exposure; remains strictly economic-only."
+      ]
+    },
+    "evidence": [
+      {
+        "source_type": "official_bill_summary",
+        "reference": "Statement of Objects and Reasons / Metadata",
+        "claim": "Statutory summary indicates policy in Other / Unclassified."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::compliance_cost",
+        "claim": "Statutory impact channel identified as 'compliance_cost'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::investment",
+        "claim": "Statutory impact channel identified as 'investment'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::land",
+        "claim": "Statutory impact channel identified as 'land'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::procurement",
+        "claim": "Statutory impact channel identified as 'procurement'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::regulation",
+        "claim": "Statutory impact channel identified as 'regulation'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::taxation",
+        "claim": "Statutory impact channel identified as 'taxation'."
+      }
+    ],
+    "confidence": "MEDIUM",
+    "provenance": {
+      "economic_taxonomy": "STATE_ECONOMIC_MECHANISMS_V1",
+      "market_relevance": "GROUNDED_CORPORATE_EXPOSURE_MATCH",
+      "eligibility_scorecard": "DETERMINISTIC_10_POINT_SCORECARD",
+      "market_data_audit": "LOCAL_PARQUET_STORE_VERIFIED"
+    },
+    "schema_version": "1.0.0",
+    "generated_at": "2026-09-10T16:03:44.801695+00:00"
+  }
+}

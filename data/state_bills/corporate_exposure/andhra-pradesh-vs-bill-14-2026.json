@@ -1,0 +1,106 @@
+[
+  {
+    "bill_id": "andhra-pradesh-vs-bill-14-2026",
+    "state": "Andhra Pradesh",
+    "company_id": "INE101A01026",
+    "company_name": "Mahindra & Mahindra Limited",
+    "ticker": "M&M",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Roads & Transport",
+    "sub_sector": "Commercial Vehicles",
+    "business_activity": "Commercial vehicle manufacturing and wholesale distribution",
+    "state_presence": [
+      "retail",
+      "service_operation"
+    ],
+    "presence_type": "retail",
+    "exposure_type": "transport",
+    "exposure_direction": "mixed",
+    "exposure_strength": "LOW",
+    "direct_indirect": "INDIRECT",
+    "geographic_scope": "national_with_state_operations",
+    "mechanism": "pricing",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Taxation schedules on commercial vehicle chassis and goods carriages",
+        "claim": "Revises tax on registration of commercial transport vehicles and goods carriages in the State.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "M&M Annual Report 2023-24",
+        "claim": "Mahindra & Mahindra Limited manufactures and distributes commercial transport chassis and trucks sold in Andhra Pradesh.",
+        "url": "https://www.mahindra.com"
+      }
+    ],
+    "confidence": "MEDIUM",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+      "exposure_chain": "INDIRECT_DOWNSTREAM_DEMAND"
+    },
+    "source_urls": [
+      "https://aplegislature.org/web/aplegislature/bills",
+      "https://www.mahindra.com"
+    ],
+    "missing_information": [
+      "State-level commercial fleet registration elasticity to motor vehicle tax changes."
+    ],
+    "verified_at": "2026-09-09T18:30:07.767927+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "andhra-pradesh-vs-bill-14-2026",
+    "state": "Andhra Pradesh",
+    "company_id": "INE155A01022",
+    "company_name": "Tata Motors Limited",
+    "ticker": "TATAMOTORS",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Roads & Transport",
+    "sub_sector": "Commercial Vehicles",
+    "business_activity": "Commercial vehicle manufacturing and wholesale distribution",
+    "state_presence": [
+      "retail",
+      "service_operation"
+    ],
+    "presence_type": "retail",
+    "exposure_type": "transport",
+    "exposure_direction": "mixed",
+    "exposure_strength": "LOW",
+    "direct_indirect": "INDIRECT",
+    "geographic_scope": "national_with_state_operations",
+    "mechanism": "pricing",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Taxation schedules on commercial vehicle chassis and goods carriages",
+        "claim": "Revises tax on registration of commercial transport vehicles and goods carriages in the State.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Tata Motors Annual Report 2023-24",
+        "claim": "Tata Motors Limited manufactures and distributes commercial transport chassis and trucks sold in Andhra Pradesh.",
+        "url": "https://www.tatamotors.com"
+      }
+    ],
+    "confidence": "MEDIUM",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+      "exposure_chain": "INDIRECT_DOWNSTREAM_DEMAND"
+    },
+    "source_urls": [
+      "https://aplegislature.org/web/aplegislature/bills",
+      "https://www.tatamotors.com"
+    ],
+    "missing_information": [
+      "State-level commercial fleet registration elasticity to motor vehicle tax changes."
+    ],
+    "verified_at": "2026-09-09T18:30:07.768232+00:00",
+    "schema_version": "1.0.0"
+  }
+]

@@ -137,6 +137,7 @@ class Settings:
     RAW_DIR: Path = _env_path("RAW_DIR", str(_PROJECT_ROOT / "data" / "raw"))
     PROCESSED_DIR: Path = _env_path("PROCESSED_DIR", str(_PROJECT_ROOT / "data" / "processed"))
     BILLS_DIR: Path = _env_path("BILLS_DIR", str(_PROJECT_ROOT / "data" / "bills"))
+    STATE_BILLS_DIR: Path = _env_path("STATE_BILLS_DIR", str(_PROJECT_ROOT / "data" / "state_bills"))
     COMPANIES_DIR: Path = _env_path("COMPANIES_DIR", str(_PROJECT_ROOT / "data" / "companies"))
     MARKET_DIR: Path = _env_path("MARKET_DIR", str(_PROJECT_ROOT / "data" / "market"))
     EXTERNAL_DIR: Path = _env_path("EXTERNAL_DIR", str(_PROJECT_ROOT / "data" / "external"))
@@ -425,6 +426,63 @@ class Settings:
         os.getenv("RISK_THRESHOLD_HIGH", "0.80")
     )
 
+    # -----------------------------------------------------------------------
+    # Task 8.10 — Groq AI Intelligence & Explanation Layer
+    # -----------------------------------------------------------------------
+    GROQ_API_KEY: str = os.getenv("GROQ_API_KEY", "")
+    GROQ_MODEL: str = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
+    GROQ_TIMEOUT: float = float(os.getenv("GROQ_TIMEOUT", "30.0"))
+    GROQ_MAX_TOKENS: int = int(os.getenv("GROQ_MAX_TOKENS", "1024"))
+    GROQ_TEMPERATURE: float = float(os.getenv("GROQ_TEMPERATURE", "0.2"))
+    AI_CACHE_DIR: Path = _env_path("AI_CACHE_DIR", "data/ai_cache")
+
+    # -----------------------------------------------------------------------
+    # Task 8.11 — Live Legislative Monitoring & Automatic Update Scheduler
+    # -----------------------------------------------------------------------
+    # Master switch — set to true to enable background scheduled monitoring
+    LEGISLATIVE_MONITOR_ENABLED: bool = _env_bool("LEGISLATIVE_MONITOR_ENABLED", False)
+    # How often to check Central sources (hours); default 24h
+    CENTRAL_MONITOR_INTERVAL: int = _env_int("CENTRAL_MONITOR_INTERVAL", 24)
+    # How often to check State sources (hours); default 48h
+    STATE_MONITOR_INTERVAL: int = _env_int("STATE_MONITOR_INTERVAL", 48)
+    # Maximum retries per source before marking as FAILED
+    MONITOR_MAX_RETRIES: int = _env_int("MONITOR_MAX_RETRIES", 3)
+    # Per-source HTTP timeout in seconds
+    MONITOR_TIMEOUT: int = _env_int("MONITOR_TIMEOUT", 60)
+    # Root directory for monitoring run records, change events, and bill versions
+    MONITORING_DIR: Path = _env_path("MONITORING_DIR", str(_PROJECT_ROOT / "storage" / "monitoring"))
+
+    # -----------------------------------------------------------------------
+    # Task 8.13 — Watchlists & Alerts Foundation
+    # -----------------------------------------------------------------------
+    WATCHLIST_DIR: Path = _env_path("WATCHLIST_DIR", str(_PROJECT_ROOT / "storage" / "watchlists"))
+    ALERTS_DIR: Path = _env_path("ALERTS_DIR", str(_PROJECT_ROOT / "storage" / "alerts"))
+    USERS_DIR: Path = _env_path("USERS_DIR", str(_PROJECT_ROOT / "storage" / "users"))
+    # Task 8.13.5 — Alert Aggregation & Digest Pipeline
+    ALERT_GROUPS_DIR: Path = _env_path("ALERT_GROUPS_DIR", str(_PROJECT_ROOT / "storage" / "alerts" / "groups"))
+    ALERT_DIGESTS_DIR: Path = _env_path("ALERT_DIGESTS_DIR", str(_PROJECT_ROOT / "storage" / "alerts" / "digests"))
+    ALERT_AGGREGATION_WINDOW_HOURS: int = _env_int("ALERT_AGGREGATION_WINDOW_HOURS", 24)
+    # Task 8.13.7 — Outbound Delivery Providers & Webhooks
+    ALERT_DELIVERIES_DIR: Path = _env_path("ALERT_DELIVERIES_DIR", str(_PROJECT_ROOT / "storage" / "alerts" / "deliveries"))
+    WEBHOOK_TIMEOUT: int = _env_int("WEBHOOK_TIMEOUT", 10)
+    WEBHOOK_MAX_RETRIES: int = _env_int("WEBHOOK_MAX_RETRIES", 3)
+    WEBHOOK_RETRY_BACKOFF: float = float(os.getenv("WEBHOOK_RETRY_BACKOFF", "0.5"))
+
+    # -----------------------------------------------------------------------
+    # Task 8.14.2 — FastAPI REST Service & API Layer
+    # -----------------------------------------------------------------------
+    API_V1_STR: str = _env("API_V1_STR", "/api/v1")
+    API_TITLE: str = "Indian Parliamentary Intelligence & Market Impact API"
+    API_VERSION: str = "1.0.0"
+    API_CORS_ORIGINS: list[str] = [
+        origin.strip()
+        for origin in os.getenv(
+            "API_CORS_ORIGINS",
+            "http://localhost:3000,http://127.0.0.1:3000,http://localhost:8000,http://127.0.0.1:8000",
+        ).split(",")
+        if origin.strip()
+    ]
+
     def ensure_directories(self) -> None:
         """Create all required project directories if they do not already exist."""
         dirs = [
@@ -432,6 +490,7 @@ class Settings:
             self.RAW_DIR,
             self.PROCESSED_DIR,
             self.BILLS_DIR,
+            self.STATE_BILLS_DIR,
             self.COMPANIES_DIR,
             self.MARKET_DIR,
             self.EXTERNAL_DIR,
@@ -459,6 +518,25 @@ class Settings:
             self.DECISION_SUPPORT_DIR,
             # Task 7.3 — Stakeholder Reporting Engine
             self.REPORTS_DIR,
+            # Task 8.10 — AI Explanation Cache
+            self.AI_CACHE_DIR,
+            # Task 8.11 — Legislative Monitoring
+            self.MONITORING_DIR,
+            self.MONITORING_DIR / "monitoring_runs",
+            self.MONITORING_DIR / "change_events",
+            self.MONITORING_DIR / "bill_versions",
+            self.MONITORING_DIR / "notification_events",
+            # Task 8.13 — Watchlists & Alerts
+            self.USERS_DIR,
+            self.WATCHLIST_DIR,
+            self.ALERTS_DIR,
+            self.ALERTS_DIR / "rules",
+            self.ALERTS_DIR / "events",
+            self.ALERTS_DIR / "notifications",
+            self.ALERTS_DIR / "preferences",
+            self.ALERT_GROUPS_DIR,
+            self.ALERT_DIGESTS_DIR,
+            self.ALERT_DELIVERIES_DIR,
         ]
         for directory in dirs:
             directory.mkdir(parents=True, exist_ok=True)

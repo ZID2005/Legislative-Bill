@@ -1,0 +1,540 @@
+{
+  "bill_id": "karnataka-vs-bill-37-2024",
+  "jurisdiction": "state",
+  "state": "Karnataka",
+  "title": "The Karnataka Medical Registration and Certain Other Law (Amendment) Bill, 2024",
+  "bill_number": "Bill No. 37 of 2024",
+  "chamber": "vidhan_sabha",
+  "status": "passed_both",
+  "source_url": "https://kla.kar.nic.in/assembly/bills/bills1640.htm",
+  "policy_category": "Other / Unclassified",
+  "category_provenance": "SYSTEM_DERIVED",
+  "year": 2024,
+  "introduction_date": "2024-07-24",
+  "assent_date": null,
+  "pdf_url": "https://kla.kar.nic.in/assembly/bills/bill1640_37.pdf",
+  "corpus_path": "D:\\Legislative-bill\\data\\state_bills\\corpus\\karnataka-vs-bill-37-2024.txt",
+  "document_hash": "680e21656686f6f8e41e5d34f4bb25150a52bf34a590dab22f1e170aa0bfb750",
+  "summary": {
+    "what_is_bill": "'The Karnataka Medical Registration and Certain Other Law (Amendment) Bill, 2024' (Bill No. 37 of 2024) is a State legislative measure introduced in the Karnataka Legislative Assembly (Vidhan Sabha) concerning Other / Unclassified.",
+    "what_it_changes": "The bill introduces statutory amendments to existing state legislation, primarily modifying Amendment of the Karnataka Act across 3 identified sections/clauses.",
+    "why_it_matters": "According to the official Statement of Objects and Reasons: \"It is considered necessary further to amend the Karnataka Medical Registration Act, 1961 (Karnataka Act 34 of 1961) and the Karnataka Prohibition of Violence Against Medicare Service Personnel and Damage to Property in Medicare Service Institutions Act, 2009 (Karnataka Act 01 of 2009) to provide for,- (i) the process of election of new members to the council; (ii) the fixation...\"",
+    "who_is_affected": "Primary affected groups include: Citizens, State Government, Property Owners & Real Estate Buyers.",
+    "key_provisions": [
+      "Statutory modification of Amendment of the Karnataka Act.",
+      "Identified clauses/sections amended: Section 1, Section 2, Section 3.",
+      "Contains statutory fee, tax, or duty rate provisions.",
+      "fine which may extend to one thousand rupees."
+    ],
+    "administrative_implications": "Administered and enforced under the authority of Registrar and Officers and designated state officials.",
+    "legislative_status": "Official status recorded as 'Passed Both' (introduced on 2024-07-24).",
+    "source": "Official Karnataka Legislature portal (karnataka_assembly)."
+  },
+  "objective": "It is considered necessary further to amend the Karnataka Medical Registration Act, 1961 (Karnataka Act 34 of 1961) and the Karnataka Prohibition of Violence Against Medicare Service Personnel and Damage to Property in Medicare Service Institutions Act, 2009 (Karnataka Act 01 of 2009) to provide for,- (i) the process of election of new members to the council; (ii) the fixation of time limit for the term of office of the President or the Vice- President of the council; (iii) the time, place and procedure of meeting of the council; (iv) the appointment of the Deputy registrar to the Council; (v) the mandatory Registration of medical practitioner to the council (vi) the procedure for conducting inquiries; (vii) prohibition of intentional insult of medicare service personnel in a medicare service institution; (viii) fixing the limit for penalty amount and extending the duration of imprisonment; (ix) the investigation and trail of cases; (x) the power to make rules to carry out the purposes of this Act; and (xi) certain other consequential amendments are also made. Hence, the Bill. 7",
+  "key_provisions": [
+    "Statutory modification of Amendment of the Karnataka Act.",
+    "Identified clauses/sections amended: Section 1, Section 2, Section 3.",
+    "Contains statutory fee, tax, or duty rate provisions.",
+    "fine which may extend to one thousand rupees."
+  ],
+  "amended_acts": [
+    "Amendment of the Karnataka Act"
+  ],
+  "affected_stakeholders": [
+    "Citizens",
+    "State Government",
+    "Property Owners & Real Estate Buyers"
+  ],
+  "administrative_authority": "Registrar and Officers",
+  "financial_provisions": "Contains statutory fee, tax, or duty rate provisions.",
+  "penalties_provisions": "fine which may extend to one thousand rupees.",
+  "extraction_status": "success",
+  "language": "Bilingual (English / Kannada)",
+  "page_count": 1,
+  "character_count": 113034,
+  "word_count": 8384,
+  "provenance": {
+    "title": "AUTHORITATIVE",
+    "bill_number": "AUTHORITATIVE",
+    "jurisdiction": "AUTHORITATIVE",
+    "state": "AUTHORITATIVE",
+    "chamber": "AUTHORITATIVE",
+    "status": "AUTHORITATIVE",
+    "source_url": "AUTHORITATIVE",
+    "pdf_url": "AUTHORITATIVE",
+    "introduction_date": "AUTHORITATIVE",
+    "assent_date": "UNAVAILABLE",
+    "year": "DERIVED",
+    "bill_id": "DERIVED",
+    "policy_category": "SYSTEM_DERIVED",
+    "document_hash": "DERIVED",
+    "corpus_path": "DERIVED",
+    "language": "AUTHORITATIVE",
+    "summary": "SYSTEM_DERIVED",
+    "objective": "SYSTEM_DERIVED",
+    "key_provisions": "SYSTEM_DERIVED",
+    "amended_acts": "SYSTEM_DERIVED",
+    "affected_stakeholders": "SYSTEM_DERIVED",
+    "administrative_authority": "SYSTEM_DERIVED",
+    "financial_provisions": "SYSTEM_DERIVED",
+    "penalties_provisions": "SYSTEM_DERIVED",
+    "economic_profile": "SYSTEM_DERIVED",
+    "corporate_exposures": "SYSTEM_DERIVED",
+    "impact_assessment": "DETERMINISTIC_METHODOLOGY_ENGINE"
+  },
+  "created_at": "2026-09-08T16:41:04.639360+00:00",
+  "economic_profile": {
+    "bill_id": "karnataka-vs-bill-37-2024",
+    "state": "Karnataka",
+    "policy_domain": "Other / Unclassified",
+    "primary_sector": "Healthcare",
+    "secondary_sectors": [
+      "Professional Services",
+      "Pharmaceuticals"
+    ],
+    "sub_sectors": [
+      "Hospitals & Clinics",
+      "Diagnostic Laboratories",
+      "Medical Devices",
+      "Legal Services",
+      "Accounting & Audit",
+      "Formulations",
+      "APIs"
+    ],
+    "economic_activities": [
+      "Clinical consultations",
+      "Inpatient hospital care",
+      "Diagnostic testing",
+      "Medical practitioner registration",
+      "Professional practice licensing",
+      "Drug manufacturing",
+      "Clinical research"
+    ],
+    "business_types": [
+      "Private hospitals",
+      "Clinical laboratories",
+      "Nursing homes",
+      "Medical diagnostic centres"
+    ],
+    "stakeholders": [
+      {
+        "stakeholder": "Hospitals",
+        "category": "businesses",
+        "role": "primary_affected",
+        "direction": "mixed",
+        "mechanism": "compliance",
+        "impact_type": "DIRECT",
+        "evidence": {
+          "source_type": "bill_text",
+          "section": "Registration & Health Standards",
+          "text_reference": "Standards for registration of clinical establishments, diagnostic labs, or medical practitioners.",
+          "location": "corpus/karnataka-vs-bill-37-2024.txt"
+        },
+        "description": "Clinical facilities and diagnostic establishments must adhere to mandatory registration and minimum equipment norms."
+      },
+      {
+        "stakeholder": "Patients",
+        "category": "people",
+        "role": "potential_beneficiary",
+        "direction": "positive",
+        "mechanism": "public_service",
+        "impact_type": "DIRECT",
+        "evidence": {
+          "source_type": "bill_text",
+          "section": "Registration & Health Standards",
+          "text_reference": "Standards for registration of clinical establishments, diagnostic labs, or medical practitioners.",
+          "location": "corpus/karnataka-vs-bill-37-2024.txt"
+        },
+        "description": "Healthcare consumers benefit from standardized clinical care quality and pricing transparency requirements."
+      }
+    ],
+    "geographic_scope": "state-wide",
+    "direct_impacts": [
+      "Direct statutory compliance requirement affecting Hospitals.",
+      "Direct statutory public_service requirement affecting Patients."
+    ],
+    "indirect_impacts": [
+      "Indirect compliance and downstream market adjustment effects."
+    ],
+    "impact_mechanisms": [
+      "compliance",
+      "public_service"
+    ],
+    "company_exposure_readiness": "MEDIUM",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "section": "Registration & Health Standards",
+        "text_reference": "Standards for registration of clinical establishments, diagnostic labs, or medical practitioners.",
+        "location": "corpus/karnataka-vs-bill-37-2024.txt"
+      }
+    ],
+    "confidence": "HIGH",
+    "factual_summary": {
+      "who_may_be_affected": [
+        "Hospitals"
+      ],
+      "how_affected": [
+        "Establishes updated compliance, record-keeping, and reporting obligations.",
+        "Reforms local public service delivery and administrative frameworks."
+      ],
+      "who_may_benefit": [
+        "Patients"
+      ],
+      "who_may_bear_costs": [
+        "Hospitals"
+      ]
+    },
+    "provenance": {
+      "primary_sector": "SYSTEM_DERIVED",
+      "secondary_sectors": "SYSTEM_DERIVED",
+      "sub_sectors": "SYSTEM_DERIVED",
+      "business_types": "SYSTEM_DERIVED",
+      "stakeholders": "SYSTEM_DERIVED",
+      "geographic_scope": "SYSTEM_DERIVED",
+      "company_exposure_readiness": "SYSTEM_DERIVED",
+      "evidence": "AUTHORITATIVE_CORPUS_GROUNDED",
+      "factual_summary": "SYSTEM_DERIVED"
+    },
+    "generated_at": "2026-09-09T18:05:57.513541+00:00",
+    "schema_version": "1.0.0"
+  },
+  "corporate_exposures": [
+    {
+      "bill_id": "karnataka-vs-bill-37-2024",
+      "state": "Karnataka",
+      "company_id": "INE437A01024",
+      "company_name": "Apollo Hospitals Enterprise Limited",
+      "ticker": "APOLLOHOSP",
+      "exchange": "NSE",
+      "listed_status": "listed",
+      "sector": "Healthcare",
+      "sub_sector": "Clinical Establishments & Tertiary Care",
+      "business_activity": "Hospital clinical operations & medical care delivery",
+      "state_presence": [
+        "plant",
+        "service_operation",
+        "retail"
+      ],
+      "presence_type": "plant",
+      "exposure_type": "healthcare",
+      "exposure_direction": "mixed",
+      "exposure_strength": "HIGH",
+      "direct_indirect": "DIRECT",
+      "geographic_scope": "state_specific",
+      "mechanism": "regulation",
+      "evidence": [
+        {
+          "source_type": "bill_text",
+          "reference": "Registration and statutory standards for clinical establishments",
+          "claim": "Mandates statutory registration, clinical audit, diagnostic transparency, and doctor verification for medical facilities.",
+          "url": null
+        },
+        {
+          "source_type": "company_filing",
+          "reference": "Apollo Hospitals Annual Report 2023-24",
+          "claim": "Apollo Hospitals Enterprise Limited operates multi-specialty hospitals and clinics at Bengaluru (Bannerghatta Road, Jayanagar, Sheshadripuram), Mysuru.",
+          "url": "https://www.apollohospitals.com"
+        }
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+        "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+        "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+      },
+      "source_urls": [
+        "https://kla.kar.nic.in/assembly/bills/bills1640.htm",
+        "https://www.apollohospitals.com"
+      ],
+      "missing_information": [
+        "Operational bed count in Karnataka subject to inspection and standards audit."
+      ],
+      "verified_at": "2026-09-09T18:30:10.314574+00:00",
+      "schema_version": "1.0.0"
+    },
+    {
+      "bill_id": "karnataka-vs-bill-37-2024",
+      "state": "Karnataka",
+      "company_id": "INE376G01013",
+      "company_name": "Biocon Limited",
+      "ticker": "BIOCON",
+      "exchange": "NSE",
+      "listed_status": "listed",
+      "sector": "Healthcare",
+      "sub_sector": "Clinical Establishments & Tertiary Care",
+      "business_activity": "Hospital clinical operations & medical care delivery",
+      "state_presence": [
+        "headquarters",
+        "manufacturing",
+        "plant",
+        "office"
+      ],
+      "presence_type": "plant",
+      "exposure_type": "healthcare",
+      "exposure_direction": "mixed",
+      "exposure_strength": "HIGH",
+      "direct_indirect": "DIRECT",
+      "geographic_scope": "state_specific",
+      "mechanism": "regulation",
+      "evidence": [
+        {
+          "source_type": "bill_text",
+          "reference": "Registration and statutory standards for clinical establishments",
+          "claim": "Mandates statutory registration, clinical audit, diagnostic transparency, and doctor verification for medical facilities.",
+          "url": null
+        },
+        {
+          "source_type": "company_filing",
+          "reference": "Biocon Integrated Annual Report 2023-24",
+          "claim": "Biocon Limited operates multi-specialty hospitals and clinics at Bengaluru (Electronic City, Jigani).",
+          "url": "https://www.biocon.com"
+        }
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+        "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+        "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+      },
+      "source_urls": [
+        "https://kla.kar.nic.in/assembly/bills/bills1640.htm",
+        "https://www.biocon.com"
+      ],
+      "missing_information": [
+        "Operational bed count in Karnataka subject to inspection and standards audit."
+      ],
+      "verified_at": "2026-09-09T18:30:10.315026+00:00",
+      "schema_version": "1.0.0"
+    },
+    {
+      "bill_id": "karnataka-vs-bill-37-2024",
+      "state": "Karnataka",
+      "company_id": "INE914M01019",
+      "company_name": "Aster DM Healthcare Limited",
+      "ticker": "ASTERDM",
+      "exchange": "NSE",
+      "listed_status": "listed",
+      "sector": "Healthcare",
+      "sub_sector": "Clinical Establishments & Tertiary Care",
+      "business_activity": "Hospital clinical operations & medical care delivery",
+      "state_presence": [
+        "headquarters",
+        "plant",
+        "service_operation"
+      ],
+      "presence_type": "plant",
+      "exposure_type": "healthcare",
+      "exposure_direction": "mixed",
+      "exposure_strength": "HIGH",
+      "direct_indirect": "DIRECT",
+      "geographic_scope": "state_specific",
+      "mechanism": "regulation",
+      "evidence": [
+        {
+          "source_type": "bill_text",
+          "reference": "Registration and statutory standards for clinical establishments",
+          "claim": "Mandates statutory registration, clinical audit, diagnostic transparency, and doctor verification for medical facilities.",
+          "url": null
+        },
+        {
+          "source_type": "company_filing",
+          "reference": "Aster DM Healthcare Annual Report 2023-24",
+          "claim": "Aster DM Healthcare Limited operates multi-specialty hospitals and clinics at Bengaluru (Hebbal, Whitefield).",
+          "url": "https://www.asterdmhealthcare.com"
+        }
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+        "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+        "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+      },
+      "source_urls": [
+        "https://kla.kar.nic.in/assembly/bills/bills1640.htm",
+        "https://www.asterdmhealthcare.com"
+      ],
+      "missing_information": [
+        "Operational bed count in Karnataka subject to inspection and standards audit."
+      ],
+      "verified_at": "2026-09-09T18:30:10.315297+00:00",
+      "schema_version": "1.0.0"
+    },
+    {
+      "bill_id": "karnataka-vs-bill-37-2024",
+      "state": "Karnataka",
+      "company_id": "INE059A01026",
+      "company_name": "Cipla Limited",
+      "ticker": "CIPLA",
+      "exchange": "NSE",
+      "listed_status": "listed",
+      "sector": "Healthcare",
+      "sub_sector": "Clinical Establishments & Tertiary Care",
+      "business_activity": "Hospital clinical operations & medical care delivery",
+      "state_presence": [
+        "manufacturing",
+        "plant",
+        "office"
+      ],
+      "presence_type": "plant",
+      "exposure_type": "healthcare",
+      "exposure_direction": "mixed",
+      "exposure_strength": "HIGH",
+      "direct_indirect": "DIRECT",
+      "geographic_scope": "state_specific",
+      "mechanism": "regulation",
+      "evidence": [
+        {
+          "source_type": "bill_text",
+          "reference": "Registration and statutory standards for clinical establishments",
+          "claim": "Mandates statutory registration, clinical audit, diagnostic transparency, and doctor verification for medical facilities.",
+          "url": null
+        },
+        {
+          "source_type": "company_filing",
+          "reference": "Cipla Integrated Annual Report 2023-24 (Manufacturing Locations)",
+          "claim": "Cipla Limited operates multi-specialty hospitals and clinics at Bengaluru (Virgonagar, Bommasandra).",
+          "url": "https://www.cipla.com"
+        }
+      ],
+      "confidence": "HIGH",
+      "provenance": {
+        "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+        "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+        "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+      },
+      "source_urls": [
+        "https://kla.kar.nic.in/assembly/bills/bills1640.htm",
+        "https://www.cipla.com"
+      ],
+      "missing_information": [
+        "Operational bed count in Karnataka subject to inspection and standards audit."
+      ],
+      "verified_at": "2026-09-09T18:30:10.315660+00:00",
+      "schema_version": "1.0.0"
+    }
+  ],
+  "impact_assessment": {
+    "bill_id": "karnataka-vs-bill-37-2024",
+    "state": "Karnataka",
+    "title": "The Karnataka Medical Registration and Certain Other Law (Amendment) Bill, 2024",
+    "bill_number": "Bill No. 37 of 2024",
+    "economic_mechanisms": [
+      "compliance_cost",
+      "licensing",
+      "other",
+      "public_spending",
+      "regulation",
+      "taxation"
+    ],
+    "economic_direction": "positive",
+    "economic_strength": "HIGH",
+    "market_relevance": "HIGH",
+    "modeling_eligibility": "CONDITIONALLY_ELIGIBLE",
+    "data_sufficiency": "PARTIAL",
+    "event_date_quality": "MEDIUM",
+    "primary_event_date": {
+      "role": "introduction",
+      "date": "2024-07-24",
+      "source": "official_legislative_portal",
+      "is_primary": true
+    },
+    "alternative_event_dates": [],
+    "anticipation_readiness": "PARTIAL",
+    "candidate_anticipation_channels": [
+      "public_announcements",
+      "legislative_leaks",
+      "government_consultations",
+      "committee_discussions",
+      "media_coverage",
+      "gdelt",
+      "google_trends"
+    ],
+    "market_data_readiness": {
+      "candidate_companies_count": 4,
+      "listed_companies_count": 4,
+      "unlisted_companies_count": 0,
+      "companies_with_market_data": [
+        "APOLLOHOSP",
+        "CIPLA"
+      ],
+      "companies_missing_market_data": [
+        "ASTERDM",
+        "BIOCON"
+      ],
+      "benchmark_available": true,
+      "benchmark_ticker": "^NSEI",
+      "trading_calendar_coverage": "PARTIAL"
+    },
+    "listed_company_count": 4,
+    "exposure_count": 4,
+    "direct_exposure_count": 4,
+    "indirect_exposure_count": 0,
+    "missing_requirements": [
+      "Historical market price data missing in local store for: ASTERDM, BIOCON.",
+      "Live anticipation crawling and sentiment signal ingestion not connected."
+    ],
+    "scorecard": {
+      "bill_identity_verified": true,
+      "state_jurisdiction_verified": true,
+      "event_date_verified": true,
+      "economic_mechanism_identified": true,
+      "corporate_exposure_verified": true,
+      "listed_company_verified": true,
+      "historical_market_data_available": true,
+      "benchmark_data_available": true,
+      "event_date_identifiable": true,
+      "anticipation_readiness_sufficient": true,
+      "result": "CONDITIONALLY_ELIGIBLE",
+      "notes": [
+        "Anticipation framework defined, but external live news/GDELT crawlers not attached."
+      ]
+    },
+    "evidence": [
+      {
+        "source_type": "official_bill_summary",
+        "reference": "Statement of Objects and Reasons / Metadata",
+        "claim": "Statutory summary indicates policy in Other / Unclassified."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::compliance_cost",
+        "claim": "Statutory impact channel identified as 'compliance_cost'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::licensing",
+        "claim": "Statutory impact channel identified as 'licensing'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::other",
+        "claim": "Statutory impact channel identified as 'other'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::public_spending",
+        "claim": "Statutory impact channel identified as 'public_spending'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::regulation",
+        "claim": "Statutory impact channel identified as 'regulation'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::taxation",
+        "claim": "Statutory impact channel identified as 'taxation'."
+      }
+    ],
+    "confidence": "MEDIUM",
+    "provenance": {
+      "economic_taxonomy": "STATE_ECONOMIC_MECHANISMS_V1",
+      "market_relevance": "GROUNDED_CORPORATE_EXPOSURE_MATCH",
+      "eligibility_scorecard": "DETERMINISTIC_10_POINT_SCORECARD",
+      "market_data_audit": "LOCAL_PARQUET_STORE_VERIFIED"
+    },
+    "schema_version": "1.0.0",
+    "generated_at": "2026-09-10T16:03:48.476195+00:00"
+  }
+}

@@ -1,0 +1,215 @@
+[
+  {
+    "bill_id": "karnataka-vs-bill-37-2024",
+    "state": "Karnataka",
+    "company_id": "INE437A01024",
+    "company_name": "Apollo Hospitals Enterprise Limited",
+    "ticker": "APOLLOHOSP",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Healthcare",
+    "sub_sector": "Clinical Establishments & Tertiary Care",
+    "business_activity": "Hospital clinical operations & medical care delivery",
+    "state_presence": [
+      "plant",
+      "service_operation",
+      "retail"
+    ],
+    "presence_type": "plant",
+    "exposure_type": "healthcare",
+    "exposure_direction": "mixed",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "regulation",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Registration and statutory standards for clinical establishments",
+        "claim": "Mandates statutory registration, clinical audit, diagnostic transparency, and doctor verification for medical facilities.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Apollo Hospitals Annual Report 2023-24",
+        "claim": "Apollo Hospitals Enterprise Limited operates multi-specialty hospitals and clinics at Bengaluru (Bannerghatta Road, Jayanagar, Sheshadripuram), Mysuru.",
+        "url": "https://www.apollohospitals.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://kla.kar.nic.in/assembly/bills/bills1640.htm",
+      "https://www.apollohospitals.com"
+    ],
+    "missing_information": [
+      "Operational bed count in Karnataka subject to inspection and standards audit."
+    ],
+    "verified_at": "2026-09-09T18:30:10.314574+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "karnataka-vs-bill-37-2024",
+    "state": "Karnataka",
+    "company_id": "INE376G01013",
+    "company_name": "Biocon Limited",
+    "ticker": "BIOCON",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Healthcare",
+    "sub_sector": "Clinical Establishments & Tertiary Care",
+    "business_activity": "Hospital clinical operations & medical care delivery",
+    "state_presence": [
+      "headquarters",
+      "manufacturing",
+      "plant",
+      "office"
+    ],
+    "presence_type": "plant",
+    "exposure_type": "healthcare",
+    "exposure_direction": "mixed",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "regulation",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Registration and statutory standards for clinical establishments",
+        "claim": "Mandates statutory registration, clinical audit, diagnostic transparency, and doctor verification for medical facilities.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Biocon Integrated Annual Report 2023-24",
+        "claim": "Biocon Limited operates multi-specialty hospitals and clinics at Bengaluru (Electronic City, Jigani).",
+        "url": "https://www.biocon.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://kla.kar.nic.in/assembly/bills/bills1640.htm",
+      "https://www.biocon.com"
+    ],
+    "missing_information": [
+      "Operational bed count in Karnataka subject to inspection and standards audit."
+    ],
+    "verified_at": "2026-09-09T18:30:10.315026+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "karnataka-vs-bill-37-2024",
+    "state": "Karnataka",
+    "company_id": "INE914M01019",
+    "company_name": "Aster DM Healthcare Limited",
+    "ticker": "ASTERDM",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Healthcare",
+    "sub_sector": "Clinical Establishments & Tertiary Care",
+    "business_activity": "Hospital clinical operations & medical care delivery",
+    "state_presence": [
+      "headquarters",
+      "plant",
+      "service_operation"
+    ],
+    "presence_type": "plant",
+    "exposure_type": "healthcare",
+    "exposure_direction": "mixed",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "regulation",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Registration and statutory standards for clinical establishments",
+        "claim": "Mandates statutory registration, clinical audit, diagnostic transparency, and doctor verification for medical facilities.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Aster DM Healthcare Annual Report 2023-24",
+        "claim": "Aster DM Healthcare Limited operates multi-specialty hospitals and clinics at Bengaluru (Hebbal, Whitefield).",
+        "url": "https://www.asterdmhealthcare.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://kla.kar.nic.in/assembly/bills/bills1640.htm",
+      "https://www.asterdmhealthcare.com"
+    ],
+    "missing_information": [
+      "Operational bed count in Karnataka subject to inspection and standards audit."
+    ],
+    "verified_at": "2026-09-09T18:30:10.315297+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "karnataka-vs-bill-37-2024",
+    "state": "Karnataka",
+    "company_id": "INE059A01026",
+    "company_name": "Cipla Limited",
+    "ticker": "CIPLA",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Healthcare",
+    "sub_sector": "Clinical Establishments & Tertiary Care",
+    "business_activity": "Hospital clinical operations & medical care delivery",
+    "state_presence": [
+      "manufacturing",
+      "plant",
+      "office"
+    ],
+    "presence_type": "plant",
+    "exposure_type": "healthcare",
+    "exposure_direction": "mixed",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "regulation",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Registration and statutory standards for clinical establishments",
+        "claim": "Mandates statutory registration, clinical audit, diagnostic transparency, and doctor verification for medical facilities.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Cipla Integrated Annual Report 2023-24 (Manufacturing Locations)",
+        "claim": "Cipla Limited operates multi-specialty hospitals and clinics at Bengaluru (Virgonagar, Bommasandra).",
+        "url": "https://www.cipla.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://kla.kar.nic.in/assembly/bills/bills1640.htm",
+      "https://www.cipla.com"
+    ],
+    "missing_information": [
+      "Operational bed count in Karnataka subject to inspection and standards audit."
+    ],
+    "verified_at": "2026-09-09T18:30:10.315660+00:00",
+    "schema_version": "1.0.0"
+  }
+]

@@ -1,0 +1,265 @@
+[
+  {
+    "bill_id": "telangana-vs-bill-2-2026",
+    "state": "Telangana",
+    "company_id": "INE154A01025",
+    "company_name": "ITC Limited",
+    "ticker": "ITC",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Banking & Finance",
+    "sub_sector": "State GST Compliance",
+    "business_activity": "Commercial retail and service billing in the State",
+    "state_presence": [
+      "manufacturing",
+      "plant",
+      "logistics"
+    ],
+    "presence_type": "manufacturing",
+    "exposure_type": "taxation",
+    "exposure_direction": "neutral",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "national_with_state_operations",
+    "mechanism": "compliance",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Input tax credit (ITC) and audit assessment harmonization clauses",
+        "claim": "Aligns Telangana SGST statutory procedures, input tax credit disallowances, and electronic summons with national GST Council decisions.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "ITC Annual Report 2023-24 (Paperboards & Specialty Papers Division)",
+        "claim": "ITC Limited operates commercial branches, retail outlets, and distribution in Telangana.",
+        "url": "https://www.itcportal.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+      "exposure_chain": "GENERAL_STATUTORY_COMPLIANCE"
+    },
+    "source_urls": [
+      "https://legislature.telangana.gov.in/bills/detail/2-2026",
+      "https://www.itcportal.com"
+    ],
+    "missing_information": [
+      "Input tax credit volume claimed under Telangana SGST jurisdiction."
+    ],
+    "verified_at": "2026-09-09T18:30:12.631177+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "telangana-vs-bill-2-2026",
+    "state": "Telangana",
+    "company_id": "INE062A01020",
+    "company_name": "State Bank of India",
+    "ticker": "SBIN",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Banking & Finance",
+    "sub_sector": "State GST Compliance",
+    "business_activity": "Commercial retail and service billing in the State",
+    "state_presence": [
+      "branch",
+      "service_operation"
+    ],
+    "presence_type": "branch",
+    "exposure_type": "taxation",
+    "exposure_direction": "neutral",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "national_with_state_operations",
+    "mechanism": "compliance",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Input tax credit (ITC) and audit assessment harmonization clauses",
+        "claim": "Aligns Telangana SGST statutory procedures, input tax credit disallowances, and electronic summons with national GST Council decisions.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "SBI Annual Report 2023-24",
+        "claim": "State Bank of India operates commercial branches, retail outlets, and distribution in Telangana.",
+        "url": "https://www.sbi.co.in"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+      "exposure_chain": "GENERAL_STATUTORY_COMPLIANCE"
+    },
+    "source_urls": [
+      "https://legislature.telangana.gov.in/bills/detail/2-2026",
+      "https://www.sbi.co.in"
+    ],
+    "missing_information": [
+      "Input tax credit volume claimed under Telangana SGST jurisdiction."
+    ],
+    "verified_at": "2026-09-09T18:30:12.631503+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "telangana-vs-bill-2-2026",
+    "state": "Telangana",
+    "company_id": "INE040A01034",
+    "company_name": "HDFC Bank Limited",
+    "ticker": "HDFCBANK",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Banking & Finance",
+    "sub_sector": "State GST Compliance",
+    "business_activity": "Commercial retail and service billing in the State",
+    "state_presence": [
+      "branch",
+      "service_operation"
+    ],
+    "presence_type": "branch",
+    "exposure_type": "taxation",
+    "exposure_direction": "neutral",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "national_with_state_operations",
+    "mechanism": "compliance",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Input tax credit (ITC) and audit assessment harmonization clauses",
+        "claim": "Aligns Telangana SGST statutory procedures, input tax credit disallowances, and electronic summons with national GST Council decisions.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "HDFC Bank Annual Report 2023-24",
+        "claim": "HDFC Bank Limited operates commercial branches, retail outlets, and distribution in Telangana.",
+        "url": "https://www.hdfcbank.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+      "exposure_chain": "GENERAL_STATUTORY_COMPLIANCE"
+    },
+    "source_urls": [
+      "https://legislature.telangana.gov.in/bills/detail/2-2026",
+      "https://www.hdfcbank.com"
+    ],
+    "missing_information": [
+      "Input tax credit volume claimed under Telangana SGST jurisdiction."
+    ],
+    "verified_at": "2026-09-09T18:30:12.631772+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "telangana-vs-bill-2-2026",
+    "state": "Telangana",
+    "company_id": "INE090A01021",
+    "company_name": "ICICI Bank Limited",
+    "ticker": "ICICIBANK",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Banking & Finance",
+    "sub_sector": "State GST Compliance",
+    "business_activity": "Commercial retail and service billing in the State",
+    "state_presence": [
+      "branch",
+      "office",
+      "service_operation"
+    ],
+    "presence_type": "branch",
+    "exposure_type": "taxation",
+    "exposure_direction": "neutral",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "national_with_state_operations",
+    "mechanism": "compliance",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Input tax credit (ITC) and audit assessment harmonization clauses",
+        "claim": "Aligns Telangana SGST statutory procedures, input tax credit disallowances, and electronic summons with national GST Council decisions.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "ICICI Bank Annual Report 2023-24",
+        "claim": "ICICI Bank Limited operates commercial branches, retail outlets, and distribution in Telangana.",
+        "url": "https://www.icicibank.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+      "exposure_chain": "GENERAL_STATUTORY_COMPLIANCE"
+    },
+    "source_urls": [
+      "https://legislature.telangana.gov.in/bills/detail/2-2026",
+      "https://www.icicibank.com"
+    ],
+    "missing_information": [
+      "Input tax credit volume claimed under Telangana SGST jurisdiction."
+    ],
+    "verified_at": "2026-09-09T18:30:12.632028+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "telangana-vs-bill-2-2026",
+    "state": "Telangana",
+    "company_id": "INE030A01027",
+    "company_name": "Hindustan Unilever Limited",
+    "ticker": "HINDUNILVR",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Banking & Finance",
+    "sub_sector": "State GST Compliance",
+    "business_activity": "Commercial retail and service billing in the State",
+    "state_presence": [
+      "manufacturing",
+      "plant",
+      "logistics"
+    ],
+    "presence_type": "manufacturing",
+    "exposure_type": "taxation",
+    "exposure_direction": "neutral",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "national_with_state_operations",
+    "mechanism": "compliance",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Input tax credit (ITC) and audit assessment harmonization clauses",
+        "claim": "Aligns Telangana SGST statutory procedures, input tax credit disallowances, and electronic summons with national GST Council decisions.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "HUL Annual Report 2023-24 (Supply Chain & Factory Footprint)",
+        "claim": "Hindustan Unilever Limited operates commercial branches, retail outlets, and distribution in Telangana.",
+        "url": "https://www.hul.co.in"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+      "exposure_chain": "GENERAL_STATUTORY_COMPLIANCE"
+    },
+    "source_urls": [
+      "https://legislature.telangana.gov.in/bills/detail/2-2026",
+      "https://www.hul.co.in"
+    ],
+    "missing_information": [
+      "Input tax credit volume claimed under Telangana SGST jurisdiction."
+    ],
+    "verified_at": "2026-09-09T18:30:12.632387+00:00",
+    "schema_version": "1.0.0"
+  }
+]

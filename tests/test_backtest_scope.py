@@ -248,12 +248,22 @@ class TestCompanyRepositoryScope:
         assert len(violations) == 0, f"Test company ISINs found: {violations}"
 
     def test_all_isins_valid_prefix(self, all_companies: list[dict]) -> None:
-        """All ISINs should start with 'INE' (Indian securities)."""
+        """All listed securities must start with 'INE' (Indian securities).
+        Unlisted intelligence entities use synthetic entity identifiers."""
         violations = [
             c["isin"] for c in all_companies
+            if c.get("listing_status") == "Listed" and not c.get("isin", "").startswith(VALID_ISIN_PREFIX)
+        ]
+        assert len(violations) == 0, f"Listed companies with non-INE ISINs found: {violations}"
+
+        # Verify that all non-INE companies are unlisted intelligence entities
+        non_ine = [
+            c for c in all_companies
             if not c.get("isin", "").startswith(VALID_ISIN_PREFIX)
         ]
-        assert len(violations) == 0, f"Non-INE ISINs found: {violations}"
+        for c in non_ine:
+            assert c.get("listing_status") == "Unlisted", f"Expected unlisted status for {c['isin']}"
+            assert c.get("universe_type") == "intelligence", f"Expected intelligence universe for {c['isin']}"
 
     def test_all_companies_active(self, all_companies: list[dict]) -> None:
         """Production companies should be active."""

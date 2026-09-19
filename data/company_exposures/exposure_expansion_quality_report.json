@@ -1,0 +1,59 @@
+{
+  "metadata": {
+    "task": "TASK_8_12_4",
+    "title": "Evidence-Based Company Exposure Intelligence Expansion Quality Report",
+    "generated_at": "2026-09-16T07:17:33.322946+00:00",
+    "schema_version": "1.0.0"
+  },
+  "companies_assessed": {
+    "total_companies_assessed": 70,
+    "new_intelligence_companies_assessed": 20,
+    "quantitative_companies": 50
+  },
+  "exposure_counts": {
+    "central_exposures": 18,
+    "state_exposures": 86,
+    "total_exposures": 104,
+    "direct_exposures": 99,
+    "indirect_exposures": 5,
+    "unknown_directness": 0
+  },
+  "exposure_strength": {
+    "high_strength": 56,
+    "medium_strength": 42,
+    "low_strength": 6,
+    "unknown_strength": 0,
+    "none_strength": 0
+  },
+  "evidence_audit": {
+    "exposures_with_company_evidence": 104,
+    "exposures_with_legislative_evidence": 104,
+    "exposures_with_both": 104,
+    "exposures_missing_evidence": 0,
+    "unsupported_mappings": 0
+  },
+  "company_coverage": {
+    "intelligence_companies_with_exposure_count": 14,
+    "intelligence_companies_without_exposure_count": 6,
+    "companies_with_no_exposure": [
+      "Flipkart Private Limited",
+      "Amazon Seller Services Private Limited",
+      "Kerala State Electricity Board Limited",
+      "Indian Renewable Energy Development Agency Limited",
+      "Kerala State Road Transport Corporation",
+      "Karnataka State Road Transport Corporation"
+    ]
+  },
+  "integrity_audit": {
+    "duplicates_found": 0,
+    "duplicate_details": []
+  },
+  "quantitative_firewall_and_baseline": {
+    "central_quantitative_companies": 47,
+    "central_bill_company_pairs": 940,
+    "central_predictions": 4700,
+    "state_predictions": 0,
+    "central_baseline_changed": false,
+    "intelligence_isins_leaked_to_predictions": []
+  }
+}

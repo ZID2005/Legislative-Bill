@@ -1,0 +1,110 @@
+[
+  {
+    "bill_id": "telangana-vs-bill-11-2024",
+    "state": "Telangana",
+    "company_id": "INE758T01015",
+    "company_name": "Zomato Limited",
+    "ticker": "ZOMATO",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Labour & Employment",
+    "sub_sector": "Gig Economy & Platform Services",
+    "business_activity": "App-based platform delivery & aggregator operations",
+    "state_presence": [
+      "service_operation",
+      "logistics",
+      "office"
+    ],
+    "presence_type": "service_operation",
+    "exposure_type": "labour",
+    "exposure_direction": "negative",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "labour_requirement",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Section 3 / Statement of Objects and Reasons",
+        "claim": "Requires mandatory registration of app-based aggregators and levy of a welfare fee (1-2%) on platform transactions.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Zomato Annual Report 2023-24 (Operational Footprint & Delivery Network)",
+        "claim": "Zomato Limited operates on-demand app-based delivery services with active gig partner fleets across Hyderabad, Warangal, Karimnagar.",
+        "url": "https://www.zomato.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://legislature.telangana.gov.in/bills/detail/11-2024",
+      "https://www.zomato.com"
+    ],
+    "missing_information": [
+      "Exact platform gross merchandise value (GMV) and transaction volume originating strictly within Telangana.",
+      "Specific welfare cess financial pass-through elasticity to consumers/restaurants."
+    ],
+    "verified_at": "2026-09-09T18:30:12.345603+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "telangana-vs-bill-11-2024",
+    "state": "Telangana",
+    "company_id": "INE00H001014",
+    "company_name": "Swiggy Limited",
+    "ticker": "SWIGGY",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Labour & Employment",
+    "sub_sector": "Gig Economy & Platform Services",
+    "business_activity": "App-based platform delivery & aggregator operations",
+    "state_presence": [
+      "service_operation",
+      "logistics",
+      "office"
+    ],
+    "presence_type": "service_operation",
+    "exposure_type": "labour",
+    "exposure_direction": "negative",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "labour_requirement",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Section 3 / Statement of Objects and Reasons",
+        "claim": "Requires mandatory registration of app-based aggregators and levy of a welfare fee (1-2%) on platform transactions.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Swiggy DRHP Operational Metrics",
+        "claim": "Swiggy Limited operates on-demand app-based delivery services with active gig partner fleets across Hyderabad, Secunderabad.",
+        "url": "https://www.swiggy.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://legislature.telangana.gov.in/bills/detail/11-2024",
+      "https://www.swiggy.com"
+    ],
+    "missing_information": [
+      "Exact platform gross merchandise value (GMV) and transaction volume originating strictly within Telangana.",
+      "Specific welfare cess financial pass-through elasticity to consumers/restaurants."
+    ],
+    "verified_at": "2026-09-09T18:30:12.345787+00:00",
+    "schema_version": "1.0.0"
+  }
+]

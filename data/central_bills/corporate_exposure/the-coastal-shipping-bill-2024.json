@@ -1,0 +1,108 @@
+[
+  {
+    "bill_id": "the-coastal-shipping-bill-2024",
+    "state": "Central",
+    "company_id": "INE742F01042",
+    "company_name": "Adani Ports and Special Economic Zone Limited",
+    "ticker": "ADANIPORTS",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Infrastructure",
+    "sub_sector": "Ports & Shipping",
+    "business_activity": "Coastal port network and transhipment hub operations",
+    "state_presence": [
+      "national"
+    ],
+    "presence_type": "infrastructure",
+    "exposure_type": "regulatory",
+    "exposure_direction": "positive",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "national",
+    "mechanism": "market_access",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Clauses 3-12 (Cabotage regime, coastal vessel licensing & National Coastal Strategic Plan)",
+        "claim": "Provides a dedicated statutory framework for domestic coastal trade, relaxes cabotage licensing requirements for coastal vessels, and mandates port priority for coastal cargo movements.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "APSEZ Annual Report 2023-24 (Coastal Port Network & Transhipment Hub at Vizhinjam)",
+        "claim": "APSEZ operates commercial deepwater ports on east and west coasts (Mundra, Krishnapatnam, Gangavaram, Ennore, Vizhinjam) directly benefiting from coastal shipping promotion and domestic transhipment.",
+        "url": "https://www.adaniports.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "jurisdiction": "central",
+    "market_relevance": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_evidence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "COASTAL_TRADE_PROMOTION_AND_CABOTAGE"
+    },
+    "source_urls": [
+      "https://prsindia.org/billtrack/the-coastal-shipping-bill-2024",
+      "https://www.adaniports.com"
+    ],
+    "missing_information": [
+      "Coastal cargo tonnage growth targets at Vizhinjam and Krishnapatnam."
+    ],
+    "verified_at": "2026-09-16T07:17:31.694401+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "the-coastal-shipping-bill-2024",
+    "state": "Central",
+    "company_id": "INE399C01030",
+    "company_name": "Container Corporation of India Limited",
+    "ticker": "CONCOR",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Logistics & Transportation",
+    "sub_sector": "Coastal Freight Logistics",
+    "business_activity": "Domestic coastal container shipping services",
+    "state_presence": [
+      "national"
+    ],
+    "presence_type": "logistics",
+    "exposure_type": "regulatory",
+    "exposure_direction": "positive",
+    "exposure_strength": "MEDIUM",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "national",
+    "mechanism": "supply_chain",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Clauses 7-14 (Promotion of coastal container movement & intermodal integration)",
+        "claim": "Incentivises domestic multi-modal transport integration combining coastal shipping with inland rail freight corridors.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "CONCOR Annual Report 2023-24 (Coastal Shipping Business Segment)",
+        "claim": "CONCOR runs dedicated coastal container shipping services connecting western ports to southern and eastern ports as an alternative to long-haul road freight.",
+        "url": "https://www.concorindia.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "jurisdiction": "central",
+    "market_relevance": "MEDIUM",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_evidence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "COASTAL_RAIL_INTERMODAL_INTEGRATION"
+    },
+    "source_urls": [
+      "https://prsindia.org/billtrack/the-coastal-shipping-bill-2024",
+      "https://www.concorindia.com"
+    ],
+    "missing_information": [
+      "Cost differential between coastal container shipping and electrified railway haulage."
+    ],
+    "verified_at": "2026-09-16T07:17:31.694895+00:00",
+    "schema_version": "1.0.0"
+  }
+]

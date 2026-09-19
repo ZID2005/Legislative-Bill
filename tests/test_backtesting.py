@@ -935,7 +935,8 @@ def test_historical_backtest_engine_execution(tmp_path: Path) -> None:
 # ---------------------------------------------------------------------------
 
 
-def test_cmd_backtest_models_cli(tmp_path: Path) -> None:
+def test_cmd_backtest_models_cli(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr("config.settings.BACKTEST_DIR", tmp_path / "backtests")
     args = argparse.Namespace(
         target="direction",
         model="random_forest",

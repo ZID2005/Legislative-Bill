@@ -44,8 +44,9 @@ Interface
 from __future__ import annotations
 
 from pathlib import Path
+from typing import Optional
 from config.logging_config import get_logger
-from schemas.company import Company
+from schemas.company import Company, UniverseType
 
 logger = get_logger(__name__)
 
@@ -66,29 +67,42 @@ class CompanyRepository:
             self._db_file = self._companies_dir / "companies.json"
 
         self._cache: Optional[list[Company]] = None
+        self._cache_stat: Optional[tuple[int, int]] = None
         logger.debug("CompanyRepository initialised | file=%s", self._db_file)
+
+    def _get_file_stat(self) -> Optional[tuple[int, int]]:
+        try:
+            st = self._db_file.stat()
+            return (st.st_mtime_ns, st.st_size)
+        except OSError:
+            return None
 
     def _load_data(self) -> list[Company]:
         import json
         from schemas.company import Company
 
-        if self._cache is not None:
+        current_stat = self._get_file_stat()
+        if self._cache is not None and self._cache_stat == current_stat:
             return self._cache
 
         if not self._db_file.is_file():
             self._cache = []
+            self._cache_stat = None
             return []
         try:
             with self._db_file.open("r", encoding="utf-8") as f:
                 data = json.load(f)
                 if not isinstance(data, list):
                     self._cache = []
+                    self._cache_stat = current_stat
                     return []
                 self._cache = [Company.from_dict(item) for item in data]
+                self._cache_stat = current_stat
                 return self._cache
         except Exception as e:
             logger.error("Failed to load company records: %s", e)
             self._cache = []
+            self._cache_stat = None
             return []
 
     def _save_data(self, companies: list[Company]) -> None:
@@ -99,6 +113,8 @@ class CompanyRepository:
             with self._db_file.open("w", encoding="utf-8") as f:
                 json.dump([c.to_dict() for c in companies], f, indent=2)
             self._cache = list(companies)
+            self._cache_stat = self._get_file_stat()
+
         except Exception as e:
             logger.error("Failed to save company records: %s", e)
             raise e
@@ -161,6 +177,18 @@ class CompanyRepository:
             # Also boost if query is substring
             if query_lower in name_lower:
                 ratio += 0.3
+
+            # Also check aliases (e.g. BSNL, TCS, KSEB)
+            for alias in getattr(company, "aliases", []):
+                alias_lower = alias.lower()
+                alias_ratio = SequenceMatcher(None, query_lower, alias_lower).ratio()
+                if query_lower == alias_lower:
+                    ratio = max(ratio, 1.0)
+                elif query_lower in alias_lower:
+                    ratio = max(ratio, alias_ratio + 0.3)
+                else:
+                    ratio = max(ratio, alias_ratio)
+
             results.append((company, ratio))
 
         # Sort by similarity ratio descending
@@ -201,6 +229,35 @@ class CompanyRepository:
             results = [c for c in results if state_lower in c.hq_state.lower()]
 
         return results
+
+    def get_by_universe_type(self, universe_type: UniverseType) -> list[Company]:
+        """Return companies belonging to the given universe type.
+
+        Parameters
+        ----------
+        universe_type : UniverseType
+            ``UniverseType.QUANTITATIVE``, ``UniverseType.INTELLIGENCE``,
+            or ``UniverseType.BOTH``.
+
+        Notes
+        -----
+        Legacy company records that omit the ``universe_type`` field load with
+        the safe default ``UniverseType.QUANTITATIVE`` (via ``Company.from_dict``),
+        so they will naturally be returned when querying for QUANTITATIVE.
+        Intelligence-only companies (Task 8.12.3) explicitly set
+        ``universe_type = "intelligence"`` and will never appear in a
+        QUANTITATIVE query.
+        """
+        return [c for c in self._load_data() if c.universe_type == universe_type]
+
+    def get_intelligence_companies(self) -> list[Company]:
+        """Convenience method: return all INTELLIGENCE-universe companies.
+
+        Equivalent to ``get_by_universe_type(UniverseType.INTELLIGENCE)``.
+        Intelligence companies do NOT participate in quantitative prediction
+        workflows — this is enforced by their ``universe_type`` field value.
+        """
+        return self.get_by_universe_type(UniverseType.INTELLIGENCE)
 
     def save(self, company: Company) -> None:
         """Persist a single company record (inserts or updates)."""

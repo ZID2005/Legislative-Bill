@@ -1,0 +1,294 @@
+{
+  "bill_id": "karnataka-vs-bill-36-2024",
+  "jurisdiction": "state",
+  "state": "Karnataka",
+  "title": "The Karnataka Ancient and Historical Monuments and Archaeological Sites and Remains (Amendment) Bill, 2024",
+  "bill_number": "Bill No. 36 of 2024",
+  "chamber": "vidhan_sabha",
+  "status": "passed_both",
+  "source_url": "https://kla.kar.nic.in/assembly/bills/bills1640.htm",
+  "policy_category": "Other / Unclassified",
+  "category_provenance": "SYSTEM_DERIVED",
+  "year": 2024,
+  "introduction_date": "2024-07-24",
+  "assent_date": null,
+  "pdf_url": "https://kla.kar.nic.in/assembly/bills/bill1640_36.pdf",
+  "corpus_path": "D:\\Legislative-bill\\data\\state_bills\\corpus\\karnataka-vs-bill-36-2024.txt",
+  "document_hash": "1333cc8ef1f447c47e0e615227d50bec4e0961d48e690a12efc039fc053f8a6f",
+  "summary": {
+    "what_is_bill": "'The Karnataka Ancient and Historical Monuments and Archaeological Sites and Remains (Amendment) Bill, 2024' (Bill No. 36 of 2024) is a State legislative measure introduced in the Karnataka Legislative Assembly (Vidhan Sabha) concerning Other / Unclassified.",
+    "what_it_changes": "The bill introduces statutory amendments to existing state legislation, primarily modifying In the Principal Act across 3 identified sections/clauses.",
+    "why_it_matters": "According to the official Statement of Objects and Reasons: \"It is considered necessary to amend the Karnataka Ancient and Historical Monuments and Archeological Sites and Remains Act, 1961 (Karnataka Act 7 of 1962) to,- (1) make eligible a Company or Firm or Limited Liability Partnership concern (LLP) or a Partnership Firm, interested Societies or Cooperative Societies, Trusts or Non-Governmental Organisations or interested individuals to be empanelled as ‘Smaraka Mitras’.;...\"",
+    "who_is_affected": "Primary affected groups include: Citizens, State Government.",
+    "key_provisions": [
+      "Statutory modification of In the Principal Act.",
+      "Identified clauses/sections amended: 15, 26, 31.",
+      "Contains statutory fee, tax, or duty rate provisions.",
+      "penalty and punishment for the violation of the Act."
+    ],
+    "administrative_implications": "Administered and enforced under the authority of Director may receive voluntary contributions and designated state officials.",
+    "legislative_status": "Official status recorded as 'Passed Both' (introduced on 2024-07-24).",
+    "source": "Official Karnataka Legislature portal (karnataka_assembly)."
+  },
+  "objective": "It is considered necessary to amend the Karnataka Ancient and Historical Monuments and Archeological Sites and Remains Act, 1961 (Karnataka Act 7 of 1962) to,- (1) make eligible a Company or Firm or Limited Liability Partnership concern (LLP) or a Partnership Firm, interested Societies or Cooperative Societies, Trusts or Non-Governmental Organisations or interested individuals to be empanelled as ‘Smaraka Mitras’.; as (2) revise penalty and punishment for the violation of the Act. Hence the Bill. 4",
+  "key_provisions": [
+    "Statutory modification of In the Principal Act.",
+    "Identified clauses/sections amended: 15, 26, 31.",
+    "Contains statutory fee, tax, or duty rate provisions.",
+    "penalty and punishment for the violation of the Act."
+  ],
+  "amended_acts": [
+    "In the Principal Act"
+  ],
+  "affected_stakeholders": [
+    "Citizens",
+    "State Government"
+  ],
+  "administrative_authority": "Director may receive voluntary contributions",
+  "financial_provisions": "Contains statutory fee, tax, or duty rate provisions.",
+  "penalties_provisions": "penalty and punishment for the violation of the Act.",
+  "extraction_status": "success",
+  "language": "Bilingual (English / Kannada)",
+  "page_count": 1,
+  "character_count": 27320,
+  "word_count": 2057,
+  "provenance": {
+    "title": "AUTHORITATIVE",
+    "bill_number": "AUTHORITATIVE",
+    "jurisdiction": "AUTHORITATIVE",
+    "state": "AUTHORITATIVE",
+    "chamber": "AUTHORITATIVE",
+    "status": "AUTHORITATIVE",
+    "source_url": "AUTHORITATIVE",
+    "pdf_url": "AUTHORITATIVE",
+    "introduction_date": "AUTHORITATIVE",
+    "assent_date": "UNAVAILABLE",
+    "year": "DERIVED",
+    "bill_id": "DERIVED",
+    "policy_category": "SYSTEM_DERIVED",
+    "document_hash": "DERIVED",
+    "corpus_path": "DERIVED",
+    "language": "AUTHORITATIVE",
+    "summary": "SYSTEM_DERIVED",
+    "objective": "SYSTEM_DERIVED",
+    "key_provisions": "SYSTEM_DERIVED",
+    "amended_acts": "SYSTEM_DERIVED",
+    "affected_stakeholders": "SYSTEM_DERIVED",
+    "administrative_authority": "SYSTEM_DERIVED",
+    "financial_provisions": "SYSTEM_DERIVED",
+    "penalties_provisions": "SYSTEM_DERIVED",
+    "economic_profile": "SYSTEM_DERIVED",
+    "corporate_exposures": "NONE",
+    "impact_assessment": "DETERMINISTIC_METHODOLOGY_ENGINE"
+  },
+  "created_at": "2026-09-08T16:41:03.831502+00:00",
+  "economic_profile": {
+    "bill_id": "karnataka-vs-bill-36-2024",
+    "state": "Karnataka",
+    "policy_domain": "Other / Unclassified",
+    "primary_sector": "Tourism",
+    "secondary_sectors": [
+      "Public Administration"
+    ],
+    "sub_sectors": [
+      "Eco-tourism",
+      "Heritage Tourism",
+      "Pilgrimage Tourism",
+      "State Secretariat",
+      "District Administration"
+    ],
+    "economic_activities": [
+      "Tourist destination management",
+      "Travel booking",
+      "Guided tours",
+      "Statute enforcement",
+      "Disqualification administration"
+    ],
+    "business_types": [
+      "Heritage tour operators",
+      "Hospitality establishments",
+      "Travel agencies",
+      "Local vendors"
+    ],
+    "stakeholders": [
+      {
+        "stakeholder": "State Government",
+        "category": "institutions",
+        "role": "regulator/implementer",
+        "direction": "neutral",
+        "mechanism": "regulation",
+        "impact_type": "DIRECT",
+        "evidence": {
+          "source_type": "metadata",
+          "section": "General Provisions",
+          "text_reference": "Statutory measures enacted under 'The Karnataka Ancient and Historical Monuments and Archaeological Sites and Remains (Amendment) Bill, 2024'.",
+          "location": "corpus/karnataka-vs-bill-36-2024.txt"
+        },
+        "description": "The State Government and executive authorities oversee administration of the statutory enactment."
+      },
+      {
+        "stakeholder": "Employers",
+        "category": "businesses",
+        "role": "affected",
+        "direction": "neutral",
+        "mechanism": "compliance",
+        "impact_type": "INDIRECT",
+        "evidence": {
+          "source_type": "metadata",
+          "section": "General Provisions",
+          "text_reference": "Statutory measures enacted under 'The Karnataka Ancient and Historical Monuments and Archaeological Sites and Remains (Amendment) Bill, 2024'.",
+          "location": "corpus/karnataka-vs-bill-36-2024.txt"
+        },
+        "description": "Covered commercial and institutional entities must comply with relevant legal procedures."
+      }
+    ],
+    "geographic_scope": "state-wide",
+    "direct_impacts": [
+      "Direct statutory regulation requirement affecting State Government."
+    ],
+    "indirect_impacts": [
+      "Secondary economic or pricing effect on Employers."
+    ],
+    "impact_mechanisms": [
+      "regulation",
+      "compliance"
+    ],
+    "company_exposure_readiness": "NONE",
+    "evidence": [
+      {
+        "source_type": "metadata",
+        "section": "General Provisions",
+        "text_reference": "Statutory measures enacted under 'The Karnataka Ancient and Historical Monuments and Archaeological Sites and Remains (Amendment) Bill, 2024'.",
+        "location": "corpus/karnataka-vs-bill-36-2024.txt"
+      }
+    ],
+    "confidence": "HIGH",
+    "factual_summary": {
+      "who_may_be_affected": [
+        "Employers"
+      ],
+      "how_affected": [
+        "Enacts statutory regulations and standards under State jurisdiction.",
+        "Establishes updated compliance, record-keeping, and reporting obligations."
+      ],
+      "who_may_benefit": [
+        "Designated beneficiary groups under statutory schemes."
+      ],
+      "who_may_bear_costs": [
+        "Covered commercial or institutional establishments."
+      ]
+    },
+    "provenance": {
+      "primary_sector": "SYSTEM_DERIVED",
+      "secondary_sectors": "SYSTEM_DERIVED",
+      "sub_sectors": "SYSTEM_DERIVED",
+      "business_types": "SYSTEM_DERIVED",
+      "stakeholders": "SYSTEM_DERIVED",
+      "geographic_scope": "SYSTEM_DERIVED",
+      "company_exposure_readiness": "SYSTEM_DERIVED",
+      "evidence": "AUTHORITATIVE_CORPUS_GROUNDED",
+      "factual_summary": "SYSTEM_DERIVED"
+    },
+    "generated_at": "2026-09-09T18:05:57.334098+00:00",
+    "schema_version": "1.0.0"
+  },
+  "impact_assessment": {
+    "bill_id": "karnataka-vs-bill-36-2024",
+    "state": "Karnataka",
+    "title": "The Karnataka Ancient and Historical Monuments and Archaeological Sites and Remains (Amendment) Bill, 2024",
+    "bill_number": "Bill No. 36 of 2024",
+    "economic_mechanisms": [
+      "compliance_cost",
+      "regulation",
+      "taxation"
+    ],
+    "economic_direction": "neutral",
+    "economic_strength": "HIGH",
+    "market_relevance": "NONE",
+    "modeling_eligibility": "NOT_ELIGIBLE",
+    "data_sufficiency": "INSUFFICIENT",
+    "event_date_quality": "MEDIUM",
+    "primary_event_date": {
+      "role": "introduction",
+      "date": "2024-07-24",
+      "source": "official_legislative_portal",
+      "is_primary": true
+    },
+    "alternative_event_dates": [],
+    "anticipation_readiness": "PARTIAL",
+    "candidate_anticipation_channels": [
+      "public_announcements",
+      "legislative_leaks",
+      "government_consultations",
+      "committee_discussions",
+      "media_coverage",
+      "gdelt",
+      "google_trends"
+    ],
+    "market_data_readiness": {
+      "candidate_companies_count": 0,
+      "listed_companies_count": 0,
+      "unlisted_companies_count": 0,
+      "companies_with_market_data": [],
+      "companies_missing_market_data": [],
+      "benchmark_available": true,
+      "benchmark_ticker": "^NSEI",
+      "trading_calendar_coverage": "INSUFFICIENT"
+    },
+    "listed_company_count": 0,
+    "exposure_count": 0,
+    "direct_exposure_count": 0,
+    "indirect_exposure_count": 0,
+    "missing_requirements": [
+      "No grounded corporate exposure identified for this State bill.",
+      "Live anticipation crawling and sentiment signal ingestion not connected."
+    ],
+    "scorecard": {
+      "bill_identity_verified": true,
+      "state_jurisdiction_verified": true,
+      "event_date_verified": true,
+      "economic_mechanism_identified": true,
+      "corporate_exposure_verified": false,
+      "listed_company_verified": false,
+      "historical_market_data_available": false,
+      "benchmark_data_available": true,
+      "event_date_identifiable": true,
+      "anticipation_readiness_sufficient": true,
+      "result": "NOT_ELIGIBLE",
+      "notes": [
+        "Bill has no listed corporate exposure; remains strictly economic-only."
+      ]
+    },
+    "evidence": [
+      {
+        "source_type": "official_bill_summary",
+        "reference": "Statement of Objects and Reasons / Metadata",
+        "claim": "Statutory summary indicates policy in Other / Unclassified."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::compliance_cost",
+        "claim": "Statutory impact channel identified as 'compliance_cost'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::regulation",
+        "claim": "Statutory impact channel identified as 'regulation'."
+      },
+      {
+        "source_type": "statutory_mechanism",
+        "reference": "Taxonomy::taxation",
+        "claim": "Statutory impact channel identified as 'taxation'."
+      }
+    ],
+    "confidence": "MEDIUM",
+    "provenance": {
+      "economic_taxonomy": "STATE_ECONOMIC_MECHANISMS_V1",
+      "market_relevance": "GROUNDED_CORPORATE_EXPOSURE_MATCH",
+      "eligibility_scorecard": "DETERMINISTIC_10_POINT_SCORECARD",
+      "market_data_audit": "LOCAL_PARQUET_STORE_VERIFIED"
+    },
+    "schema_version": "1.0.0",
+    "generated_at": "2026-09-10T16:03:48.274255+00:00"
+  }
+}

@@ -956,7 +956,63 @@ The **Interactive Dashboard** (`dashboard/`) is a read-only presentation and dec
    - Mandatory legal disclaimers stating that anticipation evidence does not establish insider trading, unlawful information leakage, or causality.
    - Strict separation between **Model Performance** (out-of-sample statistical metrics) and **Historical Strategy Performance** (hypothetical portfolio simulation).
 
+---
 
+## Task 8 — State Legislative System Architecture (Tasks 8.1–8.4)
 
+### Overview
+Tasks 8.1 through 8.4 establish an isolated, parallel architecture for Indian State legislative bills while strictly preserving the frozen Central Government production baseline.
 
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│               Central Government Baseline (FROZEN & VERIFIED)          │
+│   20 Modelled Bills │ 47 Companies │ 940 Pairs │ 4,700 Predictions     │
+│   Event Studies │ Statistical Significance │ Backtesting │ SHAP        │
+└───────────────────────────────────┬────────────────────────────────────┘
+                                    │ STRICT AIR-GAP (NO STATE DATA)
+┌───────────────────────────────────▼────────────────────────────────────┐
+│                  State Legislative Knowledge Architecture               │
+│                        (Tasks 8.1 - 8.4 Isolated)                      │
+├────────────────────────────────────────────────────────────────────────┤
+│ 1. State Ingestion & Source Adapters (Task 8.3)                        │
+│    - Andhra Pradesh (aplegislature.org) │ Karnataka (kla.kar.nic.in)   │
+│    - 23 Real State Bills │ Provenance Registry │ JSON Schema Contract │
+│                                                                        │
+│ 2. Document Acquisition & Storage (Task 8.4)                           │
+│    - data/state_bills/pdfs/ │ SHA-256 Hash Verification                │
+│    - Streaming Downloader │ SSL Resilience for Gov Portals             │
+│                                                                        │
+│ 3. Text Extraction & Normalization (Task 8.4)                          │
+│    - Primary: pdfplumber │ Fallback: PyPDF2                            │
+│    - NFKC Unicode Normalization │ Header/Footer Stripping              │
+│    - Scanned Detection (<50 chars -> ocr_required)                     │
+│    - data/state_bills/corpus/{bill_id}.txt                             │
+│                                                                        │
+│ 4. State Policy Taxonomy & Knowledge Extraction (Task 8.4)             │
+│    - 12 Seventh-Schedule State Domains (State Finance, Transport, etc.)│
+│    - 7-Field Grounded Summaries (Zero Stock Claims Invariant)          │
+│    - Provision Parsing (Amended Acts, Authorities, Ceilings)           │
+│    - Stakeholder Mapping (Labour, Aggregators, Municipal, Agriculture) │
+│                                                                        │
+│ 5. State Knowledge Repository & Search (Task 8.4)                      │
+│    - data/state_bills/knowledge/{bill_id}.json                         │
+│    - StateKnowledgeRepository │ Multi-attribute indexed search         │
+│                                                                        │
+│ 6. Strict Boundary Defense (Task 8.4)                                  │
+│    - Exactly 0 State market predictions, event studies, or exposures   │
+└────────────────────────────────────────────────────────────────────────┘
+```
 
+### Core Components
+1. **`StateBillKnowledge` & `StateBillSummary` Schemas (`schemas/state_knowledge.py`)**:
+   Standardized contracts for extracted statutory knowledge, storing authoritative document metadata alongside derived statutory summaries and provisions.
+2. **`StateDocumentDownloader` (`ingestion/state/downloader.py`)**:
+   Streaming asynchronous downloader archiving official state PDFs in `data/state_bills/pdfs/` with SHA-256 verification.
+3. **`StateTextExtractor` (`ingestion/state/extractor.py`)**:
+   Dual-engine text extractor generating normalized corpus files in `data/state_bills/corpus/` with automated scanned PDF detection.
+4. **`StateTaxonomyEngine` (`knowledge/state_taxonomy.py`)**:
+   Rule-based classifier assigning one of 12 state-specific policy domains under List II (State List) and List III (Concurrent List).
+5. **`StateSummaryEngine` & `StateStakeholderEngine` (`knowledge/`)**:
+   Deterministic engines generating plain-language summaries strictly grounded in extracted statutory text, extracting amended acts, financial provisions, and affected stakeholder groups with zero market claims.
+6. **`StateKnowledgeRepository` (`storage/state_knowledge_repository.py`)**:
+   Dedicated repository providing storage and multi-attribute search across title, number, state, chamber, year, status, category, and stakeholders.

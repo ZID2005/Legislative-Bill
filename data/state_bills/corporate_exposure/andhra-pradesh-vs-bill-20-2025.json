@@ -1,0 +1,109 @@
+[
+  {
+    "bill_id": "andhra-pradesh-vs-bill-20-2025",
+    "state": "Andhra Pradesh",
+    "company_id": "INE346W01013",
+    "company_name": "Apex Frozen Foods Limited",
+    "ticker": "APEX",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Fisheries",
+    "sub_sector": "Aquaculture & Processing",
+    "business_activity": "Shrimp hatchery, farming, and processing operations",
+    "state_presence": [
+      "headquarters",
+      "manufacturing",
+      "plant",
+      "supplier_relationship"
+    ],
+    "presence_type": "manufacturing",
+    "exposure_type": "regulatory",
+    "exposure_direction": "positive",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "regulation",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Regulatory clauses establishing Aquaculture Development Authority standards",
+        "claim": "Establishes statutory quality standards, hatchery certifications, and processing inspection mechanisms.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Apex Frozen Foods Annual Report 2023-24 (Operations Review)",
+        "claim": "Apex Frozen Foods Limited operates shrimp processing, hatcheries, and feed facilities in Kakinada, Raparru (Kakinada district).",
+        "url": "https://www.apexfrozenfoods.in"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://aplegislature.org/web/aplegislature/bills",
+      "https://www.apexfrozenfoods.in"
+    ],
+    "missing_information": [
+      "Proportion of export procurement directly registered with Andhra Pradesh Aquaculture Authority."
+    ],
+    "verified_at": "2026-09-09T18:30:08.067513+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "andhra-pradesh-vs-bill-20-2025",
+    "state": "Andhra Pradesh",
+    "company_id": "INE731F01041",
+    "company_name": "Avanti Feeds Limited",
+    "ticker": "AVANTIFEED",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Fisheries",
+    "sub_sector": "Aquaculture & Processing",
+    "business_activity": "Shrimp hatchery, farming, and processing operations",
+    "state_presence": [
+      "headquarters",
+      "manufacturing",
+      "plant"
+    ],
+    "presence_type": "manufacturing",
+    "exposure_type": "regulatory",
+    "exposure_direction": "positive",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "regulation",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Regulatory clauses establishing Aquaculture Development Authority standards",
+        "claim": "Establishes statutory quality standards, hatchery certifications, and processing inspection mechanisms.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Avanti Feeds Annual Report 2023-24 (Manufacturing Locations)",
+        "claim": "Avanti Feeds Limited operates shrimp processing, hatcheries, and feed facilities in Kovvur (West Godavari), Vemuluru, Visakhapatnam.",
+        "url": "https://www.avantifeeds.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://aplegislature.org/web/aplegislature/bills",
+      "https://www.avantifeeds.com"
+    ],
+    "missing_information": [
+      "Proportion of export procurement directly registered with Andhra Pradesh Aquaculture Authority."
+    ],
+    "verified_at": "2026-09-09T18:30:08.067857+00:00",
+    "schema_version": "1.0.0"
+  }
+]

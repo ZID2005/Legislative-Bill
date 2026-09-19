@@ -1,0 +1,108 @@
+[
+  {
+    "bill_id": "the-bharatiya-vayuyan-vidheyak-2024",
+    "state": "Central",
+    "company_id": "INE233B01017",
+    "company_name": "Blue Dart Express Limited",
+    "ticker": "BLUEDART",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Logistics & Transportation",
+    "sub_sector": "Express Air Cargo",
+    "business_activity": "Dedicated air cargo freighter operations and airport hub logistics",
+    "state_presence": [
+      "national"
+    ],
+    "presence_type": "service_operation",
+    "exposure_type": "regulatory",
+    "exposure_direction": "mixed",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "national",
+    "mechanism": "compliance_cost",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Clauses 11-15 (Air navigation, aircraft registration & cargo security standards)",
+        "claim": "Establishes statutory safety oversight, aircraft registration standards, and air cargo operational regulations governing all commercial air transport carriers.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Blue Dart Express Annual Report 2023-24 (Dedicated Aviation Fleet Disclosures)",
+        "claim": "Blue Dart operates a dedicated fleet of Boeing 737 and 757 freighter aircraft under Blue Dart Aviation for scheduled domestic air cargo carriage under DGCA regulatory oversight.",
+        "url": "https://www.bluedart.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "jurisdiction": "central",
+    "market_relevance": "MEDIUM",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_evidence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "AIR_CARGO_FLEET_REGULATION"
+    },
+    "source_urls": [
+      "https://prsindia.org/billtrack/the-bharatiya-vayuyan-vidheyak-2024",
+      "https://www.bluedart.com"
+    ],
+    "missing_information": [
+      "Fleet-level compliance cost impact of revised aircraft safety inspection audit timelines."
+    ],
+    "verified_at": "2026-09-16T07:17:31.220607+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "the-bharatiya-vayuyan-vidheyak-2024",
+    "state": "Central",
+    "company_id": "INE043D01016",
+    "company_name": "GMR Airports Infrastructure Limited",
+    "ticker": "GMRINFRA",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Infrastructure",
+    "sub_sector": "Airports & Aviation",
+    "business_activity": "Airport development, aerodrome operations, and concession management",
+    "state_presence": [
+      "national"
+    ],
+    "presence_type": "infrastructure",
+    "exposure_type": "regulatory",
+    "exposure_direction": "mixed",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "national",
+    "mechanism": "regulation",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Clauses 4-10 (Aerodromes, air transport licensing & safety oversight)",
+        "claim": "Replaces the Aircraft Act, 1934 to overhaul statutory regulation of civil aerodromes, air navigation services, and aerodrome licensing by DGCA.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "GMR Airports Annual Report 2023-24 (Concession Agreements & Regulatory Framework)",
+        "claim": "GMR Airports operates major international aerodromes including Delhi (IGI Airport) and Hyderabad (RGIA) under central statutory airport concession frameworks.",
+        "url": "https://www.gmrgroup.in"
+      }
+    ],
+    "confidence": "HIGH",
+    "jurisdiction": "central",
+    "market_relevance": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_evidence": "AUTHORITATIVE_ANNUAL_REPORT",
+      "exposure_chain": "CIVIL_AVIATION_AERODROME_CONCESSION"
+    },
+    "source_urls": [
+      "https://prsindia.org/billtrack/the-bharatiya-vayuyan-vidheyak-2024",
+      "https://www.gmrgroup.in"
+    ],
+    "missing_information": [
+      "Specific aerodrome tariff revision cycles approved by AERA under updated statutory guidelines."
+    ],
+    "verified_at": "2026-09-16T07:17:31.221083+00:00",
+    "schema_version": "1.0.0"
+  }
+]

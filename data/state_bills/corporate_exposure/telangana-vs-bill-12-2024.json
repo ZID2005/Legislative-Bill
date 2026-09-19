@@ -1,0 +1,215 @@
+[
+  {
+    "bill_id": "telangana-vs-bill-12-2024",
+    "state": "Telangana",
+    "company_id": "INE481G01011",
+    "company_name": "Ultratech Cement Limited",
+    "ticker": "ULTRACEMCO",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Electricity",
+    "sub_sector": "Industrial Energy Consumption",
+    "business_activity": "Heavy industrial manufacturing with captive electricity generation",
+    "state_presence": [
+      "manufacturing",
+      "plant"
+    ],
+    "presence_type": "manufacturing",
+    "exposure_type": "energy",
+    "exposure_direction": "negative",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "taxation",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Duty on Captive Energy Consumption Provisions",
+        "claim": "Alters duty payable by heavy industrial establishments utilizing captive power units.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "UltraTech Annual Report 2023-24",
+        "claim": "Ultratech Cement Limited operates heavy manufacturing facilities with captive power units at Mellacheruvu (Suryapet).",
+        "url": "https://www.ultratechcement.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://legislature.telangana.gov.in/bills/detail/12-2024",
+      "https://www.ultratechcement.com"
+    ],
+    "missing_information": [
+      "Specific captive energy generation volume in Telangana units.",
+      "Effective electricity duty impact per unit of output."
+    ],
+    "verified_at": "2026-09-09T18:30:12.476374+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "telangana-vs-bill-12-2024",
+    "state": "Telangana",
+    "company_id": "INE733E01010",
+    "company_name": "NTPC Limited",
+    "ticker": "NTPC",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Electricity",
+    "sub_sector": "Power Generation & Transmission",
+    "business_activity": "Electricity generation & captive power dispatch",
+    "state_presence": [
+      "power_generation",
+      "plant"
+    ],
+    "presence_type": "power_generation",
+    "exposure_type": "taxation",
+    "exposure_direction": "mixed",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "taxation",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Clauses amending Electricity Duty rates & captive consumption schedules",
+        "claim": "Adjusts state statutory duty rates on electricity generated, sold, or consumed for industrial and captive purposes in Telangana.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "NTPC Annual Report 2023-24 (Installed Capacity Schedule)",
+        "claim": "NTPC Limited owns and operates generation facilities in Telangana at Ramagundam (Peddapalli).",
+        "url": "https://www.ntpc.co.in"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_FILING",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://legislature.telangana.gov.in/bills/detail/12-2024",
+      "https://www.ntpc.co.in"
+    ],
+    "missing_information": [
+      "Captive power consumption vs commercial grid export ratio in Telangana.",
+      "Power purchase agreement (PPA) pass-through clauses with State DISCOMs."
+    ],
+    "verified_at": "2026-09-09T18:30:12.476743+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "telangana-vs-bill-12-2024",
+    "state": "Telangana",
+    "company_id": "INE245A01021",
+    "company_name": "Tata Power Company Limited",
+    "ticker": "TATAPOWER",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Electricity",
+    "sub_sector": "Power Generation & Transmission",
+    "business_activity": "Electricity generation & captive power dispatch",
+    "state_presence": [
+      "infrastructure",
+      "retail"
+    ],
+    "presence_type": "power_generation",
+    "exposure_type": "taxation",
+    "exposure_direction": "mixed",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "taxation",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Clauses amending Electricity Duty rates & captive consumption schedules",
+        "claim": "Adjusts state statutory duty rates on electricity generated, sold, or consumed for industrial and captive purposes in Telangana.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Tata Power Investor Disclosures",
+        "claim": "Tata Power Company Limited owns and operates generation facilities in Telangana at Hyderabad.",
+        "url": "https://www.tatapower.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_FILING",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://legislature.telangana.gov.in/bills/detail/12-2024",
+      "https://www.tatapower.com"
+    ],
+    "missing_information": [
+      "Captive power consumption vs commercial grid export ratio in Telangana.",
+      "Power purchase agreement (PPA) pass-through clauses with State DISCOMs."
+    ],
+    "verified_at": "2026-09-09T18:30:12.477061+00:00",
+    "schema_version": "1.0.0"
+  },
+  {
+    "bill_id": "telangana-vs-bill-12-2024",
+    "state": "Telangana",
+    "company_id": "UNLISTED-TS-GENCO",
+    "company_name": "Telangana State Power Generation Corporation Limited",
+    "ticker": "",
+    "exchange": "",
+    "listed_status": "unlisted",
+    "sector": "Electricity",
+    "sub_sector": "Power Generation & Transmission",
+    "business_activity": "Electricity generation & captive power dispatch",
+    "state_presence": [
+      "headquarters",
+      "power_generation",
+      "plant"
+    ],
+    "presence_type": "power_generation",
+    "exposure_type": "taxation",
+    "exposure_direction": "mixed",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "taxation",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "Clauses amending Electricity Duty rates & captive consumption schedules",
+        "claim": "Adjusts state statutory duty rates on electricity generated, sold, or consumed for industrial and captive purposes in Telangana.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "TSGENCO Official Disclosures & TSERC Tariff Petitions",
+        "claim": "Telangana State Power Generation Corporation Limited owns and operates generation facilities in Telangana at Hyderabad, Kothagudem (Bhadradri), Manuguru, Srisailam.",
+        "url": "https://www.tsgenco.co.in"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "AUTHORITATIVE_FILING",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://legislature.telangana.gov.in/bills/detail/12-2024",
+      "https://www.tsgenco.co.in"
+    ],
+    "missing_information": [
+      "Captive power consumption vs commercial grid export ratio in Telangana.",
+      "Power purchase agreement (PPA) pass-through clauses with State DISCOMs."
+    ],
+    "verified_at": "2026-09-09T18:30:12.477522+00:00",
+    "schema_version": "1.0.0"
+  }
+]

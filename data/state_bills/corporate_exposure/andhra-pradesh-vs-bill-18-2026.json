@@ -1,0 +1,56 @@
+[
+  {
+    "bill_id": "andhra-pradesh-vs-bill-18-2026",
+    "state": "Andhra Pradesh",
+    "company_id": "INE002A01018",
+    "company_name": "Reliance Industries Limited",
+    "ticker": "RELIANCE",
+    "exchange": "NSE",
+    "listed_status": "listed",
+    "sector": "Banking & Finance",
+    "sub_sector": "State Sales Tax & VAT",
+    "business_activity": "Petroleum refining, wholesale distribution, and fuel retailing",
+    "state_presence": [
+      "plant",
+      "infrastructure",
+      "retail",
+      "logistics"
+    ],
+    "presence_type": "plant",
+    "exposure_type": "taxation",
+    "exposure_direction": "mixed",
+    "exposure_strength": "HIGH",
+    "direct_indirect": "DIRECT",
+    "geographic_scope": "state_specific",
+    "mechanism": "taxation",
+    "evidence": [
+      {
+        "source_type": "bill_text",
+        "reference": "VAT schedules on petroleum products and natural gas",
+        "claim": "Amends Andhra Pradesh Value Added Tax rates, returns, and assessment on non-GST commodities.",
+        "url": null
+      },
+      {
+        "source_type": "company_filing",
+        "reference": "Annual Report 2023-24 (Oil & Gas operations / Jio network disclosure)",
+        "claim": "Reliance Industries Limited processes, distributes, and retails petroleum and gas fuels in Andhra Pradesh.",
+        "url": "https://www.ril.com"
+      }
+    ],
+    "confidence": "HIGH",
+    "provenance": {
+      "bill_applicability": "STATUTORY_PROVISION_GROUNDED",
+      "company_presence": "ANNUAL_REPORT_DISCLOSURE",
+      "exposure_chain": "DETERMINISTIC_ACTIVITY_MATCH"
+    },
+    "source_urls": [
+      "https://aplegislature.org/web/aplegislature/bills",
+      "https://www.ril.com"
+    ],
+    "missing_information": [
+      "State VAT gross revenue contribution from fuel sales in Andhra Pradesh."
+    ],
+    "verified_at": "2026-09-09T18:30:07.944923+00:00",
+    "schema_version": "1.0.0"
+  }
+]

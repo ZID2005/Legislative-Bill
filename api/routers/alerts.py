@@ -13,12 +13,27 @@ from fastapi import APIRouter, Depends, Query
 from api.dependencies import (
     CurrentUser,
     get_alert_event_repository,
+    get_alert_preference_repository,
     get_current_user,
 )
 from api.errors import NotFoundError
-from api.schemas import AlertEventResponse, PaginatedResponse, UnreadCountResponse
-from schemas.alert import AlertEvent
+from api.schemas import (
+    AlertEventResponse,
+    AlertPreferenceResponse,
+    AlertPreferenceUpdateRequest,
+    PaginatedResponse,
+    UnreadCountResponse,
+)
+from schemas.alert import (
+    AlertEvent,
+    AlertPreference,
+    AlertSeverity,
+    AlertType,
+    DigestFrequency,
+    NotificationChannel,
+)
 from storage.alert_event_repository import AlertEventRepository
+from storage.alert_preference_repository import AlertPreferenceRepository
 
 router = APIRouter(prefix="/alerts", tags=["Alerts"])
 
@@ -129,6 +144,67 @@ def get_unread_alerts_count(
         user_id=current_user.user_id,
         tenant_id=current_user.tenant_id,
     )
+
+
+@router.get("/preferences", response_model=AlertPreferenceResponse)
+def get_alert_preferences(
+    current_user: CurrentUser = Depends(get_current_user),
+    pref_repo: AlertPreferenceRepository = Depends(get_alert_preference_repository),
+) -> AlertPreferenceResponse:
+    """Retrieve user alert preferences. Creates defaults if not yet saved."""
+    pref = pref_repo.get(user_id=current_user.user_id, tenant_id=current_user.tenant_id)
+    if not pref:
+        pref = AlertPreference(
+            user_id=current_user.user_id,
+            tenant_id=current_user.tenant_id,
+            enabled=True,
+            minimum_severity=AlertSeverity.LOW,
+            digest_frequency=DigestFrequency.REAL_TIME,
+        )
+        pref_repo.save(pref)
+    return AlertPreferenceResponse(**pref.to_dict())
+
+
+@router.patch("/preferences", response_model=AlertPreferenceResponse)
+@router.put("/preferences", response_model=AlertPreferenceResponse)
+def update_alert_preferences(
+    req: AlertPreferenceUpdateRequest,
+    current_user: CurrentUser = Depends(get_current_user),
+    pref_repo: AlertPreferenceRepository = Depends(get_alert_preference_repository),
+) -> AlertPreferenceResponse:
+    """Update user alert preferences."""
+    pref = pref_repo.get(user_id=current_user.user_id, tenant_id=current_user.tenant_id)
+    if not pref:
+        pref = AlertPreference(
+            user_id=current_user.user_id,
+            tenant_id=current_user.tenant_id,
+        )
+    if req.enabled is not None:
+        pref.enabled = req.enabled
+    if req.minimum_severity is not None:
+        pref.minimum_severity = AlertSeverity(req.minimum_severity.strip().upper())
+    if req.allowed_alert_types is not None:
+        pref.allowed_alert_types = [AlertType(a.strip().upper()) for a in req.allowed_alert_types]
+    if req.allowed_channels is not None:
+        pref.allowed_channels = [NotificationChannel(c.strip().upper()) for c in req.allowed_channels]
+    if req.digest_frequency is not None:
+        pref.digest_frequency = DigestFrequency(req.digest_frequency.strip().upper())
+    pref_repo.save(pref)
+    return AlertPreferenceResponse(**pref.to_dict())
+
+
+@router.post("/read-all")
+@router.patch("/read-all")
+def mark_all_alerts_read(
+    current_user: CurrentUser = Depends(get_current_user),
+    alert_repo: AlertEventRepository = Depends(get_alert_event_repository),
+) -> dict[str, int]:
+    """Mark all unread alert events as read for the authenticated user."""
+    count = alert_repo.mark_all_read(
+        user_id=current_user.user_id,
+        tenant_id=current_user.tenant_id,
+    )
+    return {"marked_count": count}
 
 
 @router.get("/{alert_id}", response_model=AlertEventResponse)

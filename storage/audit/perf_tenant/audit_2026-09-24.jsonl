@@ -1,0 +1,2 @@
+{"audit_id": "aud_73e5b91898a4", "tenant_id": "perf_tenant", "user_id": "perf_user", "action": "LOGIN_SUCCESS", "resource": "session", "resource_id": "perf_user", "status": "SUCCESS", "timestamp": "2026-09-24T15:23:04.973602+00:00", "request_id": null, "ip_address": null, "details": {}}
+{"audit_id": "aud_1c3c8b2bcbeb", "tenant_id": "perf_tenant", "user_id": "perf_user", "action": "LOGIN_SUCCESS", "resource": "session", "resource_id": "perf_user", "status": "SUCCESS", "timestamp": "2026-09-24T15:23:46.991827+00:00", "request_id": null, "ip_address": null, "details": {}}

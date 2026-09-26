@@ -1,0 +1,1 @@
+{"usage_id": "usg_0d55e0491aeb", "tenant_id": "tenant_beta", "user_id": "bob", "operation": "ASK_WATCHLIST", "model_provider": "groq", "success": false, "prompt_tokens": "USAGE_NOT_AVAILABLE", "completion_tokens": "USAGE_NOT_AVAILABLE", "total_tokens": "USAGE_NOT_AVAILABLE", "timestamp": "2026-09-23T16:37:13.179078+00:00", "latency_ms": null, "metadata": {}}

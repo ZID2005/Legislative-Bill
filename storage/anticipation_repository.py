@@ -28,6 +28,8 @@ from schemas.anticipation import (
 )
 from utils.file_utils import ensure_dir, file_exists, list_files, load_json, save_json
 
+from storage.exceptions import FrozenDatasetImmutableError
+
 logger = get_logger(__name__)
 
 
@@ -41,13 +43,22 @@ class AnticipationRepository:
     Dedicated repository for storing and querying anticipation bias records.
     """
 
-    def __init__(self, anticipation_dir: Optional[Path] = None) -> None:
+    def __init__(
+        self,
+        anticipation_dir: Optional[Path] = None,
+        read_only: Optional[bool] = None,
+    ) -> None:
         self._anticipation_dir = anticipation_dir or settings.ANTICIPATION_DIR
         self._scores_dir = self._anticipation_dir / "scores"
         self._bill_scores_dir = self._anticipation_dir / "bill_scores"
         self._market_stats_dir = self._anticipation_dir / "market_stats"
         self._evidence_dir = self._anticipation_dir / "evidence"
         self._reports_dir = self._anticipation_dir / "reports"
+
+        if read_only is not None:
+            self._read_only = read_only
+        else:
+            self._read_only = (anticipation_dir is None) or (settings.ENV.lower() == "production")
 
         for directory in [
             self._anticipation_dir,
@@ -59,7 +70,18 @@ class AnticipationRepository:
         ]:
             ensure_dir(directory)
 
-        logger.debug("AnticipationRepository initialised | root=%s", self._anticipation_dir)
+        logger.debug("AnticipationRepository initialised | root=%s | read_only=%s", self._anticipation_dir, self._read_only)
+
+    @property
+    def is_read_only(self) -> bool:
+        return self._read_only
+
+    def _check_read_only(self) -> None:
+        if self._read_only:
+            raise FrozenDatasetImmutableError(
+                dataset_name="Central Anticipation",
+                message="Cannot write or mutate frozen Central anticipation records.",
+            )
 
     # ------------------------------------------------------------------
     # Path Helpers
@@ -93,6 +115,7 @@ class AnticipationRepository:
 
     def save_score(self, score: AnticipationScore) -> None:
         """Persist an AnticipationScore record."""
+        self._check_read_only()
         dest = self._score_path(score.bill_id, score.company_isin)
         save_json(score.to_dict(), dest)
         logger.debug("Saved anticipation score: bill=%s isin=%s", score.bill_id, score.company_isin)
@@ -171,6 +194,7 @@ class AnticipationRepository:
 
     def save_bill_score(self, bill_score: BillAnticipationRecord) -> None:
         """Persist a BillAnticipationRecord."""
+        self._check_read_only()
         dest = self._bill_score_path(bill_score.bill_id)
         save_json(bill_score.to_dict(), dest)
         logger.debug("Saved bill anticipation record: bill=%s", bill_score.bill_id)
@@ -217,6 +241,7 @@ class AnticipationRepository:
         company_isin: str,
     ) -> None:
         """Persist pre-event window statistics mapping for a bill-company pair."""
+        self._check_read_only()
         dest = self._market_stats_path(bill_id, company_isin)
         payload = {
             "bill_id": bill_id,
@@ -271,6 +296,7 @@ class AnticipationRepository:
 
     def save_evidence(self, evidence_list: list[InformationEvidence], bill_id: str) -> None:
         """Persist external evidence items for a bill."""
+        self._check_read_only()
         dest = self._evidence_path(bill_id)
         payload = {
             "bill_id": bill_id,
@@ -319,6 +345,7 @@ class AnticipationRepository:
         report_id: Optional[str] = None,
     ) -> str:
         """Persist an AnticipationValidationReport."""
+        self._check_read_only()
         rep_id = report_id or f"{report.bill_id}_{report.company_isin or 'summary'}_{datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%d_%H%M%S')}"
         dest = self._report_path(rep_id)
         save_json(report.to_dict(), dest)

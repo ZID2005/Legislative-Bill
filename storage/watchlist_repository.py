@@ -187,6 +187,31 @@ class WatchlistRepository:
                 pass
         return sorted(results, key=lambda w: w.created_at)
 
+    def list_by_tenant(
+        self,
+        tenant_id: str,
+        is_active: Optional[bool] = None,
+    ) -> list[Watchlist]:
+        """
+        List all watchlists belonging to all users within a tenant.
+        """
+        tdir = self._root_dir / tenant_id
+        if not tdir.is_dir():
+            return []
+        results: list[Watchlist] = []
+        for wl_file in tdir.glob("*/watchlists/wl_*.json"):
+            try:
+                with open(wl_file, "r", encoding="utf-8") as fh:
+                    wl = Watchlist.from_dict(json.load(fh))
+                if is_active is not None and wl.is_active != is_active:
+                    continue
+                results.append(wl)
+            except Exception:
+                pass
+        return sorted(results, key=lambda w: w.created_at)
+
+    list_watchlists = list_by_tenant
+
     # ------------------------------------------------------------------
     # WatchlistItem Operations
     # ------------------------------------------------------------------

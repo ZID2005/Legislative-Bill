@@ -1,0 +1,157 @@
+# ===========================================================================
+# docker-compose.yml — Local Development Multi-Container SaaS Stack (Task 8.24)
+#
+# Launches the complete local SaaS topology in one command:
+#   docker compose up
+#
+# Services:
+#   1. frontend   : Next.js SaaS Web Application (http://localhost:3000)
+#   2. api        : FastAPI High-Performance Backend (http://localhost:8000)
+#   3. postgres   : PostgreSQL 16 Relational Storage (port 5432)
+#   4. redis      : Redis 7 In-Memory Cache & Distributed Lock (port 6379)
+#   5. worker     : Background Job Worker (alert matching & notification dispatch)
+#   6. scheduler  : Background Clock Scheduler (fail-closed monitoring checks)
+# ===========================================================================
+
+version: "3.8"
+
+services:
+  # 1. Next.js SaaS Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_BASE_URL: http://api:8000
+        NEXT_PUBLIC_APP_ENV: development
+    container_name: legis_local_frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - NEXT_PUBLIC_API_BASE_URL=http://localhost:8000
+    depends_on:
+      api:
+        condition: service_healthy
+    networks:
+      - legis_local_net
+
+  # 2. FastAPI Backend API
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: legis_local_api
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - ENV=development
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-legis_admin}:${POSTGRES_PASSWORD:-legis_secret}@postgres:5432/${POSTGRES_DB:-legislative_intel}
+      - REDIS_URL=redis://redis:6379/0
+      - FRONTEND_URL=http://localhost:3000
+      - API_CORS_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
+      - RATE_LIMIT_ENABLED=false
+      - LEGISLATIVE_MONITOR_ENABLED=true
+      - GROQ_API_KEY=${GROQ_API_KEY:-}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - legis_local_net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+
+  # 3. PostgreSQL Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: legis_local_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-legis_admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-legis_secret}
+      POSTGRES_DB: ${POSTGRES_DB:-legislative_intel}
+    volumes:
+      - pgdata_local:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - legis_local_net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-legis_admin} -d ${POSTGRES_DB:-legislative_intel}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # 4. Redis Cache & Distributed Lock
+  redis:
+    image: redis:7-alpine
+    container_name: legis_local_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redisdata_local:/data
+    networks:
+      - legis_local_net
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # 5. Background Worker
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    container_name: legis_local_worker
+    restart: unless-stopped
+    environment:
+      - ENV=development
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-legis_admin}:${POSTGRES_PASSWORD:-legis_secret}@postgres:5432/${POSTGRES_DB:-legislative_intel}
+      - REDIS_URL=redis://redis:6379/0
+      - JOB_EXECUTION_MODE=worker
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - legis_local_net
+
+  # 6. Background Scheduler
+  scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile.scheduler
+    container_name: legis_local_scheduler
+    restart: unless-stopped
+    environment:
+      - ENV=development
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-legis_admin}:${POSTGRES_PASSWORD:-legis_secret}@postgres:5432/${POSTGRES_DB:-legislative_intel}
+      - REDIS_URL=redis://redis:6379/0
+      - JOB_EXECUTION_MODE=scheduler
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - legis_local_net
+
+volumes:
+  pgdata_local:
+  redisdata_local:
+
+networks:
+  legis_local_net:
+    driver: bridge

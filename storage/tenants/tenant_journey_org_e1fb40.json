@@ -1,0 +1,11 @@
+{
+  "tenant_id": "journey_org_e1fb40",
+  "name": "Global Quant Research e1fb40",
+  "status": "ACTIVE",
+  "plan_tier": "PLAN_NOT_CONFIGURED",
+  "billing_status": "BILLING_NOT_CONNECTED",
+  "owner_user_id": "usr_6c3e5211",
+  "created_at": "2026-09-24T17:10:39.870161+00:00",
+  "updated_at": "2026-09-24T17:10:39.870174+00:00",
+  "metadata": {}
+}

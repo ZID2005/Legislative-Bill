@@ -1,0 +1,11 @@
+{
+  "tenant_id": "org_beta_6f8cce",
+  "name": "Beta Research 6f8cce",
+  "status": "ACTIVE",
+  "plan_tier": "PLAN_NOT_CONFIGURED",
+  "billing_status": "BILLING_NOT_CONNECTED",
+  "owner_user_id": "usr_a4c1d661",
+  "created_at": "2026-09-25T17:09:40.410299+00:00",
+  "updated_at": "2026-09-25T17:09:40.410316+00:00",
+  "metadata": {}
+}

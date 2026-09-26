@@ -47,6 +47,7 @@ from schemas.report import (
     StakeholderType,
     make_report_id,
 )
+from storage.exceptions import FrozenDatasetImmutableError
 from utils.file_utils import ensure_dir, file_exists, list_files, load_json, save_json
 
 logger = get_logger(__name__)
@@ -67,12 +68,24 @@ class ReportRepository:
     ----------
     reports_dir : Path, optional
         Root directory for reports. Defaults to ``settings.REPORTS_DIR``.
+    read_only : bool, optional
+        If True (default when pointing to production baseline), write/save/delete
+        operations are strictly rejected to preserve immutable baseline data.
     """
 
-    def __init__(self, reports_dir: Optional[Path] = None) -> None:
+    def __init__(
+        self,
+        reports_dir: Optional[Path] = None,
+        read_only: Optional[bool] = None,
+    ) -> None:
         from config.settings import settings
 
         self._root: Path = reports_dir or settings.REPORTS_DIR
+
+        if read_only is not None:
+            self._read_only = read_only
+        else:
+            self._read_only = (reports_dir is None) or (settings.ENV.lower() == "production")
 
         # Sub-directories
         self._investor_dir: Path = self._root / "investor"
@@ -93,7 +106,18 @@ class ReportRepository:
         ]:
             ensure_dir(d)
 
-        logger.debug("ReportRepository initialised | root=%s", self._root)
+        logger.debug("ReportRepository initialised | root=%s | read_only=%s", self._root, self._read_only)
+
+    @property
+    def is_read_only(self) -> bool:
+        return self._read_only
+
+    def _check_read_only(self) -> None:
+        if self._read_only:
+            raise FrozenDatasetImmutableError(
+                dataset_name="Stakeholder Reports",
+                message="Cannot write or mutate frozen stakeholder reports.",
+            )
 
     # ------------------------------------------------------------------
     # Path resolution
@@ -131,6 +155,7 @@ class ReportRepository:
         Path
             Absolute path to the saved JSON file.
         """
+        self._check_read_only()
         path = self._report_path(report.report_id, report.stakeholder_type)
         try:
             save_json(report.to_dict(), path)
@@ -244,6 +269,7 @@ class ReportRepository:
 
     def save_bill_report(self, report: BillLevelReport) -> Path:
         """Persist a BillLevelReport."""
+        self._check_read_only()
         path = self._bill_report_path(report.report_id)
         try:
             save_json(report.to_dict(), path)
@@ -282,6 +308,7 @@ class ReportRepository:
 
     def save_company_report(self, report: CompanyLevelReport) -> Path:
         """Persist a CompanyLevelReport."""
+        self._check_read_only()
         path = self._company_report_path(report.report_id)
         try:
             save_json(report.to_dict(), path)
@@ -320,6 +347,7 @@ class ReportRepository:
 
     def save_validation_report(self, report: ReportValidationReport) -> Path:
         """Persist a ReportValidationReport."""
+        self._check_read_only()
         path = self._validation_path(report.validation_id)
         try:
             save_json(report.to_dict(), path)

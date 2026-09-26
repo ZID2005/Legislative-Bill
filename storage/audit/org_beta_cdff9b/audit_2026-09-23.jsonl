@@ -1,0 +1,1 @@
+{"audit_id": "aud_e487b9c06477", "tenant_id": "org_beta_cdff9b", "user_id": "usr_8f5c593a", "action": "TENANT_REGISTERED", "resource": "tenant", "resource_id": "org_beta_cdff9b", "status": "SUCCESS", "timestamp": "2026-09-23T16:50:14.970920+00:00", "request_id": null, "ip_address": null, "details": {"org_name": "Beta Research cdff9b", "owner_email": "owner@org_beta_cdff9b.com"}}

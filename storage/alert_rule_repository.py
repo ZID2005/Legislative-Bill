@@ -192,6 +192,25 @@ class AlertRuleRepository:
                 pass
         return sorted(rules, key=lambda r: r.created_at)
 
+    def list_by_tenant(
+        self,
+        tenant_id: str,
+    ) -> list[AlertRule]:
+        """List all alert rules for all users within a tenant."""
+        tdir = self._root_dir / tenant_id
+        if not tdir.is_dir():
+            return []
+        rules: list[AlertRule] = []
+        for f in tdir.glob("*/rule_*.json"):
+            try:
+                with open(f, "r", encoding="utf-8") as fh:
+                    rules.append(AlertRule.from_dict(json.load(fh)))
+            except Exception:
+                pass
+        return sorted(rules, key=lambda r: r.created_at)
+
+    list_rules = list_by_tenant
+
     def delete(
         self,
         alert_rule_id: str,

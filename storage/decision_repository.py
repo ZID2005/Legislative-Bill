@@ -36,6 +36,7 @@ from schemas.decision import (
     make_decision_id,
     sanitize_id,
 )
+from storage.exceptions import FrozenDatasetImmutableError
 from utils.file_utils import ensure_dir, file_exists, list_files, load_json, save_json
 
 logger = get_logger(__name__)
@@ -50,18 +51,34 @@ class DecisionRepository:
     decision_dir : Path, optional
         Root directory for decision records.
         Defaults to ``settings.DECISION_SUPPORT_DIR`` (``data/decision_support/``).
+    read_only : bool, optional
+        If True (default when pointing to production baseline), write/save/delete
+        operations are strictly rejected to preserve immutable baseline data.
     """
 
-    def __init__(self, decision_dir: Optional[Path] = None) -> None:
+    def __init__(
+        self,
+        decision_dir: Optional[Path] = None,
+        read_only: Optional[bool] = None,
+    ) -> None:
         from config.settings import settings
 
         self._root: Path = decision_dir or settings.DECISION_SUPPORT_DIR
         self._reports_dir: Path = self._root / "reports"
 
+        if read_only is not None:
+            self._read_only = read_only
+        else:
+            self._read_only = (decision_dir is None) or (settings.ENV.lower() == "production")
+
         ensure_dir(self._root)
         ensure_dir(self._reports_dir)
 
-        logger.debug("DecisionRepository initialised | root=%s", self._root)
+        logger.debug("DecisionRepository initialised | root=%s | read_only=%s", self._root, self._read_only)
+
+    @property
+    def is_read_only(self) -> bool:
+        return self._read_only
 
     # ------------------------------------------------------------------
     # Path resolution
@@ -99,6 +116,12 @@ class DecisionRepository:
         Path
             Absolute path to the saved JSON file.
         """
+        if self._read_only:
+            raise FrozenDatasetImmutableError(
+                dataset_name="Central Decisions",
+                message="Cannot write or mutate frozen Central decision records.",
+            )
+
         if not record.decision_id:
             record.decision_id = make_decision_id(
                 record.bill_id, record.company_isin, record.event_window
@@ -216,6 +239,12 @@ class DecisionRepository:
         """
         Persist a DecisionValidationReport.
         """
+        if self._read_only:
+            raise FrozenDatasetImmutableError(
+                dataset_name="Central Decisions",
+                message="Cannot write or mutate frozen Central decision validation reports.",
+            )
+
         path = self._report_path(report.report_id)
         try:
             save_json(report.to_dict(), path)

@@ -165,6 +165,12 @@ def list_companies(
     summary="Get single company profile dossier",
     description="Retrieve a complete corporate intelligence dossier including operational presence, quantitative firewall status, and related bills.",
 )
+@router.get(
+    "/{company_id}/dossier",
+    response_model=CompanyDetailResponse,
+    summary="Get single company profile dossier (alias)",
+    description="Alias to retrieve a complete corporate intelligence dossier.",
+)
 def get_company_detail(
     company_id: str,
     company_service: CompanyIntelligenceService = Depends(get_company_intelligence_service),

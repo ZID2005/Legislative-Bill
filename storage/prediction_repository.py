@@ -36,6 +36,7 @@ from schemas.prediction import (
     make_prediction_id,
     sanitize_id,
 )
+from storage.exceptions import FrozenDatasetImmutableError
 from utils.file_utils import ensure_dir, file_exists, list_files, load_json, save_json
 
 logger = get_logger(__name__)
@@ -50,18 +51,35 @@ class PredictionRepository:
     predictions_dir : Path, optional
         Root directory for prediction records.
         Defaults to ``settings.PREDICTIONS_DIR`` (``data/predictions/``).
+    read_only : bool, optional
+        If True (default when pointing to production baseline), write/save/delete
+        operations are strictly rejected to preserve immutable baseline data.
     """
 
-    def __init__(self, predictions_dir: Optional[Path] = None) -> None:
+    def __init__(
+        self,
+        predictions_dir: Optional[Path] = None,
+        read_only: Optional[bool] = None,
+    ) -> None:
         from config.settings import settings
 
         self._root: Path = predictions_dir or settings.PREDICTIONS_DIR
         self._reports_dir: Path = self._root / "reports"
 
+        # Default to read_only=True if using canonical production data dir or in production ENV
+        if read_only is not None:
+            self._read_only = read_only
+        else:
+            self._read_only = (predictions_dir is None) or (settings.ENV.lower() == "production")
+
         ensure_dir(self._root)
         ensure_dir(self._reports_dir)
 
-        logger.debug("PredictionRepository initialised | root=%s", self._root)
+        logger.debug("PredictionRepository initialised | root=%s | read_only=%s", self._root, self._read_only)
+
+    @property
+    def is_read_only(self) -> bool:
+        return self._read_only
 
     # ------------------------------------------------------------------
     # Path resolution
@@ -99,6 +117,12 @@ class PredictionRepository:
         Path
             Absolute path to the saved JSON file.
         """
+        if self._read_only:
+            raise FrozenDatasetImmutableError(
+                dataset_name="Central Predictions",
+                message="Cannot write or mutate frozen Central prediction records.",
+            )
+
         if not prediction.prediction_id:
             prediction.prediction_id = make_prediction_id(
                 prediction.bill_id, prediction.company_isin, prediction.event_window
@@ -206,6 +230,12 @@ class PredictionRepository:
         """
         Persist a PredictionValidationReport.
         """
+        if self._read_only:
+            raise FrozenDatasetImmutableError(
+                dataset_name="Central Predictions",
+                message="Cannot write or mutate frozen Central prediction validation reports.",
+            )
+
         path = self._report_path(report.report_id)
         try:
             save_json(report.to_dict(), path)

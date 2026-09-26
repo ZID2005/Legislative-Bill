@@ -1,0 +1,11 @@
+{
+  "tenant_id": "org_alpha_8086d1",
+  "name": "Alpha Capital 8086d1",
+  "status": "ACTIVE",
+  "plan_tier": "PLAN_NOT_CONFIGURED",
+  "billing_status": "BILLING_NOT_CONNECTED",
+  "owner_user_id": "usr_0973f07e",
+  "created_at": "2026-09-24T15:40:51.491863+00:00",
+  "updated_at": "2026-09-24T15:40:51.491882+00:00",
+  "metadata": {}
+}

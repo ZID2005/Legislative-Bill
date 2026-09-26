@@ -12,6 +12,7 @@ markers = [
     "slow: marks tests as slow (deselect with '-m \"not slow\"')",
     "integration: marks integration tests requiring network access",
     "unit: marks unit tests with no external dependencies",
+    "asyncio: marks asyncio tests",
 ]
 
 [tool.coverage.run]

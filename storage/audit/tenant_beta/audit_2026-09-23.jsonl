@@ -1,0 +1,1 @@
+{"audit_id": "aud_69b8f2c81212", "tenant_id": "tenant_beta", "user_id": "bob", "action": "DATA_EXPORT_REQUESTED", "resource": "tenant", "resource_id": "tenant_beta", "status": "SUCCESS", "timestamp": "2026-09-23T16:41:16.863708+00:00", "request_id": null, "ip_address": null, "details": {"item_counts": {"watchlists": 0, "alerts": 0}}}

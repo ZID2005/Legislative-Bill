@@ -190,6 +190,56 @@ def run_full_verification() -> dict:
     # Clean up watchlist
     client.delete(f"/api/v1/watchlists/{wl_id}", headers=headers_a)
 
+    # K. Monitoring API Suite (Task 8.18)
+    r_mon_overview = client.get("/api/v1/monitoring/overview")
+    assert r_mon_overview.status_code == 200, f"Overview failed: {r_mon_overview.text}"
+    overview_data = r_mon_overview.json()
+    assert overview_data["total_sources"] == 12
+    assert overview_data["enabled_sources"] == 7
+    assert overview_data["total_bills_monitored"] == 66
+    assert overview_data["central_bills_monitored"] == 22
+    assert overview_data["state_bills_monitored"] == 44
+    assert sorted(overview_data["implemented_states"]) == ["Andhra Pradesh", "Karnataka", "Kerala", "Telangana"]
+
+    r_mon_sources = client.get("/api/v1/monitoring/sources")
+    assert r_mon_sources.status_code == 200
+    assert r_mon_sources.json()["total"] == 12
+
+    r_mon_src_det = client.get("/api/v1/monitoring/sources/central_lok_sabha")
+    assert r_mon_src_det.status_code == 200
+    assert r_mon_src_det.json()["source"]["source_id"] == "central_lok_sabha"
+
+    r_mon_sched = client.get("/api/v1/monitoring/scheduler")
+    assert r_mon_sched.status_code == 200
+    assert "config" in r_mon_sched.json()
+
+    r_mon_runs = client.get("/api/v1/monitoring/runs")
+    assert r_mon_runs.status_code == 200
+
+    r_mon_changes = client.get("/api/v1/monitoring/changes")
+    assert r_mon_changes.status_code == 200
+
+    sample_bill_id = "the-banking-laws-amendment-bill-2024"
+    r_mon_ver = client.get(f"/api/v1/monitoring/bill-versions/{sample_bill_id}")
+    assert r_mon_ver.status_code == 200
+    assert r_mon_ver.json()["bill_id"] == sample_bill_id
+    assert r_mon_ver.json()["total_versions"] >= 1
+
+    r_mon_check = client.post("/api/v1/monitoring/check")
+    assert r_mon_check.status_code == 200
+    assert "run_id" in r_mon_check.json()
+    print("  [OK] Flow K (Monitoring API Suite): Overview, Sources, Scheduler, Runs, Changes, Bill Versions, Check verified.")
+
+    # L. Freshness API (Task 8.18)
+    r_freshness = client.get("/api/v1/freshness")
+    assert r_freshness.status_code == 200
+    fresh_json = r_freshness.json()
+    assert fresh_json["total_datasets"] == 9
+    assert fresh_json["not_available_count"] == 1  # external_media_signals
+    assert any(d["dataset"] == "state_legislative_bills" and d["status"] in ("LIVE", "RECENT") for d in fresh_json["datasets"])
+    assert any(d["dataset"] == "central_stock_predictions" and d["status"] == "LIVE" for d in fresh_json["datasets"])
+    print(f"  [OK] Flow L (Freshness API): 9 datasets verified (Overall={fresh_json['overall_status']}, Live={fresh_json['live_count']}, N/A={fresh_json['not_available_count']}).")
+
     # ------------------------------------------------------------------
     # 3. Verify State Prediction Firewall
     # ------------------------------------------------------------------

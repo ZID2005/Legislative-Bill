@@ -106,6 +106,26 @@ class AlertDigestService:
             logger.error("Failed to load digest %s: %s", digest_id, e)
             return None
 
+    def list_digests(
+        self,
+        user_id: str,
+        tenant_id: str = "default_tenant",
+        limit: int = 50,
+    ) -> list[AlertDigest]:
+        """List persisted digests for a user ordered by timestamp descending."""
+        p = self._user_digest_dir(tenant_id, user_id)
+        if not p.is_dir():
+            return []
+        digests: list[AlertDigest] = []
+        files = sorted(p.glob("digest_*.json"), key=lambda f: f.stat().st_mtime, reverse=True)
+        for f in files[:limit]:
+            try:
+                with open(f, "r", encoding="utf-8") as fh:
+                    digests.append(AlertDigest.from_dict(json.load(fh)))
+            except Exception:
+                pass
+        return digests
+
     def _resolve_period_bounds(
         self,
         digest_type: DigestType,

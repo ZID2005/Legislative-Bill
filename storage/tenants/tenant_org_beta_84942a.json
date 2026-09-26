@@ -1,0 +1,11 @@
+{
+  "tenant_id": "org_beta_84942a",
+  "name": "Beta Research 84942a",
+  "status": "ACTIVE",
+  "plan_tier": "PLAN_NOT_CONFIGURED",
+  "billing_status": "BILLING_NOT_CONNECTED",
+  "owner_user_id": "usr_96012cdc",
+  "created_at": "2026-09-25T16:48:28.040232+00:00",
+  "updated_at": "2026-09-25T16:48:28.040248+00:00",
+  "metadata": {}
+}

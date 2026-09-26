@@ -1,0 +1,1 @@
+{"audit_id": "aud_81ff154807d4", "tenant_id": "org_beta_4070c0", "user_id": "usr_a5b0c50d", "action": "TENANT_REGISTERED", "resource": "tenant", "resource_id": "org_beta_4070c0", "status": "SUCCESS", "timestamp": "2026-09-23T16:52:49.898239+00:00", "request_id": null, "ip_address": null, "details": {"org_name": "Beta Research 4070c0", "owner_email": "owner@org_beta_4070c0.com"}}

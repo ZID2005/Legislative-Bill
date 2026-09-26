@@ -1,0 +1,11 @@
+{
+  "tenant_id": "journey_org_ecb325",
+  "name": "Global Quant Research ecb325",
+  "status": "ACTIVE",
+  "plan_tier": "PLAN_NOT_CONFIGURED",
+  "billing_status": "BILLING_NOT_CONNECTED",
+  "owner_user_id": "usr_8bd9e0d3",
+  "created_at": "2026-09-25T15:53:42.926952+00:00",
+  "updated_at": "2026-09-25T15:53:42.926968+00:00",
+  "metadata": {}
+}

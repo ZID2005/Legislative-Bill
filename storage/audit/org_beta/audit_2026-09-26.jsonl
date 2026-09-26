@@ -1,0 +1,2 @@
+{"audit_id": "aud_9b403c6436de", "tenant_id": "org_beta", "user_id": "userb", "action": "LOGIN_SUCCESS", "resource": "session", "resource_id": "userb", "status": "SUCCESS", "timestamp": "2026-09-26T15:53:18.153402+00:00", "request_id": null, "ip_address": null, "details": {}}
+{"audit_id": "aud_3919c94d240c", "tenant_id": "org_beta", "user_id": "userb", "action": "LOGIN_SUCCESS", "resource": "session", "resource_id": "userb", "status": "SUCCESS", "timestamp": "2026-09-26T15:55:06.026215+00:00", "request_id": null, "ip_address": null, "details": {}}

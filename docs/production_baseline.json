@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "manifest_name": "Indian Parliamentary Intelligence & Market Impact Platform — Production Baseline",
+  "manifest_version": "1.1.0",
+  "schema_version": "v1.0",
+  "environment": "production",
+  "generated_at": "2026-09-20T22:00:00Z",
+  "verified_at": "2026-09-22T20:00:00Z",
+  "verification_status": "VERIFIED_FROZEN",
+  "description": "Authoritative machine-readable inventory of all production analytical baselines, datasets, and firewall invariants. Serves as reference contract for startup validation and CI/CD gates.",
+  "invariants": {
+    "zero_state_stock_predictions": true,
+    "firewall_intel_only_companies": true,
+    "immutable_central_predictions": true,
+    "immutable_central_decisions": true,
+    "immutable_central_anticipation": true,
+    "immutable_central_reports": true,
+    "prohibit_financial_recommendations": true,
+    "prohibit_political_motive_speculation": true
+  },
+  "central_baseline": {
+    "jurisdiction": "Central",
+    "central_total_records": 22,
+    "central_production_bills": 20,
+    "central_auxiliary_records": 2,
+    "auxiliary_record_ids": [
+      "key-issues-and-analysis",
+      "service-bill"
+    ],
+    "production_bills_count": 20,
+    "development_bills_count": 2,
+    "quantitative_securities_count": 47,
+    "bill_company_pairs_count": 940,
+    "prediction_records_count": 4700,
+    "decision_records_count": 4700,
+    "anticipation_scores_count": 940,
+    "stakeholder_reports": {
+      "total_count": 14100,
+      "investor_reports_count": 4700,
+      "business_reports_count": 4700,
+      "public_reports_count": 4700
+    },
+    "event_horizons": [
+      "[-20,+20]",
+      "[-10,+10]",
+      "[-5,+5]",
+      "[-2,+2]",
+      "[-1,+1]"
+    ],
+    "storage_roots": {
+      "bills_metadata": "data/bills/metadata",
+      "predictions": "data/predictions",
+      "decision_support": "data/decision_support",
+      "anticipation": "data/anticipation/scores",
+      "reports": "data/reports"
+    },
+    "mutability": "IMMUTABLE_FROZEN"
+  },
+  "state_baseline": {
+    "jurisdiction": "State",
+    "pilot_acts_count": 44,
+    "production_bills_count": 44,
+    "official_pdfs_count": 44,
+    "knowledge_records_count": 44,
+    "corporate_exposures_count": 86,
+    "stock_predictions_count": 0,
+    "implemented_states": [
+      "Andhra Pradesh",
+      "Karnataka",
+      "Kerala",
+      "Telangana"
+    ],
+    "implemented_states_count": 4,
+    "state_breakdown": {
+      "Andhra Pradesh": 12,
+      "Karnataka": 11,
+      "Kerala": 11,
+      "Telangana": 10
+    },
+    "planned_jurisdictions_zero_production": [
+      "Maharashtra",
+      "Gujarat",
+      "Tamil Nadu"
+    ],
+    "planned_states_count": 24,
+    "total_states_in_union": 28,
+    "storage_roots": {
+      "bills_metadata": "data/state_bills/metadata",
+      "official_pdfs": "data/state_bills/pdfs",
+      "knowledge": "data/state_bills/knowledge",
+      "corporate_exposure": "data/state_bills/corporate_exposure"
+    },
+    "firewall_status": "STATE_QUALITATIVE_ONLY_ZERO_STOCK_PREDICTIONS",
+    "mutability": "PILOT_STABLE"
+  },
+  "unified_universe_baseline": {
+    "total_legislative_records": 66,
+    "total_companies": 70,
+    "companies_breakdown": {
+      "quantitative_listed": 47,
+      "intelligence_only": 20,
+      "reference": 3,
+      "combined_non_quantitative_reference": 23
+    },
+    "total_corporate_exposures": 104,
+    "corporate_exposures_breakdown": {
+      "central_exposures": 18,
+      "state_exposures": 86
+    },
+    "intelligence_firewall_status": "INTELLIGENCE_ONLY_NO_QUANT_PREDICTIONS",
+    "intelligence_firewall_scope": "Applies strictly to the 20 intelligence-only entities; reference entities remain reference entities",
+    "mutability": "RESTRICTED"
+  },
+  "operational_metadata": {
+    "fastapi_version": "1.0.0",
+    "api_v1_prefix": "/api/v1",
+    "supported_epistemic_tags": [
+      "[FACT]",
+      "[OBSERVED]",
+      "[DERIVED]",
+      "[INTERPRETATION]",
+      "[PREDICTION]"
+    ],
+    "coverage_levels": [
+      "LEVEL 1 QUANTITATIVE",
+      "STATE QUALITATIVE",
+      "LEVEL 2 INTELLIGENCE ONLY",
+      "REFERENCE"
+    ]
+  }
+}

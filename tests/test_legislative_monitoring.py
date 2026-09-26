@@ -1434,33 +1434,34 @@ class TestBaselineRegression:
         from storage.prediction_repository import PredictionRepository
         repo = PredictionRepository()
         try:
-            preds = repo.get_all()
+            preds = repo.load_all()
             assert len(preds) == 4700, f"Expected 4700 predictions, got {len(preds)}"
-        except Exception:
-            pytest.skip("PredictionRepository not available in test environment")
+        except Exception as e:
+            pytest.fail(f"Failed to load predictions: {e}")
 
     def test_state_bill_count(self):
         """State bill count remains at 44."""
         from storage.state_knowledge_repository import StateKnowledgeRepository
         repo = StateKnowledgeRepository()
         try:
-            records = repo.get_all_records()
+            records = repo.get_all()
             assert len(records) == 44, f"Expected 44 state knowledge records, got {len(records)}"
-        except Exception:
-            pytest.skip("StateKnowledgeRepository.get_all_records not available")
+        except Exception as e:
+            pytest.fail(f"Failed to load state knowledge records: {e}")
 
     def test_state_predictions_exactly_zero(self):
         """State predictions are exactly 0 — never created by monitoring."""
         try:
             from storage.prediction_repository import PredictionRepository
             repo = PredictionRepository()
-            preds = repo.get_all()
-            # All predictions should be for Central (state) jurisdiction
+            preds = repo.load_all()
+            # All predictions should be for Central jurisdiction
             state_preds = [
                 p for p in preds
                 if hasattr(p, "jurisdiction") and getattr(p, "jurisdiction", None) == "state"
             ]
             assert len(state_preds) == 0, \
                 f"State predictions must be 0, found {len(state_preds)}"
-        except Exception:
-            pytest.skip("PredictionRepository not available in test isolation")
+        except Exception as e:
+            pytest.fail(f"PredictionRepository check failed: {e}")
+

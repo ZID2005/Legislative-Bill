@@ -1,0 +1,2 @@
+{"audit_id": "aud_d43ef5bde94c", "tenant_id": "org_alpha", "user_id": "usera", "action": "LOGIN_SUCCESS", "resource": "session", "resource_id": "usera", "status": "SUCCESS", "timestamp": "2026-09-26T15:53:17.836035+00:00", "request_id": null, "ip_address": null, "details": {}}
+{"audit_id": "aud_1b28ff63ccf6", "tenant_id": "org_alpha", "user_id": "usera", "action": "LOGIN_SUCCESS", "resource": "session", "resource_id": "usera", "status": "SUCCESS", "timestamp": "2026-09-26T15:55:05.948401+00:00", "request_id": null, "ip_address": null, "details": {}}

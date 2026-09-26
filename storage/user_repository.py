@@ -55,7 +55,7 @@ class UserRepository:
             )
 
         with open(path, "w", encoding="utf-8") as f:
-            json.dump(user.to_dict(), f, indent=2)
+            json.dump(user.to_dict(include_sensitive=True), f, indent=2)
         logger.debug("Created user %s in tenant %s", user.user_id, user.tenant_id)
         return user
 
@@ -74,6 +74,19 @@ class UserRepository:
             logger.error("Failed to load user %s: %s", user_id, e)
             return None
 
+    def get_by_email(self, email: str, tenant_id: str = "default_tenant") -> Optional[User]:
+        """
+        Find a user by email within a tenant.
+        """
+        if not email:
+            return None
+        email_clean = email.strip().lower()
+        users = self.list(tenant_id=tenant_id)
+        for u in users:
+            if u.email and u.email.strip().lower() == email_clean:
+                return u
+        return None
+
     def update(self, user: User) -> User:
         """
         Update an existing user's attributes. Bumps updated_at timestamp.
@@ -88,8 +101,27 @@ class UserRepository:
             )
 
         with open(path, "w", encoding="utf-8") as f:
-            json.dump(user.to_dict(), f, indent=2)
+            json.dump(user.to_dict(include_sensitive=True), f, indent=2)
         return user
+
+    def update_last_active(self, user_id: str, tenant_id: str = "default_tenant") -> Optional[User]:
+        """Bump last_active_at timestamp for the user."""
+        user = self.get(user_id, tenant_id)
+        if not user:
+            return None
+        from datetime import datetime, timezone
+        user.last_active_at = datetime.now(timezone.utc).isoformat()
+        return self.update(user)
+
+    def soft_delete(self, user_id: str, tenant_id: str = "default_tenant") -> bool:
+        """Soft delete a user by marking status as DELETED."""
+        user = self.get(user_id, tenant_id)
+        if not user:
+            return False
+        user.status = "DELETED"
+        user.is_active = False
+        self.update(user)
+        return True
 
     def list(
         self,

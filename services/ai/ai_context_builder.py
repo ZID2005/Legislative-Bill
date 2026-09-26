@@ -261,6 +261,85 @@ class AICompanyContext:
         return "\n".join(lines)
 
 
+@dataclass
+class AIIndustryContext:
+    """Structured, verified context container for an industry sector and its legislative exposures."""
+
+    industry_id: str
+    industry_name: str
+    sector: str
+    coverage_level: int
+
+    facts: list[str] = field(default_factory=list)
+    derived: list[str] = field(default_factory=list)
+    interpretations: list[str] = field(default_factory=list)
+    predictions: list[str] = field(default_factory=list)
+
+    provenance: dict[str, str] = field(default_factory=dict)
+    metadata: dict[str, Any] = field(default_factory=dict)
+
+    @property
+    def context_hash(self) -> str:
+        payload = {
+            "industry_id": self.industry_id,
+            "industry_name": self.industry_name,
+            "sector": self.sector,
+            "coverage_level": self.coverage_level,
+            "facts": sorted(self.facts),
+            "derived": sorted(self.derived),
+            "interpretations": sorted(self.interpretations),
+            "predictions": sorted(self.predictions),
+        }
+        serialized = json.dumps(payload, sort_keys=True, ensure_ascii=True)
+        return hashlib.sha256(serialized.encode("utf-8")).hexdigest()
+
+    def format_prompt_block(self) -> str:
+        lines = [
+            "=== VERIFIED INDUSTRY INTELLIGENCE CONTEXT ===",
+            f"INDUSTRY: {self.industry_name} ({self.industry_id})",
+            f"BROAD SECTOR: {self.sector}",
+            f"PLATFORM COVERAGE LEVEL: Level {self.coverage_level}",
+            "",
+            "[FACTS — Official Sectoral Classifications, Member Entities & Statutory Records]",
+        ]
+        if self.facts:
+            for f in self.facts:
+                lines.append(f"• {f}")
+        else:
+            lines.append("• Industry classification facts verified.")
+
+        lines.extend(["", "[DERIVED INFORMATION — Aggregated Exposures, Jurisdictions & Mechanisms]"])
+        if self.derived:
+            for d in self.derived:
+                lines.append(f"• {d}")
+        else:
+            lines.append("• Standard derived taxonomies on record.")
+
+        lines.extend(["", "[ECONOMIC INTERPRETATION — Transmission Channels & Regulatory Impacts]"])
+        if self.interpretations:
+            for i in self.interpretations:
+                lines.append(f"• {i}")
+        else:
+            lines.append("• Regulatory transmission documented via statutory compliance.")
+
+        lines.extend(["", "[PREDICTIONS — Central Model Forecasts (Firewall Enforced)]"])
+        if self.predictions:
+            for p in self.predictions:
+                lines.append(f"• {p}")
+        else:
+            lines.append("• Industry-level prediction is not modeled. Model outputs are company-level only.")
+
+        lines.extend([
+            "",
+            "[PROVENANCE & INTEGRITY]",
+            f"• Verified Sources: {self.provenance.get('sources', 'Parliamentary Records / MCA Corporate Registry')}",
+            f"• State Prediction Firewall: {self.provenance.get('state_firewall', 'ACTIVE (Strictly 0 Predictions)')}",
+            f"• Regulatory Notice: Empirical research analysis only; not investment advice.",
+            "=== END CONTEXT ===",
+        ])
+        return "\n".join(lines)
+
+
 class AIContextBuilder:
     """
     Deterministic builder assembling verified context from existing repositories.
@@ -772,3 +851,51 @@ class AIContextBuilder:
             )
 
         return ctx
+
+    def build_industry_context(self, industry_identifier: str) -> AIIndustryContext:
+        """
+        Build verified AI context for an industry sector.
+        """
+        from services.industry_intelligence_service import IndustryIntelligenceService
+        service = IndustryIntelligenceService(
+            company_repo=self.company_repo,
+            exposure_repo=self.company_exposure_repo,
+            bill_repo=self.central_bill_repo,
+            knowledge_repo=self.central_knowledge_repo,
+            state_bill_repo=self.state_bill_repo,
+            state_knowledge_repo=self.state_knowledge_repo,
+            prediction_repo=self.central_prediction_repo,
+            decision_repo=self.central_decision_repo,
+            anticipation_repo=self.anticipation_repo,
+        )
+        dossier = service.get_industry_dossier(industry_identifier)
+        if not dossier:
+            return AIIndustryContext(
+                industry_id=industry_identifier,
+                industry_name=industry_identifier,
+                sector="Unknown",
+                coverage_level=3,
+                facts=[f"Industry identifier '{industry_identifier}' has no verified record in project master."],
+                derived=["No verified exposure links found for this industry query."],
+                interpretations=["Industry status is unclassified."],
+                predictions=["Industry-level prediction is not modeled. Model outputs are company-level only."],
+                provenance={"database": "Unverified Query", "sources": "None"},
+            )
+
+        return AIIndustryContext(
+            industry_id=dossier.industry_id,
+            industry_name=dossier.name,
+            sector=dossier.sector,
+            coverage_level=dossier.coverage_level,
+            facts=list(dossier.facts),
+            derived=list(dossier.derived),
+            interpretations=list(dossier.interpretations),
+            predictions=list(dossier.predictions),
+            provenance={
+                "sources": "Parliamentary Records / MCA Corporate Registry",
+                "database": "Project Multi-Jurisdiction Repository",
+                "state_firewall": "ACTIVE (Strictly 0 Predictions)",
+            },
+            metadata={"industry_id": dossier.industry_id, "sector": dossier.sector},
+        )
+

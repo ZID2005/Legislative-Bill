@@ -77,10 +77,9 @@ class AlertPreferenceRepository:
             logger.error("Failed to load alert preferences for user %s: %s", user_id, e)
             return None
 
+    get = get_by_user
+
     def update(self, pref: AlertPreference) -> AlertPreference:
-        """
-        Update an existing user's AlertPreference. Bumps updated_at.
-        """
         pref.validate()
         from datetime import datetime, timezone
         pref.updated_at = datetime.now(timezone.utc).isoformat()

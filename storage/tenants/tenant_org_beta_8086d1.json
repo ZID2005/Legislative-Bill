@@ -1,0 +1,11 @@
+{
+  "tenant_id": "org_beta_8086d1",
+  "name": "Beta Research 8086d1",
+  "status": "ACTIVE",
+  "plan_tier": "PLAN_NOT_CONFIGURED",
+  "billing_status": "BILLING_NOT_CONNECTED",
+  "owner_user_id": "usr_7850c1d8",
+  "created_at": "2026-09-24T15:40:51.918947+00:00",
+  "updated_at": "2026-09-24T15:40:51.918962+00:00",
+  "metadata": {}
+}

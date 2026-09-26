@@ -47,6 +47,81 @@ _configured: bool = False
 _ROOT_LOGGER_NAME: str = "legislative_intel"
 
 
+import re
+
+# ---------------------------------------------------------------------------
+# Redacting Filter for Security Hardening (Phase 5 / 8)
+# ---------------------------------------------------------------------------
+
+
+class RedactingFilter(logging.Filter):
+    """
+    Sanitizes log records to prevent credentials, tokens, connection strings,
+    and sensitive customer data from being emitted to stdout or log files.
+    """
+
+    PATTERNS: list[tuple[re.Pattern, str]] = [
+        # Bearer tokens / JWTs
+        (
+            re.compile(r"Bearer\s+[A-Za-z0-9\-_=]+\.[A-Za-z0-9\-_=]+\.?[A-Za-z0-9\-_.+/=]*", re.IGNORECASE),
+            "Bearer [REDACTED_TOKEN]",
+        ),
+        # Raw JWTs
+        (
+            re.compile(r"eyJ[A-Za-z0-9\-_=]{10,}\.eyJ[A-Za-z0-9\-_=]{10,}\.[A-Za-z0-9\-_.+/=]*"),
+            "[REDACTED_JWT]",
+        ),
+        # Password parameters in URLs/JSON/key-value (quoted or unquoted)
+        (
+            re.compile(r'((?:password|client_secret|api_key)\s*[:=]\s*["\']?)([^"\'\s&,;]+)(["\']?)', re.IGNORECASE),
+            r"\1[REDACTED]\3",
+        ),
+        # Groq / OpenAI / general API keys
+        (
+            re.compile(r"gsk_[A-Za-z0-9]{20,}"),
+            "[REDACTED_GROQ_KEY]",
+        ),
+        (
+            re.compile(r"sk-[A-Za-z0-9]{20,}"),
+            "[REDACTED_API_KEY]",
+        ),
+        # PostgreSQL / Redis connection strings with passwords
+        (
+            re.compile(r"(postgres(?:ql)?://[^:]+:)([^@]+)(@)", re.IGNORECASE),
+            r"\1[REDACTED_PASSWORD]\3",
+        ),
+        (
+            re.compile(r"(redis://(?::[^@]+)?@)", re.IGNORECASE),
+            "redis://:[REDACTED_PASSWORD]@",
+        ),
+    ]
+
+    def filter(self, record: logging.LogRecord) -> bool:
+        if isinstance(record.msg, str):
+            msg = record.msg
+            for pattern, replacement in self.PATTERNS:
+                msg = pattern.sub(replacement, msg)
+            record.msg = msg
+        if record.args:
+            if isinstance(record.args, tuple):
+                new_args = []
+                for a in record.args:
+                    if isinstance(a, str):
+                        for pattern, replacement in self.PATTERNS:
+                            a = pattern.sub(replacement, a)
+                    new_args.append(a)
+                record.args = tuple(new_args)
+            elif isinstance(record.args, dict):
+                new_args = {}
+                for k, v in record.args.items():
+                    if isinstance(v, str):
+                        for pattern, replacement in self.PATTERNS:
+                            v = pattern.sub(replacement, v)
+                    new_args[k] = v
+                record.args = new_args
+        return True
+
+
 # ---------------------------------------------------------------------------
 # Public API
 # ---------------------------------------------------------------------------
@@ -80,6 +155,9 @@ def configure_logging(
     root_logger = logging.getLogger(_ROOT_LOGGER_NAME)
     root_logger.setLevel(log_level)
 
+    redacting_filter = RedactingFilter()
+    root_logger.addFilter(redacting_filter)
+
     formatter = logging.Formatter(
         fmt=log_format,
         datefmt="%Y-%m-%d %H:%M:%S",
@@ -91,6 +169,7 @@ def configure_logging(
     console_handler = logging.StreamHandler(sys.stdout)
     console_handler.setLevel(log_level)
     console_handler.setFormatter(formatter)
+    console_handler.addFilter(redacting_filter)
     root_logger.addHandler(console_handler)
 
     # ------------------------------------------------------------------
@@ -107,6 +186,7 @@ def configure_logging(
         )
         file_handler.setLevel(log_level)
         file_handler.setFormatter(formatter)
+        file_handler.addFilter(redacting_filter)
         root_logger.addHandler(file_handler)
 
     # Suppress verbose third-party loggers

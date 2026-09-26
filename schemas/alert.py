@@ -97,6 +97,8 @@ class DigestFrequency(str, Enum):
     REAL_TIME = "REAL_TIME"
     DAILY_DIGEST = "DAILY_DIGEST"
     WEEKLY_DIGEST = "WEEKLY_DIGEST"
+    DAILY = "DAILY"
+    WEEKLY = "WEEKLY"
 
 
 # ---------------------------------------------------------------------------

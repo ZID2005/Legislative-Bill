@@ -458,6 +458,9 @@ class Settings:
     WATCHLIST_DIR: Path = _env_path("WATCHLIST_DIR", str(_PROJECT_ROOT / "storage" / "watchlists"))
     ALERTS_DIR: Path = _env_path("ALERTS_DIR", str(_PROJECT_ROOT / "storage" / "alerts"))
     USERS_DIR: Path = _env_path("USERS_DIR", str(_PROJECT_ROOT / "storage" / "users"))
+    TENANTS_DIR: Path = _env_path("TENANTS_DIR", str(_PROJECT_ROOT / "storage" / "tenants"))
+    AUDIT_DIR: Path = _env_path("AUDIT_DIR", str(_PROJECT_ROOT / "storage" / "audit"))
+    AI_USAGE_DIR: Path = _env_path("AI_USAGE_DIR", str(_PROJECT_ROOT / "storage" / "ai_usage"))
     # Task 8.13.5 — Alert Aggregation & Digest Pipeline
     ALERT_GROUPS_DIR: Path = _env_path("ALERT_GROUPS_DIR", str(_PROJECT_ROOT / "storage" / "alerts" / "groups"))
     ALERT_DIGESTS_DIR: Path = _env_path("ALERT_DIGESTS_DIR", str(_PROJECT_ROOT / "storage" / "alerts" / "digests"))
@@ -482,6 +485,12 @@ class Settings:
         ).split(",")
         if origin.strip()
     ]
+
+    # Task 8.17 — Rate Limiting Settings
+    RATE_LIMIT_ENABLED: bool = _env_bool("RATE_LIMIT_ENABLED", False)
+    RATE_LIMIT_DEFAULT_RPM: int = _env_int("RATE_LIMIT_DEFAULT_RPM", 120)
+    RATE_LIMIT_AI_RPM: int = _env_int("RATE_LIMIT_AI_RPM", 30)
+    RATE_LIMIT_MONITORING_RPM: int = _env_int("RATE_LIMIT_MONITORING_RPM", 10)
 
     def ensure_directories(self) -> None:
         """Create all required project directories if they do not already exist."""
@@ -528,6 +537,9 @@ class Settings:
             self.MONITORING_DIR / "notification_events",
             # Task 8.13 — Watchlists & Alerts
             self.USERS_DIR,
+            self.TENANTS_DIR,
+            self.AUDIT_DIR,
+            self.AI_USAGE_DIR,
             self.WATCHLIST_DIR,
             self.ALERTS_DIR,
             self.ALERTS_DIR / "rules",

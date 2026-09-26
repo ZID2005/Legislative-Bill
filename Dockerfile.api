@@ -1,0 +1,59 @@
+# ===========================================================================
+# Dockerfile.api
+# India Legislative Intelligence & Market Impact Prediction API
+# Multi-stage production container with unprivileged runtime execution
+# ===========================================================================
+
+FROM python:3.11-slim AS builder
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt pyproject.toml ./
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
+
+# ---------------------------------------------------------------------------
+# Production Runtime Stage
+# ---------------------------------------------------------------------------
+FROM python:3.11-slim AS runner
+
+WORKDIR /app
+
+# Install runtime curl for healthcheck
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create unprivileged system user
+RUN groupadd -g 10001 appgroup && \
+    useradd -u 10001 -g appgroup -s /bin/bash -m appuser
+
+# Copy installed wheels and python environment
+COPY --from=builder /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages
+COPY --from=builder /usr/local/bin /usr/local/bin
+
+# Copy application source and frozen analytical baselines
+COPY . /app
+
+# Ensure proper permissions for appuser
+RUN chown -R appuser:appgroup /app
+
+USER appuser
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    ENV=production \
+    APP_PORT=8000
+
+EXPOSE 8000
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \
+    CMD curl -f http://localhost:8000/health || exit 1
+
+# Graceful termination handling: uvicorn handles SIGTERM cleanly
+CMD ["uvicorn", "api.app:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4", "--timeout-keep-alive", "65"]

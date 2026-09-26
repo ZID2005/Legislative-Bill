@@ -267,3 +267,24 @@ class AlertEventRepository:
         with open(path, "w", encoding="utf-8") as f:
             json.dump(event.to_dict(), f, indent=2)
         return True
+
+    def mark_all_read(
+        self,
+        user_id: str,
+        tenant_id: str = "default_tenant",
+    ) -> int:
+        """
+        Mark all unread alert events for a user as read.
+        """
+        unread = self.list_unread(user_id=user_id, tenant_id=tenant_id, limit=1000)
+        count = 0
+        for ev in unread:
+            ev.mark_as_read()
+            path = self._user_events_dir(ev.tenant_id, ev.user_id) / f"event_{ev.alert_event_id}.json"
+            try:
+                with open(path, "w", encoding="utf-8") as f:
+                    json.dump(ev.to_dict(), f, indent=2)
+                count += 1
+            except Exception as e:
+                logger.error("Failed to mark alert as read: %s", e)
+        return count

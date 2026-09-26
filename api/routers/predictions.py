@@ -72,13 +72,17 @@ def list_predictions(
     direction: Optional[str] = Query(None, description="Filter by direction (POSITIVE, NEGATIVE, NEUTRAL)"),
     market_moving: Optional[bool] = Query(None, description="Filter: market moving probability >= 0.5"),
     min_confidence: Optional[float] = Query(None, ge=0.0, le=1.0, description="Minimum confidence score threshold"),
+    jurisdiction: Optional[str] = Query(None, description="Filter by jurisdiction (central, state)"),
 ) -> PaginatedResponse[PredictionItem]:
+    if jurisdiction and jurisdiction.strip().lower() == "state":
+        return PaginatedResponse[PredictionItem](items=[], total=0, page=page, limit=limit, pages=0)
+
     all_preds, _ = get_cached_predictions()
 
     filtered: list[PredictionRecord] = []
     b_id_lower = bill_id.strip().lower() if bill_id else None
     isin_upper = company_isin.strip().upper() if company_isin else None
-    ew_clean = event_window.strip() if event_window else None
+    ew_clean = event_window.strip().replace(" ", "+") if event_window else None
     dir_upper = direction.strip().upper() if direction else None
 
     for p in all_preds:
@@ -112,6 +116,54 @@ def list_predictions(
         limit=limit,
         pages=total_pages,
     )
+
+
+@router.get(
+    "/predictions/horizons/compare",
+    summary="Compare event horizons for a bill-company pair",
+    description="Retrieve comparison across all 5 modeled event windows and identify unmodeled horizons.",
+)
+def compare_prediction_horizons(
+    bill_id: str = Query(..., description="Bill ID"),
+    company_isin: str = Query(..., description="Company ISIN"),
+) -> dict[str, Any]:
+    all_preds, _ = get_cached_predictions()
+    b_id = bill_id.strip().lower()
+    c_isin = company_isin.strip().upper()
+
+    matching = [p for p in all_preds if p.bill_id.lower() == b_id and p.company_isin.upper() == c_isin]
+    modeled_windows = ["[-1,+1]", "[-3,+3]", "[-5,+5]", "[-5,+10]", "[-10,+10]"]
+    unmodeled_windows = [
+        {"window": "[0,1]", "note": "Unmodeled horizon; event-study baseline utilizes symmetric pre/post event windows."},
+        {"window": "[0,2]", "note": "Unmodeled horizon; event-study baseline utilizes symmetric pre/post event windows."},
+        {"window": "[0,5]", "note": "Unmodeled horizon; event-study baseline utilizes symmetric pre/post event windows."},
+    ]
+
+    comparisons = []
+    for w in modeled_windows:
+        pred = next((p for p in matching if p.event_window == w), None)
+        comparisons.append({
+            "event_window": w,
+            "is_modeled": True,
+            "direction": str(pred.predicted_direction) if pred else None,
+            "confidence": float(pred.model_confidence) if pred else None,
+            "note": None,
+        })
+    for u in unmodeled_windows:
+        comparisons.append({
+            "event_window": u["window"],
+            "is_modeled": False,
+            "direction": None,
+            "confidence": None,
+            "note": u["note"],
+        })
+
+    return {
+        "bill_id": bill_id,
+        "company_isin": company_isin,
+        "modeled_windows": modeled_windows,
+        "comparisons": comparisons,
+    }
 
 
 @router.get(

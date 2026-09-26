@@ -1,0 +1,11 @@
+{
+  "tenant_id": "org_alpha_a6c6ec",
+  "name": "Alpha Capital a6c6ec",
+  "status": "ACTIVE",
+  "plan_tier": "PLAN_NOT_CONFIGURED",
+  "billing_status": "BILLING_NOT_CONNECTED",
+  "owner_user_id": "usr_35a7d677",
+  "created_at": "2026-09-25T15:15:30.672760+00:00",
+  "updated_at": "2026-09-25T15:15:30.672795+00:00",
+  "metadata": {}
+}

@@ -39,10 +39,10 @@ class AIExplanationResult:
     """Standardized result container for all AI explanation operations."""
 
     content: str
-    bill_id: str
-    operation: str
-    persona: str
-    jurisdiction: str
+    bill_id: str = ""
+    operation: str = "EXPLANATION"
+    persona: str = "GENERAL_PUBLIC"
+    jurisdiction: str = "central"
     success: bool = True
     is_cached: bool = False
     context_hash: str = ""
@@ -151,7 +151,7 @@ class AIExplanationService:
         Execute grounded generation through context, guardrails, Groq, and validation.
         """
         norm_persona = persona.upper().replace(" ", "_")
-        b_id = getattr(context, "bill_id", None) or getattr(context, "company_id", "UNKNOWN")
+        b_id = getattr(context, "bill_id", None) or getattr(context, "company_id", None) or getattr(context, "industry_id", "UNKNOWN")
         j_scope = getattr(context, "jurisdiction", getattr(context, "universe_type", "central"))
         cache_key = self._compute_cache_key(
             context_hash=context.context_hash,
@@ -642,3 +642,34 @@ class AIExplanationService:
             "Under no circumstances should you generate stock price predictions, trading signals, or target prices."
         )
         return self._execute_explanation(ctx, "ASK_COMPANY_AI", prompt, persona=persona)
+
+    def ask_industry_ai(
+        self,
+        industry_identifier: str,
+        question: str,
+        persona: str = "GENERAL_PUBLIC",
+    ) -> AIExplanationResult:
+        """Free-form natural-language questions restricted to verified industry context."""
+        ctx = self.context_builder.build_industry_context(industry_identifier)
+
+        if not question or not question.strip():
+            return AIExplanationResult(
+                content="Please ask a specific question about this industry sector and its legislative exposures.",
+                bill_id=getattr(ctx, "industry_id", ""),
+                operation="ASK_INDUSTRY_AI",
+                persona=persona,
+                jurisdiction="unified",
+                success=False,
+                context_hash=ctx.context_hash,
+            )
+
+        prompt = (
+            f"User Question: \"{question.strip()}\"\n\n"
+            f"Answer the question strictly using the verified industry intelligence context for '{ctx.industry_name}' ({ctx.sector}) above. "
+            "Address legislative drivers, affected companies, transmission mechanisms, and market analysis availability as documented. "
+            "If the answer cannot be determined from the verified context, state honestly: "
+            "'This information is unavailable in verified project records.' "
+            "Under no circumstances should you generate speculative industry price targets, trading advice, or Buy/Sell/Hold recommendations."
+        )
+        return self._execute_explanation(ctx, "ASK_INDUSTRY_AI", prompt, persona=persona)
+

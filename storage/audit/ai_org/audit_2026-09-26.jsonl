@@ -1,0 +1,2 @@
+{"audit_id": "aud_23e99db3d6dd", "tenant_id": "ai_org", "user_id": "analyst", "action": "LOGIN_SUCCESS", "resource": "session", "resource_id": "analyst", "status": "SUCCESS", "timestamp": "2026-09-26T15:53:21.849491+00:00", "request_id": null, "ip_address": null, "details": {}}
+{"audit_id": "aud_822d54344bf5", "tenant_id": "ai_org", "user_id": "analyst", "action": "LOGIN_SUCCESS", "resource": "session", "resource_id": "analyst", "status": "SUCCESS", "timestamp": "2026-09-26T15:55:07.724463+00:00", "request_id": null, "ip_address": null, "details": {}}

@@ -142,6 +142,11 @@ class MonitoringRunner:
                 # Publish to notification feed
                 if event.event_type != ChangeEventType.ERROR:
                     self._event_feed.publish_from_change_event(event)
+                    try:
+                        from services.alert_pipeline_service import AlertPipelineService
+                        AlertPipelineService().process_event(event)
+                    except Exception as e:
+                        logger.warning("Alert pipeline dispatch for event %s encountered: %s", event.event_id, e)
 
         result = monitor_result.to_dict()
         return result

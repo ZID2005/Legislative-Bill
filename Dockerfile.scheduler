@@ -1,0 +1,34 @@
+# ===========================================================================
+# Dockerfile.scheduler
+# India Legislative Intelligence — Recurring Job Scheduler
+# ===========================================================================
+
+FROM python:3.11-slim
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN groupadd -g 10001 appgroup && \
+    useradd -u 10001 -g appgroup -s /bin/bash -m appuser
+
+COPY requirements.txt pyproject.toml ./
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
+
+COPY . /app
+RUN chown -R appuser:appgroup /app
+
+USER appuser
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    ENV=production \
+    JOB_EXECUTION_MODE=scheduler
+
+HEALTHCHECK --interval=60s --timeout=10s --start-period=10s --retries=3 \
+    CMD ps aux | grep "[r]un_scheduler.py" || exit 1
+
+CMD ["python", "scripts/run_scheduler.py"]

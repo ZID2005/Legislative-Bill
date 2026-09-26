@@ -12,6 +12,7 @@ from fastapi import APIRouter, Depends, Query
 
 from api.dependencies import (
     CurrentUser,
+    get_alert_digest_service,
     get_current_user,
     get_notification_center_service,
 )
@@ -23,6 +24,7 @@ from api.schemas import (
     UnreadCountResponse,
 )
 from schemas.alert import Notification
+from services.alert_digest_service import AlertDigestService
 from services.notification_center_service import NotificationCenterService
 
 router = APIRouter(prefix="/notifications", tags=["Notifications"])
@@ -136,6 +138,22 @@ def get_summary(
         tenant_id=current_user.tenant_id,
     )
     return NotificationSummaryResponse(**summary.to_dict())
+
+
+@router.get("/digests")
+def list_notification_digests(
+    current_user: CurrentUser = Depends(get_current_user),
+    digest_service: AlertDigestService = Depends(get_alert_digest_service),
+) -> list[dict[str, Any]]:
+    """
+    List notification digests for current user and tenant.
+    """
+    from typing import Any
+    digests = digest_service.list_digests(
+        user_id=current_user.user_id,
+        tenant_id=current_user.tenant_id,
+    )
+    return [d.to_dict() for d in digests]
 
 
 @router.get("/{notification_id}", response_model=NotificationResponse)

@@ -189,14 +189,15 @@ def register_error_handlers(app: FastAPI) -> None:
     async def validation_error_handler(
         request: Request, exc: RequestValidationError
     ) -> JSONResponse:
-        errors = exc.errors()
+        from fastapi.encoders import jsonable_encoder
+        clean_errors = jsonable_encoder(exc.errors())
         return JSONResponse(
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
             content={
                 "error": {
                     "code": "VALIDATION_ERROR",
                     "message": "Request body or query parameter validation failed.",
-                    "details": {"errors": errors},
+                    "details": {"errors": clean_errors},
                 }
             },
         )

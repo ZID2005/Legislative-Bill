@@ -1,0 +1,14 @@
+{
+  "tenant_id": "lifecycle_org_e8ee98",
+  "name": "Updated Lifecycle Corp e8ee98",
+  "status": "DELETED",
+  "plan_tier": "PLAN_NOT_CONFIGURED",
+  "billing_status": "BILLING_NOT_CONNECTED",
+  "owner_user_id": "usr_8837e408",
+  "created_at": "2026-09-25T16:55:03.361917+00:00",
+  "updated_at": "2026-09-25T16:55:04.068999+00:00",
+  "metadata": {
+    "industry": "Macro Research",
+    "team_size": "10"
+  }
+}

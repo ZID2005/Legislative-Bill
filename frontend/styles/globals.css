@@ -1,0 +1,158 @@
+/**
+ * styles/globals.css
+ * ==================
+ * Global CSS for the India Legislative Intelligence Platform.
+ * Design system tokens and base styles.
+ */
+
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+ * Base & Font
+ * ---------------------------------------------------------------------------*/
+
+@layer base {
+  :root {
+    --color-bg-base: #080d1a;
+    --color-bg-surface: #0d1424;
+    --color-bg-card: #111827;
+    --color-bg-elevated: #1a2235;
+    --color-border: #1f2937;
+    --color-border-subtle: #111827;
+    --color-text-primary: #e2e8f0;
+    --color-text-secondary: #94a3b8;
+    --color-text-muted: #475569;
+    --color-accent-blue: #3b82f6;
+    --color-accent-emerald: #10b981;
+    --color-accent-amber: #f59e0b;
+    --color-accent-rose: #f43f5e;
+    --color-accent-purple: #8b5cf6;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-bg-base);
+    color: var(--color-text-primary);
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* Focus visible - keyboard only */
+  :focus-visible {
+    outline: 2px solid var(--color-accent-blue);
+    outline-offset: 2px;
+  }
+
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  /* Scrollbars */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #1f2937;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #374151;
+  }
+
+  /* Selection */
+  ::selection {
+    background-color: rgba(59, 130, 246, 0.3);
+    color: #e2e8f0;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Typography Scale
+ * ---------------------------------------------------------------------------*/
+
+@layer base {
+  h1 { @apply text-2xl font-bold text-slate-100 tracking-tight; }
+  h2 { @apply text-xl font-semibold text-slate-200 tracking-tight; }
+  h3 { @apply text-base font-semibold text-slate-200; }
+  h4 { @apply text-sm font-semibold text-slate-300; }
+  p  { @apply text-sm text-slate-400; }
+  a  { @apply text-blue-400 hover:text-blue-300 transition-colors; }
+}
+
+/* ---------------------------------------------------------------------------
+ * Utility Classes
+ * ---------------------------------------------------------------------------*/
+
+@layer utilities {
+  /* Information hierarchy colors */
+  .text-fact         { color: var(--color-accent-emerald); }
+  .text-derived      { color: var(--color-accent-blue); }
+  .text-interpretation { color: var(--color-accent-amber); }
+  .text-prediction   { color: var(--color-accent-purple); }
+
+  /* Capability levels */
+  .level-1 { color: var(--color-accent-emerald); }
+  .level-2 { color: var(--color-accent-blue); }
+  .level-3 { color: var(--color-text-muted); }
+
+  /* Animated gradient glow for active items */
+  .glow-blue {
+    box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.2),
+                0 4px 16px rgba(59, 130, 246, 0.08);
+  }
+
+  /* Data density layout */
+  .data-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0.75rem;
+  }
+
+  /* Fade-in animation */
+  .animate-fade-in {
+    animation: fadeIn 0.2s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Truncate multi-line */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}

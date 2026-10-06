@@ -10,6 +10,7 @@ import { StatePredictionFirewall } from "@/components/firewalls/StatePredictionF
 import { predictionsApi } from "@/lib/api/predictions";
 import { anticipationApi } from "@/lib/api/anticipation";
 import { aiApi } from "@/lib/api/ai";
+import { AnticipationEvidenceSection } from "@/components/anticipation/AnticipationEvidenceSection";
 import type {
   AnticipationScoreResponse,
   DecisionRecordResponse,
@@ -535,6 +536,15 @@ export default function PredictionDetailContent({ predictionId }: PredictionDeta
               "Pre-event diagnostics measure aggregate public information diffusion only. They do not allege or imply insider trading or illicit market conduct under securities law."
             </p>
           </section>
+        )}
+
+        {/* ZONE 4B: Public Information Evidence Enrichment (Task 8.29) */}
+        {prediction && (
+          <AnticipationEvidenceSection
+            billId={prediction.bill_id}
+            companyIsin={prediction.company_isin}
+            companyName={prediction.company_name}
+          />
         )}
 
         {/* Stakeholder Reports Tab Strip [INTERPRETATION] */}

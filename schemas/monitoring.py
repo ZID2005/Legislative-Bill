@@ -4,15 +4,20 @@ schemas/monitoring.py
 Data schemas for the Legislative Monitoring & Update Scheduler system.
 
 Task 8.11 — Live Legislative Monitoring & Automatic Update Scheduler.
+Task 8.26 — Live Legislative Intelligence & Automatic Update Pipeline.
 
 Contains:
-- ChangeEventType  — classification of detected legislative changes
-- RunStatus        — outcome status of a monitoring run
-- MonitoringSource — extended source descriptor with monitoring metadata
-- ChangeEvent      — single detected change between two bill snapshots
-- DocumentChangeEvent — PDF-specific change record with SHA-256 comparison
-- MonitoringRun    — auditable record of a complete monitoring run
-- NotificationEvent — backend event for future SaaS "What's New" feed
+- ChangeEventType      — classification of detected legislative changes
+- RunStatus            — outcome status of a monitoring run
+- SourceCategory       — [8.26] type of legislative source authority
+- LiveStatus           — [8.26] verification state of a live record
+- AnalyticalModelStatus — [8.26] whether a bill is in the frozen quant model
+- MonitoringSource     — extended source descriptor with monitoring metadata
+- ChangeEvent          — single detected change between two bill snapshots
+- DocumentChangeEvent  — PDF-specific change record with SHA-256 comparison
+- MonitoringRun        — auditable record of a complete monitoring run
+- NotificationEvent    — backend event for future SaaS "What's New" feed
+- LiveKnowledgeRecord  — [8.26] live discovery record SEPARATE from frozen model
 """
 
 from __future__ import annotations
@@ -69,6 +74,62 @@ class SourceStatus(str, Enum):
     DISABLED = "DISABLED"
 
 
+class SourceCategory(str, Enum):
+    """
+    [Task 8.26] Categorical type of a legislative source authority.
+
+    Only PARLIAMENTARY, LEGISLATIVE_DEPARTMENT, and GAZETTE sources
+    are considered authoritative legislative truth. NEWS/MEDIA sources
+    may be used as anticipation/diffusion signals only.
+    """
+
+    CENTRAL = "CENTRAL"
+    STATE = "STATE"
+    GAZETTE = "GAZETTE"
+    PARLIAMENTARY = "PARLIAMENTARY"
+    LEGISLATIVE_DEPARTMENT = "LEGISLATIVE_DEPARTMENT"
+    OTHER_AUTHORITATIVE = "OTHER_AUTHORITATIVE"
+    NEWS_MEDIA = "NEWS_MEDIA"          # NOT authoritative; signal only
+
+
+class LiveStatus(str, Enum):
+    """
+    [Task 8.26] Verification state of a live legislative discovery record.
+
+    DISCOVERED   — found by the pipeline, not yet independently verified
+    VERIFIED     — confirmed by at least one authoritative official source
+    UPDATED      — a previously verified record has received new information
+    WITHDRAWN    — explicitly documented as withdrawn / lapsed
+    SUPERSEDED   — replaced by a newer version or renumbered bill
+    UNKNOWN      — status cannot be determined from available sources
+    KNOWLEDGE_ONLY — in live knowledge base, explicitly NOT in analytical model
+    """
+
+    DISCOVERED = "DISCOVERED"
+    VERIFIED = "VERIFIED"
+    UPDATED = "UPDATED"
+    WITHDRAWN = "WITHDRAWN"
+    SUPERSEDED = "SUPERSEDED"
+    UNKNOWN = "UNKNOWN"
+    KNOWLEDGE_ONLY = "KNOWLEDGE_ONLY"
+
+
+class AnalyticalModelStatus(str, Enum):
+    """
+    [Task 8.26] Whether a legislative item is part of the frozen quantitative
+    prediction model or simply lives in the live knowledge base.
+
+    CRITICAL: A newly discovered bill MUST start as KNOWLEDGE_ONLY.
+    Only an explicitly approved ingestion process may set MODELLED.
+    No automated pipeline may assign MODELLED to a newly discovered bill.
+    """
+
+    MODELLED = "MODELLED"              # Frozen analytical baseline — do NOT auto-assign
+    KNOWLEDGE_ONLY = "KNOWLEDGE_ONLY"  # Default for all live discoveries
+    PENDING_REVIEW = "PENDING_REVIEW"  # Queued for analytical review
+    NOT_ELIGIBLE = "NOT_ELIGIBLE"      # Explicitly ineligible (state, non-legislative, etc.)
+
+
 # ---------------------------------------------------------------------------
 # MonitoringSource
 # ---------------------------------------------------------------------------
@@ -81,6 +142,11 @@ class MonitoringSource:
 
     Combines the original StateBillSource configuration with monitoring-specific
     operational metadata (polling interval, last run timestamps, error tracking).
+
+    Task 8.26 additions:
+    - authority_name: human-readable authority (e.g. 'Parliament of India')
+    - source_category: SourceCategory enum classifying the authority type
+    - health_status: computed health classification string
     """
 
     source_id: str
@@ -99,6 +165,10 @@ class MonitoringSource:
     last_error_at: Optional[str] = None
     last_error: Optional[str] = None
     notes: Optional[str] = None
+    # Task 8.26 fields
+    authority_name: Optional[str] = None
+    source_category: str = SourceCategory.PARLIAMENTARY.value
+    health_status: Optional[str] = None  # computed; HEALTHY | DEGRADED | ERROR | NEVER_CHECKED | DISABLED
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -118,6 +188,10 @@ class MonitoringSource:
             "last_error_at": self.last_error_at,
             "last_error": self.last_error,
             "notes": self.notes,
+            # Task 8.26
+            "authority_name": self.authority_name,
+            "source_category": self.source_category,
+            "health_status": self.health_status,
         }
 
     @classmethod
@@ -139,6 +213,10 @@ class MonitoringSource:
             last_error_at=data.get("last_error_at"),
             last_error=data.get("last_error"),
             notes=data.get("notes"),
+            # Task 8.26
+            authority_name=data.get("authority_name"),
+            source_category=data.get("source_category", SourceCategory.PARLIAMENTARY.value),
+            health_status=data.get("health_status"),
         )
 
 
@@ -410,4 +488,185 @@ class NotificationEvent:
             source=data.get("source"),
             summary=data.get("summary"),
             metadata=data.get("metadata", {}),
+        )
+
+
+# ---------------------------------------------------------------------------
+# Task 8.26 — LiveKnowledgeRecord
+# ---------------------------------------------------------------------------
+
+
+@dataclass
+class LiveKnowledgeRecord:
+    """
+    [Task 8.26] A legislative record in the LIVE KNOWLEDGE BASE.
+
+    This is SEPARATE from the FROZEN ANALYTICAL DATASET.
+
+    FIREWALL RULE
+    =============
+    - analytical_model_status ALWAYS defaults to KNOWLEDGE_ONLY.
+    - No automated pipeline may set analytical_model_status = MODELLED.
+    - Only an explicitly approved admin ingestion process may do so.
+    - The guard method `assert_not_frozen_model()` enforces this at runtime.
+
+    Lifecycle states (live_status)
+    ==============================
+    DISCOVERED   -> found by crawler, not verified
+    VERIFIED     -> confirmed by >=1 authoritative source
+    UPDATED      -> verified record received new data
+    WITHDRAWN    -> explicitly lapsed / pulled back
+    SUPERSEDED   -> replaced by a newer version / renumbering
+    KNOWLEDGE_ONLY (terminal) -> in live KB, explicitly not in model
+    """
+
+    # Identity
+    record_id: str = field(default_factory=lambda: str(uuid.uuid4()))
+    canonical_bill_id: Optional[str] = None      # Matches existing bill if known
+    bill_number: Optional[str] = None
+    title: str = ""
+    short_title: Optional[str] = None
+    jurisdiction: str = "central"               # central | state
+    state: Optional[str] = None
+
+    # Live pipeline status
+    live_status: str = LiveStatus.DISCOVERED.value
+    discovered_at: str = field(
+        default_factory=lambda: datetime.now(timezone.utc).isoformat()
+    )
+    verified_at: Optional[str] = None
+    last_updated_at: str = field(
+        default_factory=lambda: datetime.now(timezone.utc).isoformat()
+    )
+    verification_source_id: Optional[str] = None
+    verification_source_url: Optional[str] = None
+
+    # *** Firewall: Frozen Model Status ***
+    # MUST default to KNOWLEDGE_ONLY; never auto-changed by pipeline
+    analytical_model_status: str = AnalyticalModelStatus.KNOWLEDGE_ONLY.value
+
+    # Provenance
+    discovered_by_source_id: str = ""
+    discovered_by_run_id: Optional[str] = None
+    source_url: Optional[str] = None
+    source_category: str = SourceCategory.PARLIAMENTARY.value
+    authority_name: Optional[str] = None
+
+    # Document tracking (Task 8.26 Phase 9)
+    document_url: Optional[str] = None
+    document_hash_sha256: Optional[str] = None   # SHA-256 of fetched PDF/HTML
+    document_retrieved_at: Optional[str] = None
+    document_retrieval_failures: int = 0         # consecutive fetch failures
+    document_retrieval_last_error: Optional[str] = None
+
+    # Deduplication
+    identity_matched: bool = False               # True if matched to existing bill
+    duplicate_of_record_id: Optional[str] = None
+    duplicate_discoveries: int = 0               # times this record was re-discovered
+
+    # Content summary (normalized)
+    introduction_date: Optional[str] = None
+    assent_date: Optional[str] = None
+    bill_status_text: Optional[str] = None       # raw status string from source
+    summary: Optional[str] = None
+    tags: list[str] = field(default_factory=list)
+
+    # Additional metadata
+    extra: dict[str, Any] = field(default_factory=dict)
+
+    # ------------------------------------------------------------------ #
+    # Guard                                                               #
+    # ------------------------------------------------------------------ #
+
+    def assert_not_frozen_model(self) -> None:
+        """
+        Raises ValueError if this record has been (incorrectly) marked MODELLED
+        by any automated pipeline path.
+
+        Call at the end of any automated ingestion step to enforce the firewall.
+        Only skip this check in the explicit, human-approved analytical ingestion CLI.
+        """
+        if self.analytical_model_status == AnalyticalModelStatus.MODELLED.value:
+            raise ValueError(
+                f"LiveKnowledgeRecord {self.record_id!r} has analytical_model_status=MODELLED "
+                "but was created/updated by an automated pipeline. "
+                "Only the approved analytical ingestion process may set MODELLED. "
+                "This is a Task 8.26 firewall violation."
+            )
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "record_id": self.record_id,
+            "canonical_bill_id": self.canonical_bill_id,
+            "bill_number": self.bill_number,
+            "title": self.title,
+            "short_title": self.short_title,
+            "jurisdiction": self.jurisdiction,
+            "state": self.state,
+            "live_status": self.live_status,
+            "discovered_at": self.discovered_at,
+            "verified_at": self.verified_at,
+            "last_updated_at": self.last_updated_at,
+            "verification_source_id": self.verification_source_id,
+            "verification_source_url": self.verification_source_url,
+            "analytical_model_status": self.analytical_model_status,
+            "discovered_by_source_id": self.discovered_by_source_id,
+            "discovered_by_run_id": self.discovered_by_run_id,
+            "source_url": self.source_url,
+            "source_category": self.source_category,
+            "authority_name": self.authority_name,
+            "document_url": self.document_url,
+            "document_hash_sha256": self.document_hash_sha256,
+            "document_retrieved_at": self.document_retrieved_at,
+            "document_retrieval_failures": self.document_retrieval_failures,
+            "document_retrieval_last_error": self.document_retrieval_last_error,
+            "identity_matched": self.identity_matched,
+            "duplicate_of_record_id": self.duplicate_of_record_id,
+            "duplicate_discoveries": self.duplicate_discoveries,
+            "introduction_date": self.introduction_date,
+            "assent_date": self.assent_date,
+            "bill_status_text": self.bill_status_text,
+            "summary": self.summary,
+            "tags": self.tags,
+            "extra": self.extra,
+        }
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> "LiveKnowledgeRecord":
+        return cls(
+            record_id=data.get("record_id", str(uuid.uuid4())),
+            canonical_bill_id=data.get("canonical_bill_id"),
+            bill_number=data.get("bill_number"),
+            title=data.get("title", ""),
+            short_title=data.get("short_title"),
+            jurisdiction=data.get("jurisdiction", "central"),
+            state=data.get("state"),
+            live_status=data.get("live_status", LiveStatus.DISCOVERED.value),
+            discovered_at=data.get("discovered_at", datetime.now(timezone.utc).isoformat()),
+            verified_at=data.get("verified_at"),
+            last_updated_at=data.get("last_updated_at", datetime.now(timezone.utc).isoformat()),
+            verification_source_id=data.get("verification_source_id"),
+            verification_source_url=data.get("verification_source_url"),
+            analytical_model_status=data.get(
+                "analytical_model_status", AnalyticalModelStatus.KNOWLEDGE_ONLY.value
+            ),
+            discovered_by_source_id=data.get("discovered_by_source_id", ""),
+            discovered_by_run_id=data.get("discovered_by_run_id"),
+            source_url=data.get("source_url"),
+            source_category=data.get("source_category", SourceCategory.PARLIAMENTARY.value),
+            authority_name=data.get("authority_name"),
+            document_url=data.get("document_url"),
+            document_hash_sha256=data.get("document_hash_sha256"),
+            document_retrieved_at=data.get("document_retrieved_at"),
+            document_retrieval_failures=data.get("document_retrieval_failures", 0),
+            document_retrieval_last_error=data.get("document_retrieval_last_error"),
+            identity_matched=data.get("identity_matched", False),
+            duplicate_of_record_id=data.get("duplicate_of_record_id"),
+            duplicate_discoveries=data.get("duplicate_discoveries", 0),
+            introduction_date=data.get("introduction_date"),
+            assent_date=data.get("assent_date"),
+            bill_status_text=data.get("bill_status_text"),
+            summary=data.get("summary"),
+            tags=data.get("tags", []),
+            extra=data.get("extra", {}),
         )

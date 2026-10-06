@@ -1,0 +1,69 @@
+{
+  "bill_id": "the-banking-laws-amendment-bill-2024",
+  "company_isin": "INE062A01020",
+  "company_symbol": "SBIN",
+  "jurisdiction": "central",
+  "market_signal": {
+    "level": "UNKNOWN",
+    "market_signal_score": 0.0,
+    "car_magnitude": 0.0,
+    "z_score": 0.0,
+    "directional_persistence": 0.0,
+    "volatility": 0.0,
+    "signals_detected": []
+  },
+  "public_information_signal": {
+    "level": "NONE",
+    "public_information_evidence_score": 0.0,
+    "verified_pre_event_count": 0,
+    "independent_sources_count": 0,
+    "source_diversity_ratio": 0.0,
+    "credibility_tier_summary": {},
+    "earliest_evidence_date": null,
+    "latest_evidence_date": null,
+    "evidence_window_trading_days": null
+  },
+  "combined_context": {
+    "classification": "INSUFFICIENT_EVIDENCE",
+    "interpretation": "Insufficient verified public-information evidence and market prediction unavailable.",
+    "market_signal": "UNKNOWN",
+    "information_signal": "NONE",
+    "epistemic_tag": "[EVIDENCE]",
+    "non_accusatory_disclaimer": "Observable public-information evidence and market signals measure pre-event information diffusion patterns only. They do not establish causation, illegal disclosure, market manipulation, or insider trading."
+  },
+  "evidence_items": [
+    {
+      "evidence_id": "pie_off_65a936f889ca",
+      "bill_id": "the-banking-laws-amendment-bill-2024",
+      "jurisdiction": "central",
+      "source_type": "OFFICIAL_LEGISLATIVE",
+      "source_name": "Official Parliament Record / PRS",
+      "source_url": "https://prsindia.org/billtrack/the-banking-laws-amendment-bill-2024",
+      "publication_timestamp": "2024-08-09T09:00:00Z",
+      "discovery_timestamp": "2026-10-06T09:39:06.743513Z",
+      "event_reference": "2024-08-09",
+      "headline": "Official Introduction: The Banking Laws (Amendment) Bill, 2024",
+      "summary": "Official legislative record for The Banking Laws (Amendment) Bill, 2024 (Bill No. N/A) under Lok Sabha.",
+      "relevance": 0.5,
+      "evidence_strength": "MODERATE",
+      "temporal_relation": "UNKNOWN",
+      "source_credibility": "TIER_1",
+      "entity_matches": [],
+      "sector_matches": [],
+      "keywords": [],
+      "hash": "b1486cad48f7868bb5258b0098a02b66f325fc0c92f9b30e18ae411ba3e1147a",
+      "provenance": {
+        "adapter": "OfficialLegislativeAdapter",
+        "source_authority": "Parliament of India / State Assembly",
+        "official_pdf_url": null
+      },
+      "verification_status": "VERIFIED",
+      "created_at": "2026-10-06T09:39:06.743522Z",
+      "duplicate_of": null,
+      "canonical_evidence_id": "pie_off_65a936f889ca",
+      "match_reason": "Direct mention of bill title 'The Banking Laws (Amendment) Bill, 2024'"
+    }
+  ],
+  "search_trend_items": [],
+  "created_at": "2026-10-06T09:39:06.743617Z"
+}

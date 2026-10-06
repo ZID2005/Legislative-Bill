@@ -26,6 +26,7 @@ import type {
   BillDetailResponse,
   BillPredictionStatusResponse,
   BillCompanyExposure,
+  EnrichedBillDossier,
 } from "@/types/api";
 
 import { BillHeader } from "@/components/bills/BillHeader";
@@ -41,6 +42,11 @@ import { ProvenancePanel } from "@/components/bills/ProvenancePanel";
 import { AIAssistantPanel } from "@/components/bills/AIAssistantPanel";
 import { WatchlistModal } from "@/components/bills/WatchlistModal";
 import { RelatedBillsCard } from "@/components/bills/RelatedBillsCard";
+import { LegislativeTimeline } from "@/components/bills/LegislativeTimeline";
+import { WhatChangedView } from "@/components/bills/WhatChangedView";
+import { PlainLanguageSection } from "@/components/bills/PlainLanguageSection";
+import { SectorIndustrySection } from "@/components/bills/SectorIndustrySection";
+import { DocumentSourcesSection } from "@/components/bills/DocumentSourcesSection";
 
 import { Tabs, type Tab } from "@/components/ui/Tabs";
 import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
@@ -50,6 +56,7 @@ import { Button } from "@/components/ui/Button";
 
 export default function BillDetailContent({ billId }: { billId: string }) {
   const [detail, setDetail] = useState<BillDetailResponse | null>(null);
+  const [dossier, setDossier] = useState<EnrichedBillDossier | null>(null);
   const [predStatus, setPredStatus] = useState<BillPredictionStatusResponse | null>(null);
   const [exposures, setExposures] = useState<BillCompanyExposure[]>([]);
   const [anticipationData, setAnticipationData] = useState<Record<string, unknown> | null>(null);
@@ -73,8 +80,9 @@ export default function BillDetailContent({ billId }: { billId: string }) {
       setNotFound(false);
 
       try {
-        const [d, ps, exp, ant] = await Promise.all([
+        const [d, dos, ps, exp, ant] = await Promise.all([
           billsApi.getBill(billId),
+          (async () => billsApi.getBillDossier(billId))().catch(() => null),
           Promise.resolve(billsApi.getBillPredictions(billId)).catch(() => null),
           Promise.resolve(billsApi.getBillCompanies(billId)).catch(() => []),
           Promise.resolve(billsApi.getBillAnticipation(billId)).catch(() => null),
@@ -82,6 +90,7 @@ export default function BillDetailContent({ billId }: { billId: string }) {
 
         if (!cancelled) {
           setDetail(d);
+          setDossier(dos);
           setPredStatus(ps);
           setExposures(exp);
           setAnticipationData(ant);
@@ -189,12 +198,16 @@ export default function BillDetailContent({ billId }: { billId: string }) {
 
   // Dossier Tabs Configuration
   const tabs: Tab[] = [
-    { id: "overview", label: "Overview & Journey", icon: "📋" },
+    { id: "overview", label: "Overview", icon: "📋" },
+    { id: "timeline", label: "Timeline", count: dossier?.timeline?.length || undefined, icon: "⏱" },
+    { id: "changes", label: "What Changed", count: dossier?.change_summary?.total_changes || undefined, icon: "🔄" },
     { id: "provisions", label: "Key Provisions", count: (knowledge?.key_provisions?.length || provisions.length) || undefined, icon: "§" },
+    { id: "sectors", label: "Sectors & Industries", count: dossier?.sector_exposures?.length || undefined, icon: "🏭" },
     { id: "exposures", label: "Corporate Exposure", count: exposures.length || undefined, icon: "🏢" },
     { id: "predictions", label: "Market Predictions", icon: isState ? "🛡" : "📈" },
     { id: "anticipation", label: "Anticipation", icon: "📡" },
     { id: "stakeholders", label: "Stakeholders", icon: "👥" },
+    { id: "documents", label: "Official Documents", count: dossier?.documents?.length || undefined, icon: "📄" },
     { id: "ai", label: "AI Copilot", icon: "🤖" },
     { id: "provenance", label: "Sources & Provenance", icon: "🏛" },
   ];
@@ -204,6 +217,8 @@ export default function BillDetailContent({ billId }: { billId: string }) {
       {/* Dossier Header */}
       <BillHeader
         bill={bill}
+        modelStatus={dossier?.model_status}
+        modelStatusLabel={dossier?.model_status_label}
         onOpenWatchlist={() => setIsWatchlistOpen(true)}
         onAskAIClick={() => setActiveTab("ai")}
       />
@@ -222,16 +237,33 @@ export default function BillDetailContent({ billId }: { billId: string }) {
             />
           </div>
 
-          {/* TAB 1: OVERVIEW & PROCEDURAL JOURNEY */}
+          {/* TAB 1: OVERVIEW & PLAIN-LANGUAGE BRIEF */}
           {activeTab === "overview" && (
             <div className="space-y-6 animate-fade-in" role="tabpanel" id="tabpanel-overview">
+              {dossier?.content?.plain_language && (
+                <PlainLanguageSection plainLanguage={dossier.content.plain_language} />
+              )}
               <ExecutiveSummary bill={bill} />
               <ProceduralJourney bill={bill} />
               <PolicyEconomicIntelligence bill={bill} />
             </div>
           )}
 
-          {/* TAB 2: KEY PROVISIONS & STATUTORY TEXT */}
+          {/* TAB 2: LEGISLATIVE TIMELINE */}
+          {activeTab === "timeline" && (
+            <div className="space-y-6 animate-fade-in" role="tabpanel" id="tabpanel-timeline">
+              <LegislativeTimeline timeline={dossier?.timeline || []} />
+            </div>
+          )}
+
+          {/* TAB 3: WHAT CHANGED */}
+          {activeTab === "changes" && (
+            <div className="space-y-6 animate-fade-in" role="tabpanel" id="tabpanel-changes">
+              <WhatChangedView changes={dossier?.change_summary || null} />
+            </div>
+          )}
+
+          {/* TAB 4: KEY PROVISIONS & STATUTORY TEXT */}
           {activeTab === "provisions" && (
             <div className="space-y-6 animate-fade-in" role="tabpanel" id="tabpanel-provisions">
               <KeyProvisions
@@ -243,14 +275,21 @@ export default function BillDetailContent({ billId }: { billId: string }) {
             </div>
           )}
 
-          {/* TAB 3: CORPORATE EXPOSURES */}
+          {/* TAB 5: AFFECTED SECTORS & INDUSTRIES */}
+          {activeTab === "sectors" && (
+            <div className="space-y-6 animate-fade-in" role="tabpanel" id="tabpanel-sectors">
+              <SectorIndustrySection sectors={dossier?.sector_exposures || []} />
+            </div>
+          )}
+
+          {/* TAB 6: CORPORATE EXPOSURES */}
           {activeTab === "exposures" && (
             <div className="space-y-6 animate-fade-in" role="tabpanel" id="tabpanel-exposures">
               <CorporateExposureTable exposures={exposures} />
             </div>
           )}
 
-          {/* TAB 4: MARKET PREDICTIONS (FIREWALLED FOR STATE BILLS) */}
+          {/* TAB 7: MARKET PREDICTIONS (FIREWALLED FOR NON-MODELLED / STATE BILLS) */}
           {activeTab === "predictions" && (
             <div className="space-y-6 animate-fade-in" role="tabpanel" id="tabpanel-predictions">
               <CentralPredictionSection
@@ -260,7 +299,7 @@ export default function BillDetailContent({ billId }: { billId: string }) {
             </div>
           )}
 
-          {/* TAB 5: PRE-EVENT ANTICIPATION */}
+          {/* TAB 8: PRE-EVENT ANTICIPATION */}
           {activeTab === "anticipation" && (
             <div className="space-y-6 animate-fade-in" role="tabpanel" id="tabpanel-anticipation">
               <AnticipationSection
@@ -270,14 +309,28 @@ export default function BillDetailContent({ billId }: { billId: string }) {
             </div>
           )}
 
-          {/* TAB 6: STAKEHOLDER INTELLIGENCE */}
+          {/* TAB 9: STAKEHOLDER INTELLIGENCE */}
           {activeTab === "stakeholders" && (
             <div className="space-y-6 animate-fade-in" role="tabpanel" id="tabpanel-stakeholders">
-              <StakeholderIntelligence bill={bill} />
+              <StakeholderIntelligence
+                bill={bill}
+                stakeholderViews={dossier?.stakeholder_views}
+              />
             </div>
           )}
 
-          {/* TAB 7: GROUNDED AI COPILOT */}
+          {/* TAB 10: OFFICIAL DOCUMENTS & PROVENANCE */}
+          {activeTab === "documents" && (
+            <div className="space-y-6 animate-fade-in" role="tabpanel" id="tabpanel-documents">
+              <DocumentSourcesSection
+                documents={dossier?.documents || []}
+                billTitle={bill.title}
+                sourceUrl={bill.source_url}
+              />
+            </div>
+          )}
+
+          {/* TAB 11: GROUNDED AI COPILOT */}
           {activeTab === "ai" && (
             <div className="space-y-6 animate-fade-in" role="tabpanel" id="tabpanel-ai">
               <AIAssistantPanel
@@ -288,12 +341,17 @@ export default function BillDetailContent({ billId }: { billId: string }) {
             </div>
           )}
 
-          {/* TAB 8: SOURCES & PROVENANCE */}
+          {/* TAB 12: SOURCES & PROVENANCE */}
           {activeTab === "provenance" && (
             <div className="space-y-6 animate-fade-in" role="tabpanel" id="tabpanel-provenance">
               <ProvenancePanel
                 bill={bill}
-                provenance={provenance}
+                provenance={
+                  dossier?.provenance?.provenance_map &&
+                  Object.keys(dossier.provenance.provenance_map).length > 0
+                    ? dossier.provenance.provenance_map
+                    : provenance
+                }
               />
             </div>
           )}
@@ -311,6 +369,12 @@ export default function BillDetailContent({ billId }: { billId: string }) {
                 <span className="text-slate-500">Jurisdiction</span>
                 <span className="font-semibold text-slate-200">
                   {bill.jurisdiction === "central" ? "Central Parliament" : `${bill.state} Assembly`}
+                </span>
+              </div>
+              <div className="flex justify-between py-1 border-b border-slate-800/60">
+                <span className="text-slate-500">Model Status</span>
+                <span className="font-semibold text-slate-200">
+                  {dossier?.model_status_label || (bill.jurisdiction === "central" && bill.modeling_eligibility === "ELIGIBLE" ? "MODELLED — CENTRAL QUANTITATIVE" : "NOT ELIGIBLE FOR STOCK MODEL")}
                 </span>
               </div>
               <div className="flex justify-between py-1 border-b border-slate-800/60">

@@ -127,6 +127,224 @@ export interface BillPredictionStatusResponse {
 }
 
 // ---------------------------------------------------------------------------
+// Task 8.27 — Legislative Intelligence Enrichment & Bill Dossier 2.0
+// ---------------------------------------------------------------------------
+
+export interface TimelineEventItem {
+  event_id: string;
+  stage: string;
+  stage_label: string;
+  date?: string | null;
+  source_authority: string;
+  description: string;
+  evidence_type: string;
+  document_url?: string | null;
+  chamber?: string | null;
+  verified: boolean;
+}
+
+export interface DocumentChangeDetail {
+  document_url: string;
+  previous_hash?: string | null;
+  new_hash?: string | null;
+  detected_at: string;
+  change_type: string;
+  file_size_bytes?: number | null;
+  notes: string;
+}
+
+export interface LegislativeChangeDetail {
+  field_name: string;
+  old_value?: string | null;
+  new_value?: string | null;
+  detected_at: string;
+  source_authority: string;
+  change_type: string;
+  description: string;
+}
+
+export interface BillChangeSummary {
+  has_changes: boolean;
+  total_changes: number;
+  last_change_detected_at?: string | null;
+  document_changes: DocumentChangeDetail[];
+  legislative_changes: LegislativeChangeDetail[];
+  summary_text: string;
+  separation_notice: string;
+}
+
+export interface PlainLanguageExplanation {
+  what_is_this_bill: string;
+  what_does_it_change: string;
+  who_could_be_affected: string;
+  why_could_it_matter_economically: string;
+  what_is_still_unknown: string;
+  grounded_sources: string[];
+  epistemic_level: string;
+  epistemic_notice: string;
+}
+
+export interface StakeholderPersonaView {
+  persona: string;
+  persona_title: string;
+  icon: string;
+  fact: string;
+  interpretation: string;
+  prediction: string;
+  caveats: string;
+}
+
+export interface SectorExposureItem {
+  sector: string;
+  industries: string[];
+  relevance: string;
+  business_activities: string[];
+  exposure_type: string;
+  transmission_channel?: string | null;
+}
+
+export interface LinkedCompanyExposureItem {
+  company_id: string;
+  company_name: string;
+  isin?: string | null;
+  ticker_nse?: string | null;
+  sector: string;
+  industry: string;
+  linkage_reasons: string[];
+  exposure_type: string;
+  exposure_direction: string;
+  exposure_strength: string;
+  mechanism: string;
+  evidence_summary: string;
+  source_urls: string[];
+  is_quant_eligible: boolean;
+  has_market_predictions: boolean;
+}
+
+export interface BillDocumentItem {
+  document_id: string;
+  title: string;
+  url?: string | null;
+  hash_sha256?: string | null;
+  format: string;
+  retrieved_at?: string | null;
+  retrieval_status: string;
+  provenance: string;
+  page_count?: number | null;
+  source_authority: string;
+}
+
+export interface EnrichedBillDossier {
+  identity: {
+    bill_id: string;
+    title: string;
+    short_title: string;
+    bill_number?: string | null;
+    jurisdiction: string;
+    state?: string | null;
+    house: string;
+    legislature: string;
+    ministry?: string | null;
+    bill_type: string;
+    year?: number | null;
+  };
+  status: {
+    current_status: string;
+    current_legislative_stage: string;
+    introduction_date?: string | null;
+    passage_date?: string | null;
+    assent_date?: string | null;
+    latest_verified_update?: string | null;
+    status_history: Record<string, unknown>[];
+  };
+  content: {
+    executive_summary: string;
+    plain_language: PlainLanguageExplanation;
+    key_provisions: string[];
+    obligations: string[];
+    affected_activities: string[];
+    implementation_info?: string | null;
+  };
+  impact_context: {
+    affected_sectors: string[];
+    affected_industries: string[];
+    economic_themes: string[];
+    potentially_exposed_business_activities: string[];
+    company_exposure_count: number;
+    listed_company_exposure_count: number;
+    market_relevance: string;
+  };
+  provenance: {
+    official_source: string;
+    source_authority: string;
+    source_url?: string | null;
+    document_url?: string | null;
+    document_hash?: string | null;
+    discovered_at: string;
+    verified_at?: string | null;
+    last_updated_at: string;
+    data_quality: string;
+    provenance_map: Record<string, string>;
+  };
+  model_status: string;
+  model_status_label: string;
+  model_status_description: string;
+  prediction_available: boolean;
+  timeline: TimelineEventItem[];
+  change_summary: BillChangeSummary;
+  stakeholder_views: Record<string, StakeholderPersonaView>;
+  sector_exposures: SectorExposureItem[];
+  company_exposures: LinkedCompanyExposureItem[];
+  documents: BillDocumentItem[];
+  ai_explanation?: Record<string, unknown> | null;
+}
+
+export interface BillTimelineResponse {
+  bill_id: string;
+  total_events: number;
+  events: TimelineEventItem[];
+}
+
+export interface BillChangesResponse {
+  bill_id: string;
+  changes: BillChangeSummary;
+}
+
+export interface PlainLanguageResponse {
+  bill_id: string;
+  plain_language: PlainLanguageExplanation;
+}
+
+export interface BillStakeholdersResponse {
+  bill_id: string;
+  stakeholder_views: Record<string, StakeholderPersonaView>;
+}
+
+export interface BillSectorExposureResponse {
+  bill_id: string;
+  sector_exposures: SectorExposureItem[];
+}
+
+export interface BillDocumentsResponse {
+  bill_id: string;
+  total_documents: number;
+  documents: BillDocumentItem[];
+}
+
+export interface BillModelStatusResponse {
+  bill_id: string;
+  model_status: string;
+  model_status_label: string;
+  model_status_description: string;
+  prediction_available: boolean;
+  is_central: boolean;
+  is_state: boolean;
+  jurisdiction: string;
+  state?: string | null;
+  firewall_active: boolean;
+}
+
+// ---------------------------------------------------------------------------
 // Corporate Intelligence
 // ---------------------------------------------------------------------------
 
@@ -579,6 +797,8 @@ export interface SearchResultItem {
   state?: string | null;
   relevance_score: number;
   url: string;
+  data_layer?: string | null;
+  model_status?: string | null;
 }
 
 export interface SearchResponse {
@@ -1231,4 +1451,199 @@ export interface AlertGroupDigestResponse {
   alert_event_ids: string[];
   sample_events: Record<string, any>[];
 }
+
+// ---------------------------------------------------------------------------
+// Type Aliases for Backward & Client Compatibility
+// ---------------------------------------------------------------------------
+export type BillDetailItem = BillDetailResponse;
+export type CompanyDetailItem = CompanyDetailResponse;
+export type IndustryDetailItem = IndustryDossierResponse;
+export type PredictionDetailItem = PredictionItem;
+export type PredictionSummaryItem = PredictionItem;
+export type CoverageStatusResponse = CoverageReportResponse;
+
+// ---------------------------------------------------------------------------
+// Task 8.28 — Decision Intelligence & Personalized Impact Workspace Types
+// ---------------------------------------------------------------------------
+
+export type RelevanceTierType = "DIRECT" | "HIGH RELEVANCE" | "MODERATE RELEVANCE" | "INDIRECT" | "INFORMATIONAL";
+
+export type PersonalizedModelStatusType = "MODELLED" | "KNOWLEDGE ONLY" | "NOT ELIGIBLE" | "PENDING REVIEW";
+
+export interface PortfolioHoldingItem {
+  holding_id: string;
+  company_name: string;
+  ticker?: string | null;
+  isin?: string | null;
+  quantity?: number | null;
+  avg_purchase_price?: number | null;
+  current_value?: number | null;
+  sector?: string | null;
+  industry?: string | null;
+  notes?: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface UserPortfolioItem {
+  portfolio_id: string;
+  user_id: string;
+  tenant_id: string;
+  name: string;
+  description?: string | null;
+  holdings: PortfolioHoldingItem[];
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface RelevanceReasonItem {
+  tier: string;
+  primary_reason: string;
+  evidence_statements: string[];
+  signals: string[];
+  matched_entity_id: string;
+  matched_entity_name: string;
+  matched_entity_type: string;
+}
+
+export interface AuthoritativePredictionSummaryItem {
+  isin: string;
+  company_name: string;
+  bill_id: string;
+  predicted_direction: string;
+  predicted_confidence: string;
+  probability?: number | null;
+  event_window: string;
+  all_horizons: Record<string, Record<string, any>>;
+  risk_category?: string | null;
+  anticipation_tier?: string | null;
+  anticipation_score?: number | null;
+  data_source: string;
+}
+
+export interface PersonalizedBillImpactItem {
+  bill_id: string;
+  bill_title: string;
+  bill_number?: string | null;
+  jurisdiction: string;
+  state?: string | null;
+  status: string;
+  latest_verified_update?: string | null;
+  relevance_tier: RelevanceTierType | string;
+  relevance_reasons: RelevanceReasonItem[];
+  primary_linkage_reason: string;
+  affected_sectors: string[];
+  affected_industries: string[];
+  affected_companies: string[];
+  model_status: PersonalizedModelStatusType | string;
+  prediction_availability: boolean;
+  source_provenance: string[];
+  authoritative_prediction?: AuthoritativePredictionSummaryItem | null;
+  epistemic_level: string;
+}
+
+export interface PortfolioLegislativeExposureResponse {
+  total_holdings: number;
+  exposed_holdings_count: number;
+  total_relevant_bills: number;
+  direct_bills_count: number;
+  high_relevance_bills_count: number;
+  moderate_relevance_bills_count: number;
+  indirect_bills_count: number;
+  modelled_central_bills_count: number;
+  knowledge_only_bills_count: number;
+  state_bills_count: number;
+  sector_distribution: Record<string, number>;
+  relevant_bills: PersonalizedBillImpactItem[];
+  holdings_exposure_map: Record<string, string[]>;
+  generated_at: string;
+  disclaimer: string;
+}
+
+export interface PersonalizedChangeFeedItem {
+  event_id: string;
+  event_type: string;
+  bill_id: string;
+  bill_title: string;
+  jurisdiction: string;
+  state?: string | null;
+  relevance_tier: string;
+  relevance_reason: string;
+  detected_at: string;
+  model_status: string;
+  deep_link: string;
+  source_name: string;
+  provenance_url?: string | null;
+  epistemic_status: string;
+}
+
+export interface PersonalizedDashboardResponse {
+  user_id: string;
+  tenant_id: string;
+  relevant_new_bills: PersonalizedBillImpactItem[];
+  recent_bill_changes: PersonalizedChangeFeedItem[];
+  relevant_state_legislation: PersonalizedBillImpactItem[];
+  companies_exposed: Array<{
+    company_name: string;
+    exposed_bill_count: number;
+    bill_ids: string[];
+  }>;
+  sectors_affected: Array<{
+    sector: string;
+    count: number;
+  }>;
+  modelled_central_bills: PersonalizedBillImpactItem[];
+  knowledge_only_developments: PersonalizedBillImpactItem[];
+  upcoming_verified_legislation: Array<{
+    bill_id: string;
+    title: string;
+    jurisdiction: string;
+    state?: string | null;
+    expected_stage: string;
+    model_status: string;
+  }>;
+  recent_document_changes: Record<string, any>[];
+  stats: Record<string, number>;
+  generated_at: string;
+  disclaimer: string;
+}
+
+export interface PersonalizedImpactReportResponse {
+  report_id: string;
+  user_id: string;
+  tenant_id: string;
+  report_title: string;
+  portfolio_summary: Record<string, any>;
+  relevant_bills: PersonalizedBillImpactItem[];
+  new_developments: PersonalizedChangeFeedItem[];
+  company_exposures: Array<{
+    company: string;
+    bills_count: number;
+    bills: string[];
+  }>;
+  sector_exposures: Array<{
+    sector: string;
+    holdings_count: number;
+  }>;
+  modelled_central_results: Record<string, any>[];
+  knowledge_only_developments: Record<string, any>[];
+  upcoming_verified_legislation: Record<string, any>[];
+  sources_and_provenance: string[];
+  disclaimers: string[];
+  generated_at: string;
+}
+
+export interface ExplainRelevanceResponse {
+  bill_id: string;
+  bill_title?: string | null;
+  relevance_tier: string;
+  primary_reason?: string | null;
+  explanation: string;
+  affected_holdings: string[];
+  model_status: string;
+  grounded: boolean;
+  disclaimer: string;
+}
+
 

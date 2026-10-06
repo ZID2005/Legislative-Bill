@@ -39,6 +39,7 @@ vi.mock("@/lib/api/bills", () => ({
     getBillPredictions: vi.fn(),
     getBillCompanies: vi.fn(),
     getBillAnticipation: vi.fn(),
+    getBillDossier: vi.fn().mockResolvedValue(null),
   },
 }));
 

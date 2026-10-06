@@ -165,6 +165,37 @@ def login(
 
 
 @router.post(
+    "/token",
+    response_model=LoginResponse,
+    summary="OAuth2 Compatible Login Token",
+    description="Authenticate user credentials via form data or JSON and issue a verified session token.",
+)
+async def login_token(
+    request: Request,
+    user_repo: UserRepository = Depends(get_user_repository),
+    tenant_repo: TenantRepository = Depends(get_tenant_repository),
+    audit_repo: AuditLogRepository = Depends(get_audit_log_repository),
+) -> LoginResponse:
+    content_type = request.headers.get("content-type", "")
+    if "form" in content_type:
+        form = await request.form()
+        email = str(form.get("username", form.get("email", "")))
+        password = str(form.get("password", "")) if form.get("password") else None
+        tenant_id = str(form.get("tenant_id", "")) if form.get("tenant_id") else None
+    else:
+        try:
+            body = await request.json()
+            email = str(body.get("username", body.get("email", "")))
+            password = str(body.get("password", "")) if body.get("password") else None
+            tenant_id = str(body.get("tenant_id", "")) if body.get("tenant_id") else None
+        except Exception:
+            raise BadRequestError(code="INVALID_PAYLOAD", message="Invalid JSON or form payload.")
+
+    req = LoginRequest(email=email, password=password, tenant_id=tenant_id)
+    return login(req=req, user_repo=user_repo, tenant_repo=tenant_repo, audit_repo=audit_repo)
+
+
+@router.post(
     "/logout",
     status_code=status.HTTP_200_OK,
     summary="User Logout",

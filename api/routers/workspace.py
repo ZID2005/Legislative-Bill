@@ -35,9 +35,14 @@ from api.dependencies import (
     get_notification_center_service,
     get_state_bill_repository,
     get_watchlist_service,
+    get_decision_intelligence_service,
 )
 from api.schemas import (
     AlertGroupDigestResponse,
+    ExplainRelevanceResponse,
+    PersonalizedChangeFeedItemSchema,
+    PersonalizedDashboardResponse,
+    PersonalizedImpactReportResponse,
     WorkspaceActivityItem,
     WorkspaceActivityResponse,
     WorkspaceAnalyticsItem,
@@ -531,3 +536,81 @@ def get_workspace_digests(
             )
         )
     return results
+
+
+# ---------------------------------------------------------------------------
+# Task 8.28 — Decision Intelligence & Personalized Impact Workspace Endpoints
+# ---------------------------------------------------------------------------
+
+
+@router.get(
+    "/decision-intelligence",
+    response_model=PersonalizedDashboardResponse,
+    summary="Get personalized decision intelligence dashboard ('YOUR LEGISLATIVE INTELLIGENCE')",
+    description="Retrieve comprehensive personalized legislative intelligence: relevant new bills, bill changes, state legislation, exposed companies, affected sectors, modelled Central results, and knowledge developments.",
+)
+def get_decision_intelligence_dashboard(
+    current_user: CurrentUser = Depends(get_current_user),
+    decision_service=Depends(get_decision_intelligence_service),
+) -> PersonalizedDashboardResponse:
+    data = decision_service.get_personalized_dashboard_intelligence(
+        user_id=current_user.user_id,
+        tenant_id=current_user.tenant_id,
+    )
+    return PersonalizedDashboardResponse(**data.to_dict())
+
+
+@router.get(
+    "/change-feed",
+    response_model=list[PersonalizedChangeFeedItemSchema],
+    summary="Get personalized change feed",
+    description="Retrieve meaningful legislative changes relevant to the user's portfolio and watchlist without polling noise.",
+)
+def get_personalized_change_feed(
+    limit: int = Query(50, ge=1, le=100),
+    current_user: CurrentUser = Depends(get_current_user),
+    decision_service=Depends(get_decision_intelligence_service),
+) -> list[PersonalizedChangeFeedItemSchema]:
+    items = decision_service.get_personalized_change_feed(
+        user_id=current_user.user_id,
+        tenant_id=current_user.tenant_id,
+        limit=limit,
+    )
+    return [PersonalizedChangeFeedItemSchema(**it.to_dict()) for it in items]
+
+
+@router.get(
+    "/explain-relevance",
+    response_model=ExplainRelevanceResponse,
+    summary="Explain why a bill is relevant to user portfolio",
+    description="Grounded AI / deterministic explanation answering 'Why is this bill relevant to my portfolio?'. Grounded strictly in verified dossier and company holdings.",
+)
+def explain_bill_relevance(
+    bill_id: str = Query(..., min_length=1, description="Bill identifier to evaluate"),
+    current_user: CurrentUser = Depends(get_current_user),
+    decision_service=Depends(get_decision_intelligence_service),
+) -> ExplainRelevanceResponse:
+    res = decision_service.explain_bill_relevance_for_portfolio(
+        bill_id=bill_id,
+        user_id=current_user.user_id,
+        tenant_id=current_user.tenant_id,
+    )
+    return ExplainRelevanceResponse(**res)
+
+
+@router.get(
+    "/report",
+    response_model=PersonalizedImpactReportResponse,
+    summary="Generate 'MY LEGISLATIVE IMPACT REPORT'",
+    description="Generate comprehensive personal impact report covering portfolio, relevant bills, company exposures, sector distributions, and model status.",
+)
+def get_personal_impact_report(
+    current_user: CurrentUser = Depends(get_current_user),
+    decision_service=Depends(get_decision_intelligence_service),
+) -> PersonalizedImpactReportResponse:
+    rep = decision_service.generate_personalized_report(
+        user_id=current_user.user_id,
+        tenant_id=current_user.tenant_id,
+    )
+    return PersonalizedImpactReportResponse(**rep.to_dict())
+

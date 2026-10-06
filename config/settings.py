@@ -362,6 +362,13 @@ class Settings:
     )
 
     # ------------------------------------------------------------------
+    # Anticipation Evidence Enrichment & Media Diffusion (Task 8.29)
+    # ------------------------------------------------------------------
+    ANTICIPATION_EVIDENCE_DIR: Path = _env_path(
+        "ANTICIPATION_EVIDENCE_DIR", str(_PROJECT_ROOT / "data" / "anticipation_evidence")
+    )
+
+    # ------------------------------------------------------------------
     # Final Prediction & Decision Engine (Task 7.1)
     # ------------------------------------------------------------------
     PREDICTIONS_DIR: Path = _env_path(
@@ -456,6 +463,7 @@ class Settings:
     # Task 8.13 — Watchlists & Alerts Foundation
     # -----------------------------------------------------------------------
     WATCHLIST_DIR: Path = _env_path("WATCHLIST_DIR", str(_PROJECT_ROOT / "storage" / "watchlists"))
+    PORTFOLIO_DIR: Path = _env_path("PORTFOLIO_DIR", str(_PROJECT_ROOT / "storage" / "portfolios"))
     ALERTS_DIR: Path = _env_path("ALERTS_DIR", str(_PROJECT_ROOT / "storage" / "alerts"))
     USERS_DIR: Path = _env_path("USERS_DIR", str(_PROJECT_ROOT / "storage" / "users"))
     TENANTS_DIR: Path = _env_path("TENANTS_DIR", str(_PROJECT_ROOT / "storage" / "tenants"))
@@ -541,6 +549,7 @@ class Settings:
             self.AUDIT_DIR,
             self.AI_USAGE_DIR,
             self.WATCHLIST_DIR,
+            self.PORTFOLIO_DIR,
             self.ALERTS_DIR,
             self.ALERTS_DIR / "rules",
             self.ALERTS_DIR / "events",

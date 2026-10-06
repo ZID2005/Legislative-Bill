@@ -11,12 +11,13 @@
 "use client";
 
 import React, { useState } from "react";
-import type { BillSummaryItem } from "@/types/api";
+import type { BillSummaryItem, StakeholderPersonaView } from "@/types/api";
 import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
 import { SourceBadge } from "@/components/ui/Badge";
 
 export interface StakeholderIntelligenceProps {
   bill: BillSummaryItem;
+  stakeholderViews?: Record<string, StakeholderPersonaView>;
   className?: string;
 }
 
@@ -25,13 +26,15 @@ interface PersonaInfo {
   name: string;
   icon: string;
   fact: string;
-  derived: string;
+  derived?: string;
   interpretation: string;
   prediction: string;
+  caveats?: string;
 }
 
 export function StakeholderIntelligence({
   bill,
+  stakeholderViews,
   className = "",
 }: StakeholderIntelligenceProps) {
   const isState = bill.jurisdiction?.toLowerCase() === "state";
@@ -39,17 +42,17 @@ export function StakeholderIntelligence({
   const policy = bill.policy_domain || "Statutory Governance";
   const isModelled = bill.modeling_eligibility === "ELIGIBLE" && !isState;
 
-  const personas: PersonaInfo[] = [
+  const defaultPersonas: PersonaInfo[] = [
     {
       id: "investor",
       name: "Investor",
       icon: "💼",
       fact: `Legislative enactment tabled in ${bill.legislature} affecting ${sectors}. Official status is '${bill.status}'.`,
       derived: `Exposes ${bill.company_exposure_count} verified companies across ${sectors}. Market relevance classified as ${bill.market_relevance}.`,
-      interpretation: "Assesses regulatory capital requirements, operational headroom, and risk premiums across exposed listed entities.",
+      interpretation: "Assesses regulatory capital requirements, operational headroom, and compliance costs across exposed entities.",
       prediction: isModelled
         ? "Quantitative event study projections indicate potential sector sensitivity across short/medium horizons."
-        : "Quantitative market prediction is unavailable under statutory research invariants.",
+        : "Quantitative market prediction is unavailable under statutory research invariants (zero stock model).",
     },
     {
       id: "business",
@@ -58,11 +61,11 @@ export function StakeholderIntelligence({
       fact: `Applies legal rules under the supervisory framework of ${bill.policy_domain || "State / Central authorities"}.`,
       derived: "Establishes compliance obligations, statutory documentation requirements, and administrative reporting standards.",
       interpretation: "Direct enterprise adaptation required for operations, supply chain contracting, and supervisory inspections.",
-      prediction: "Financial models evaluate corporate cash-flow sensitivity and margin adjustments.",
+      prediction: "Enterprise cash-flow sensitivity governed by statutory enforcement timelines.",
     },
     {
       id: "employee",
-      name: "Employee / Worker",
+      name: "Employee / Professional",
       icon: "👷",
       fact: "Governs statutory employment conditions, institutional oversight, and enterprise operational guidelines.",
       derived: "Affects workforce deployment, occupational compliance standards, and organizational safety protocols.",
@@ -70,55 +73,39 @@ export function StakeholderIntelligence({
       prediction: "Macroeconomic labor elasticity parameters apply without specific equity forecast.",
     },
     {
-      id: "consumer",
-      name: "Consumer",
-      icon: "🛒",
-      fact: `Sets regulatory parameters for products and services delivered in ${sectors}.`,
-      derived: "Establishes consumer transparency benchmarks, statutory dispute mechanisms, and service quality requirements.",
+      id: "citizen",
+      name: "Common Citizen",
+      icon: "👥",
+      fact: `Sets regulatory parameters for services and rights delivered in ${sectors}.`,
+      derived: "Establishes consumer transparency benchmarks, dispute redressal mechanisms, and statutory service standards.",
       interpretation: "Intended to promote fair trade, consumer rights protection, and pricing transparency in target markets.",
-      prediction: "Qualitative consumption basket effects; zero equity asset price implication.",
+      prediction: "Qualitative consumption and civic welfare impact; zero asset pricing implications.",
     },
     {
-      id: "farmer",
-      name: "Farmer / Rural",
-      icon: "🌾",
-      fact: "Statutory provisions enacted by competent legislature with potential rural or agrarian implications.",
-      derived: "Interfaces with procurement networks, rural infrastructure, cooperative institutions, or land administration.",
-      interpretation: "Directly or indirectly touches agricultural input logistics, local markets, or rural economic stability.",
-      prediction: "Rural demand proxy modeling only; no speculative price targets.",
-    },
-    {
-      id: "msme",
-      name: "MSME / Small Enterprise",
-      icon: "🏪",
-      fact: `Statutory guidelines applicable across small and medium enterprises in ${sectors}.`,
-      derived: "Defines threshold compliance tiers, vendor registration mandates, and statutory exemptions.",
-      interpretation: "Lower administrative compliance friction enables broader formal credit access and vendor integration.",
-      prediction: "Working capital cycle impact based on statutory settlement periods.",
-    },
-    {
-      id: "public",
-      name: "General Public",
-      icon: "🏛",
-      fact: `Official public legislation enacted under constitutional authority of ${bill.legislature}.`,
-      derived: "Public transparency, official gazette publication, and democratic accountability parameters.",
-      interpretation: "Strengthens statutory governance, administrative predictability, and civic access to public services.",
-      prediction: "Public welfare indicators are purely qualitative socio-economic metrics.",
-    },
-    {
-      id: "industry",
-      name: "Corporate / Industry",
-      icon: "🏭",
-      fact: `Formal legislative statute impacting industrial value chains in ${sectors}.`,
-      derived: `Directly impacts ${bill.company_exposure_count} corporate entities with documented exposure vectors.`,
-      interpretation: "Guides multi-year Capex allocations, environmental and safety certifications, and industrial trade competitiveness.",
-      prediction: isModelled
-        ? "Evaluated through multi-horizon event window prediction matrices."
-        : "State assembly industry vectors evaluated through qualitative exposure indices.",
+      id: "researcher",
+      name: "Researcher",
+      icon: "🔬",
+      fact: `Official bill record referenced in ${bill.legislature} with verified procedural journey milestones.`,
+      derived: "Provides empirical data on legislative drafting, constitutional competency, and regulatory framework design.",
+      interpretation: "Enables comparative policy analysis, federal jurisdiction distribution, and statutory architecture review.",
+      prediction: "Academic and institutional comparative indices; independent of financial market pricing.",
     },
   ];
 
-  const [activePersona, setActivePersona] = useState<string>("investor");
+  const personas: PersonaInfo[] =
+    stakeholderViews && Object.keys(stakeholderViews).length > 0
+      ? Object.values(stakeholderViews).map((sv) => ({
+          id: sv.persona,
+          name: sv.persona_title,
+          icon: sv.icon || "👥",
+          fact: sv.fact,
+          interpretation: sv.interpretation,
+          prediction: sv.prediction,
+          caveats: sv.caveats,
+        }))
+      : defaultPersonas;
+
+  const [activePersona, setActivePersona] = useState<string>(personas[0]?.id || "investor");
   const selected = personas.find((p) => p.id === activePersona) || personas[0];
 
   return (
@@ -129,7 +116,7 @@ export function StakeholderIntelligence({
             <div>
               <CardTitle>Stakeholder Impact Intelligence</CardTitle>
               <p className="text-xs text-slate-500 mt-0.5">
-                Analytical assessment across 8 constituent personas, with clear semantic tiering.
+                Factual analysis across 5 canonical personas. Does not provide Buy/Sell/Hold or investment recommendations. Does not rank stakeholders.
               </p>
             </div>
             <SourceBadge type="INTERPRETATION" size="xs" showTooltip />
@@ -172,6 +159,7 @@ export function StakeholderIntelligence({
           </div>
 
           {/* 2. DERIVED */}
+          {selected.derived && (
           <div className="rounded-lg border border-blue-900/40 bg-blue-950/20 p-3.5 space-y-1">
             <div className="flex items-center justify-between">
               <span className="text-xs font-semibold text-blue-300">
@@ -183,6 +171,7 @@ export function StakeholderIntelligence({
               {selected.derived}
             </p>
           </div>
+          )}
 
           {/* 3. INTERPRETATION */}
           <div className="rounded-lg border border-amber-900/40 bg-amber-950/20 p-3.5 space-y-1">
@@ -209,6 +198,17 @@ export function StakeholderIntelligence({
               {selected.prediction}
             </p>
           </div>
+
+          {/* Caveats (not an epistemic tier) */}
+          {selected.caveats && (
+            <p
+              className="rounded-lg border border-slate-800 bg-slate-900/50 p-3 text-[11px] text-slate-400 leading-relaxed"
+              id="stakeholder-caveats"
+            >
+              <span className="font-semibold text-slate-300">Caveats: </span>
+              {selected.caveats}
+            </p>
+          )}
         </div>
 
         {/* Disclaimer */}

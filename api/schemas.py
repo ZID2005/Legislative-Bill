@@ -7,7 +7,7 @@ Pydantic v2 schemas for all API request and response bodies.
 from __future__ import annotations
 
 from typing import Any, Generic, Optional, TypeVar
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 T = TypeVar("T")
 
@@ -523,6 +523,98 @@ class AnticipationSummaryResponse(BaseModel):
     )
 
 
+# ---------------------------------------------------------------------------
+# Task 8.29: Anticipation Evidence Enrichment & Media Diffusion Schemas
+# ---------------------------------------------------------------------------
+
+
+class PublicInformationEvidenceResponse(BaseModel):
+    evidence_id: str
+    bill_id: str
+    jurisdiction: str = "central"
+    source_type: str
+    source_name: str
+    source_url: str
+    publication_timestamp: str
+    discovery_timestamp: str
+    event_reference: str
+    headline: str
+    summary: str
+    relevance: float
+    evidence_strength: str
+    temporal_relation: str
+    source_credibility: str
+    entity_matches: list[str] = Field(default_factory=list)
+    sector_matches: list[str] = Field(default_factory=list)
+    keywords: list[str] = Field(default_factory=list)
+    hash: str = ""
+    provenance: dict[str, Any] = Field(default_factory=dict)
+    verification_status: str
+    duplicate_of: Optional[str] = None
+    canonical_evidence_id: Optional[str] = None
+    match_reason: str = ""
+
+
+class MarketSignalSummaryResponse(BaseModel):
+    level: str
+    market_signal_score: float
+    car_magnitude: float
+    z_score: float
+    directional_persistence: float
+    volatility: float
+    signals_detected: list[str] = Field(default_factory=list)
+
+
+class PublicInformationSignalSummaryResponse(BaseModel):
+    level: str
+    public_information_evidence_score: float
+    verified_pre_event_count: int
+    independent_sources_count: int
+    source_diversity_ratio: float
+    credibility_tier_summary: dict[str, int] = Field(default_factory=dict)
+    earliest_evidence_date: Optional[str] = None
+    latest_evidence_date: Optional[str] = None
+    evidence_window_trading_days: Optional[str] = None
+
+
+class CombinedContextSummaryResponse(BaseModel):
+    classification: str
+    interpretation: str
+    market_signal: str
+    information_signal: str
+    epistemic_tag: str = "[EVIDENCE]"
+    non_accusatory_disclaimer: str = (
+        "Observable public-information evidence and market signals measure pre-event "
+        "information diffusion patterns only. They do not establish causation, illegal "
+        "disclosure, market manipulation, or insider trading."
+    )
+
+
+class AnticipationEvidenceContextResponse(BaseModel):
+    bill_id: str
+    company_isin: Optional[str] = None
+    company_symbol: Optional[str] = None
+    jurisdiction: str = "central"
+    market_signal: MarketSignalSummaryResponse
+    public_information_signal: PublicInformationSignalSummaryResponse
+    combined_context: CombinedContextSummaryResponse
+    evidence_items: list[PublicInformationEvidenceResponse] = Field(default_factory=list)
+    search_trend_items: list[dict[str, Any]] = Field(default_factory=list)
+    created_at: str = ""
+
+
+class SearchTrendItemResponse(BaseModel):
+    query: str
+    region: str = "IN"
+    timestamp: str
+    trend_value: float
+    baseline_value: float
+    spike_indicator: bool
+    source: str = "Google Trends"
+    classification: str = "PUBLIC_ATTENTION_SIGNAL"
+    provenance: dict[str, Any] = Field(default_factory=dict)
+
+
 
 # ---------------------------------------------------------------------------
 # State Economic Intelligence Schemas (State Level 2)
@@ -581,6 +673,8 @@ class SearchResultItem(BaseModel):
     state: Optional[str] = None
     relevance_score: int = 0
     url: str
+    data_layer: Optional[str] = Field(default=None, description="FROZEN_MODEL | LIVE_KNOWLEDGE | QUALITATIVE_INTEL")
+    model_status: Optional[str] = Field(default=None, description="MODELLED | KNOWLEDGE_ONLY | NOT_ELIGIBLE")
 
 
 class SearchResponse(BaseModel):
@@ -983,6 +1077,16 @@ class MonitoringSourceItem(BaseModel):
     last_error_at: Optional[str] = None
     last_error: Optional[str] = None
     notes: Optional[str] = None
+    # Task 8.26 fields
+    authority_name: Optional[str] = None
+    source_category: str = Field(
+        "PARLIAMENTARY",
+        description="PARLIAMENTARY | LEGISLATIVE_DEPARTMENT | GAZETTE | CENTRAL | STATE | OTHER_AUTHORITATIVE | NEWS_MEDIA",
+    )
+    health_status: Optional[str] = Field(
+        None,
+        description="HEALTHY | DEGRADED | ERROR | NEVER_CHECKED | DISABLED | NOT_IMPLEMENTED | PLANNED",
+    )
 
 
 class MonitoringSourceDetailResponse(BaseModel):
@@ -1055,6 +1159,87 @@ class MonitoringOverviewResponse(BaseModel):
     sources_healthy: int = 0
     sources_with_errors: int = 0
     sources_never_checked: int = 0
+    # Task 8.26 — live knowledge counters
+    live_knowledge_records: int = 0
+    live_knowledge_discovered: int = 0
+    live_knowledge_verified: int = 0
+    live_knowledge_knowledge_only: int = 0
+
+
+# ---------------------------------------------------------------------------
+# Task 8.26 — Live Knowledge Record API Schemas
+# ---------------------------------------------------------------------------
+
+
+class LiveKnowledgeRecordItem(BaseModel):
+    """
+    [Task 8.26] Single live legislative discovery record returned by the API.
+
+    analytical_model_status is always surfaced so the frontend can show
+    clear LIVE / FROZEN / KNOWLEDGE-ONLY badges.
+    """
+    record_id: str
+    canonical_bill_id: Optional[str] = None
+    bill_number: Optional[str] = None
+    title: str
+    short_title: Optional[str] = None
+    jurisdiction: str
+    state: Optional[str] = None
+    live_status: str = Field(
+        ...,
+        description="DISCOVERED | VERIFIED | UPDATED | WITHDRAWN | SUPERSEDED | KNOWLEDGE_ONLY",
+    )
+    analytical_model_status: str = Field(
+        ...,
+        description="KNOWLEDGE_ONLY (default) | MODELLED | PENDING_REVIEW | NOT_ELIGIBLE",
+    )
+    discovered_at: str
+    verified_at: Optional[str] = None
+    last_updated_at: str
+    discovered_by_source_id: str
+    authority_name: Optional[str] = None
+    source_category: str
+    source_url: Optional[str] = None
+    document_url: Optional[str] = None
+    document_hash_sha256: Optional[str] = None
+    document_retrieval_failures: int = 0
+    identity_matched: bool = False
+    duplicate_discoveries: int = 0
+    introduction_date: Optional[str] = None
+    assent_date: Optional[str] = None
+    bill_status_text: Optional[str] = None
+    summary: Optional[str] = None
+    tags: list[str] = Field(default_factory=list)
+
+
+class LiveKnowledgeListResponse(BaseModel):
+    """Paginated list of live legislative discovery records."""
+    items: list[LiveKnowledgeRecordItem]
+    total: int
+    page: int
+    limit: int
+    pages: int
+    filter_live_status: Optional[str] = None
+    filter_analytical_model_status: Optional[str] = None
+    filter_jurisdiction: Optional[str] = None
+
+
+class LiveKnowledgeStatsResponse(BaseModel):
+    """Aggregate telemetry for the live knowledge base."""
+    total_records: int = 0
+    by_live_status: dict[str, int] = Field(default_factory=dict)
+    by_analytical_model_status: dict[str, int] = Field(default_factory=dict)
+    by_jurisdiction: dict[str, int] = Field(default_factory=dict)
+    document_hash_changes: int = 0
+    duplicate_discoveries: int = 0
+    last_write_at: Optional[str] = None
+    firewall_ok: bool = True
+    firewall_note: str = (
+        "All live records are KNOWLEDGE_ONLY. "
+        "No automated pipeline has assigned MODELLED status. "
+        "Frozen analytical baseline is unmodified."
+    )
+
 
 
 
@@ -1295,6 +1480,480 @@ class FreshnessResponse(BaseModel):
     stale_count: int
     not_available_count: int
     datasets: list[FreshnessItem]
+
+
+# ---------------------------------------------------------------------------
+# Task 8.27 — Enriched Bill Dossier Schemas
+# ---------------------------------------------------------------------------
+
+
+class TimelineEventSchema(BaseModel):
+    event_id: str
+    stage: str
+    stage_label: str
+    date: Optional[str] = None
+    source_authority: str
+    description: str
+    evidence_type: str = "FACT"
+    document_url: Optional[str] = None
+    chamber: Optional[str] = None
+    verified: bool = True
+
+
+class DocumentChangeDetailSchema(BaseModel):
+    document_url: str
+    previous_hash: Optional[str] = None
+    new_hash: Optional[str] = None
+    detected_at: str
+    change_type: str = "DOCUMENT_METADATA_UPDATE"
+    file_size_bytes: Optional[int] = None
+    notes: str = "Document binary/hash changed; does not necessarily constitute legislative status change."
+
+
+class LegislativeChangeDetailSchema(BaseModel):
+    field_name: str
+    old_value: Optional[str] = None
+    new_value: Optional[str] = None
+    detected_at: str
+    source_authority: str = "Official Parliamentary Source"
+    change_type: str = "LEGISLATIVE_STATUS_CHANGE"
+    description: str = ""
+
+
+class BillChangeSummarySchema(BaseModel):
+    has_changes: bool = False
+    total_changes: int = 0
+    last_change_detected_at: Optional[str] = None
+    document_changes: list[DocumentChangeDetailSchema] = Field(default_factory=list)
+    legislative_changes: list[LegislativeChangeDetailSchema] = Field(default_factory=list)
+    summary_text: str = ""
+    separation_notice: str = ""
+
+
+class PlainLanguageExplanationSchema(BaseModel):
+    what_is_this_bill: str = ""
+    what_does_it_change: str = ""
+    who_could_be_affected: str = ""
+    why_could_it_matter_economically: str = ""
+    what_is_still_unknown: str = ""
+    grounded_sources: list[str] = Field(default_factory=list)
+    epistemic_level: str = "INTERPRETATION"
+    epistemic_notice: str = ""
+
+
+class StakeholderPersonaViewSchema(BaseModel):
+    persona: str
+    persona_title: str
+    icon: str
+    fact: str
+    interpretation: str
+    prediction: str
+    caveats: str
+
+
+class SectorExposureItemSchema(BaseModel):
+    sector: str
+    industries: list[str] = Field(default_factory=list)
+    relevance: str = "HIGH"
+    business_activities: list[str] = Field(default_factory=list)
+    exposure_type: str = "DIRECT"
+    transmission_channel: Optional[str] = None
+
+
+class LinkedCompanyExposureItemSchema(BaseModel):
+    company_id: str
+    company_name: str
+    isin: Optional[str] = None
+    ticker_nse: Optional[str] = None
+    sector: str = ""
+    industry: str = ""
+    linkage_reasons: list[str] = Field(default_factory=list)
+    exposure_type: str = "DIRECT"
+    exposure_direction: str = "neutral"
+    exposure_strength: str = "MEDIUM"
+    mechanism: str = ""
+    evidence_summary: str = ""
+    source_urls: list[str] = Field(default_factory=list)
+    is_quant_eligible: bool = False
+    has_market_predictions: bool = False
+
+
+class BillDocumentItemSchema(BaseModel):
+    document_id: str
+    title: str
+    url: Optional[str] = None
+    hash_sha256: Optional[str] = None
+    format: str = "PDF"
+    retrieved_at: Optional[str] = None
+    retrieval_status: str = "AVAILABLE"
+    provenance: str = "AUTHORITATIVE"
+    page_count: Optional[int] = None
+    source_authority: str = "Official Parliamentary Repository"
+
+
+class DossierIdentitySchema(BaseModel):
+    bill_id: str
+    title: str
+    short_title: str
+    bill_number: Optional[str] = None
+    jurisdiction: str = "central"
+    state: Optional[str] = None
+    house: str = ""
+    legislature: str = ""
+    ministry: Optional[str] = None
+    bill_type: str = "Government Bill"
+    year: Optional[int] = None
+
+
+class DossierStatusSchema(BaseModel):
+    current_status: str
+    current_legislative_stage: str
+    introduction_date: Optional[str] = None
+    passage_date: Optional[str] = None
+    assent_date: Optional[str] = None
+    latest_verified_update: Optional[str] = None
+    status_history: list[dict[str, Any]] = Field(default_factory=list)
+
+
+class DossierContentSchema(BaseModel):
+    executive_summary: str = ""
+    plain_language: PlainLanguageExplanationSchema
+    key_provisions: list[str] = Field(default_factory=list)
+    obligations: list[str] = Field(default_factory=list)
+    affected_activities: list[str] = Field(default_factory=list)
+    implementation_info: Optional[str] = None
+
+
+class DossierImpactContextSchema(BaseModel):
+    affected_sectors: list[str] = Field(default_factory=list)
+    affected_industries: list[str] = Field(default_factory=list)
+    economic_themes: list[str] = Field(default_factory=list)
+    potentially_exposed_business_activities: list[str] = Field(default_factory=list)
+    company_exposure_count: int = 0
+    listed_company_exposure_count: int = 0
+    market_relevance: str = "NONE"
+
+
+class DossierProvenanceSchema(BaseModel):
+    official_source: str
+    source_authority: str
+    source_url: Optional[str] = None
+    document_url: Optional[str] = None
+    document_hash: Optional[str] = None
+    discovered_at: str
+    verified_at: Optional[str] = None
+    last_updated_at: str
+    data_quality: str = "VERIFIED"
+    provenance_map: dict[str, str] = Field(default_factory=dict)
+
+
+class EnrichedBillDossierResponse(BaseModel):
+    identity: DossierIdentitySchema
+    status: DossierStatusSchema
+    content: DossierContentSchema
+    impact_context: DossierImpactContextSchema
+    provenance: DossierProvenanceSchema
+    model_status: str
+    model_status_label: str
+    model_status_description: str
+    prediction_available: bool = False
+    timeline: list[TimelineEventSchema] = Field(default_factory=list)
+    change_summary: BillChangeSummarySchema
+    stakeholder_views: dict[str, StakeholderPersonaViewSchema] = Field(default_factory=dict)
+    sector_exposures: list[SectorExposureItemSchema] = Field(default_factory=list)
+    company_exposures: list[LinkedCompanyExposureItemSchema] = Field(default_factory=list)
+    documents: list[BillDocumentItemSchema] = Field(default_factory=list)
+    ai_explanation: Optional[dict[str, Any]] = None
+
+
+class BillTimelineResponse(BaseModel):
+    bill_id: str
+    total_events: int
+    events: list[TimelineEventSchema]
+
+
+class BillChangesResponse(BaseModel):
+    bill_id: str
+    changes: BillChangeSummarySchema
+
+
+class PlainLanguageResponse(BaseModel):
+    bill_id: str
+    plain_language: PlainLanguageExplanationSchema
+
+
+class BillStakeholdersResponse(BaseModel):
+    bill_id: str
+    stakeholder_views: dict[str, StakeholderPersonaViewSchema]
+
+
+class BillSectorExposureResponse(BaseModel):
+    bill_id: str
+    sector_exposures: list[SectorExposureItemSchema]
+
+
+class BillDocumentsResponse(BaseModel):
+    bill_id: str
+    total_documents: int
+    documents: list[BillDocumentItemSchema]
+
+
+class BillModelStatusResponse(BaseModel):
+    bill_id: str
+    model_status: str
+    model_status_label: str
+    model_status_description: str
+    prediction_available: bool
+    is_central: bool
+    is_state: bool
+    jurisdiction: str
+    state: Optional[str] = None
+    firewall_active: bool
+
+
+# ---------------------------------------------------------------------------
+# Task 8.28 — Decision Intelligence & Personalized Impact Workspace Schemas
+# ---------------------------------------------------------------------------
+
+
+class PortfolioHoldingSchema(BaseModel):
+    holding_id: str
+    company_name: str
+    ticker: Optional[str] = None
+    isin: Optional[str] = None
+    quantity: Optional[float] = None
+    avg_purchase_price: Optional[float] = None
+    current_value: Optional[float] = None
+    sector: Optional[str] = None
+    industry: Optional[str] = None
+    notes: Optional[str] = None
+    created_at: str
+    updated_at: str
+
+
+class UserPortfolioSchema(BaseModel):
+    portfolio_id: str
+    user_id: str
+    tenant_id: str
+    name: str
+    description: Optional[str] = None
+    holdings: list[PortfolioHoldingSchema] = Field(default_factory=list)
+    is_active: bool = True
+    created_at: str
+    updated_at: str
+
+
+class CreatePortfolioRequest(BaseModel):
+    name: str = Field(..., min_length=1, max_length=120)
+    description: Optional[str] = None
+    holdings: list[dict[str, Any]] = Field(default_factory=list)
+
+
+class UpdatePortfolioRequest(BaseModel):
+    name: Optional[str] = None
+    description: Optional[str] = None
+    is_active: Optional[bool] = None
+
+
+class AddHoldingRequest(BaseModel):
+    company_name: str = Field(..., min_length=1)
+    ticker: Optional[str] = None
+    isin: Optional[str] = None
+    quantity: Optional[float] = None
+    avg_purchase_price: Optional[float] = None
+    current_value: Optional[float] = None
+    sector: Optional[str] = None
+    industry: Optional[str] = None
+    notes: Optional[str] = None
+
+    @field_validator("company_name")
+    @classmethod
+    def validate_company_name(cls, v: str) -> str:
+        if not v or not v.strip():
+            raise ValueError("company_name cannot be blank")
+        return v.strip()
+
+
+class UpdateHoldingRequest(BaseModel):
+    company_name: Optional[str] = None
+    ticker: Optional[str] = None
+    isin: Optional[str] = None
+    quantity: Optional[float] = None
+    avg_purchase_price: Optional[float] = None
+    current_value: Optional[float] = None
+    sector: Optional[str] = None
+    industry: Optional[str] = None
+    notes: Optional[str] = None
+
+
+class BulkImportHoldingsRequest(BaseModel):
+    holdings: Optional[list[AddHoldingRequest]] = None
+    csv_content: Optional[str] = None
+    replace: bool = False
+    replace_existing: Optional[bool] = None
+
+
+class RelevanceReasonSchema(BaseModel):
+    tier: str
+    primary_reason: str
+    evidence_statements: list[str] = Field(default_factory=list)
+    signals: list[str] = Field(default_factory=list)
+    matched_entity_id: str = ""
+    matched_entity_name: str = ""
+    matched_entity_type: str = "COMPANY"
+
+
+class AuthoritativePredictionSummarySchema(BaseModel):
+    isin: str
+    company_name: str
+    bill_id: str
+    predicted_direction: str
+    predicted_confidence: str
+    probability: Optional[float] = None
+    event_window: str = "[-1,+1]"
+    all_horizons: dict[str, dict[str, Any]] = Field(default_factory=dict)
+    available: bool = False
+    predictions_count: int = 0
+    event_horizons: list[str] = Field(default_factory=list)
+    horizon_breakdown: dict[str, dict[str, Any]] = Field(default_factory=dict)
+    notice: str = ""
+    risk_category: Optional[str] = None
+    anticipation_tier: Optional[str] = None
+    anticipation_score: Optional[float] = None
+    data_source: str = "Central Validated Quantitative Baseline"
+
+
+class PersonalizedBillImpactSchema(BaseModel):
+    bill_id: str
+    bill_title: str
+    bill_number: Optional[str] = None
+    jurisdiction: str
+    state: Optional[str] = None
+    status: str
+    latest_verified_update: Optional[str] = None
+    relevance_tier: str
+    relevance_reasons: list[RelevanceReasonSchema] = Field(default_factory=list)
+    primary_linkage_reason: str
+    affected_sectors: list[str] = Field(default_factory=list)
+    affected_industries: list[str] = Field(default_factory=list)
+    affected_companies: list[str] = Field(default_factory=list)
+    model_status: str
+    prediction_availability: bool
+    source_provenance: list[str] = Field(default_factory=list)
+    authoritative_prediction: Optional[AuthoritativePredictionSummarySchema] = None
+    epistemic_level: str = "INTERPRETATION"
+
+
+class PortfolioLegislativeExposureResponse(BaseModel):
+    portfolio_id: Optional[str] = None
+    total_holdings: int
+    total_holdings_count: Optional[int] = None
+    exposed_holdings_count: int
+    total_relevant_bills: int
+    total_relevant_bills_count: Optional[int] = None
+    direct_bills_count: int
+    high_relevance_bills_count: int
+    moderate_relevance_bills_count: int
+    indirect_bills_count: int
+    modelled_central_bills_count: int
+    knowledge_only_bills_count: int
+    state_bills_count: int
+    sector_distribution: dict[str, int] = Field(default_factory=dict)
+    sectors_affected: list[str] = Field(default_factory=list)
+    industries_affected: list[str] = Field(default_factory=list)
+    relevant_bills: list[PersonalizedBillImpactSchema] = Field(default_factory=list)
+    holdings_exposure_map: dict[str, list[str]] = Field(default_factory=dict)
+    generated_at: str
+    disclaimer: str = (
+        "DECISION SUPPORT NOTICE: Personalized legislative intelligence is provided strictly for "
+        "informational and decision-support purposes. It does not constitute investment advice, financial planning, "
+        "or a recommendation to buy, sell, or hold any security. State bills and qualitative entities carry zero stock predictions."
+    )
+
+
+class PersonalizedChangeFeedItemSchema(BaseModel):
+    event_id: str
+    event_type: str
+    bill_id: str
+    bill_title: str
+    jurisdiction: str = "central"
+    state: Optional[str] = None
+    relevance_tier: str
+    relevance_reason: str
+    detected_at: str
+    model_status: str
+    deep_link: str
+    source_name: str
+    provenance_url: Optional[str] = None
+    epistemic_status: str = "OBSERVED"
+
+
+class PersonalizedDashboardResponse(BaseModel):
+    user_id: str
+    tenant_id: str
+    portfolio_exposure: Optional[dict[str, Any]] = None
+    watchlist_exposure: list[Any] = Field(default_factory=list)
+    relevant_central_bills: list[PersonalizedBillImpactSchema] = Field(default_factory=list)
+    relevant_state_bills: list[PersonalizedBillImpactSchema] = Field(default_factory=list)
+    change_feed_highlights: list[PersonalizedChangeFeedItemSchema] = Field(default_factory=list)
+    relevant_new_bills: list[PersonalizedBillImpactSchema] = Field(default_factory=list)
+    recent_bill_changes: list[PersonalizedChangeFeedItemSchema] = Field(default_factory=list)
+    relevant_state_legislation: list[PersonalizedBillImpactSchema] = Field(default_factory=list)
+    companies_exposed: list[dict[str, Any]] = Field(default_factory=list)
+    sectors_affected: list[dict[str, Any]] = Field(default_factory=list)
+    modelled_central_bills: list[PersonalizedBillImpactSchema] = Field(default_factory=list)
+    knowledge_only_developments: list[PersonalizedBillImpactSchema] = Field(default_factory=list)
+    upcoming_verified_legislation: list[dict[str, Any]] = Field(default_factory=list)
+    recent_document_changes: list[dict[str, Any]] = Field(default_factory=list)
+    stats: dict[str, int] = Field(default_factory=dict)
+    generated_at: str
+    disclaimer: str = (
+        "DECISION SUPPORT NOTICE: Personalized legislative intelligence is provided strictly for "
+        "informational and decision-support purposes. It does not constitute investment advice, financial planning, "
+        "or a recommendation to buy, sell, or hold any security. State bills and qualitative entities carry zero stock predictions."
+    )
+
+
+class PersonalizedImpactReportResponse(BaseModel):
+    report_id: str
+    user_id: str
+    tenant_id: str
+    report_title: str
+    portfolio_id: Optional[str] = None
+    executive_summary: dict[str, Any] = Field(default_factory=dict)
+    portfolio_holdings: list[dict[str, Any]] = Field(default_factory=list)
+    legislative_exposures: list[PersonalizedBillImpactSchema] = Field(default_factory=list)
+    sector_breakdown: Any = Field(default_factory=list)
+    governance_disclaimer: str = (
+        "DECISION SUPPORT NOTICE: Personalized legislative intelligence is provided strictly for "
+        "informational and decision-support purposes. It does not constitute investment advice, financial planning, "
+        "or a recommendation to buy, sell, or hold any security. State bills and qualitative entities carry zero stock predictions."
+    )
+    portfolio_summary: dict[str, Any] = Field(default_factory=dict)
+    relevant_bills: list[PersonalizedBillImpactSchema] = Field(default_factory=list)
+    new_developments: list[PersonalizedChangeFeedItemSchema] = Field(default_factory=list)
+    company_exposures: list[dict[str, Any]] = Field(default_factory=list)
+    sector_exposures: list[dict[str, Any]] = Field(default_factory=list)
+    modelled_central_results: list[dict[str, Any]] = Field(default_factory=list)
+    knowledge_only_developments: list[dict[str, Any]] = Field(default_factory=list)
+    upcoming_verified_legislation: list[dict[str, Any]] = Field(default_factory=list)
+    sources_and_provenance: list[str] = Field(default_factory=list)
+    disclaimers: list[str] = Field(default_factory=list)
+    generated_at: str
+
+
+class ExplainRelevanceResponse(BaseModel):
+    bill_id: str
+    bill_title: Optional[str] = None
+    relevance_tier: str
+    primary_reason: Optional[str] = None
+    explanation: str
+    affected_holdings: list[str] = Field(default_factory=list)
+    model_status: str = "KNOWLEDGE ONLY"
+    grounded: bool = True
+    disclaimer: str
+
+
 
 
 

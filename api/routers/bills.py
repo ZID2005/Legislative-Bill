@@ -11,21 +11,39 @@ from typing import Any, Optional
 from fastapi import APIRouter, Depends, Query
 
 from api.dependencies import (
+    CurrentUser,
     get_anticipation_repository,
+    get_bill_dossier_service,
     get_cached_predictions,
     get_company_intelligence_service,
+    get_current_user,
     get_discovery_service,
 )
 from api.errors import NotFoundError
 from api.schemas import (
+    BillChangesResponse,
+    BillChangeSummarySchema,
     BillCompanyExposureSchema,
     BillDetailResponse,
+    BillDocumentItemSchema,
+    BillDocumentsResponse,
+    BillModelStatusResponse,
     BillPredictionStatusResponse,
+    BillSectorExposureResponse,
+    BillStakeholdersResponse,
     BillSummaryItem,
+    BillTimelineResponse,
     CorporateExposureEvidenceSchema,
+    EnrichedBillDossierResponse,
     PaginatedResponse,
+    PlainLanguageExplanationSchema,
+    PlainLanguageResponse,
+    SectorExposureItemSchema,
+    StakeholderPersonaViewSchema,
+    TimelineEventSchema,
 )
 from schemas.unified_bill_record import UnifiedBillRecord
+from services.bill_dossier_service import BillDossierService
 from services.company_intelligence_service import CompanyIntelligenceService
 from services.unified_legislative_discovery import UnifiedLegislativeDiscoveryService
 from storage.anticipation_repository import AnticipationRepository
@@ -150,30 +168,242 @@ def list_bills(
     "/{bill_id}",
     response_model=BillDetailResponse,
     summary="Get single bill dossier",
-    description="Retrieve a structured dossier for a Central or State legislative bill, including provisions, provenance, and related bills.",
+    description="Retrieve a structured dossier for a Central, State, or Live legislative bill, including provisions, provenance, and related bills.",
 )
 def get_bill_detail(
     bill_id: str,
     discovery_service: UnifiedLegislativeDiscoveryService = Depends(get_discovery_service),
+    dossier_service: BillDossierService = Depends(get_bill_dossier_service),
 ) -> BillDetailResponse:
-    bill = discovery_service.get_bill_by_id(bill_id)
+    bill = discovery_service.get_bill_by_id(bill_id) or dossier_service.resolve_bill(bill_id)
     if not bill:
         raise NotFoundError(
             code="BILL_NOT_FOUND",
             message=f"Bill with ID '{bill_id}' not found.",
         )
 
-    related = discovery_service.get_related_bills(bill_id, limit=5)
+    related = discovery_service.get_related_bills(bill.bill_id, limit=5)
     related_summaries = [_to_bill_summary(r) for r in related]
 
-    prediction_available = bill.is_central and bill.modeling_eligibility == "ELIGIBLE"
+    _, _, _, prediction_available = dossier_service.get_model_status_info(bill)
+
+    # Gather key provisions from knowledge if available
+    provisions: list[str] = []
+    if bill.is_central:
+        kr = dossier_service.central_knowledge_repo.get(bill.bill_id)
+        if kr and hasattr(kr, "key_provisions") and kr.key_provisions:
+            provisions = list(kr.key_provisions)
+    elif bill.is_state:
+        skr = dossier_service.state_knowledge_repo.get(bill.bill_id)
+        if skr and skr.economic_profile and hasattr(skr.economic_profile, "key_provisions"):
+            provisions = list(skr.economic_profile.key_provisions or [])
 
     return BillDetailResponse(
         bill=_to_bill_summary(bill),
-        provisions=[],
+        provisions=provisions,
         provenance=dict(bill.provenance or {}),
         prediction_available=prediction_available,
         related_bills=related_summaries,
+    )
+
+
+@router.get(
+    "/{bill_id}/dossier",
+    response_model=EnrichedBillDossierResponse,
+    summary="Get enriched bill dossier 2.0",
+    description="Retrieve comprehensive legislative intelligence dossier 2.0 including identity, status, timeline, what changed, plain-language analysis, stakeholder perspectives, sector and corporate exposures, documents, and model boundaries.",
+)
+def get_enriched_bill_dossier(
+    bill_id: str,
+    dossier_service: BillDossierService = Depends(get_bill_dossier_service),
+    current_user: CurrentUser = Depends(get_current_user),
+) -> EnrichedBillDossierResponse:
+    dossier = dossier_service.get_dossier(bill_id)
+    if not dossier:
+        raise NotFoundError(
+            code="BILL_NOT_FOUND",
+            message=f"Bill with ID '{bill_id}' not found.",
+        )
+    return EnrichedBillDossierResponse(**dossier.to_dict())
+
+
+@router.get(
+    "/{bill_id}/timeline",
+    response_model=BillTimelineResponse,
+    summary="Get bill procedural and change timeline",
+    description="Retrieve chronological timeline of meaningful legislative events supported strictly by evidence.",
+)
+def get_bill_timeline(
+    bill_id: str,
+    dossier_service: BillDossierService = Depends(get_bill_dossier_service),
+    current_user: CurrentUser = Depends(get_current_user),
+) -> BillTimelineResponse:
+    bill = dossier_service.resolve_bill(bill_id)
+    if not bill:
+        raise NotFoundError(
+            code="BILL_NOT_FOUND",
+            message=f"Bill with ID '{bill_id}' not found.",
+        )
+    timeline = dossier_service.build_timeline(bill)
+    return BillTimelineResponse(
+        bill_id=bill.bill_id,
+        total_events=len(timeline),
+        events=[TimelineEventSchema(**t.to_dict()) for t in timeline],
+    )
+
+
+@router.get(
+    "/{bill_id}/changes",
+    response_model=BillChangesResponse,
+    summary="Get structured 'What Changed?' summary",
+    description="Retrieve structured change summary distinguishing DOCUMENT CHANGE from LEGISLATIVE STATUS CHANGE.",
+)
+def get_bill_changes(
+    bill_id: str,
+    dossier_service: BillDossierService = Depends(get_bill_dossier_service),
+    current_user: CurrentUser = Depends(get_current_user),
+) -> BillChangesResponse:
+    bill = dossier_service.resolve_bill(bill_id)
+    if not bill:
+        raise NotFoundError(
+            code="BILL_NOT_FOUND",
+            message=f"Bill with ID '{bill_id}' not found.",
+        )
+    changes = dossier_service.build_change_summary(bill)
+    return BillChangesResponse(
+        bill_id=bill.bill_id,
+        changes=BillChangeSummarySchema(**changes.to_dict()),
+    )
+
+
+@router.get(
+    "/{bill_id}/plain-language",
+    response_model=PlainLanguageResponse,
+    summary="Get plain-language non-expert explanation",
+    description="Retrieve clear plain-language section answering What is this bill, What does it change, Who could be affected, Why could it matter economically, and What is still unknown.",
+)
+def get_bill_plain_language(
+    bill_id: str,
+    dossier_service: BillDossierService = Depends(get_bill_dossier_service),
+    current_user: CurrentUser = Depends(get_current_user),
+) -> PlainLanguageResponse:
+    dossier = dossier_service.get_dossier(bill_id)
+    if not dossier:
+        raise NotFoundError(
+            code="BILL_NOT_FOUND",
+            message=f"Bill with ID '{bill_id}' not found.",
+        )
+    return PlainLanguageResponse(
+        bill_id=dossier.identity.bill_id,
+        plain_language=PlainLanguageExplanationSchema(**dossier.content.plain_language.to_dict()),
+    )
+
+
+@router.get(
+    "/{bill_id}/stakeholders",
+    response_model=BillStakeholdersResponse,
+    summary="Get multi-persona stakeholder views",
+    description="Retrieve factual stakeholder views for Investor, Business Owner, Employee / Professional, Common Citizen, and Researcher with strict Fact/Interpretation/Prediction separation.",
+)
+def get_bill_stakeholders(
+    bill_id: str,
+    dossier_service: BillDossierService = Depends(get_bill_dossier_service),
+    current_user: CurrentUser = Depends(get_current_user),
+) -> BillStakeholdersResponse:
+    dossier = dossier_service.get_dossier(bill_id)
+    if not dossier:
+        raise NotFoundError(
+            code="BILL_NOT_FOUND",
+            message=f"Bill with ID '{bill_id}' not found.",
+        )
+    views = {
+        k: StakeholderPersonaViewSchema(**v.to_dict())
+        for k, v in dossier.stakeholder_views.items()
+    }
+    return BillStakeholdersResponse(
+        bill_id=dossier.identity.bill_id,
+        stakeholder_views=views,
+    )
+
+
+@router.get(
+    "/{bill_id}/sectors",
+    response_model=BillSectorExposureResponse,
+    summary="Get affected sectors and industries",
+    description="Retrieve affected sectors, industries, business activities, and exposure types connected to Macro Sector Directory.",
+)
+def get_bill_sectors(
+    bill_id: str,
+    dossier_service: BillDossierService = Depends(get_bill_dossier_service),
+    current_user: CurrentUser = Depends(get_current_user),
+) -> BillSectorExposureResponse:
+    bill = dossier_service.resolve_bill(bill_id)
+    if not bill:
+        raise NotFoundError(
+            code="BILL_NOT_FOUND",
+            message=f"Bill with ID '{bill_id}' not found.",
+        )
+    sec_exp = dossier_service.build_sector_exposures(bill)
+    return BillSectorExposureResponse(
+        bill_id=bill.bill_id,
+        sector_exposures=[SectorExposureItemSchema(**s.to_dict()) for s in sec_exp],
+    )
+
+
+@router.get(
+    "/{bill_id}/documents",
+    response_model=BillDocumentsResponse,
+    summary="Get official supporting documents and metadata",
+    description="Retrieve official documents, URLs, SHA-256 hashes, retrieval status, and provenance.",
+)
+def get_bill_documents(
+    bill_id: str,
+    dossier_service: BillDossierService = Depends(get_bill_dossier_service),
+    current_user: CurrentUser = Depends(get_current_user),
+) -> BillDocumentsResponse:
+    bill = dossier_service.resolve_bill(bill_id)
+    if not bill:
+        raise NotFoundError(
+            code="BILL_NOT_FOUND",
+            message=f"Bill with ID '{bill_id}' not found.",
+        )
+    docs = dossier_service.build_documents(bill)
+    return BillDocumentsResponse(
+        bill_id=bill.bill_id,
+        total_documents=len(docs),
+        documents=[BillDocumentItemSchema(**d.to_dict()) for d in docs],
+    )
+
+
+@router.get(
+    "/{bill_id}/model-status",
+    response_model=BillModelStatusResponse,
+    summary="Get analytical model status and firewall boundary",
+    description="Retrieve analytical status (MODELLED, KNOWLEDGE_ONLY, PENDING_REVIEW, NOT_ELIGIBLE) and firewall verification.",
+)
+def get_bill_model_status(
+    bill_id: str,
+    dossier_service: BillDossierService = Depends(get_bill_dossier_service),
+    current_user: CurrentUser = Depends(get_current_user),
+) -> BillModelStatusResponse:
+    bill = dossier_service.resolve_bill(bill_id)
+    if not bill:
+        raise NotFoundError(
+            code="BILL_NOT_FOUND",
+            message=f"Bill with ID '{bill_id}' not found.",
+        )
+    model_status, label, desc, pred_avail = dossier_service.get_model_status_info(bill)
+    return BillModelStatusResponse(
+        bill_id=bill.bill_id,
+        model_status=model_status,
+        model_status_label=label,
+        model_status_description=desc,
+        prediction_available=pred_avail,
+        is_central=bill.is_central,
+        is_state=bill.is_state,
+        jurisdiction=bill.jurisdiction,
+        state=bill.state,
+        firewall_active=not pred_avail or bill.is_state,
     )
 
 

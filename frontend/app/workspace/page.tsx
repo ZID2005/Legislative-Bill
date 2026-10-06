@@ -18,7 +18,10 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { workspaceApi } from "@/lib/api/workspace";
+import { portfolioApi } from "@/lib/api/portfolio";
 import type {
+  PersonalizedChangeFeedItem,
+  PersonalizedDashboardResponse,
   WorkspaceActivityItem,
   WorkspaceAnalyticsItem,
   WorkspaceEntityCard,
@@ -32,6 +35,8 @@ export function WorkspacePage() {
   const [activity, setActivity] = useState<WorkspaceActivityItem[]>([]);
   const [grouped, setGrouped] = useState<WorkspaceGroupedActivityResponse | null>(null);
   const [analytics, setAnalytics] = useState<WorkspaceAnalyticsItem[]>([]);
+  const [decisionIntel, setDecisionIntel] = useState<PersonalizedDashboardResponse | null>(null);
+  const [changeFeed, setChangeFeed] = useState<PersonalizedChangeFeedItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -53,6 +58,14 @@ export function WorkspacePage() {
       setActivity(actRes.items || []);
       setGrouped(grpRes);
       setAnalytics(anaRes.items || []);
+
+      // Non-blocking fetch of decision intelligence & change feed (Task 8.28)
+      if (typeof (workspaceApi as any).getDecisionIntelligence === "function") {
+        (workspaceApi as any).getDecisionIntelligence().then((res: any) => setDecisionIntel(res)).catch(() => {});
+      }
+      if (typeof (workspaceApi as any).getChangeFeed === "function") {
+        (workspaceApi as any).getChangeFeed(20).then((res: any) => setChangeFeed(res || [])).catch(() => {});
+      }
     } catch (err: unknown) {
       console.error("Failed to load workspace data:", err);
       setError("Failed to load workspace data. Please verify backend service.");
@@ -240,6 +253,100 @@ export function WorkspacePage() {
           </div>
           <span className="text-[11px] text-slate-400">Last 7 days</span>
         </div>
+      </div>
+
+      {/* Task 8.28 — YOUR LEGISLATIVE INTELLIGENCE */}
+      <div className="space-y-4 p-6 rounded-2xl bg-gradient-to-br from-slate-900/90 to-blue-950/20 border border-slate-800 shadow-xl">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-slate-800/80 pb-3">
+          <div>
+            <div className="flex items-center gap-2 mb-0.5">
+              <span className="text-amber-400 font-bold">✦</span>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-amber-400">
+                Personalized Relevance Layer
+              </span>
+            </div>
+            <h2 className="text-lg font-bold text-slate-100">Your Legislative Intelligence</h2>
+          </div>
+          <div className="flex items-center gap-2 flex-wrap text-[10px] font-mono">
+            <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">MODELLED</span>
+            <span className="px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">KNOWLEDGE ONLY</span>
+            <span className="px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">LIVE</span>
+            <span className="px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 border border-purple-500/20">VERIFIED</span>
+            <Link
+              href="/portfolio"
+              className="px-2.5 py-1 rounded bg-blue-600 hover:bg-blue-500 text-white font-semibold font-sans text-xs transition-colors ml-1"
+            >
+              Open Portfolio Exposure →
+            </Link>
+          </div>
+        </div>
+
+        {/* Highlights Grid */}
+        {decisionIntel && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 pt-2">
+            {decisionIntel.relevant_new_bills.slice(0, 3).map((b) => (
+              <div key={b.bill_id} className="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800/80 space-y-2 hover:border-slate-700 transition-colors">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-bold font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                    {b.relevance_tier}
+                  </span>
+                  <span className="text-[10px] font-mono text-slate-400">
+                    {b.model_status}
+                  </span>
+                </div>
+                <h4 className="text-xs font-bold text-slate-200 line-clamp-1">
+                  <Link href={`/bills/${b.bill_id}`} className="hover:text-blue-400">
+                    {b.bill_title}
+                  </Link>
+                </h4>
+                <p className="text-[11px] text-slate-400 line-clamp-2 leading-relaxed">
+                  {b.primary_linkage_reason}
+                </p>
+                {(b as any).pre_event_public_information && (
+                  <div className="p-1.5 rounded bg-indigo-950/30 border border-indigo-900/40 text-[10px] text-indigo-300">
+                    <span className="font-semibold mr-1">Pre-Event Info:</span>
+                    {(b as any).pre_event_public_information.classification?.replace(/_/g, " ")} ({(b as any).pre_event_public_information.public_information_evidence})
+                  </div>
+                )}
+                <div className="flex items-center justify-between text-[10px] text-slate-500 pt-1 border-t border-slate-800/50">
+                  <span className="capitalize">{b.jurisdiction} {b.state ? `• ${b.state}` : ""}</span>
+                  <span className="capitalize text-slate-400 font-medium">{b.status}</span>
+                </div>
+              </div>
+            ))}
+            {decisionIntel.relevant_new_bills.length === 0 && (
+              <div className="col-span-full p-4 text-center text-xs text-slate-500 border border-dashed border-slate-800 rounded-xl">
+                No new legislative measures currently match your tracked holdings.
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Personalized Change Feed (Task 8.28 Phase 8) */}
+        {changeFeed.length > 0 && (
+          <div className="pt-3 border-t border-slate-800/60 space-y-2">
+            <h3 className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+              <span>📡</span>
+              <span>Personalized Change Feed (No Polling Noise)</span>
+            </h3>
+            <div className="space-y-1.5 max-h-48 overflow-y-auto pr-1">
+              {changeFeed.slice(0, 4).map((ch) => (
+                <div key={ch.event_id} className="p-2.5 rounded-lg bg-slate-950/40 border border-slate-800/60 flex items-center justify-between text-xs">
+                  <div className="flex items-center gap-2 min-w-0">
+                    <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-blue-500/10 text-blue-400 flex-shrink-0">
+                      {ch.event_type}
+                    </span>
+                    <span className="font-semibold text-slate-200 truncate">{ch.bill_title}</span>
+                    <span className="text-slate-400 text-[11px] truncate hidden sm:inline">• {ch.relevance_reason}</span>
+                  </div>
+                  <Link href={ch.deep_link} className="text-[11px] text-blue-400 hover:underline flex-shrink-0 ml-2">
+                    Review →
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Section B & Section C: Dual Columns */}

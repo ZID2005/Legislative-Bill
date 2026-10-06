@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
 
 export interface CardProps {
   children: React.ReactNode;
+  id?: string;
   className?: string;
   padding?: "none" | "sm" | "md" | "lg";
   hover?: boolean;
@@ -27,12 +28,14 @@ const paddingClasses = {
 
 export function Card({
   children,
+  id,
   className,
   padding = "md",
   hover = false,
 }: CardProps) {
   return (
     <div
+      id={id}
       className={cn(
         "bg-slate-900 border border-slate-800 rounded-lg",
         hover &&

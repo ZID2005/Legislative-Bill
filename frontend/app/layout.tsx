@@ -1,15 +1,15 @@
 /**
  * app/layout.tsx
  * ==============
- * Root layout — wraps all pages with Sidebar + Header.
- * Responsive: sidebar collapses on mobile.
+ * Task 8.25 — Root layout using new top navbar.
+ * The permanent left sidebar is replaced with a top navigation system.
+ * All pages are padded below the 56px fixed navbar.
  */
 
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Sidebar } from "@/components/layout/Sidebar";
-import { Header } from "@/components/layout/Header";
+import { TopNavbar } from "@/components/layout/TopNavbar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -51,26 +51,19 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
       </head>
-      <body className="bg-slate-950 text-slate-200 antialiased">
-        <div className="flex h-screen overflow-hidden">
-          {/* Sidebar — hidden on mobile, visible on md+ */}
-          <div className="hidden md:flex md:flex-shrink-0">
-            <Sidebar />
-          </div>
+      <body className="bg-[#05090f] text-slate-200 antialiased">
+        {/* Fixed top navigation bar */}
+        <TopNavbar />
 
-          {/* Main content area */}
-          <div className="flex flex-1 flex-col min-w-0 overflow-hidden">
-            <Header />
-            <main
-              id="main-content"
-              className="flex-1 overflow-y-auto bg-slate-950"
-              role="main"
-              tabIndex={-1}
-            >
-              {children}
-            </main>
-          </div>
-        </div>
+        {/* Main content area — padded below navbar (56px) */}
+        <main
+          id="main-content"
+          className="pt-14 min-h-screen bg-[#05090f]"
+          role="main"
+          tabIndex={-1}
+        >
+          {children}
+        </main>
       </body>
     </html>
   );

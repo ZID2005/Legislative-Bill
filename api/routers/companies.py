@@ -11,12 +11,14 @@ from typing import Any, Optional
 from fastapi import APIRouter, Depends, Query
 
 from api.dependencies import (
+    get_anticipation_repository,
     get_cached_predictions,
     get_company_intelligence_service,
 )
 from api.errors import NotFoundError
 from api.schemas import (
     BillCompanyExposureSchema,
+    CompanyAnticipationResponse,
     CompanyDetailResponse,
     CompanyExposureExplanationResponse,
     CompanyPredictionStatusResponse,
@@ -24,6 +26,7 @@ from api.schemas import (
     CorporateExposureEvidenceSchema,
     PaginatedResponse,
 )
+from storage.anticipation_repository import AnticipationRepository
 from schemas.company import Company, UniverseType
 from services.company_intelligence_service import (
     _CENTRAL_QUANTITATIVE_ISINS,
@@ -324,4 +327,51 @@ def get_company_predictions(
         predictions=matching,
         items=matching,
         total=len(matching),
+    )
+
+
+@router.get(
+    "/{company_id}/anticipation",
+    response_model=CompanyAnticipationResponse,
+    summary="Get market anticipation diagnostics for company",
+    description="Retrieve pre-event anticipation diagnostics for Central-modeled companies.",
+)
+def get_company_anticipation(
+    company_id: str,
+    company_service: CompanyIntelligenceService = Depends(get_company_intelligence_service),
+    anticipation_repo: AnticipationRepository = Depends(get_anticipation_repository),
+) -> CompanyAnticipationResponse:
+    company = company_service.resolve_company(company_id)
+    if not company:
+        raise NotFoundError(
+            code="COMPANY_NOT_FOUND",
+            message=f"Company '{company_id}' not found.",
+        )
+
+    u_type = company.universe_type.value if hasattr(company.universe_type, "value") else str(company.universe_type)
+    is_quant = company.isin in _CENTRAL_QUANTITATIVE_ISINS
+
+    # Firewall: Intelligence-only or unlisted entities have ZERO anticipation scores
+    if not is_quant or u_type == UniverseType.INTELLIGENCE.value:
+        return CompanyAnticipationResponse(
+            available=False,
+            has_anticipation=False,
+            company_id=company.isin,
+            firewall_status="INTELLIGENCE_ONLY_NO_ANTICIPATION",
+            reason="INTELLIGENCE_ONLY_ENTITY",
+            message="Intelligence-only entities are strictly firewalled from anticipation models.",
+            scores=[],
+            total=0,
+        )
+
+    scores = anticipation_repo.get_scores_by_company(company.isin)
+    score_dicts = [s.to_dict() if hasattr(s, "to_dict") else dict(s) for s in scores]
+    return CompanyAnticipationResponse(
+        available=True,
+        has_anticipation=len(score_dicts) > 0,
+        company_id=company.isin,
+        firewall_status=None,
+        reason=None,
+        scores=score_dicts,
+        total=len(score_dicts),
     )

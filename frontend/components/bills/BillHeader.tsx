@@ -19,6 +19,7 @@ import {
   JurisdictionBadge,
   StatusBadge,
   SourceBadge,
+  ModelStatusBadge,
   Badge,
 } from "@/components/ui/Badge";
 import {
@@ -30,6 +31,8 @@ import { formatDate, getCapabilityLevel } from "@/lib/utils";
 
 export interface BillHeaderProps {
   bill: BillSummaryItem;
+  modelStatus?: string;
+  modelStatusLabel?: string;
   onOpenWatchlist?: () => void;
   onAskAIClick?: () => void;
   className?: string;
@@ -37,6 +40,8 @@ export interface BillHeaderProps {
 
 export function BillHeader({
   bill,
+  modelStatus,
+  modelStatusLabel,
   onOpenWatchlist,
   onAskAIClick,
   className = "",
@@ -83,6 +88,11 @@ export function BillHeader({
       <div className="flex flex-wrap items-center gap-2">
         <JurisdictionBadge jurisdiction={bill.jurisdiction} state={bill.state} />
         <StatusBadge status={bill.status} />
+        <ModelStatusBadge
+          status={modelStatus || (bill.jurisdiction?.toLowerCase() === "central" && bill.modeling_eligibility === "ELIGIBLE" ? "MODELLED" : "NOT_ELIGIBLE")}
+          label={modelStatusLabel}
+          size="xs"
+        />
         <CapabilityBadge level={capLevel} size="xs" />
         <MarketRelevanceBadge relevance={bill.market_relevance} size="xs" />
         <SourceBadge type="FACT" size="xs" showTooltip />

@@ -21,6 +21,7 @@ import { cn } from "@/lib/utils";
 export type BadgeVariant =
   | "default"
   | "primary"
+  | "blue"
   | "success"
   | "warning"
   | "danger"
@@ -35,6 +36,7 @@ export type BadgeVariant =
 const variantClasses: Record<BadgeVariant, string> = {
   default: "bg-slate-800 text-slate-200 border border-slate-700",
   primary: "bg-blue-900/60 text-blue-200 border border-blue-700/50",
+  blue: "bg-blue-900/60 text-blue-200 border border-blue-700/50",
   success: "bg-emerald-900/60 text-emerald-200 border border-emerald-700/50",
   warning: "bg-amber-900/60 text-amber-200 border border-amber-700/50",
   danger: "bg-rose-900/60 text-rose-200 border border-rose-700/50",
@@ -259,3 +261,51 @@ export function ExposureBadge({
     </span>
   );
 }
+
+// ---------------------------------------------------------------------------
+// ModelStatusBadge — Task 8.27 Strict Model Status Firewall
+// ---------------------------------------------------------------------------
+
+export function ModelStatusBadge({
+  status,
+  label,
+  size = "xs",
+}: {
+  status?: string;
+  label?: string;
+  size?: "xs" | "sm" | "md";
+}) {
+  const norm = (status || "").toUpperCase();
+  const isModelled = norm === "MODELLED" || norm.includes("CENTRAL QUANTITATIVE");
+  const isPending = norm === "PENDING_REVIEW" || norm.includes("PENDING REVIEW");
+  const isLive = isPending || norm === "KNOWLEDGE_ONLY" || norm.startsWith("LIVE");
+  const isNotEligible = norm === "NOT_ELIGIBLE" || norm.includes("NOT ELIGIBLE");
+
+  const variant: BadgeVariant = isModelled
+    ? "emerald"
+    : isLive
+    ? "purple"
+    : isNotEligible
+    ? "slate"
+    : "amber";
+
+  const displayLabel =
+    label ||
+    (isModelled
+      ? "MODELLED — CENTRAL QUANTITATIVE"
+      : isLive
+      ? isPending
+        ? "LIVE — PENDING REVIEW"
+        : "LIVE — KNOWLEDGE ONLY"
+      : "NOT ELIGIBLE FOR STOCK MODEL");
+
+  const icon = isModelled ? "📊" : isLive ? "🌐" : "🛡";
+
+  return (
+    <Badge variant={variant} size={size} className="font-mono tracking-tight font-semibold">
+      <span>{icon}</span>
+      <span>{displayLabel}</span>
+    </Badge>
+  );
+}
+

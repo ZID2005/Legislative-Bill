@@ -18,6 +18,7 @@ from schemas.anticipation import AnticipationScore
 from schemas.decision import DecisionSupportRecord
 from schemas.prediction import PredictionRecord
 from services.ai.ai_explanation_service import AIExplanationService
+from services.bill_dossier_service import BillDossierService
 from services.company_intelligence_service import CompanyIntelligenceService
 from services.industry_intelligence_service import IndustryIntelligenceService
 from services.monitoring.monitoring_runner import MonitoringRunner
@@ -36,15 +37,21 @@ from storage.decision_repository import DecisionRepository
 from storage.monitoring_repository import MonitoringRepository
 from storage.prediction_repository import PredictionRepository
 from storage.report_repository import ReportRepository
+from storage.knowledge_repository import KnowledgeRepository
 from storage.state_bill_repository import StateBillRepository
 from storage.state_corporate_exposure_repository import StateCorporateExposureRepository
+from storage.company_exposure_repository import CompanyExposureRepository
 from storage.state_knowledge_repository import StateKnowledgeRepository
 from storage.tenant_repository import TenantRepository
 from storage.user_repository import UserRepository
 from storage.audit_log_repository import AuditLogRepository
+from storage.portfolio_repository import PortfolioRepository
+from services.decision_intelligence_service import DecisionIntelligenceService
 from services.ai_usage_service import AIUsageService
 from services.entitlement_service import EntitlementService
 from services.account_service import AccountService
+from services.anticipation_evidence.evidence_repository import AnticipationEvidenceRepository
+from services.anticipation_evidence.evidence_service import AnticipationEvidenceService
 
 logger = get_logger(__name__)
 
@@ -120,6 +127,7 @@ _report_repository: Optional[ReportRepository] = None
 _state_knowledge_service: Optional[StateKnowledgeService] = None
 _state_bill_repository: Optional[StateBillRepository] = None
 _state_knowledge_repository: Optional[StateKnowledgeRepository] = None
+_central_knowledge_repository: Optional[KnowledgeRepository] = None
 _state_corporate_repository: Optional[StateCorporateExposureRepository] = None
 _watchlist_service: Optional[WatchlistService] = None
 _alert_event_repository: Optional[AlertEventRepository] = None
@@ -172,6 +180,27 @@ def get_anticipation_repository() -> AnticipationRepository:
     return _anticipation_repository
 
 
+_anticipation_evidence_repository: Optional[AnticipationEvidenceRepository] = None
+_anticipation_evidence_service: Optional[AnticipationEvidenceService] = None
+
+
+def get_anticipation_evidence_repository() -> AnticipationEvidenceRepository:
+    global _anticipation_evidence_repository
+    if _anticipation_evidence_repository is None:
+        _anticipation_evidence_repository = AnticipationEvidenceRepository()
+    return _anticipation_evidence_repository
+
+
+def get_anticipation_evidence_service() -> AnticipationEvidenceService:
+    global _anticipation_evidence_service
+    if _anticipation_evidence_service is None:
+        _anticipation_evidence_service = AnticipationEvidenceService(
+            evidence_repo=get_anticipation_evidence_repository(),
+            anticipation_repo=get_anticipation_repository(),
+        )
+    return _anticipation_evidence_service
+
+
 def get_report_repository() -> ReportRepository:
     global _report_repository
     if _report_repository is None:
@@ -198,6 +227,13 @@ def get_state_knowledge_repository() -> StateKnowledgeRepository:
     if _state_knowledge_repository is None:
         _state_knowledge_repository = StateKnowledgeRepository()
     return _state_knowledge_repository
+
+
+def get_central_knowledge_repository() -> KnowledgeRepository:
+    global _central_knowledge_repository
+    if _central_knowledge_repository is None:
+        _central_knowledge_repository = KnowledgeRepository()
+    return _central_knowledge_repository
 
 
 def get_state_corporate_repository() -> StateCorporateExposureRepository:
@@ -303,6 +339,22 @@ def get_ai_explanation_service() -> AIExplanationService:
     if _ai_explanation_service is None:
         _ai_explanation_service = AIExplanationService()
     return _ai_explanation_service
+
+
+_bill_dossier_service: Optional[BillDossierService] = None
+
+
+def get_bill_dossier_service() -> BillDossierService:
+    global _bill_dossier_service
+    if _bill_dossier_service is None:
+        _bill_dossier_service = BillDossierService(
+            discovery_service=get_discovery_service(),
+            company_intel_service=get_company_intelligence_service(),
+            industry_service=get_industry_intelligence_service(),
+            central_knowledge_repo=get_central_knowledge_repository(),
+            state_knowledge_repo=get_state_knowledge_repository(),
+        )
+    return _bill_dossier_service
 
 
 # ---------------------------------------------------------------------------
@@ -417,4 +469,49 @@ def get_account_service() -> AccountService:
             alert_pref_repo=wl_svc.alert_pref_repo,
         )
     return _account_service
+
+
+# ---------------------------------------------------------------------------
+# Decision Intelligence & Portfolio Singletons (Task 8.28)
+# ---------------------------------------------------------------------------
+
+_company_exposure_repository: Optional[CompanyExposureRepository] = None
+_portfolio_repository: Optional[PortfolioRepository] = None
+_decision_intelligence_service: Optional[DecisionIntelligenceService] = None
+
+
+def get_company_exposure_repository() -> CompanyExposureRepository:
+    global _company_exposure_repository
+    if _company_exposure_repository is None:
+        _company_exposure_repository = CompanyExposureRepository()
+    return _company_exposure_repository
+
+
+get_state_corporate_exposure_repository = get_state_corporate_repository
+
+
+def get_portfolio_repository() -> PortfolioRepository:
+    global _portfolio_repository
+    if _portfolio_repository is None:
+        _portfolio_repository = PortfolioRepository()
+    return _portfolio_repository
+
+
+def get_decision_intelligence_service() -> DecisionIntelligenceService:
+    global _decision_intelligence_service
+    if _decision_intelligence_service is None:
+        _decision_intelligence_service = DecisionIntelligenceService(
+            portfolio_repo=get_portfolio_repository(),
+            watchlist_service=get_watchlist_service(),
+            discovery_service=get_discovery_service(),
+            company_service=get_company_intelligence_service(),
+            industry_service=get_industry_intelligence_service(),
+            dossier_service=get_bill_dossier_service(),
+            monitoring_repo=get_monitoring_repository(),
+            state_bill_repo=get_state_bill_repository(),
+            company_exposure_repo=get_company_exposure_repository(),
+            state_exposure_repo=get_state_corporate_repository(),
+        )
+    return _decision_intelligence_service
+
 

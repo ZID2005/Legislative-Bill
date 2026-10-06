@@ -4,19 +4,23 @@ api/routers/monitoring.py
 REST API router for Legislative Monitoring & Discovery Center.
 
 Endpoints:
-  GET  /monitoring/overview               — Combined telemetry panel
-  GET  /monitoring/sources                — Source registry (paginated)
-  GET  /monitoring/sources/{source_id}    — Single source detail
-  GET  /monitoring/scheduler              — Scheduler observability
-  GET  /monitoring/runs                   — Monitoring run history (paginated)
-  GET  /monitoring/runs/{run_id}          — Single run detail
-  GET  /monitoring/events                 — Legacy: recent events
-  GET  /monitoring/changes                — Change events (paginated, filtered)
-  GET  /monitoring/changes/{event_id}     — Single change detail with provenance
-  GET  /monitoring/bill-versions/{bill_id} — Bill version history
-  POST /monitoring/check                  — Safe manual monitoring poll
+  GET  /monitoring/overview                  — Combined telemetry panel
+  GET  /monitoring/sources                   — Source registry (paginated)
+  GET  /monitoring/sources/{source_id}       — Single source detail
+  GET  /monitoring/scheduler                 — Scheduler observability
+  GET  /monitoring/runs                      — Monitoring run history (paginated)
+  GET  /monitoring/runs/{run_id}             — Single run detail
+  GET  /monitoring/events                    — Legacy: recent events
+  GET  /monitoring/changes                   — Change events (paginated, filtered)
+  GET  /monitoring/changes/{event_id}        — Single change detail with provenance
+  GET  /monitoring/bill-versions/{bill_id}   — Bill version history
+  POST /monitoring/check                     — Safe manual monitoring poll
+  GET  /monitoring/live-knowledge            — [8.26] Live knowledge records
+  GET  /monitoring/live-knowledge/stats      — [8.26] Live knowledge stats
+  GET  /monitoring/live-knowledge/{id}       — [8.26] Single live knowledge record
 
 Task 8.14.9 — Legislative Monitoring & Discovery Center.
+Task 8.26   — Live Legislative Intelligence & Automatic Update Pipeline.
 """
 
 from __future__ import annotations
@@ -36,6 +40,9 @@ from api.schemas import (
     BillVersionHistoryResponse,
     BillVersionItem,
     ChangeEventDetailResponse,
+    LiveKnowledgeListResponse,
+    LiveKnowledgeRecordItem,
+    LiveKnowledgeStatsResponse,
     MonitoringCheckResponse,
     MonitoringEventResponse,
     MonitoringOverviewResponse,
@@ -50,9 +57,18 @@ from api.schemas import (
 from schemas.monitoring import SourceStatus
 from services.monitoring.monitoring_runner import MonitoringRunner
 from services.monitoring.scheduler import LegislativeScheduler
+from storage.live_knowledge_repository import LiveKnowledgeRepository
 from storage.monitoring_repository import MonitoringRepository
 
 router = APIRouter(prefix="/monitoring", tags=["Monitoring"])
+
+
+# Shared live knowledge repository dependency
+def _get_live_knowledge_repo() -> LiveKnowledgeRepository:
+    from config.settings import settings
+    from pathlib import Path
+    storage_path = Path(getattr(settings, "storage_path", "storage"))
+    return LiveKnowledgeRepository(storage_dir=storage_path)
 
 
 # ---------------------------------------------------------------------------
@@ -84,6 +100,7 @@ def _classify_source_health(source: Any) -> str:
 
 
 def _source_to_item(source: Any) -> MonitoringSourceItem:
+    health = _classify_source_health(source)
     return MonitoringSourceItem(
         source_id=source.source_id,
         source_name=getattr(source, "source_name", source.source_id),
@@ -100,6 +117,10 @@ def _source_to_item(source: Any) -> MonitoringSourceItem:
         last_error_at=source.last_error_at,
         last_error=source.last_error,
         notes=getattr(source, "notes", None),
+        # Task 8.26 fields
+        authority_name=getattr(source, "authority_name", None),
+        source_category=getattr(source, "source_category", "PARLIAMENTARY"),
+        health_status=health,
     )
 
 
@@ -740,4 +761,175 @@ def trigger_manual_check(
         sources_succeeded=res["sources_succeeded"],
         sources_failed=res["sources_failed"],
         changes_detected=res.get("new_bills", 0) + res.get("changed_bills", 0),
+    )
+
+
+# ---------------------------------------------------------------------------
+# Task 8.26 — Live Knowledge API Endpoints
+# ---------------------------------------------------------------------------
+
+
+@router.get(
+    "/live-knowledge",
+    response_model=LiveKnowledgeListResponse,
+    summary="[8.26] Live legislative knowledge records",
+    description=(
+        "Paginated list of live legislative discovery records. "
+        "Each record carries an analytical_model_status field — all pipeline-created records "
+        "are KNOWLEDGE_ONLY. Records with MODELLED status belong to the frozen analytical "
+        "baseline and can only be assigned by the approved ingestion process."
+    ),
+)
+def list_live_knowledge(
+    page: int = Query(1, ge=1, description="Page number"),
+    limit: int = Query(25, ge=1, le=100, description="Items per page"),
+    live_status: Optional[str] = Query(
+        None,
+        description="Filter by live_status: DISCOVERED | VERIFIED | UPDATED | WITHDRAWN | KNOWLEDGE_ONLY",
+    ),
+    analytical_model_status: Optional[str] = Query(
+        None,
+        description="Filter by analytical_model_status: KNOWLEDGE_ONLY | MODELLED | PENDING_REVIEW | NOT_ELIGIBLE",
+    ),
+    jurisdiction: Optional[str] = Query(None, description="Filter by jurisdiction: central | state"),
+) -> LiveKnowledgeListResponse:
+    repo = _get_live_knowledge_repo()
+    offset = (page - 1) * limit
+    records, total = repo.list_records(
+        limit=limit,
+        offset=offset,
+        live_status=live_status,
+        analytical_model_status=analytical_model_status,
+        jurisdiction=jurisdiction,
+    )
+    pages = max(1, math.ceil(total / limit)) if total else 1
+
+    items = [
+        LiveKnowledgeRecordItem(
+            record_id=r.record_id,
+            canonical_bill_id=r.canonical_bill_id,
+            bill_number=r.bill_number,
+            title=r.title,
+            short_title=r.short_title,
+            jurisdiction=r.jurisdiction,
+            state=r.state,
+            live_status=r.live_status,
+            analytical_model_status=r.analytical_model_status,
+            discovered_at=r.discovered_at,
+            verified_at=r.verified_at,
+            last_updated_at=r.last_updated_at,
+            discovered_by_source_id=r.discovered_by_source_id,
+            authority_name=r.authority_name,
+            source_category=r.source_category,
+            source_url=r.source_url,
+            document_url=r.document_url,
+            document_hash_sha256=r.document_hash_sha256,
+            document_retrieval_failures=r.document_retrieval_failures,
+            identity_matched=r.identity_matched,
+            duplicate_discoveries=r.duplicate_discoveries,
+            introduction_date=r.introduction_date,
+            assent_date=r.assent_date,
+            bill_status_text=r.bill_status_text,
+            summary=r.summary,
+            tags=r.tags,
+        )
+        for r in records
+    ]
+
+    return LiveKnowledgeListResponse(
+        items=items,
+        total=total,
+        page=page,
+        limit=limit,
+        pages=pages,
+        filter_live_status=live_status,
+        filter_analytical_model_status=analytical_model_status,
+        filter_jurisdiction=jurisdiction,
+    )
+
+
+@router.get(
+    "/live-knowledge/stats",
+    response_model=LiveKnowledgeStatsResponse,
+    summary="[8.26] Live knowledge base statistics",
+    description=(
+        "Aggregate statistics for the live legislative knowledge base. "
+        "Includes firewall health check confirming no automated pipeline has assigned "
+        "MODELLED status to a live record."
+    ),
+)
+def get_live_knowledge_stats() -> LiveKnowledgeStatsResponse:
+    repo = _get_live_knowledge_repo()
+    stats = repo.get_stats()
+
+    # Firewall health: confirm no MODELLED record exists in the live KB
+    modelled_count = stats.get("by_analytical_model_status", {}).get("MODELLED", 0)
+    firewall_ok = modelled_count == 0
+    firewall_note = (
+        "FIREWALL OK: All live records are KNOWLEDGE_ONLY. "
+        "Frozen analytical baseline is unmodified."
+        if firewall_ok
+        else (
+            f"FIREWALL WARNING: {modelled_count} live record(s) have analytical_model_status=MODELLED. "
+            "Investigate immediately — only approved analytical ingestion may set MODELLED."
+        )
+    )
+
+    return LiveKnowledgeStatsResponse(
+        total_records=stats.get("total_records", 0),
+        by_live_status=stats.get("by_live_status", {}),
+        by_analytical_model_status=stats.get("by_analytical_model_status", {}),
+        by_jurisdiction=stats.get("by_jurisdiction", {}),
+        document_hash_changes=stats.get("document_hash_changes", 0),
+        duplicate_discoveries=stats.get("duplicate_discoveries", 0),
+        last_write_at=stats.get("last_write_at"),
+        firewall_ok=firewall_ok,
+        firewall_note=firewall_note,
+    )
+
+
+@router.get(
+    "/live-knowledge/{record_id}",
+    response_model=LiveKnowledgeRecordItem,
+    summary="[8.26] Single live knowledge record",
+    description=(
+        "Retrieve a single live legislative knowledge record by its record_id. "
+        "Returns 404 if not found."
+    ),
+)
+def get_live_knowledge_record(record_id: str) -> LiveKnowledgeRecordItem:
+    repo = _get_live_knowledge_repo()
+    record = repo.get(record_id)
+    if record is None:
+        raise HTTPException(
+            status_code=404,
+            detail=f"Live knowledge record '{record_id}' not found.",
+        )
+    return LiveKnowledgeRecordItem(
+        record_id=record.record_id,
+        canonical_bill_id=record.canonical_bill_id,
+        bill_number=record.bill_number,
+        title=record.title,
+        short_title=record.short_title,
+        jurisdiction=record.jurisdiction,
+        state=record.state,
+        live_status=record.live_status,
+        analytical_model_status=record.analytical_model_status,
+        discovered_at=record.discovered_at,
+        verified_at=record.verified_at,
+        last_updated_at=record.last_updated_at,
+        discovered_by_source_id=record.discovered_by_source_id,
+        authority_name=record.authority_name,
+        source_category=record.source_category,
+        source_url=record.source_url,
+        document_url=record.document_url,
+        document_hash_sha256=record.document_hash_sha256,
+        document_retrieval_failures=record.document_retrieval_failures,
+        identity_matched=record.identity_matched,
+        duplicate_discoveries=record.duplicate_discoveries,
+        introduction_date=record.introduction_date,
+        assent_date=record.assent_date,
+        bill_status_text=record.bill_status_text,
+        summary=record.summary,
+        tags=record.tags,
     )

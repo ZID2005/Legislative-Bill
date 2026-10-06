@@ -19,6 +19,38 @@ vi.mock("@/lib/api/anticipation", () => ({
   anticipationApi: {
     getAnticipationSummary: vi.fn(),
     listAnticipation: vi.fn(),
+    getContext: vi.fn().mockResolvedValue({
+      bill_id: "the-banking-laws-amendment-bill-2024",
+      company_isin: "INE002A01018",
+      jurisdiction: "central",
+      market_signal: {
+        level: "HIGH",
+        market_signal_score: 0.62,
+        car_magnitude: 0.041,
+        z_score: 2.34,
+        directional_persistence: 0.70,
+        volatility: 0.018,
+        signals_detected: ["positive_car_drift"],
+      },
+      public_information_signal: {
+        level: "MEDIUM",
+        public_information_evidence_score: 0.58,
+        verified_pre_event_count: 2,
+        credibility_score: 0.75,
+        temporal_proximity_score: 0.80,
+        independent_source_count: 2,
+        source_diversity_ratio: 1.0,
+        verified_evidence: [],
+      },
+      combined_context: {
+        classification: "PUBLIC_INFORMATION_SUPPORTED",
+        rationale: "Observable public-information evidence was present prior to official event date.",
+        interpretation_headline: "Public information diffusion accompanied by observable pre-event market signal",
+        data_quality_state: "VERIFIED",
+        anti_leakage_enforced: true,
+      },
+    }),
+    getEvidence: vi.fn().mockResolvedValue({ items: [], total: 0 }),
   },
 }));
 

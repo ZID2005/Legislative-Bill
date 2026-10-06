@@ -76,11 +76,12 @@ PERSONAS: dict[str, str] = {
 
 # Regex patterns for safety violations
 _FINANCIAL_ADVICE_PATTERNS = [
-    re.compile(r"\b(buy|sell)\s+(the\s+)?(stock|shares|securities|equities)\b", re.IGNORECASE),
+    re.compile(r"\b(buy|sell|hold)\s+(the\s+)?(stock|shares|securities|equities)\b", re.IGNORECASE),
     re.compile(r"\b(strong\s+buy|strong\s+sell|accumulate|portfolio\s+recommendation)\b", re.IGNORECASE),
     re.compile(r"\b(invest\s+in|divest\s+from)\s+[A-Z0-9]+", re.IGNORECASE),
     re.compile(r"\bguaranteed\s+(return|profit|gain|yield)\b", re.IGNORECASE),
-    re.compile(r"\byou\s+should\s+(buy|sell|invest|purchase)\b", re.IGNORECASE),
+    re.compile(r"\byou\s+should\s+(buy|sell|hold|invest|purchase)\b", re.IGNORECASE),
+    re.compile(r"\b(stock|shares|price)\s+will\s+(rise|fall|drop|surge|crash)\b", re.IGNORECASE),
 ]
 
 _UNSUPPORTED_CERTAINTY_PATTERNS = [
@@ -90,7 +91,9 @@ _UNSUPPORTED_CERTAINTY_PATTERNS = [
 
 _INSIDER_TRADING_PATTERNS = [
     re.compile(r"\b(insider\s+trading|insider\s+leak|illegal\s+tipping|front[- ]running)\b", re.IGNORECASE),
-    re.compile(r"\b(crooked|corrupt\s+trader|market\s+rigging)\b", re.IGNORECASE),
+    re.compile(r"\b(crooked|corrupt\s+trader|market\s+rigging|market\s+manipulation)\b", re.IGNORECASE),
+    re.compile(r"\b(information\s+leaked|information\s+leakage|someone\s+knew\s+in\s+advance)\b", re.IGNORECASE),
+    re.compile(r"\b(illegal\s+disclosure|unlawful\s+conduct|confidential\s+information\s+leakage)\b", re.IGNORECASE),
 ]
 
 _STATE_PREDICTION_VIOLATION_PATTERNS = [

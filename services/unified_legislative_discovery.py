@@ -847,6 +847,10 @@ class UnifiedLegislativeDiscoveryService:
                     score += 15
                     term_matched = True
 
+                if b.ministry and (term in b.ministry.lower() or term_stemmed in b.ministry.lower()):
+                    score += 20
+                    term_matched = True
+
                 if term in summary_lower or term_stemmed in summary_lower:
                     score += 8
                     term_matched = True

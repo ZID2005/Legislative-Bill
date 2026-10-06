@@ -123,6 +123,11 @@ def list_predictions(
     summary="Compare event horizons for a bill-company pair",
     description="Retrieve comparison across all 5 modeled event windows and identify unmodeled horizons.",
 )
+@router.get(
+    "/predictions/compare-horizons",
+    summary="Compare event horizons for a bill-company pair (alias)",
+    description="Alias to retrieve comparison across all 5 modeled event windows.",
+)
 def compare_prediction_horizons(
     bill_id: str = Query(..., description="Bill ID"),
     company_isin: str = Query(..., description="Company ISIN"),
@@ -327,4 +332,75 @@ def get_stakeholder_report(
         methodology_note=getattr(report, "methodology_note", None),
         disclaimer=getattr(report, "disclaimer", None),
         created_at=getattr(report, "generated_timestamp", getattr(report, "created_at", "")),
+    )
+
+
+@router.get(
+    "/predictions/{prediction_id}/horizons",
+    summary="Compare event horizons by prediction ID",
+    description="Retrieve event horizons comparison for the bill-company pair of a specific prediction.",
+)
+def get_prediction_horizons(
+    prediction_id: str,
+    pred_repo: PredictionRepository = Depends(get_prediction_repository),
+) -> dict[str, Any]:
+    _, by_id = get_cached_predictions()
+    pred = by_id.get(prediction_id) or pred_repo.get(prediction_id)
+    if not pred:
+        raise NotFoundError(
+            code="PREDICTION_NOT_FOUND",
+            message=f"Prediction '{prediction_id}' not found.",
+        )
+    return compare_prediction_horizons(bill_id=pred.bill_id, company_isin=pred.company_isin)
+
+
+@router.get(
+    "/predictions/{prediction_id}/stakeholder-report",
+    response_model=StakeholderReportResponse,
+    summary="Get stakeholder report for prediction",
+    description="Retrieve an analytical report tailored to a stakeholder type for the specified prediction.",
+)
+def get_prediction_stakeholder_report(
+    prediction_id: str,
+    report_type: str = Query("investor", description="Stakeholder type: investor, business, or public"),
+    pred_repo: PredictionRepository = Depends(get_prediction_repository),
+    report_repo: ReportRepository = Depends(get_report_repository),
+) -> StakeholderReportResponse:
+    _, by_id = get_cached_predictions()
+    pred = by_id.get(prediction_id) or pred_repo.get(prediction_id)
+    if not pred:
+        raise NotFoundError(
+            code="PREDICTION_NOT_FOUND",
+            message=f"Prediction '{prediction_id}' not found.",
+        )
+    return get_stakeholder_report(
+        bill_id=pred.bill_id,
+        company_isin=pred.company_isin,
+        event_window=pred.event_window,
+        stakeholder_type=report_type,
+        report_repo=report_repo,
+    )
+
+
+@router.get(
+    "/predictions/stakeholder-report",
+    response_model=StakeholderReportResponse,
+    summary="Get stakeholder report by key query params",
+    description="Retrieve an analytical report by bill, company, event window, and stakeholder type.",
+)
+def get_stakeholder_report_by_query(
+    bill_id: str = Query(...),
+    company_id: Optional[str] = Query(None),
+    company_isin: Optional[str] = Query(None),
+    event_window: str = Query("[-1,+1]"),
+    report_type: str = Query("investor"),
+    report_repo: ReportRepository = Depends(get_report_repository),
+) -> StakeholderReportResponse:
+    isin = company_isin or company_id or ""
+    return get_stakeholder_report(
+        bill_id=bill_id,
+        company_isin=isin,
+        event_window=event_window,
+        stakeholder_type=report_type,
+        report_repo=report_repo,
     )

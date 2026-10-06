@@ -39,6 +39,7 @@ from api.routers import (
     industries,
     monitoring,
     notifications,
+    portfolio,
     predictions,
     risk,
     search,
@@ -174,6 +175,7 @@ def create_app() -> FastAPI:
     application.include_router(risk.router, prefix=prefix)
     application.include_router(anticipation.router, prefix=prefix)
     application.include_router(workspace.router, prefix=prefix)
+    application.include_router(portfolio.router, prefix=prefix)
     application.include_router(freshness.router, prefix=prefix)
 
     # -----------------------------------------------------------------------

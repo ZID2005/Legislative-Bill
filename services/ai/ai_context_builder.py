@@ -50,6 +50,7 @@ class AIContext:
     derived: list[str] = field(default_factory=list)
     interpretations: list[str] = field(default_factory=list)
     predictions: list[str] = field(default_factory=list)
+    evidence: list[str] = field(default_factory=list)
 
     provenance: dict[str, str] = field(default_factory=dict)
     metadata: dict[str, Any] = field(default_factory=dict)
@@ -74,6 +75,7 @@ class AIContext:
             "derived": sorted(self.derived),
             "interpretations": sorted(self.interpretations),
             "predictions": sorted(self.predictions),
+            "evidence": sorted(self.evidence),
         }
         serialized = json.dumps(payload, sort_keys=True, ensure_ascii=True)
         return hashlib.sha256(serialized.encode("utf-8")).hexdigest()
@@ -120,6 +122,13 @@ class AIContext:
                 lines.append("• State market prediction is currently unavailable. (Model predictions strictly 0).")
             else:
                 lines.append("• No quantitative model predictions generated for this record.")
+
+        lines.extend(["", "[EVIDENCE — Externally Sourced Public-Information Records]"])
+        if self.evidence:
+            for ev in self.evidence:
+                lines.append(f"• [EVIDENCE] {ev}")
+        else:
+            lines.append("• Insufficient verified public-information evidence.")
 
         lines.extend([
             "",
@@ -396,7 +405,81 @@ class AIContextBuilder:
         if state_k:
             return self._build_state_context(bill_id, record)
 
+        # Check Live Knowledge Base
+        try:
+            from pathlib import Path
+            from storage.live_knowledge_repository import LiveKnowledgeRepository
+            storage_path = Path(getattr(settings, "storage_path", "storage"))
+            live_repo = LiveKnowledgeRepository(storage_dir=storage_path)
+            live_rec = live_repo.get(bill_id) or live_repo.get_by_canonical_bill_id(bill_id)
+            if live_rec:
+                return self._build_live_context(bill_id, live_rec)
+        except Exception as exc:
+            logger.warning("Could not check live knowledge for %s: %s", bill_id, exc)
+
         return self._build_central_context(bill_id, record)
+
+    def _build_live_context(
+        self,
+        bill_id: str,
+        live_rec: Any,
+    ) -> AIContext:
+        """Build verified context for a live-discovered bill (KNOWLEDGE_ONLY)."""
+        facts = [
+            f"Jurisdiction: {live_rec.jurisdiction.title()}" + (f" ({live_rec.state})" if live_rec.state else ""),
+            f"Official Status: {live_rec.bill_status_text or live_rec.live_status}",
+            f"Authoritative Source: {live_rec.authority_name or 'Official Source'}",
+        ]
+        if live_rec.bill_number:
+            facts.append(f"Official Bill Number: {live_rec.bill_number}")
+        else:
+            facts.append("Official Bill Number: INSUFFICIENT VERIFIED INFORMATION")
+
+        if live_rec.introduction_date:
+            facts.append(f"Introduction Date: {live_rec.introduction_date}")
+        else:
+            facts.append("Introduction Date: INSUFFICIENT VERIFIED INFORMATION")
+
+        if live_rec.source_url:
+            facts.append(f"Official Source URL: {live_rec.source_url}")
+
+        derived = [
+            f"Analytical Model Status: {live_rec.analytical_model_status} (KNOWLEDGE_ONLY firewall enforced).",
+            "Classification: Live Legislative Discovery.",
+        ]
+        if live_rec.tags:
+            derived.append(f"Thematic Tags: {', '.join(live_rec.tags)}")
+
+        interpretations = []
+        if live_rec.summary:
+            interpretations.append(f"Preliminary Summary: {live_rec.summary}")
+        else:
+            interpretations.append("Preliminary Summary: INSUFFICIENT VERIFIED INFORMATION")
+
+        predictions = [
+            "Quantitative Market Prediction: UNAVAILABLE (Live discovery record firewalled from stock model under Task 8.26/8.27 invariants)."
+        ]
+
+        provenance = {
+            "database": "Live Knowledge Base",
+            "source_category": getattr(live_rec, "source_category", "PARLIAMENTARY"),
+            "firewall": "STRICT_KNOWLEDGE_ONLY",
+        }
+
+        return AIContext(
+            bill_id=bill_id,
+            title=live_rec.title or bill_id,
+            jurisdiction=live_rec.jurisdiction,
+            state=live_rec.state,
+            bill_number=live_rec.bill_number,
+            introduction_date=live_rec.introduction_date,
+            status=live_rec.bill_status_text or live_rec.live_status,
+            facts=facts,
+            derived=derived,
+            interpretations=interpretations,
+            predictions=predictions,
+            provenance=provenance,
+        )
 
     def _build_central_context(
         self,

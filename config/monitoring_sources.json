@@ -15,7 +15,9 @@
     "last_error_at": null,
     "last_error": null,
     "status": "IMPLEMENTED",
-    "notes": "Official Lok Sabha portal — primary source for Central Government bills introduced in the Lower House."
+    "notes": "Official Lok Sabha portal — primary source for Central Government bills introduced in the Lower House.",
+    "authority_name": "Lok Sabha, Parliament of India",
+    "source_category": "PARLIAMENTARY"
   },
   {
     "source_id": "central_rajya_sabha",
@@ -33,7 +35,9 @@
     "last_error_at": null,
     "last_error": null,
     "status": "IMPLEMENTED",
-    "notes": "Official Rajya Sabha portal — source for Central Government bills introduced in the Upper House."
+    "notes": "Official Rajya Sabha portal — source for Central Government bills introduced in the Upper House.",
+    "authority_name": "Rajya Sabha, Parliament of India",
+    "source_category": "PARLIAMENTARY"
   },
   {
     "source_id": "central_prs",
@@ -51,7 +55,9 @@
     "last_error_at": null,
     "last_error": null,
     "status": "IMPLEMENTED",
-    "notes": "PRS Legislative Research — secondary aggregator providing bill summaries and status tracking."
+    "notes": "PRS Legislative Research — secondary aggregator providing bill summaries and status tracking.",
+    "authority_name": "PRS Legislative Research",
+    "source_category": "OTHER_AUTHORITATIVE"
   },
   {
     "source_id": "state_andhra_pradesh",
@@ -69,7 +75,9 @@
     "last_error_at": null,
     "last_error": null,
     "status": "IMPLEMENTED",
-    "notes": "Official AP Legislature portal. Pilot state — implemented."
+    "notes": "Official AP Legislature portal. Pilot state — implemented.",
+    "authority_name": "Andhra Pradesh Legislature",
+    "source_category": "STATE"
   },
   {
     "source_id": "state_karnataka",
@@ -87,7 +95,9 @@
     "last_error_at": null,
     "last_error": null,
     "status": "IMPLEMENTED",
-    "notes": "Official Karnataka NIC portal. Pilot state — implemented."
+    "notes": "Official Karnataka NIC portal. Pilot state — implemented.",
+    "authority_name": "Karnataka Legislative Assembly",
+    "source_category": "STATE"
   },
   {
     "source_id": "state_kerala",
@@ -105,7 +115,9 @@
     "last_error_at": null,
     "last_error": null,
     "status": "IMPLEMENTED",
-    "notes": "Official Kerala Niyamasabha portal. Pilot state — implemented."
+    "notes": "Official Kerala Niyamasabha portal. Pilot state — implemented.",
+    "authority_name": "Kerala Legislative Assembly",
+    "source_category": "STATE"
   },
   {
     "source_id": "state_telangana",
@@ -123,7 +135,9 @@
     "last_error_at": null,
     "last_error": null,
     "status": "IMPLEMENTED",
-    "notes": "Official Telangana Legislature portal. Pilot state — implemented."
+    "notes": "Official Telangana Legislature portal. Pilot state — implemented.",
+    "authority_name": "Telangana Legislative Assembly",
+    "source_category": "STATE"
   },
   {
     "source_id": "state_maharashtra",
@@ -141,7 +155,9 @@
     "last_error_at": null,
     "last_error": null,
     "status": "NOT_IMPLEMENTED",
-    "notes": "PLANNED. Bicameral Marathi-primary legislature. Evaluated for future expansion."
+    "notes": "PLANNED. Bicameral Marathi-primary legislature. Evaluated for future expansion.",
+    "authority_name": "Maharashtra Legislative Assembly",
+    "source_category": "STATE"
   },
   {
     "source_id": "state_tamil_nadu",
@@ -159,7 +175,9 @@
     "last_error_at": null,
     "last_error": null,
     "status": "NOT_IMPLEMENTED",
-    "notes": "PLANNED. Tamil and English. Evaluated for future expansion."
+    "notes": "PLANNED. Tamil and English. Evaluated for future expansion.",
+    "authority_name": "Tamil Nadu Legislative Assembly",
+    "source_category": "STATE"
   },
   {
     "source_id": "state_gujarat",
@@ -177,7 +195,9 @@
     "last_error_at": null,
     "last_error": null,
     "status": "NOT_IMPLEMENTED",
-    "notes": "PLANNED. Gujarati/English bilingual. Not yet implemented."
+    "notes": "PLANNED. Gujarati/English bilingual. Not yet implemented.",
+    "authority_name": "Gujarat Vidhan Sabha",
+    "source_category": "STATE"
   },
   {
     "source_id": "state_rajasthan",
@@ -195,7 +215,9 @@
     "last_error_at": null,
     "last_error": null,
     "status": "NOT_IMPLEMENTED",
-    "notes": "PLANNED. Ready for adapter. Not yet implemented."
+    "notes": "PLANNED. Ready for adapter. Not yet implemented.",
+    "authority_name": "Rajasthan Vidhan Sabha",
+    "source_category": "STATE"
   },
   {
     "source_id": "state_uttar_pradesh",
@@ -213,6 +235,8 @@
     "last_error_at": null,
     "last_error": null,
     "status": "NOT_IMPLEMENTED",
-    "notes": "PLANNED. Large bicameral legislature. Not yet implemented."
+    "notes": "PLANNED. Large bicameral legislature. Not yet implemented.",
+    "authority_name": "Uttar Pradesh Vidhan Sabha",
+    "source_category": "STATE"
   }
 ]

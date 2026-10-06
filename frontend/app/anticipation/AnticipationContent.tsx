@@ -11,6 +11,7 @@ import { Skeleton } from "@/components/ui/Skeleton";
 import { StatePredictionFirewall } from "@/components/firewalls/StatePredictionFirewall";
 import { anticipationApi } from "@/lib/api/anticipation";
 import { aiApi } from "@/lib/api/ai";
+import { AnticipationEvidenceSection } from "@/components/anticipation/AnticipationEvidenceSection";
 import type {
   AnticipationItem,
   AnticipationSummaryResponse,
@@ -711,6 +712,18 @@ export default function AnticipationContent() {
             </div>
           )}
 
+        </section>
+
+        {/* SECTION E2: Anticipation Evidence Enrichment & Media Diffusion (Task 8.29) */}
+        <section aria-labelledby="evidence-enrichment">
+          <h2 id="evidence-enrichment" className="sr-only">
+            Anticipation Evidence Enrichment
+          </h2>
+          <AnticipationEvidenceSection
+            billId={billQuery.trim() || "the-banking-laws-amendment-bill-2024"}
+            companyIsin={companyQuery.trim() || "INE002A01018"}
+            companyName={companyQuery.trim() ? undefined : "State Bank of India"}
+          />
         </section>
 
         {/* SECTION F: Grounded AI Diffusion Analyst */}

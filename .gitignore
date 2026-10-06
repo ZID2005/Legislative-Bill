@@ -37,6 +37,7 @@ eggs/
 .eggs/
 lib/
 lib64/
+!frontend/lib/
 parts/
 sdist/
 var/
@@ -147,7 +148,7 @@ data/reports/*
 data/ai_cache/*
 !data/ai_cache/.gitkeep
 
-# Storage layer runtime files (alerts, watchlists, monitoring, users)
+# Storage layer runtime files (alerts, watchlists, monitoring, users, portfolios)
 storage/alerts/*
 !storage/alerts/.gitkeep
 storage/watchlists/*
@@ -156,6 +157,16 @@ storage/monitoring/*
 !storage/monitoring/.gitkeep
 storage/users/*
 !storage/users/.gitkeep
+storage/portfolios/*
+!storage/portfolios/.gitkeep
+storage/audit/*
+!storage/audit/.gitkeep
+storage/tenants/*
+!storage/tenants/.gitkeep
+storage/ai_usage/*
+!storage/ai_usage/.gitkeep
+storage/live_knowledge/*
+!storage/live_knowledge/.gitkeep
 
 # Keep catalog & base gitkeep
 !data/.gitkeep

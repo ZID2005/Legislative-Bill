@@ -173,10 +173,10 @@ def run_smoke_test():
     record_step(8, "Open Company Profile", code_api == 200 and code_ui == 200, f"API {code_api}, UI {code_ui} ({c_det.get('company_name')})")
 
     # 9. Open industry
-    ind_id = "fmcg"
+    ind_id = "diversified-consumer-products"
     code_api, ind_det = http_get(f"{BACKEND_URL}/api/v1/industries/{ind_id}", auth_headers)
     code_ui, _ = http_get(f"{FRONTEND_URL}/industries/{ind_id}")
-    record_step(9, "Open Industry", code_api == 200 and code_ui == 200, f"API {code_api}, UI {code_ui} ({ind_det.get('industry_name')})")
+    record_step(9, "Open Industry", code_api == 200 and code_ui == 200, f"API {code_api}, UI {code_ui} ({ind_det.get('name') or ind_det.get('industry_name')})")
 
     # 10. Open state
     state_id = "Karnataka"

@@ -34,7 +34,8 @@ import {
 } from "@/components/coverage/CapabilityBadge";
 import { SkeletonCard, ErrorState } from "@/components/ui/Skeleton";
 import { Pagination } from "@/components/ui/Pagination";
-import { formatDate } from "@/lib/utils";
+import { InstitutionalTable, type TableColumn } from "@/components/ui/InstitutionalTable";
+import { cn, formatDate } from "@/lib/utils";
 import type {
   BillSummaryItem,
   PaginatedResponse,
@@ -141,6 +142,7 @@ export default function ExplorerContent() {
   // Local state
   const [searchInput, setSearchInput] = useState(qParam);
   const [activeMode, setActiveMode] = useState<"bills" | "unified">(modeParam);
+  const [viewMode, setViewMode] = useState<"cards" | "table">("cards");
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
 
   // Data fetching states
@@ -291,6 +293,69 @@ export default function ExplorerContent() {
     eligibilityParam,
     exposureParam,
   ]);
+
+  const explorerTableColumns: TableColumn<BillSummaryItem>[] = useMemo(() => [
+    {
+      key: "title",
+      header: "Act Title",
+      sortable: true,
+      render: (b) => (
+        <div className="max-w-md">
+          <Link href={`/bills/${b.bill_id}`} className="font-semibold text-slate-100 hover:text-indigo-300 transition-colors line-clamp-1">
+            {b.short_title || b.title}
+          </Link>
+          <div className="flex items-center gap-1.5 mt-0.5 text-[10px] text-slate-400 font-mono">
+            <span>{b.bill_number || b.bill_id}</span>
+            <span>·</span>
+            <span>{b.house || "Parliament"}</span>
+          </div>
+        </div>
+      ),
+    },
+    {
+      key: "jurisdiction",
+      header: "Jurisdiction",
+      sortable: true,
+      width: "120px",
+      render: (b) => <JurisdictionBadge jurisdiction={b.jurisdiction} state={b.state} size="xs" />,
+    },
+    {
+      key: "status",
+      header: "Status",
+      sortable: true,
+      width: "110px",
+      render: (b) => <StatusBadge status={b.status} size="xs" />,
+    },
+    {
+      key: "company_exposure_count",
+      header: "Exposures",
+      align: "right",
+      isNumeric: true,
+      sortable: true,
+      width: "90px",
+      render: (b) => <span className="font-mono text-slate-200">{b.company_exposure_count ?? 0}</span>,
+    },
+    {
+      key: "modeling_eligibility",
+      header: "Modeling Tier",
+      width: "110px",
+      render: (b) => {
+        const isState = b.jurisdiction?.toLowerCase() === "state";
+        return <CapabilityBadge level={isState ? 2 : b.modeling_eligibility === "ELIGIBLE" ? 1 : 2} size="xs" />;
+      },
+    },
+    {
+      key: "action",
+      header: "Action",
+      align: "right",
+      width: "90px",
+      render: (b) => (
+        <Link href={`/bills/${b.bill_id}`} className="px-2 py-1 rounded bg-white/5 hover:bg-white/10 text-indigo-400 text-xs font-medium">
+          Dossier ↗
+        </Link>
+      ),
+    },
+  ], []);
 
   return (
     <div className="p-6 max-w-7xl mx-auto space-y-6 animate-fade-in text-slate-200">
@@ -707,9 +772,33 @@ export default function ExplorerContent() {
             </div>
 
             {activeMode === "bills" && (
-              <div className="flex items-center gap-1.5">
-                <span className="text-slate-500">Sort:</span>
-                <span className="text-slate-300 font-medium">Latest Introduction</span>
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-slate-500">Sort:</span>
+                  <span className="text-slate-300 font-medium">Latest Introduction</span>
+                </div>
+                <div className="flex items-center gap-1 bg-white/5 p-0.5 rounded border border-white/10">
+                  <button
+                    type="button"
+                    onClick={() => setViewMode("cards")}
+                    className={cn(
+                      "px-2 py-0.5 rounded text-[11px] transition-colors",
+                      viewMode === "cards" ? "bg-white/15 text-white font-medium" : "text-slate-400 hover:text-slate-200"
+                    )}
+                  >
+                    ⊞ Cards
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setViewMode("table")}
+                    className={cn(
+                      "px-2 py-0.5 rounded text-[11px] transition-colors",
+                      viewMode === "table" ? "bg-white/15 text-white font-medium" : "text-slate-400 hover:text-slate-200"
+                    )}
+                  >
+                    ☰ Table
+                  </button>
+                </div>
               </div>
             )}
           </div>
@@ -803,6 +892,14 @@ export default function ExplorerContent() {
                     Reset All Filters
                   </Button>
                 </Card>
+              ) : viewMode === "table" ? (
+                <InstitutionalTable
+                  columns={explorerTableColumns}
+                  data={billsData.items}
+                  keyExtractor={(b) => b.bill_id}
+                  compact={true}
+                  striped={true}
+                />
               ) : (
                 billsData.items.map((b) => {
                   const isState = b.jurisdiction?.toLowerCase() === "state";

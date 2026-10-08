@@ -14,39 +14,44 @@
  * ---------------------------------------------------------------------------*/
 
 :root {
-  /* Base backgrounds */
-  --bg-base: #05090f;
-  --bg-surface: #080d1a;
-  --bg-card: #0d1424;
-  --bg-card-hover: #111e30;
-  --bg-elevated: #111827;
+  /* Base backgrounds — Restrained Slate/Black Institutional Palette */
+  --bg-base: #070b12;
+  --bg-surface: #0c1322;
+  --bg-card: #0c1322;
+  --bg-card-hover: #121b2f;
+  --bg-elevated: #121b2f;
 
-  /* Borders */
-  --border-subtle: rgba(255,255,255,0.05);
-  --border-default: rgba(255,255,255,0.08);
-  --border-strong: rgba(255,255,255,0.12);
+  /* Hairline precision separators */
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-default: rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --border-hairline: rgba(255, 255, 255, 0.07);
 
-  /* Text */
-  --text-primary: #f1f5f9;
+  /* Typography tokens */
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Institutional text scale */
+  --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
-  --text-muted: #475569;
-  --text-faint: #334155;
+  --text-muted: #64748b;
+  --text-faint: #475569;
 
-  /* Accent colors */
-  --accent-blue: #3b82f6;
-  --accent-indigo: #6366f1;
-  --accent-violet: #8b5cf6;
-  --accent-emerald: #10b981;
-  --accent-teal: #14b8a6;
-  --accent-amber: #f59e0b;
-  --accent-rose: #f43f5e;
-  --accent-purple: #a855f7;
+  /* Semantic Financial & Regulatory Palette */
+  --color-positive: #10b981;
+  --color-negative: #f43f5e;
+  --color-neutral: #94a3b8;
+  --color-model: #6366f1;
+  --color-state: #0284c7;
+  --color-intel: #06b6d4;
+  --color-warning: #f59e0b;
+  --color-ai: #a855f7;
 
   /* Data type colors */
-  --live-color: #10b981;      /* LIVE data — emerald */
-  --modelled-color: #6366f1;  /* MODELLED data — indigo */
-  --intelligence-color: #f59e0b; /* INTELLIGENCE — amber */
-  --planned-color: #475569;   /* PLANNED — muted */
+  --live-color: #10b981;          /* LIVE data — emerald */
+  --modelled-color: #6366f1;      /* MODELLED data — indigo */
+  --intelligence-color: #06b6d4;  /* INTELLIGENCE — cyan */
+  --planned-color: #64748b;       /* PLANNED — slate */
 
   /* Navbar height */
   --navbar-height: 56px;
@@ -120,23 +125,68 @@ body {
  * ---------------------------------------------------------------------------*/
 
 .text-display {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
 }
 
 .text-headline {
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
-  font-weight: 700;
+  font-size: 1.375rem;
+  font-weight: 600;
   letter-spacing: -0.02em;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
 .text-title {
-  font-size: 1.25rem;
+  font-size: 1.0625rem;
   font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.35;
+}
+
+.text-subheading {
+  font-size: 0.875rem;
+  font-weight: 500;
   letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.text-body {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.text-caption {
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.35;
+}
+
+.text-micro {
+  font-size: 0.59rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.font-mono-num {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.35;
+  font-variant-numeric: tabular-nums;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.border-hairline {
+  border: 1px solid var(--border-hairline);
 }
 
 .text-section-label {
@@ -148,14 +198,106 @@ body {
 }
 
 /* ---------------------------------------------------------------------------
- * Epistemics — FACT / OBSERVED / DERIVED / INTERPRETATION / PREDICTION
+ * Epistemics — FACT / OBSERVED / DERIVED / INTERPRETATION / PREDICTION / EVIDENCE
  * ---------------------------------------------------------------------------*/
 
-.text-fact          { color: #10b981; }
-.text-observed      { color: #3b82f6; }
-.text-derived       { color: #6366f1; }
-.text-interpretation { color: #f59e0b; }
-.text-prediction    { color: #a855f7; }
+.text-fact          { color: #34d399; }
+.text-observed      { color: #38bdf8; }
+.text-derived       { color: #818cf8; }
+.text-interpretation { color: #fbbf24; }
+.text-prediction    { color: #c084fc; }
+.text-evidence      { color: #2dd4bf; }
+
+/* Epistemic Badges — Standardized Institutional Taxonomy */
+.badge-epistemic-fact {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.125rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.10);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.badge-epistemic-observed {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.125rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #38bdf8;
+  background: rgba(14, 165, 233, 0.10);
+  border: 1px solid rgba(14, 165, 233, 0.25);
+}
+
+.badge-epistemic-derived {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.125rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #818cf8;
+  background: rgba(99, 102, 241, 0.10);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+}
+
+.badge-epistemic-interpretation {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.125rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.10);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.badge-epistemic-prediction {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.125rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #c084fc;
+  background: rgba(168, 85, 247, 0.10);
+  border: 1px solid rgba(168, 85, 247, 0.25);
+}
+
+.badge-epistemic-evidence {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.125rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #2dd4bf;
+  background: rgba(20, 184, 166, 0.10);
+  border: 1px solid rgba(20, 184, 166, 0.25);
+}
 
 /* ---------------------------------------------------------------------------
  * Data type badges — LIVE / MODELLED / INTELLIGENCE / PLANNED

@@ -1,29 +1,32 @@
 /**
  * app/companies/[companyId]/CompanyDetailContent.tsx
  * ===================================================
- * Complete production-grade Corporate Intelligence Profile orchestrator.
+ * Editorial-Finance Corporate Intelligence Profile Orchestrator (Task 1.9A Redesign).
  *
- * Distinct Universes:
- * MODE A: Quantitative / prediction-eligible listed companies (47 Central companies)
- * MODE B: Intelligence-only / qualitative companies and entities (20 intelligence + 3 reference entities)
+ * Distinct Universes (Strict Epistemic Isolation):
+ * - MODE A: Quantitative / prediction-eligible listed companies (47 Central companies)
+ *   Multi-horizon econometric event studies, pre-event information diffusion,
+ *   statutory exposure matrix, and enterprise transmission channels.
+ * - MODE B: Qualitative intelligence entities (20 intelligence + 3 reference entities)
+ *   Sub-national statutory or unlisted entities. Quantitative stock predictions are
+ *   strictly unavailable by design under methodology invariants. Features full
+ *   statutory footprint, state presence, and economic mechanisms without empty
+ *   or misleading prediction widgets.
  *
- * Features:
- * - Factual identity & business scope
- * - Documented legislative footprint & filterable exposure matrix
- * - Economic transmission mechanism architecture
- * - State geographic presence & operational footprint
- * - Central quantitative predictions & decision support (MODE A)
- * - Intelligence company firewall (MODE B)
- * - Pre-event information diffusion diagnostics (MODE A)
- * - Multi-persona stakeholder analysis
- * - Grounded Groq AI Analyst copilot
- * - Traceable source provenance & related peer entities
- * - Watchlist integration modal
+ * Non-Inference Safeguard:
+ * - Never infers eligibility from display name, industry, or sector.
+ * - Strictly derived from authoritative fields: is_quant_eligible, universe_type,
+ *   and quantitative_firewall_status.
+ *
+ * Backward-Compatibility:
+ * - Preserves all 9 legacy tab identifiers and display labels
+ * - Synchronizes ?tab= query parameter with browser back/forward navigation
  */
 
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useTransition } from "react";
+import { useSearchParams } from "next/navigation";
 import { companiesApi } from "@/lib/api/companies";
 import { isApiError } from "@/lib/errors";
 import type {
@@ -46,6 +49,7 @@ import { CompanyProvenanceSection } from "@/components/companies/CompanyProvenan
 import { RelatedCompaniesCard } from "@/components/companies/RelatedCompaniesCard";
 import { CompanyWatchlistModal } from "@/components/companies/CompanyWatchlistModal";
 import { ErrorState, SkeletonCard } from "@/components/ui/Skeleton";
+import { SourceBadge } from "@/components/ui/Badge";
 
 export type CompanyTabId =
   | "overview"
@@ -58,7 +62,23 @@ export type CompanyTabId =
   | "ai"
   | "provenance";
 
+const VALID_COMPANY_TABS: CompanyTabId[] = [
+  "overview",
+  "footprint",
+  "transmission",
+  "geography",
+  "predictions",
+  "anticipation",
+  "stakeholders",
+  "ai",
+  "provenance",
+];
+
 export default function CompanyDetailContent({ companyId }: { companyId: string }) {
+  const [, startTransition] = useTransition();
+  const searchParams = useSearchParams();
+  const initialTabParam = searchParams?.get("tab")?.toLowerCase() as CompanyTabId | undefined;
+
   // Primary State
   const [detail, setDetail] = useState<CompanyDetailResponse | null>(null);
   const [predStatus, setPredStatus] = useState<CompanyPredictionStatusResponse | null>(null);
@@ -67,12 +87,49 @@ export default function CompanyDetailContent({ companyId }: { companyId: string 
   const [peers, setPeers] = useState<CompanySummaryItem[]>([]);
 
   // Navigation & Modal State
-  const [activeTab, setActiveTab] = useState<CompanyTabId>("overview");
+  const [activeTab, setActiveTab] = useState<CompanyTabId>(() => {
+    if (initialTabParam && VALID_COMPANY_TABS.includes(initialTabParam)) {
+      return initialTabParam;
+    }
+    return "overview";
+  });
   const [isWatchlistOpen, setIsWatchlistOpen] = useState(false);
 
   // Status State
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  // Synchronize URL query parameter updates
+  useEffect(() => {
+    const tabParam = searchParams?.get("tab")?.toLowerCase() as CompanyTabId | undefined;
+    if (tabParam && VALID_COMPANY_TABS.includes(tabParam)) {
+      setActiveTab(tabParam);
+    }
+  }, [searchParams]);
+
+  // Synchronize browser popstate for back/forward navigation
+  useEffect(() => {
+    const handlePopState = () => {
+      const params = new URLSearchParams(window.location.search);
+      const tabParam = params.get("tab")?.toLowerCase() as CompanyTabId | undefined;
+      if (tabParam && VALID_COMPANY_TABS.includes(tabParam)) {
+        setActiveTab(tabParam);
+      }
+    };
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
+  const handleSelectTab = (tabId: CompanyTabId) => {
+    startTransition(() => {
+      setActiveTab(tabId);
+    });
+    if (typeof window !== "undefined") {
+      const url = new URL(window.location.href);
+      url.searchParams.set("tab", tabId);
+      window.history.pushState({}, "", url.toString());
+    }
+  };
 
   useEffect(() => {
     let cancelled = false;
@@ -81,7 +138,7 @@ export default function CompanyDetailContent({ companyId }: { companyId: string 
       setLoading(true);
       setError(null);
       try {
-        // Parallel fetch for core intelligence
+        // Parallel fetch for core corporate intelligence
         const [d, ps, ant, expList] = await Promise.all([
           companiesApi.getCompany(companyId),
           companiesApi.getCompanyPredictions(companyId).catch(() => null),
@@ -129,15 +186,15 @@ export default function CompanyDetailContent({ companyId }: { companyId: string 
     };
   }, [companyId]);
 
-  // Loading State
+  // Loading Skeleton State
   if (loading) {
     return (
       <div className="p-6 space-y-6 max-w-7xl mx-auto" aria-label="Loading company profile">
-        <div className="h-4 w-48 bg-slate-800 rounded animate-pulse" />
-        <div className="h-32 w-full bg-slate-900 border border-slate-800 rounded-xl animate-pulse" />
+        <div className="h-4 w-48 bg-[var(--bg-elevated)] rounded animate-pulse" />
+        <div className="h-32 w-full bg-[var(--bg-card)] border border-[var(--border-default)] rounded-xl animate-pulse" />
         <div className="grid grid-cols-2 sm:grid-cols-6 gap-3">
           {[...Array(6)].map((_, i) => (
-            <div key={i} className="h-20 bg-slate-800/60 rounded-lg animate-pulse" />
+            <div key={i} className="h-20 bg-[var(--bg-elevated)]/60 rounded-lg animate-pulse" />
           ))}
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -161,9 +218,15 @@ export default function CompanyDetailContent({ companyId }: { companyId: string 
 
   if (!detail) return null;
 
-  const isQuant = detail.is_quant_eligible;
+  // Authoritative Mode A vs Mode B Determination (strict technical safeguard)
+  const isQuant = Boolean(
+    detail.is_quant_eligible &&
+    detail.universe_type?.toLowerCase() === "quantitative" &&
+    detail.quantitative_firewall_status !== "FIREWALLED"
+  );
+  const isIntel = !isQuant || detail.universe_type?.toLowerCase() === "intelligence";
 
-  // Tabs configuration
+  // Tab definitions preserving exact labels tested in company-detail.test.tsx
   const tabs: { id: CompanyTabId; label: string; icon: string; count?: number }[] = [
     { id: "overview", label: "Executive Profile", icon: "📋" },
     { id: "footprint", label: "Legislative Footprint", icon: "🔗", count: exposures.length },
@@ -188,38 +251,89 @@ export default function CompanyDetailContent({ companyId }: { companyId: string 
       <CompanyHeader
         company={detail}
         onOpenWatchlist={() => setIsWatchlistOpen(true)}
-        onSelectTab={(tab) => setActiveTab(tab as CompanyTabId)}
+        onSelectTab={(tab) => handleSelectTab(tab as CompanyTabId)}
       />
 
       {/* ------------------------------------------------------------------ */}
-      {/* 2. Primary Tab Navigation Ribbon                                   */}
+      {/* 2. Authoritative Mode A vs Mode B Institutional Indicator           */}
+      {/* ------------------------------------------------------------------ */}
+      {isQuant ? (
+        <div className="rounded-xl border border-emerald-500/25 bg-emerald-500/5 px-4 py-3 text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs">
+          <div className="flex items-center gap-2.5">
+            <span className="flex h-6 w-6 items-center justify-center rounded-md bg-emerald-500/20 text-emerald-400 font-bold text-xs">
+              A
+            </span>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="font-bold text-emerald-400 tracking-tight uppercase text-[11px]">
+                  Mode A: Quantitative / Prediction-Eligible Entity
+                </span>
+                <SourceBadge type="PREDICTION" size="xs" />
+              </div>
+              <p className="text-[11px] text-[var(--text-muted)] mt-0.5 leading-relaxed">
+                Listed security covered by Central econometric event studies across 5 supported horizons with pre-event anticipation diagnostics.
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3 font-mono font-tabular text-[11px] text-[var(--text-secondary)] shrink-0">
+            {detail.isin && <span>ISIN: {detail.isin}</span>}
+            {detail.ticker_nse && <span>NSE: {detail.ticker_nse}</span>}
+            {detail.ticker_bse && <span>BSE: {detail.ticker_bse}</span>}
+          </div>
+        </div>
+      ) : (
+        <div className="rounded-xl border border-amber-500/30 bg-amber-500/5 px-4 py-3 text-xs space-y-1.5 shadow-xs">
+          <div className="flex items-center gap-2">
+            <span className="flex h-6 w-6 items-center justify-center rounded-md bg-amber-500/20 text-amber-400 font-bold text-xs">
+              B
+            </span>
+            <span className="font-bold text-amber-400 tracking-tight uppercase text-[11px]">
+              Mode B: Qualitative Intelligence Entity
+            </span>
+            <span className="text-[var(--text-muted)]">·</span>
+            <span className="text-[var(--text-secondary)] font-medium">
+              Statutory Firewall Active
+            </span>
+          </div>
+          <p className="text-[11px] text-[var(--text-muted)] leading-relaxed pl-8">
+            This entity is an unlisted corporate, state-owned enterprise, statutory corporation, or public utility.
+            Quantitative stock market predictions are strictly unavailable by design under platform methodology invariants.
+            Documented legislative exposures, economic transmission mechanisms, and state footprint remain fully available.
+          </p>
+        </div>
+      )}
+
+      {/* ------------------------------------------------------------------ */}
+      {/* 3. Primary Tab Navigation Ribbon                                   */}
       {/* ------------------------------------------------------------------ */}
       <nav
-        className="flex items-center gap-1 border-b border-slate-800 overflow-x-auto no-scrollbar pb-1 text-xs"
+        className="flex items-center gap-1 border-b border-[var(--border-default)] overflow-x-auto no-scrollbar pb-1 text-xs"
         aria-label="Corporate Intelligence Dossier Tabs"
+        role="tablist"
       >
         {tabs.map((t) => {
           const isActive = activeTab === t.id;
           return (
             <button
               key={t.id}
-              onClick={() => setActiveTab(t.id)}
-              className={`flex items-center gap-1.5 px-3.5 py-2.5 rounded-t-lg font-semibold transition-all whitespace-nowrap border-b-2 ${
+              onClick={() => handleSelectTab(t.id)}
+              className={`flex items-center gap-1.5 px-3.5 py-2.5 rounded-t-lg font-semibold transition-all whitespace-nowrap border-b-2 text-xs ${
                 isActive
-                  ? "border-blue-500 text-blue-400 bg-slate-800/40"
-                  : "border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/20"
+                  ? "border-[var(--action-primary)] text-[var(--action-primary)] bg-[var(--bg-elevated)]/40 shadow-xs"
+                  : "border-transparent text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-elevated)]/20"
               }`}
               aria-selected={isActive}
               role="tab"
+              id={`company-tab-${t.id}`}
             >
               <span>{t.icon}</span>
               <span>{t.label}</span>
               {typeof t.count === "number" && t.count > 0 && (
                 <span
-                  className={`ml-1 text-[10px] px-1.5 py-0.2 rounded-full ${
+                  className={`ml-1 text-[10px] font-mono px-1.5 py-0.2 rounded-full ${
                     isActive
-                      ? "bg-blue-900/60 text-blue-300"
-                      : "bg-slate-800 text-slate-400"
+                      ? "bg-[var(--action-primary)]/20 text-[var(--action-primary)]"
+                      : "bg-[var(--bg-elevated)] text-[var(--text-muted)]"
                   }`}
                 >
                   {t.count}
@@ -231,12 +345,12 @@ export default function CompanyDetailContent({ companyId }: { companyId: string 
       </nav>
 
       {/* ------------------------------------------------------------------ */}
-      {/* 3. Tab Contents                                                    */}
+      {/* 4. Tab Contents                                                    */}
       {/* ------------------------------------------------------------------ */}
       <main className="space-y-6">
         {/* Tab 1: Executive Profile & Summary */}
         {activeTab === "overview" && (
-          <div className="space-y-6">
+          <div className="space-y-6 animate-fade-in" role="tabpanel" id="company-panel-overview">
             <CompanyOverview company={detail} />
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               <div className="lg:col-span-2">
@@ -251,48 +365,62 @@ export default function CompanyDetailContent({ companyId }: { companyId: string 
 
         {/* Tab 2: Legislative Footprint & Exposure Matrix */}
         {activeTab === "footprint" && (
-          <CompanyExposureMatrix exposures={exposures} />
+          <div className="space-y-6 animate-fade-in" role="tabpanel" id="company-panel-footprint">
+            <CompanyExposureMatrix exposures={exposures} />
+          </div>
         )}
 
         {/* Tab 3: Transmission Mechanism */}
         {activeTab === "transmission" && (
-          <EconomicTransmissionSection company={detail} exposures={exposures} />
+          <div className="space-y-6 animate-fade-in" role="tabpanel" id="company-panel-transmission">
+            <EconomicTransmissionSection company={detail} exposures={exposures} />
+          </div>
         )}
 
         {/* Tab 4: State & Regional Presence */}
         {activeTab === "geography" && (
-          <StateGeographicSection company={detail} exposures={exposures} />
+          <div className="space-y-6 animate-fade-in" role="tabpanel" id="company-panel-geography">
+            <StateGeographicSection company={detail} exposures={exposures} />
+          </div>
         )}
 
         {/* Tab 5: Market Predictions / Firewall */}
         {activeTab === "predictions" && (
-          <CompanyPredictionsSection
-            company={detail}
-            predictionStatus={predStatus}
-          />
+          <div className="space-y-6 animate-fade-in" role="tabpanel" id="company-panel-predictions">
+            <CompanyPredictionsSection
+              company={detail}
+              predictionStatus={predStatus}
+            />
+          </div>
         )}
 
         {/* Tab 6: Pre-Event Anticipation */}
         {activeTab === "anticipation" && (
-          <CompanyAnticipationSection
-            anticipation={anticipation}
-            isQuant={isQuant}
-          />
+          <div className="space-y-6 animate-fade-in" role="tabpanel" id="company-panel-anticipation">
+            <CompanyAnticipationSection
+              anticipation={anticipation}
+              isQuant={isQuant}
+            />
+          </div>
         )}
 
         {/* Tab 7: Stakeholder Perspectives */}
         {activeTab === "stakeholders" && (
-          <CompanyStakeholderIntelligence company={detail} exposures={exposures} />
+          <div className="space-y-6 animate-fade-in" role="tabpanel" id="company-panel-stakeholders">
+            <CompanyStakeholderIntelligence company={detail} exposures={exposures} />
+          </div>
         )}
 
         {/* Tab 8: AI Copilot */}
         {activeTab === "ai" && (
-          <CompanyAIPanel company={detail} />
+          <div className="space-y-6 animate-fade-in" role="tabpanel" id="company-panel-ai">
+            <CompanyAIPanel company={detail} />
+          </div>
         )}
 
         {/* Tab 9: Provenance & Audit */}
         {activeTab === "provenance" && (
-          <div className="space-y-6">
+          <div className="space-y-6 animate-fade-in" role="tabpanel" id="company-panel-provenance">
             <CompanyProvenanceSection company={detail} exposures={exposures} />
             <RelatedCompaniesCard company={detail} peers={peers} />
           </div>
@@ -300,7 +428,7 @@ export default function CompanyDetailContent({ companyId }: { companyId: string 
       </main>
 
       {/* ------------------------------------------------------------------ */}
-      {/* 4. Watchlist Integration Modal                                     */}
+      {/* 5. Watchlist Integration Modal                                     */}
       {/* ------------------------------------------------------------------ */}
       <CompanyWatchlistModal
         isOpen={isWatchlistOpen}

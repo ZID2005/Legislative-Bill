@@ -1,4 +1,4 @@
-/**
+﻿/**
  * app/explorer/ExplorerContent.tsx
  * ================================
  * India Legislative Explorer — Unified Discovery for Central & State Legislation.
@@ -301,10 +301,10 @@ export default function ExplorerContent() {
       sortable: true,
       render: (b) => (
         <div className="max-w-md">
-          <Link href={`/bills/${b.bill_id}`} className="font-semibold text-slate-100 hover:text-indigo-300 transition-colors line-clamp-1">
+          <Link href={`/bills/${b.bill_id}`} className="font-semibold text-[var(--text-primary)] hover:text-indigo-300 transition-colors line-clamp-1">
             {b.short_title || b.title}
           </Link>
-          <div className="flex items-center gap-1.5 mt-0.5 text-[10px] text-slate-400 font-mono">
+          <div className="flex items-center gap-1.5 mt-0.5 text-[10px] text-[var(--text-muted)] font-mono">
             <span>{b.bill_number || b.bill_id}</span>
             <span>·</span>
             <span>{b.house || "Parliament"}</span>
@@ -333,7 +333,7 @@ export default function ExplorerContent() {
       isNumeric: true,
       sortable: true,
       width: "90px",
-      render: (b) => <span className="font-mono text-slate-200">{b.company_exposure_count ?? 0}</span>,
+      render: (b) => <span className="font-mono text-[var(--text-primary)]">{b.company_exposure_count ?? 0}</span>,
     },
     {
       key: "modeling_eligibility",
@@ -358,29 +358,29 @@ export default function ExplorerContent() {
   ], []);
 
   return (
-    <div className="p-6 max-w-7xl mx-auto space-y-6 animate-fade-in text-slate-200">
+    <div className="p-6 max-w-7xl mx-auto space-y-6 animate-fade-in text-[var(--text-primary)]">
       {/* ==================================================================== */}
       {/* 10. EXPLORER HEADER */}
       {/* ==================================================================== */}
-      <header className="border-b border-slate-800 pb-5 space-y-2">
+      <header className="border-b border-[var(--border-default)] pb-5 space-y-2">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <div className="flex items-center gap-2">
               <span className="text-xl" aria-hidden="true">
                 🏛
               </span>
-              <h1 className="text-2xl font-bold text-slate-100 tracking-tight">
+              <h1 className="text-2xl font-bold text-[var(--text-primary)] tracking-tight">
                 India Legislative Explorer
               </h1>
             </div>
-            <p className="text-xs sm:text-sm text-slate-400 mt-1 max-w-3xl">
+            <p className="text-xs sm:text-sm text-[var(--text-muted)] mt-1 max-w-3xl">
               Search and explore Central and State legislation, economic intelligence, corporate
               exposure, and market-model availability across the Indian Union.
             </p>
           </div>
 
           {/* Discovery Mode Switch */}
-          <div className="inline-flex rounded-lg border border-slate-800 bg-slate-900 p-1 text-xs">
+          <div className="inline-flex rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)] p-1 text-xs">
             <button
               type="button"
               onClick={() => {
@@ -390,7 +390,7 @@ export default function ExplorerContent() {
               className={`px-3 py-1.5 rounded-md font-medium transition-colors ${
                 activeMode === "bills"
                   ? "bg-blue-900/60 text-blue-200 border border-blue-700/50"
-                  : "text-slate-400 hover:text-slate-200"
+                  : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"
               }`}
             >
               📜 Legislative Bills
@@ -404,7 +404,7 @@ export default function ExplorerContent() {
               className={`px-3 py-1.5 rounded-md font-medium transition-colors ${
                 activeMode === "unified"
                   ? "bg-blue-900/60 text-blue-200 border border-blue-700/50"
-                  : "text-slate-400 hover:text-slate-200"
+                  : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"
               }`}
             >
               🌐 Unified Cross-Entity
@@ -420,7 +420,7 @@ export default function ExplorerContent() {
         <form onSubmit={handleSearchSubmit} className="flex gap-2">
           <div className="relative flex-1">
             <span
-              className="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-500 pointer-events-none"
+              className="absolute inset-y-0 left-0 flex items-center pl-3 text-[var(--text-faint)] pointer-events-none"
               aria-hidden="true"
             >
               🔍
@@ -435,14 +435,14 @@ export default function ExplorerContent() {
                   : "Search bill titles, bill numbers (e.g. 33 of 2024), sectors, keywords..."
               }
               aria-label="Legislative Search Query"
-              className="w-full pl-9 pr-10 py-2.5 bg-slate-900 border border-slate-800 rounded-lg text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full pl-9 pr-10 py-2.5 bg-[var(--bg-card)] border border-[var(--border-default)] rounded-lg text-sm text-[var(--text-primary)] placeholder-[var(--input-placeholder)] focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
             />
             {searchInput && (
               <button
                 type="button"
                 onClick={handleClearSearch}
                 aria-label="Clear search"
-                className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-200"
+                className="absolute inset-y-0 right-0 pr-3 flex items-center text-[var(--text-muted)] hover:text-[var(--text-primary)]"
               >
                 ✕
               </button>
@@ -464,7 +464,7 @@ export default function ExplorerContent() {
           >
             <span>Filters</span>
             {activeFilterCount > 0 && (
-              <span className="bg-blue-600 text-white rounded-full px-1.5 text-[10px] font-bold">
+              <span className="bg-blue-600 text-[var(--text-primary)] rounded-full px-1.5 text-[10px] font-bold">
                 {activeFilterCount}
               </span>
             )}
@@ -474,7 +474,7 @@ export default function ExplorerContent() {
         {/* Active Filter Badges & Reset Button */}
         {activeFilterCount > 0 && (
           <div className="flex flex-wrap items-center gap-2 pt-1 text-xs">
-            <span className="text-slate-400 font-medium">Active Filters ({activeFilterCount}):</span>
+            <span className="text-[var(--text-muted)] font-medium">Active Filters ({activeFilterCount}):</span>
             {jurisdictionParam !== "all" && (
               <Badge variant="primary" size="xs">
                 Jurisdiction: {jurisdictionParam}
@@ -548,10 +548,10 @@ export default function ExplorerContent() {
           aria-label="Legislative Filters"
           className={`lg:block ${
             mobileFilterOpen ? "block" : "hidden"
-          } space-y-5 bg-slate-900 border border-slate-800 p-4 rounded-xl text-xs`}
+          } space-y-5 bg-[var(--bg-card)] border border-[var(--border-default)] p-4 rounded-xl text-xs`}
         >
-          <div className="flex items-center justify-between pb-2 border-b border-slate-800">
-            <span className="font-semibold text-slate-200 uppercase tracking-wider text-[11px]">
+          <div className="flex items-center justify-between pb-2 border-b border-[var(--border-default)]">
+            <span className="font-semibold text-[var(--text-primary)] uppercase tracking-wider text-[11px]">
               Filter Criteria
             </span>
             {activeFilterCount > 0 && (
@@ -567,12 +567,12 @@ export default function ExplorerContent() {
 
           {/* Jurisdiction Filter */}
           <div className="space-y-1.5">
-            <label htmlFor="jurisdiction-select" className="block text-slate-400 font-medium">Jurisdiction</label>
+            <label htmlFor="jurisdiction-select" className="block text-[var(--text-muted)] font-medium">Jurisdiction</label>
             <select
               id="jurisdiction-select"
               value={jurisdictionParam}
               onChange={(e) => updateUrlParams({ jurisdiction: e.target.value })}
-              className="w-full bg-slate-950 border border-slate-800 rounded px-2.5 py-1.5 text-slate-200 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+              className="w-full bg-[var(--bg-base)] border border-[var(--border-default)] rounded px-2.5 py-1.5 text-[var(--text-primary)] focus:ring-1 focus:ring-blue-500 focus:outline-none"
             >
               <option value="all">All Jurisdictions (Unified)</option>
               <option value="central">Central Parliament</option>
@@ -582,12 +582,12 @@ export default function ExplorerContent() {
 
           {/* State Filter */}
           <div className="space-y-1.5">
-            <label htmlFor="state-select" className="block text-slate-400 font-medium">Indian State / Assembly</label>
+            <label htmlFor="state-select" className="block text-[var(--text-muted)] font-medium">Indian State / Assembly</label>
             <select
               id="state-select"
               value={stateParam}
               onChange={(e) => updateUrlParams({ state: e.target.value })}
-              className="w-full bg-slate-950 border border-slate-800 rounded px-2.5 py-1.5 text-slate-200 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+              className="w-full bg-[var(--bg-base)] border border-[var(--border-default)] rounded px-2.5 py-1.5 text-[var(--text-primary)] focus:ring-1 focus:ring-blue-500 focus:outline-none"
             >
               <option value="all">All States</option>
               <optgroup label="Active Pilot Assemblies (L2)">
@@ -609,12 +609,12 @@ export default function ExplorerContent() {
 
           {/* Economic Sector Filter */}
           <div className="space-y-1.5">
-            <label htmlFor="sector-select" className="block text-slate-400 font-medium">Economic Sector</label>
+            <label htmlFor="sector-select" className="block text-[var(--text-muted)] font-medium">Economic Sector</label>
             <select
               id="sector-select"
               value={sectorParam}
               onChange={(e) => updateUrlParams({ sector: e.target.value })}
-              className="w-full bg-slate-950 border border-slate-800 rounded px-2.5 py-1.5 text-slate-200 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+              className="w-full bg-[var(--bg-base)] border border-[var(--border-default)] rounded px-2.5 py-1.5 text-[var(--text-primary)] focus:ring-1 focus:ring-blue-500 focus:outline-none"
             >
               <option value="all">All Sectors (14 Sectors)</option>
               {ECONOMIC_SECTORS.map((sec) => (
@@ -627,12 +627,12 @@ export default function ExplorerContent() {
 
           {/* Policy Domain Filter */}
           <div className="space-y-1.5">
-            <label htmlFor="domain-select" className="block text-slate-400 font-medium">Policy Domain</label>
+            <label htmlFor="domain-select" className="block text-[var(--text-muted)] font-medium">Policy Domain</label>
             <select
               id="domain-select"
               value={domainParam}
               onChange={(e) => updateUrlParams({ policy_domain: e.target.value })}
-              className="w-full bg-slate-950 border border-slate-800 rounded px-2.5 py-1.5 text-slate-200 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+              className="w-full bg-[var(--bg-base)] border border-[var(--border-default)] rounded px-2.5 py-1.5 text-[var(--text-primary)] focus:ring-1 focus:ring-blue-500 focus:outline-none"
             >
               <option value="all">All Policy Domains</option>
               {POLICY_DOMAINS.map((dom) => (
@@ -645,12 +645,12 @@ export default function ExplorerContent() {
 
           {/* Affected Stakeholder */}
           <div className="space-y-1.5">
-            <label htmlFor="stakeholder-select" className="block text-slate-400 font-medium">Affected Stakeholder</label>
+            <label htmlFor="stakeholder-select" className="block text-[var(--text-muted)] font-medium">Affected Stakeholder</label>
             <select
               id="stakeholder-select"
               value={stakeholderParam}
               onChange={(e) => updateUrlParams({ stakeholder: e.target.value })}
-              className="w-full bg-slate-950 border border-slate-800 rounded px-2.5 py-1.5 text-slate-200 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+              className="w-full bg-[var(--bg-base)] border border-[var(--border-default)] rounded px-2.5 py-1.5 text-[var(--text-primary)] focus:ring-1 focus:ring-blue-500 focus:outline-none"
             >
               <option value="all">All Stakeholders</option>
               {STAKEHOLDERS.map((stk) => (
@@ -663,12 +663,12 @@ export default function ExplorerContent() {
 
           {/* Market Relevance Filter */}
           <div className="space-y-1.5">
-            <label htmlFor="relevance-select" className="block text-slate-400 font-medium">Market Relevance</label>
+            <label htmlFor="relevance-select" className="block text-[var(--text-muted)] font-medium">Market Relevance</label>
             <select
               id="relevance-select"
               value={relevanceParam}
               onChange={(e) => updateUrlParams({ market_relevance: e.target.value })}
-              className="w-full bg-slate-950 border border-slate-800 rounded px-2.5 py-1.5 text-slate-200 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+              className="w-full bg-[var(--bg-base)] border border-[var(--border-default)] rounded px-2.5 py-1.5 text-[var(--text-primary)] focus:ring-1 focus:ring-blue-500 focus:outline-none"
             >
               <option value="all">All Relevance Levels</option>
               <option value="HIGH">High Relevance</option>
@@ -680,12 +680,12 @@ export default function ExplorerContent() {
 
           {/* Modeling Eligibility (Prediction Availability) */}
           <div className="space-y-1.5">
-            <label htmlFor="eligibility-select" className="block text-slate-400 font-medium">Prediction Availability</label>
+            <label htmlFor="eligibility-select" className="block text-[var(--text-muted)] font-medium">Prediction Availability</label>
             <select
               id="eligibility-select"
               value={eligibilityParam}
               onChange={(e) => updateUrlParams({ modeling_eligibility: e.target.value })}
-              className="w-full bg-slate-950 border border-slate-800 rounded px-2.5 py-1.5 text-slate-200 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+              className="w-full bg-[var(--bg-base)] border border-[var(--border-default)] rounded px-2.5 py-1.5 text-[var(--text-primary)] focus:ring-1 focus:ring-blue-500 focus:outline-none"
             >
               <option value="all">All Eligibility</option>
               <option value="ELIGIBLE">Market Modelled (Central Production)</option>
@@ -695,12 +695,12 @@ export default function ExplorerContent() {
 
           {/* Corporate Exposure Filter */}
           <div className="space-y-1.5">
-            <label htmlFor="exposure-select" className="block text-slate-400 font-medium">Corporate Exposure</label>
+            <label htmlFor="exposure-select" className="block text-[var(--text-muted)] font-medium">Corporate Exposure</label>
             <select
               id="exposure-select"
               value={exposureParam}
               onChange={(e) => updateUrlParams({ has_company_exposure: e.target.value })}
-              className="w-full bg-slate-950 border border-slate-800 rounded px-2.5 py-1.5 text-slate-200 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+              className="w-full bg-[var(--bg-base)] border border-[var(--border-default)] rounded px-2.5 py-1.5 text-[var(--text-primary)] focus:ring-1 focus:ring-blue-500 focus:outline-none"
             >
               <option value="all">All Legislation</option>
               <option value="true">Documented Exposures Only</option>
@@ -710,12 +710,12 @@ export default function ExplorerContent() {
 
           {/* Year Filter */}
           <div className="space-y-1.5">
-            <label htmlFor="year-select" className="block text-slate-400 font-medium">Year</label>
+            <label htmlFor="year-select" className="block text-[var(--text-muted)] font-medium">Year</label>
             <select
               id="year-select"
               value={yearParam}
               onChange={(e) => updateUrlParams({ year: e.target.value })}
-              className="w-full bg-slate-950 border border-slate-800 rounded px-2.5 py-1.5 text-slate-200 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+              className="w-full bg-[var(--bg-base)] border border-[var(--border-default)] rounded px-2.5 py-1.5 text-[var(--text-primary)] focus:ring-1 focus:ring-blue-500 focus:outline-none"
             >
               <option value="all">All Years</option>
               {YEARS.map((y) => (
@@ -728,12 +728,12 @@ export default function ExplorerContent() {
 
           {/* Status Filter */}
           <div className="space-y-1.5">
-            <label htmlFor="status-select" className="block text-slate-400 font-medium">Bill Status</label>
+            <label htmlFor="status-select" className="block text-[var(--text-muted)] font-medium">Bill Status</label>
             <select
               id="status-select"
               value={statusParam}
               onChange={(e) => updateUrlParams({ status: e.target.value })}
-              className="w-full bg-slate-950 border border-slate-800 rounded px-2.5 py-1.5 text-slate-200 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+              className="w-full bg-[var(--bg-base)] border border-[var(--border-default)] rounded px-2.5 py-1.5 text-[var(--text-primary)] focus:ring-1 focus:ring-blue-500 focus:outline-none"
             >
               <option value="all">All Statuses</option>
               <option value="passed">Passed / Enacted</option>
@@ -748,25 +748,25 @@ export default function ExplorerContent() {
         {/* ================================================================== */}
         <main className="lg:col-span-3 space-y-4">
           {/* Results Header with Counts & Sort */}
-          <div className="flex flex-wrap items-center justify-between gap-2 pb-2 text-xs text-slate-400 border-b border-slate-800/80">
+          <div className="flex flex-wrap items-center justify-between gap-2 pb-2 text-xs text-[var(--text-muted)] border-b border-[var(--border-default)]/80">
             <div>
               {loading ? (
                 <span>Loading records...</span>
               ) : activeMode === "unified" && unifiedData ? (
                 <span>
-                  Found <strong className="text-slate-200">{unifiedData.total_matches}</strong>{" "}
+                  Found <strong className="text-[var(--text-primary)]">{unifiedData.total_matches}</strong>{" "}
                   cross-entity matches for &ldquo;{unifiedData.query}&rdquo;
                 </span>
               ) : billsData ? (
                 <span>
                   Showing{" "}
-                  <strong className="text-slate-200">
+                  <strong className="text-[var(--text-primary)]">
                     {billsData.items.length > 0
                       ? (billsData.page - 1) * billsData.limit + 1
                       : 0}
                     –{(billsData.page - 1) * billsData.limit + billsData.items.length}
                   </strong>{" "}
-                  of <strong className="text-slate-200">{billsData.total}</strong> legislative records
+                  of <strong className="text-[var(--text-primary)]">{billsData.total}</strong> legislative records
                 </span>
               ) : null}
             </div>
@@ -774,8 +774,8 @@ export default function ExplorerContent() {
             {activeMode === "bills" && (
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-1.5">
-                  <span className="text-slate-500">Sort:</span>
-                  <span className="text-slate-300 font-medium">Latest Introduction</span>
+                  <span className="text-[var(--text-faint)]">Sort:</span>
+                  <span className="text-[var(--text-secondary)] font-medium">Latest Introduction</span>
                 </div>
                 <div className="flex items-center gap-1 bg-white/5 p-0.5 rounded border border-white/10">
                   <button
@@ -783,7 +783,7 @@ export default function ExplorerContent() {
                     onClick={() => setViewMode("cards")}
                     className={cn(
                       "px-2 py-0.5 rounded text-[11px] transition-colors",
-                      viewMode === "cards" ? "bg-white/15 text-white font-medium" : "text-slate-400 hover:text-slate-200"
+                      viewMode === "cards" ? "bg-white/15 text-[var(--text-primary)] font-medium" : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"
                     )}
                   >
                     ⊞ Cards
@@ -793,7 +793,7 @@ export default function ExplorerContent() {
                     onClick={() => setViewMode("table")}
                     className={cn(
                       "px-2 py-0.5 rounded text-[11px] transition-colors",
-                      viewMode === "table" ? "bg-white/15 text-white font-medium" : "text-slate-400 hover:text-slate-200"
+                      viewMode === "table" ? "bg-white/15 text-[var(--text-primary)] font-medium" : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"
                     )}
                   >
                     ☰ Table
@@ -821,19 +821,19 @@ export default function ExplorerContent() {
               {unifiedData.items.length === 0 ? (
                 <Card className="p-8 text-center space-y-3">
                   <div className="text-2xl">🔍</div>
-                  <h3 className="text-sm font-semibold text-slate-200">No matching entities found</h3>
-                  <p className="text-xs text-slate-500 max-w-sm mx-auto">
+                  <h3 className="text-sm font-semibold text-[var(--text-primary)]">No matching entities found</h3>
+                  <p className="text-xs text-[var(--text-faint)] max-w-sm mx-auto">
                     Try searching for a different keyword, company name, sector, or switch to the
                     Bills tab.
                   </p>
                 </Card>
               ) : (
                 unifiedData.items.map((it: SearchResultItem) => (
-                  <Card key={`${it.category}-${it.id}`} className="hover:border-slate-700 transition-colors">
+                  <Card key={`${it.category}-${it.id}`} className="hover:border-[var(--border-strong)] transition-colors">
                     <div className="flex items-start justify-between gap-3">
                       <div className="space-y-1">
                         <div className="flex items-center gap-2">
-                          <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
+                          <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-[var(--bg-elevated)] text-[var(--text-secondary)] border border-[var(--border-strong)]">
                             {it.category === "bills_central"
                               ? "BILL · CENTRAL"
                               : it.category === "bills_state"
@@ -857,12 +857,12 @@ export default function ExplorerContent() {
                           )}
                         </div>
 
-                        <h3 className="text-sm font-semibold text-slate-100">
+                        <h3 className="text-sm font-semibold text-[var(--text-primary)]">
                           {it.title}
                         </h3>
 
                         {it.subtitle && (
-                          <p className="text-xs text-slate-400">{it.subtitle}</p>
+                          <p className="text-xs text-[var(--text-muted)]">{it.subtitle}</p>
                         )}
                       </div>
 
@@ -884,8 +884,8 @@ export default function ExplorerContent() {
               {billsData.items.length === 0 ? (
                 <Card className="p-8 text-center space-y-3">
                   <div className="text-2xl">📋</div>
-                  <h3 className="text-sm font-semibold text-slate-200">No legislation found</h3>
-                  <p className="text-xs text-slate-500 max-w-sm mx-auto">
+                  <h3 className="text-sm font-semibold text-[var(--text-primary)]">No legislation found</h3>
+                  <p className="text-xs text-[var(--text-faint)] max-w-sm mx-auto">
                     No legislative bills matched your active search query or filter combination.
                   </p>
                   <Button variant="outline" size="sm" onClick={handleResetFilters}>
@@ -908,7 +908,7 @@ export default function ExplorerContent() {
                   return (
                     <Card
                       key={b.bill_id}
-                      className="p-5 hover:border-slate-700 transition-colors space-y-3.5"
+                      className="p-5 hover:border-[var(--border-strong)] transition-colors space-y-3.5"
                     >
                       {/* Top Badges Row */}
                       <div className="flex flex-wrap items-center justify-between gap-2">
@@ -930,12 +930,12 @@ export default function ExplorerContent() {
 
                       {/* Bill Title & Identifiers */}
                       <div>
-                        <h2 className="text-base font-semibold text-slate-100 hover:text-blue-300 transition-colors">
+                        <h2 className="text-base font-semibold text-[var(--text-primary)] hover:text-blue-300 transition-colors">
                           <Link href={`/bills/${b.bill_id}`}>
                             {b.short_title || b.title}
                           </Link>
                         </h2>
-                        <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500 font-mono mt-1">
+                        <div className="flex flex-wrap items-center gap-2 text-xs text-[var(--text-faint)] font-mono mt-1">
                           {b.bill_number && <span>No: {b.bill_number}</span>}
                           <span>·</span>
                           <span>Chamber: {b.house}</span>
@@ -948,7 +948,7 @@ export default function ExplorerContent() {
                       </div>
 
                       {/* Summary */}
-                      <p className="text-xs text-slate-300 leading-relaxed line-clamp-3">
+                      <p className="text-xs text-[var(--text-secondary)] leading-relaxed line-clamp-3">
                         {b.summary}
                       </p>
 
@@ -962,7 +962,7 @@ export default function ExplorerContent() {
                         {b.economic_sectors.slice(0, 3).map((sec) => (
                           <span
                             key={sec}
-                            className="text-[10px] font-medium bg-slate-800 text-slate-400 px-2 py-0.5 rounded border border-slate-700/60"
+                            className="text-[10px] font-medium bg-[var(--bg-elevated)] text-[var(--text-muted)] px-2 py-0.5 rounded border border-[var(--border-strong)]/60"
                           >
                             {sec}
                           </span>
@@ -970,14 +970,14 @@ export default function ExplorerContent() {
                       </div>
 
                       {/* 15 & 16: State vs Central Prediction Behavior */}
-                      <div className="pt-3 border-t border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+                      <div className="pt-3 border-t border-[var(--border-default)]/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
                         <div>
                           {isState ? (
-                            <div className="flex items-center gap-1.5 text-slate-400 text-[11px]">
+                            <div className="flex items-center gap-1.5 text-[var(--text-muted)] text-[11px]">
                               <span className="text-blue-400">ℹ</span>
                               <span>
                                 Economic intelligence only ·{" "}
-                                <strong className="text-slate-300">
+                                <strong className="text-[var(--text-secondary)]">
                                   Market prediction not currently available for State legislation.
                                 </strong>
                               </span>

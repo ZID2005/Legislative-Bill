@@ -1,16 +1,18 @@
 {
   "bill_id": "the-banking-laws-amendment-bill-2024",
   "company_isin": "INE002A01018",
-  "company_symbol": null,
+  "company_symbol": "RELIANCE",
   "jurisdiction": "central",
   "market_signal": {
-    "level": "UNKNOWN",
-    "market_signal_score": 0.0,
-    "car_magnitude": 0.0,
-    "z_score": 0.0,
-    "directional_persistence": 0.0,
-    "volatility": 0.0,
-    "signals_detected": []
+    "level": "MEDIUM",
+    "market_signal_score": 0.4117,
+    "car_magnitude": 0.0228,
+    "z_score": -0.4267,
+    "directional_persistence": 0.5,
+    "volatility": 0.02,
+    "signals_detected": [
+      "HIGH_MAGNITUDE_PRE_EVENT_RETURN"
+    ]
   },
   "public_information_signal": {
     "level": "NONE",
@@ -24,9 +26,9 @@
     "evidence_window_trading_days": null
   },
   "combined_context": {
-    "classification": "INSUFFICIENT_EVIDENCE",
-    "interpretation": "Insufficient verified public-information evidence and market prediction unavailable.",
-    "market_signal": "UNKNOWN",
+    "classification": "MARKET_SIGNAL_ONLY",
+    "interpretation": "Moderate pre-event market drift observed without corroborating pre-event public-information records.",
+    "market_signal": "MEDIUM",
     "information_signal": "NONE",
     "epistemic_tag": "[EVIDENCE]",
     "non_accusatory_disclaimer": "Observable public-information evidence and market signals measure pre-event information diffusion patterns only. They do not establish causation, illegal disclosure, market manipulation, or insider trading."
@@ -39,33 +41,31 @@
       "source_type": "OFFICIAL_LEGISLATIVE",
       "source_name": "Official Parliament Record / PRS",
       "source_url": "https://prsindia.org/billtrack/the-banking-laws-amendment-bill-2024",
-      "publication_timestamp": "2024-08-09T11:00:00Z",
-      "discovery_timestamp": "2026-10-06T09:39:09.193182Z",
-      "event_reference": "2024-08-09T11:00:00Z",
+      "publication_timestamp": "2024-08-09T09:00:00Z",
+      "discovery_timestamp": "2026-10-31T14:36:22.010480Z",
+      "event_reference": "2024-08-09",
       "headline": "Official Introduction: The Banking Laws (Amendment) Bill, 2024",
-      "summary": "Official legislative record for The Banking Laws (Amendment) Bill, 2024 (Bill No. 120 of 2024) under Legislature.",
-      "relevance": 0.85,
-      "evidence_strength": "STRONG",
-      "temporal_relation": "SAME_DAY",
+      "summary": "Official legislative record for The Banking Laws (Amendment) Bill, 2024 (Bill No. N/A) under Lok Sabha.",
+      "relevance": 0.5,
+      "evidence_strength": "MODERATE",
+      "temporal_relation": "UNKNOWN",
       "source_credibility": "TIER_1",
       "entity_matches": [],
-      "sector_matches": [
-        "Banking"
-      ],
+      "sector_matches": [],
       "keywords": [],
-      "hash": "bf03449280610686a3e9239757c92dac3bb23123537daaf50613bca7a1baf520",
+      "hash": "b1486cad48f7868bb5258b0098a02b66f325fc0c92f9b30e18ae411ba3e1147a",
       "provenance": {
         "adapter": "OfficialLegislativeAdapter",
         "source_authority": "Parliament of India / State Assembly",
         "official_pdf_url": null
       },
       "verification_status": "VERIFIED",
-      "created_at": "2026-10-06T09:39:09.193191Z",
+      "created_at": "2026-10-31T14:36:22.010522Z",
       "duplicate_of": null,
       "canonical_evidence_id": "pie_off_65a936f889ca",
-      "match_reason": "Direct mention of bill title 'The Banking Laws (Amendment) Bill, 2024'; Explicit bill number reference '120 of 2024'; References affected sector(s): Banking"
+      "match_reason": "Direct mention of bill title 'The Banking Laws (Amendment) Bill, 2024'"
     }
   ],
   "search_trend_items": [],
-  "created_at": "2026-10-06T09:39:09.193294Z"
+  "created_at": "2026-10-31T14:36:22.011360Z"
 }

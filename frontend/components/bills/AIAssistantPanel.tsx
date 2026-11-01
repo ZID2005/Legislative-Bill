@@ -1,4 +1,4 @@
-/**
+﻿/**
  * components/bills/AIAssistantPanel.tsx
  * =====================================
  * Grounded Groq AI Explanations panel for the Bill Detail Dossier.
@@ -115,7 +115,7 @@ export function AIAssistantPanel({
           <div className="flex flex-wrap items-center justify-between gap-2 w-full">
             <div>
               <CardTitle>Grounded AI Legislative Copilot</CardTitle>
-              <p className="text-xs text-slate-500 mt-0.5">
+              <p className="text-xs text-[var(--text-faint)] mt-0.5">
                 Query validated parliamentary knowledge using LLaMA-3.3 inference grounded in verified project repositories.
               </p>
             </div>
@@ -130,8 +130,8 @@ export function AIAssistantPanel({
 
         <div className="space-y-4">
           {/* Persona Selector Ribbon */}
-          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-3">
-            <span className="text-xs font-semibold text-slate-400">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--border-default)] pb-3">
+            <span className="text-xs font-semibold text-[var(--text-muted)]">
               Analyst Perspective:
             </span>
             <div className="flex items-center gap-1.5 text-xs">
@@ -146,8 +146,8 @@ export function AIAssistantPanel({
                   onClick={() => setPersona(p.id)}
                   className={`px-2.5 py-1 rounded text-[11px] font-medium transition-colors ${
                     persona === p.id
-                      ? "bg-blue-600 text-white font-semibold"
-                      : "bg-slate-800 text-slate-400 hover:text-slate-200"
+                      ? "bg-blue-600 text-[var(--text-primary)] font-semibold"
+                      : "bg-[var(--bg-elevated)] text-[var(--text-muted)] hover:text-[var(--text-primary)]"
                   }`}
                 >
                   {p.label}
@@ -158,7 +158,7 @@ export function AIAssistantPanel({
 
           {/* Suggested Prompts */}
           <div>
-            <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
+            <p className="text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider mb-2">
               Suggested Analytical Inquiries
             </p>
             <div className="flex flex-wrap gap-1.5">
@@ -168,7 +168,7 @@ export function AIAssistantPanel({
                   type="button"
                   onClick={() => handlePresetClick(preset)}
                   disabled={loading}
-                  className="rounded-lg border border-slate-700/80 bg-slate-900/60 px-2.5 py-1.5 text-xs text-slate-300 hover:bg-slate-800 hover:border-slate-600 hover:text-white transition-all text-left disabled:opacity-50"
+                  className="rounded-lg border border-[var(--border-strong)]/80 bg-[var(--bg-card)]/60 px-2.5 py-1.5 text-xs text-[var(--text-secondary)] hover:bg-[var(--bg-elevated)] hover:border-slate-600 hover:text-white transition-all text-left disabled:opacity-50"
                 >
                   💬 {preset.label}
                 </button>
@@ -184,7 +184,7 @@ export function AIAssistantPanel({
               value={customQuestion}
               onChange={(e) => setCustomQuestion(e.target.value)}
               disabled={loading}
-              className="flex-1 rounded-lg border border-slate-700 bg-slate-950 px-3.5 py-2 text-xs text-slate-200 placeholder-slate-500 focus:border-blue-500 focus:outline-none disabled:opacity-50"
+              className="flex-1 rounded-lg border border-[var(--border-strong)] bg-[var(--bg-base)] px-3.5 py-2 text-xs text-[var(--text-primary)] placeholder-[var(--input-placeholder)] focus:border-blue-500 focus:outline-none disabled:opacity-50"
             />
             <Button
               type="submit"
@@ -209,17 +209,17 @@ export function AIAssistantPanel({
 
           {/* AI Response Card */}
           {response && !loading && (
-            <div className="rounded-lg border border-slate-800 bg-slate-900/80 p-4 space-y-3 animate-fade-in">
-              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-2">
+            <div className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/80 p-4 space-y-3 animate-fade-in">
+              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--border-default)] pb-2">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-semibold text-slate-200">
+                  <span className="text-xs font-semibold text-[var(--text-primary)]">
                     AI Analytical Synthesis
                   </span>
                   <Badge variant="purple" size="xs">
                     {response.operation}
                   </Badge>
                   {response.is_cached && (
-                    <span className="text-[10px] text-slate-500 font-mono">
+                    <span className="text-[10px] text-[var(--text-faint)] font-mono">
                       (cached)
                     </span>
                   )}
@@ -228,15 +228,15 @@ export function AIAssistantPanel({
               </div>
 
               {/* Formatted Content */}
-              <div className="text-xs text-slate-200 leading-relaxed space-y-2 whitespace-pre-line font-sans">
+              <div className="text-xs text-[var(--text-primary)] leading-relaxed space-y-2 whitespace-pre-line font-sans">
                 {response.content}
               </div>
 
               {/* Provenance & Disclaimer Footer */}
-              <div className="pt-2 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-500">
+              <div className="pt-2 border-t border-[var(--border-default)]/80 flex flex-wrap items-center justify-between gap-2 text-[11px] text-[var(--text-faint)]">
                 <span>
                   Sources:{" "}
-                  <strong className="text-slate-400">
+                  <strong className="text-[var(--text-muted)]">
                     {response.provenance_sources?.join(", ") || "Project Ground Truth"}
                   </strong>
                 </span>

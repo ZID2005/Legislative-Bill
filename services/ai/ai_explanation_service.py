@@ -49,6 +49,9 @@ class AIExplanationResult:
     error_code: Optional[str] = None
     error_message: Optional[str] = None
     provenance_sources: list[str] = field(default_factory=list)
+    citations: list[dict[str, Any]] = field(default_factory=list)
+    epistemic_labels: list[str] = field(default_factory=list)
+    warnings: list[str] = field(default_factory=list)
     violations: list[str] = field(default_factory=list)
 
     @property
@@ -125,6 +128,14 @@ class AIExplanationService:
         except Exception as exc:
             logger.debug("Failed saving AI cache to disk: %s", exc)
 
+    def _extract_epistemic_labels(self, text: str) -> list[str]:
+        """Detect and extract epistemic classification tags from text."""
+        detected = []
+        for tag in ("FACT", "OBSERVED", "DERIVED", "INTERPRETATION", "PREDICTION", "EVIDENCE"):
+            if f"[{tag}]" in text or f"**{tag}**" in text or f"[{tag.lower()}]" in text.lower():
+                detected.append(f"[{tag}]")
+        return detected or ["[FACT]", "[INTERPRETATION]"]
+
     def clear_cache(self) -> None:
         """Clear in-memory and disk AI explanation caches."""
         self._memory_cache.clear()
@@ -141,7 +152,7 @@ class AIExplanationService:
 
     def _execute_explanation(
         self,
-        context: AIContext,
+        context: Any,
         operation: str,
         user_prompt: str,
         persona: str = "GENERAL_PUBLIC",
@@ -151,8 +162,77 @@ class AIExplanationService:
         Execute grounded generation through context, guardrails, Groq, and validation.
         """
         norm_persona = persona.upper().replace(" ", "_")
-        b_id = getattr(context, "bill_id", None) or getattr(context, "company_id", None) or getattr(context, "industry_id", "UNKNOWN")
+        b_id = (
+            getattr(context, "bill_id", None)
+            or getattr(context, "company_id", None)
+            or getattr(context, "industry_id", None)
+            or getattr(context, "portfolio_id", "UNKNOWN")
+        )
         j_scope = getattr(context, "jurisdiction", getattr(context, "universe_type", "central"))
+
+        # Build citations & sources helper
+        sources = []
+        if getattr(context, "provenance", None):
+            if context.provenance.get("source_url"):
+                sources.append(context.provenance["source_url"])
+            if context.provenance.get("pdf_url"):
+                sources.append(context.provenance["pdf_url"])
+            if context.provenance.get("sources"):
+                sources.append(context.provenance["sources"])
+        if not sources:
+            sources.append("Official Legislative / Corporate Record")
+
+        citations: list[dict[str, Any]] = []
+        if hasattr(context, "bill_id") and getattr(context, "bill_id") not in (
+            "__workspace_context__", "__portfolio_context__", "__general_context__", "__monitoring_context__"
+        ):
+            citations.append({
+                "source_type": "BILL_DOCUMENT",
+                "title": getattr(context, "title", "Legislative Bill"),
+                "identifier": getattr(context, "bill_id", ""),
+                "url": getattr(context, "provenance", {}).get("source_url") or getattr(context, "provenance", {}).get("pdf_url") or "",
+                "jurisdiction": getattr(context, "jurisdiction", "central"),
+            })
+        if hasattr(context, "company_name"):
+            citations.append({
+                "source_type": "CORPORATE_EXPOSURE",
+                "title": getattr(context, "company_name", ""),
+                "identifier": getattr(context, "company_id", ""),
+                "sector": getattr(context, "sector", ""),
+                "industry": getattr(context, "industry", ""),
+            })
+        if hasattr(context, "evidence") and context.evidence:
+            for ev in context.evidence[:3]:
+                citations.append({
+                    "source_type": "EVIDENCE_RECORD",
+                    "title": ev[:90],
+                    "identifier": "PUBLIC_EVIDENCE",
+                })
+        if getattr(context, "predictions", None) and any("Model" in p or "Consensus" in p for p in context.predictions):
+            citations.append({
+                "source_type": "ANALYTICAL_MODEL",
+                "title": "Frozen Central Analytical Model (OLS & LightGBM)",
+                "identifier": "FROZEN_BASELINE",
+            })
+
+        # 1. Deterministic direct refusal check
+        refusal = self.guardrails.check_direct_refusal(user_prompt, context=context)
+        if refusal:
+            return AIExplanationResult(
+                content=refusal["content"],
+                bill_id=b_id,
+                operation=operation,
+                persona=norm_persona,
+                jurisdiction=j_scope,
+                success=True,
+                is_cached=False,
+                context_hash=getattr(context, "context_hash", ""),
+                provenance_sources=sources,
+                citations=citations,
+                epistemic_labels=refusal.get("epistemic_labels", ["INTERPRETATION"]),
+                warnings=refusal.get("warnings", []),
+            )
+
         cache_key = self._compute_cache_key(
             context_hash=context.context_hash,
             operation=operation,
@@ -173,14 +253,29 @@ class AIExplanationService:
                 success=True,
                 is_cached=True,
                 context_hash=context.context_hash,
-                provenance_sources=cached.get("provenance_sources", []),
+                provenance_sources=cached.get("provenance_sources", sources),
+                citations=cached.get("citations", citations),
+                epistemic_labels=cached.get("epistemic_labels", ["FACT", "INTERPRETATION"]),
             )
 
-        # Build messages
+        # Prompt injection defense: sanitize untrusted input
+        clean_user_prompt = self.guardrails.clean_untrusted_input(user_prompt)
+
+        # Build messages with strict untrusted data boundaries
         system_prompt = self.guardrails.get_system_prompt(norm_persona)
         context_block = context.format_prompt_block()
 
-        full_user_content = f"{context_block}\n\nUSER REQUEST / OPERATION: [{operation}]\n{user_prompt}"
+        full_user_content = (
+            f"=== AUTHORITATIVE RETRIEVED DATA (UNTRUSTED CONTEXT) ===\n"
+            f"{context_block}\n"
+            f"=== END RETRIEVED DATA ===\n\n"
+            f"=== USER REQUEST / OPERATION: [{operation}] ===\n"
+            f"{clean_user_prompt}\n"
+            f"=== END USER REQUEST ===\n\n"
+            f"INSTRUCTION: Answer strictly using the verified retrieved data above. "
+            f"Use epistemic tags ([FACT], [OBSERVED], [DERIVED], [INTERPRETATION], [PREDICTION], [EVIDENCE]) where appropriate. "
+            f"Never invent facts or citations. Maintain all safety firewalls."
+        )
         messages = [
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": full_user_content},
@@ -189,8 +284,6 @@ class AIExplanationService:
         # Call Groq
         response = self.client.chat_completion(messages, max_tokens=max_tokens)
         if not response.success:
-            b_id = getattr(context, "bill_id", None) or getattr(context, "company_id", "UNKNOWN")
-            j_scope = getattr(context, "jurisdiction", getattr(context, "universe_type", "central"))
             p_source = context.provenance.get("source_url") or context.provenance.get("sources") or "Project Repository"
             return AIExplanationResult(
                 content=response.fallback_message or "AI explanation is temporarily unavailable.",
@@ -204,6 +297,8 @@ class AIExplanationService:
                 error_code=response.error_code,
                 error_message=response.error_message,
                 provenance_sources=[p_source],
+                citations=citations,
+                epistemic_labels=["INTERPRETATION"],
             )
 
         # Post-generation guardrails validation
@@ -211,7 +306,7 @@ class AIExplanationService:
 
         # Attempt 1 controlled retry if validation failed
         if not validation.is_valid:
-            logger.info("Retrying AI explanation with strict corrective prompt for %s", context.bill_id)
+            logger.info("Retrying AI explanation with strict corrective prompt for %s", getattr(context, "bill_id", b_id))
             retry_messages = [
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": full_user_content},
@@ -233,8 +328,6 @@ class AIExplanationService:
 
         # If still invalid, return safe fallback
         if not validation.is_valid:
-            b_id = getattr(context, "bill_id", None) or getattr(context, "company_id", "UNKNOWN")
-            j_scope = getattr(context, "jurisdiction", getattr(context, "universe_type", "central"))
             p_source = context.provenance.get("source_url") or context.provenance.get("sources") or "Project Repository"
             return AIExplanationResult(
                 content=validation.fallback_message or "AI explanation unavailable due to policy restrictions.",
@@ -249,24 +342,27 @@ class AIExplanationService:
                 error_message="; ".join(validation.violations),
                 violations=validation.violations,
                 provenance_sources=[p_source],
+                citations=citations,
+                epistemic_labels=["FACT", "INTERPRETATION"],
             )
 
         final_content = response.content
-        sources = []
-        if context.provenance.get("source_url"):
-            sources.append(context.provenance["source_url"])
-        if context.provenance.get("pdf_url"):
-            sources.append(context.provenance["pdf_url"])
-        if context.provenance.get("sources"):
-            sources.append(context.provenance["sources"])
-        if not sources:
-            sources.append("Official Legislative / Corporate Record")
+
+        # Detect epistemic labels
+        detected_labels = []
+        for tag in ("FACT", "OBSERVED", "DERIVED", "INTERPRETATION", "PREDICTION", "EVIDENCE"):
+            if f"[{tag}]" in final_content or f"**{tag}**" in final_content or f"[{tag.lower()}]" in final_content.lower():
+                detected_labels.append(tag)
+        if not detected_labels:
+            detected_labels = ["FACT", "INTERPRETATION"]
 
         # Save to Cache
         cache_data = {
             "content": final_content,
             "provenance_sources": sources,
-            "bill_id": context.bill_id,
+            "citations": citations,
+            "epistemic_labels": detected_labels,
+            "bill_id": b_id,
             "operation": operation,
             "persona": norm_persona,
         }
@@ -274,14 +370,16 @@ class AIExplanationService:
 
         return AIExplanationResult(
             content=final_content,
-            bill_id=context.bill_id,
+            bill_id=b_id,
             operation=operation,
             persona=norm_persona,
-            jurisdiction=context.jurisdiction,
+            jurisdiction=j_scope,
             success=True,
             is_cached=False,
             context_hash=context.context_hash,
             provenance_sources=sources,
+            citations=citations,
+            epistemic_labels=detected_labels,
         )
 
     # ------------------------------------------------------------------
@@ -672,4 +770,67 @@ class AIExplanationService:
             "Under no circumstances should you generate speculative industry price targets, trading advice, or Buy/Sell/Hold recommendations."
         )
         return self._execute_explanation(ctx, "ASK_INDUSTRY_AI", prompt, persona=persona)
+
+    def ask_portfolio_ai(
+        self,
+        user_id: str,
+        tenant_id: str,
+        question: str,
+        portfolio_id: Optional[str] = None,
+        persona: str = "INVESTOR",
+    ) -> AIExplanationResult:
+        """Free-form natural-language questions restricted to verified user portfolio context with tenant isolation."""
+        ctx = self.context_builder.build_portfolio_context(
+            user_id=user_id,
+            tenant_id=tenant_id,
+            portfolio_id=portfolio_id,
+        )
+        if not question or not question.strip():
+            return AIExplanationResult(
+                content="Please ask a specific question about your portfolio holdings and their legislative exposures.",
+                bill_id="__portfolio_context__",
+                operation="ASK_PORTFOLIO_AI",
+                persona=persona,
+                jurisdiction="portfolio",
+                success=False,
+                context_hash=ctx.context_hash,
+            )
+
+        prompt = (
+            f"User Question: \"{question.strip()}\"\n\n"
+            f"Answer the question strictly using the verified portfolio intelligence context above for tenant '{tenant_id}'. "
+            "If the answer cannot be determined from the verified context, state honestly: "
+            "'This information is unavailable in verified project records.' "
+            "Under no circumstances provide Buy/Sell/Hold recommendations or price targets."
+        )
+        return self._execute_explanation(ctx, "ASK_PORTFOLIO_AI", prompt, persona=persona)
+
+    def ask_general_ai(
+        self,
+        question: str,
+        persona: str = "GENERAL_PUBLIC",
+    ) -> AIExplanationResult:
+        """Free-form natural-language general inquiries restricted to verified legislative registry."""
+        ctx = self.context_builder.build_general_context(question)
+        if not question or not question.strip():
+            return AIExplanationResult(
+                content="Please ask a specific question about parliamentary acts, state statutes, or corporate exposures.",
+                bill_id="__general_context__",
+                operation="ASK_GENERAL_AI",
+                persona=persona,
+                jurisdiction="general",
+                success=False,
+                context_hash=ctx.context_hash,
+            )
+
+        prompt = (
+            f"User Question: \"{question.strip()}\"\n\n"
+            "Answer the question strictly using the verified general legislative intelligence context above. "
+            "If the user asks about an unknown, non-existent, or unverified bill/topic, state explicitly: "
+            "'The available project data does not contain sufficient evidence to answer this reliably.' "
+            "State legislative bills have zero stock predictions. Intelligence-only entities have zero stock predictions. "
+            "Never generate Buy/Sell/Hold advice or price targets."
+        )
+        return self._execute_explanation(ctx, "ASK_GENERAL_AI", prompt, persona=persona)
+
 

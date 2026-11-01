@@ -1,4 +1,4 @@
-/**
+﻿/**
  * components/companies/EconomicTransmissionSection.tsx
  * =====================================================
  * Visual and structured explanation of how legislation transmits into corporate impact.
@@ -98,11 +98,11 @@ export function EconomicTransmissionSection({
               <CardTitle>Economic Transmission Architecture</CardTitle>
               <SourceBadge type="DERIVED" size="xs" showTooltip />
             </div>
-            <span className="text-xs text-slate-500 font-mono">Structural Framework</span>
+            <span className="text-xs text-[var(--text-faint)] font-mono">Structural Framework</span>
           </div>
         </CardHeader>
 
-        <p className="text-xs text-slate-400 mb-6 leading-relaxed">
+        <p className="text-xs text-[var(--text-muted)] mb-6 leading-relaxed">
           The framework illustrates the deterministic chain linking statutory enactment to corporate operational exposure.
           Only mechanisms supported by verified parliamentary evidence are classified.
         </p>
@@ -120,19 +120,19 @@ export function EconomicTransmissionSection({
           ].map((node, i) => (
             <div
               key={node.step}
-              className="rounded-lg border border-slate-800 bg-slate-900/60 p-3 flex flex-col justify-between relative group hover:border-slate-700 transition-colors"
+              className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/60 p-3 flex flex-col justify-between relative group hover:border-[var(--border-strong)] transition-colors"
             >
               <div>
                 <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-[10px] font-mono font-bold text-slate-500">
+                  <span className="text-[10px] font-mono font-bold text-[var(--text-faint)]">
                     {node.step}
                   </span>
                   {i < 6 && (
                     <span className="hidden lg:inline text-slate-600 text-xs font-mono">→</span>
                   )}
                 </div>
-                <h4 className="text-xs font-semibold text-slate-200 mb-1">{node.title}</h4>
-                <p className="text-[11px] text-slate-400 leading-snug">{node.desc}</p>
+                <h4 className="text-xs font-semibold text-[var(--text-primary)] mb-1">{node.title}</h4>
+                <p className="text-[11px] text-[var(--text-muted)] leading-snug">{node.desc}</p>
               </div>
             </div>
           ))}
@@ -151,14 +151,14 @@ export function EconomicTransmissionSection({
               </CardTitle>
               <SourceBadge type="DERIVED" size="xs" />
             </div>
-            <span className="text-xs text-slate-400">
+            <span className="text-xs text-[var(--text-muted)]">
               Evidence-backed transmission mechanisms
             </span>
           </div>
         </CardHeader>
 
         {mechanisms.length === 0 ? (
-          <div className="text-center py-8 text-slate-500 text-xs">
+          <div className="text-center py-8 text-[var(--text-faint)] text-xs">
             No specific transmission mechanisms are recorded in current exposure evidence.
           </div>
         ) : (
@@ -166,13 +166,13 @@ export function EconomicTransmissionSection({
             {mechanisms.map((mech) => (
               <div
                 key={mech.name}
-                className="rounded-lg border border-slate-800 bg-slate-900/50 p-4 space-y-3 flex flex-col justify-between"
+                className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/50 p-4 space-y-3 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex items-center gap-2">
                       <span className="text-base" aria-hidden="true">⚙</span>
-                      <h4 className="text-sm font-semibold text-slate-100 capitalize">
+                      <h4 className="text-sm font-semibold text-[var(--text-primary)] capitalize">
                         {mech.name}
                       </h4>
                     </div>
@@ -180,14 +180,14 @@ export function EconomicTransmissionSection({
                       {mech.count} {mech.count === 1 ? "Bill" : "Bills"}
                     </Badge>
                   </div>
-                  <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+                  <p className="text-xs text-[var(--text-muted)] mt-2 leading-relaxed">
                     {mech.description}
                   </p>
                 </div>
 
                 {/* Connected Bills */}
-                <div className="pt-3 border-t border-slate-800/80 space-y-1.5">
-                  <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider block">
+                <div className="pt-3 border-t border-[var(--border-default)]/80 space-y-1.5">
+                  <span className="text-[10px] font-semibold text-[var(--text-faint)] uppercase tracking-wider block">
                     Intersecting Legislation:
                   </span>
                   <div className="space-y-1">
@@ -196,10 +196,10 @@ export function EconomicTransmissionSection({
                         key={b.id}
                         className="flex items-center justify-between gap-2 text-[11px]"
                       >
-                        <span className="text-slate-300 truncate max-w-[260px] font-medium">
+                        <span className="text-[var(--text-secondary)] truncate max-w-[260px] font-medium">
                           {b.title}
                         </span>
-                        <span className="text-slate-500 text-[10px] shrink-0">
+                        <span className="text-[var(--text-faint)] text-[10px] shrink-0">
                           {b.strength} · {b.directness}
                         </span>
                       </div>

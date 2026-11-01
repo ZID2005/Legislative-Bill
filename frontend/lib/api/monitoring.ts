@@ -5,6 +5,7 @@
  */
 
 import apiClient from "@/lib/api/client";
+import type { FreshnessResponse } from "@/types/api";
 
 export const monitoringApi = {
   getOverview(): Promise<any> {
@@ -48,8 +49,12 @@ export const monitoringApi = {
     return apiClient.get<any>("/api/v1/monitoring/status");
   },
 
-  triggerCheck(sourceId: string): Promise<any> {
-    return apiClient.post<any>(`/api/v1/monitoring/sources/${sourceId}/check`);
+  triggerCheck(sourceId?: string): Promise<any> {
+    return apiClient.post<any>("/api/v1/monitoring/check");
+  },
+
+  getFreshness(): Promise<FreshnessResponse> {
+    return apiClient.get<FreshnessResponse>("/api/v1/freshness");
   },
 };
 

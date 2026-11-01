@@ -1,4 +1,4 @@
-/**
+﻿/**
  * app/notifications/page.tsx
  * ===========================
  * Production Notification Center (Task 8.15).
@@ -101,9 +101,9 @@ export default function NotificationsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 p-6 sm:p-8 space-y-8">
+    <div className="min-h-screen bg-[var(--bg-base)] text-[var(--text-primary)] p-6 sm:p-8 space-y-8">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-800 pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-[var(--border-default)] pb-6">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="text-xl">📬</span>
@@ -111,10 +111,10 @@ export default function NotificationsPage() {
               Delivery Center
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-100">
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-primary)]">
             Notification Center
           </h1>
-          <p className="text-sm text-slate-400 mt-1 max-w-2xl">
+          <p className="text-sm text-[var(--text-muted)] mt-1 max-w-2xl">
             In-app notification feed, digest groupings, and multi-channel delivery audit logs.
           </p>
         </div>
@@ -123,14 +123,14 @@ export default function NotificationsPage() {
           {(summary?.unread_count ?? 0) > 0 && (
             <button
               onClick={handleMarkAllRead}
-              className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-lg border border-slate-700 transition-colors shadow-sm"
+              className="px-4 py-2 bg-[var(--bg-elevated)] hover:bg-[var(--bg-card-hover)] text-[var(--text-primary)] text-xs font-semibold rounded-lg border border-[var(--border-strong)] transition-colors shadow-sm"
             >
               ✓ Mark All Read ({summary?.unread_count})
             </button>
           )}
           <Link
             href="/settings"
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-lg transition-colors shadow-sm"
+            className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-[var(--text-primary)] text-xs font-semibold rounded-lg transition-colors shadow-sm"
           >
             Delivery Settings
           </Link>
@@ -145,40 +145,40 @@ export default function NotificationsPage() {
 
       {/* Metric Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="bg-slate-900 border border-slate-800 p-4 rounded-xl">
-          <div className="text-xs text-slate-400 mb-1">Unread In-App</div>
+        <div className="bg-[var(--bg-card)] border border-[var(--border-default)] p-4 rounded-xl">
+          <div className="text-xs text-[var(--text-muted)] mb-1">Unread In-App</div>
           <div className="text-2xl font-bold text-amber-400">
             {loading ? "..." : summary?.unread_count ?? 0}
           </div>
-          <span className="text-[11px] text-slate-500">Require attention</span>
+          <span className="text-[11px] text-[var(--text-faint)]">Require attention</span>
         </div>
 
-        <div className="bg-slate-900 border border-slate-800 p-4 rounded-xl">
-          <div className="text-xs text-slate-400 mb-1">Total Delivered</div>
-          <div className="text-2xl font-bold text-slate-100">
+        <div className="bg-[var(--bg-card)] border border-[var(--border-default)] p-4 rounded-xl">
+          <div className="text-xs text-[var(--text-muted)] mb-1">Total Delivered</div>
+          <div className="text-2xl font-bold text-[var(--text-primary)]">
             {loading ? "..." : summary?.total_active ?? total}
           </div>
-          <span className="text-[11px] text-slate-500">Delivered to user</span>
+          <span className="text-[11px] text-[var(--text-faint)]">Delivered to user</span>
         </div>
 
-        <div className="bg-slate-900 border border-slate-800 p-4 rounded-xl">
-          <div className="text-xs text-slate-400 mb-1">Digest Bundles</div>
+        <div className="bg-[var(--bg-card)] border border-[var(--border-default)] p-4 rounded-xl">
+          <div className="text-xs text-[var(--text-muted)] mb-1">Digest Bundles</div>
           <div className="text-2xl font-bold text-blue-400">
             {loading ? "..." : digests.length}
           </div>
-          <span className="text-[11px] text-slate-500">Aggregated alert groups</span>
+          <span className="text-[11px] text-[var(--text-faint)]">Aggregated alert groups</span>
         </div>
       </div>
 
       {/* Tabs & Controls */}
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-3">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[var(--border-default)] pb-3">
         <div className="flex items-center gap-2">
           <button
             onClick={() => setActiveTab("FEED")}
             className={`px-4 py-2 text-xs font-semibold rounded-lg transition-colors ${
               activeTab === "FEED"
-                ? "bg-blue-600 text-white shadow-sm"
-                : "text-slate-400 hover:text-slate-200"
+                ? "bg-blue-600 text-[var(--text-primary)] shadow-sm"
+                : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"
             }`}
           >
             In-App Feed ({total})
@@ -187,8 +187,8 @@ export default function NotificationsPage() {
             onClick={() => setActiveTab("DIGESTS")}
             className={`px-4 py-2 text-xs font-semibold rounded-lg transition-colors ${
               activeTab === "DIGESTS"
-                ? "bg-blue-600 text-white shadow-sm"
-                : "text-slate-400 hover:text-slate-200"
+                ? "bg-blue-600 text-[var(--text-primary)] shadow-sm"
+                : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"
             }`}
           >
             Aggregated Digests ({digests.length})
@@ -196,7 +196,7 @@ export default function NotificationsPage() {
         </div>
 
         {activeTab === "FEED" && (
-          <div className="flex items-center gap-1 bg-slate-900 p-1 rounded-lg border border-slate-800 text-xs">
+          <div className="flex items-center gap-1 bg-[var(--bg-card)] p-1 rounded-lg border border-[var(--border-default)] text-xs">
             {(["ALL", "UNREAD", "ARCHIVED"] as const).map((st) => (
               <button
                 key={st}
@@ -205,7 +205,7 @@ export default function NotificationsPage() {
                   setPage(1);
                 }}
                 className={`px-3 py-1 font-medium rounded-md transition-colors ${
-                  statusFilter === st ? "bg-blue-600 text-white" : "text-slate-400 hover:text-slate-200"
+                  statusFilter === st ? "bg-blue-600 text-[var(--text-primary)]" : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"
                 }`}
               >
                 {st}
@@ -217,17 +217,17 @@ export default function NotificationsPage() {
 
       {/* Loading state */}
       {loading && (
-        <div className="p-12 text-center text-slate-500">Loading notification stream...</div>
+        <div className="p-12 text-center text-[var(--text-faint)]">Loading notification stream...</div>
       )}
 
       {/* Feed Tab Content */}
       {!loading && activeTab === "FEED" && (
         <>
           {notifications.length === 0 ? (
-            <div className="p-12 text-center bg-slate-900/50 rounded-2xl border border-slate-800 space-y-3 max-w-md mx-auto">
+            <div className="p-12 text-center bg-[var(--bg-card)]/50 rounded-2xl border border-[var(--border-default)] space-y-3 max-w-md mx-auto">
               <span className="text-3xl block">📬</span>
-              <h3 className="text-base font-bold text-slate-100">No Notifications</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <h3 className="text-base font-bold text-[var(--text-primary)]">No Notifications</h3>
+              <p className="text-xs text-[var(--text-muted)] leading-relaxed">
                 You have no notifications matching this filter.
               </p>
             </div>
@@ -238,16 +238,16 @@ export default function NotificationsPage() {
                   key={n.notification_id}
                   className={`p-4 rounded-xl border transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4 ${
                     n.is_read
-                      ? "bg-slate-900/60 border-slate-800/80 opacity-90"
-                      : "bg-slate-900 border-blue-500/30 shadow-xs"
+                      ? "bg-[var(--bg-card)]/60 border-[var(--border-default)]/80 opacity-90"
+                      : "bg-[var(--bg-card)] border-blue-500/30 shadow-xs"
                   }`}
                 >
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700 uppercase">
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-[var(--bg-elevated)] text-[var(--text-secondary)] border border-[var(--border-strong)] uppercase">
                         {n.notification_type || "IN_APP"}
                       </span>
-                      <span className="text-xs text-slate-500">
+                      <span className="text-xs text-[var(--text-faint)]">
                         {new Date(n.created_at).toLocaleString()}
                       </span>
                       {!n.is_read && (
@@ -255,26 +255,26 @@ export default function NotificationsPage() {
                       )}
                     </div>
 
-                    <h4 className="text-sm font-semibold text-slate-100">
+                    <h4 className="text-sm font-semibold text-[var(--text-primary)]">
                       {n.title}
                     </h4>
-                    <p className="text-xs text-slate-400 leading-relaxed">
+                    <p className="text-xs text-[var(--text-muted)] leading-relaxed">
                       {n.message}
                     </p>
                   </div>
 
-                  <div className="flex items-center gap-2 flex-shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-800">
+                  <div className="flex items-center gap-2 flex-shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-[var(--border-default)]">
                     {!n.is_read && (
                       <button
                         onClick={() => handleMarkRead(n.notification_id)}
-                        className="px-3 py-1.5 text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg border border-slate-700 transition-colors"
+                        className="px-3 py-1.5 text-xs font-medium bg-[var(--bg-elevated)] hover:bg-[var(--bg-card-hover)] text-[var(--text-primary)] rounded-lg border border-[var(--border-strong)] transition-colors"
                       >
                         Mark Read
                       </button>
                     )}
                     <button
                       onClick={() => handleArchive(n.notification_id)}
-                      className="px-3 py-1.5 text-xs font-medium bg-slate-800 hover:bg-red-950 text-slate-400 hover:text-red-300 rounded-lg border border-slate-700 hover:border-red-800 transition-colors"
+                      className="px-3 py-1.5 text-xs font-medium bg-[var(--bg-elevated)] hover:bg-red-950 text-[var(--text-muted)] hover:text-red-300 rounded-lg border border-[var(--border-strong)] hover:border-red-800 transition-colors"
                     >
                       Archive
                     </button>
@@ -290,17 +290,17 @@ export default function NotificationsPage() {
               <button
                 disabled={page <= 1}
                 onClick={() => setPage((p) => Math.max(1, p - 1))}
-                className="px-3 py-1.5 text-xs bg-slate-900 border border-slate-800 rounded-lg text-slate-300 disabled:opacity-40"
+                className="px-3 py-1.5 text-xs bg-[var(--bg-card)] border border-[var(--border-default)] rounded-lg text-[var(--text-secondary)] disabled:opacity-40"
               >
                 ← Previous
               </button>
-              <span className="text-xs text-slate-400">
+              <span className="text-xs text-[var(--text-muted)]">
                 Page {page} of {Math.ceil(total / 20)}
               </span>
               <button
                 disabled={page >= Math.ceil(total / 20)}
                 onClick={() => setPage((p) => p + 1)}
-                className="px-3 py-1.5 text-xs bg-slate-900 border border-slate-800 rounded-lg text-slate-300 disabled:opacity-40"
+                className="px-3 py-1.5 text-xs bg-[var(--bg-card)] border border-[var(--border-default)] rounded-lg text-[var(--text-secondary)] disabled:opacity-40"
               >
                 Next →
               </button>
@@ -313,10 +313,10 @@ export default function NotificationsPage() {
       {!loading && activeTab === "DIGESTS" && (
         <div className="space-y-4">
           {digests.length === 0 ? (
-            <div className="p-12 text-center bg-slate-900/50 rounded-2xl border border-slate-800 space-y-3 max-w-md mx-auto">
+            <div className="p-12 text-center bg-[var(--bg-card)]/50 rounded-2xl border border-[var(--border-default)] space-y-3 max-w-md mx-auto">
               <span className="text-3xl block">🗞</span>
-              <h3 className="text-base font-bold text-slate-100">No Digests Generated</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <h3 className="text-base font-bold text-[var(--text-primary)]">No Digests Generated</h3>
+              <p className="text-xs text-[var(--text-muted)] leading-relaxed">
                 Aggregated digests are automatically created when multiple alerts occur within a configured time window.
               </p>
             </div>
@@ -325,27 +325,27 @@ export default function NotificationsPage() {
               {digests.map((dig) => (
                 <div
                   key={dig.group_id}
-                  className="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3"
+                  className="bg-[var(--bg-card)] border border-[var(--border-default)] rounded-xl p-5 space-y-3"
                 >
                   <div className="flex items-center justify-between">
                     <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-950 text-blue-300 border border-blue-800 uppercase">
                       {dig.group_type}
                     </span>
-                    <span className="text-xs text-slate-500">
+                    <span className="text-xs text-[var(--text-faint)]">
                       {new Date(dig.created_at).toLocaleDateString()}
                     </span>
                   </div>
 
-                  <h3 className="text-sm font-bold text-slate-100">
+                  <h3 className="text-sm font-bold text-[var(--text-primary)]">
                     {dig.title}
                   </h3>
-                  <p className="text-xs text-slate-400 leading-relaxed">
+                  <p className="text-xs text-[var(--text-muted)] leading-relaxed">
                     {dig.summary}
                   </p>
 
-                  <div className="pt-2 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
-                    <span>Bundled Events: <strong className="text-slate-200">{dig.event_count}</strong></span>
-                    <span className="text-[11px] text-slate-500 font-mono">
+                  <div className="pt-2 border-t border-[var(--border-default)] flex items-center justify-between text-xs text-[var(--text-muted)]">
+                    <span>Bundled Events: <strong className="text-[var(--text-primary)]">{dig.event_count}</strong></span>
+                    <span className="text-[11px] text-[var(--text-faint)] font-mono">
                       Severity: {dig.severity}
                     </span>
                   </div>

@@ -52,6 +52,18 @@ class WatchlistRepository:
         ensure_dir(path)
         return path
 
+    def _get_db(self) -> Any:
+        if self._root_dir != _get_default_watchlists_dir():
+            return None
+        try:
+            from storage.database.provider import get_database_provider
+            db = get_database_provider()
+            if db and db.status in ("READY", "CONFIGURED"):
+                return db
+        except Exception:
+            pass
+        return None
+
     def _watchlists_dir(self, tenant_id: str, user_id: str) -> Path:
         path = self._user_dir(tenant_id, user_id) / "watchlists"
         ensure_dir(path)
@@ -78,6 +90,33 @@ class WatchlistRepository:
                 f"Watchlist '{watchlist.watchlist_id}' already exists for user '{watchlist.user_id}'"
             )
 
+        # 1. Database Persistence
+        db = self._get_db()
+        if db:
+            try:
+                db.execute_mutation(
+                    """
+                    INSERT INTO watchlists (
+                        watchlist_id, tenant_id, user_id, name, description, is_default, is_active, created_at, updated_at
+                    ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);
+                    """,
+                    (
+                        watchlist.watchlist_id,
+                        watchlist.tenant_id,
+                        watchlist.user_id,
+                        watchlist.name,
+                        watchlist.description,
+                        watchlist.is_default,
+                        watchlist.is_active,
+                        watchlist.created_at,
+                        watchlist.updated_at,
+                    ),
+                    tenant_id=watchlist.tenant_id,
+                )
+            except Exception as e:
+                logger.debug("DB insert for watchlist %s skipped/failed: %s", watchlist.watchlist_id, e)
+
+        # 2. File Persistence
         with open(path, "w", encoding="utf-8") as f:
             json.dump(watchlist.to_dict(), f, indent=2)
         logger.debug("Created watchlist %s for user %s", watchlist.watchlist_id, watchlist.user_id)
@@ -93,6 +132,34 @@ class WatchlistRepository:
         Retrieve a watchlist by ID, scoped by tenant and user when provided.
         If tenant_id or user_id are provided, cross-access is strictly blocked.
         """
+        db = self._get_db()
+        if db:
+            try:
+                query = "SELECT watchlist_id, tenant_id, user_id, name, description, is_default, is_active, created_at, updated_at FROM watchlists WHERE watchlist_id = %s"
+                params: list[Any] = [watchlist_id]
+                if tenant_id:
+                    query += " AND tenant_id = %s"
+                    params.append(tenant_id)
+                if user_id:
+                    query += " AND user_id = %s"
+                    params.append(user_id)
+                rows = db.execute_query(query, tuple(params), tenant_id=tenant_id)
+                if rows:
+                    r = rows[0]
+                    return Watchlist(
+                        watchlist_id=r["watchlist_id"],
+                        tenant_id=r["tenant_id"],
+                        user_id=r["user_id"],
+                        name=r["name"],
+                        description=r.get("description"),
+                        is_default=bool(r.get("is_default", False)),
+                        is_active=bool(r.get("is_active", True)),
+                        created_at=str(r.get("created_at")),
+                        updated_at=str(r.get("updated_at")),
+                    )
+            except Exception as e:
+                logger.debug("DB get for watchlist %s failed: %s", watchlist_id, e)
+
         if tenant_id and user_id:
             path = self._watchlists_dir(tenant_id, user_id) / f"wl_{watchlist_id}.json"
             if not path.is_file():
@@ -130,14 +197,38 @@ class WatchlistRepository:
         """
         watchlist.validate()
         watchlist.updated_at = _utcnow_iso()
-        path = self._watchlists_dir(watchlist.tenant_id, watchlist.user_id) / f"wl_{watchlist.watchlist_id}.json"
-        if not path.is_file():
+
+        db = self._get_db()
+        if db:
+            try:
+                db.execute_mutation(
+                    """
+                    UPDATE watchlists
+                    SET name = %s, description = %s, is_default = %s, is_active = %s, updated_at = %s
+                    WHERE watchlist_id = %s AND tenant_id = %s;
+                    """,
+                    (
+                        watchlist.name,
+                        watchlist.description,
+                        watchlist.is_default,
+                        watchlist.is_active,
+                        watchlist.updated_at,
+                        watchlist.watchlist_id,
+                        watchlist.tenant_id,
+                    ),
+                    tenant_id=watchlist.tenant_id,
+                )
+            except Exception as e:
+                logger.debug("DB update for watchlist %s failed: %s", watchlist.watchlist_id, e)
+
+        path = self._watchlists_dir(watchlist.tenant_id, watchlist.user_id) / f"wl_{watchlist_id}.json" if (watchlist_id := watchlist.watchlist_id) else Path()
+        if path.is_file():
+            with open(path, "w", encoding="utf-8") as f:
+                json.dump(watchlist.to_dict(), f, indent=2)
+        elif not db:
             raise ValueError(
                 f"Cannot update non-existent watchlist '{watchlist.watchlist_id}'"
             )
-
-        with open(path, "w", encoding="utf-8") as f:
-            json.dump(watchlist.to_dict(), f, indent=2)
         return watchlist
 
     def delete(
@@ -154,15 +245,34 @@ class WatchlistRepository:
         if not wl:
             return False
 
+        db = self._get_db()
+        if db:
+            try:
+                if hard_delete:
+                    db.execute_mutation(
+                        "DELETE FROM watchlists WHERE watchlist_id = %s AND tenant_id = %s;",
+                        (watchlist_id, wl.tenant_id),
+                        tenant_id=wl.tenant_id,
+                    )
+                else:
+                    db.execute_mutation(
+                        "UPDATE watchlists SET is_active = FALSE, updated_at = %s WHERE watchlist_id = %s AND tenant_id = %s;",
+                        (_utcnow_iso(), watchlist_id, wl.tenant_id),
+                        tenant_id=wl.tenant_id,
+                    )
+            except Exception as e:
+                logger.debug("DB delete for watchlist %s failed: %s", watchlist_id, e)
+
         path = self._watchlists_dir(wl.tenant_id, wl.user_id) / f"wl_{watchlist_id}.json"
         if hard_delete:
             if path.is_file():
                 path.unlink()
                 return True
-            return False
+            return db is not None
         else:
             wl.is_active = False
-            self.update(wl)
+            if path.is_file():
+                self.update(wl)
             return True
 
     def list_by_user(
@@ -174,6 +284,34 @@ class WatchlistRepository:
         """
         List all watchlists belonging to a user within a tenant.
         """
+        db = self._get_db()
+        if db:
+            try:
+                query = "SELECT watchlist_id, tenant_id, user_id, name, description, is_default, is_active, created_at, updated_at FROM watchlists WHERE tenant_id = %s AND user_id = %s"
+                params: list[Any] = [tenant_id, user_id]
+                if is_active is not None:
+                    query += " AND is_active = %s"
+                    params.append(is_active)
+                rows = db.execute_query(query, tuple(params), tenant_id=tenant_id)
+                if rows:
+                    res = [
+                        Watchlist(
+                            watchlist_id=r["watchlist_id"],
+                            tenant_id=r["tenant_id"],
+                            user_id=r["user_id"],
+                            name=r["name"],
+                            description=r.get("description"),
+                            is_default=bool(r.get("is_default", False)),
+                            is_active=bool(r.get("is_active", True)),
+                            created_at=str(r.get("created_at")),
+                            updated_at=str(r.get("updated_at")),
+                        )
+                        for r in rows
+                    ]
+                    return sorted(res, key=lambda w: w.created_at)
+            except Exception as e:
+                logger.debug("DB list_by_user for user %s failed: %s", user_id, e)
+
         w_dir = self._watchlists_dir(tenant_id, user_id)
         results: list[Watchlist] = []
         for f in w_dir.glob("wl_*.json"):
@@ -195,10 +333,38 @@ class WatchlistRepository:
         """
         List all watchlists belonging to all users within a tenant.
         """
+        db = self._get_db()
+        if db:
+            try:
+                query = "SELECT watchlist_id, tenant_id, user_id, name, description, is_default, is_active, created_at, updated_at FROM watchlists WHERE tenant_id = %s"
+                params: list[Any] = [tenant_id]
+                if is_active is not None:
+                    query += " AND is_active = %s"
+                    params.append(is_active)
+                rows = db.execute_query(query, tuple(params), tenant_id=tenant_id)
+                if rows:
+                    res = [
+                        Watchlist(
+                            watchlist_id=r["watchlist_id"],
+                            tenant_id=r["tenant_id"],
+                            user_id=r["user_id"],
+                            name=r["name"],
+                            description=r.get("description"),
+                            is_default=bool(r.get("is_default", False)),
+                            is_active=bool(r.get("is_active", True)),
+                            created_at=str(r.get("created_at")),
+                            updated_at=str(r.get("updated_at")),
+                        )
+                        for r in rows
+                    ]
+                    return sorted(res, key=lambda w: w.created_at)
+            except Exception as e:
+                logger.debug("DB list_by_tenant for tenant %s failed: %s", tenant_id, e)
+
         tdir = self._root_dir / tenant_id
         if not tdir.is_dir():
             return []
-        results: list[Watchlist] = []
+        results = []
         for wl_file in tdir.glob("*/watchlists/wl_*.json"):
             try:
                 with open(wl_file, "r", encoding="utf-8") as fh:
@@ -240,6 +406,36 @@ class WatchlistRepository:
                     f"Entity '{item.entity_id}' of type '{item.entity_type.value}' already exists in watchlist '{item.watchlist_id}'"
                 )
 
+        # 1. Database Persistence
+        db = self._get_db()
+        if db:
+            try:
+                etype_str = item.entity_type.value if hasattr(item.entity_type, "value") else str(item.entity_type)
+                db.execute_mutation(
+                    """
+                    INSERT INTO watchlist_items (
+                        item_id, watchlist_id, tenant_id, user_id, entity_type, entity_id,
+                        canonical_name, notes, is_active, created_at
+                    ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
+                    """,
+                    (
+                        item.item_id,
+                        item.watchlist_id,
+                        item.tenant_id,
+                        item.user_id,
+                        etype_str,
+                        item.entity_id,
+                        item.display_name,
+                        item.notes,
+                        item.is_active,
+                        item.created_at,
+                    ),
+                    tenant_id=item.tenant_id,
+                )
+            except Exception as e:
+                logger.debug("DB insert for watchlist_item %s failed: %s", item.item_id, e)
+
+        # 2. File Persistence
         items_dir = self._items_dir(item.tenant_id, item.user_id)
         path = items_dir / f"item_{item.item_id}.json"
         with open(path, "w", encoding="utf-8") as f:
@@ -257,6 +453,37 @@ class WatchlistRepository:
         """
         Retrieve an item by ID, scoped by tenant/user if provided.
         """
+        db = self._get_db()
+        if db:
+            try:
+                query = "SELECT item_id, watchlist_id, tenant_id, user_id, entity_type, entity_id, canonical_name, notes, is_active, created_at FROM watchlist_items WHERE item_id = %s"
+                params: list[Any] = [item_id]
+                if tenant_id:
+                    query += " AND tenant_id = %s"
+                    params.append(tenant_id)
+                if user_id:
+                    query += " AND user_id = %s"
+                    params.append(user_id)
+                rows = db.execute_query(query, tuple(params), tenant_id=tenant_id)
+                if rows:
+                    r = rows[0]
+                    raw_type = r["entity_type"]
+                    etype = WatchlistEntityType(raw_type) if raw_type in WatchlistEntityType._value2member_map_ else raw_type
+                    return WatchlistItem(
+                        item_id=r["item_id"],
+                        watchlist_id=r["watchlist_id"],
+                        tenant_id=r["tenant_id"],
+                        user_id=r["user_id"],
+                        entity_type=etype,
+                        entity_id=r["entity_id"],
+                        display_name=r.get("canonical_name") or "",
+                        notes=r.get("notes"),
+                        is_active=bool(r.get("is_active", True)),
+                        created_at=str(r.get("created_at")),
+                    )
+            except Exception as e:
+                logger.debug("DB get_item for %s failed: %s", item_id, e)
+
         if tenant_id and user_id:
             path = self._items_dir(tenant_id, user_id) / f"item_{item_id}.json"
             if not path.is_file():
@@ -298,16 +525,35 @@ class WatchlistRepository:
         if not item:
             return False
 
+        db = self._get_db()
+        if db:
+            try:
+                if hard_delete:
+                    db.execute_mutation(
+                        "DELETE FROM watchlist_items WHERE item_id = %s AND tenant_id = %s;",
+                        (item_id, item.tenant_id),
+                        tenant_id=item.tenant_id,
+                    )
+                else:
+                    db.execute_mutation(
+                        "UPDATE watchlist_items SET is_active = FALSE WHERE item_id = %s AND tenant_id = %s;",
+                        (item_id, item.tenant_id),
+                        tenant_id=item.tenant_id,
+                    )
+            except Exception as e:
+                logger.debug("DB remove_item for %s failed: %s", item_id, e)
+
         path = self._items_dir(item.tenant_id, item.user_id) / f"item_{item_id}.json"
         if hard_delete:
             if path.is_file():
                 path.unlink()
                 return True
-            return False
+            return db is not None
         else:
             item.is_active = False
-            with open(path, "w", encoding="utf-8") as f:
-                json.dump(item.to_dict(), f, indent=2)
+            if path.is_file():
+                with open(path, "w", encoding="utf-8") as f:
+                    json.dump(item.to_dict(), f, indent=2)
             return True
 
     def list_items_by_watchlist(
@@ -320,6 +566,44 @@ class WatchlistRepository:
         """
         List all items in a watchlist.
         """
+        db = self._get_db()
+        if db:
+            try:
+                query = "SELECT item_id, watchlist_id, tenant_id, user_id, entity_type, entity_id, canonical_name, notes, is_active, created_at FROM watchlist_items WHERE watchlist_id = %s"
+                params: list[Any] = [watchlist_id]
+                if tenant_id:
+                    query += " AND tenant_id = %s"
+                    params.append(tenant_id)
+                if user_id:
+                    query += " AND user_id = %s"
+                    params.append(user_id)
+                if is_active is not None:
+                    query += " AND is_active = %s"
+                    params.append(is_active)
+                rows = db.execute_query(query, tuple(params), tenant_id=tenant_id)
+                if rows:
+                    res = []
+                    for r in rows:
+                        raw_type = r["entity_type"]
+                        etype = WatchlistEntityType(raw_type) if raw_type in WatchlistEntityType._value2member_map_ else raw_type
+                        res.append(
+                            WatchlistItem(
+                                item_id=r["item_id"],
+                                watchlist_id=r["watchlist_id"],
+                                tenant_id=r["tenant_id"],
+                                user_id=r["user_id"],
+                                entity_type=etype,
+                                entity_id=r["entity_id"],
+                                display_name=r.get("canonical_name") or "",
+                                notes=r.get("notes"),
+                                is_active=bool(r.get("is_active", True)),
+                                created_at=str(r.get("created_at")),
+                            )
+                        )
+                    return sorted(res, key=lambda i: i.created_at)
+            except Exception as e:
+                logger.debug("DB list_items_by_watchlist for %s failed: %s", watchlist_id, e)
+
         items: list[WatchlistItem] = []
         if tenant_id and user_id:
             items_dir = self._items_dir(tenant_id, user_id)
@@ -362,6 +646,41 @@ class WatchlistRepository:
             else str(entity_type).strip().upper()
         )
         eid = str(entity_id).strip()
+
+        db = self._get_db()
+        if db:
+            try:
+                query = "SELECT item_id, watchlist_id, tenant_id, user_id, entity_type, entity_id, canonical_name, notes, is_active, created_at FROM watchlist_items WHERE entity_type = %s AND LOWER(entity_id) = %s AND is_active = TRUE"
+                params: list[Any] = [etype, eid.lower()]
+                if tenant_id:
+                    query += " AND tenant_id = %s"
+                    params.append(tenant_id)
+                if user_id:
+                    query += " AND user_id = %s"
+                    params.append(user_id)
+                rows = db.execute_query(query, tuple(params), tenant_id=tenant_id)
+                if rows:
+                    res = []
+                    for r in rows:
+                        raw_type = r["entity_type"]
+                        etype_obj = WatchlistEntityType(raw_type) if raw_type in WatchlistEntityType._value2member_map_ else raw_type
+                        res.append(
+                            WatchlistItem(
+                                item_id=r["item_id"],
+                                watchlist_id=r["watchlist_id"],
+                                tenant_id=r["tenant_id"],
+                                user_id=r["user_id"],
+                                entity_type=etype_obj,
+                                entity_id=r["entity_id"],
+                                display_name=r.get("canonical_name") or "",
+                                notes=r.get("notes"),
+                                is_active=bool(r.get("is_active", True)),
+                                created_at=str(r.get("created_at")),
+                            )
+                        )
+                    return res
+            except Exception as e:
+                logger.debug("DB find_by_entity failed: %s", e)
 
         pattern = "*/*/items/item_*.json"
         if tenant_id and user_id:

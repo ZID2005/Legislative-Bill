@@ -1,4 +1,4 @@
-/**
+﻿/**
  * components/bills/WatchlistModal.tsx
  * ===================================
  * Modal dialog for subscribing a bill to a user watchlist.
@@ -113,24 +113,24 @@ export function WatchlistModal({ isOpen, onClose, bill }: WatchlistModalProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4 animate-fade-in"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-[var(--bg-base)]/80 backdrop-blur-sm p-4 animate-fade-in"
       role="dialog"
       aria-modal="true"
       aria-labelledby="watchlist-modal-title"
     >
-      <div className="w-full max-w-md rounded-xl border border-slate-700 bg-slate-900 p-5 shadow-2xl space-y-4">
+      <div className="w-full max-w-md rounded-xl border border-[var(--border-strong)] bg-[var(--bg-card)] p-5 shadow-2xl space-y-4">
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="flex items-center justify-between border-b border-[var(--border-default)] pb-3">
           <div className="flex items-center gap-2">
             <span className="text-base" aria-hidden="true">⭐</span>
-            <h3 id="watchlist-modal-title" className="text-sm font-bold text-slate-100">
+            <h3 id="watchlist-modal-title" className="text-sm font-bold text-[var(--text-primary)]">
               Add to Watchlist
             </h3>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="rounded-lg p-1 text-slate-400 hover:bg-slate-800 hover:text-white"
+            className="rounded-lg p-1 text-[var(--text-muted)] hover:bg-[var(--bg-elevated)] hover:text-white"
             aria-label="Close modal"
           >
             ✕
@@ -138,11 +138,11 @@ export function WatchlistModal({ isOpen, onClose, bill }: WatchlistModalProps) {
         </div>
 
         {/* Bill Snapshot */}
-        <div className="rounded-lg border border-slate-800 bg-slate-950/60 p-3 space-y-1">
-          <p className="text-xs font-semibold text-slate-200 line-clamp-2">
+        <div className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-base)]/60 p-3 space-y-1">
+          <p className="text-xs font-semibold text-[var(--text-primary)] line-clamp-2">
             {bill.title}
           </p>
-          <div className="flex items-center gap-2 text-[10px] text-slate-500">
+          <div className="flex items-center gap-2 text-[10px] text-[var(--text-faint)]">
             <span>{bill.jurisdiction === "central" ? "Central Parliament" : bill.state}</span>
             <span>·</span>
             <span>{bill.status}</span>
@@ -151,8 +151,8 @@ export function WatchlistModal({ isOpen, onClose, bill }: WatchlistModalProps) {
 
         {/* Content */}
         {loading ? (
-          <div className="py-8 text-center text-xs text-slate-400 space-y-2">
-            <div className="h-4 w-32 bg-slate-800 rounded mx-auto animate-pulse" />
+          <div className="py-8 text-center text-xs text-[var(--text-muted)] space-y-2">
+            <div className="h-4 w-32 bg-[var(--bg-elevated)] rounded mx-auto animate-pulse" />
             <p>Loading your watchlists...</p>
           </div>
         ) : successMsg ? (
@@ -167,7 +167,7 @@ export function WatchlistModal({ isOpen, onClose, bill }: WatchlistModalProps) {
             {/* Watchlist Options */}
             {!isCreatingNew && watchlists.length > 0 ? (
               <div className="space-y-2">
-                <label className="text-xs font-semibold text-slate-300 block">
+                <label className="text-xs font-semibold text-[var(--text-secondary)] block">
                   Select Target Watchlist:
                 </label>
                 <div className="space-y-1.5 max-h-48 overflow-y-auto pr-1">
@@ -176,8 +176,8 @@ export function WatchlistModal({ isOpen, onClose, bill }: WatchlistModalProps) {
                       key={wl.watchlist_id}
                       className={`flex items-center justify-between p-2.5 rounded-lg border cursor-pointer transition-colors ${
                         selectedId === wl.watchlist_id
-                          ? "border-blue-500 bg-blue-950/30 text-slate-100"
-                          : "border-slate-800 bg-slate-950/40 text-slate-400 hover:bg-slate-800/40"
+                          ? "border-blue-500 bg-blue-950/30 text-[var(--text-primary)]"
+                          : "border-[var(--border-default)] bg-[var(--bg-base)]/40 text-[var(--text-muted)] hover:bg-[var(--bg-elevated)]/40"
                       }`}
                     >
                       <div className="flex items-center gap-2">
@@ -196,7 +196,7 @@ export function WatchlistModal({ isOpen, onClose, bill }: WatchlistModalProps) {
                           </Badge>
                         )}
                       </div>
-                      <span className="text-[10px] text-slate-500 font-mono">
+                      <span className="text-[10px] text-[var(--text-faint)] font-mono">
                         {wl.items_count} items
                       </span>
                     </label>
@@ -215,7 +215,7 @@ export function WatchlistModal({ isOpen, onClose, bill }: WatchlistModalProps) {
               /* Create New Watchlist Form */
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <label className="text-xs font-semibold text-slate-300">
+                  <label className="text-xs font-semibold text-[var(--text-secondary)]">
                     Create New Watchlist
                   </label>
                   {watchlists.length > 0 && (
@@ -235,14 +235,14 @@ export function WatchlistModal({ isOpen, onClose, bill }: WatchlistModalProps) {
                     placeholder="Watchlist Name (e.g. Banking & Shipping Bills)"
                     value={newWlName}
                     onChange={(e) => setNewWlName(e.target.value)}
-                    className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:border-blue-500 focus:outline-none"
+                    className="w-full rounded-lg border border-[var(--border-strong)] bg-[var(--bg-base)] px-3 py-1.5 text-xs text-[var(--text-primary)] placeholder-[var(--input-placeholder)] focus:border-blue-500 focus:outline-none"
                   />
                   <input
                     type="text"
                     placeholder="Description (optional)"
                     value={newWlDesc}
                     onChange={(e) => setNewWlDesc(e.target.value)}
-                    className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:border-blue-500 focus:outline-none"
+                    className="w-full rounded-lg border border-[var(--border-strong)] bg-[var(--bg-base)] px-3 py-1.5 text-xs text-[var(--text-primary)] placeholder-[var(--input-placeholder)] focus:border-blue-500 focus:outline-none"
                   />
                 </div>
               </div>
@@ -253,7 +253,7 @@ export function WatchlistModal({ isOpen, onClose, bill }: WatchlistModalProps) {
             )}
 
             {/* Actions */}
-            <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-800">
+            <div className="flex items-center justify-end gap-2 pt-2 border-t border-[var(--border-default)]">
               <Button
                 variant="ghost"
                 size="sm"

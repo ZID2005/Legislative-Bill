@@ -1,14 +1,19 @@
 /**
  * components/ui/Badge.tsx
  * ========================
- * Versatile badge component and all domain-specific badge variants:
- * - Badge (base)
- * - StatusBadge (bill/system status)
- * - JurisdictionBadge (CENTRAL | STATE)
- * - SourceBadge (FACT | DERIVED | INTERPRETATION | PREDICTION)
- * - PredictionBadge (direction + confidence)
- * - ExposureBadge (exposure type/strength)
- * - CapabilityBadge (Level 1/2/3)
+ * Standardized institutional badge system for Seance.
+ *
+ * Implements:
+ * - Base Badge with dual-theme calibrated semantic tokens
+ * - JurisdictionBadge (Central vs State)
+ * - StatusBadge (Legislative & system statuses)
+ * - SourceBadge (Epistemic source taxonomy with descriptions)
+ * - PredictionBadge (Direction and confidence)
+ * - ExposureBadge (Direct/indirect, strength, type)
+ * - ModelStatusBadge (Strict statutory model status firewall)
+ *
+ * Epistemic guarantee: Badges combine symbolic/icon markers with explicit text
+ * labels and tooltips so meaning is never communicated through color alone.
  */
 
 import React from "react";
@@ -34,26 +39,40 @@ export type BadgeVariant =
   | "slate";
 
 const variantClasses: Record<BadgeVariant, string> = {
-  default: "bg-slate-800 text-slate-200 border border-slate-700",
-  primary: "bg-blue-900/60 text-blue-200 border border-blue-700/50",
-  blue: "bg-blue-900/60 text-blue-200 border border-blue-700/50",
-  success: "bg-emerald-900/60 text-emerald-200 border border-emerald-700/50",
-  warning: "bg-amber-900/60 text-amber-200 border border-amber-700/50",
-  danger: "bg-rose-900/60 text-rose-200 border border-rose-700/50",
-  info: "bg-sky-900/60 text-sky-200 border border-sky-700/50",
-  muted: "bg-slate-800/80 text-slate-400 border border-slate-700/50",
-  purple: "bg-purple-900/60 text-purple-200 border border-purple-700/50",
-  amber: "bg-amber-900/60 text-amber-200 border border-amber-700/50",
-  emerald: "bg-emerald-900/60 text-emerald-200 border border-emerald-700/50",
-  rose: "bg-rose-900/60 text-rose-200 border border-rose-700/50",
-  slate: "bg-slate-800 text-slate-300 border border-slate-600",
+  default:
+    "bg-[var(--bg-secondary)] text-[var(--text-secondary)] border-[var(--border-default)]",
+  primary:
+    "bg-[var(--action-primary)]/12 text-[var(--action-primary)] border-[var(--action-primary)]/30",
+  blue:
+    "bg-[var(--color-state)]/12 text-[var(--color-state)] border-[var(--color-state)]/30",
+  success:
+    "bg-[var(--color-success-bg)] text-[var(--color-success)] border-[var(--color-success-border)]",
+  warning:
+    "bg-[var(--color-warning)]/12 text-[var(--color-warning)] border-[var(--color-warning)]/30",
+  danger:
+    "bg-[var(--color-danger-bg)] text-[var(--color-danger)] border-[var(--color-danger-border)]",
+  info:
+    "bg-[var(--color-info-bg)] text-[var(--color-info)] border-[var(--color-info-border)]",
+  muted:
+    "bg-[var(--bg-secondary)] text-[var(--text-muted)] border-[var(--border-subtle)]",
+  purple:
+    "bg-[var(--color-model)]/12 text-[var(--color-model)] border-[var(--color-model)]/30",
+  amber:
+    "bg-[var(--color-warning)]/12 text-[var(--color-warning)] border-[var(--color-warning)]/30",
+  emerald:
+    "bg-[var(--color-success-bg)] text-[var(--color-success)] border-[var(--color-success-border)]",
+  rose:
+    "bg-[var(--color-danger-bg)] text-[var(--color-danger)] border-[var(--color-danger-border)]",
+  slate:
+    "bg-[var(--bg-secondary)] text-[var(--text-secondary)] border-[var(--border-default)]",
 };
 
-export interface BadgeProps {
+export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   children: React.ReactNode;
   variant?: BadgeVariant;
   size?: "xs" | "sm" | "md";
   className?: string;
+  icon?: React.ReactNode;
 }
 
 export function Badge({
@@ -61,6 +80,8 @@ export function Badge({
   variant = "default",
   size = "sm",
   className,
+  icon,
+  ...props
 }: BadgeProps) {
   const sizeClasses = {
     xs: "text-[10px] px-1.5 py-0.5",
@@ -71,12 +92,14 @@ export function Badge({
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1 rounded font-medium tracking-wide whitespace-nowrap",
+        "inline-flex items-center gap-1 rounded-md border font-medium tracking-wide whitespace-nowrap transition-colors select-none",
         variantClasses[variant],
         sizeClasses[size],
         className
       )}
+      {...props}
     >
+      {icon && <span aria-hidden="true" className="inline-flex items-center">{icon}</span>}
       {children}
     </span>
   );
@@ -97,14 +120,19 @@ export function JurisdictionBadge({
 }) {
   const isCentral = jurisdiction?.toLowerCase() === "central";
   return (
-    <Badge variant={isCentral ? "primary" : "info"} size={size}>
-      {isCentral ? "🏛 Central" : `🗺 ${state ?? "State"}`}
+    <Badge
+      variant={isCentral ? "primary" : "info"}
+      size={size}
+      aria-label={`Jurisdiction: ${isCentral ? "Central Parliament" : state ?? "State"}`}
+    >
+      <span aria-hidden="true">{isCentral ? "🏛" : "🗺"}</span>
+      <span>{isCentral ? "Central" : (state ?? "State")}</span>
     </Badge>
   );
 }
 
 // ---------------------------------------------------------------------------
-// StatusBadge — bill or system status
+// StatusBadge — Bill or System Status
 // ---------------------------------------------------------------------------
 
 const statusVariantMap: Record<string, BadgeVariant> = {
@@ -177,7 +205,7 @@ export function SourceBadge({
     <Badge
       variant={variant}
       size={size}
-      className="uppercase tracking-widest"
+      className="uppercase tracking-widest font-mono font-bold"
       {...(showTooltip && desc ? { title: desc } : {})}
     >
       {type}
@@ -186,7 +214,7 @@ export function SourceBadge({
 }
 
 // ---------------------------------------------------------------------------
-// PredictionBadge — direction and confidence
+// PredictionBadge — Direction and Confidence
 // ---------------------------------------------------------------------------
 
 export function PredictionBadge({
@@ -209,15 +237,16 @@ export function PredictionBadge({
   const arrow = dir === "POSITIVE" ? "↑" : dir === "NEGATIVE" ? "↓" : "→";
 
   return (
-    <Badge variant={variant} size={size}>
-      {arrow} {direction}
-      {confidence ? ` · ${confidence}` : ""}
+    <Badge variant={variant} size={size} className="font-mono">
+      <span aria-hidden="true">{arrow}</span>
+      <span>{direction}</span>
+      {confidence ? <span className="opacity-75"> · {confidence}</span> : null}
     </Badge>
   );
 }
 
 // ---------------------------------------------------------------------------
-// ExposureBadge — exposure type and strength
+// ExposureBadge — Exposure Vector and Strength
 // ---------------------------------------------------------------------------
 
 export function ExposureBadge({
@@ -303,9 +332,10 @@ export function ModelStatusBadge({
 
   return (
     <Badge variant={variant} size={size} className="font-mono tracking-tight font-semibold">
-      <span>{icon}</span>
+      <span aria-hidden="true">{icon}</span>
       <span>{displayLabel}</span>
     </Badge>
   );
 }
 
+export default Badge;

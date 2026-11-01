@@ -1,4 +1,4 @@
-/**
+﻿/**
  * components/bills/SectorIndustrySection.tsx
  * ===========================================
  * Task 8.27 Phase 7 — Sector & Industry Exposure.
@@ -38,7 +38,7 @@ export function SectorIndustrySection({
         <CardHeader>
           <CardTitle>Sector & Industry Footprint</CardTitle>
         </CardHeader>
-        <p className="text-xs text-slate-400 p-4">
+        <p className="text-xs text-[var(--text-muted)] p-4">
           No economic sector exposures mapped for this legislative measure.
         </p>
       </Card>
@@ -69,11 +69,11 @@ export function SectorIndustrySection({
                 MACRO SECTOR DIRECTORY
               </Badge>
             </div>
-            <p className="text-[11px] text-slate-500 mt-0.5">
+            <p className="text-[11px] text-[var(--text-faint)] mt-0.5">
               Verified mapping of affected economic sectors, industries, and regulated business activities.
             </p>
           </div>
-          <div className="flex items-center gap-1.5 text-[10px] text-slate-500 font-mono">
+          <div className="flex items-center gap-1.5 text-[10px] text-[var(--text-faint)] font-mono">
             <span>EVIDENCE-GROUNDED LINKAGE</span>
           </div>
         </div>
@@ -81,19 +81,19 @@ export function SectorIndustrySection({
 
       <div className="p-4 sm:p-5 space-y-4">
         {/* Exposure Classification Key */}
-        <div className="flex flex-wrap items-center gap-3 p-2.5 rounded-lg border border-slate-800 bg-slate-900/40 text-[11px] text-slate-400">
-          <span className="font-semibold text-slate-300">Exposure Classification:</span>
+        <div className="flex flex-wrap items-center gap-3 p-2.5 rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/40 text-[11px] text-[var(--text-muted)]">
+          <span className="font-semibold text-[var(--text-secondary)]">Exposure Classification:</span>
           <span className="flex items-center gap-1">
             <span className="h-2 w-2 rounded-full bg-blue-400" />
-            <strong className="text-slate-200">DIRECT</strong> — Primary statutory mandate
+            <strong className="text-[var(--text-primary)]">DIRECT</strong> — Primary statutory mandate
           </span>
           <span className="flex items-center gap-1">
             <span className="h-2 w-2 rounded-full bg-amber-400" />
-            <strong className="text-slate-200">INDIRECT</strong> — Supply chain / downstream
+            <strong className="text-[var(--text-primary)]">INDIRECT</strong> — Supply chain / downstream
           </span>
           <span className="flex items-center gap-1">
             <span className="h-2 w-2 rounded-full bg-slate-400" />
-            <strong className="text-slate-200">POTENTIAL</strong> — Thematic overlap
+            <strong className="text-[var(--text-primary)]">POTENTIAL</strong> — Thematic overlap
           </span>
         </div>
 
@@ -105,14 +105,14 @@ export function SectorIndustrySection({
             return (
               <div
                 key={idx}
-                className="p-4 rounded-xl border border-slate-800/80 bg-slate-900/30 hover:bg-slate-900/50 transition-colors space-y-3"
+                className="p-4 rounded-xl border border-[var(--border-default)]/80 bg-[var(--bg-card)]/30 hover:bg-[var(--bg-card)]/50 transition-colors space-y-3"
               >
                 <div className="flex items-start justify-between gap-2">
                   <div>
-                    <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider block">
+                    <span className="text-[10px] font-mono text-[var(--text-faint)] uppercase tracking-wider block">
                       Macro Sector
                     </span>
-                    <h4 className="text-sm font-semibold text-slate-100 mt-0.5">
+                    <h4 className="text-sm font-semibold text-[var(--text-primary)] mt-0.5">
                       {item.sector}
                     </h4>
                   </div>
@@ -124,14 +124,14 @@ export function SectorIndustrySection({
                 {/* Industries */}
                 {item.industries && item.industries.length > 0 && (
                   <div className="space-y-1">
-                    <span className="text-[11px] font-medium text-slate-400 block">
+                    <span className="text-[11px] font-medium text-[var(--text-muted)] block">
                       Affected Industries:
                     </span>
                     <div className="flex flex-wrap gap-1.5">
                       {item.industries.map((ind, i) => (
                         <span
                           key={i}
-                          className="px-2 py-0.5 rounded-md bg-slate-800 border border-slate-700/60 text-slate-300 text-[11px]"
+                          className="px-2 py-0.5 rounded-md bg-[var(--bg-elevated)] border border-[var(--border-strong)]/60 text-[var(--text-secondary)] text-[11px]"
                         >
                           {ind}
                         </span>
@@ -142,11 +142,11 @@ export function SectorIndustrySection({
 
                 {/* Regulated Business Activities */}
                 {item.business_activities && item.business_activities.length > 0 && (
-                  <div className="space-y-1 pt-2 border-t border-slate-800/60">
-                    <span className="text-[11px] font-medium text-slate-400 block">
+                  <div className="space-y-1 pt-2 border-t border-[var(--border-default)]/60">
+                    <span className="text-[11px] font-medium text-[var(--text-muted)] block">
                       Potentially Regulated Activities:
                     </span>
-                    <ul className="text-xs text-slate-300 space-y-0.5">
+                    <ul className="text-xs text-[var(--text-secondary)] space-y-0.5">
                       {item.business_activities.map((act, aIdx) => (
                         <li key={aIdx} className="flex items-center gap-1.5 text-[11px]">
                           <span className="text-blue-400">•</span>
@@ -159,7 +159,7 @@ export function SectorIndustrySection({
 
                 {/* Transmission Channel */}
                 {item.transmission_channel && (
-                  <p className="text-[11px] text-slate-400 italic pt-1 border-t border-slate-800/40">
+                  <p className="text-[11px] text-[var(--text-muted)] italic pt-1 border-t border-[var(--border-default)]/40">
                     Channel: {item.transmission_channel}
                   </p>
                 )}

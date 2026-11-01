@@ -1,4 +1,4 @@
-/**
+﻿/**
  * app/login/page.tsx
  * ==================
  * SaaS Authentication & Tenant Sign-In.
@@ -12,6 +12,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { authApi, AuthStatus } from "@/lib/api/auth";
+import { SeanceBrand } from "@/components/brand/SeanceBrand";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -64,17 +65,20 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-slate-950">
-      <div className="max-w-md w-full space-y-8 bg-slate-900/80 p-8 rounded-2xl border border-slate-800 shadow-2xl backdrop-blur">
+    <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-[var(--bg-base)]">
+      <div className="max-w-md w-full space-y-8 bg-[var(--bg-card)]/80 p-8 rounded-2xl border border-[var(--border-default)] shadow-2xl backdrop-blur">
         <div>
-          <div className="flex items-center justify-center gap-2 mb-2">
-            <span className="text-2xl">⚖</span>
-            <span className="text-xl font-bold tracking-tight text-white">LegisIntel</span>
+          <div className="flex items-center justify-center mb-3">
+            <SeanceBrand
+              size="lg"
+              href={null}
+              sublabel="Decision Intelligence"
+            />
           </div>
-          <h2 className="text-center text-2xl font-extrabold text-white">
+          <h2 className="text-center text-xl font-bold text-[var(--text-primary)]">
             Sign in to your organization
           </h2>
-          <p className="mt-2 text-center text-xs text-slate-400">
+          <p className="mt-1.5 text-center text-xs text-[var(--text-muted)]">
             India Legislative Intelligence &amp; Quantitative Analytics
           </p>
         </div>
@@ -93,7 +97,7 @@ export default function LoginPage() {
 
         <form className="mt-8 space-y-4" onSubmit={handleLogin}>
           <div>
-            <label className="block text-xs font-medium text-slate-300 mb-1" htmlFor="email">
+            <label className="block text-xs font-medium text-[var(--text-secondary)] mb-1" htmlFor="email">
               Work Email Address
             </label>
             <input
@@ -103,12 +107,12 @@ export default function LoginPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="analyst@institution.com"
-              className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 py-2 bg-[var(--bg-base)] border border-[var(--border-strong)] rounded-lg text-sm text-[var(--text-primary)] placeholder-[var(--input-placeholder)] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-medium text-slate-300 mb-1" htmlFor="password">
+            <label className="block text-xs font-medium text-[var(--text-secondary)] mb-1" htmlFor="password">
               Password
             </label>
             <input
@@ -118,34 +122,34 @@ export default function LoginPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••••••"
-              className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 py-2 bg-[var(--bg-base)] border border-[var(--border-strong)] rounded-lg text-sm text-[var(--text-primary)] placeholder-[var(--input-placeholder)] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
 
           <button
             type="submit"
             disabled={loading || success}
-            className="w-full py-2.5 px-4 border border-transparent rounded-lg text-sm font-semibold text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 transition-colors shadow-lg shadow-blue-600/30"
+            className="w-full py-2.5 px-4 border border-transparent rounded-lg text-sm font-semibold text-[var(--text-primary)] bg-blue-600 hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 transition-colors shadow-lg shadow-blue-600/30"
           >
             {loading ? "Authenticating…" : "Sign In"}
           </button>
         </form>
 
         {/* Evaluation Pre-sets */}
-        <div className="pt-2 border-t border-slate-800">
-          <p className="text-[11px] text-slate-400 mb-2 font-medium">Quick Evaluation Sign-In:</p>
+        <div className="pt-2 border-t border-[var(--border-default)]">
+          <p className="text-[11px] text-[var(--text-muted)] mb-2 font-medium">Quick Evaluation Sign-In:</p>
           <div className="flex gap-2">
             <button
               type="button"
               onClick={() => fillQuickDemo("admin")}
-              className="flex-1 py-1.5 px-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded text-[11px] text-slate-300 transition-colors"
+              className="flex-1 py-1.5 px-2 bg-[var(--bg-elevated)] hover:bg-[var(--bg-card-hover)] border border-[var(--border-strong)] rounded text-[11px] text-[var(--text-secondary)] transition-colors"
             >
               Default Admin
             </button>
             <button
               type="button"
               onClick={() => fillQuickDemo("member")}
-              className="flex-1 py-1.5 px-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded text-[11px] text-slate-300 transition-colors"
+              className="flex-1 py-1.5 px-2 bg-[var(--bg-elevated)] hover:bg-[var(--bg-card-hover)] border border-[var(--border-strong)] rounded text-[11px] text-[var(--text-secondary)] transition-colors"
             >
               Default Analyst
             </button>
@@ -153,20 +157,20 @@ export default function LoginPage() {
         </div>
 
         {/* IdP Boundary Disclosure */}
-        <div className="p-3 bg-slate-950/80 rounded-lg border border-slate-800/80 text-[11px] text-slate-400 space-y-1">
-          <div className="font-semibold text-slate-300 flex items-center gap-1.5">
+        <div className="p-3 bg-[var(--bg-base)]/80 rounded-lg border border-[var(--border-default)]/80 text-[11px] text-[var(--text-muted)] space-y-1">
+          <div className="font-semibold text-[var(--text-secondary)] flex items-center gap-1.5">
             <span>ℹ</span> Identity Provider Integration Boundary
           </div>
           <p>
             Mode: <span className="font-mono text-blue-400">{authStatus?.auth_mode || "INITIALIZING"}</span> ·{" "}
             SSO: <span className="font-mono text-amber-400">{authStatus?.sso_status || "NOT_CONFIGURED"}</span>
           </p>
-          <p className="text-slate-500">
+          <p className="text-[var(--text-faint)]">
             Enterprise Okta / SAML / Azure AD requires external IdP credentials. Standard HMAC/PBKDF2 session auth is currently active.
           </p>
         </div>
 
-        <div className="text-center text-xs text-slate-400">
+        <div className="text-center text-xs text-[var(--text-muted)]">
           Need an organization account?{" "}
           <Link href="/signup" className="text-blue-400 hover:text-blue-300 font-medium">
             Register New Tenant

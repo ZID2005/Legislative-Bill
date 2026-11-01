@@ -1,17 +1,20 @@
 /**
  * components/ui/SearchInput.tsx
  * =============================
- * Search input component with clear button and keyboard shortcut hint.
+ * Institutional search input with vector iconography, clear button,
+ * and keyboard shortcut indicator for Seance.
  */
 
 "use client";
 
 import React, { useRef } from "react";
 import { cn } from "@/lib/utils";
+import { SearchIcon, CloseIcon } from "./Icons";
 
 export interface SearchInputProps {
   value: string;
   onChange: (value: string) => void;
+  onClear?: () => void;
   onFocus?: () => void;
   placeholder?: string;
   className?: string;
@@ -23,6 +26,7 @@ export interface SearchInputProps {
 export function SearchInput({
   value,
   onChange,
+  onClear,
   onFocus,
   placeholder = "Search…",
   className,
@@ -33,20 +37,11 @@ export function SearchInput({
   const inputRef = useRef<HTMLInputElement>(null);
 
   return (
-    <div className={cn("relative flex items-center", className)}>
+    <div className={cn("relative flex items-center w-full", className)}>
       {/* Search icon */}
-      <svg
-        className="absolute left-3 h-4 w-4 text-slate-500 pointer-events-none"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth={2}
-        aria-hidden="true"
-      >
-        <circle cx="11" cy="11" r="8" />
-        <path d="m21 21-4.35-4.35" />
-      </svg>
+      <span className="absolute left-3 text-[var(--text-muted)] pointer-events-none inline-flex items-center" aria-hidden="true">
+        <SearchIcon size="sm" />
+      </span>
 
       <input
         ref={inputRef}
@@ -58,10 +53,10 @@ export function SearchInput({
         placeholder={placeholder}
         autoFocus={autoFocus}
         className={cn(
-          "w-full bg-slate-800/80 border border-slate-700 rounded-lg",
-          "pl-9 pr-10 py-2 text-sm text-slate-100 placeholder:text-slate-500",
-          "focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500",
-          "transition-colors duration-150"
+          "w-full bg-[var(--bg-secondary)] border border-[var(--border-default)] rounded-xl",
+          "pl-9 pr-10 py-2 text-sm text-[var(--text-primary)] placeholder-[var(--text-muted)]",
+          "focus:outline-none focus:ring-2 focus:ring-[var(--focus-ring)] focus:border-transparent",
+          "transition-all duration-150"
         )}
         aria-label={placeholder}
       />
@@ -73,25 +68,16 @@ export function SearchInput({
             type="button"
             onClick={() => {
               onChange("");
+              onClear?.();
               inputRef.current?.focus();
             }}
-            className="text-slate-500 hover:text-slate-300 transition-colors"
+            className="text-[var(--text-muted)] hover:text-[var(--text-primary)] p-0.5 rounded transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--focus-ring)]"
             aria-label="Clear search"
           >
-            <svg
-              className="h-4 w-4"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={2}
-              aria-hidden="true"
-            >
-              <path d="M18 6 6 18M6 6l12 12" />
-            </svg>
+            <CloseIcon size="xs" />
           </button>
         ) : shortcutHint ? (
-          <kbd className="hidden sm:inline-flex items-center gap-0.5 rounded border border-slate-700 bg-slate-800 px-1.5 py-0.5 text-[10px] font-mono text-slate-500">
+          <kbd className="hidden sm:inline-flex items-center gap-0.5 rounded border border-[var(--border-default)] bg-[var(--bg-card)] px-1.5 py-0.5 text-[10px] font-mono text-[var(--text-muted)] select-none">
             {shortcutHint}
           </kbd>
         ) : null}

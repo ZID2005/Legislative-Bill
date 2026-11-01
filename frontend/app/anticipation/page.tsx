@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Suspense } from "react";
 import AnticipationContent from "./AnticipationContent";
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function AnticipationPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-slate-950 p-8 text-slate-400">Loading anticipation analytics...</div>}>
+    <Suspense fallback={<div className="min-h-screen bg-[var(--bg-base)] p-8 text-[var(--text-muted)]">Loading anticipation analytics...</div>}>
       <AnticipationContent />
     </Suspense>
   );

@@ -1,12 +1,15 @@
 /**
  * components/ui/Skeleton.tsx
  * ==========================
- * Loading skeleton placeholders, EmptyState, and ErrorState components.
+ * Standardized loading skeleton placeholders, EmptyState, and ErrorState components.
+ * Dual-theme synchronized for light and dark modes with accessible recovery flows.
  */
 
 import React from "react";
 import { cn } from "@/lib/utils";
 import type { ApiError } from "@/lib/errors";
+import { AlertCircleIcon, AlertTriangleIcon } from "./Icons";
+import { Button } from "./Button";
 
 // ---------------------------------------------------------------------------
 // Skeleton
@@ -26,7 +29,7 @@ export function Skeleton({
   return (
     <div
       className={cn(
-        "animate-pulse rounded bg-slate-800",
+        "animate-pulse rounded-md bg-[var(--skeleton-bg)]",
         className
       )}
       style={{ height, width, ...style }}
@@ -41,7 +44,7 @@ export function SkeletonText({ lines = 3, className }: { lines?: number; classNa
       {Array.from({ length: lines }).map((_, i) => (
         <Skeleton
           key={i}
-          className="h-4"
+          className="h-3.5"
           width={i === lines - 1 ? "60%" : "100%"}
         />
       ))}
@@ -53,7 +56,7 @@ export function SkeletonCard({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "bg-slate-900 border border-slate-800 rounded-lg p-5 space-y-3",
+        "bg-[var(--bg-card)] border border-[var(--border-default)] rounded-xl p-5 space-y-3 shadow-xs",
         className
       )}
       aria-hidden="true"
@@ -82,9 +85,15 @@ export function SkeletonTable({
   className?: string;
 }) {
   return (
-    <div className={cn("space-y-0.5", className)} aria-hidden="true">
+    <div
+      className={cn(
+        "space-y-0.5 rounded-xl border border-[var(--border-default)] overflow-hidden bg-[var(--bg-surface)]",
+        className
+      )}
+      aria-hidden="true"
+    >
       {/* Header */}
-      <div className="flex gap-4 px-4 py-2 bg-slate-800/50 rounded-t">
+      <div className="flex gap-4 px-4 py-3 bg-[var(--bg-base)] border-b border-[var(--border-default)]">
         {Array.from({ length: columns }).map((_, i) => (
           <Skeleton key={i} className="h-3.5 flex-1" />
         ))}
@@ -93,7 +102,7 @@ export function SkeletonTable({
       {Array.from({ length: rows }).map((_, i) => (
         <div
           key={i}
-          className="flex gap-4 px-4 py-3 border-b border-slate-800"
+          className="flex gap-4 px-4 py-3.5 border-b border-[var(--border-subtle)] last:border-b-0"
         >
           {Array.from({ length: columns }).map((_, j) => (
             <Skeleton key={j} className="h-4 flex-1" style={{ opacity: 1 - i * 0.12 }} />
@@ -126,22 +135,23 @@ export function EmptyState({
   return (
     <div
       className={cn(
-        "flex flex-col items-center justify-center py-16 px-6 text-center",
+        "flex flex-col items-center justify-center py-16 px-6 text-center rounded-xl border border-dashed border-[var(--border-default)] bg-[var(--bg-secondary)]/30",
         className
       )}
       role="status"
     >
-      {icon && (
-        <div
-          className="text-4xl mb-4 text-slate-600"
-          aria-hidden="true"
-        >
+      {icon ? (
+        <div className="mb-4 text-[var(--text-muted)] inline-flex items-center" aria-hidden="true">
           {icon}
         </div>
+      ) : (
+        <div className="mb-4 p-3 rounded-full bg-[var(--bg-card)] border border-[var(--border-default)] text-[var(--text-muted)]" aria-hidden="true">
+          <AlertCircleIcon size="lg" />
+        </div>
       )}
-      <h3 className="text-base font-semibold text-slate-300 mb-2">{title}</h3>
+      <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-1.5">{title}</h3>
       {description && (
-        <p className="text-sm text-slate-500 max-w-md mb-6">{description}</p>
+        <p className="text-xs text-[var(--text-muted)] max-w-md mb-5 leading-relaxed">{description}</p>
       )}
       {action && <div>{action}</div>}
     </div>
@@ -149,7 +159,7 @@ export function EmptyState({
 }
 
 // ---------------------------------------------------------------------------
-// ErrorState (API errors)
+// ErrorState (API & Runtime Errors)
 // ---------------------------------------------------------------------------
 
 export interface ErrorStateProps {
@@ -169,27 +179,31 @@ export function ErrorState({ error, onRetry, className }: ErrorStateProps) {
   return (
     <div
       className={cn(
-        "flex flex-col items-center justify-center py-12 px-6 text-center",
+        "flex flex-col items-center justify-center py-12 px-6 text-center rounded-xl border border-[var(--color-danger-border)] bg-[var(--color-danger-bg)]",
         className
       )}
       role="alert"
       aria-live="polite"
     >
-      <div className="text-3xl mb-3 text-rose-500" aria-hidden="true">
-        ⚠
+      <div className="mb-3 text-[var(--color-danger)]" aria-hidden="true">
+        <AlertTriangleIcon size="lg" />
       </div>
-      <h3 className="text-sm font-semibold text-rose-300 mb-2">
+      <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-1">
         Unable to load data
       </h3>
-      <p className="text-sm text-slate-400 max-w-sm mb-5">{message}</p>
+      <p className="text-xs text-[var(--text-muted)] max-w-sm mb-4 leading-relaxed">{message}</p>
       {onRetry && (
-        <button
+        <Button
+          variant="outline"
+          size="sm"
           onClick={onRetry}
-          className="text-sm text-blue-400 hover:text-blue-300 underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
+          className="border-[var(--color-danger-border)] text-[var(--text-primary)] hover:bg-[var(--color-danger-bg)]"
         >
           Try again
-        </button>
+        </Button>
       )}
     </div>
   );
 }
+
+export default Skeleton;

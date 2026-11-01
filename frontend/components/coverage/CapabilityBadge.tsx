@@ -38,9 +38,9 @@ const levelConfig: Record<
   3: {
     label: "Planned Coverage",
     sublabel: "Level 3 — Roadmap (not yet ingested)",
-    colorClass: "text-slate-400",
-    borderClass: "border-slate-700",
-    dotClass: "bg-slate-500",
+    colorClass: "text-[var(--text-muted)]",
+    borderClass: "border-[var(--border-default)]",
+    dotClass: "bg-[var(--text-muted)]",
   },
 };
 
@@ -65,7 +65,7 @@ export function CapabilityBadge({
         "inline-flex items-center gap-1.5 rounded border px-2 py-0.5 font-medium",
         config.colorClass,
         config.borderClass,
-        "bg-slate-900/80",
+        "bg-[var(--bg-secondary)]",
         size === "xs" && "text-[10px]",
         size === "sm" && "text-xs",
         size === "md" && "text-sm",
@@ -121,9 +121,9 @@ const standardCoverageConfig: Record<
   REFERENCE: {
     label: "REFERENCE",
     sublabel: "Non-Predictive Reference Entity",
-    colorClass: "text-slate-400",
-    borderClass: "border-slate-700",
-    dotClass: "bg-slate-500",
+    colorClass: "text-[var(--text-muted)]",
+    borderClass: "border-[var(--border-default)]",
+    dotClass: "bg-[var(--text-muted)]",
   },
 };
 
@@ -149,7 +149,7 @@ export function CoverageBadge({
         "inline-flex items-center gap-1.5 rounded border px-2 py-0.5 font-bold uppercase tracking-wider",
         config.colorClass,
         config.borderClass,
-        "bg-slate-900/80",
+        "bg-[var(--bg-secondary)]",
         size === "xs" && "text-[9px]",
         size === "sm" && "text-[11px]",
         size === "md" && "text-xs",
@@ -217,14 +217,14 @@ export function PredictionAvailability({
   return (
     <div
       className={cn(
-        "inline-flex items-center gap-2 rounded-md border border-slate-700 bg-slate-800/40 px-3 py-1.5",
+        "inline-flex items-center gap-2 rounded-md border border-[var(--border-default)] bg-[var(--bg-secondary)] px-3 py-1.5",
         className
       )}
       role="status"
     >
-      <span className="w-2 h-2 rounded-full bg-slate-500" aria-hidden="true" />
-      <span className="text-xs text-slate-400">
-        No market predictions · <span className="text-slate-500">{reason}</span>
+      <span className="w-2 h-2 rounded-full bg-[var(--text-muted)]" aria-hidden="true" />
+      <span className="text-xs text-[var(--text-secondary)]">
+        No market predictions · <span className="text-[var(--text-muted)]">{reason}</span>
       </span>
     </div>
   );
@@ -355,29 +355,29 @@ export function CoverageStatus({
   return (
     <div
       className={cn(
-        "rounded-lg border border-slate-800 bg-slate-900 p-4",
+        "rounded-lg border border-[var(--border-default)] bg-[var(--bg-surface)] p-4",
         className
       )}
       aria-label="Platform coverage overview"
     >
-      <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">
+      <p className="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-3">
         Platform Coverage
       </p>
       <div className="space-y-1.5 text-xs">
         <div className="flex justify-between">
-          <span className="text-slate-400">Central bills</span>
-          <span className="font-semibold text-emerald-300">{centralBills} modelled</span>
+          <span className="text-[var(--text-secondary)]">Central bills</span>
+          <span className="font-semibold text-emerald-400 dark:text-emerald-300">{centralBills} modelled</span>
         </div>
         <div className="flex justify-between">
-          <span className="text-slate-400">State bills</span>
-          <span className="font-semibold text-blue-300">{stateBills} intelligence</span>
+          <span className="text-[var(--text-secondary)]">State bills</span>
+          <span className="font-semibold text-blue-400 dark:text-blue-300">{stateBills} intelligence</span>
         </div>
         <div className="flex justify-between">
-          <span className="text-slate-400">Companies</span>
-          <span className="font-semibold text-slate-200">{companies} tracked</span>
+          <span className="text-[var(--text-secondary)]">Companies</span>
+          <span className="font-semibold text-[var(--text-primary)]">{companies} tracked</span>
         </div>
-        <div className="flex justify-between border-t border-slate-800 pt-1.5">
-          <span className="text-slate-500">State stock predictions</span>
+        <div className="flex justify-between border-t border-[var(--border-default)] pt-1.5">
+          <span className="text-[var(--text-muted)]">State stock predictions</span>
           <Badge variant="slate" size="xs">
             {stateStockPredictions} · Statutory 0
           </Badge>

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * app/alerts/page.tsx
  * ===================
  * Production Alerts Center (Task 8.15).
@@ -116,7 +116,7 @@ export default function AlertsPage() {
         );
       default:
         return (
-          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">
+          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-[var(--bg-elevated)] text-[var(--text-muted)] border border-[var(--border-strong)]">
             {severity.toUpperCase()}
           </span>
         );
@@ -132,9 +132,9 @@ export default function AlertsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 p-6 sm:p-8 space-y-8">
+    <div className="min-h-screen bg-[var(--bg-base)] text-[var(--text-primary)] p-6 sm:p-8 space-y-8">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-800 pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-[var(--border-default)] pb-6">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="text-xl">🔔</span>
@@ -142,10 +142,10 @@ export default function AlertsPage() {
               Personalized Alerts Center
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-100">
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-primary)]">
             Legislative Alerts
           </h1>
-          <p className="text-sm text-slate-400 mt-1 max-w-2xl">
+          <p className="text-sm text-[var(--text-muted)] mt-1 max-w-2xl">
             Real-time change events and threshold triggers evaluated against your monitored bills, companies, and watchlists.
           </p>
         </div>
@@ -154,14 +154,14 @@ export default function AlertsPage() {
           {unreadCount > 0 && (
             <button
               onClick={handleMarkAllRead}
-              className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-lg border border-slate-700 transition-colors shadow-sm"
+              className="px-4 py-2 bg-[var(--bg-elevated)] hover:bg-[var(--bg-card-hover)] text-[var(--text-primary)] text-xs font-semibold rounded-lg border border-[var(--border-strong)] transition-colors shadow-sm"
             >
               ✓ Mark All As Read ({unreadCount})
             </button>
           )}
           <Link
             href="/settings"
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-lg transition-colors shadow-sm flex items-center gap-1.5"
+            className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-[var(--text-primary)] text-xs font-semibold rounded-lg transition-colors shadow-sm flex items-center gap-1.5"
           >
             <span>⚙</span>
             <span>Alert Preferences</span>
@@ -176,11 +176,11 @@ export default function AlertsPage() {
       )}
 
       {/* Filter Bar */}
-      <div className="bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-wrap items-center justify-between gap-4">
+      <div className="bg-[var(--bg-card)] border border-[var(--border-default)] rounded-xl p-4 flex flex-wrap items-center justify-between gap-4">
         {/* Status filter */}
         <div className="flex items-center gap-2">
-          <span className="text-xs text-slate-400">Status:</span>
-          <div className="flex rounded-lg bg-slate-950 p-1 border border-slate-800">
+          <span className="text-xs text-[var(--text-muted)]">Status:</span>
+          <div className="flex rounded-lg bg-[var(--bg-base)] p-1 border border-[var(--border-default)]">
             {(["ALL", "UNREAD", "ARCHIVED"] as const).map((st) => (
               <button
                 key={st}
@@ -189,7 +189,7 @@ export default function AlertsPage() {
                   setPage(1);
                 }}
                 className={`px-3 py-1 text-xs font-medium rounded-md transition-colors ${
-                  statusFilter === st ? "bg-blue-600 text-white" : "text-slate-400 hover:text-slate-200"
+                  statusFilter === st ? "bg-blue-600 text-[var(--text-primary)]" : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"
                 }`}
               >
                 {st}
@@ -200,14 +200,14 @@ export default function AlertsPage() {
 
         {/* Severity filter */}
         <div className="flex items-center gap-2">
-          <span className="text-xs text-slate-400">Severity:</span>
+          <span className="text-xs text-[var(--text-muted)]">Severity:</span>
           <select
             value={severityFilter}
             onChange={(e) => {
               setSeverityFilter(e.target.value);
               setPage(1);
             }}
-            className="bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-blue-500"
+            className="bg-[var(--bg-base)] border border-[var(--border-default)] rounded-lg px-3 py-1.5 text-xs text-[var(--text-primary)] focus:outline-none focus:border-blue-500"
           >
             <option value="ALL">All Severities</option>
             <option value="CRITICAL">Critical</option>
@@ -220,14 +220,14 @@ export default function AlertsPage() {
 
         {/* Entity type filter */}
         <div className="flex items-center gap-2">
-          <span className="text-xs text-slate-400">Entity:</span>
+          <span className="text-xs text-[var(--text-muted)]">Entity:</span>
           <select
             value={entityTypeFilter}
             onChange={(e) => {
               setEntityTypeFilter(e.target.value);
               setPage(1);
             }}
-            className="bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-blue-500"
+            className="bg-[var(--bg-base)] border border-[var(--border-default)] rounded-lg px-3 py-1.5 text-xs text-[var(--text-primary)] focus:outline-none focus:border-blue-500"
           >
             <option value="ALL">All Entities</option>
             <option value="BILL">Bills</option>
@@ -238,22 +238,22 @@ export default function AlertsPage() {
         </div>
 
         {/* Total count badge */}
-        <div className="text-xs text-slate-400">
-          Showing <strong className="text-slate-200">{alerts.length}</strong> of {total} alerts
+        <div className="text-xs text-[var(--text-muted)]">
+          Showing <strong className="text-[var(--text-primary)]">{alerts.length}</strong> of {total} alerts
         </div>
       </div>
 
       {/* Loading state */}
       {loading && (
-        <div className="p-12 text-center text-slate-500">Loading alerts feed...</div>
+        <div className="p-12 text-center text-[var(--text-faint)]">Loading alerts feed...</div>
       )}
 
       {/* Empty State */}
       {!loading && alerts.length === 0 && (
-        <div className="p-12 text-center bg-slate-900/50 rounded-2xl border border-slate-800 space-y-3 max-w-md mx-auto">
+        <div className="p-12 text-center bg-[var(--bg-card)]/50 rounded-2xl border border-[var(--border-default)] space-y-3 max-w-md mx-auto">
           <span className="text-3xl block">🔔</span>
-          <h3 className="text-base font-bold text-slate-100">No Alerts Found</h3>
-          <p className="text-xs text-slate-400 leading-relaxed">
+          <h3 className="text-base font-bold text-[var(--text-primary)]">No Alerts Found</h3>
+          <p className="text-xs text-[var(--text-muted)] leading-relaxed">
             No legislative alerts match your current filter settings. Any status updates or risk rating changes on your watched items will appear here.
           </p>
         </div>
@@ -267,19 +267,19 @@ export default function AlertsPage() {
               key={a.alert_event_id}
               className={`p-5 rounded-xl border transition-all flex flex-col md:flex-row md:items-center justify-between gap-4 ${
                 a.is_read
-                  ? "bg-slate-900/60 border-slate-800/80 opacity-90"
-                  : "bg-slate-900 border-blue-500/30 shadow-xs"
+                  ? "bg-[var(--bg-card)]/60 border-[var(--border-default)]/80 opacity-90"
+                  : "bg-[var(--bg-card)] border-blue-500/30 shadow-xs"
               }`}
             >
               <div className="space-y-1.5">
                 <div className="flex flex-wrap items-center gap-2">
                   {getSeverityBadge(a.severity)}
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700 uppercase">
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-[var(--bg-elevated)] text-[var(--text-secondary)] border border-[var(--border-strong)] uppercase">
                     {a.alert_type}
                   </span>
                   {a.entity_type && (
-                    <span className="text-xs font-medium text-slate-400">
-                      {a.entity_type}: <strong className="text-slate-200">{a.entity_id}</strong>
+                    <span className="text-xs font-medium text-[var(--text-muted)]">
+                      {a.entity_type}: <strong className="text-[var(--text-primary)]">{a.entity_id}</strong>
                     </span>
                   )}
                   {!a.is_read && (
@@ -287,7 +287,7 @@ export default function AlertsPage() {
                   )}
                 </div>
 
-                <h3 className="text-sm font-bold text-slate-100 hover:text-blue-400 transition-colors">
+                <h3 className="text-sm font-bold text-[var(--text-primary)] hover:text-blue-400 transition-colors">
                   {getDeepLink(a) !== "#" ? (
                     <Link href={getDeepLink(a)}>{a.title}</Link>
                   ) : (
@@ -295,17 +295,17 @@ export default function AlertsPage() {
                   )}
                 </h3>
 
-                <p className="text-xs text-slate-400 leading-relaxed max-w-4xl">
+                <p className="text-xs text-[var(--text-muted)] leading-relaxed max-w-4xl">
                   {a.summary}
                 </p>
 
-                <div className="text-[11px] text-slate-500 pt-1">
+                <div className="text-[11px] text-[var(--text-faint)] pt-1">
                   Triggered: {new Date(a.created_at).toLocaleString()}
                 </div>
               </div>
 
               {/* Action Buttons */}
-              <div className="flex items-center gap-2 flex-shrink-0 pt-2 md:pt-0 border-t md:border-t-0 border-slate-800">
+              <div className="flex items-center gap-2 flex-shrink-0 pt-2 md:pt-0 border-t md:border-t-0 border-[var(--border-default)]">
                 {getDeepLink(a) !== "#" && (
                   <Link
                     href={getDeepLink(a)}
@@ -319,7 +319,7 @@ export default function AlertsPage() {
                   <button
                     onClick={() => handleMarkRead(a.alert_event_id)}
                     title="Mark as read"
-                    className="px-3 py-1.5 text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg border border-slate-700 transition-colors"
+                    className="px-3 py-1.5 text-xs font-medium bg-[var(--bg-elevated)] hover:bg-[var(--bg-card-hover)] text-[var(--text-secondary)] rounded-lg border border-[var(--border-strong)] transition-colors"
                   >
                     Mark Read
                   </button>
@@ -328,7 +328,7 @@ export default function AlertsPage() {
                 <button
                   onClick={() => handleArchive(a.alert_event_id)}
                   title="Archive alert"
-                  className="px-3 py-1.5 text-xs font-medium bg-slate-800 hover:bg-red-950 text-slate-400 hover:text-red-300 rounded-lg border border-slate-700 hover:border-red-800 transition-colors"
+                  className="px-3 py-1.5 text-xs font-medium bg-[var(--bg-elevated)] hover:bg-red-950 text-[var(--text-muted)] hover:text-red-300 rounded-lg border border-[var(--border-strong)] hover:border-red-800 transition-colors"
                 >
                   Archive
                 </button>
@@ -344,17 +344,17 @@ export default function AlertsPage() {
           <button
             disabled={page <= 1}
             onClick={() => setPage((p) => Math.max(1, p - 1))}
-            className="px-3 py-1.5 text-xs bg-slate-900 border border-slate-800 rounded-lg text-slate-300 disabled:opacity-40"
+            className="px-3 py-1.5 text-xs bg-[var(--bg-card)] border border-[var(--border-default)] rounded-lg text-[var(--text-secondary)] disabled:opacity-40"
           >
             ← Previous
           </button>
-          <span className="text-xs text-slate-400">
+          <span className="text-xs text-[var(--text-muted)]">
             Page {page} of {Math.ceil(total / 20)}
           </span>
           <button
             disabled={page >= Math.ceil(total / 20)}
             onClick={() => setPage((p) => p + 1)}
-            className="px-3 py-1.5 text-xs bg-slate-900 border border-slate-800 rounded-lg text-slate-300 disabled:opacity-40"
+            className="px-3 py-1.5 text-xs bg-[var(--bg-card)] border border-[var(--border-default)] rounded-lg text-[var(--text-secondary)] disabled:opacity-40"
           >
             Next →
           </button>

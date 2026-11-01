@@ -1,4 +1,4 @@
-/**
+﻿/**
  * components/bills/LegislativeTimeline.tsx
  * =========================================
  * Task 8.27 Phase 3 — Chronological Legislative Event Timeline.
@@ -38,7 +38,7 @@ export function LegislativeTimeline({
             </Badge>
           </div>
         </CardHeader>
-        <p className="text-xs text-slate-400 p-4">
+        <p className="text-xs text-[var(--text-muted)] p-4">
           No authoritative procedural milestones recorded yet for this legislative measure.
         </p>
       </Card>
@@ -96,7 +96,7 @@ export function LegislativeTimeline({
         <div className="flex items-center justify-between w-full flex-wrap gap-2">
           <div>
             <CardTitle>Legislative Timeline</CardTitle>
-            <p className="text-[11px] text-slate-500 mt-0.5">
+            <p className="text-[11px] text-[var(--text-faint)] mt-0.5">
               Chronological milestones verified from official gazette, parliamentary, and assembly records.
             </p>
           </div>
@@ -104,7 +104,7 @@ export function LegislativeTimeline({
             <Badge variant="slate" size="xs">
               {timeline.length} VERIFIED STAGES
             </Badge>
-            <span className="text-[10px] text-slate-500 font-mono">
+            <span className="text-[10px] text-[var(--text-faint)] font-mono">
               ZERO INFERRED DATES
             </span>
           </div>
@@ -112,7 +112,7 @@ export function LegislativeTimeline({
       </CardHeader>
 
       <div className="p-4 sm:p-5">
-        <ol className="relative border-l border-slate-800 ml-3 space-y-6">
+        <ol className="relative border-l border-[var(--border-default)] ml-3 space-y-6">
           {timeline.map((event, idx) => {
             const variant = getStageBadgeVariant(event.stage);
             const icon = getStageIcon(event.stage);
@@ -120,43 +120,43 @@ export function LegislativeTimeline({
             return (
               <li key={event.event_id || idx} className="mb-6 ml-6 last:mb-0">
                 {/* Node icon circle */}
-                <span className="absolute -left-3.5 flex items-center justify-center w-7 h-7 rounded-full bg-slate-900 border border-slate-700 text-xs shadow-md">
+                <span className="absolute -left-3.5 flex items-center justify-center w-7 h-7 rounded-full bg-[var(--bg-card)] border border-[var(--border-strong)] text-xs shadow-md">
                   {icon}
                 </span>
 
-                <div className="p-3.5 rounded-lg border border-slate-800/80 bg-slate-900/40 hover:bg-slate-900/70 transition-colors space-y-2">
+                <div className="p-3.5 rounded-lg border border-[var(--border-default)]/80 bg-[var(--bg-card)]/40 hover:bg-[var(--bg-card)]/70 transition-colors space-y-2">
                   {/* Top row: Stage label + Date + Evidence Badge */}
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <div className="flex items-center gap-2">
-                      <span className="text-sm font-semibold text-slate-100">
+                      <span className="text-sm font-semibold text-[var(--text-primary)]">
                         {event.stage_label || event.stage}
                       </span>
                       <Badge variant={variant} size="xs">
                         {event.stage}
                       </Badge>
                     </div>
-                    <span className="text-xs font-mono font-medium text-slate-400">
+                    <span className="text-xs font-mono font-medium text-[var(--text-muted)]">
                       {event.date ? formatDate(event.date) : "Official date unnotified"}
                     </span>
                   </div>
 
                   {/* Description */}
                   {event.description && (
-                    <p className="text-xs text-slate-300 leading-relaxed">
+                    <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
                       {event.description}
                     </p>
                   )}
 
                   {/* Metadata footer: source authority, chamber, document reference */}
-                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-slate-500 pt-1 border-t border-slate-800/60">
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-[var(--text-faint)] pt-1 border-t border-[var(--border-default)]/60">
                     <div>
                       <span className="text-slate-600">Authority:</span>{" "}
-                      <span className="text-slate-400">{event.source_authority}</span>
+                      <span className="text-[var(--text-muted)]">{event.source_authority}</span>
                     </div>
                     {event.chamber && (
                       <div>
                         <span className="text-slate-600">Chamber:</span>{" "}
-                        <span className="text-slate-400">{event.chamber}</span>
+                        <span className="text-[var(--text-muted)]">{event.chamber}</span>
                       </div>
                     )}
                     <div>

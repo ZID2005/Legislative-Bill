@@ -2,8 +2,10 @@
 
 import React, { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { Card } from "@/components/ui/Card";
 import { Badge, SourceBadge, JurisdictionBadge } from "@/components/ui/Badge";
+import { EpistemicBadge } from "@/components/ui/EpistemicBadge";
 import { Button } from "@/components/ui/Button";
 import { SearchInput } from "@/components/ui/SearchInput";
 import { Pagination } from "@/components/ui/Pagination";
@@ -21,14 +23,16 @@ import type {
 const MANDATORY_LEGAL_DISCLAIMER =
   "Pre-event diagnostics measure aggregate public information diffusion only. They do not allege or imply insider trading or illicit market conduct under securities law.";
 
-const TIER_COLORS: Record<string, { bg: string; text: string; border: string; bar: string }> = {
-  NO_EVIDENCE: { bg: "bg-slate-900/60", text: "text-slate-400", border: "border-slate-800", bar: "bg-slate-500" },
-  WEAK_EVIDENCE: { bg: "bg-blue-950/40", text: "text-blue-400", border: "border-blue-800/60", bar: "bg-blue-500" },
-  MODERATE_EVIDENCE: { bg: "bg-amber-950/40", text: "text-amber-400", border: "border-amber-800/60", bar: "bg-amber-500" },
-  STRONG_EVIDENCE: { bg: "bg-indigo-950/40", text: "text-indigo-400", border: "border-indigo-800/60", bar: "bg-indigo-500" },
+const TIER_COLORS: Record<string, { bg: string; text: string; border: string; bar: string; glyph: string }> = {
+  NO_EVIDENCE: { bg: "bg-[var(--bg-card)]", text: "text-[var(--text-muted)]", border: "border-[var(--border-subtle)]", bar: "bg-slate-500", glyph: "○" },
+  WEAK_EVIDENCE: { bg: "bg-blue-950/20", text: "text-blue-400", border: "border-blue-800/40", bar: "bg-blue-500", glyph: "◔" },
+  MODERATE_EVIDENCE: { bg: "bg-amber-950/20", text: "text-amber-400", border: "border-amber-800/40", bar: "bg-amber-500", glyph: "◑" },
+  STRONG_EVIDENCE: { bg: "bg-indigo-950/20", text: "text-indigo-400", border: "border-indigo-800/40", bar: "bg-indigo-500", glyph: "●" },
 };
 
 export default function AnticipationContent() {
+  const searchParams = useSearchParams();
+
   // Data state
   const [summary, setSummary] = useState<AnticipationSummaryResponse | null>(null);
   const [tableData, setTableData] = useState<PaginatedResponse<AnticipationItem> | null>(null);
@@ -38,11 +42,22 @@ export default function AnticipationContent() {
 
   // Filters
   const [page, setPage] = useState(1);
-  const [billQuery, setBillQuery] = useState("");
-  const [companyQuery, setCompanyQuery] = useState("");
+  const [billQuery, setBillQuery] = useState(searchParams.get("bill_id") || "");
+  const [companyQuery, setCompanyQuery] = useState(searchParams.get("company_isin") || "");
   const [selectedTier, setSelectedTier] = useState("ALL");
   const [flaggedOnly, setFlaggedOnly] = useState(false);
   const [selectedSector, setSelectedSector] = useState("ALL");
+
+  // Selected pair for active evidence inspection
+  const [activeEvidencePair, setActiveEvidencePair] = useState<{
+    billId: string;
+    companyIsin?: string;
+    companyName?: string;
+  }>({
+    billId: "the-banking-laws-amendment-bill-2024",
+    companyIsin: "INE002A01018",
+    companyName: "State Bank of India",
+  });
 
   // AI Analyst state
   const [aiQuestion, setAiQuestion] = useState("");
@@ -83,6 +98,15 @@ export default function AnticipationContent() {
       .then((res) => {
         setTableData(res);
         setTableLoading(false);
+        // If results exist and active pair is default, pick the first row for inspection
+        if (res && res.items && res.items.length > 0 && billQuery.trim()) {
+          const first = res.items[0];
+          setActiveEvidencePair({
+            billId: first.bill_id,
+            companyIsin: first.company_isin,
+            companyName: first.company_name || undefined,
+          });
+        }
       })
       .catch((err) => {
         setError(err?.message || "Failed to query anticipation records.");
@@ -126,22 +150,23 @@ export default function AnticipationContent() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 pb-20">
-      {/* Header */}
-      <header className="border-b border-slate-800 bg-slate-900/60 backdrop-blur-md sticky top-0 z-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+    <div className="min-h-screen bg-[var(--bg-base)] text-[var(--text-primary)] pb-24">
+      {/* Editorial Header */}
+      <header className="border-b border-[var(--border-default)] bg-[var(--bg-card)]/80 backdrop-blur-md sticky top-14 z-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
-              <div className="flex items-center gap-3">
-                <h1 className="text-2xl font-bold tracking-tight text-slate-100 flex items-center gap-2">
-                  <span className="text-indigo-400">🔍</span> Pre-Event Information Diffusion
+              <div className="flex items-center gap-2.5 flex-wrap">
+                <span className="text-[var(--color-model)] font-mono text-base" aria-hidden="true">🔍</span>
+                <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[var(--text-primary)]">
+                  Pre-Event Information Diffusion
                 </h1>
-                <SourceBadge type="DERIVED" size="sm" showTooltip />
+                <EpistemicBadge type="DERIVED" size="sm" />
                 <Badge variant="primary" size="xs">
                   Central Level 1
                 </Badge>
               </div>
-              <p className="text-xs text-slate-400 mt-1 max-w-3xl leading-relaxed">
+              <p className="text-xs text-[var(--text-muted)] mt-1 max-w-3xl leading-relaxed">
                 Evaluates pre-introduction market diffusion across 940 bill-company pairs (20 Central Parliament bills × 47 listed securities).
                 Measures pre-event abnormal returns and volume ratios across 5 temporal pre-event trading windows.
               </p>
@@ -149,17 +174,17 @@ export default function AnticipationContent() {
 
             <div className="flex items-center gap-2 flex-wrap">
               <Link href="/predictions">
-                <Button variant="outline" size="sm" className="border-slate-700 hover:bg-slate-800 text-xs">
+                <Button variant="outline" size="xs" className="border-[var(--border-strong)] hover:bg-[var(--bg-elevated)] text-xs h-8">
                   📊 Predictions
                 </Button>
               </Link>
               <Link href="/risk">
-                <Button variant="outline" size="sm" className="border-slate-700 hover:bg-slate-800 text-xs">
+                <Button variant="outline" size="xs" className="border-[var(--border-strong)] hover:bg-[var(--bg-elevated)] text-xs h-8">
                   ⚠️ Risk Analytics
                 </Button>
               </Link>
               <Link href="/explorer">
-                <Button variant="outline" size="sm" className="border-slate-700 hover:bg-slate-800 text-xs">
+                <Button variant="outline" size="xs" className="border-[var(--border-strong)] hover:bg-[var(--bg-elevated)] text-xs h-8">
                   🏛 Legislative Explorer
                 </Button>
               </Link>
@@ -170,23 +195,24 @@ export default function AnticipationContent() {
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 space-y-8">
         {/* MANDATORY VERBATIM STATUTORY LEGAL DISCLAIMER (TOP) */}
-        <div className="p-4 rounded-xl border border-indigo-900/60 bg-indigo-950/20 text-indigo-200 text-xs flex items-start gap-3 shadow-inner">
-          <span className="text-base flex-shrink-0 mt-0.5">⚖️</span>
+        <section aria-label="Statutory Research Notice" className="p-4 rounded-xl border border-indigo-900/40 bg-indigo-950/20 text-indigo-200 text-xs flex items-start gap-3 shadow-sm">
+          <span className="text-base flex-shrink-0 mt-0.5" aria-hidden="true">⚖️</span>
           <div className="space-y-1">
-            <p className="font-semibold text-indigo-300 uppercase tracking-wider text-[10px]">
-              Statutory Research Notice & Regulatory Disclaimer
+            <p className="font-semibold text-indigo-300 uppercase tracking-wider text-[10px] flex items-center gap-2">
+              <span>Statutory Research Notice & Regulatory Disclaimer</span>
+              <span className="text-[9px] font-mono text-indigo-400/80">[RESEARCH_INVARIANT]</span>
             </p>
-            <p className="leading-relaxed text-[11px] font-medium text-slate-200">
+            <p className="leading-relaxed text-[11px] font-medium text-[var(--text-primary)]">
               &ldquo;{MANDATORY_LEGAL_DISCLAIMER}&rdquo;
             </p>
           </div>
-        </div>
+        </section>
 
         {/* SECTION A: Verified Coverage Baseline & Key Metrics */}
         {summaryLoading ? (
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
             {[1, 2, 3, 4, 5].map((i) => (
-              <Skeleton key={i} className="h-24 w-full" />
+              <Skeleton key={i} className="h-24 w-full rounded-lg" />
             ))}
           </div>
         ) : summary ? (
@@ -195,56 +221,56 @@ export default function AnticipationContent() {
               Coverage Baseline
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-              <Card className="p-4 bg-slate-900/80 border-slate-800">
-                <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block">
+              <Card className="p-4 bg-[var(--bg-card)] border-[var(--border-default)] shadow-sm">
+                <span className="text-[10px] font-semibold text-[var(--text-muted)] uppercase tracking-wider block">
                   Evaluated Pairs
                 </span>
-                <p className="text-2xl font-bold font-mono text-slate-100 mt-1">
+                <p className="text-2xl font-bold font-mono tabular-nums text-[var(--text-primary)] mt-1">
                   {summary.total_pairs}
                 </p>
-                <p className="text-[10px] text-slate-500 mt-0.5">20 Bills × 47 Securities</p>
+                <p className="text-[10px] text-[var(--text-faint)] mt-0.5">20 Bills × 47 Securities</p>
               </Card>
 
-              <Card className="p-4 bg-slate-900/80 border-slate-800">
-                <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block">
+              <Card className="p-4 bg-[var(--bg-card)] border-[var(--border-default)] shadow-sm">
+                <span className="text-[10px] font-semibold text-[var(--text-muted)] uppercase tracking-wider block">
                   Diffusion Flags
                 </span>
-                <p className="text-2xl font-bold font-mono text-indigo-400 mt-1">
+                <p className="text-2xl font-bold font-mono tabular-nums text-indigo-400 mt-1">
                   {summary.flagged_pairs_count}
                 </p>
-                <p className="text-[10px] text-slate-500 mt-0.5">
+                <p className="text-[10px] text-[var(--text-faint)] mt-0.5 font-mono tabular-nums">
                   {((summary.flagged_pairs_count / summary.total_pairs) * 100).toFixed(1)}% of evaluated pairs
                 </p>
               </Card>
 
-              <Card className="p-4 bg-slate-900/80 border-slate-800">
-                <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block">
+              <Card className="p-4 bg-[var(--bg-card)] border-[var(--border-default)] shadow-sm">
+                <span className="text-[10px] font-semibold text-[var(--text-muted)] uppercase tracking-wider block">
                   Mean Anticipation Score
                 </span>
-                <p className="text-2xl font-bold font-mono text-slate-200 mt-1">
+                <p className="text-2xl font-bold font-mono tabular-nums text-[var(--text-primary)] mt-1">
                   {(summary.avg_anticipation_score * 100).toFixed(1)}%
                 </p>
-                <p className="text-[10px] text-slate-500 mt-0.5">Composite diffusion index</p>
+                <p className="text-[10px] text-[var(--text-faint)] mt-0.5">Composite diffusion index</p>
               </Card>
 
-              <Card className="p-4 bg-slate-900/80 border-slate-800">
-                <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block">
+              <Card className="p-4 bg-[var(--bg-card)] border-[var(--border-default)] shadow-sm">
+                <span className="text-[10px] font-semibold text-[var(--text-muted)] uppercase tracking-wider block">
                   Mean Market Signal
                 </span>
-                <p className="text-2xl font-bold font-mono text-amber-400 mt-1">
+                <p className="text-2xl font-bold font-mono tabular-nums text-amber-400 mt-1">
                   {(summary.avg_market_signal * 100).toFixed(1)}%
                 </p>
-                <p className="text-[10px] text-slate-500 mt-0.5">Pre-event volume ratio</p>
+                <p className="text-[10px] text-[var(--text-faint)] mt-0.5">Pre-event volume ratio</p>
               </Card>
 
-              <Card className="p-4 bg-slate-900/80 border-slate-800">
-                <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block">
+              <Card className="p-4 bg-[var(--bg-card)] border-[var(--border-default)] shadow-sm">
+                <span className="text-[10px] font-semibold text-[var(--text-muted)] uppercase tracking-wider block">
                   Mean Info Signal
                 </span>
-                <p className="text-2xl font-bold font-mono text-blue-400 mt-1">
+                <p className="text-2xl font-bold font-mono tabular-nums text-blue-400 mt-1">
                   {(summary.avg_information_signal * 100).toFixed(1)}%
                 </p>
-                <p className="text-[10px] text-slate-500 mt-0.5">Public news diffusion</p>
+                <p className="text-[10px] text-[var(--text-faint)] mt-0.5">Public news diffusion</p>
               </Card>
             </div>
           </section>
@@ -252,18 +278,18 @@ export default function AnticipationContent() {
 
         {/* SECTION B: 4 Neutral Classification Tiers */}
         {summary && (
-          <section className="bg-slate-900/90 border border-slate-800 rounded-xl p-5 shadow-lg space-y-4">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+          <section className="bg-[var(--bg-card)] border border-[var(--border-default)] rounded-xl p-5 shadow-sm space-y-4" aria-labelledby="diffusion-spectrum-heading">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[var(--border-subtle)] pb-3">
               <div>
-                <h3 className="text-sm font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
+                <h3 id="diffusion-spectrum-heading" className="text-xs font-bold text-[var(--text-primary)] uppercase tracking-wider flex items-center gap-2">
                   <span>📊</span> 4-Tier Neutral Information Diffusion Spectrum
                 </h3>
-                <p className="text-xs text-slate-400 mt-0.5">
+                <p className="text-xs text-[var(--text-muted)] mt-0.5">
                   Classifies pairs into neutral statistical bands based on composite pre-event indicators.
                 </p>
               </div>
-              <span className="text-[11px] text-slate-500 font-mono">
-                No Evidence (&lt;0.25) to Strong Evidence (≥0.75)
+              <span className="text-[11px] text-[var(--text-faint)] font-mono">
+                No Evidence (&lt;0.25) · Weak (0.25–0.50) · Moderate (0.50–0.75) · Strong (≥0.75)
               </span>
             </div>
 
@@ -283,26 +309,26 @@ export default function AnticipationContent() {
                 return (
                   <Card
                     key={tier}
-                    className={`p-4 ${style.bg} border ${style.border} transition-transform hover:scale-[1.01]`}
+                    className={`p-4 ${style.bg} border ${style.border} transition-colors`}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-[10px] uppercase tracking-wider font-semibold text-slate-400">
+                      <span className="text-[10px] uppercase tracking-wider font-semibold text-[var(--text-muted)]">
                         {label}
                       </span>
-                      <span className="text-[10px] font-mono text-slate-500">{range}</span>
+                      <span className="text-[10px] font-mono text-[var(--text-faint)]">{range}</span>
                     </div>
-                    <p className={`text-2xl font-bold mt-2 font-mono ${style.text}`}>
+                    <p className={`text-2xl font-bold mt-1.5 font-mono tabular-nums ${style.text}`}>
                       {count.toLocaleString()}
                     </p>
-                    <p className="text-[11px] text-slate-400 mt-1">{pct.toFixed(1)}% of total</p>
-                    <p className="text-[10px] text-slate-500 mt-1 leading-snug">{desc}</p>
+                    <p className="text-[11px] text-[var(--text-muted)] mt-0.5 font-mono tabular-nums">{pct.toFixed(1)}% of total</p>
+                    <p className="text-[10px] text-[var(--text-faint)] mt-1 leading-snug">{desc}</p>
                   </Card>
                 );
               })}
             </div>
 
             {/* Stacked Proportional Bar */}
-            <div className="w-full h-3 bg-slate-900 rounded-full overflow-hidden flex shadow-inner border border-slate-800">
+            <div className="w-full h-2.5 bg-[var(--bg-base)] rounded-full overflow-hidden flex shadow-inner border border-[var(--border-subtle)]">
               {(["NO_EVIDENCE", "WEAK_EVIDENCE", "MODERATE_EVIDENCE", "STRONG_EVIDENCE"] as const).map(
                 (tier) => {
                   const count = summary.classification_distribution[tier] || 0;
@@ -322,17 +348,17 @@ export default function AnticipationContent() {
           </section>
         )}
 
-        {/* SECTION C: Pre-Event Trading Windows CAR Statistics */}
+        {/* SECTION C: Pre-Event Trading Windows CAR Statistics (Chronological Context) */}
         {summary && summary.window_stats_distribution.length > 0 && (
-          <section className="bg-slate-900/90 border border-slate-800 rounded-xl p-5 shadow-lg space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+          <section className="bg-[var(--bg-card)] border border-[var(--border-default)] rounded-xl p-5 shadow-sm space-y-4" aria-labelledby="car-windows-heading">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[var(--border-subtle)] pb-3">
               <div className="flex items-center gap-2">
-                <h3 className="text-base font-bold text-slate-100 flex items-center gap-2">
+                <h3 id="car-windows-heading" className="text-xs font-bold text-[var(--text-primary)] uppercase tracking-wider flex items-center gap-2">
                   <span>⏱</span> Pre-Event Trading Windows CAR Statistics
                 </h3>
-                <SourceBadge type="DERIVED" size="xs" />
+                <EpistemicBadge type="DERIVED" size="sm" />
               </div>
-              <span className="text-xs text-slate-400">
+              <span className="text-xs text-[var(--text-muted)] font-mono">
                 Evaluating {summary.window_stats_distribution.length} pre-announcement horizons
               </span>
             </div>
@@ -341,39 +367,39 @@ export default function AnticipationContent() {
               {summary.window_stats_distribution.map((ws) => (
                 <div
                   key={ws.window}
-                  className="p-4 rounded-xl bg-slate-950 border border-slate-800/80 space-y-2.5"
+                  className="p-3.5 rounded-xl bg-[var(--bg-base)] border border-[var(--border-subtle)] space-y-2 hover:border-[var(--border-strong)] transition-colors"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-mono font-bold text-xs text-indigo-400 bg-indigo-950/50 px-2 py-0.5 rounded border border-indigo-800/60">
+                    <span className="font-mono font-bold text-xs text-[var(--color-model)] bg-[var(--color-model)]/10 px-2 py-0.5 rounded border border-[var(--color-model)]/30">
                       {ws.window}
                     </span>
-                    <span className="text-[10px] text-slate-500">{ws.observation_count} obs</span>
+                    <span className="text-[10px] text-[var(--text-muted)] font-mono tabular-nums">{ws.observation_count} obs</span>
                   </div>
 
                   <div className="space-y-1 text-xs">
-                    <div className="flex justify-between">
-                      <span className="text-slate-400">Mean CAR:</span>
+                    <div className="flex justify-between items-center">
+                      <span className="text-[var(--text-muted)] text-[11px]">Mean CAR:</span>
                       <span
-                        className={`font-mono font-bold ${
+                        className={`font-mono tabular-nums font-bold text-xs ${
                           ws.mean_car > 0
-                            ? "text-emerald-400"
+                            ? "text-[var(--color-positive)]"
                             : ws.mean_car < 0
-                            ? "text-rose-400"
-                            : "text-slate-300"
+                            ? "text-[var(--color-negative)]"
+                            : "text-[var(--text-secondary)]"
                         }`}
                       >
                         {(ws.mean_car * 100).toFixed(2)}%
                       </span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-slate-400">Mean MAR:</span>
-                      <span className="font-mono text-slate-300">
+                    <div className="flex justify-between items-center">
+                      <span className="text-[var(--text-muted)] text-[11px]">Mean MAR:</span>
+                      <span className="font-mono tabular-nums text-[var(--text-secondary)] text-xs">
                         {(ws.mean_mar * 100).toFixed(3)}%
                       </span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-slate-400">Sig. Pairs:</span>
-                      <span className="font-mono text-amber-400 font-semibold">
+                    <div className="flex justify-between items-center">
+                      <span className="text-[var(--text-muted)] text-[11px]">Sig. Pairs:</span>
+                      <span className="font-mono tabular-nums text-[var(--color-warning)] font-semibold text-xs">
                         {ws.significant_pairs_count}
                       </span>
                     </div>
@@ -386,34 +412,34 @@ export default function AnticipationContent() {
 
         {/* SECTION D: Top Flagged Diffusion Pairs */}
         {summary && summary.top_flagged_pairs.length > 0 && (
-          <section className="bg-slate-900/90 border border-slate-800 rounded-xl p-5 shadow-lg space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+          <section className="bg-[var(--bg-card)] border border-[var(--border-default)] rounded-xl p-5 shadow-sm space-y-4" aria-labelledby="flagged-pairs-heading">
+            <div className="flex items-center justify-between border-b border-[var(--border-subtle)] pb-3">
               <div className="flex items-center gap-2">
-                <h3 className="text-base font-bold text-slate-100 flex items-center gap-2">
+                <h3 id="flagged-pairs-heading" className="text-xs font-bold text-[var(--text-primary)] uppercase tracking-wider flex items-center gap-2">
                   <span>🚩</span> Highest Diffusion Pairs
                 </h3>
                 <Badge variant="warning" size="xs">
                   Public Diffusion Focus
                 </Badge>
               </div>
-              <span className="text-xs text-slate-400">Top 10 Ranked by Score</span>
+              <span className="text-xs text-[var(--text-muted)] font-mono">Top 10 Ranked by Score</span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
               {summary.top_flagged_pairs.map((p) => (
                 <div
                   key={`${p.bill_id}-${p.company_isin}`}
-                  className="p-4 rounded-xl bg-slate-950 border border-slate-800/80 space-y-2 hover:border-slate-700 transition-colors"
+                  className="p-3.5 rounded-xl bg-[var(--bg-base)] border border-[var(--border-subtle)] space-y-2 hover:border-[var(--border-strong)] transition-colors"
                 >
                   <div className="flex items-start justify-between gap-2">
                     <div>
                       <Link
                         href={`/companies/${p.company_isin}`}
-                        className="text-xs font-bold text-slate-200 hover:text-blue-400 hover:underline"
+                        className="text-xs font-bold text-[var(--text-primary)] hover:text-blue-400 hover:underline"
                       >
                         {p.company_name}
                       </Link>
-                      <span className="block text-[10px] text-slate-500 font-mono">
+                      <span className="block text-[10px] text-[var(--text-faint)] font-mono">
                         {p.company_isin} ({p.company_symbol})
                       </span>
                     </div>
@@ -422,7 +448,7 @@ export default function AnticipationContent() {
                     </Badge>
                   </div>
 
-                  <div className="text-xs text-slate-400">
+                  <div className="text-xs text-[var(--text-muted)] truncate">
                     <span>Bill: </span>
                     <Link
                       href={`/bills/${p.bill_id}`}
@@ -433,17 +459,41 @@ export default function AnticipationContent() {
                   </div>
 
                   {p.detected_signals.length > 0 && (
-                    <div className="flex flex-wrap gap-1 pt-1">
+                    <div className="flex flex-wrap gap-1 pt-0.5">
                       {p.detected_signals.slice(0, 3).map((sig, idx) => (
                         <span
                           key={idx}
-                          className="text-[10px] px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-400"
+                          className="text-[10px] px-1.5 py-0.5 rounded bg-[var(--bg-card)] border border-[var(--border-subtle)] text-[var(--text-muted)] font-mono"
                         >
                           {sig}
                         </span>
                       ))}
                     </div>
                   )}
+
+                  <div className="pt-2 border-t border-[var(--border-subtle)] flex items-center justify-between text-xs">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setActiveEvidencePair({
+                          billId: p.bill_id,
+                          companyIsin: p.company_isin,
+                          companyName: p.company_name,
+                        });
+                        const el = document.getElementById("evidence-enrichment");
+                        if (el) el.scrollIntoView({ behavior: "smooth" });
+                      }}
+                      className="text-[11px] text-indigo-400 hover:text-indigo-300 font-medium"
+                    >
+                      Inspect Evidence ↓
+                    </button>
+                    <Link
+                      href={`/predictions?bill_id=${encodeURIComponent(p.bill_id)}&company_isin=${encodeURIComponent(p.company_isin)}`}
+                      className="text-[11px] text-[var(--text-muted)] hover:text-[var(--text-primary)]"
+                    >
+                      View Model →
+                    </Link>
+                  </div>
                 </div>
               ))}
             </div>
@@ -451,28 +501,29 @@ export default function AnticipationContent() {
         )}
 
         {/* SECTION E: Paginated Filterable Anticipation Matrix */}
-        <section className="bg-slate-900/90 border border-slate-800 rounded-xl overflow-hidden shadow-lg space-y-4">
-          <div className="p-5 border-b border-slate-800 space-y-4">
+        <section className="bg-[var(--bg-card)] border border-[var(--border-default)] rounded-xl overflow-hidden shadow-sm space-y-4" aria-labelledby="diffusion-matrix-heading">
+          <div className="p-4 sm:p-5 border-b border-[var(--border-subtle)] space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
-                <h3 className="text-base font-bold text-slate-100 flex items-center gap-2">
+                <h3 id="diffusion-matrix-heading" className="text-sm sm:text-base font-bold text-[var(--text-primary)] flex items-center gap-2">
                   <span>📋</span> 940-Pair Information Diffusion Matrix
                 </h3>
-                <p className="text-xs text-slate-400 mt-0.5">
+                <p className="text-xs text-[var(--text-muted)] mt-0.5">
                   Showing {tableData?.items.length ?? 0} of {tableData?.total ?? 0} evaluated Central bill-company pairs
                 </p>
               </div>
 
               {/* Toggle: Flagged Only */}
-              <label className="flex items-center gap-2 text-xs text-slate-300 cursor-pointer bg-slate-950 px-3 py-1.5 rounded-lg border border-slate-800">
+              <label className="flex items-center gap-2 text-xs text-[var(--text-secondary)] cursor-pointer bg-[var(--bg-base)] px-3 py-1.5 rounded-lg border border-[var(--border-default)]">
                 <input
                   type="checkbox"
+                  aria-label="Show Flagged Only (Scores ≥ 0.70)"
                   checked={flaggedOnly}
                   onChange={(e) => {
                     setFlaggedOnly(e.target.checked);
                     setPage(1);
                   }}
-                  className="rounded border-slate-700 bg-slate-900 text-indigo-500 focus:ring-0"
+                  className="rounded border-[var(--border-strong)] bg-[var(--bg-card)] text-indigo-500 focus:ring-0"
                 />
                 <span className="font-medium">Show Flagged Only (Scores ≥ 0.70)</span>
               </label>
@@ -481,7 +532,7 @@ export default function AnticipationContent() {
             {/* Filter Row */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-1">
               <div>
-                <label className="block text-[11px] font-medium text-slate-400 mb-1">
+                <label className="block text-[11px] font-medium text-[var(--text-muted)] mb-1">
                   Filter by Bill ID
                 </label>
                 <SearchInput
@@ -491,11 +542,12 @@ export default function AnticipationContent() {
                     setBillQuery(v);
                     setPage(1);
                   }}
+                  className="w-full h-8 text-xs"
                 />
               </div>
 
               <div>
-                <label className="block text-[11px] font-medium text-slate-400 mb-1">
+                <label className="block text-[11px] font-medium text-[var(--text-muted)] mb-1">
                   Filter by ISIN / Symbol
                 </label>
                 <SearchInput
@@ -505,11 +557,12 @@ export default function AnticipationContent() {
                     setCompanyQuery(v);
                     setPage(1);
                   }}
+                  className="w-full h-8 text-xs"
                 />
               </div>
 
               <div>
-                <label className="block text-[11px] font-medium text-slate-400 mb-1">
+                <label className="block text-[11px] font-medium text-[var(--text-muted)] mb-1">
                   Classification Tier
                 </label>
                 <select
@@ -519,7 +572,7 @@ export default function AnticipationContent() {
                     setSelectedTier(e.target.value);
                     setPage(1);
                   }}
-                  className="w-full h-9 rounded-md border border-slate-700 bg-slate-950 px-3 text-xs text-slate-200"
+                  className="w-full h-8 rounded-lg border border-[var(--border-strong)] bg-[var(--bg-base)] px-2.5 text-xs text-[var(--text-primary)] focus:outline-none focus:ring-1 focus:ring-blue-500"
                 >
                   <option value="ALL">All Tiers (4 Tiers)</option>
                   <option value="NO_EVIDENCE">No Evidence (&lt; 0.25)</option>
@@ -530,7 +583,7 @@ export default function AnticipationContent() {
               </div>
 
               <div>
-                <label className="block text-[11px] font-medium text-slate-400 mb-1">Sector</label>
+                <label className="block text-[11px] font-medium text-[var(--text-muted)] mb-1">Sector</label>
                 <select
                   aria-label="Filter by sector"
                   value={selectedSector}
@@ -538,7 +591,7 @@ export default function AnticipationContent() {
                     setSelectedSector(e.target.value);
                     setPage(1);
                   }}
-                  className="w-full h-9 rounded-md border border-slate-700 bg-slate-950 px-3 text-xs text-slate-200"
+                  className="w-full h-8 rounded-lg border border-[var(--border-strong)] bg-[var(--bg-base)] px-2.5 text-xs text-[var(--text-primary)] focus:outline-none focus:ring-1 focus:ring-blue-500"
                 >
                   <option value="ALL">All Sectors</option>
                   {sectorsList.map((sec) => (
@@ -566,38 +619,44 @@ export default function AnticipationContent() {
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse text-xs">
                 <thead>
-                  <tr className="border-b border-slate-800 bg-slate-950/80 text-slate-400">
-                    <th className="py-3 px-4 font-semibold uppercase tracking-wider">Bill</th>
-                    <th className="py-3 px-4 font-semibold uppercase tracking-wider">Company</th>
-                    <th className="py-3 px-3 font-semibold uppercase tracking-wider">Sector</th>
-                    <th className="py-3 px-4 font-semibold uppercase tracking-wider">
+                  <tr className="border-b border-[var(--border-subtle)] bg-[var(--bg-secondary)]/60 text-[var(--text-muted)]">
+                    <th className="py-2.5 px-4 font-semibold uppercase tracking-wider text-[11px]">Bill</th>
+                    <th className="py-2.5 px-4 font-semibold uppercase tracking-wider text-[11px]">Company</th>
+                    <th className="py-2.5 px-3 font-semibold uppercase tracking-wider text-[11px]">Sector</th>
+                    <th className="py-2.5 px-4 text-right font-semibold uppercase tracking-wider text-[11px]">
                       Anticipation Score
                     </th>
-                    <th className="py-3 px-3 font-semibold uppercase tracking-wider">Tier</th>
-                    <th className="py-3 px-3 font-semibold uppercase tracking-wider">Market Sig</th>
-                    <th className="py-3 px-3 font-semibold uppercase tracking-wider">Info Sig</th>
-                    <th className="py-3 px-3 font-semibold uppercase tracking-wider">Flag</th>
-                    <th className="py-3 px-4 text-right font-semibold uppercase tracking-wider">
+                    <th className="py-2.5 px-3 font-semibold uppercase tracking-wider text-[11px]">Tier</th>
+                    <th className="py-2.5 px-3 text-right font-semibold uppercase tracking-wider text-[11px]">Market Sig</th>
+                    <th className="py-2.5 px-3 text-right font-semibold uppercase tracking-wider text-[11px]">Info Sig</th>
+                    <th className="py-2.5 px-3 text-center font-semibold uppercase tracking-wider text-[11px]">Flag</th>
+                    <th className="py-2.5 px-4 text-right font-semibold uppercase tracking-wider text-[11px]">
                       Action
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800/60 text-slate-300">
+                <tbody className="divide-y divide-[var(--border-subtle)] text-[var(--text-secondary)]">
                   {tableData.items.map((item) => {
                     const style = TIER_COLORS[item.classification] || TIER_COLORS.NO_EVIDENCE;
+                    const isSelected =
+                      activeEvidencePair.billId === item.bill_id &&
+                      activeEvidencePair.companyIsin === item.company_isin;
+
                     return (
                       <tr
                         key={`${item.bill_id}-${item.company_isin}`}
-                        className="hover:bg-slate-800/40 transition-colors"
+                        className={`hover:bg-[var(--bg-base)]/80 transition-colors ${
+                          isSelected ? "bg-indigo-950/15" : ""
+                        }`}
                       >
                         <td className="py-3 px-4 font-medium">
                           <Link
                             href={`/bills/${item.bill_id}`}
-                            className="text-blue-400 hover:underline"
+                            className="text-[var(--text-primary)] hover:text-[var(--action-primary)] font-semibold transition-colors"
                           >
                             {item.bill_title || item.bill_id.replace(/-/g, " ")}
                           </Link>
-                          <span className="block text-[10px] text-slate-500 font-mono mt-0.5">
+                          <span className="block text-[10px] text-[var(--text-muted)] font-mono mt-0.5">
                             {item.bill_id}
                           </span>
                         </td>
@@ -605,26 +664,26 @@ export default function AnticipationContent() {
                         <td className="py-3 px-4">
                           <Link
                             href={`/companies/${item.company_isin}`}
-                            className="text-slate-200 hover:text-blue-400 hover:underline font-medium"
+                            className="text-[var(--text-primary)] hover:text-[var(--action-primary)] font-semibold transition-colors"
                           >
                             {item.company_name || item.company_symbol || item.company_isin}
                           </Link>
-                          <span className="block text-[10px] text-slate-500 font-mono mt-0.5">
+                          <span className="block text-[10px] text-[var(--text-muted)] font-mono mt-0.5">
                             {item.company_isin}
                           </span>
                         </td>
 
-                        <td className="py-3 px-3 text-slate-400">{item.sector || "General"}</td>
+                        <td className="py-3 px-3 text-[var(--text-muted)]">{item.sector || "General"}</td>
 
-                        <td className="py-3 px-4">
-                          <div className="flex items-center gap-2">
-                            <div className="w-16 h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                        <td className="py-3 px-4 text-right">
+                          <div className="flex items-center justify-end gap-2">
+                            <div className="w-16 h-1.5 bg-[var(--bg-base)] rounded-full overflow-hidden border border-[var(--border-subtle)]">
                               <div
                                 className={`h-full ${style.bar}`}
                                 style={{ width: `${Math.min(100, item.anticipation_score * 100)}%` }}
                               />
                             </div>
-                            <span className="font-mono text-xs font-semibold text-slate-200">
+                            <span className="font-mono tabular-nums text-xs font-semibold text-[var(--text-primary)]">
                               {(item.anticipation_score * 100).toFixed(1)}%
                             </span>
                           </div>
@@ -641,42 +700,62 @@ export default function AnticipationContent() {
                             }
                             size="xs"
                           >
+                            <span className="mr-1">{style.glyph}</span>
                             {item.classification.replace(/_/g, " ")}
                           </Badge>
                         </td>
 
-                        <td className="py-3 px-3 font-mono text-slate-300">
+                        <td className="py-3 px-3 text-right font-mono tabular-nums text-[var(--text-secondary)]">
                           {(item.market_signal_score * 100).toFixed(0)}%
                         </td>
 
-                        <td className="py-3 px-3 font-mono text-slate-300">
+                        <td className="py-3 px-3 text-right font-mono tabular-nums text-[var(--text-secondary)]">
                           {(item.information_signal_score * 100).toFixed(0)}%
                         </td>
 
-                        <td className="py-3 px-3">
+                        <td className="py-3 px-3 text-center">
                           {item.anticipation_flag ? (
-                            <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-950/80 text-amber-400 border border-amber-700/60">
+                            <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-500/15 text-[var(--color-warning)] border border-amber-500/30">
                               FLAG
                             </span>
                           ) : (
-                            <span className="text-[10px] text-slate-600">—</span>
+                            <span className="text-[10px] text-[var(--text-faint)]">—</span>
                           )}
                         </td>
 
                         <td className="py-3 px-4 text-right">
-                          <Link
-                            href={`/predictions?bill_id=${encodeURIComponent(
-                              item.bill_id
-                            )}&company_isin=${encodeURIComponent(item.company_isin)}`}
-                          >
+                          <div className="flex items-center justify-end gap-1.5">
                             <Button
                               variant="outline"
                               size="xs"
-                              className="border-slate-700 text-[11px]"
+                              onClick={() => {
+                                setActiveEvidencePair({
+                                  billId: item.bill_id,
+                                  companyIsin: item.company_isin,
+                                  companyName: item.company_name || undefined,
+                                });
+                                const el = document.getElementById("evidence-enrichment");
+                                if (el) el.scrollIntoView({ behavior: "smooth" });
+                              }}
+                              className="border-[var(--border-default)] hover:bg-[var(--bg-elevated)] text-[10px] h-7 px-2"
+                              title="Inspect chronological evidence & signals"
                             >
-                              Predictions →
+                              Evidence ↓
                             </Button>
-                          </Link>
+                            <Link
+                              href={`/predictions?bill_id=${encodeURIComponent(
+                                item.bill_id
+                              )}&company_isin=${encodeURIComponent(item.company_isin)}`}
+                            >
+                              <Button
+                                variant="outline"
+                                size="xs"
+                                className="border-[var(--border-default)] hover:bg-[var(--bg-elevated)] text-[11px] h-7"
+                              >
+                                Predictions →
+                              </Button>
+                            </Link>
+                          </div>
                         </td>
                       </tr>
                     );
@@ -689,11 +768,11 @@ export default function AnticipationContent() {
           {/* Empty State */}
           {!tableLoading && tableData && tableData.items.length === 0 && (
             <div className="p-12 text-center space-y-2">
-              <span className="text-3xl">🔍</span>
-              <h4 className="text-sm font-semibold text-slate-300">
+              <span className="text-3xl" aria-hidden="true">🔍</span>
+              <h4 className="text-sm font-semibold text-[var(--text-secondary)]">
                 No anticipation records match filters
               </h4>
-              <p className="text-xs text-slate-500 max-w-sm mx-auto">
+              <p className="text-xs text-[var(--text-faint)] max-w-sm mx-auto">
                 Broaden your search terms or classification tier to view other evaluated pairs.
               </p>
             </div>
@@ -701,7 +780,7 @@ export default function AnticipationContent() {
 
           {/* Pagination */}
           {tableData && tableData.pages > 1 && (
-            <div className="p-4 border-t border-slate-800 flex justify-center">
+            <div className="p-4 border-t border-[var(--border-subtle)] flex justify-center">
               <Pagination
                 page={page}
                 pages={tableData.pages}
@@ -711,42 +790,59 @@ export default function AnticipationContent() {
               />
             </div>
           )}
-
         </section>
 
-        {/* SECTION E2: Anticipation Evidence Enrichment & Media Diffusion (Task 8.29) */}
-        <section aria-labelledby="evidence-enrichment">
-          <h2 id="evidence-enrichment" className="sr-only">
-            Anticipation Evidence Enrichment
-          </h2>
+        {/* SECTION E2: Anticipation Evidence Enrichment & Chronology ("What was known, and when") */}
+        <section id="evidence-enrichment" aria-labelledby="evidence-enrichment-title">
+          <div className="p-4 bg-[var(--bg-card)] border border-[var(--border-default)] rounded-xl space-y-3 mb-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[var(--border-subtle)] pb-2.5">
+              <div>
+                <h3 id="evidence-enrichment-title" className="text-sm font-bold text-[var(--text-primary)] flex items-center gap-2">
+                  <span>⏳</span> Chronological Diffusion & Evidence Inspector
+                </h3>
+                <p className="text-xs text-[var(--text-muted)] mt-0.5">
+                  Currently Grounded: <strong className="text-[var(--text-primary)] font-mono">{activeEvidencePair.billId}</strong> × <strong className="text-[var(--text-primary)] font-mono">{activeEvidencePair.companyIsin || "All Securities"}</strong>
+                </p>
+              </div>
+              <span className="text-[11px] text-[var(--text-faint)] font-mono">
+                Source Calibration: PRS Legislative, Gazette Notifications, GDELT & Google Trends
+              </span>
+            </div>
+
+            <p className="text-xs text-[var(--text-muted)] leading-relaxed">
+              <strong>Methodology & Limitations Note: </strong>
+              Pre-event media indicators evaluate publicly published news articles, official parliamentary gazettes, and public consultation releases prior to the formal introduction milestone. GDELT and search trends do not represent total media consciousness, and absence of recorded signal does not confirm informational isolation.
+            </p>
+          </div>
+
           <AnticipationEvidenceSection
-            billId={billQuery.trim() || "the-banking-laws-amendment-bill-2024"}
-            companyIsin={companyQuery.trim() || "INE002A01018"}
-            companyName={companyQuery.trim() ? undefined : "State Bank of India"}
+            billId={activeEvidencePair.billId}
+            companyIsin={activeEvidencePair.companyIsin}
+            companyName={activeEvidencePair.companyName}
           />
         </section>
 
         {/* SECTION F: Grounded AI Diffusion Analyst */}
-        <section className="bg-slate-900/90 border border-slate-800 rounded-xl p-6 shadow-lg space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+        <section className="bg-[var(--bg-card)] border border-[var(--border-default)] rounded-xl p-5 sm:p-6 shadow-sm space-y-4" aria-labelledby="ai-diffusion-heading">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[var(--border-subtle)] pb-3">
             <div className="flex items-center gap-2">
-              <h3 className="text-base font-bold text-slate-100 flex items-center gap-2">
+              <h3 id="ai-diffusion-heading" className="text-sm sm:text-base font-bold text-[var(--text-primary)] flex items-center gap-2">
                 <span>🤖</span> AI Information Diffusion Analyst
               </h3>
-              <SourceBadge type="INTERPRETATION" size="xs" />
+              <EpistemicBadge type="INTERPRETATION" size="sm" />
             </div>
 
             {/* Persona Switcher */}
             <div className="flex items-center gap-2 text-xs">
-              <span className="text-slate-400">Analyst Lens:</span>
-              <div className="inline-flex rounded-lg border border-slate-700 bg-slate-950 p-0.5">
+              <span className="text-[var(--text-muted)]">Analyst Lens:</span>
+              <div className="inline-flex rounded-lg border border-[var(--border-strong)] bg-[var(--bg-base)] p-0.5">
                 {(["INVESTOR", "POLICY", "GENERAL_PUBLIC"] as const).map((p) => (
                   <button
                     key={p}
                     type="button"
                     onClick={() => setAiPersona(p)}
                     className={`px-2.5 py-1 text-[11px] rounded-md font-medium transition-colors ${
-                      aiPersona === p ? "bg-blue-600 text-white" : "text-slate-400 hover:text-slate-200"
+                      aiPersona === p ? "bg-blue-600 text-white" : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"
                     }`}
                   >
                     {p.replace(/_/g, " ")}
@@ -766,29 +862,29 @@ export default function AnticipationContent() {
                 onKeyDown={(e) => {
                   if (e.key === "Enter") handleAskAI();
                 }}
-                className="flex-1 h-10 rounded-lg border border-slate-700 bg-slate-950 px-3 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="flex-1 h-9 rounded-lg border border-[var(--border-strong)] bg-[var(--bg-base)] px-3 text-xs text-[var(--text-primary)] placeholder-[var(--input-placeholder)] focus:outline-none focus:ring-1 focus:ring-blue-500"
               />
               <Button
                 variant="primary"
                 size="sm"
                 onClick={handleAskAI}
                 disabled={aiLoading}
-                className="h-10 text-xs px-4"
+                className="h-9 text-xs px-4 font-semibold"
               >
                 {aiLoading ? "Analyzing..." : "Analyze"}
               </Button>
             </div>
 
             {aiResponse && (
-              <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
-                <div className="flex items-center justify-between text-[11px] text-slate-400 border-b border-slate-800/60 pb-2">
+              <div className="p-4 rounded-xl bg-[var(--bg-base)] border border-[var(--border-subtle)] space-y-2">
+                <div className="flex items-center justify-between text-[11px] text-[var(--text-muted)] border-b border-[var(--border-subtle)] pb-2">
                   <span className="font-semibold text-blue-400">AI Diffusion Analysis</span>
-                  <span className="text-slate-500">Lens: {aiPersona}</span>
+                  <span className="text-[var(--text-faint)] font-mono">Lens: {aiPersona}</span>
                 </div>
-                <p className="text-xs text-slate-300 leading-relaxed whitespace-pre-line">
+                <p className="text-xs text-[var(--text-secondary)] leading-relaxed whitespace-pre-line">
                   {aiResponse}
                 </p>
-                <p className="text-[10px] text-slate-500 pt-1">
+                <p className="text-[10px] text-[var(--text-faint)] pt-1">
                   Answers reflect empirical academic research methodology evaluating public information diffusion.
                 </p>
               </div>
@@ -799,14 +895,14 @@ export default function AnticipationContent() {
         {/* State Prediction Firewall Notice */}
         <div className="space-y-2">
           <StatePredictionFirewall state="All States" />
-          <p className="text-[11px] text-slate-500 px-1">
+          <p className="text-[11px] text-[var(--text-faint)] px-1">
             Pre-event anticipation scores are modeled strictly for Central Parliament legislation across 47 quantitative securities. State assemblies and qualitative corporate entities have strictly 0 quantitative anticipation scores.
           </p>
         </div>
 
         {/* MANDATORY VERBATIM STATUTORY LEGAL DISCLAIMER (BOTTOM) */}
-        <div className="p-4 rounded-xl border border-slate-800 bg-slate-900/40 text-center">
-          <p className="text-[11px] text-slate-400 italic">
+        <div className="p-4 rounded-xl border border-[var(--border-default)] bg-[var(--bg-card)] text-center shadow-sm">
+          <p className="text-[11px] text-[var(--text-muted)] italic leading-relaxed">
             &ldquo;{MANDATORY_LEGAL_DISCLAIMER}&rdquo;
           </p>
         </div>

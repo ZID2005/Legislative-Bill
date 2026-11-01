@@ -11,7 +11,8 @@ Guarantees:
 
 from __future__ import annotations
 
-from typing import Optional
+import time
+from typing import Any, Optional
 from fastapi import APIRouter, Depends, Query
 
 from api.dependencies import (
@@ -21,15 +22,20 @@ from api.dependencies import (
     get_current_user,
     get_monitoring_repository,
     get_monitoring_runner,
+    get_portfolio_repository,
     get_watchlist_service,
 )
 from api.errors import BadRequestError, ForbiddenError, NotFoundError
-from api.schemas import AIAskRequest, AIAskResponse
+from api.schemas import AIChatRequest, AIAskRequest, AIAskResponse
+from config.logging_config import get_logger
 from services.ai.ai_explanation_service import AIExplanationResult, AIExplanationService
 from services.ai_usage_service import AIUsageService
 from services.watchlist_service import WatchlistService
 from storage.monitoring_repository import MonitoringRepository
+from storage.portfolio_repository import PortfolioRepository
 from services.monitoring.monitoring_runner import MonitoringRunner
+
+logger = get_logger(__name__)
 
 router = APIRouter(prefix="/ai", tags=["AI Copilot & Explanations"])
 
@@ -49,6 +55,8 @@ def _to_ai_response(
     result: AIExplanationResult,
     context_type: str,
     context_id: str,
+    model: Optional[str] = None,
+    latency_ms: Optional[float] = None,
 ) -> AIAskResponse:
     sources = result.provenance_sources or ["Project Repository Ground Truth"]
     return AIAskResponse(
@@ -61,6 +69,11 @@ def _to_ai_response(
         is_cached=result.is_cached,
         disclaimer=DISCLAIMER_TEXT,
         provenance_sources=sources,
+        citations=result.citations or [],
+        epistemic_labels=result.epistemic_labels or ["FACT", "INTERPRETATION"],
+        warnings=result.warnings or [],
+        latency_ms=latency_ms,
+        model=model,
         answer=result.content,
         context_sources=sources,
     )
@@ -251,24 +264,95 @@ def _ask_workspace_ai(
         )
 
 
-@router.post("/ask", response_model=AIAskResponse)
+def _ask_portfolio_ai(
+    ai_service: AIExplanationService,
+    question: str,
+    user_id: str,
+    tenant_id: str,
+    portfolio_id: Optional[str] = None,
+    persona: str = "INVESTOR",
+    portfolio_repo: Optional[PortfolioRepository] = None,
+) -> AIExplanationResult:
+    """
+    Answer questions in the portfolio context grounded in user holdings and mapped legislative exposures.
+    Strict multi-tenant security boundary enforced.
+    """
+    repo = portfolio_repo or PortfolioRepository()
 
+    # 1. Multi-tenant access check on specific portfolio_id
+    if portfolio_id:
+        target_pf = repo.get(portfolio_id=portfolio_id, tenant_id=tenant_id, user_id=user_id)
+        if not target_pf:
+            foreign = repo.get_any_tenant(portfolio_id)
+            if foreign and foreign.tenant_id != tenant_id:
+                raise ForbiddenError(
+                    code="CROSS_TENANT_PORTFOLIO_FORBIDDEN",
+                    message="Cannot query AI context on another organization's portfolio.",
+                )
+            raise NotFoundError(
+                code="PORTFOLIO_NOT_FOUND",
+                message=f"Portfolio '{portfolio_id}' not found.",
+            )
+
+    # 2. Defend against cross-tenant prompt injection
+    lower_q = question.lower()
+    if (
+        ("tenant" in lower_q and any(t in lower_q for t in ("tenant b", "tenant_b", "other tenant", "another tenant", "foreign tenant")))
+        or ("show me tenant" in lower_q and tenant_id.lower() not in lower_q)
+    ):
+        return AIExplanationResult(
+            content=(
+                "[INTERPRETATION]\n"
+                "Access denied: AI context is strictly isolated to your authenticated tenant. "
+                "Cross-tenant portfolio inspection is strictly prohibited by multi-tenant security boundaries."
+            ),
+            bill_id="__portfolio_context__",
+            jurisdiction="portfolio",
+            persona=persona,
+            operation="PORTFOLIO_TENANT_ISOLATION_DEFENSE",
+            success=False,
+            epistemic_labels=["FACT", "INTERPRETATION"],
+            warnings=["Cross-tenant data access attempt blocked."],
+            provenance_sources=["Multi-Tenant Security Firewall"],
+        )
+
+    return ai_service.ask_portfolio_ai(
+        user_id=user_id,
+        tenant_id=tenant_id,
+        question=question,
+        portfolio_id=portfolio_id,
+        persona=persona,
+    )
+
+
+@router.post("/ask", response_model=AIAskResponse)
 def ask_ai(
     request: AIAskRequest,
     current_user: CurrentUser = Depends(get_current_user),
     ai_service: AIExplanationService = Depends(get_ai_explanation_service),
     usage_service: AIUsageService = Depends(get_ai_usage_service),
     watchlist_service: WatchlistService = Depends(get_watchlist_service),
+    portfolio_repo: PortfolioRepository = Depends(get_portfolio_repository),
 ) -> AIAskResponse:
     """
-    Grounded question answering against legislative bill, corporate intelligence, or workspace context.
+    Grounded question answering against legislative bill, corporate intelligence, portfolio, or workspace context.
     Falls back gracefully when offline or when external AI services are unreachable.
     """
-    if request.watchlist_id and (not request.context_id or (request.context_type and request.context_type.lower() in ("bill", "watchlist"))):
+    start_time = time.perf_counter()
+    question = (request.question or request.message or "").strip()
+    if not question:
+        raise BadRequestError("Question must not be empty.")
+    if len(question) > 3000:
+        raise BadRequestError("Question exceeds maximum length limit of 3,000 characters.")
+
+    if request.portfolio_id:
+        ctx_type = "portfolio"
+        context_id = request.portfolio_id
+    elif request.watchlist_id and (not request.context_id or (request.context_type and request.context_type.lower() in ("bill", "watchlist"))):
         ctx_type = "watchlist"
         context_id = request.watchlist_id
     else:
-        ctx_type = (request.context_type or "bill").lower().strip()
+        ctx_type = (request.context_type or "general").lower().strip()
         context_id = request.context_id or ""
     persona = request.persona.upper().strip()
 
@@ -276,14 +360,35 @@ def ask_ai(
         if ctx_type == "company":
             result = ai_service.ask_company_ai(
                 company_identifier=context_id,
-                question=request.question,
+                question=question,
                 persona=persona,
             )
         elif ctx_type == "bill":
-            result = ai_service.ask_ai(
-                bill_id=context_id,
-                question=request.question,
+            if not context_id or context_id == "general":
+                result = ai_service.ask_general_ai(
+                    question=question,
+                    persona=persona,
+                )
+            else:
+                result = ai_service.ask_ai(
+                    bill_id=context_id,
+                    question=question,
+                    persona=persona,
+                )
+        elif ctx_type == "general":
+            result = ai_service.ask_general_ai(
+                question=question,
                 persona=persona,
+            )
+        elif ctx_type == "portfolio":
+            result = _ask_portfolio_ai(
+                ai_service=ai_service,
+                question=question,
+                user_id=current_user.user_id,
+                tenant_id=current_user.tenant_id,
+                portfolio_id=context_id or None,
+                persona=persona,
+                portfolio_repo=portfolio_repo,
             )
         elif ctx_type == "comparison":
             parts = [p.strip() for p in context_id.split(",") if p.strip()]
@@ -297,19 +402,19 @@ def ask_ai(
         elif ctx_type in ("industry", "sector"):
             result = ai_service.ask_industry_ai(
                 industry_identifier=context_id,
-                question=request.question,
+                question=question,
                 persona=persona,
             )
         elif ctx_type == "monitoring":
             result = _ask_monitoring_ai(
                 ai_service=ai_service,
-                question=request.question,
+                question=question,
                 persona=persona,
             )
         elif ctx_type == "workspace":
             result = _ask_workspace_ai(
                 ai_service=ai_service,
-                question=request.question,
+                question=question,
                 user_id=current_user.user_id,
                 tenant_id=current_user.tenant_id,
                 persona=persona,
@@ -335,13 +440,26 @@ def ask_ai(
                 )
             result = _ask_workspace_ai(
                 ai_service=ai_service,
-                question=request.question,
+                question=question,
                 user_id=current_user.user_id,
                 tenant_id=current_user.tenant_id,
                 persona=persona,
             )
         else:
-            raise BadRequestError(f"Unsupported context_type '{request.context_type}'. Must be 'bill', 'company', 'industry', 'monitoring', 'workspace', 'watchlist', or 'comparison'.")
+            raise BadRequestError(
+                f"Unsupported context_type '{request.context_type}'. Must be 'bill', 'company', 'industry', 'sector', 'general', 'portfolio', 'monitoring', 'workspace', 'watchlist', or 'comparison'."
+            )
+
+        latency_ms = (time.perf_counter() - start_time) * 1000.0
+        logger.info(
+            "AI query completed | tenant=%s user=%s context_type=%s model=%s latency_ms=%.1f success=%s",
+            current_user.tenant_id,
+            current_user.user_id,
+            ctx_type,
+            getattr(ai_service.client, "model", "unknown"),
+            latency_ms,
+            result.success,
+        )
 
         # Track usage telemetry
         usage_service.record_usage(
@@ -352,12 +470,25 @@ def ask_ai(
             success=result.success,
         )
 
-        return _to_ai_response(result, ctx_type, context_id)
+        return _to_ai_response(
+            result,
+            ctx_type,
+            context_id,
+            model=getattr(ai_service.client, "model", None),
+            latency_ms=latency_ms,
+        )
 
     except (BadRequestError, ForbiddenError, NotFoundError):
         raise
     except Exception as e:
-        # Guarantee no internal trace or secret leakage
+        latency_ms = (time.perf_counter() - start_time) * 1000.0
+        logger.warning(
+            "AI query failed | tenant=%s context_type=%s latency_ms=%.1f error=%s",
+            current_user.tenant_id,
+            ctx_type,
+            latency_ms,
+            str(e)[:100],
+        )
         usage_service.record_usage(
             tenant_id=current_user.tenant_id,
             user_id=current_user.user_id,
@@ -379,6 +510,37 @@ def ask_ai(
             answer=fallback_msg,
             context_sources=["System Fallback Guard"],
         )
+
+
+@router.post("/chat", response_model=AIAskResponse)
+def chat_ai(
+    request: AIChatRequest,
+    current_user: CurrentUser = Depends(get_current_user),
+    ai_service: AIExplanationService = Depends(get_ai_explanation_service),
+    usage_service: AIUsageService = Depends(get_ai_usage_service),
+    watchlist_service: WatchlistService = Depends(get_watchlist_service),
+    portfolio_repo: PortfolioRepository = Depends(get_portfolio_repository),
+) -> AIAskResponse:
+    """
+    Conversational research chat assistant endpoint alias grounded in application intelligence.
+    """
+    ask_req = AIAskRequest(
+        question=request.message or request.question or "",
+        message=request.message,
+        context_type=request.context_type or "general",
+        context_id=request.context_id,
+        portfolio_id=request.portfolio_id,
+        watchlist_id=request.watchlist_id,
+        persona=request.persona,
+    )
+    return ask_ai(
+        request=ask_req,
+        current_user=current_user,
+        ai_service=ai_service,
+        usage_service=usage_service,
+        watchlist_service=watchlist_service,
+        portfolio_repo=portfolio_repo,
+    )
 
 
 @router.get("/explain/bill/{bill_id}", response_model=AIAskResponse)

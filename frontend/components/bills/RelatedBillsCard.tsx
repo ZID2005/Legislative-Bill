@@ -1,4 +1,4 @@
-/**
+﻿/**
  * components/bills/RelatedBillsCard.tsx
  * =====================================
  * Displays related legislative bills linked through parliamentary or statutory networks.
@@ -26,7 +26,7 @@ export function RelatedBillsCard({
       <CardHeader>
         <div className="flex items-center justify-between w-full">
           <CardTitle>Related Legislation</CardTitle>
-          <span className="text-[11px] text-slate-500 font-mono">
+          <span className="text-[11px] text-[var(--text-faint)] font-mono">
             {relatedBills.length} linked
           </span>
         </div>
@@ -38,11 +38,11 @@ export function RelatedBillsCard({
             <Link
               key={rb.bill_id}
               href={`/bills/${encodeURIComponent(rb.bill_id)}`}
-              className="block rounded-lg border border-slate-800 bg-slate-900/40 p-3 hover:bg-slate-900/80 hover:border-slate-700 transition-all group"
+              className="block rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/40 p-3 hover:bg-[var(--bg-card)]/80 hover:border-[var(--border-strong)] transition-all group"
             >
               <div className="flex items-start justify-between gap-2">
                 <div className="space-y-1.5 flex-1 min-w-0">
-                  <p className="text-xs font-semibold text-slate-200 group-hover:text-blue-400 transition-colors line-clamp-2">
+                  <p className="text-xs font-semibold text-[var(--text-primary)] group-hover:text-blue-400 transition-colors line-clamp-2">
                     {rb.short_title || rb.title}
                   </p>
                   <div className="flex flex-wrap items-center gap-1.5">
@@ -65,7 +65,7 @@ export function RelatedBillsCard({
           ))}
         </div>
       ) : (
-        <p className="text-xs text-slate-500 italic py-2">
+        <p className="text-xs text-[var(--text-faint)] italic py-2">
           No directly linked related enactments recorded in the parliamentary graph.
         </p>
       )}

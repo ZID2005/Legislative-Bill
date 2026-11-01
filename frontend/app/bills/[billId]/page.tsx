@@ -1,11 +1,5 @@
-/**
- * app/bills/[billId]/page.tsx
- * ===========================
- * Bill detail dossier — fetches real data from API.
- * Applies State Prediction Firewall for State bills.
- */
-
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import BillDetailContent from "./BillDetailContent";
 
 interface Params {
@@ -22,5 +16,9 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
 export default async function BillDetailPage({ params }: Params) {
   const { billId } = await params;
-  return <BillDetailContent billId={billId} />;
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[var(--bg-base)] p-8 text-[var(--text-muted)]">Loading legislative dossier...</div>}>
+      <BillDetailContent billId={billId} />
+    </Suspense>
+  );
 }

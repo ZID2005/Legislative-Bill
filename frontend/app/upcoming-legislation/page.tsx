@@ -1,4 +1,4 @@
-/**
+﻿/**
  * app/upcoming-legislation/page.tsx
  * ====================================
  * Task 8.25 — Upcoming Legislation (Phase 8).
@@ -106,7 +106,7 @@ const DATE_CONFIDENCE_CONFIG: Record<string, { label: string; color: string }> =
   SCHEDULED: { label: "Scheduled", color: "text-emerald-400" },
   REPORTED: { label: "Reported by source", color: "text-amber-400" },
   EXPECTED_BY_SOURCE: { label: "Expected by source", color: "text-orange-400" },
-  DATE_NOT_AVAILABLE: { label: "Date not available", color: "text-slate-500" },
+  DATE_NOT_AVAILABLE: { label: "Date not available", color: "text-[var(--text-faint)]" },
 };
 
 const EVENT_TYPE_ICONS: Record<string, string> = {
@@ -147,10 +147,10 @@ export default function UpcomingLegislationPage() {
           <span className="text-slate-700">/</span>
           <DataStatusBadge status="UPCOMING" />
         </div>
-        <h1 className="text-headline text-white mb-2">Upcoming Legislation</h1>
-        <p className="text-slate-400 text-sm max-w-2xl leading-relaxed">
+        <h1 className="text-headline text-[var(--text-primary)] mb-2">Upcoming Legislation</h1>
+        <p className="text-[var(--text-muted)] text-sm max-w-2xl leading-relaxed">
           Scheduled legislative events where authoritative sources provide confirmed or expected dates.
-          <strong className="text-slate-300"> No future dates are fabricated.</strong> Each event includes its date confidence level and source provenance.
+          <strong className="text-[var(--text-secondary)]"> No future dates are fabricated.</strong> Each event includes its date confidence level and source provenance.
         </p>
       </div>
 
@@ -159,11 +159,11 @@ export default function UpcomingLegislationPage() {
         <span className="text-amber-400 flex-shrink-0 mt-0.5">⚠</span>
         <div>
           <p className="font-semibold text-amber-300 mb-0.5">Epistemic Disclaimer</p>
-          <p className="text-slate-400 leading-relaxed">
+          <p className="text-[var(--text-muted)] leading-relaxed">
             Legislative scheduling is subject to change by parliamentary authorities.
             Dates labelled &ldquo;Reported&rdquo; or &ldquo;Expected by source&rdquo; are not confirmed
             and may not reflect official parliamentary decisions. Always verify with official sources.
-            This platform <strong className="text-slate-300">never predicts</strong> that a bill will be introduced or passed
+            This platform <strong className="text-[var(--text-secondary)]">never predicts</strong> that a bill will be introduced or passed
             unless authoritative data supports the statement.
           </p>
         </div>
@@ -171,14 +171,14 @@ export default function UpcomingLegislationPage() {
 
       {/* Filters */}
       <div className="flex flex-wrap items-center gap-3 mb-6">
-        <div className="flex items-center gap-1 bg-slate-900/60 border border-white/8 rounded-lg p-1">
+        <div className="flex items-center gap-1 bg-[var(--bg-card)]/60 border border-white/8 rounded-lg p-1">
           {["All", "Central", "State"].map((f) => (
             <button
               key={f}
               onClick={() => setJurisdictionFilter(f)}
               className={cn(
                 "px-3 py-1 rounded-md text-xs font-medium transition-all",
-                jurisdictionFilter === f ? "bg-white/10 text-white" : "text-slate-500 hover:text-slate-300"
+                jurisdictionFilter === f ? "bg-white/10 text-[var(--text-primary)]" : "text-[var(--text-faint)] hover:text-[var(--text-secondary)]"
               )}
             >
               {f}
@@ -189,7 +189,7 @@ export default function UpcomingLegislationPage() {
         <select
           value={typeFilter}
           onChange={(e) => setTypeFilter(e.target.value)}
-          className="px-3 py-2 bg-slate-900/60 border border-white/8 rounded-lg text-xs text-slate-300 focus:outline-none"
+          className="px-3 py-2 bg-[var(--bg-card)]/60 border border-white/8 rounded-lg text-xs text-[var(--text-secondary)] focus:outline-none"
         >
           <option value="All">All Event Types</option>
           <option value="SESSION">Sessions</option>
@@ -206,7 +206,7 @@ export default function UpcomingLegislationPage() {
       <div className="space-y-4">
         {filtered.length === 0 ? (
           <div className="card-base p-12 text-center">
-            <p className="text-slate-500 text-sm">No upcoming events match your filters.</p>
+            <p className="text-[var(--text-faint)] text-sm">No upcoming events match your filters.</p>
           </div>
         ) : (
           filtered.map((event, idx) => {
@@ -236,21 +236,21 @@ export default function UpcomingLegislationPage() {
                       </span>
                     </div>
 
-                    <h3 className="text-sm font-semibold text-slate-100 mb-2">{event.title}</h3>
+                    <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-2">{event.title}</h3>
 
                     {event.billTitle && (
-                      <p className="text-xs text-slate-500 mb-2">
-                        Re: <span className="text-slate-400">{event.billTitle}</span>
+                      <p className="text-xs text-[var(--text-faint)] mb-2">
+                        Re: <span className="text-[var(--text-muted)]">{event.billTitle}</span>
                       </p>
                     )}
 
-                    <p className="text-xs text-slate-400 leading-relaxed mb-3">{event.description}</p>
+                    <p className="text-xs text-[var(--text-muted)] leading-relaxed mb-3">{event.description}</p>
 
                     {/* Date + confidence */}
                     <div className="flex flex-wrap items-center gap-4 text-xs">
                       <div>
                         <span className="text-slate-600 block mb-0.5 uppercase tracking-wider text-[9px]">Date</span>
-                        <span className="text-slate-200 font-medium">
+                        <span className="text-[var(--text-primary)] font-medium">
                           {event.scheduledDate ? formatDate(event.scheduledDate) : "—"}
                         </span>
                       </div>
@@ -262,7 +262,7 @@ export default function UpcomingLegislationPage() {
                       </div>
                       <div>
                         <span className="text-slate-600 block mb-0.5 uppercase tracking-wider text-[9px]">Last Verified</span>
-                        <span className="text-slate-400">
+                        <span className="text-[var(--text-muted)]">
                           {new Date(event.lastVerified).toLocaleDateString("en-IN", {
                             day: "numeric", month: "short", year: "numeric"
                           })}
@@ -278,7 +278,7 @@ export default function UpcomingLegislationPage() {
                         href={event.sourceUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 px-3 py-1.5 text-xs rounded-lg border border-white/8 bg-white/3 text-slate-400 hover:text-white hover:border-white/15 transition-all"
+                        className="inline-flex items-center gap-1 px-3 py-1.5 text-xs rounded-lg border border-white/8 bg-white/3 text-[var(--text-muted)] hover:text-white hover:border-white/15 transition-all"
                       >
                         <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -301,7 +301,7 @@ export default function UpcomingLegislationPage() {
 
       <div className="mt-10 pt-6 border-t border-white/5">
         <p className="text-xs text-slate-600 max-w-3xl leading-relaxed">
-          <strong className="text-slate-500">Data Policy:</strong> Only events with authoritative source backing are displayed.
+          <strong className="text-[var(--text-faint)]">Data Policy:</strong> Only events with authoritative source backing are displayed.
           Future dates without official confirmation are labelled &ldquo;Expected by source&rdquo; or &ldquo;Date not available&rdquo;.
           This section will never predict legislative outcomes or fabricate procedural milestones.
         </p>

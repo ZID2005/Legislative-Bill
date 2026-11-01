@@ -23,7 +23,7 @@ from config.settings import settings
 
 logger = get_logger(__name__)
 
-_DEFAULT_MODEL = "llama-3.3-70b-versatile"
+_DEFAULT_MODEL = "openai/gpt-oss-120b"
 _DEFAULT_TIMEOUT = 30.0
 _DEFAULT_MAX_TOKENS = 1024
 _DEFAULT_TEMPERATURE = 0.2
@@ -144,6 +144,16 @@ class GroqClient:
                 raise RuntimeError("groq library is required for GroqClient.")
         return self._client
 
+    def mask_api_key(self) -> str:
+        """Return safely masked representation of configured API key."""
+        if not self._api_key:
+            return "NOT_CONFIGURED"
+        if len(self._api_key) <= 8:
+            return "gsk_***"
+        prefix = self._api_key[:4]
+        suffix = self._api_key[-6:]
+        return f"{prefix}...{suffix}"
+
     def _sanitize_string(self, text: str) -> str:
         """Remove any potential API key or secret occurrences."""
         if not text:
@@ -246,7 +256,7 @@ class GroqClient:
                 "The verified legislative and analytical information remains available."
             )
 
-            if "RateLimit" in err_type or "rate_limit" in sanitized_err.lower():
+            if "RateLimit" in err_type or "rate_limit" in sanitized_err.lower() or "rate limit" in sanitized_err.lower():
                 err_code = "RATE_LIMIT"
                 fallback = "AI explanation is temporarily unavailable due to rate limits. Please retry shortly."
             elif "Timeout" in err_type or "timed out" in sanitized_err.lower():

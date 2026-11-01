@@ -1,0 +1,75 @@
+{
+  "bill_id": "the-bharatiya-vayuyan-vidheyak-2024",
+  "company_isin": "INE081A01020",
+  "company_symbol": "TATASTEEL",
+  "jurisdiction": "central",
+  "market_signal": {
+    "level": "HIGH",
+    "market_signal_score": 0.9798,
+    "car_magnitude": 0.2238,
+    "z_score": -2.7578,
+    "directional_persistence": 0.5,
+    "volatility": 0.02,
+    "signals_detected": [
+      "STATISTICAL_SIGNIFICANCE_PRE_EVENT",
+      "HIGH_MAGNITUDE_PRE_EVENT_RETURN",
+      "SUSTAINED_NEGATIVE_DRIFT",
+      "IMMEDIATE_PRE_T0_ACCELERATION",
+      "MULTI_WINDOW_PERSISTENT_NEGATIVE_DRIFT"
+    ]
+  },
+  "public_information_signal": {
+    "level": "NONE",
+    "public_information_evidence_score": 0.0,
+    "verified_pre_event_count": 0,
+    "independent_sources_count": 0,
+    "source_diversity_ratio": 0.0,
+    "credibility_tier_summary": {},
+    "earliest_evidence_date": null,
+    "latest_evidence_date": null,
+    "evidence_window_trading_days": null
+  },
+  "combined_context": {
+    "classification": "MARKET_SIGNAL_ONLY",
+    "interpretation": "Abnormal pre-event market movement detected without corroborating pre-event public media records. Movement is categorized as market-signal-only.",
+    "market_signal": "HIGH",
+    "information_signal": "NONE",
+    "epistemic_tag": "[EVIDENCE]",
+    "non_accusatory_disclaimer": "Observable public-information evidence and market signals measure pre-event information diffusion patterns only. They do not establish causation, illegal disclosure, market manipulation, or insider trading."
+  },
+  "evidence_items": [
+    {
+      "evidence_id": "pie_off_0349e1269763",
+      "bill_id": "the-bharatiya-vayuyan-vidheyak-2024",
+      "jurisdiction": "central",
+      "source_type": "OFFICIAL_LEGISLATIVE",
+      "source_name": "Official Parliament Record / PRS",
+      "source_url": "https://prsindia.org/billtrack/the-bharatiya-vayuyan-vidheyak-2024",
+      "publication_timestamp": "2024-07-22T09:00:00Z",
+      "discovery_timestamp": "2026-10-29T18:29:24.875196Z",
+      "event_reference": "2024-07-22",
+      "headline": "Official Introduction: The Bharatiya Vayuyan Vidheyak, 2024",
+      "summary": "Official legislative record for The Bharatiya Vayuyan Vidheyak, 2024 (Bill No. N/A) under unknown.",
+      "relevance": 0.5,
+      "evidence_strength": "MODERATE",
+      "temporal_relation": "UNKNOWN",
+      "source_credibility": "TIER_1",
+      "entity_matches": [],
+      "sector_matches": [],
+      "keywords": [],
+      "hash": "e2ec67968481cb105b09a3a6d3acd56a33408dd8cdad4003a2a9a3db2e9de09a",
+      "provenance": {
+        "adapter": "OfficialLegislativeAdapter",
+        "source_authority": "Parliament of India / State Assembly",
+        "official_pdf_url": "https://prsindia.org/files/bills_acts/bills_parliament/2024/Bharatiya_Vayuyan_Vidheyak_2024.pdf"
+      },
+      "verification_status": "VERIFIED",
+      "created_at": "2026-10-29T18:29:24.875249Z",
+      "duplicate_of": null,
+      "canonical_evidence_id": "pie_off_0349e1269763",
+      "match_reason": "Direct mention of bill title 'The Bharatiya Vayuyan Vidheyak, 2024'"
+    }
+  ],
+  "search_trend_items": [],
+  "created_at": "2026-10-29T18:29:24.876438Z"
+}

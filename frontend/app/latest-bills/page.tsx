@@ -1,4 +1,4 @@
-/**
+﻿/**
  * app/latest-bills/page.tsx
  * ==========================
  * Task 8.25 — Latest Bills Experience (Phase 7).
@@ -198,8 +198,8 @@ export default function LatestBillsPage() {
             LIVE
           </span>
         </div>
-        <h1 className="text-headline text-white mb-2">Latest Bills</h1>
-        <p className="text-slate-400 text-sm max-w-2xl leading-relaxed">
+        <h1 className="text-headline text-[var(--text-primary)] mb-2">Latest Bills</h1>
+        <p className="text-[var(--text-muted)] text-sm max-w-2xl leading-relaxed">
           Most recently introduced and discovered legislative measures.
           Ordered by discovery timestamp. Source provenance displayed for every record.
         </p>
@@ -211,7 +211,7 @@ export default function LatestBillsPage() {
       {/* Filters */}
       <div className="flex flex-wrap items-center gap-3 mb-6">
         <div className="relative flex-1 min-w-[200px] max-w-xs">
-          <svg className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <svg className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[var(--text-faint)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <circle cx={11} cy={11} r={8} />
             <path strokeLinecap="round" d="M21 21l-4.35-4.35" />
           </svg>
@@ -220,18 +220,18 @@ export default function LatestBillsPage() {
             value={searchQuery}
             onChange={(e) => { setSearchQuery(e.target.value); setPage(1); }}
             placeholder="Search bills…"
-            className="w-full pl-9 pr-4 py-2 bg-slate-900/60 border border-white/8 rounded-lg text-sm text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-blue-500/50 transition-colors"
+            className="w-full pl-9 pr-4 py-2 bg-[var(--bg-card)]/60 border border-white/8 rounded-lg text-sm text-[var(--text-primary)] placeholder:text-slate-600 focus:outline-none focus:border-blue-500/50 transition-colors"
           />
         </div>
 
-        <div className="flex items-center gap-1 bg-slate-900/60 border border-white/8 rounded-lg p-1">
+        <div className="flex items-center gap-1 bg-[var(--bg-card)]/60 border border-white/8 rounded-lg p-1">
           {JURISDICTION_FILTERS.map((f) => (
             <button
               key={f}
               onClick={() => { setJurisdictionFilter(f); setPage(1); }}
               className={cn(
                 "px-3 py-1 rounded-md text-xs font-medium transition-all",
-                jurisdictionFilter === f ? "bg-white/10 text-white" : "text-slate-500 hover:text-slate-300"
+                jurisdictionFilter === f ? "bg-white/10 text-[var(--text-primary)]" : "text-[var(--text-faint)] hover:text-[var(--text-secondary)]"
               )}
             >
               {f}
@@ -243,7 +243,7 @@ export default function LatestBillsPage() {
           <select
             value={stateFilter}
             onChange={(e) => { setStateFilter(e.target.value); setPage(1); }}
-            className="px-3 py-2 bg-slate-900/60 border border-white/8 rounded-lg text-xs text-slate-300 focus:outline-none"
+            className="px-3 py-2 bg-[var(--bg-card)]/60 border border-white/8 rounded-lg text-xs text-[var(--text-secondary)] focus:outline-none"
           >
             {STATE_FILTERS.map((f) => (
               <option key={f} value={f}>{f}</option>
@@ -274,7 +274,7 @@ export default function LatestBillsPage() {
             <tbody>
               {paginated.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="py-12 text-center text-sm text-slate-500">
+                  <td colSpan={7} className="py-12 text-center text-sm text-[var(--text-faint)]">
                     No bills match your filters.
                   </td>
                 </tr>
@@ -283,20 +283,20 @@ export default function LatestBillsPage() {
                   <tr key={bill.id}>
                     <td>
                       <div>
-                        <p className="text-sm font-medium text-slate-200 line-clamp-2 leading-snug">
+                        <p className="text-sm font-medium text-[var(--text-primary)] line-clamp-2 leading-snug">
                           {bill.title}
                         </p>
                         {bill.billNumber && (
                           <p className="text-[10px] text-slate-600 font-mono mt-0.5">{bill.billNumber}</p>
                         )}
-                        <span className="text-[9px] px-1 py-0.5 rounded bg-slate-800/60 border border-white/5 text-slate-600 font-mono mt-1 inline-block">
+                        <span className="text-[9px] px-1 py-0.5 rounded bg-[var(--bg-elevated)]/60 border border-white/5 text-slate-600 font-mono mt-1 inline-block">
                           NOT IN PREDICTION MODEL
                         </span>
                       </div>
                     </td>
                     <td>
                       <div className="text-xs">
-                        <p className="text-slate-300 font-medium">
+                        <p className="text-[var(--text-secondary)] font-medium">
                           {bill.jurisdiction === "central" ? "Central" : bill.state}
                         </p>
                         {bill.house && (
@@ -307,22 +307,22 @@ export default function LatestBillsPage() {
                     <td>
                       <DataStatusBadge status={bill.status} showDot />
                     </td>
-                    <td className="text-xs text-slate-400">
+                    <td className="text-xs text-[var(--text-muted)]">
                       {bill.introducedDate ? formatDate(bill.introducedDate) : "—"}
                     </td>
-                    <td className="text-xs text-slate-400">
+                    <td className="text-xs text-[var(--text-muted)]">
                       <span title={formatDate(bill.discoveredAt)}>
                         {timeAgo(bill.discoveredAt)}
                       </span>
                     </td>
-                    <td className="text-xs text-slate-400">
+                    <td className="text-xs text-[var(--text-muted)]">
                       <span title={formatDate(bill.lastUpdated)}>
                         {timeAgo(bill.lastUpdated)}
                       </span>
                     </td>
                     <td>
                       <div className="text-xs">
-                        <p className="text-slate-400 truncate max-w-[140px]">{bill.source}</p>
+                        <p className="text-[var(--text-muted)] truncate max-w-[140px]">{bill.source}</p>
                         {bill.sourceUrl && (
                           <a
                             href={bill.sourceUrl}
@@ -349,17 +349,17 @@ export default function LatestBillsPage() {
           <button
             onClick={() => setPage(Math.max(1, page - 1))}
             disabled={page === 1}
-            className="px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-900/60 border border-white/8 text-slate-400 hover:text-white hover:bg-white/5 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+            className="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--bg-card)]/60 border border-white/8 text-[var(--text-muted)] hover:text-white hover:bg-white/5 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
           >
             ← Prev
           </button>
-          <span className="text-xs text-slate-500">
+          <span className="text-xs text-[var(--text-faint)]">
             Page {page} of {totalPages}
           </span>
           <button
             onClick={() => setPage(Math.min(totalPages, page + 1))}
             disabled={page === totalPages}
-            className="px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-900/60 border border-white/8 text-slate-400 hover:text-white hover:bg-white/5 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+            className="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--bg-card)]/60 border border-white/8 text-[var(--text-muted)] hover:text-white hover:bg-white/5 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
           >
             Next →
           </button>
@@ -369,7 +369,7 @@ export default function LatestBillsPage() {
       {/* Disclaimer */}
       <div className="mt-8 pt-6 border-t border-white/5">
         <p className="text-xs text-slate-600 max-w-3xl leading-relaxed">
-          <strong className="text-slate-500">Source Provenance:</strong> Bills are ordered by discovery timestamp from authoritative sources.
+          <strong className="text-[var(--text-faint)]">Source Provenance:</strong> Bills are ordered by discovery timestamp from authoritative sources.
           &ldquo;Last Updated&rdquo; reflects the most recent change detected in the source record.
           &ldquo;Discovered At&rdquo; reflects when the record was first ingested.
           No bill is labelled as &ldquo;latest&rdquo; unless the source metadata supports the ordering.

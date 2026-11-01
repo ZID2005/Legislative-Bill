@@ -4,13 +4,15 @@
   "company_symbol": "SBIN",
   "jurisdiction": "central",
   "market_signal": {
-    "level": "UNKNOWN",
-    "market_signal_score": 0.0,
-    "car_magnitude": 0.0,
-    "z_score": 0.0,
-    "directional_persistence": 0.0,
-    "volatility": 0.0,
-    "signals_detected": []
+    "level": "HIGH",
+    "market_signal_score": 0.5122,
+    "car_magnitude": 0.0486,
+    "z_score": -0.6216,
+    "directional_persistence": 0.5,
+    "volatility": 0.02,
+    "signals_detected": [
+      "HIGH_MAGNITUDE_PRE_EVENT_RETURN"
+    ]
   },
   "public_information_signal": {
     "level": "NONE",
@@ -24,9 +26,9 @@
     "evidence_window_trading_days": null
   },
   "combined_context": {
-    "classification": "INSUFFICIENT_EVIDENCE",
-    "interpretation": "Insufficient verified public-information evidence and market prediction unavailable.",
-    "market_signal": "UNKNOWN",
+    "classification": "MARKET_SIGNAL_ONLY",
+    "interpretation": "Abnormal pre-event market movement detected without corroborating pre-event public media records. Movement is categorized as market-signal-only.",
+    "market_signal": "HIGH",
     "information_signal": "NONE",
     "epistemic_tag": "[EVIDENCE]",
     "non_accusatory_disclaimer": "Observable public-information evidence and market signals measure pre-event information diffusion patterns only. They do not establish causation, illegal disclosure, market manipulation, or insider trading."
@@ -40,7 +42,7 @@
       "source_name": "Official Parliament Record / PRS",
       "source_url": "https://prsindia.org/billtrack/the-banking-laws-amendment-bill-2024",
       "publication_timestamp": "2024-08-09T09:00:00Z",
-      "discovery_timestamp": "2026-10-06T09:39:06.743513Z",
+      "discovery_timestamp": "2026-10-28T16:06:35.650549Z",
       "event_reference": "2024-08-09",
       "headline": "Official Introduction: The Banking Laws (Amendment) Bill, 2024",
       "summary": "Official legislative record for The Banking Laws (Amendment) Bill, 2024 (Bill No. N/A) under Lok Sabha.",
@@ -58,12 +60,12 @@
         "official_pdf_url": null
       },
       "verification_status": "VERIFIED",
-      "created_at": "2026-10-06T09:39:06.743522Z",
+      "created_at": "2026-10-28T16:06:35.650564Z",
       "duplicate_of": null,
       "canonical_evidence_id": "pie_off_65a936f889ca",
       "match_reason": "Direct mention of bill title 'The Banking Laws (Amendment) Bill, 2024'"
     }
   ],
   "search_trend_items": [],
-  "created_at": "2026-10-06T09:39:06.743617Z"
+  "created_at": "2026-10-28T16:06:35.650874Z"
 }

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * components/bills/ProvenancePanel.tsx
  * ====================================
  * Source and Provenance panel for the Bill Detail Dossier.
@@ -48,7 +48,7 @@ export function ProvenancePanel({
           <div className="flex flex-wrap items-center justify-between gap-2 w-full">
             <div>
               <CardTitle>Authoritative Source &amp; Data Provenance</CardTitle>
-              <p className="text-xs text-slate-500 mt-0.5">
+              <p className="text-xs text-[var(--text-faint)] mt-0.5">
                 Official document links, statutory gazette references, and cryptographic provenance audit.
               </p>
             </div>
@@ -60,9 +60,9 @@ export function ProvenancePanel({
           {/* Primary Source Reference Links */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {/* Official Portal */}
-            <div className="rounded-lg border border-slate-800 bg-slate-900/60 p-3.5 space-y-2">
+            <div className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/60 p-3.5 space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
+                <span className="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider">
                   Official Legislative Portal
                 </span>
                 <Badge variant="primary" size="xs">
@@ -80,21 +80,21 @@ export function ProvenancePanel({
                     <span>{bill.source_url}</span>
                     <span aria-hidden="true">↗</span>
                   </a>
-                  <p className="text-[11px] text-slate-500 mt-1">
+                  <p className="text-[11px] text-[var(--text-faint)] mt-1">
                     Verified record from primary assembly/parliament registry.
                   </p>
                 </div>
               ) : (
-                <p className="text-xs text-slate-500 italic">
+                <p className="text-xs text-[var(--text-faint)] italic">
                   Primary web URL unavailable in registry.
                 </p>
               )}
             </div>
 
             {/* Official PDF Document */}
-            <div className="rounded-lg border border-slate-800 bg-slate-900/60 p-3.5 space-y-2">
+            <div className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/60 p-3.5 space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
+                <span className="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider">
                   Official Gazette / Bill PDF
                 </span>
                 <Badge variant="emerald" size="xs">
@@ -112,12 +112,12 @@ export function ProvenancePanel({
                     <span>{bill.pdf_url}</span>
                     <span aria-hidden="true">↗</span>
                   </a>
-                  <p className="text-[11px] text-slate-500 mt-1">
+                  <p className="text-[11px] text-[var(--text-faint)] mt-1">
                     Authoritative legislative gazette publication document.
                   </p>
                 </div>
               ) : (
-                <p className="text-xs text-slate-500 italic">
+                <p className="text-xs text-[var(--text-faint)] italic">
                   Digital PDF document link not cataloged.
                 </p>
               )}
@@ -125,22 +125,22 @@ export function ProvenancePanel({
           </div>
 
           {/* Quality & Freshness Verification Ribbon */}
-          <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-lg border border-slate-800/80 bg-slate-900/40 text-xs">
+          <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-lg border border-[var(--border-default)]/80 bg-[var(--bg-card)]/40 text-xs">
             <div className="flex items-center gap-2">
-              <span className="text-slate-500">Data Quality:</span>
+              <span className="text-[var(--text-faint)]">Data Quality:</span>
               <Badge variant="emerald" size="xs">
                 ✓ {bill.data_quality || "VERIFIED"}
               </Badge>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-slate-500">Data Sufficiency:</span>
-              <span className="font-semibold text-slate-300 font-mono">
+              <span className="text-[var(--text-faint)]">Data Sufficiency:</span>
+              <span className="font-semibold text-[var(--text-secondary)] font-mono">
                 {bill.data_sufficiency}
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-slate-500">Jurisdiction Authority:</span>
-              <span className="text-slate-300">
+              <span className="text-[var(--text-faint)]">Jurisdiction Authority:</span>
+              <span className="text-[var(--text-secondary)]">
                 {bill.jurisdiction === "central" ? "Parliament of India" : `${bill.state} Assembly`}
               </span>
             </div>
@@ -149,22 +149,22 @@ export function ProvenancePanel({
           {/* Field-by-Field Provenance Audit Map */}
           {provEntries.length > 0 && (
             <div className="space-y-2">
-              <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
+              <h4 className="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider">
                 Field-Level Provenance Audit Map
               </h4>
-              <div className="overflow-x-auto rounded-lg border border-slate-800">
-                <table className="w-full text-left text-xs text-slate-300" aria-label="Field provenance table">
-                  <thead className="bg-slate-900 text-slate-400 uppercase text-[10px] tracking-wider border-b border-slate-800">
+              <div className="overflow-x-auto rounded-lg border border-[var(--border-default)]">
+                <table className="w-full text-left text-xs text-[var(--text-secondary)]" aria-label="Field provenance table">
+                  <thead className="bg-[var(--bg-card)] text-[var(--text-muted)] uppercase text-[10px] tracking-wider border-b border-[var(--border-default)]">
                     <tr>
                       <th scope="col" className="py-2 px-3">Field Name</th>
                       <th scope="col" className="py-2 px-3">Authority Classification</th>
                       <th scope="col" className="py-2 px-3">Standard / Source</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-800/60 bg-slate-950/40 font-mono text-[11px]">
+                  <tbody className="divide-y divide-[var(--border-default)]/60 bg-[var(--bg-base)]/40 font-mono text-[11px]">
                     {provEntries.map(([field, tier]) => (
-                      <tr key={field} className="hover:bg-slate-900/40">
-                        <td className="py-2 px-3 text-slate-300">
+                      <tr key={field} className="hover:bg-[var(--bg-card)]/40">
+                        <td className="py-2 px-3 text-[var(--text-secondary)]">
                           {field.replace(/_/g, " ")}
                         </td>
                         <td className="py-2 px-3">
@@ -172,7 +172,7 @@ export function ProvenancePanel({
                             {tier}
                           </Badge>
                         </td>
-                        <td className="py-2 px-3 text-slate-500 font-sans">
+                        <td className="py-2 px-3 text-[var(--text-faint)] font-sans">
                           {tier === "AUTHORITATIVE"
                             ? "Primary government legislative record"
                             : tier === "DERIVED" || tier === "SYSTEM_DERIVED"

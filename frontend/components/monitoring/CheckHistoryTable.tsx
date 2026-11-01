@@ -1,7 +1,13 @@
 /**
  * components/monitoring/CheckHistoryTable.tsx
  * ============================================
- * Paginated monitoring run history table.
+ * Redesigned Monitoring Run History Table (Task 1.11A).
+ *
+ * Implements:
+ * - Scannable tabular history of pipeline ingestion runs
+ * - Accurate durations and timestamps
+ * - Clear success/partial/failure status badges
+ * - Pagination controls
  */
 
 "use client";
@@ -10,6 +16,7 @@ import React from "react";
 import type { MonitoringRunDetail, PaginatedResponse } from "@/types/api";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { Pagination } from "@/components/ui/Pagination";
+import { cn } from "@/lib/utils";
 
 interface CheckHistoryTableProps {
   data: PaginatedResponse<MonitoringRunDetail> | null;
@@ -17,13 +24,6 @@ interface CheckHistoryTableProps {
   error: string | null;
   onPageChange: (page: number) => void;
 }
-
-const STATUS_COLORS: Record<string, string> = {
-  SUCCESS: "text-emerald-400",
-  PARTIAL_SUCCESS: "text-amber-400",
-  FAILED: "text-rose-400",
-  RUNNING: "text-blue-400",
-};
 
 function formatTime(iso: string | null | undefined): string {
   if (!iso) return "—";
@@ -40,10 +40,40 @@ function formatDuration(secs: number | null | undefined): string {
   return `${(secs / 60).toFixed(1)}m`;
 }
 
+function RunStatusBadge({ status }: { status: string }) {
+  const norm = status?.toUpperCase() ?? "UNKNOWN";
+  if (norm === "SUCCESS") {
+    return (
+      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-mono font-bold bg-[var(--color-success-bg)] text-[var(--color-success)] border border-[var(--color-success-border)]">
+        ✓ SUCCESS
+      </span>
+    );
+  }
+  if (norm === "PARTIAL_SUCCESS") {
+    return (
+      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-mono font-bold bg-[var(--color-warning-bg)] text-[var(--color-warning)] border border-[var(--color-warning-border)]">
+        ▲ PARTIAL
+      </span>
+    );
+  }
+  if (norm === "FAILED") {
+    return (
+      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-mono font-bold bg-[var(--color-error-bg)] text-[var(--color-error)] border border-[var(--color-error-border)]">
+        ✕ FAILED
+      </span>
+    );
+  }
+  return (
+    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-mono font-bold bg-[var(--color-info-bg)] text-[var(--color-info)] border border-[var(--color-info-border)]">
+      ● RUNNING
+    </span>
+  );
+}
+
 export function CheckHistoryTable({ data, loading, error, onPageChange }: CheckHistoryTableProps) {
   if (error) {
     return (
-      <div className="rounded-xl border border-rose-500/20 bg-rose-500/5 p-4 text-rose-400 text-sm" role="alert">
+      <div className="rounded-xl border border-[var(--color-error-border)] bg-[var(--color-error-bg)] p-4 text-[var(--color-error)] text-sm" role="alert">
         <span className="font-semibold">⚠ Failed to load run history:</span> {error}
       </div>
     );
@@ -51,9 +81,9 @@ export function CheckHistoryTable({ data, loading, error, onPageChange }: CheckH
 
   if (loading || !data) {
     return (
-      <div aria-busy="true" aria-label="Loading run history">
+      <div aria-busy="true" aria-label="Loading run history" className="space-y-2">
         {Array.from({ length: 5 }).map((_, i) => (
-          <Skeleton key={i} className="h-12 rounded-lg mb-2" />
+          <Skeleton key={i} className="h-12 rounded-lg" />
         ))}
       </div>
     );
@@ -61,10 +91,10 @@ export function CheckHistoryTable({ data, loading, error, onPageChange }: CheckH
 
   if (data.items.length === 0) {
     return (
-      <div className="rounded-xl border border-slate-800 bg-slate-900/40 p-8 text-center">
-        <p className="text-slate-500 text-sm">No monitoring runs have been recorded yet.</p>
-        <p className="text-slate-600 text-xs mt-2">
-          Runs are created when the scheduler executes or a manual check is triggered.
+      <div className="rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-card)] p-8 text-center space-y-1">
+        <p className="text-[var(--text-faint)] text-xs font-mono">No monitoring runs have been recorded yet.</p>
+        <p className="text-[var(--text-muted)] text-[11px]">
+          Runs are recorded automatically when the scheduler executes or when an authorized operator triggers a safe poll.
         </p>
       </div>
     );
@@ -72,54 +102,56 @@ export function CheckHistoryTable({ data, loading, error, onPageChange }: CheckH
 
   return (
     <div className="space-y-4">
-      <div className="text-xs text-slate-500">
-        Showing {data.items.length} of {data.total} run{data.total !== 1 ? "s" : ""}
+      <div className="text-xs text-[var(--text-faint)] font-mono flex items-center justify-between">
+        <span>Showing {data.items.length} of {data.total} run{data.total !== 1 ? "s" : ""}</span>
+        <span>Audit Trail Active</span>
       </div>
 
-      <div className="rounded-xl border border-slate-800 overflow-hidden">
+      <div className="rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-card)] overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full text-sm" role="table" aria-label="Monitoring run history">
-            <thead>
-              <tr className="border-b border-slate-800 bg-slate-900/80">
-                <th scope="col" className="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wide">Run ID</th>
-                <th scope="col" className="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wide">Started</th>
-                <th scope="col" className="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wide">Duration</th>
-                <th scope="col" className="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wide">Status</th>
-                <th scope="col" className="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wide">Trigger</th>
-                <th scope="col" className="px-4 py-3 text-center text-xs font-semibold text-slate-400 uppercase tracking-wide">Sources</th>
-                <th scope="col" className="px-4 py-3 text-center text-xs font-semibold text-slate-400 uppercase tracking-wide">New Bills</th>
-                <th scope="col" className="px-4 py-3 text-center text-xs font-semibold text-slate-400 uppercase tracking-wide">Changes</th>
-                <th scope="col" className="px-4 py-3 text-center text-xs font-semibold text-slate-400 uppercase tracking-wide">Errors</th>
+          <table className="w-full text-left text-xs" role="table" aria-label="Monitoring run history">
+            <thead className="bg-[var(--bg-surface)] text-[var(--text-faint)] font-mono uppercase tracking-wider border-b border-[var(--border-hairline)]">
+              <tr>
+                <th scope="col" className="px-4 py-3">Run ID</th>
+                <th scope="col" className="px-4 py-3">Started Timestamp</th>
+                <th scope="col" className="px-4 py-3">Duration</th>
+                <th scope="col" className="px-4 py-3">Execution Status</th>
+                <th scope="col" className="px-4 py-3">Trigger Channel</th>
+                <th scope="col" className="px-4 py-3 text-center">Sources (OK/Total)</th>
+                <th scope="col" className="px-4 py-3 text-right">New Bills</th>
+                <th scope="col" className="px-4 py-3 text-right">Changes</th>
+                <th scope="col" className="px-4 py-3 text-right">Errors</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800">
+            <tbody className="divide-y divide-[var(--border-hairline)] font-mono">
               {data.items.map((run) => (
-                <tr key={run.run_id} className="hover:bg-slate-800/40 transition-colors">
-                  <td className="px-4 py-3 font-mono text-xs text-slate-500">
-                    {run.run_id.slice(0, 8)}…
+                <tr key={run.run_id} className="hover:bg-[var(--bg-card-hover)] transition-colors">
+                  <td className="px-4 py-3 text-[var(--text-secondary)] font-semibold" title={run.run_id}>
+                    {run.run_id.slice(0, 12)}…
                   </td>
-                  <td className="px-4 py-3 text-xs text-slate-400">{formatTime(run.started_at)}</td>
-                  <td className="px-4 py-3 text-xs text-slate-400">{formatDuration(run.duration_seconds)}</td>
+                  <td className="px-4 py-3 text-[var(--text-muted)]">
+                    {formatTime(run.started_at)}
+                  </td>
+                  <td className="px-4 py-3 text-[var(--text-muted)]">
+                    {formatDuration(run.duration_seconds)}
+                  </td>
                   <td className="px-4 py-3">
-                    <span className={`text-xs font-semibold ${STATUS_COLORS[run.status] ?? "text-slate-400"}`}>
-                      {run.status}
-                    </span>
+                    <RunStatusBadge status={run.status} />
                   </td>
-                  <td className="px-4 py-3 text-xs text-slate-400 capitalize">{run.trigger}</td>
-                  <td className="px-4 py-3 text-center">
-                    <span className="text-xs text-slate-300">{run.sources_checked}</span>
-                    <span className="text-xs text-slate-600"> ({run.sources_succeeded}✓ {run.sources_failed}✕)</span>
+                  <td className="px-4 py-3 text-[var(--text-muted)] capitalize">
+                    {run.trigger.replace(/_/g, " ")}
                   </td>
-                  <td className="px-4 py-3 text-center text-xs font-semibold text-emerald-400">
-                    {run.new_bills}
+                  <td className="px-4 py-3 text-center text-[var(--text-secondary)]">
+                    {run.sources_succeeded} / {run.sources_checked}
                   </td>
-                  <td className="px-4 py-3 text-center text-xs font-semibold text-amber-400">
-                    {run.changed_bills + run.document_changes}
+                  <td className="px-4 py-3 text-right font-bold text-emerald-400 tabular-nums">
+                    +{run.new_bills}
                   </td>
-                  <td className="px-4 py-3 text-center text-xs font-semibold">
-                    <span className={run.errors > 0 ? "text-rose-400" : "text-slate-600"}>
-                      {run.errors}
-                    </span>
+                  <td className="px-4 py-3 text-right font-bold text-amber-400 tabular-nums">
+                    {run.changed_bills}
+                  </td>
+                  <td className={cn("px-4 py-3 text-right font-bold tabular-nums", run.errors > 0 ? "text-rose-400" : "text-[var(--text-muted)]")}>
+                    {run.errors}
                   </td>
                 </tr>
               ))}

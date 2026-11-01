@@ -1,4 +1,4 @@
-/**
+﻿/**
  * app/sectors/SectorsContent.tsx
  * ===============================
  * Macro Economic Sector Directory for India Legislative Intelligence.
@@ -217,23 +217,23 @@ export default function SectorsContent() {
   }, [sectorData, industries]);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 p-6 md:p-8">
+    <div className="min-h-screen bg-[var(--bg-base)] text-[var(--text-primary)] p-6 md:p-8">
       {/* Header Banner */}
       <div className="mb-8">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800/80 pb-6">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[var(--border-default)]/80 pb-6">
           <div>
             <div className="flex items-center gap-2 mb-2">
               <span className="text-xs font-mono font-semibold px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
                 MACRO TAXONOMY
               </span>
-              <span className="text-xs font-mono text-slate-500">
+              <span className="text-xs font-mono text-[var(--text-faint)]">
                 11 High-Impact Economic Domains
               </span>
             </div>
-            <h1 className="text-3xl font-bold tracking-tight text-white flex items-center gap-3">
+            <h1 className="text-3xl font-bold tracking-tight text-[var(--text-primary)] flex items-center gap-3">
               <span>Macro Sector Directory</span>
             </h1>
-            <p className="text-slate-400 mt-2 max-w-3xl text-sm leading-relaxed">
+            <p className="text-[var(--text-muted)] mt-2 max-w-3xl text-sm leading-relaxed">
               Explore India’s high-level economic sectors mapped against Central and State legislative
               interventions, corporate exposures, and quantified economic transmission paths.
             </p>
@@ -242,7 +242,7 @@ export default function SectorsContent() {
           <div className="flex items-center gap-3">
             <Link
               href="/industries"
-              className="px-4 py-2 text-sm font-medium rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white transition-colors flex items-center gap-2 shadow-lg shadow-indigo-500/10"
+              className="px-4 py-2 text-sm font-medium rounded-lg bg-indigo-600 hover:bg-indigo-500 text-[var(--text-primary)] transition-colors flex items-center gap-2 shadow-lg shadow-indigo-500/10"
             >
               <span>View All Industries</span>
               <span>→</span>
@@ -252,25 +252,25 @@ export default function SectorsContent() {
 
         {/* Global Macro KPI Bar */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6">
-          <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
-            <p className="text-xs font-mono text-slate-400 uppercase tracking-wider">Macro Sectors</p>
-            <p className="text-2xl font-bold text-white mt-1">11</p>
-            <p className="text-xs text-slate-500 mt-0.5">NIC-mapped clusters</p>
+          <div className="bg-[var(--bg-card)]/60 border border-[var(--border-default)] rounded-xl p-4">
+            <p className="text-xs font-mono text-[var(--text-muted)] uppercase tracking-wider">Macro Sectors</p>
+            <p className="text-2xl font-bold text-[var(--text-primary)] mt-1">11</p>
+            <p className="text-xs text-[var(--text-faint)] mt-0.5">NIC-mapped clusters</p>
           </div>
-          <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
-            <p className="text-xs font-mono text-slate-400 uppercase tracking-wider">Underlying Industries</p>
+          <div className="bg-[var(--bg-card)]/60 border border-[var(--border-default)] rounded-xl p-4">
+            <p className="text-xs font-mono text-[var(--text-muted)] uppercase tracking-wider">Underlying Industries</p>
             <p className="text-2xl font-bold text-indigo-400 mt-1">{aggregateMetrics.industriesCount}</p>
-            <p className="text-xs text-slate-500 mt-0.5">Granular segments</p>
+            <p className="text-xs text-[var(--text-faint)] mt-0.5">Granular segments</p>
           </div>
-          <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
-            <p className="text-xs font-mono text-slate-400 uppercase tracking-wider">Active Bills Mapped</p>
+          <div className="bg-[var(--bg-card)]/60 border border-[var(--border-default)] rounded-xl p-4">
+            <p className="text-xs font-mono text-[var(--text-muted)] uppercase tracking-wider">Active Bills Mapped</p>
             <p className="text-2xl font-bold text-emerald-400 mt-1">{aggregateMetrics.totalBills}</p>
-            <p className="text-xs text-slate-500 mt-0.5">Central & State enactments</p>
+            <p className="text-xs text-[var(--text-faint)] mt-0.5">Central & State enactments</p>
           </div>
-          <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
-            <p className="text-xs font-mono text-slate-400 uppercase tracking-wider">Corporate Links</p>
+          <div className="bg-[var(--bg-card)]/60 border border-[var(--border-default)] rounded-xl p-4">
+            <p className="text-xs font-mono text-[var(--text-muted)] uppercase tracking-wider">Corporate Links</p>
             <p className="text-2xl font-bold text-sky-400 mt-1">{aggregateMetrics.totalExposures}</p>
-            <p className="text-xs text-slate-500 mt-0.5">Quant + Intelligence firms</p>
+            <p className="text-xs text-[var(--text-faint)] mt-0.5">Quant + Intelligence firms</p>
           </div>
         </div>
 
@@ -288,26 +288,26 @@ export default function SectorsContent() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search sectors or industries..."
-            className="w-full pl-10 pr-4 py-2 bg-slate-900 border border-slate-800 rounded-lg text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition-colors"
+            className="w-full pl-10 pr-4 py-2 bg-[var(--bg-card)] border border-[var(--border-default)] rounded-lg text-sm text-[var(--text-primary)] placeholder-[var(--input-placeholder)] focus:outline-none focus:border-indigo-500 transition-colors"
           />
-          <span className="absolute left-3 top-2.5 text-slate-500 text-sm">🔍</span>
+          <span className="absolute left-3 top-2.5 text-[var(--text-faint)] text-sm">🔍</span>
           {search && (
             <button
               onClick={() => setSearch("")}
-              className="absolute right-3 top-2.5 text-xs text-slate-500 hover:text-slate-300"
+              className="absolute right-3 top-2.5 text-xs text-[var(--text-faint)] hover:text-[var(--text-secondary)]"
             >
               ✕
             </button>
           )}
         </div>
-        <span className="text-xs text-slate-500 font-mono">
+        <span className="text-xs text-[var(--text-faint)] font-mono">
           Showing {sectorData.length} Macro Sectors
         </span>
       </div>
 
       {/* Loading & Error States */}
       {loading && (
-        <div className="p-12 text-center text-slate-400 bg-slate-900/40 rounded-xl border border-slate-800">
+        <div className="p-12 text-center text-[var(--text-muted)] bg-[var(--bg-card)]/40 rounded-xl border border-[var(--border-default)]">
           <div className="inline-block animate-spin text-2xl mb-2">⏳</div>
           <p className="text-sm">Synthesizing macro sector taxonomy and legislative linkages...</p>
         </div>
@@ -319,7 +319,7 @@ export default function SectorsContent() {
           <p className="text-xs text-red-400">{error}</p>
           <button
             onClick={loadData}
-            className="mt-3 px-3 py-1.5 bg-red-800 hover:bg-red-700 text-white rounded text-xs transition-colors"
+            className="mt-3 px-3 py-1.5 bg-red-800 hover:bg-red-700 text-[var(--text-primary)] rounded text-xs transition-colors"
           >
             Retry Connection
           </button>
@@ -336,22 +336,22 @@ export default function SectorsContent() {
             return (
               <div
                 key={item.meta.name}
-                className="bg-slate-900/70 border border-slate-800/90 hover:border-slate-700 rounded-xl p-5 flex flex-col justify-between transition-all duration-200 shadow-sm hover:shadow-indigo-950/20"
+                className="bg-[var(--bg-card)]/70 border border-[var(--border-default)]/90 hover:border-[var(--border-strong)] rounded-xl p-5 flex flex-col justify-between transition-all duration-200 shadow-sm hover:shadow-indigo-950/20"
               >
                 <div>
                   {/* Card Header */}
                   <div className="flex items-start justify-between gap-3 mb-3">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-slate-800/80 border border-slate-700/60 flex items-center justify-center text-xl">
+                      <div className="w-10 h-10 rounded-lg bg-[var(--bg-elevated)]/80 border border-[var(--border-strong)]/60 flex items-center justify-center text-xl">
                         {item.meta.icon}
                       </div>
                       <div>
-                        <h2 className="text-lg font-bold text-white hover:text-indigo-400 transition-colors">
+                        <h2 className="text-lg font-bold text-[var(--text-primary)] hover:text-indigo-400 transition-colors">
                           <Link href={`/industries?sector=${sectorSlug}`}>
                             {item.meta.name}
                           </Link>
                         </h2>
-                        <span className="text-xs text-slate-500 font-mono">
+                        <span className="text-xs text-[var(--text-faint)] font-mono">
                           {item.industries.length} {item.industries.length === 1 ? "Industry" : "Industries"}
                         </span>
                       </div>
@@ -366,29 +366,29 @@ export default function SectorsContent() {
                   </div>
 
                   {/* Description */}
-                  <p className="text-xs text-slate-400 leading-relaxed mb-4 line-clamp-2">
+                  <p className="text-xs text-[var(--text-muted)] leading-relaxed mb-4 line-clamp-2">
                     {item.meta.description}
                   </p>
 
                   {/* Metrics Row */}
-                  <div className="grid grid-cols-3 gap-2 bg-slate-950/60 border border-slate-800/80 rounded-lg p-2.5 mb-4 text-center">
+                  <div className="grid grid-cols-3 gap-2 bg-[var(--bg-base)]/60 border border-[var(--border-default)]/80 rounded-lg p-2.5 mb-4 text-center">
                     <div>
-                      <span className="text-[10px] font-mono text-slate-500 block uppercase">Bills</span>
-                      <span className="text-sm font-semibold text-slate-200">{item.totalBills}</span>
+                      <span className="text-[10px] font-mono text-[var(--text-faint)] block uppercase">Bills</span>
+                      <span className="text-sm font-semibold text-[var(--text-primary)]">{item.totalBills}</span>
                     </div>
                     <div>
-                      <span className="text-[10px] font-mono text-slate-500 block uppercase">Central</span>
+                      <span className="text-[10px] font-mono text-[var(--text-faint)] block uppercase">Central</span>
                       <span className="text-sm font-semibold text-emerald-400">{item.centralBills}</span>
                     </div>
                     <div>
-                      <span className="text-[10px] font-mono text-slate-500 block uppercase">State</span>
+                      <span className="text-[10px] font-mono text-[var(--text-faint)] block uppercase">State</span>
                       <span className="text-sm font-semibold text-amber-400">{item.stateBills}</span>
                     </div>
                   </div>
 
                   {/* Child Industries Pills */}
                   <div className="mb-4">
-                    <span className="text-[10px] font-mono uppercase text-slate-500 tracking-wider block mb-1.5">
+                    <span className="text-[10px] font-mono uppercase text-[var(--text-faint)] tracking-wider block mb-1.5">
                       Sub-Industries:
                     </span>
                     <div className="flex flex-wrap gap-1.5 max-h-24 overflow-y-auto pr-1">
@@ -397,7 +397,7 @@ export default function SectorsContent() {
                           <Link
                             key={ind.industry_id}
                             href={`/industry/${ind.industry_id}`}
-                            className="text-xs px-2 py-0.5 rounded bg-slate-800/80 hover:bg-indigo-900/40 hover:text-indigo-300 text-slate-300 border border-slate-700/50 transition-colors"
+                            className="text-xs px-2 py-0.5 rounded bg-[var(--bg-elevated)]/80 hover:bg-indigo-900/40 hover:text-indigo-300 text-[var(--text-secondary)] border border-[var(--border-strong)]/50 transition-colors"
                           >
                             {ind.name}
                           </Link>
@@ -410,8 +410,8 @@ export default function SectorsContent() {
                 </div>
 
                 {/* Footer Action */}
-                <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between mt-auto">
-                  <span className="text-xs text-slate-500">
+                <div className="pt-3 border-t border-[var(--border-default)]/80 flex items-center justify-between mt-auto">
+                  <span className="text-xs text-[var(--text-faint)]">
                     {item.quantCompanies > 0 && (
                       <span className="text-indigo-400 font-mono text-[11px]">
                         {item.quantCompanies} Quant Stocks
@@ -421,7 +421,7 @@ export default function SectorsContent() {
                       <span className="mx-1.5 text-slate-700">•</span>
                     )}
                     {item.intelCompanies > 0 && (
-                      <span className="text-slate-400 font-mono text-[11px]">
+                      <span className="text-[var(--text-muted)] font-mono text-[11px]">
                         {item.intelCompanies} Intel Firms
                       </span>
                     )}

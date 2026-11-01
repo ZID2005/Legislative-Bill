@@ -1,4 +1,4 @@
-/**
+﻿/**
  * components/companies/CompanyAnticipationSection.tsx
  * ====================================================
  * Pre-Event Anticipation & Information Diffusion analysis for corporate profiles.
@@ -41,12 +41,12 @@ export function CompanyAnticipationSection({
             <SourceBadge type="DERIVED" size="xs" showTooltip />
           </div>
         </CardHeader>
-        <div className="rounded-lg border border-slate-800 bg-slate-900/50 p-6 text-center space-y-2">
+        <div className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/50 p-6 text-center space-y-2">
           <span className="text-2xl" aria-hidden="true">📡</span>
-          <h4 className="text-sm font-semibold text-slate-300">
+          <h4 className="text-sm font-semibold text-[var(--text-secondary)]">
             Anticipation Diagnostics Not Applicable for this Entity
           </h4>
-          <p className="text-xs text-slate-500 max-w-md mx-auto leading-relaxed">
+          <p className="text-xs text-[var(--text-faint)] max-w-md mx-auto leading-relaxed">
             Pre-event econometric anticipation and information diffusion modeling operates strictly on liquid Central quantitative securities.
             Intelligence-only entities, unlisted companies, and public utilities are firewalled from econometric pre-event diagnostics.
           </p>
@@ -68,12 +68,12 @@ export function CompanyAnticipationSection({
             <SourceBadge type="DERIVED" size="xs" showTooltip />
           </div>
         </CardHeader>
-        <div className="rounded-lg border border-slate-800 bg-slate-900/50 p-6 text-center space-y-2">
+        <div className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/50 p-6 text-center space-y-2">
           <span className="text-xl" aria-hidden="true">📊</span>
-          <h4 className="text-xs font-semibold text-slate-300">
+          <h4 className="text-xs font-semibold text-[var(--text-secondary)]">
             Anticipation Diagnostics Unavailable
           </h4>
-          <p className="text-xs text-slate-500 max-w-md mx-auto">
+          <p className="text-xs text-[var(--text-faint)] max-w-md mx-auto">
             No pre-event information diffusion records are currently cataloged for this company.
           </p>
         </div>
@@ -98,7 +98,7 @@ export function CompanyAnticipationSection({
   return (
     <div className={`space-y-6 ${className}`} aria-label="Anticipation Analysis Section">
       {/* Neutral Methodology & Non-Allegation Disclaimer */}
-      <div className="rounded-lg border border-slate-800 bg-slate-900/90 p-4 space-y-2">
+      <div className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/90 p-4 space-y-2">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="text-blue-400 font-semibold text-xs">
@@ -106,12 +106,12 @@ export function CompanyAnticipationSection({
             </span>
             <SourceBadge type="DERIVED" size="xs" />
           </div>
-          <span className="text-[11px] text-slate-500">Methodology Benchmark</span>
+          <span className="text-[11px] text-[var(--text-faint)]">Methodology Benchmark</span>
         </div>
-        <p className="text-xs text-slate-400 leading-relaxed">
+        <p className="text-xs text-[var(--text-muted)] leading-relaxed">
           Econometric pre-event diagnostic models evaluate whether parliamentary news, public consultations, or market volume anomalies were observed prior to official introduction date ($T_0$).
         </p>
-        <div className="rounded bg-slate-800/60 p-2.5 border border-slate-700/60 text-[11px] text-amber-200/90 font-medium">
+        <div className="rounded bg-[var(--bg-elevated)]/60 p-2.5 border border-[var(--border-strong)]/60 text-[11px] text-amber-200/90 font-medium">
           🛡️ Institutional Disclaimer: Pre-event diagnostics measure aggregate public information diffusion only. They do not allege or imply insider trading or illicit market conduct under securities law.
         </div>
       </div>
@@ -121,7 +121,7 @@ export function CompanyAnticipationSection({
         <CardHeader>
           <div className="flex items-center justify-between w-full">
             <CardTitle>Company Anticipation Records ({scores.length})</CardTitle>
-            <span className="text-xs text-slate-400">
+            <span className="text-xs text-[var(--text-muted)]">
               Evaluated against Central enactments
             </span>
           </div>
@@ -130,7 +130,7 @@ export function CompanyAnticipationSection({
         <div className="overflow-x-auto -mx-6">
           <table className="w-full text-left text-xs border-collapse min-w-[700px]">
             <thead>
-              <tr className="border-b border-slate-800 bg-slate-900/50 text-slate-400 font-semibold">
+              <tr className="border-b border-[var(--border-default)] bg-[var(--bg-card)]/50 text-[var(--text-muted)] font-semibold">
                 <th scope="col" className="py-2.5 px-4 w-4/12">Central Legislation</th>
                 <th scope="col" className="py-2.5 px-3 w-2/12">Introduction Date</th>
                 <th scope="col" className="py-2.5 px-3 w-2/12">Diffusion Evidence</th>
@@ -138,7 +138,7 @@ export function CompanyAnticipationSection({
                 <th scope="col" className="py-2.5 px-3 w-2/12 text-center">Diagnostic</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60">
+            <tbody className="divide-y divide-[var(--border-default)]/60">
               {scores.map((score) => {
                 const billTitle =
                   score.bill_id
@@ -148,24 +148,24 @@ export function CompanyAnticipationSection({
                 return (
                   <tr
                     key={score.bill_id}
-                    className="hover:bg-slate-800/40 transition-colors"
+                    className="hover:bg-[var(--bg-elevated)]/40 transition-colors"
                   >
                     {/* Bill Title */}
                     <td className="py-3 px-4">
                       <Link
                         href={`/bills/${encodeURIComponent(score.bill_id)}`}
-                        className="font-semibold text-slate-200 hover:text-blue-400 transition-colors block text-sm"
+                        className="font-semibold text-[var(--text-primary)] hover:text-blue-400 transition-colors block text-sm"
                       >
                         {billTitle}
                       </Link>
-                      <span className="text-[10px] text-slate-500 font-mono block mt-0.5">
+                      <span className="text-[10px] text-[var(--text-faint)] font-mono block mt-0.5">
                         {score.company_symbol} · {score.confidence || "MODERATE"} Confidence
                       </span>
                     </td>
 
                     {/* T0 Date */}
                     <td className="py-3 px-3">
-                      <span className="text-slate-300 font-mono text-xs">
+                      <span className="text-[var(--text-secondary)] font-mono text-xs">
                         {score.official_introduction_date || "Date not recorded"}
                       </span>
                     </td>
@@ -178,12 +178,12 @@ export function CompanyAnticipationSection({
                     {/* Score */}
                     <td className="py-3 px-3">
                       <div className="space-y-0.5">
-                        <span className="font-mono font-bold text-slate-200 text-xs">
+                        <span className="font-mono font-bold text-[var(--text-primary)] text-xs">
                           {typeof score.anticipation_score === "number"
                             ? score.anticipation_score.toFixed(3)
                             : "—"}
                         </span>
-                        <div className="flex items-center gap-2 text-[10px] text-slate-500">
+                        <div className="flex items-center gap-2 text-[10px] text-[var(--text-faint)]">
                           <span>Mkt: {score.market_signal_score?.toFixed(2) ?? "—"}</span>
                           <span>Info: {score.information_signal_score?.toFixed(2) ?? "—"}</span>
                         </div>
@@ -196,7 +196,7 @@ export function CompanyAnticipationSection({
                         variant="outline"
                         size="xs"
                         onClick={() => setSelectedScore(score)}
-                        className="text-xs border-slate-700 hover:border-slate-500"
+                        className="text-xs border-[var(--border-strong)] hover:border-slate-500"
                         aria-label={`View diagnostic detail for ${billTitle}`}
                       >
                         🔍 Diagnostic
@@ -218,23 +218,23 @@ export function CompanyAnticipationSection({
           aria-modal="true"
           aria-labelledby="anticipation-modal-title"
         >
-          <div className="w-full max-w-lg rounded-xl border border-slate-800 bg-slate-900 p-6 shadow-2xl space-y-4 max-h-[85vh] overflow-y-auto">
+          <div className="w-full max-w-lg rounded-xl border border-[var(--border-default)] bg-[var(--bg-card)] p-6 shadow-2xl space-y-4 max-h-[85vh] overflow-y-auto">
             {/* Header */}
-            <div className="flex items-start justify-between gap-3 border-b border-slate-800 pb-3">
+            <div className="flex items-start justify-between gap-3 border-b border-[var(--border-default)] pb-3">
               <div>
                 <div className="flex items-center gap-2">
-                  <h3 id="anticipation-modal-title" className="text-sm font-semibold text-slate-100">
+                  <h3 id="anticipation-modal-title" className="text-sm font-semibold text-[var(--text-primary)]">
                     Pre-Event Diffusion Diagnostic
                   </h3>
                   <SourceBadge type="DERIVED" size="xs" />
                 </div>
-                <p className="text-xs text-slate-400 mt-0.5 font-medium">
+                <p className="text-xs text-[var(--text-muted)] mt-0.5 font-medium">
                   {selectedScore.bill_id}
                 </p>
               </div>
               <button
                 onClick={() => setSelectedScore(null)}
-                className="text-slate-400 hover:text-white text-base p-1"
+                className="text-[var(--text-muted)] hover:text-white text-base p-1"
                 aria-label="Close diagnostic modal"
               >
                 ✕
@@ -243,25 +243,25 @@ export function CompanyAnticipationSection({
 
             {/* Metrics Breakdown */}
             <div className="grid grid-cols-2 gap-2 text-xs">
-              <div className="rounded bg-slate-800/60 p-2.5 border border-slate-800">
-                <span className="text-slate-500 block text-[10px] uppercase">Classification</span>
-                <span className="font-bold text-slate-200">{selectedScore.classification}</span>
+              <div className="rounded bg-[var(--bg-elevated)]/60 p-2.5 border border-[var(--border-default)]">
+                <span className="text-[var(--text-faint)] block text-[10px] uppercase">Classification</span>
+                <span className="font-bold text-[var(--text-primary)]">{selectedScore.classification}</span>
               </div>
-              <div className="rounded bg-slate-800/60 p-2.5 border border-slate-800">
-                <span className="text-slate-500 block text-[10px] uppercase">Composite Score</span>
+              <div className="rounded bg-[var(--bg-elevated)]/60 p-2.5 border border-[var(--border-default)]">
+                <span className="text-[var(--text-faint)] block text-[10px] uppercase">Composite Score</span>
                 <span className="font-bold text-blue-400">
                   {selectedScore.anticipation_score?.toFixed(3) ?? "—"}
                 </span>
               </div>
-              <div className="rounded bg-slate-800/60 p-2.5 border border-slate-800">
-                <span className="text-slate-500 block text-[10px] uppercase">Market Signal</span>
-                <span className="font-bold text-slate-200">
+              <div className="rounded bg-[var(--bg-elevated)]/60 p-2.5 border border-[var(--border-default)]">
+                <span className="text-[var(--text-faint)] block text-[10px] uppercase">Market Signal</span>
+                <span className="font-bold text-[var(--text-primary)]">
                   {selectedScore.market_signal_score?.toFixed(3) ?? "—"}
                 </span>
               </div>
-              <div className="rounded bg-slate-800/60 p-2.5 border border-slate-800">
-                <span className="text-slate-500 block text-[10px] uppercase">Information Signal</span>
-                <span className="font-bold text-slate-200">
+              <div className="rounded bg-[var(--bg-elevated)]/60 p-2.5 border border-[var(--border-default)]">
+                <span className="text-[var(--text-faint)] block text-[10px] uppercase">Information Signal</span>
+                <span className="font-bold text-[var(--text-primary)]">
                   {selectedScore.information_signal_score?.toFixed(3) ?? "—"}
                 </span>
               </div>
@@ -270,10 +270,10 @@ export function CompanyAnticipationSection({
             {/* Diagnostic Reason */}
             {selectedScore.decision_reason && (
               <div className="space-y-1 text-xs">
-                <span className="font-semibold text-slate-400 uppercase tracking-wider block">
+                <span className="font-semibold text-[var(--text-muted)] uppercase tracking-wider block">
                   Diagnostic Rationale
                 </span>
-                <p className="text-slate-300 bg-slate-800/40 p-3 rounded border border-slate-800 leading-relaxed">
+                <p className="text-[var(--text-secondary)] bg-[var(--bg-elevated)]/40 p-3 rounded border border-[var(--border-default)] leading-relaxed">
                   {selectedScore.decision_reason}
                 </p>
               </div>
@@ -281,11 +281,11 @@ export function CompanyAnticipationSection({
 
             {/* Detected Signals */}
             {selectedScore.detected_signals && selectedScore.detected_signals.length > 0 && (
-              <div className="space-y-1.5 text-xs pt-2 border-t border-slate-800">
-                <span className="font-semibold text-slate-400 uppercase tracking-wider block">
+              <div className="space-y-1.5 text-xs pt-2 border-t border-[var(--border-default)]">
+                <span className="font-semibold text-[var(--text-muted)] uppercase tracking-wider block">
                   Detected Pre-Event Signals
                 </span>
-                <ul className="space-y-1 text-slate-300">
+                <ul className="space-y-1 text-[var(--text-secondary)]">
                   {selectedScore.detected_signals.map((sig, i) => (
                     <li key={i} className="flex items-start gap-1.5">
                       <span className="text-blue-400" aria-hidden="true">•</span>
@@ -297,7 +297,7 @@ export function CompanyAnticipationSection({
             )}
 
             {/* Modal Actions */}
-            <div className="flex items-center justify-between pt-3 border-t border-slate-800">
+            <div className="flex items-center justify-between pt-3 border-t border-[var(--border-default)]">
               <Link
                 href={`/bills/${encodeURIComponent(selectedScore.bill_id)}`}
                 className="text-xs text-blue-400 hover:underline"

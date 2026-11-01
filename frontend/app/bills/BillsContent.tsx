@@ -60,12 +60,12 @@ export default function BillsContent() {
         <div className="min-w-[240px] max-w-md">
           <Link
             href={`/bills/${bill.bill_id}`}
-            className="font-medium text-slate-100 hover:text-indigo-300 transition-colors line-clamp-1"
+            className="font-medium text-[var(--text-primary)] hover:text-indigo-300 transition-colors line-clamp-1"
           >
             {bill.title}
           </Link>
           <div className="flex items-center gap-1.5 mt-0.5">
-            <span className="text-[10px] font-mono text-slate-500">{bill.bill_number || bill.bill_id}</span>
+            <span className="text-[10px] font-mono text-[var(--text-faint)]">{bill.bill_number || bill.bill_id}</span>
             {bill.year && <span className="text-[10px] text-slate-600">· {bill.year}</span>}
           </div>
         </div>
@@ -80,7 +80,7 @@ export default function BillsContent() {
         <div className="flex items-center gap-1">
           <JurisdictionBadge jurisdiction={bill.jurisdiction} />
           {bill.state && (
-            <span className="text-[10px] font-mono text-slate-400">({bill.state})</span>
+            <span className="text-[10px] font-mono text-[var(--text-muted)]">({bill.state})</span>
           )}
         </div>
       ),
@@ -100,7 +100,7 @@ export default function BillsContent() {
       sortable: true,
       width: "100px",
       render: (bill) => (
-        <span className="font-mono text-slate-200">
+        <span className="font-mono text-[var(--text-primary)]">
           {bill.company_exposure_count ?? 0}
         </span>
       ),
@@ -136,16 +136,16 @@ export default function BillsContent() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-white/10 pb-4">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-xl font-bold text-slate-100">Bills Directory</h1>
+            <h1 className="text-xl font-bold text-[var(--text-primary)]">Bills Directory</h1>
             <EpistemicBadge type="FACT" size="xs" />
           </div>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <p className="text-xs text-[var(--text-muted)] mt-0.5">
             Canonical statutory index of Central Parliament and State Assembly enactments
           </p>
         </div>
         {data && (
           <div className="flex items-center gap-2">
-            <span className="text-xs font-mono text-slate-400">
+            <span className="text-xs font-mono text-[var(--text-muted)]">
               {new Intl.NumberFormat("en-IN").format(data.total)} Enactments Indexed
             </span>
           </div>
@@ -153,8 +153,8 @@ export default function BillsContent() {
       </div>
 
       {/* Jurisdiction Hub Tabs */}
-      <div className="flex items-center justify-between border-b border-white/5 pb-2">
-        <div className="flex items-center gap-1">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-white/5 pb-2">
+        <div className="flex flex-wrap items-center gap-1">
           {[
             { id: "", label: "All Legislation" },
             { id: "central", label: "Central Parliament" },
@@ -166,8 +166,8 @@ export default function BillsContent() {
               className={cn(
                 "px-3 py-1.5 rounded-md text-xs font-medium transition-colors",
                 jurisdiction === tab.id
-                  ? "bg-indigo-600 text-white font-semibold"
-                  : "text-slate-400 hover:text-white hover:bg-white/5"
+                  ? "bg-indigo-600 text-[var(--text-primary)] font-semibold"
+                  : "text-[var(--text-muted)] hover:text-white hover:bg-white/5"
               )}
             >
               {tab.label}
@@ -181,7 +181,7 @@ export default function BillsContent() {
             onClick={() => setViewMode("table")}
             className={cn(
               "px-2 py-1 rounded text-xs transition-colors",
-              viewMode === "table" ? "bg-white/15 text-white font-medium" : "text-slate-400 hover:text-slate-200"
+              viewMode === "table" ? "bg-white/15 text-[var(--text-primary)] font-medium" : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"
             )}
             title="Dense Table View"
           >
@@ -191,7 +191,7 @@ export default function BillsContent() {
             onClick={() => setViewMode("grid")}
             className={cn(
               "px-2 py-1 rounded text-xs transition-colors",
-              viewMode === "grid" ? "bg-white/15 text-white font-medium" : "text-slate-400 hover:text-slate-200"
+              viewMode === "grid" ? "bg-white/15 text-[var(--text-primary)] font-medium" : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"
             )}
             title="Card Grid View"
           >
@@ -282,19 +282,19 @@ function BillCard({ bill }: { bill: BillSummaryItem }) {
         <StatusBadge status={bill.status} />
       </div>
 
-      <h2 className="text-sm font-semibold text-slate-100 group-hover:text-indigo-300 transition-colors line-clamp-2 mb-1.5">
+      <h2 className="text-sm font-semibold text-[var(--text-primary)] group-hover:text-indigo-300 transition-colors line-clamp-2 mb-1.5">
         {bill.title}
       </h2>
 
       {bill.summary && (
-        <p className="text-xs text-slate-400 line-clamp-2 mb-3 leading-relaxed">
+        <p className="text-xs text-[var(--text-muted)] line-clamp-2 mb-3 leading-relaxed">
           {bill.summary}
         </p>
       )}
 
-      <div className="flex items-center justify-between text-xs text-slate-400 pt-2 border-t border-white/5">
+      <div className="flex items-center justify-between text-xs text-[var(--text-muted)] pt-2 border-t border-white/5">
         <CapabilityBadge level={capLevel} />
-        <span className="font-mono text-slate-300 font-medium">
+        <span className="font-mono text-[var(--text-secondary)] font-medium">
           {bill.company_exposure_count ?? 0} exposures
         </span>
       </div>

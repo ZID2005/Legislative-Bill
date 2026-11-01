@@ -11,6 +11,10 @@ export const aiApi = {
     return apiClient.post<any>("/api/v1/ai/ask", data);
   },
 
+  chat(data: any): Promise<any> {
+    return apiClient.post<any>("/api/v1/ai/chat", data);
+  },
+
   explainBill(billId: string, operation?: string, persona?: string): Promise<any> {
     return apiClient.post<any>(`/api/v1/ai/explain/bill/${billId}`, {
       operation,

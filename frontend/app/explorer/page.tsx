@@ -1,4 +1,4 @@
-/**
+﻿/**
  * app/explorer/page.tsx
  * =====================
  * India Legislative Explorer Page.
@@ -19,10 +19,10 @@ export const metadata: Metadata = {
 function ExplorerSkeleton() {
   return (
     <div className="p-6 max-w-7xl mx-auto space-y-6 animate-pulse">
-      <div className="h-8 w-72 bg-slate-800 rounded" />
-      <div className="h-10 w-full bg-slate-800 rounded" />
+      <div className="h-8 w-72 bg-[var(--bg-elevated)] rounded" />
+      <div className="h-10 w-full bg-[var(--bg-elevated)] rounded" />
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-        <div className="h-96 bg-slate-800/60 rounded-xl" />
+        <div className="h-96 bg-[var(--bg-elevated)]/60 rounded-xl" />
         <div className="lg:col-span-3 space-y-4">
           {[...Array(5)].map((_, i) => (
             <SkeletonCard key={i} />

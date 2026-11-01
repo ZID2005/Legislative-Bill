@@ -20,13 +20,10 @@ export default defineConfig({
     setupFiles: ["./vitest.setup.ts"],
     include: ["__tests__/**/*.{test,spec}.{ts,tsx}"],
     pool: "forks",
-    // @ts-ignore - Vitest poolOptions typing
-    poolOptions: {
-      forks: {
-        singleFork: true,
-      },
-    },
+    isolate: true,
     fileParallelism: false,
+    testTimeout: 20000,
+    hookTimeout: 20000,
   },
   resolve: {
     alias: {

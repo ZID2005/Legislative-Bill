@@ -1,4 +1,4 @@
-/**
+﻿/**
  * app/coverage/CoverageContent.tsx
  * ==================================
  * Data-driven platform coverage page.
@@ -28,11 +28,11 @@ interface StatCardProps {
   icon?: string;
 }
 
-function StatCard({ label, value, description, accent = "text-slate-200", icon }: StatCardProps) {
+function StatCard({ label, value, description, accent = "text-[var(--text-primary)]", icon }: StatCardProps) {
   return (
-    <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-4 hover:border-slate-700 transition-colors">
+    <div className="rounded-xl border border-[var(--border-default)] bg-[var(--bg-card)]/60 p-4 hover:border-[var(--border-strong)] transition-colors">
       <div className="flex items-center justify-between mb-2">
-        <span className="text-xs text-slate-500 font-medium uppercase tracking-wide">{label}</span>
+        <span className="text-xs text-[var(--text-faint)] font-medium uppercase tracking-wide">{label}</span>
         {icon && <span className="text-lg" aria-hidden="true">{icon}</span>}
       </div>
       <div className={`text-3xl font-bold tabular-nums ${accent}`}>{value}</div>
@@ -45,9 +45,9 @@ function SectionHeader({ icon, title, badge }: { icon: string; title: string; ba
   return (
     <div className="flex items-center gap-3 mb-4">
       <span className="text-2xl" aria-hidden="true">{icon}</span>
-      <h2 className="text-base font-semibold text-slate-100">{title}</h2>
+      <h2 className="text-base font-semibold text-[var(--text-primary)]">{title}</h2>
       {badge && (
-        <span className="ml-auto text-xs px-2 py-0.5 rounded border border-slate-700 text-slate-500 font-mono">
+        <span className="ml-auto text-xs px-2 py-0.5 rounded border border-[var(--border-strong)] text-[var(--text-faint)] font-mono">
           {badge}
         </span>
       )}
@@ -71,8 +71,8 @@ export function CoverageContent() {
     <div className="p-4 md:p-6 space-y-8 max-w-[1200px] mx-auto">
       {/* Header */}
       <header>
-        <h1 className="text-xl font-bold text-slate-100">Platform Coverage & Research Integrity</h1>
-        <p className="text-sm text-slate-400 mt-1">
+        <h1 className="text-xl font-bold text-[var(--text-primary)]">Platform Coverage & Research Integrity</h1>
+        <p className="text-sm text-[var(--text-muted)] mt-1">
           Repository-verified coverage metrics. All numbers are live from the platform backend.
         </p>
       </header>
@@ -87,7 +87,7 @@ export function CoverageContent() {
           <span className="text-emerald-400 text-xl shrink-0" aria-hidden="true">✓</span>
           <div>
             <p className="text-sm font-semibold text-emerald-300 mb-1">Research Integrity Statement</p>
-            <p className="text-sm text-slate-400">
+            <p className="text-sm text-[var(--text-muted)]">
               Coverage statistics are derived from actual repository records, not estimates.
               Every number is verifiable against the underlying data.
               <span className="text-amber-400 font-semibold"> State stock predictions remain permanently and verifiably 0.</span>
@@ -291,9 +291,9 @@ export function CoverageContent() {
           </section>
 
           {/* Provenance Footer */}
-          <footer className="rounded-xl border border-slate-800 bg-slate-900/40 px-5 py-4">
-            <div className="text-xs text-slate-500">
-              <span className="font-semibold text-slate-400">Data Provenance: </span>
+          <footer className="rounded-xl border border-[var(--border-default)] bg-[var(--bg-card)]/40 px-5 py-4">
+            <div className="text-xs text-[var(--text-faint)]">
+              <span className="font-semibold text-[var(--text-muted)]">Data Provenance: </span>
               All statistics are live reads from the production repository.
               Central: prediction, decision, anticipation, and report counts are from frozen validated datasets.
               State: exposure counts are from active monitoring. State predictions are architecturally impossible.

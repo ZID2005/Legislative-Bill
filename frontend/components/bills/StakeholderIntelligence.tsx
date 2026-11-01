@@ -1,4 +1,4 @@
-/**
+﻿/**
  * components/bills/StakeholderIntelligence.tsx
  * ============================================
  * Multi-Persona Stakeholder Intelligence for the Bill Detail Dossier.
@@ -115,7 +115,7 @@ export function StakeholderIntelligence({
           <div className="flex flex-wrap items-center justify-between gap-2 w-full">
             <div>
               <CardTitle>Stakeholder Impact Intelligence</CardTitle>
-              <p className="text-xs text-slate-500 mt-0.5">
+              <p className="text-xs text-[var(--text-faint)] mt-0.5">
                 Factual analysis across 5 canonical personas. Does not provide Buy/Sell/Hold or investment recommendations. Does not rank stakeholders.
               </p>
             </div>
@@ -124,7 +124,7 @@ export function StakeholderIntelligence({
         </CardHeader>
 
         {/* Persona Navigation Pills */}
-        <div className="flex flex-wrap gap-1.5 p-1 rounded-lg border border-slate-800 bg-slate-900/60 mb-5">
+        <div className="flex flex-wrap gap-1.5 p-1 rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/60 mb-5">
           {personas.map((p) => (
             <button
               key={p.id}
@@ -132,8 +132,8 @@ export function StakeholderIntelligence({
               onClick={() => setActivePersona(p.id)}
               className={`inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium transition-all ${
                 activePersona === p.id
-                  ? "bg-blue-600 text-white shadow-sm font-semibold"
-                  : "bg-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/60"
+                  ? "bg-blue-600 text-[var(--text-primary)] shadow-sm font-semibold"
+                  : "bg-transparent text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-elevated)]/60"
               }`}
               aria-selected={activePersona === p.id}
             >
@@ -153,7 +153,7 @@ export function StakeholderIntelligence({
               </span>
               <SourceBadge type="FACT" size="xs" />
             </div>
-            <p className="text-xs text-slate-200 leading-relaxed font-sans">
+            <p className="text-xs text-[var(--text-primary)] leading-relaxed font-sans">
               {selected.fact}
             </p>
           </div>
@@ -167,7 +167,7 @@ export function StakeholderIntelligence({
               </span>
               <SourceBadge type="DERIVED" size="xs" />
             </div>
-            <p className="text-xs text-slate-200 leading-relaxed font-sans">
+            <p className="text-xs text-[var(--text-primary)] leading-relaxed font-sans">
               {selected.derived}
             </p>
           </div>
@@ -181,7 +181,7 @@ export function StakeholderIntelligence({
               </span>
               <SourceBadge type="INTERPRETATION" size="xs" />
             </div>
-            <p className="text-xs text-slate-200 leading-relaxed font-sans">
+            <p className="text-xs text-[var(--text-primary)] leading-relaxed font-sans">
               {selected.interpretation}
             </p>
           </div>
@@ -194,7 +194,7 @@ export function StakeholderIntelligence({
               </span>
               <SourceBadge type="PREDICTION" size="xs" />
             </div>
-            <p className="text-xs text-slate-200 leading-relaxed font-sans">
+            <p className="text-xs text-[var(--text-primary)] leading-relaxed font-sans">
               {selected.prediction}
             </p>
           </div>
@@ -202,17 +202,17 @@ export function StakeholderIntelligence({
           {/* Caveats (not an epistemic tier) */}
           {selected.caveats && (
             <p
-              className="rounded-lg border border-slate-800 bg-slate-900/50 p-3 text-[11px] text-slate-400 leading-relaxed"
+              className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/50 p-3 text-[11px] text-[var(--text-muted)] leading-relaxed"
               id="stakeholder-caveats"
             >
-              <span className="font-semibold text-slate-300">Caveats: </span>
+              <span className="font-semibold text-[var(--text-secondary)]">Caveats: </span>
               {selected.caveats}
             </p>
           )}
         </div>
 
         {/* Disclaimer */}
-        <p className="text-[11px] text-slate-500 italic mt-3 text-center">
+        <p className="text-[11px] text-[var(--text-faint)] italic mt-3 text-center">
           Stakeholder perspectives synthesize documented statutory facts with economic domain mappings. Zero individual financial advice is provided.
         </p>
       </Card>

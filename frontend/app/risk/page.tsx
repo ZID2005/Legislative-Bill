@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Suspense } from "react";
 import RiskContent from "./RiskContent";
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function RiskPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-slate-950 p-8 text-slate-400">Loading risk analytics...</div>}>
+    <Suspense fallback={<div className="min-h-screen bg-[var(--bg-base)] p-8 text-[var(--text-muted)]">Loading risk analytics...</div>}>
       <RiskContent />
     </Suspense>
   );

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * components/bills/DocumentSourcesSection.tsx
  * ============================================
  * Task 8.27 Phase 10 — Official Supporting Documents & Viewer Integration.
@@ -52,11 +52,11 @@ export function DocumentSourcesSection({
                 {documents.length} DOCUMENT RECORD{documents.length !== 1 ? "S" : ""}
               </Badge>
             </div>
-            <p className="text-[11px] text-slate-500 mt-0.5">
+            <p className="text-[11px] text-[var(--text-faint)] mt-0.5">
               Authoritative legislative gazettes, official bills, and verifiable source provenance.
             </p>
           </div>
-          <span className="text-[10px] text-slate-500 font-mono">
+          <span className="text-[10px] text-[var(--text-faint)] font-mono">
             SHA-256 VERIFIED
           </span>
         </div>
@@ -65,7 +65,7 @@ export function DocumentSourcesSection({
       <div className="p-4 sm:p-5 space-y-5">
         {/* Document Selector List */}
         <div className="space-y-3">
-          <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
+          <h4 className="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider">
             Available Official Documents
           </h4>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -79,7 +79,7 @@ export function DocumentSourcesSection({
                   className={`p-3.5 rounded-xl border text-xs cursor-pointer transition-all ${
                     isSelected
                       ? "border-blue-500 bg-blue-950/20 shadow-md ring-1 ring-blue-500/20"
-                      : "border-slate-800 bg-slate-900/40 hover:bg-slate-900/70"
+                      : "border-[var(--border-default)] bg-[var(--bg-card)]/40 hover:bg-[var(--bg-card)]/70"
                   }`}
                 >
                   <div className="flex items-start justify-between gap-2">
@@ -88,12 +88,12 @@ export function DocumentSourcesSection({
                         <span className="text-base">
                           {doc.format === "PDF" ? "📄" : "🌐"}
                         </span>
-                        <h5 className="font-semibold text-slate-200 leading-snug">
+                        <h5 className="font-semibold text-[var(--text-primary)] leading-snug">
                           {doc.title}
                         </h5>
                       </div>
-                      <p className="text-[11px] text-slate-400">
-                        Authority: <span className="text-slate-300">{doc.source_authority}</span>
+                      <p className="text-[11px] text-[var(--text-muted)]">
+                        Authority: <span className="text-[var(--text-secondary)]">{doc.source_authority}</span>
                       </p>
                     </div>
                     <Badge
@@ -105,17 +105,17 @@ export function DocumentSourcesSection({
                   </div>
 
                   {/* Hash & Date */}
-                  <div className="mt-2.5 pt-2 border-t border-slate-800/80 text-[10px] space-y-1">
+                  <div className="mt-2.5 pt-2 border-t border-[var(--border-default)]/80 text-[10px] space-y-1">
                     {doc.hash_sha256 ? (
-                      <div className="font-mono text-slate-400 truncate">
-                        <span className="text-slate-500">SHA-256:</span> {doc.hash_sha256}
+                      <div className="font-mono text-[var(--text-muted)] truncate">
+                        <span className="text-[var(--text-faint)]">SHA-256:</span> {doc.hash_sha256}
                       </div>
                     ) : (
-                      <div className="text-slate-500 italic">
+                      <div className="text-[var(--text-faint)] italic">
                         Hash calculation pending or portal-hosted
                       </div>
                     )}
-                    <div className="flex items-center justify-between text-slate-500">
+                    <div className="flex items-center justify-between text-[var(--text-faint)]">
                       <span>Format: {doc.format}</span>
                       {doc.retrieved_at && (
                         <span>Verified: {formatDate(doc.retrieved_at)}</span>
@@ -130,13 +130,13 @@ export function DocumentSourcesSection({
 
         {/* Selected Document Detail & Viewer Action */}
         {activeDoc && (
-          <div className="p-4 rounded-xl border border-slate-800 bg-slate-900/50 space-y-4">
+          <div className="p-4 rounded-xl border border-[var(--border-default)] bg-[var(--bg-card)]/50 space-y-4">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
-                <h5 className="text-sm font-semibold text-slate-100">
+                <h5 className="text-sm font-semibold text-[var(--text-primary)]">
                   {activeDoc.title}
                 </h5>
-                <p className="text-xs text-slate-400 mt-0.5">
+                <p className="text-xs text-[var(--text-muted)] mt-0.5">
                   Authority: {activeDoc.source_authority} • Provenance: {activeDoc.provenance}
                 </p>
               </div>
@@ -147,7 +147,7 @@ export function DocumentSourcesSection({
                     href={activeDoc.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium transition-colors"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[var(--bg-elevated)] hover:bg-[var(--bg-card-hover)] text-[var(--text-primary)] text-xs font-medium transition-colors"
                   >
                     <span>External Source</span>
                     <span>↗</span>
@@ -187,7 +187,7 @@ export function DocumentSourcesSection({
 
         {/* Official Source Link Fallback */}
         {sourceUrl && (
-          <div className="p-3 rounded-lg border border-slate-800/80 bg-slate-900/30 flex items-center justify-between text-xs text-slate-400 flex-wrap gap-2">
+          <div className="p-3 rounded-lg border border-[var(--border-default)]/80 bg-[var(--bg-card)]/30 flex items-center justify-between text-xs text-[var(--text-muted)] flex-wrap gap-2">
             <span>
               Official Government Portal / Gazette Archive Reference:
             </span>

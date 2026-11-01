@@ -1,4 +1,4 @@
-/**
+﻿/**
  * components/companies/CompanyHeader.tsx
  * =======================================
  * Production header for the Corporate Intelligence Profile.
@@ -77,22 +77,22 @@ export function CompanyHeader({
   return (
     <header className={`space-y-4 ${className}`} aria-label="Company Profile Header">
       {/* Breadcrumbs */}
-      <nav className="text-xs text-slate-500 flex items-center gap-1.5" aria-label="Breadcrumb">
-        <Link href="/explorer" className="hover:text-slate-300 transition-colors">
+      <nav className="text-xs text-[var(--text-faint)] flex items-center gap-1.5" aria-label="Breadcrumb">
+        <Link href="/explorer" className="hover:text-[var(--text-secondary)] transition-colors">
           India Explorer
         </Link>
         <span aria-hidden="true">›</span>
-        <Link href="/companies" className="hover:text-slate-300 transition-colors">
+        <Link href="/companies" className="hover:text-[var(--text-secondary)] transition-colors">
           Companies
         </Link>
         <span aria-hidden="true">›</span>
-        <span className="text-slate-300 font-medium truncate max-w-sm" aria-current="page">
+        <span className="text-[var(--text-secondary)] font-medium truncate max-w-sm" aria-current="page">
           {company.company_name}
         </span>
       </nav>
 
       {/* Main Header Card */}
-      <div className="rounded-xl border border-slate-800 bg-slate-900/90 backdrop-blur-sm p-6 shadow-xl relative overflow-hidden">
+      <div className="rounded-xl border border-[var(--border-default)] bg-[var(--bg-card)]/90 backdrop-blur-sm p-6 shadow-xl relative overflow-hidden">
         {/* Subtle decorative gradient glow */}
         <div
           className={`absolute -right-20 -top-20 w-64 h-64 rounded-full blur-3xl pointer-events-none opacity-15 ${
@@ -128,7 +128,7 @@ export function CompanyHeader({
               </Badge>
 
               {/* Ownership / Entity Type */}
-              <Badge variant="muted" size="xs" className="text-slate-400 border-slate-700">
+              <Badge variant="muted" size="xs" className="text-[var(--text-muted)] border-[var(--border-strong)]">
                 {formatEntityType(company.entity_type)}
               </Badge>
 
@@ -154,56 +154,56 @@ export function CompanyHeader({
             {/* Entity Name & Group */}
             <div>
               <div className="flex flex-wrap items-baseline gap-3">
-                <h1 className="text-2xl lg:text-3xl font-bold text-slate-100 tracking-tight">
+                <h1 className="text-2xl lg:text-3xl font-bold text-[var(--text-primary)] tracking-tight">
                   {company.company_name}
                 </h1>
                 {company.group_name && (
-                  <span className="text-sm font-medium text-slate-400 bg-slate-800/60 border border-slate-700/60 rounded px-2.5 py-0.5">
+                  <span className="text-sm font-medium text-[var(--text-muted)] bg-[var(--bg-elevated)]/60 border border-[var(--border-strong)]/60 rounded px-2.5 py-0.5">
                     {company.group_name}
                   </span>
                 )}
               </div>
               {company.legal_identity && company.legal_identity !== company.company_name && (
-                <p className="text-xs text-slate-400 mt-1">
-                  Legal Entity: <span className="text-slate-300">{company.legal_identity}</span>
+                <p className="text-xs text-[var(--text-muted)] mt-1">
+                  Legal Entity: <span className="text-[var(--text-secondary)]">{company.legal_identity}</span>
                 </p>
               )}
             </div>
 
             {/* Identifiers & Industry Ribbon */}
-            <div className="flex flex-wrap items-center gap-y-1.5 gap-x-4 text-xs text-slate-400 pt-1">
+            <div className="flex flex-wrap items-center gap-y-1.5 gap-x-4 text-xs text-[var(--text-muted)] pt-1">
               {company.ticker_nse && (
                 <span className="flex items-center gap-1.5">
-                  <span className="text-slate-500 font-mono">NSE:</span>
-                  <span className="font-semibold text-slate-200">{company.ticker_nse}</span>
+                  <span className="text-[var(--text-faint)] font-mono">NSE:</span>
+                  <span className="font-semibold text-[var(--text-primary)]">{company.ticker_nse}</span>
                 </span>
               )}
               {company.ticker_bse && (
                 <span className="flex items-center gap-1.5">
-                  <span className="text-slate-500 font-mono">BSE:</span>
-                  <span className="font-semibold text-slate-200">{company.ticker_bse}</span>
+                  <span className="text-[var(--text-faint)] font-mono">BSE:</span>
+                  <span className="font-semibold text-[var(--text-primary)]">{company.ticker_bse}</span>
                 </span>
               )}
               {company.isin && (
                 <span className="flex items-center gap-1.5">
-                  <span className="text-slate-500 font-mono">ISIN:</span>
-                  <span className="font-mono text-slate-300">{company.isin}</span>
+                  <span className="text-[var(--text-faint)] font-mono">ISIN:</span>
+                  <span className="font-mono text-[var(--text-secondary)]">{company.isin}</span>
                 </span>
               )}
               <span className="hidden sm:inline text-slate-700">•</span>
-              <span className="text-slate-300 font-medium">
+              <span className="text-[var(--text-secondary)] font-medium">
                 {company.sector || "Diversified"}
               </span>
               {company.industry && (
                 <>
                   <span className="text-slate-600">/</span>
-                  <span className="text-slate-400">{company.industry}</span>
+                  <span className="text-[var(--text-muted)]">{company.industry}</span>
                 </>
               )}
               {(company.hq_city || company.hq_state) && (
                 <>
                   <span className="hidden sm:inline text-slate-700">•</span>
-                  <span className="text-slate-400 flex items-center gap-1">
+                  <span className="text-[var(--text-muted)] flex items-center gap-1">
                     <span aria-hidden="true">📍</span>
                     {[company.hq_city, company.hq_state].filter(Boolean).join(", ")}
                   </span>
@@ -213,9 +213,9 @@ export function CompanyHeader({
 
             {/* Aliases where available */}
             {company.aliases && company.aliases.length > 0 && (
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-[var(--text-faint)]">
                 Also known as:{" "}
-                <span className="text-slate-400">{company.aliases.join(", ")}</span>
+                <span className="text-[var(--text-muted)]">{company.aliases.join(", ")}</span>
               </p>
             )}
           </div>
@@ -236,7 +236,7 @@ export function CompanyHeader({
               variant="outline"
               size="sm"
               onClick={() => onSelectTab?.("ai")}
-              className="w-full justify-center text-xs font-medium border-slate-700 hover:bg-slate-800 text-slate-300"
+              className="w-full justify-center text-xs font-medium border-[var(--border-strong)] hover:bg-[var(--bg-elevated)] text-[var(--text-secondary)]"
               aria-label="Ask AI Analyst"
             >
               🤖 Ask AI Analyst
@@ -249,7 +249,7 @@ export function CompanyHeader({
               <Button
                 variant="outline"
                 size="sm"
-                className="w-full justify-center text-xs font-medium border-slate-700 hover:bg-slate-800 text-slate-300"
+                className="w-full justify-center text-xs font-medium border-[var(--border-strong)] hover:bg-[var(--bg-elevated)] text-[var(--text-secondary)]"
               >
                 🧭 View in Explorer
               </Button>
@@ -259,7 +259,7 @@ export function CompanyHeader({
               variant="ghost"
               size="sm"
               onClick={handleShare}
-              className="w-full justify-center text-xs text-slate-400 hover:text-white"
+              className="w-full justify-center text-xs text-[var(--text-muted)] hover:text-white"
               aria-label="Share company profile link"
             >
               {copied ? "✓ Copied Link" : "🔗 Share Profile"}

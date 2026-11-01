@@ -1,4 +1,4 @@
-/**
+﻿/**
  * components/companies/CompanyProvenanceSection.tsx
  * ==================================================
  * Authoritative source provenance and statutory audit traceability.
@@ -76,32 +76,32 @@ export function CompanyProvenanceSection({
         </CardHeader>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-1">
-          <div className="rounded-lg border border-slate-800 bg-slate-900/60 p-3.5 space-y-1">
-            <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider block">
+          <div className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/60 p-3.5 space-y-1">
+            <span className="text-[10px] font-semibold text-[var(--text-faint)] uppercase tracking-wider block">
               Identity Verification
             </span>
-            <p className="text-xs font-semibold text-slate-200">
+            <p className="text-xs font-semibold text-[var(--text-primary)]">
               Corporate Registrar &amp; Stock Exchange
             </p>
-            <p className="text-[11px] text-slate-400">
+            <p className="text-[11px] text-[var(--text-muted)]">
               Validated against official Ministry of Corporate Affairs, BSE, and NSE listings.
             </p>
           </div>
 
-          <div className="rounded-lg border border-slate-800 bg-slate-900/60 p-3.5 space-y-1">
-            <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider block">
+          <div className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/60 p-3.5 space-y-1">
+            <span className="text-[10px] font-semibold text-[var(--text-faint)] uppercase tracking-wider block">
               Statutory Gazette Match
             </span>
-            <p className="text-xs font-semibold text-slate-200">
+            <p className="text-xs font-semibold text-[var(--text-primary)]">
               Clause-Level Statutory Linking
             </p>
-            <p className="text-[11px] text-slate-400">
+            <p className="text-[11px] text-[var(--text-muted)]">
               Every exposure record links to verifiable parliamentary bill numbers or state gazette clauses.
             </p>
           </div>
 
-          <div className="rounded-lg border border-slate-800 bg-slate-900/60 p-3.5 space-y-1">
-            <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider block">
+          <div className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/60 p-3.5 space-y-1">
+            <span className="text-[10px] font-semibold text-[var(--text-faint)] uppercase tracking-wider block">
               Quality Score
             </span>
             <p className="text-xs font-semibold text-emerald-400">
@@ -109,7 +109,7 @@ export function CompanyProvenanceSection({
                 ? `${(company.data_quality_score * 100).toFixed(0)}% Authoritative Grounding`
                 : "100% Deterministic Grounding"}
             </p>
-            <p className="text-[11px] text-slate-400">
+            <p className="text-[11px] text-[var(--text-muted)]">
               Zero synthetic inferences or ungrounded external assumptions.
             </p>
           </div>
@@ -123,14 +123,14 @@ export function CompanyProvenanceSection({
         <CardHeader>
           <div className="flex items-center justify-between w-full">
             <CardTitle>Traceable Evidence Records ({allEvidence.length})</CardTitle>
-            <span className="text-xs text-slate-400">
+            <span className="text-xs text-[var(--text-muted)]">
               Clause citations linking bills to this entity
             </span>
           </div>
         </CardHeader>
 
         {allEvidence.length === 0 ? (
-          <p className="text-xs text-slate-500 py-4 text-center">
+          <p className="text-xs text-[var(--text-faint)] py-4 text-center">
             Evidence records are validated against primary legislative gazettes.
           </p>
         ) : (
@@ -138,10 +138,10 @@ export function CompanyProvenanceSection({
             {allEvidence.slice(0, 15).map((item, idx) => (
               <div
                 key={idx}
-                className="rounded-lg border border-slate-800 bg-slate-900/40 p-3.5 space-y-2 text-xs"
+                className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/40 p-3.5 space-y-2 text-xs"
               >
                 <div className="flex items-start justify-between gap-2">
-                  <span className="font-semibold text-slate-200">{item.billTitle}</span>
+                  <span className="font-semibold text-[var(--text-primary)]">{item.billTitle}</span>
                   {item.section && (
                     <span className="font-mono text-cyan-400 text-[11px] bg-cyan-950/40 border border-cyan-800/40 px-2 py-0.5 rounded shrink-0">
                       Section {item.section}
@@ -149,11 +149,11 @@ export function CompanyProvenanceSection({
                   )}
                 </div>
 
-                <p className="text-slate-300 italic leading-relaxed">
+                <p className="text-[var(--text-secondary)] italic leading-relaxed">
                   "{item.claim}"
                 </p>
 
-                <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-500 pt-1 border-t border-slate-800">
+                <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] text-[var(--text-faint)] pt-1 border-t border-[var(--border-default)]">
                   <span>Source Reference: {item.reference || "Official Gazette"}</span>
                   {item.url && (
                     <a
@@ -170,7 +170,7 @@ export function CompanyProvenanceSection({
             ))}
 
             {allEvidence.length > 15 && (
-              <p className="text-[11px] text-slate-500 text-center pt-2">
+              <p className="text-[11px] text-[var(--text-faint)] text-center pt-2">
                 Showing 15 of {allEvidence.length} total evidence claims. View specific bills for complete gazette text.
               </p>
             )}

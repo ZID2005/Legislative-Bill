@@ -8,6 +8,7 @@
  */
 
 import React from "react";
+import { cn } from "@/lib/utils";
 
 interface ProvenanceStripProps {
   sourceId?: string | null;
@@ -51,14 +52,22 @@ export function ProvenanceStrip({
 
   if (compact) {
     return (
-      <div className={`flex items-center gap-3 text-xs text-slate-500 ${className}`} role="note" aria-label="Provenance information">
-        <span title="Source">🔗 {sourceId ?? "Unknown source"}</span>
+      <div
+        className={cn("flex items-center gap-2.5 text-xs text-[var(--text-faint)] font-mono flex-wrap", className)}
+        role="note"
+        aria-label="Provenance information"
+      >
+        <span title="Source identity" className="text-[var(--text-secondary)]">
+          Source: {sourceId ?? "Unavailable"}
+        </span>
         <span>·</span>
-        <span title="Detected at">🕐 {formatTime(detectedAt)}</span>
+        <span title="Detection timestamp">Detected: {formatTime(detectedAt)}</span>
         {verificationStatus && (
           <>
             <span>·</span>
-            <span className={verColor} title="Verification status">{verificationStatus}</span>
+            <span className={cn("font-semibold", verColor)} title="Verification status">
+              {verificationStatus}
+            </span>
           </>
         )}
       </div>
@@ -67,45 +76,45 @@ export function ProvenanceStrip({
 
   return (
     <div
-      className={`rounded-lg border border-slate-800 bg-slate-900/50 p-3 ${className}`}
+      className={cn("rounded-lg border border-[var(--border-hairline)] bg-[var(--bg-card)] p-3", className)}
       role="note"
       aria-label="Provenance information"
     >
-      <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
-        Provenance
+      <div className="text-[11px] font-semibold font-mono text-[var(--text-faint)] uppercase tracking-wider mb-2">
+        Provenance & Audit Trail
       </div>
-      <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1 text-xs">
-        <div className="flex items-start gap-1">
-          <dt className="text-slate-500 shrink-0">Source:</dt>
-          <dd className="text-slate-300 break-all">{sourceId ?? "Unavailable"}</dd>
+      <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 text-xs font-mono">
+        <div className="flex items-start gap-1.5">
+          <dt className="text-[var(--text-faint)] shrink-0">Source:</dt>
+          <dd className="text-[var(--text-primary)] break-all font-medium">{sourceId ?? "Unavailable"}</dd>
         </div>
         {sourceReference && (
-          <div className="flex items-start gap-1">
-            <dt className="text-slate-500 shrink-0">Reference:</dt>
-            <dd className="text-slate-300 break-all truncate max-w-[200px]" title={sourceReference}>
+          <div className="flex items-start gap-1.5">
+            <dt className="text-[var(--text-faint)] shrink-0">Reference:</dt>
+            <dd className="text-[var(--text-secondary)] break-all truncate max-w-[200px]" title={sourceReference}>
               {sourceReference}
             </dd>
           </div>
         )}
-        <div className="flex items-start gap-1">
-          <dt className="text-slate-500 shrink-0">Detected:</dt>
-          <dd className="text-slate-300">{formatTime(detectedAt)}</dd>
+        <div className="flex items-start gap-1.5">
+          <dt className="text-[var(--text-faint)] shrink-0">Detected:</dt>
+          <dd className="text-[var(--text-secondary)]">{formatTime(detectedAt)}</dd>
         </div>
         {documentId && (
-          <div className="flex items-start gap-1">
-            <dt className="text-slate-500 shrink-0">Document:</dt>
-            <dd className="text-slate-300 font-mono">{documentId}</dd>
+          <div className="flex items-start gap-1.5">
+            <dt className="text-[var(--text-faint)] shrink-0">Document:</dt>
+            <dd className="text-[var(--text-secondary)]">{documentId}</dd>
           </div>
         )}
         {jurisdiction && (
-          <div className="flex items-start gap-1">
-            <dt className="text-slate-500 shrink-0">Jurisdiction:</dt>
-            <dd className="text-slate-300 capitalize">{jurisdiction}</dd>
+          <div className="flex items-start gap-1.5">
+            <dt className="text-[var(--text-faint)] shrink-0">Jurisdiction:</dt>
+            <dd className="text-[var(--text-secondary)] capitalize">{jurisdiction}</dd>
           </div>
         )}
-        <div className="flex items-start gap-1">
-          <dt className="text-slate-500 shrink-0">Verification:</dt>
-          <dd className={`${verColor} font-medium`}>{verificationStatus}</dd>
+        <div className="flex items-start gap-1.5">
+          <dt className="text-[var(--text-faint)] shrink-0">Verification:</dt>
+          <dd className={cn("font-medium", verColor)}>{verificationStatus}</dd>
         </div>
       </dl>
     </div>

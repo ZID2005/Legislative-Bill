@@ -195,6 +195,13 @@ class CompanyRepository:
         results.sort(key=lambda x: x[1], reverse=True)
         return [item[0] for item in results[:top_k] if item[1] > 0.3]
 
+    def find_by_name(self, name: str) -> Optional[Company]:
+        """Look up single company matching name with fuzzy tolerance."""
+        if not name:
+            return None
+        matches = self.search_by_name(name, top_k=1)
+        return matches[0] if matches else None
+
     def search(
         self,
         nse_symbol: str | None = None,

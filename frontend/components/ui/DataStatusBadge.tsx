@@ -1,22 +1,22 @@
 /**
  * components/ui/DataStatusBadge.tsx
  * ====================================
- * Task 8.25 — Epistemic data type labels.
+ * Epistemic data status and lifecycle badges for Seance.
  *
- * Clearly distinguishes:
- *   LIVE          — recently discovered legislative data (not modelled)
- *   MODELLED      — quantitative market model available
- *   INTELLIGENCE  — qualitative economic analysis only
- *   PLANNED       — not yet ingested into the pipeline
- *   NEW           — just discovered
- *   RECENT        — discovered in the last 7 days
- *   ACTIVE        — currently in legislative process
- *   AMENDED       — bill has been amended
- *   PASSED        — enacted/passed
- *   ASSENT_PENDING — awaiting presidential/gubernatorial assent
- *   NOTIFIED      — published in official gazette
- *   ARCHIVED      — historical record
- *   UPCOMING      — scheduled for future consideration
+ * Implements dual-theme calibrated tokens for:
+ *   LIVE              — recently discovered legislative data (not modelled)
+ *   MODELLED          — quantitative market model available
+ *   INTELLIGENCE      — qualitative economic analysis only
+ *   PLANNED           — not yet ingested into the pipeline
+ *   NEW               — recently ingested record
+ *   RECENT            — discovered in the last 7 days
+ *   ACTIVE            — currently active in parliamentary process
+ *   AMENDED           — bill has been amended
+ *   PASSED            — enacted/passed
+ *   ASSENT_PENDING    — awaiting presidential/gubernatorial assent
+ *   NOTIFIED          — published in official gazette
+ *   ARCHIVED          — historical record
+ *   UPCOMING          — scheduled for future consideration
  *   SOURCE_UNVERIFIED — provenance not independently confirmed
  */
 
@@ -57,82 +57,82 @@ const STATUS_CONFIG: Record<
 > = {
   LIVE: {
     label: "LIVE",
-    colorClass: "bg-emerald-500/12 border-emerald-500/25 text-emerald-400",
-    dotClass: "bg-emerald-400",
+    colorClass: "bg-[var(--color-success-bg)] border-[var(--color-success-border)] text-[var(--color-success)]",
+    dotClass: "bg-[var(--color-success)]",
   },
   MODELLED: {
     label: "MODELLED",
-    colorClass: "bg-indigo-500/12 border-indigo-500/25 text-indigo-300",
+    colorClass: "bg-[var(--color-model)]/12 border-[var(--color-model)]/30 text-[var(--color-model)]",
   },
   INTELLIGENCE: {
     label: "INTELLIGENCE",
-    colorClass: "bg-amber-500/12 border-amber-500/25 text-amber-400",
+    colorClass: "bg-[var(--color-warning)]/12 border-[var(--color-warning)]/30 text-[var(--color-warning)]",
   },
   PLANNED: {
     label: "PLANNED",
-    colorClass: "bg-slate-700/30 border-slate-600/30 text-slate-500",
+    colorClass: "bg-[var(--bg-secondary)] border-[var(--border-default)] text-[var(--text-muted)]",
   },
   NEW: {
     label: "NEW",
-    colorClass: "bg-blue-500/12 border-blue-500/25 text-blue-400",
-    dotClass: "bg-blue-400",
+    colorClass: "bg-[var(--action-primary)]/12 border-[var(--action-primary)]/30 text-[var(--action-primary)]",
+    dotClass: "bg-[var(--action-primary)]",
   },
   RECENT: {
     label: "RECENT",
-    colorClass: "bg-teal-500/12 border-teal-500/25 text-teal-400",
+    colorClass: "bg-[var(--color-info-bg)] border-[var(--color-info-border)] text-[var(--color-info)]",
   },
   ACTIVE: {
     label: "ACTIVE",
-    colorClass: "bg-emerald-500/12 border-emerald-500/25 text-emerald-400",
-    dotClass: "bg-emerald-400",
+    colorClass: "bg-[var(--color-success-bg)] border-[var(--color-success-border)] text-[var(--color-success)]",
+    dotClass: "bg-[var(--color-success)]",
   },
   AMENDED: {
     label: "AMENDED",
-    colorClass: "bg-orange-500/12 border-orange-500/25 text-orange-400",
+    colorClass: "bg-[var(--color-warning)]/15 border-[var(--color-warning)]/35 text-[var(--color-warning)]",
   },
   PASSED: {
     label: "PASSED",
-    colorClass: "bg-emerald-500/15 border-emerald-500/30 text-emerald-300",
+    colorClass: "bg-[var(--color-success-bg)] border-[var(--color-success-border)] text-[var(--color-success)]",
   },
   ASSENT_PENDING: {
     label: "ASSENT PENDING",
-    colorClass: "bg-amber-500/12 border-amber-500/25 text-amber-400",
+    colorClass: "bg-[var(--color-warning)]/15 border-[var(--color-warning)]/35 text-[var(--color-warning)]",
   },
   NOTIFIED: {
     label: "NOTIFIED",
-    colorClass: "bg-blue-500/12 border-blue-500/25 text-blue-400",
+    colorClass: "bg-[var(--color-info-bg)] border-[var(--color-info-border)] text-[var(--color-info)]",
   },
   ARCHIVED: {
     label: "ARCHIVED",
-    colorClass: "bg-slate-700/30 border-slate-600/30 text-slate-500",
+    colorClass: "bg-[var(--bg-secondary)] border-[var(--border-default)] text-[var(--text-muted)]",
   },
   UPCOMING: {
     label: "UPCOMING",
-    colorClass: "bg-violet-500/12 border-violet-500/25 text-violet-400",
+    colorClass: "bg-[var(--color-ai)]/12 border-[var(--color-ai)]/30 text-[var(--color-ai)]",
   },
   SOURCE_UNVERIFIED: {
     label: "SOURCE UNVERIFIED",
-    colorClass: "bg-rose-500/12 border-rose-500/25 text-rose-400",
+    colorClass: "bg-[var(--color-danger-bg)] border-[var(--color-danger-border)] text-[var(--color-danger)]",
   },
   FACT: {
     label: "FACT",
-    colorClass: "bg-emerald-500/12 border-emerald-500/25 text-emerald-400",
+    colorClass: "badge-epistemic-fact",
   },
   OBSERVED: {
     label: "OBSERVED",
-    colorClass: "bg-blue-500/12 border-blue-500/25 text-blue-400",
+    colorClass: "badge-epistemic-observed",
   },
   DERIVED: {
     label: "DERIVED",
-    colorClass: "bg-indigo-500/12 border-indigo-500/25 text-indigo-400",
+    colorClass: "badge-epistemic-derived",
   },
   INTERPRETATION: {
     label: "INTERPRETATION",
-    colorClass: "bg-amber-500/12 border-amber-500/25 text-amber-400",
+    colorClass: "badge-epistemic-interpretation",
   },
   PREDICTION: {
     label: "PREDICTION",
-    colorClass: "bg-violet-500/12 border-violet-500/25 text-violet-400",
+    colorClass: "badge-epistemic-prediction",
   },
 };
 
@@ -144,23 +144,24 @@ export function DataStatusBadge({
 }: DataStatusBadgeProps) {
   const config = STATUS_CONFIG[status] ?? {
     label: status,
-    colorClass: "bg-slate-700/30 border-slate-600/30 text-slate-500",
+    colorClass: "bg-[var(--bg-secondary)] border-[var(--border-default)] text-[var(--text-muted)]",
   };
 
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1 rounded-full border font-bold tracking-wider uppercase",
-        size === "xs" ? "px-1.5 py-0.5 text-[9px]" : "px-2 py-0.5 text-[10px]",
+        "inline-flex items-center gap-1 rounded-full border font-bold tracking-wider uppercase select-none transition-colors",
+        size === "xs" ? "px-2 py-0.5 text-[9px]" : "px-2.5 py-0.5 text-[10px]",
         config.colorClass,
         className
       )}
     >
       {(showDot || config.dotClass) && config.dotClass && (
         <span
-          className={cn("w-1 h-1 rounded-full flex-shrink-0", config.dotClass, {
+          className={cn("w-1.5 h-1.5 rounded-full flex-shrink-0", config.dotClass, {
             "animate-pulse": status === "LIVE" || status === "ACTIVE" || status === "NEW",
           })}
+          aria-hidden="true"
         />
       )}
       {config.label}
@@ -180,29 +181,29 @@ export function DataLayerBanner({
 }) {
   const configs = {
     live: {
-      bg: "bg-emerald-950/30 border-emerald-800/30",
-      dot: "bg-emerald-400 animate-pulse",
+      bg: "bg-[var(--color-success-bg)] border-[var(--color-success-border)]",
+      dot: "bg-[var(--color-success)] animate-pulse",
       title: "LIVE LEGISLATIVE DATA",
       desc: "Recently discovered. Not yet modelled. Provenance tracked.",
       badge: <DataStatusBadge status="LIVE" showDot />,
     },
     modelled: {
-      bg: "bg-indigo-950/30 border-indigo-800/30",
-      dot: "bg-indigo-400",
+      bg: "bg-[var(--color-model)]/10 border-[var(--color-model)]/25",
+      dot: "bg-[var(--color-model)]",
       title: "FROZEN ANALYTICAL MODEL",
       desc: "Quantitative market model available. Event study horizons: [-1,+1] to [-10,+10].",
       badge: <DataStatusBadge status="MODELLED" />,
     },
     intelligence: {
-      bg: "bg-amber-950/20 border-amber-800/20",
-      dot: "bg-amber-400",
+      bg: "bg-[var(--color-warning)]/10 border-[var(--color-warning)]/25",
+      dot: "bg-[var(--color-warning)]",
       title: "QUALITATIVE INTELLIGENCE ONLY",
       desc: "Economic exposure analysis. No stock predictions available.",
       badge: <DataStatusBadge status="INTELLIGENCE" />,
     },
     mixed: {
-      bg: "bg-slate-900/60 border-slate-700/30",
-      dot: "bg-slate-400",
+      bg: "bg-[var(--bg-secondary)] border-[var(--border-default)]",
+      dot: "bg-[var(--text-muted)]",
       title: "MIXED DATA LAYERS",
       desc: "Live discovery data and frozen analytical models displayed together. See individual record labels.",
       badge: null,
@@ -213,18 +214,18 @@ export function DataLayerBanner({
   return (
     <div
       className={cn(
-        "flex items-start gap-3 px-4 py-3 rounded-lg border text-xs",
+        "flex items-start gap-3 px-4 py-3 rounded-xl border text-xs transition-colors",
         c.bg,
         className
       )}
       role="note"
     >
-      <span className={cn("w-2 h-2 rounded-full mt-0.5 flex-shrink-0", c.dot)} />
+      <span className={cn("w-2 h-2 rounded-full mt-1 flex-shrink-0", c.dot)} aria-hidden="true" />
       <div>
-        <span className="font-bold text-slate-200 tracking-wider uppercase text-[10px]">
+        <span className="font-bold text-[var(--text-primary)] tracking-wider uppercase text-[10px]">
           {c.title}
         </span>
-        <p className="text-slate-400 mt-0.5">{c.desc}</p>
+        <p className="text-[var(--text-secondary)] mt-0.5">{c.desc}</p>
       </div>
       {c.badge && <div className="ml-auto flex-shrink-0">{c.badge}</div>}
     </div>

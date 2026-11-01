@@ -1,21 +1,26 @@
 /**
  * components/monitoring/SourceDetailDrawer.tsx
  * =============================================
- * Slide-in drawer showing full source detail including:
- * - Source identity and URL (no credentials exposed)
- * - Monitoring status and schedule
- * - Last check, last success, last error
- * - Recent run results
- * - Provenance
+ * Redesigned Source Detail Drawer (Task 1.11A).
+ *
+ * Implements:
+ * - Level 2 Operational Detail: Source identity, verified URLs (no credentials),
+ *   jurisdiction, polling cadence, and last check/success timestamps.
+ * - Level 3 Technical Diagnostics: Recent runs, failure stack traces, and
+ *   raw provenance metadata placed behind progressive disclosure.
+ * - Safe manual poll action trigger.
+ * - Accessible keyboard (Escape) and focus trap handling.
  */
 
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import type { MonitoringSourceDetail } from "@/types/api";
 import { SourceHealthBadge } from "./SourceHealthBadge";
 import { ProvenanceStrip } from "./ProvenanceStrip";
 import { Skeleton } from "@/components/ui/Skeleton";
+import { monitoringApi } from "@/lib/api/monitoring";
+import { cn } from "@/lib/utils";
 
 interface SourceDetailDrawerProps {
   sourceId: string | null;
@@ -26,7 +31,7 @@ interface SourceDetailDrawerProps {
 }
 
 function formatTime(iso: string | null | undefined): string {
-  if (!iso) return "Never";
+  if (!iso) return "Never recorded";
   try {
     return new Date(iso).toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" });
   } catch {
@@ -36,6 +41,8 @@ function formatTime(iso: string | null | undefined): string {
 
 export function SourceDetailDrawer({ sourceId, data, loading, error, onClose }: SourceDetailDrawerProps) {
   const drawerRef = useRef<HTMLDivElement>(null);
+  const [polling, setPolling] = useState(false);
+  const [pollResult, setPollResult] = useState<string | null>(null);
 
   // Close on Escape key
   useEffect(() => {
@@ -51,6 +58,20 @@ export function SourceDetailDrawer({ sourceId, data, loading, error, onClose }: 
     if (sourceId) drawerRef.current?.focus();
   }, [sourceId]);
 
+  const handleTriggerPoll = async () => {
+    if (polling) return;
+    setPolling(true);
+    setPollResult(null);
+    try {
+      const res = await monitoringApi.triggerCheck(sourceId ?? undefined);
+      setPollResult(`Poll executed: ${res.status}`);
+    } catch (e: unknown) {
+      setPollResult(`Error: ${(e as Error).message ?? "Poll failed"}`);
+    } finally {
+      setPolling(false);
+    }
+  };
+
   if (!sourceId) return null;
 
   return (
@@ -65,25 +86,25 @@ export function SourceDetailDrawer({ sourceId, data, loading, error, onClose }: 
       {/* Drawer */}
       <div
         ref={drawerRef}
-        className="fixed right-0 top-0 h-full w-full max-w-lg bg-slate-900 border-l border-slate-700 z-50 overflow-y-auto shadow-2xl"
+        className="fixed right-0 top-0 h-full w-full max-w-lg bg-[var(--bg-card)] border-l border-[var(--border-strong)] z-50 overflow-y-auto shadow-2xl transition-colors"
         role="dialog"
         aria-modal="true"
         aria-label={`Source detail: ${data?.source_name ?? sourceId}`}
         tabIndex={-1}
       >
         {/* Header */}
-        <div className="sticky top-0 bg-slate-900/95 backdrop-blur border-b border-slate-800 px-5 py-4 flex items-center justify-between">
+        <div className="sticky top-0 bg-[var(--bg-card)]/95 backdrop-blur border-b border-[var(--border-hairline)] px-5 py-4 flex items-center justify-between z-10">
           <div>
-            <h2 className="text-base font-semibold text-slate-100">
+            <h2 className="text-base font-semibold text-[var(--text-primary)]">
               {loading ? "Loading source..." : (data?.source_name ?? sourceId)}
             </h2>
             {data && (
-              <p className="text-xs text-slate-500 font-mono mt-0.5">{data.source_id}</p>
+              <p className="text-xs text-[var(--text-faint)] font-mono mt-0.5">{data.source_id}</p>
             )}
           </div>
           <button
             onClick={onClose}
-            className="text-slate-400 hover:text-slate-200 transition-colors p-1.5 rounded-lg hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+            className="text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors p-1.5 rounded-lg hover:bg-[var(--bg-elevated)] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
             aria-label="Close source detail"
           >
             ✕
@@ -92,120 +113,164 @@ export function SourceDetailDrawer({ sourceId, data, loading, error, onClose }: 
 
         <div className="p-5 space-y-5">
           {error ? (
-            <div className="rounded-lg border border-rose-500/20 bg-rose-500/5 p-4 text-rose-400 text-sm" role="alert">
-              <span className="font-semibold">⚠ Error:</span> {error}
+            <div className="rounded-lg border border-[var(--color-error-border)] bg-[var(--color-error-bg)] p-4 text-[var(--color-error)] text-xs font-mono" role="alert">
+              <span className="font-semibold">⚠ Error loading source:</span> {error}
             </div>
           ) : loading || !data ? (
-            <div aria-busy="true">
+            <div aria-busy="true" className="space-y-3">
               {Array.from({ length: 6 }).map((_, i) => (
-                <Skeleton key={i} className="h-10 rounded-lg mb-2" />
+                <Skeleton key={i} className="h-12 rounded-lg" />
               ))}
             </div>
           ) : (
             <>
-              {/* Status row */}
-              <div className="flex items-center gap-3 flex-wrap">
-                <SourceHealthBadge status={data.status} size="md" />
-                <span
-                  className={`text-xs px-2 py-1 rounded border ${
-                    data.jurisdiction === "central"
-                      ? "bg-blue-500/10 text-blue-400 border-blue-500/25"
-                      : "bg-purple-500/10 text-purple-400 border-purple-500/25"
-                  }`}
+              {/* Level 1: Status & Jurisdiction Badges */}
+              <div className="flex items-center justify-between gap-3 flex-wrap">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <SourceHealthBadge status={data.status} size="md" />
+                  <span
+                    className={cn(
+                      "text-xs font-mono px-2 py-0.5 rounded border font-medium",
+                      data.jurisdiction === "central"
+                        ? "bg-blue-500/10 text-blue-400 border-blue-500/25"
+                        : "bg-purple-500/10 text-purple-400 border-purple-500/25"
+                    )}
+                  >
+                    {data.jurisdiction === "central" ? "Central Parliament" : `State · ${data.state ?? ""}`}
+                  </span>
+                  <span className={cn("text-xs font-mono px-2 py-0.5 rounded border", data.enabled ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/25" : "bg-slate-700/40 text-[var(--text-faint)] border-[var(--border-strong)]")}>
+                    {data.enabled ? "Active" : "Disabled"}
+                  </span>
+                </div>
+
+                <button
+                  onClick={handleTriggerPoll}
+                  disabled={polling}
+                  className="px-2.5 py-1 text-xs font-mono bg-[var(--bg-elevated)] hover:bg-[var(--bg-card-hover)] border border-[var(--border-strong)] rounded text-[var(--text-primary)] transition-colors disabled:opacity-50"
+                  aria-label="Trigger safe poll for source"
                 >
-                  {data.jurisdiction === "central" ? "🏛 Central" : "🗳 State"}{data.state ? ` · ${data.state}` : ""}
-                </span>
-                <span className={`text-xs px-2 py-1 rounded border ${data.enabled ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/25" : "bg-slate-700/40 text-slate-500 border-slate-700"}`}>
-                  {data.enabled ? "Enabled" : "Disabled"}
-                </span>
+                  {polling ? "Polling..." : "▶ Safe Poll"}
+                </button>
               </div>
 
-              {/* Identity */}
-              <div className="rounded-lg border border-slate-800 bg-slate-900/50 p-4 space-y-2">
-                <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-3">Source Identity</h3>
-                <dl className="space-y-1.5 text-sm">
-                  <div className="flex gap-2">
-                    <dt className="text-slate-500 w-32 shrink-0">Source ID</dt>
-                    <dd className="text-slate-300 font-mono text-xs">{data.source_id}</dd>
+              {pollResult && (
+                <div className="p-2 rounded bg-[var(--bg-surface)] border border-[var(--border-hairline)] text-xs font-mono text-[var(--text-muted)]">
+                  {pollResult}
+                </div>
+              )}
+
+              {/* Level 2: Operational Identity & Schedule */}
+              <div className="rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-card)] p-4 space-y-2">
+                <h3 className="text-xs font-semibold text-[var(--text-faint)] font-mono uppercase tracking-wider mb-2">
+                  Source Configuration
+                </h3>
+                <dl className="space-y-2 text-xs">
+                  <div className="flex justify-between border-b border-[var(--border-hairline)] pb-1.5">
+                    <dt className="text-[var(--text-faint)] font-mono">Source ID</dt>
+                    <dd className="text-[var(--text-primary)] font-mono font-medium">{data.source_id}</dd>
                   </div>
-                  <div className="flex gap-2">
-                    <dt className="text-slate-500 w-32 shrink-0">Source Type</dt>
-                    <dd className="text-slate-300">{data.source_type}</dd>
+                  <div className="flex justify-between border-b border-[var(--border-hairline)] pb-1.5">
+                    <dt className="text-[var(--text-faint)] font-mono">Parser / Ingestion Type</dt>
+                    <dd className="text-[var(--text-secondary)] font-mono">{data.source_type}</dd>
                   </div>
-                  <div className="flex gap-2">
-                    <dt className="text-slate-500 w-32 shrink-0">URL / Domain</dt>
-                    <dd className="text-blue-400 text-xs break-all">
-                      {data.source_url
-                        ? <a href={data.source_url} target="_blank" rel="noopener noreferrer" className="hover:underline">{data.source_url}</a>
-                        : "Unavailable"}
+                  <div className="flex justify-between border-b border-[var(--border-hairline)] pb-1.5">
+                    <dt className="text-[var(--text-faint)] font-mono">Verified Portal URL</dt>
+                    <dd className="text-blue-400 font-mono truncate max-w-[240px]">
+                      {data.source_url ? (
+                        <a href={data.source_url} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                          {data.source_url}
+                        </a>
+                      ) : (
+                        <span className="text-[var(--text-faint)]">Unavailable</span>
+                      )}
                     </dd>
                   </div>
-                  <div className="flex gap-2">
-                    <dt className="text-slate-500 w-32 shrink-0">Polling Interval</dt>
-                    <dd className="text-slate-300">{data.polling_interval_hours}h</dd>
+                  <div className="flex justify-between border-b border-[var(--border-hairline)] pb-1.5">
+                    <dt className="text-[var(--text-faint)] font-mono">Polling Cadence</dt>
+                    <dd className="text-[var(--text-primary)] font-mono font-bold">{data.polling_interval_hours} hours</dd>
                   </div>
-                  <div className="flex gap-2">
-                    <dt className="text-slate-500 w-32 shrink-0">Priority</dt>
-                    <dd className="text-slate-300">{data.priority}</dd>
+                  <div className="flex justify-between">
+                    <dt className="text-[var(--text-faint)] font-mono">Priority Weight</dt>
+                    <dd className="text-[var(--text-primary)] font-mono">{data.priority}</dd>
                   </div>
                 </dl>
               </div>
 
-              {/* Check history */}
-              <div className="rounded-lg border border-slate-800 bg-slate-900/50 p-4 space-y-2">
-                <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-3">Check History</h3>
-                <dl className="space-y-1.5 text-sm">
-                  <div className="flex gap-2">
-                    <dt className="text-slate-500 w-32 shrink-0">Last Checked</dt>
-                    <dd className="text-slate-300">{formatTime(data.last_checked_at)}</dd>
+              {/* Level 2: Surveillance Timestamps */}
+              <div className="rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-card)] p-4 space-y-2">
+                <h3 className="text-xs font-semibold text-[var(--text-faint)] font-mono uppercase tracking-wider mb-2">
+                  Surveillance Timestamps
+                </h3>
+                <dl className="space-y-2 text-xs">
+                  <div className="flex justify-between border-b border-[var(--border-hairline)] pb-1.5">
+                    <dt className="text-[var(--text-faint)] font-mono">Last Checked</dt>
+                    <dd className="text-[var(--text-primary)] font-mono">{formatTime(data.last_checked_at)}</dd>
                   </div>
-                  <div className="flex gap-2">
-                    <dt className="text-slate-500 w-32 shrink-0">Last Success</dt>
-                    <dd className="text-slate-300">{formatTime(data.last_success_at)}</dd>
+                  <div className="flex justify-between border-b border-[var(--border-hairline)] pb-1.5">
+                    <dt className="text-[var(--text-faint)] font-mono">Last Successful Parse</dt>
+                    <dd className="text-emerald-400 font-mono font-medium">{formatTime(data.last_success_at)}</dd>
                   </div>
                   {data.last_error && (
-                    <>
-                      <div className="flex gap-2">
-                        <dt className="text-slate-500 w-32 shrink-0">Last Error</dt>
-                        <dd className="text-rose-400">{formatTime(data.last_error_at)}</dd>
+                    <div className="space-y-1 pt-1">
+                      <div className="flex justify-between text-rose-400 font-mono">
+                        <dt>Last Error Timestamp</dt>
+                        <dd>{formatTime(data.last_error_at)}</dd>
                       </div>
-                      <div className="flex gap-2">
-                        <dt className="text-slate-500 w-32 shrink-0">Error Detail</dt>
-                        <dd className="text-rose-400 text-xs">{data.last_error}</dd>
+                      <div className="p-2.5 rounded bg-rose-500/10 border border-rose-500/20 text-rose-300 font-mono text-[11px] break-words">
+                        {data.last_error}
                       </div>
-                    </>
+                    </div>
                   )}
                 </dl>
               </div>
 
-              {/* Recent run results */}
-              {data.recent_run_results.length > 0 && (
-                <div>
-                  <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-3">Recent Runs</h3>
-                  <div className="space-y-2">
-                    {data.recent_run_results.slice(0, 5).map((r: Record<string, unknown>, i) => (
-                      <div key={i} className="rounded-lg border border-slate-800 bg-slate-900/40 px-3 py-2 flex items-center justify-between text-xs">
-                        <div className="text-slate-400">{formatTime(r.started_at as string)}</div>
-                        <span className={`font-semibold ${r.status === "SUCCESS" ? "text-emerald-400" : "text-rose-400"}`}>
-                          {r.status as string}
-                        </span>
-                        <div className="text-slate-500">
-                          {Number(r.new_bills ?? 0)} new · {Number(r.changed_bills ?? 0)} changed
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
               {/* Notes */}
               {data.notes && (
-                <div className="rounded-lg border border-slate-800 bg-slate-900/40 p-3 text-xs text-slate-400">
-                  <span className="font-semibold text-slate-300">Notes: </span>{data.notes}
+                <div className="rounded-lg border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-3 text-xs text-[var(--text-muted)]">
+                  <span className="font-semibold text-[var(--text-secondary)] font-mono">Operational Note: </span>
+                  {data.notes}
                 </div>
               )}
 
-              {/* Provenance */}
+              {/* Level 3: Technical Diagnostics & Raw Traces */}
+              <details className="group rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-card)] p-4 text-xs font-mono">
+                <summary className="font-semibold uppercase tracking-wider text-[var(--text-faint)] cursor-pointer list-none flex items-center justify-between select-none">
+                  <span>Technical Diagnostics & Recent Runs</span>
+                  <span className="text-[var(--text-muted)] group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+
+                <div className="mt-4 pt-3 border-t border-[var(--border-hairline)] space-y-3">
+                  {data.recent_run_results && data.recent_run_results.length > 0 ? (
+                    <div className="space-y-1.5">
+                      <div className="text-[11px] text-[var(--text-faint)] uppercase">Recent Run History</div>
+                      {data.recent_run_results.slice(0, 5).map((r: Record<string, unknown>, i) => (
+                        <div key={i} className="p-2 rounded bg-[var(--bg-surface)] border border-[var(--border-hairline)] flex items-center justify-between text-[11px]">
+                          <span className="text-[var(--text-muted)]">{formatTime(r.started_at as string)}</span>
+                          <span className={cn("font-bold", r.status === "SUCCESS" ? "text-emerald-400" : "text-rose-400")}>
+                            {String(r.status)}
+                          </span>
+                          <span className="text-[var(--text-faint)]">
+                            +{Number(r.new_bills ?? 0)} new · {Number(r.changed_bills ?? 0)} diff
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="text-[var(--text-faint)] text-[11px]">No recent runs recorded for this source.</div>
+                  )}
+
+                  {data.provenance && (
+                    <div className="space-y-1 pt-2 border-t border-[var(--border-hairline)]">
+                      <div className="text-[11px] text-[var(--text-faint)] uppercase">Raw Provenance Payload</div>
+                      <pre className="p-2.5 rounded bg-[var(--bg-surface)] border border-[var(--border-hairline)] text-[10px] text-[var(--text-muted)] overflow-x-auto">
+                        {JSON.stringify(data.provenance, null, 2)}
+                      </pre>
+                    </div>
+                  )}
+                </div>
+              </details>
+
+              {/* Provenance Strip */}
               <ProvenanceStrip
                 sourceId={data.source_id}
                 verificationStatus={(data.provenance?.monitoring_system as string) ?? "SYSTEM_DETECTED"}

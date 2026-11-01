@@ -1,4 +1,4 @@
-/**
+﻿/**
  * app/reports/page.tsx
  * =====================
  * Task 8.25 — Report Center (Phases 17–19).
@@ -200,18 +200,18 @@ function GenerateModal({ template, onClose }: { template: ReportTemplate; onClos
         {done ? (
           <div className="text-center py-6 space-y-4">
             <div className="text-4xl">✅</div>
-            <h3 className="text-base font-semibold text-white">Report Generated</h3>
-            <p className="text-sm text-slate-400">
+            <h3 className="text-base font-semibold text-[var(--text-primary)]">Report Generated</h3>
+            <p className="text-sm text-[var(--text-muted)]">
               Your {template.label} has been generated and is ready to download.
             </p>
             <p className="text-[10px] text-slate-600 max-w-xs mx-auto">
               Report generated from platform backend data. All figures are labelled FACT, OBSERVED, DERIVED, or PREDICTION as appropriate.
             </p>
             <div className="flex gap-3 pt-2">
-              <button onClick={onClose} className="flex-1 px-4 py-2 rounded-lg border border-white/8 text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-all">
+              <button onClick={onClose} className="flex-1 px-4 py-2 rounded-lg border border-white/8 text-sm text-[var(--text-muted)] hover:text-white hover:bg-white/5 transition-all">
                 Close
               </button>
-              <button className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium transition-all">
+              <button className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-[var(--text-primary)] text-sm font-medium transition-all">
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                 </svg>
@@ -224,20 +224,20 @@ function GenerateModal({ template, onClose }: { template: ReportTemplate; onClos
             <div className="flex items-center justify-between mb-5">
               <div className="flex items-center gap-2">
                 <span className="text-xl">{template.icon}</span>
-                <h2 className="text-base font-semibold text-white">{template.label}</h2>
+                <h2 className="text-base font-semibold text-[var(--text-primary)]">{template.label}</h2>
               </div>
-              <button onClick={onClose} className="p-1.5 rounded text-slate-400 hover:text-white hover:bg-white/5 transition-colors">
+              <button onClick={onClose} className="p-1.5 rounded text-[var(--text-muted)] hover:text-white hover:bg-white/5 transition-colors">
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
 
-            <p className="text-xs text-slate-400 mb-5 leading-relaxed">{template.description}</p>
+            <p className="text-xs text-[var(--text-muted)] mb-5 leading-relaxed">{template.description}</p>
 
             {/* Entity input */}
             <div className="mb-4">
-              <label className="text-xs font-medium text-slate-400 block mb-1.5">
+              <label className="text-xs font-medium text-[var(--text-muted)] block mb-1.5">
                 {template.type === "PORTFOLIO" ? "Portfolio Name" : "Entity Name / Search"}
               </label>
               <input
@@ -245,13 +245,13 @@ function GenerateModal({ template, onClose }: { template: ReportTemplate; onClos
                 value={entity}
                 onChange={(e) => setEntity(e.target.value)}
                 placeholder={template.type === "PORTFOLIO" ? "My Portfolio" : "Search bills, companies…"}
-                className="w-full px-3 py-2 bg-slate-800/60 border border-white/8 rounded-lg text-sm text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-blue-500/50 transition-colors"
+                className="w-full px-3 py-2 bg-[var(--bg-elevated)]/60 border border-white/8 rounded-lg text-sm text-[var(--text-primary)] placeholder:text-slate-600 focus:outline-none focus:border-blue-500/50 transition-colors"
               />
             </div>
 
             {/* Format selector */}
             <div className="mb-5">
-              <label className="text-xs font-medium text-slate-400 block mb-1.5">Format</label>
+              <label className="text-xs font-medium text-[var(--text-muted)] block mb-1.5">Format</label>
               <div className="flex gap-2">
                 {template.formats.map((fmt) => (
                   <button
@@ -261,7 +261,7 @@ function GenerateModal({ template, onClose }: { template: ReportTemplate; onClos
                       "flex items-center gap-1.5 px-3 py-2 rounded-lg border text-xs font-medium transition-all",
                       selectedFormat === fmt
                         ? "border-blue-500/40 bg-blue-500/10 text-blue-300"
-                        : "border-white/8 text-slate-500 hover:text-slate-300 hover:bg-white/5"
+                        : "border-white/8 text-[var(--text-faint)] hover:text-[var(--text-secondary)] hover:bg-white/5"
                     )}
                   >
                     <span>{FORMAT_ICONS[fmt]}</span>
@@ -273,10 +273,10 @@ function GenerateModal({ template, onClose }: { template: ReportTemplate; onClos
 
             {/* Sections preview */}
             <div className="mb-5">
-              <p className="text-xs font-medium text-slate-400 mb-2">Report Sections</p>
+              <p className="text-xs font-medium text-[var(--text-muted)] mb-2">Report Sections</p>
               <div className="flex flex-wrap gap-1.5">
                 {template.sections.map((section) => (
-                  <span key={section} className="text-[10px] px-2 py-0.5 rounded bg-white/5 border border-white/8 text-slate-500">
+                  <span key={section} className="text-[10px] px-2 py-0.5 rounded bg-white/5 border border-white/8 text-[var(--text-faint)]">
                     {section}
                   </span>
                 ))}
@@ -284,7 +284,7 @@ function GenerateModal({ template, onClose }: { template: ReportTemplate; onClos
             </div>
 
             {/* Safety notice */}
-            <div className="mb-5 p-3 rounded-lg bg-amber-950/20 border border-amber-800/20 text-xs text-slate-500">
+            <div className="mb-5 p-3 rounded-lg bg-amber-950/20 border border-amber-800/20 text-xs text-[var(--text-faint)]">
               <p className="font-semibold text-amber-400 mb-1">Report Safety</p>
               <p className="leading-relaxed">
                 This report is generated directly from the platform&apos;s analytical data.
@@ -295,13 +295,13 @@ function GenerateModal({ template, onClose }: { template: ReportTemplate; onClos
             </div>
 
             <div className="flex gap-3">
-              <button onClick={onClose} className="flex-1 px-4 py-2 rounded-lg border border-white/8 text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-all">
+              <button onClick={onClose} className="flex-1 px-4 py-2 rounded-lg border border-white/8 text-sm text-[var(--text-muted)] hover:text-white hover:bg-white/5 transition-all">
                 Cancel
               </button>
               <button
                 onClick={handleGenerate}
                 disabled={generating}
-                className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium disabled:opacity-60 transition-all"
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-[var(--text-primary)] text-sm font-medium disabled:opacity-60 transition-all"
               >
                 {generating ? (
                   <>
@@ -337,15 +337,15 @@ export default function ReportsPage() {
           <span className="text-slate-700">/</span>
           <span className="badge-modelled">NEW</span>
         </div>
-        <h1 className="text-headline text-white mb-1">Report Center</h1>
-        <p className="text-slate-400 text-sm max-w-2xl leading-relaxed">
+        <h1 className="text-headline text-[var(--text-primary)] mb-1">Report Center</h1>
+        <p className="text-[var(--text-muted)] text-sm max-w-2xl leading-relaxed">
           Generate downloadable intelligence reports for bills, companies, portfolios, and more.
           All reports are backed by the same analytical data powering the platform.
         </p>
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 mb-6 bg-slate-900/60 border border-white/8 rounded-lg p-1 w-fit">
+      <div className="flex gap-1 mb-6 bg-[var(--bg-card)]/60 border border-white/8 rounded-lg p-1 w-fit">
         {[
           { id: "center" as const, label: "Report Center" },
           { id: "templates" as const, label: "Generate New Report" },
@@ -355,7 +355,7 @@ export default function ReportsPage() {
             onClick={() => setActiveTab(tab.id)}
             className={cn(
               "px-4 py-2 rounded-md text-sm font-medium transition-all",
-              activeTab === tab.id ? "bg-white/10 text-white" : "text-slate-500 hover:text-slate-300"
+              activeTab === tab.id ? "bg-white/10 text-[var(--text-primary)]" : "text-[var(--text-faint)] hover:text-[var(--text-secondary)]"
             )}
           >
             {tab.label}
@@ -368,7 +368,7 @@ export default function ReportsPage() {
         <div className="space-y-4">
           {SAMPLE_REPORTS.length === 0 ? (
             <div className="card-base p-12 text-center">
-              <p className="text-slate-500 text-sm">No reports generated yet. Use the &quot;Generate New Report&quot; tab to create one.</p>
+              <p className="text-[var(--text-faint)] text-sm">No reports generated yet. Use the &quot;Generate New Report&quot; tab to create one.</p>
             </div>
           ) : (
             <>
@@ -381,12 +381,12 @@ export default function ReportsPage() {
 
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-0.5">
-                      <p className="text-sm font-semibold text-slate-200 truncate">{report.entity}</p>
-                      <span className="text-[10px] px-1.5 py-0.5 rounded bg-white/5 border border-white/8 text-slate-500 font-medium flex-shrink-0">
+                      <p className="text-sm font-semibold text-[var(--text-primary)] truncate">{report.entity}</p>
+                      <span className="text-[10px] px-1.5 py-0.5 rounded bg-white/5 border border-white/8 text-[var(--text-faint)] font-medium flex-shrink-0">
                         {report.type.replace("_", " ")}
                       </span>
                     </div>
-                    <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500">
+                    <div className="flex flex-wrap items-center gap-3 text-xs text-[var(--text-faint)]">
                       <span>Generated: {formatDate(report.generatedAt)}</span>
                       {report.dataFreshnessAt && (
                         <span>Data as of: {formatDate(report.dataFreshnessAt)}</span>
@@ -396,7 +396,7 @@ export default function ReportsPage() {
                   </div>
 
                   <div className="flex items-center gap-2 flex-shrink-0">
-                    <span className={cn("text-[10px] px-2 py-0.5 rounded font-bold", FORMAT_ICONS[report.format] ? "" : "", "bg-white/5 border border-white/8 text-slate-400")}>
+                    <span className={cn("text-[10px] px-2 py-0.5 rounded font-bold", FORMAT_ICONS[report.format] ? "" : "", "bg-white/5 border border-white/8 text-[var(--text-muted)]")}>
                       {report.format}
                     </span>
                     {report.status === "READY" && (
@@ -407,7 +407,7 @@ export default function ReportsPage() {
                           </svg>
                           Download
                         </button>
-                        <button className="p-1.5 rounded text-slate-600 hover:text-slate-400 hover:bg-white/5 transition-all" aria-label="Regenerate report">
+                        <button className="p-1.5 rounded text-slate-600 hover:text-[var(--text-muted)] hover:bg-white/5 transition-all" aria-label="Regenerate report">
                           <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                           </svg>
@@ -446,7 +446,7 @@ export default function ReportsPage() {
               <div className="flex items-start gap-3 mb-3">
                 <span className="text-2xl">{template.icon}</span>
                 <div className="min-w-0">
-                  <p className="text-sm font-semibold text-slate-200 group-hover:text-white transition-colors">
+                  <p className="text-sm font-semibold text-[var(--text-primary)] group-hover:text-white transition-colors">
                     {template.label}
                   </p>
                   <div className="flex gap-1 mt-1">
@@ -458,7 +458,7 @@ export default function ReportsPage() {
                   </div>
                 </div>
               </div>
-              <p className="text-xs text-slate-500 leading-relaxed">{template.description}</p>
+              <p className="text-xs text-[var(--text-faint)] leading-relaxed">{template.description}</p>
               <div className="mt-3 flex items-center gap-1 text-xs text-blue-400 group-hover:text-blue-300 transition-colors">
                 <span>Generate Report</span>
                 <svg className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

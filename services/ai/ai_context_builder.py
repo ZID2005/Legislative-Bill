@@ -31,7 +31,187 @@ from storage.state_bill_repository import StateBillRepository
 from storage.state_corporate_exposure_repository import StateCorporateExposureRepository
 from storage.state_knowledge_repository import StateKnowledgeRepository
 
+from storage.portfolio_repository import PortfolioRepository
+
 logger = get_logger(__name__)
+
+
+@dataclass
+class AIPortfolioContext:
+    """Structured, verified context container for a user's portfolio and its legislative exposures."""
+
+    portfolio_id: str
+    portfolio_name: str
+    user_id: str
+    tenant_id: str
+    bill_id: str = "__portfolio_context__"
+    jurisdiction: str = "portfolio"
+    is_state: bool = False
+    holdings_count: int = 0
+    holdings: list[dict[str, Any]] = field(default_factory=list)
+
+    facts: list[str] = field(default_factory=list)
+    derived: list[str] = field(default_factory=list)
+    interpretations: list[str] = field(default_factory=list)
+    predictions: list[str] = field(default_factory=list)
+    evidence: list[str] = field(default_factory=list)
+
+    provenance: dict[str, str] = field(default_factory=dict)
+    metadata: dict[str, Any] = field(default_factory=dict)
+
+    @property
+    def context_hash(self) -> str:
+        payload = {
+            "portfolio_id": self.portfolio_id,
+            "user_id": self.user_id,
+            "tenant_id": self.tenant_id,
+            "holdings_count": self.holdings_count,
+            "facts": sorted(self.facts),
+            "derived": sorted(self.derived),
+            "interpretations": sorted(self.interpretations),
+            "predictions": sorted(self.predictions),
+            "evidence": sorted(self.evidence),
+        }
+        serialized = json.dumps(payload, sort_keys=True, ensure_ascii=True)
+        return hashlib.sha256(serialized.encode("utf-8")).hexdigest()
+
+    def format_prompt_block(self) -> str:
+        lines = [
+            "=== VERIFIED PORTFOLIO LEGISLATIVE INTELLIGENCE CONTEXT ===",
+            f"PORTFOLIO: {self.portfolio_name} (ID: {self.portfolio_id})",
+            f"TENANT SCOPE: {self.tenant_id} | USER: {self.user_id}",
+            f"TRACKED HOLDINGS: {self.holdings_count} securities",
+            "",
+            "[FACTS — User Holdings & Verified Corporate Master Records]",
+        ]
+        if self.facts:
+            for f in self.facts:
+                lines.append(f"• {f}")
+        else:
+            lines.append("• No portfolio holdings recorded.")
+
+        lines.extend(["", "[DERIVED INFORMATION — Portfolio Sector Distribution & Legislative Exposures]"])
+        if self.derived:
+            for d in self.derived:
+                lines.append(f"• {d}")
+        else:
+            lines.append("• No legislative exposure associations mapped.")
+
+        lines.extend(["", "[ECONOMIC INTERPRETATION — Regulatory Mechanisms & Transmission Channels]"])
+        if self.interpretations:
+            for i in self.interpretations:
+                lines.append(f"• {i}")
+        else:
+            lines.append("• Standard compliance relevance applies to mapped holdings.")
+
+        lines.extend(["", "[PREDICTIONS — Central Frozen Models (Firewall: 0 for State & Non-Modeled Entities)]"])
+        if self.predictions:
+            for p in self.predictions:
+                lines.append(f"• {p}")
+        else:
+            lines.append("• No quantitative model predictions generated for these holdings.")
+
+        lines.extend(["", "[EVIDENCE — Public Filings & Regulatory Disclosure Records]"])
+        if self.evidence:
+            for ev in self.evidence:
+                lines.append(f"• [EVIDENCE] {ev}")
+        else:
+            lines.append("• Standard public corporate records verified.")
+
+        lines.extend([
+            "",
+            "[PROVENANCE & SECURITY]",
+            f"• Tenant Isolation: Verified strictly for tenant '{self.tenant_id}'. Zero cross-tenant data.",
+            f"• Verified Sources: {self.provenance.get('sources', 'Portfolio Repository / Corporate Intelligence')}",
+            f"• Regulatory Notice: Portfolio decision support only; strictly not investment advice.",
+            "=== END CONTEXT ===",
+        ])
+        return "\n".join(lines)
+
+
+@dataclass
+class AIGeneralContext:
+    """Structured, verified context container for general legislative platform queries."""
+
+    query: str
+    scope_summary: str = "India Parliamentary Central & Multi-State Legislative Intelligence"
+    bill_id: str = "__general_context__"
+    jurisdiction: str = "general"
+    is_state: bool = False
+
+    facts: list[str] = field(default_factory=list)
+    derived: list[str] = field(default_factory=list)
+    interpretations: list[str] = field(default_factory=list)
+    predictions: list[str] = field(default_factory=list)
+    evidence: list[str] = field(default_factory=list)
+
+    provenance: dict[str, str] = field(default_factory=dict)
+    metadata: dict[str, Any] = field(default_factory=dict)
+
+    @property
+    def context_hash(self) -> str:
+        payload = {
+            "query": self.query,
+            "facts": sorted(self.facts),
+            "derived": sorted(self.derived),
+            "interpretations": sorted(self.interpretations),
+            "predictions": sorted(self.predictions),
+            "evidence": sorted(self.evidence),
+        }
+        serialized = json.dumps(payload, sort_keys=True, ensure_ascii=True)
+        return hashlib.sha256(serialized.encode("utf-8")).hexdigest()
+
+    def format_prompt_block(self) -> str:
+        lines = [
+            "=== VERIFIED GENERAL LEGISLATIVE INTELLIGENCE CONTEXT ===",
+            f"QUERY ANCHOR: {self.query}",
+            f"PLATFORM SCOPE: {self.scope_summary}",
+            "",
+            "[FACTS — Authoritative Enactments, Gazette Records & Corporate Master]",
+        ]
+        if self.facts:
+            for f in self.facts:
+                lines.append(f"• {f}")
+        else:
+            lines.append("• Platform covers Central parliamentary legislation and state assemblies.")
+
+        lines.extend(["", "[DERIVED INFORMATION — System-Assigned Taxonomies & Sector Mappings]"])
+        if self.derived:
+            for d in self.derived:
+                lines.append(f"• {d}")
+        else:
+            lines.append("• Standard sector and policy classifications verified.")
+
+        lines.extend(["", "[ECONOMIC INTERPRETATION — Qualitative Statutory Mechanisms]"])
+        if self.interpretations:
+            for i in self.interpretations:
+                lines.append(f"• {i}")
+        else:
+            lines.append("• Qualitative regulatory implications documented.")
+
+        lines.extend(["", "[PREDICTIONS — Central Frozen Models (Firewall Enforced)]"])
+        if self.predictions:
+            for p in self.predictions:
+                lines.append(f"• {p}")
+        else:
+            lines.append("• Central production models cover 20 Central bills and 47 companies. State predictions = 0.")
+
+        lines.extend(["", "[EVIDENCE — Public Information & Empirical Ingestion Records]"])
+        if self.evidence:
+            for ev in self.evidence:
+                lines.append(f"• [EVIDENCE] {ev}")
+        else:
+            lines.append("• Empirical gazette and official parliamentary transcripts verified.")
+
+        lines.extend([
+            "",
+            "[PROVENANCE & INTEGRITY]",
+            f"• Sources: {self.provenance.get('sources', 'Official Parliamentary & Gazette Ingestion Engines')}",
+            f"• Analytical Baseline: Frozen OLS event-study and LightGBM consensus models.",
+            f"• Regulatory Notice: Institutional research only; not investment advice.",
+            "=== END CONTEXT ===",
+        ])
+        return "\n".join(lines)
 
 
 @dataclass
@@ -196,6 +376,10 @@ class AICompanyContext:
     metadata: dict[str, Any] = field(default_factory=dict)
 
     @property
+    def is_state(self) -> bool:
+        return False
+
+    @property
     def is_quantitative(self) -> bool:
         return self.universe_type.lower() in ("quantitative", "both")
 
@@ -286,6 +470,7 @@ class AIIndustryContext:
 
     provenance: dict[str, str] = field(default_factory=dict)
     metadata: dict[str, Any] = field(default_factory=dict)
+    is_state: bool = False
 
     @property
     def context_hash(self) -> str:
@@ -366,6 +551,7 @@ class AIContextBuilder:
         state_exposure_repo: Optional[StateCorporateExposureRepository] = None,
         company_repo: Optional[CompanyRepository] = None,
         company_exposure_repo: Optional[CompanyExposureRepository] = None,
+        portfolio_repo: Optional[PortfolioRepository] = None,
     ) -> None:
         self.discovery_service = discovery_service or UnifiedLegislativeDiscoveryService()
         self.central_bill_repo = central_bill_repo or BillRepository()
@@ -377,6 +563,7 @@ class AIContextBuilder:
         self.state_exposure_repo = state_exposure_repo or StateCorporateExposureRepository()
         self.company_repo = company_repo or CompanyRepository()
         self.company_exposure_repo = company_exposure_repo or CompanyExposureRepository()
+        self.portfolio_repo = portfolio_repo or PortfolioRepository()
 
     def build_context(self, bill_id: str) -> AIContext:
         """
@@ -981,4 +1168,173 @@ class AIContextBuilder:
             },
             metadata={"industry_id": dossier.industry_id, "sector": dossier.sector},
         )
+
+    def build_portfolio_context(
+        self,
+        user_id: str,
+        tenant_id: str,
+        portfolio_id: Optional[str] = None,
+    ) -> AIPortfolioContext:
+        """
+        Build verified AIPortfolioContext strictly scoped to user_id and tenant_id.
+        """
+        portfolio_repo = self.portfolio_repo
+
+        pf = None
+        if portfolio_id:
+            pf = portfolio_repo.get(portfolio_id=portfolio_id, tenant_id=tenant_id, user_id=user_id)
+        if not pf:
+            pfs = portfolio_repo.list_by_user(user_id=user_id, tenant_id=tenant_id, is_active=True)
+            if pfs:
+                pf = pfs[0]
+            else:
+                pf = portfolio_repo.get_or_create_default(user_id=user_id, tenant_id=tenant_id)
+
+        facts: list[str] = []
+        derived: list[str] = []
+        interpretations: list[str] = []
+        predictions: list[str] = []
+        evidence: list[str] = []
+        holdings_data: list[dict[str, Any]] = []
+
+        if not pf.holdings:
+            facts.append("Portfolio currently has 0 active holdings.")
+            interpretations.append("No active equity holdings configured for this portfolio.")
+            predictions.append("Zero predictions applicable to empty portfolio.")
+        else:
+            for h in pf.holdings:
+                h_name = h.company_name or h.ticker or h.isin or "Unknown Holding"
+                h_sec = h.sector or "Unclassified Sector"
+                h_ind = h.industry or "General"
+                val_str = f"INR {h.current_value:,.2f}" if h.current_value else f"{h.quantity} shares"
+                facts.append(f"Holding: {h_name} ({h.ticker or h.isin or 'Unlisted'}) — {val_str} [Sector: {h_sec}, Industry: {h_ind}].")
+                holdings_data.append({"company_name": h_name, "ticker": h.ticker, "isin": h.isin, "sector": h_sec, "industry": h_ind})
+
+                # Resolve company in master
+                comp_profile = self.company_repo.get_by_isin(h.isin) if h.isin else None
+                if not comp_profile and h.ticker:
+                    comp_profile = self.company_repo.get_by_ticker(h.ticker)
+                if not comp_profile and h.company_name:
+                    comp_profile = self.company_repo.find_by_name(h.company_name)
+
+                if comp_profile:
+                    is_quant = comp_profile.universe_type.lower() in ("quantitative", "both")
+                    # Check Central decision records
+                    if is_quant and comp_profile.isin:
+                        decs = self.central_decision_repo.get_by_company(comp_profile.isin)
+                        if decs:
+                            d = decs[0]
+                            dir_str = d.predicted_direction.value if hasattr(d.predicted_direction, "value") else str(d.predicted_direction)
+                            conf_str = d.predicted_confidence.value if hasattr(d.predicted_confidence, "value") else str(getattr(d, "confidence", "LOW"))
+                            risk_str = d.risk_category.value if hasattr(d.risk_category, "value") else str(d.risk_category)
+                            predictions.append(
+                                f"Model Output for {h_name}: Direction {dir_str} (Confidence: {conf_str}, Risk: {risk_str}, Probability: {d.market_moving_probability:.2f})."
+                            )
+                    else:
+                        predictions.append(
+                            f"Model Firewall for {h_name}: Non-modeled / intelligence entity (coverage_tier = INTELLIGENCE_ONLY). Market predictions strictly 0."
+                        )
+
+                    # Corporate exposures
+                    exps = self.company_exposure_repo.get_by_company(comp_profile.isin or comp_profile.company_name)
+                    for exp in exps[:3]:
+                        b_ref = getattr(exp, "bill_title", None) or exp.bill_id
+                        derived.append(
+                            f"Holding '{h_name}' is exposed to Central Bill '{b_ref}' "
+                            f"({exp.direct_indirect} {exp.exposure_type}, mechanism: {exp.mechanism})."
+                        )
+                else:
+                    predictions.append(f"Holding '{h_name}': Unmapped corporate entity (predictions = 0).")
+
+            # Overall summary
+            derived.append(f"Total Portfolio Sectors: {len(set(h.sector for h in pf.holdings if h.sector))} distinct sectors represented.")
+            interpretations.append("Portfolio legislative sensitivity derives from statutory compliance mandates and sectoral exposure mechanisms.")
+            predictions.append("RULE: State legislative exposures carry zero stock predictions. Model outputs are strictly historical frozen baseline.")
+            predictions.append("RULE: The AI does not generate Buy, Sell, or Hold advice or price targets.")
+
+        provenance = {
+            "sources": "Personalized Portfolio Ground Truth / Corporate Intelligence",
+            "tenant_id": tenant_id,
+            "user_id": user_id,
+        }
+
+        return AIPortfolioContext(
+            portfolio_id=pf.portfolio_id,
+            portfolio_name=pf.name,
+            user_id=user_id,
+            tenant_id=tenant_id,
+            holdings_count=len(pf.holdings),
+            holdings=holdings_data,
+            facts=facts,
+            derived=derived,
+            interpretations=interpretations,
+            predictions=predictions,
+            evidence=evidence,
+            provenance=provenance,
+            metadata={"portfolio_id": pf.portfolio_id},
+        )
+
+    def build_general_context(self, query: str = "") -> AIGeneralContext:
+        """
+        Build verified AIGeneralContext for platform-wide legislative inquiries.
+        """
+        q = query.strip()
+        facts: list[str] = [
+            "Platform Scope: Authoritative Indian Central Parliamentary acts and State Legislative Assembly statutes.",
+            "Jurisdictions Tracked: Central (Lok Sabha / Rajya Sabha), State Assemblies (Kerala, Tamil Nadu, Maharashtra, Karnataka, Gujarat, etc.).",
+            "Analytical Baseline: 20 Central production bills, 47 modelled quantitative companies, 940 pairs, 4,700 frozen model predictions.",
+        ]
+        derived: list[str] = [
+            "Key Monitored Domains: Energy, Digital / Data Protection, Mines & Minerals, Finance & Taxation, Agriculture, Labor & Industrial Relations.",
+        ]
+        interpretations: list[str] = [
+            "Legislative transmission operates through compliance costs, licensing frameworks, tax regimes, and operational boundaries.",
+        ]
+        predictions: list[str] = [
+            "STATE STOCK PREDICTIONS = 0. State legislation is strictly evaluated through qualitative economic intelligence.",
+            "INTELLIGENCE-ONLY ENTITIES = 0 PREDICTIONS. Unmodeled securities carry no quantitative market forecasts.",
+            "INVESTMENT ADVICE PROHIBITED: Buy, Sell, and Hold recommendations and stock price targets are strictly refused.",
+        ]
+        evidence: list[str] = []
+
+        if q:
+            all_bills = self.discovery_service.get_all_bills()
+            matched_bills = [
+                b for b in all_bills
+                if q.lower() in b.title.lower()
+                or (b.summary and q.lower() in b.summary.lower())
+                or (b.policy_domain and q.lower() in b.policy_domain.lower())
+            ]
+            if matched_bills:
+                for b in matched_bills[:5]:
+                    j_label = f"State of {b.state}" if b.is_state and b.state else b.jurisdiction.title()
+                    facts.append(f"Relevant Act/Bill: '{b.title}' [{b.bill_id}] ({j_label}, Status: {b.status}).")
+                    if b.summary:
+                        facts.append(f"Statutory Scope of '{b.title}': {b.summary[:150]}...")
+                    if b.policy_domain:
+                        derived.append(f"'{b.title}' Policy Domain: {b.policy_domain}.")
+            else:
+                comp = self.company_repo.find_by_name(q)
+                if comp:
+                    facts.append(f"Relevant Company: '{comp.company_name}' (ISIN: {comp.isin}, Sector: {comp.sector}).")
+                    derived.append(f"Universe Tier: {comp.universe_type.upper()}.")
+                else:
+                    facts.append(f"No specific bill or company records directly match query '{q[:60]}'.")
+                    interpretations.append("The available project data does not contain sufficient specific evidence to answer beyond documented general platform intelligence.")
+
+        provenance = {
+            "sources": "Official Parliamentary Ingestion Engine / Gazette Ground Truth",
+        }
+
+        return AIGeneralContext(
+            query=q or "General Legislative Overview",
+            facts=facts,
+            derived=derived,
+            interpretations=interpretations,
+            predictions=predictions,
+            evidence=evidence,
+            provenance=provenance,
+            metadata={"query": q},
+        )
+
 

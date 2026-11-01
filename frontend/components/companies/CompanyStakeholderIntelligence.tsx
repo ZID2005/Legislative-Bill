@@ -1,4 +1,4 @@
-/**
+﻿/**
  * components/companies/CompanyStakeholderIntelligence.tsx
  * ========================================================
  * Multi-persona intelligence views for corporate profiles.
@@ -43,13 +43,13 @@ export function CompanyStakeholderIntelligence({
       {/* ------------------------------------------------------------------ */}
       {/* 1. Methodology & Semantic Level Legend                             */}
       {/* ------------------------------------------------------------------ */}
-      <div className="rounded-lg border border-slate-800 bg-slate-900/90 p-4 space-y-3">
+      <div className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/90 p-4 space-y-3">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
-            <h3 className="text-sm font-semibold text-slate-100">
+            <h3 className="text-sm font-semibold text-[var(--text-primary)]">
               Stakeholder &amp; Business Intelligence Synthesis
             </h3>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <p className="text-xs text-[var(--text-muted)] mt-0.5">
               Structured operational interpretation of legislative exposure tailored across commercial personas.
             </p>
           </div>
@@ -62,22 +62,22 @@ export function CompanyStakeholderIntelligence({
         </div>
 
         {/* Semantic Level Map */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 border-t border-slate-800 text-[11px]">
-          <div className="p-2 rounded bg-slate-800/40 border border-slate-800">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 border-t border-[var(--border-default)] text-[11px]">
+          <div className="p-2 rounded bg-[var(--bg-elevated)]/40 border border-[var(--border-default)]">
             <span className="font-semibold text-emerald-400 block">FACT</span>
-            <span className="text-slate-400">Statutory text &amp; ROC filings</span>
+            <span className="text-[var(--text-muted)]">Statutory text &amp; ROC filings</span>
           </div>
-          <div className="p-2 rounded bg-slate-800/40 border border-slate-800">
+          <div className="p-2 rounded bg-[var(--bg-elevated)]/40 border border-[var(--border-default)]">
             <span className="font-semibold text-cyan-400 block">DERIVED</span>
-            <span className="text-slate-400">Exposure strength &amp; mechanism</span>
+            <span className="text-[var(--text-muted)]">Exposure strength &amp; mechanism</span>
           </div>
-          <div className="p-2 rounded bg-slate-800/40 border border-slate-800">
+          <div className="p-2 rounded bg-[var(--bg-elevated)]/40 border border-[var(--border-default)]">
             <span className="font-semibold text-amber-400 block">INTERPRETATION</span>
-            <span className="text-slate-400">Stakeholder impact assessment</span>
+            <span className="text-[var(--text-muted)]">Stakeholder impact assessment</span>
           </div>
-          <div className="p-2 rounded bg-slate-800/40 border border-slate-800">
+          <div className="p-2 rounded bg-[var(--bg-elevated)]/40 border border-[var(--border-default)]">
             <span className="font-semibold text-purple-400 block">PREDICTION</span>
-            <span className="text-slate-400">
+            <span className="text-[var(--text-muted)]">
               {isQuant ? "Central econometric models" : "Firewalled / 0 predictions"}
             </span>
           </div>
@@ -92,8 +92,8 @@ export function CompanyStakeholderIntelligence({
           onClick={() => setActivePersona("INVESTOR")}
           className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
             activePersona === "INVESTOR"
-              ? "bg-blue-600 text-white shadow-md"
-              : "bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700"
+              ? "bg-blue-600 text-[var(--text-primary)] shadow-md"
+              : "bg-[var(--bg-elevated)] text-[var(--text-muted)] hover:text-white hover:bg-[var(--bg-card-hover)]"
           }`}
         >
           💼 Investor &amp; Capital Markets
@@ -102,8 +102,8 @@ export function CompanyStakeholderIntelligence({
           onClick={() => setActivePersona("CORPORATE")}
           className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
             activePersona === "CORPORATE"
-              ? "bg-blue-600 text-white shadow-md"
-              : "bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700"
+              ? "bg-blue-600 text-[var(--text-primary)] shadow-md"
+              : "bg-[var(--bg-elevated)] text-[var(--text-muted)] hover:text-white hover:bg-[var(--bg-card-hover)]"
           }`}
         >
           🏢 Corporate Management &amp; Legal
@@ -112,8 +112,8 @@ export function CompanyStakeholderIntelligence({
           onClick={() => setActivePersona("INDUSTRY")}
           className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
             activePersona === "INDUSTRY"
-              ? "bg-blue-600 text-white shadow-md"
-              : "bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700"
+              ? "bg-blue-600 text-[var(--text-primary)] shadow-md"
+              : "bg-[var(--bg-elevated)] text-[var(--text-muted)] hover:text-white hover:bg-[var(--bg-card-hover)]"
           }`}
         >
           👥 Industry &amp; Public Policy
@@ -135,23 +135,23 @@ export function CompanyStakeholderIntelligence({
             </div>
           </CardHeader>
 
-          <div className="space-y-3 text-xs leading-relaxed text-slate-300">
-            <div className="p-3.5 rounded-lg bg-slate-800/40 border border-slate-800 space-y-2">
-              <h4 className="font-semibold text-slate-200 flex items-center gap-1.5">
+          <div className="space-y-3 text-xs leading-relaxed text-[var(--text-secondary)]">
+            <div className="p-3.5 rounded-lg bg-[var(--bg-elevated)]/40 border border-[var(--border-default)] space-y-2">
+              <h4 className="font-semibold text-[var(--text-primary)] flex items-center gap-1.5">
                 <span className="text-blue-400">1. Legislative Risk Exposure Profile</span>
                 <SourceBadge type="DERIVED" size="xs" />
               </h4>
-              <p className="text-slate-400">
-                {company.company_name} maintains <strong className="text-slate-200">{company.total_exposures} verified legislative exposures</strong> across Central Parliament ({centralCount}) and regional State assemblies ({stateCount}). {highImpactCount > 0 ? `${highImpactCount} of these relationships represent high-strength exposure vectors.` : "Exposures are diversified across operational and regulatory channels."}
+              <p className="text-[var(--text-muted)]">
+                {company.company_name} maintains <strong className="text-[var(--text-primary)]">{company.total_exposures} verified legislative exposures</strong> across Central Parliament ({centralCount}) and regional State assemblies ({stateCount}). {highImpactCount > 0 ? `${highImpactCount} of these relationships represent high-strength exposure vectors.` : "Exposures are diversified across operational and regulatory channels."}
               </p>
             </div>
 
-            <div className="p-3.5 rounded-lg bg-slate-800/40 border border-slate-800 space-y-2">
-              <h4 className="font-semibold text-slate-200 flex items-center gap-1.5">
+            <div className="p-3.5 rounded-lg bg-[var(--bg-elevated)]/40 border border-[var(--border-default)] space-y-2">
+              <h4 className="font-semibold text-[var(--text-primary)] flex items-center gap-1.5">
                 <span className="text-blue-400">2. Capital Structure &amp; Valuation Transmission</span>
                 <SourceBadge type="INTERPRETATION" size="xs" />
               </h4>
-              <p className="text-slate-400">
+              <p className="text-[var(--text-muted)]">
                 Primary economic transmission channels active for this corporate profile include:{" "}
                 <span className="text-cyan-300 font-medium">
                   {company.mechanisms?.slice(0, 4).join(", ") || "Statutory licensing and sector compliance"}
@@ -160,12 +160,12 @@ export function CompanyStakeholderIntelligence({
               </p>
             </div>
 
-            <div className="p-3.5 rounded-lg bg-slate-800/40 border border-slate-800 space-y-2">
-              <h4 className="font-semibold text-slate-200 flex items-center gap-1.5">
+            <div className="p-3.5 rounded-lg bg-[var(--bg-elevated)]/40 border border-[var(--border-default)] space-y-2">
+              <h4 className="font-semibold text-[var(--text-primary)] flex items-center gap-1.5">
                 <span className="text-blue-400">3. Predictive Modeling Status</span>
                 {isQuant ? <SourceBadge type="PREDICTION" size="xs" /> : <SourceBadge type="FACT" size="xs" />}
               </h4>
-              <p className="text-slate-400">
+              <p className="text-[var(--text-muted)]">
                 {isQuant ? (
                   <>
                     This corporate entity is eligible for <strong className="text-emerald-300">Central quantitative price forecasting</strong>. Multi-horizon event studies are available under the Market Predictions tab.
@@ -193,33 +193,33 @@ export function CompanyStakeholderIntelligence({
             </div>
           </CardHeader>
 
-          <div className="space-y-3 text-xs leading-relaxed text-slate-300">
-            <div className="p-3.5 rounded-lg bg-slate-800/40 border border-slate-800 space-y-2">
-              <h4 className="font-semibold text-slate-200 flex items-center gap-1.5">
+          <div className="space-y-3 text-xs leading-relaxed text-[var(--text-secondary)]">
+            <div className="p-3.5 rounded-lg bg-[var(--bg-elevated)]/40 border border-[var(--border-default)] space-y-2">
+              <h4 className="font-semibold text-[var(--text-primary)] flex items-center gap-1.5">
                 <span className="text-emerald-400">1. Statutory Compliance Burden</span>
                 <SourceBadge type="DERIVED" size="xs" />
               </h4>
-              <p className="text-slate-400">
+              <p className="text-[var(--text-muted)]">
                 Operating across {company.operating_states.length > 0 ? `${company.operating_states.length} States` : "India"}, corporate leadership must maintain dual compliance architectures: tracking Union parliamentary standards while auditing State assembly notifications across regional subsidiaries.
               </p>
             </div>
 
-            <div className="p-3.5 rounded-lg bg-slate-800/40 border border-slate-800 space-y-2">
-              <h4 className="font-semibold text-slate-200 flex items-center gap-1.5">
+            <div className="p-3.5 rounded-lg bg-[var(--bg-elevated)]/40 border border-[var(--border-default)] space-y-2">
+              <h4 className="font-semibold text-[var(--text-primary)] flex items-center gap-1.5">
                 <span className="text-emerald-400">2. Commercial Activity Alignment</span>
                 <SourceBadge type="FACT" size="xs" />
               </h4>
-              <p className="text-slate-400">
+              <p className="text-[var(--text-muted)]">
                 Core commercial activities ({company.business_activities?.slice(0, 5).join(", ") || company.sector}) intersect with documented statutory frameworks. Legal counsel should verify clause-level obligations under the Exposure Matrix tab.
               </p>
             </div>
 
-            <div className="p-3.5 rounded-lg bg-slate-800/40 border border-slate-800 space-y-2">
-              <h4 className="font-semibold text-slate-200 flex items-center gap-1.5">
+            <div className="p-3.5 rounded-lg bg-[var(--bg-elevated)]/40 border border-[var(--border-default)] space-y-2">
+              <h4 className="font-semibold text-[var(--text-primary)] flex items-center gap-1.5">
                 <span className="text-emerald-400">3. Legislative Surveillance Recommendation</span>
                 <SourceBadge type="INTERPRETATION" size="xs" />
               </h4>
-              <p className="text-slate-400">
+              <p className="text-[var(--text-muted)]">
                 Subscribe this corporate profile to an automated intelligence watchlist to receive notifications upon parliamentary status changes, committee amendments, or gazette enactment notifications.
               </p>
             </div>
@@ -239,23 +239,23 @@ export function CompanyStakeholderIntelligence({
             </div>
           </CardHeader>
 
-          <div className="space-y-3 text-xs leading-relaxed text-slate-300">
-            <div className="p-3.5 rounded-lg bg-slate-800/40 border border-slate-800 space-y-2">
-              <h4 className="font-semibold text-slate-200 flex items-center gap-1.5">
+          <div className="space-y-3 text-xs leading-relaxed text-[var(--text-secondary)]">
+            <div className="p-3.5 rounded-lg bg-[var(--bg-elevated)]/40 border border-[var(--border-default)] space-y-2">
+              <h4 className="font-semibold text-[var(--text-primary)] flex items-center gap-1.5">
                 <span className="text-purple-400">1. Sectoral Policy Direction</span>
                 <SourceBadge type="DERIVED" size="xs" />
               </h4>
-              <p className="text-slate-400">
+              <p className="text-[var(--text-muted)]">
                 The legislative footprint spans {company.sector} policy domains. Measures in this space predominantly emphasize regulatory formalization, licensing transparency, and regional compliance harmonization.
               </p>
             </div>
 
-            <div className="p-3.5 rounded-lg bg-slate-800/40 border border-slate-800 space-y-2">
-              <h4 className="font-semibold text-slate-200 flex items-center gap-1.5">
+            <div className="p-3.5 rounded-lg bg-[var(--bg-elevated)]/40 border border-[var(--border-default)] space-y-2">
+              <h4 className="font-semibold text-[var(--text-primary)] flex items-center gap-1.5">
                 <span className="text-purple-400">2. Stakeholder Spillover Dynamics</span>
                 <SourceBadge type="INTERPRETATION" size="xs" />
               </h4>
-              <p className="text-slate-400">
+              <p className="text-[var(--text-muted)]">
                 Direct statutory mandates on this enterprise have indirect transmission spillovers into auxiliary vendor networks, MSME supply lines, and institutional employment pools across operating geographies.
               </p>
             </div>

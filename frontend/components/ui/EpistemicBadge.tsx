@@ -73,7 +73,7 @@ export function EpistemicBadge({
 }: EpistemicBadgeProps) {
   const normalizedType = type.toUpperCase().replace(/[\[\]]/g, "").trim();
   const meta = EPISTEMIC_STYLES[normalizedType] || {
-    className: "bg-slate-800 text-slate-300 border border-slate-700",
+    className: "bg-[var(--bg-secondary)] text-[var(--text-secondary)] border border-[var(--border-default)]",
     label: normalizedType,
     description: "Epistemic classification",
   };

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * app/industry/[industryId]/IndustryDetailContent.tsx
  * ====================================================
  * Industry Intelligence Dossier client component with 13 comprehensive sections (A through M).
@@ -53,12 +53,12 @@ export default function IndustryDetailContent({ industryId }: IndustryDetailCont
   if (loading) {
     return (
       <div className="space-y-6 pb-12 animate-pulse">
-        <div className="h-44 rounded-xl border border-slate-800 bg-slate-900/60 p-6" />
+        <div className="h-44 rounded-xl border border-[var(--border-default)] bg-[var(--bg-card)]/60 p-6" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="h-40 rounded-xl border border-slate-800 bg-slate-900/60 p-5" />
-          <div className="h-40 rounded-xl border border-slate-800 bg-slate-900/60 p-5" />
+          <div className="h-40 rounded-xl border border-[var(--border-default)] bg-[var(--bg-card)]/60 p-5" />
+          <div className="h-40 rounded-xl border border-[var(--border-default)] bg-[var(--bg-card)]/60 p-5" />
         </div>
-        <div className="h-64 rounded-xl border border-slate-800 bg-slate-900/60 p-6" />
+        <div className="h-64 rounded-xl border border-[var(--border-default)] bg-[var(--bg-card)]/60 p-6" />
       </div>
     );
   }
@@ -74,7 +74,7 @@ export default function IndustryDetailContent({ industryId }: IndustryDetailCont
         <div className="flex items-center justify-center gap-3 pt-2">
           <Link
             href="/industries"
-            className="rounded-lg border border-slate-700 bg-slate-800 px-4 py-2 text-xs text-slate-200 hover:text-white transition-colors"
+            className="rounded-lg border border-[var(--border-strong)] bg-[var(--bg-elevated)] px-4 py-2 text-xs text-[var(--text-primary)] hover:text-white transition-colors"
           >
             ← Back to Industries
           </Link>

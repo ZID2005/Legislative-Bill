@@ -1,4 +1,4 @@
-/**
+﻿/**
  * components/industries/IndustryCorporateExposure.tsx
  * ===================================================
  * Corporate exposure network for an industry, grouping quantitative and intelligence-only entities.
@@ -34,21 +34,21 @@ export function IndustryCorporateExposure({
     <section aria-labelledby="corporate-exposure-heading" className="space-y-4">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <h2 id="corporate-exposure-heading" className="text-lg font-semibold text-white">
+          <h2 id="corporate-exposure-heading" className="text-lg font-semibold text-[var(--text-primary)]">
             Corporate Exposure Network
           </h2>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-[var(--text-muted)]">
             Member corporations and state utilities subject to industry statutory mechanisms
           </p>
         </div>
 
         {/* Filter Strip */}
-        <div className="inline-flex rounded-lg border border-slate-800 bg-slate-900 p-1 text-xs">
+        <div className="inline-flex rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)] p-1 text-xs">
           <button
             type="button"
             onClick={() => setFilter("ALL")}
             className={`rounded-md px-3 py-1.5 font-medium transition-colors ${
-              filter === "ALL" ? "bg-slate-800 text-white shadow-sm" : "text-slate-400 hover:text-slate-200"
+              filter === "ALL" ? "bg-[var(--bg-elevated)] text-[var(--text-primary)] shadow-sm" : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"
             }`}
           >
             All Entities ({totalCount})
@@ -59,7 +59,7 @@ export function IndustryCorporateExposure({
             className={`rounded-md px-3 py-1.5 font-medium transition-colors ${
               filter === "QUANT"
                 ? "bg-emerald-950/60 text-emerald-300 border border-emerald-800/40"
-                : "text-slate-400 hover:text-slate-200"
+                : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"
             }`}
           >
             Quantitative Securities ({quantitativeCompanies.length})
@@ -70,7 +70,7 @@ export function IndustryCorporateExposure({
             className={`rounded-md px-3 py-1.5 font-medium transition-colors ${
               filter === "INTEL"
                 ? "bg-blue-950/60 text-blue-300 border border-blue-800/40"
-                : "text-slate-400 hover:text-slate-200"
+                : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"
             }`}
           >
             Corporate Intelligence ({intelligenceCompanies.length + referenceCompanies.length})
@@ -79,9 +79,9 @@ export function IndustryCorporateExposure({
       </div>
 
       {/* Table / List */}
-      <div className="overflow-x-auto rounded-lg border border-slate-800 bg-slate-900/60">
-        <table className="w-full text-left text-xs text-slate-300">
-          <thead className="bg-slate-800/80 text-[11px] font-semibold text-slate-400 uppercase tracking-wider border-b border-slate-800">
+      <div className="overflow-x-auto rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/60">
+        <table className="w-full text-left text-xs text-[var(--text-secondary)]">
+          <thead className="bg-[var(--bg-elevated)]/80 text-[11px] font-semibold text-[var(--text-muted)] uppercase tracking-wider border-b border-[var(--border-default)]">
             <tr>
               <th scope="col" className="px-4 py-3">Company / Entity</th>
               <th scope="col" className="px-4 py-3">Universe Status</th>
@@ -91,13 +91,13 @@ export function IndustryCorporateExposure({
               <th scope="col" className="px-4 py-3 text-right">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-800/60">
+          <tbody className="divide-y divide-[var(--border-default)]/60">
             {displayedCompanies.map((c) => {
               const isQuant = c.is_quant_eligible;
               return (
-                <tr key={c.company_id} className="hover:bg-slate-800/30 transition-colors">
+                <tr key={c.company_id} className="hover:bg-[var(--bg-elevated)]/30 transition-colors">
                   <td className="px-4 py-3">
-                    <div className="font-semibold text-white">
+                    <div className="font-semibold text-[var(--text-primary)]">
                       <Link
                         href={`/companies/${encodeURIComponent(c.company_id)}`}
                         className="hover:text-blue-400 transition-colors"
@@ -105,12 +105,12 @@ export function IndustryCorporateExposure({
                         {c.company_name}
                       </Link>
                     </div>
-                    <div className="flex items-center gap-1.5 mt-0.5 text-[11px] text-slate-400">
+                    <div className="flex items-center gap-1.5 mt-0.5 text-[11px] text-[var(--text-muted)]">
                       <span>{c.company_id}</span>
                       {c.ticker_nse && (
                         <>
                           <span>·</span>
-                          <span className="text-slate-300 font-mono">NSE: {c.ticker_nse}</span>
+                          <span className="text-[var(--text-secondary)] font-mono">NSE: {c.ticker_nse}</span>
                         </>
                       )}
                       <span>·</span>
@@ -135,12 +135,12 @@ export function IndustryCorporateExposure({
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-1.5">
                       <ExposureBadge directIndirect={c.direct_indirect} strength={c.exposure_strength} size="xs" />
-                      <span className="text-[11px] text-slate-400">({c.exposure_count} bills)</span>
+                      <span className="text-[11px] text-[var(--text-muted)]">({c.exposure_count} bills)</span>
                     </div>
                   </td>
 
                   <td className="px-4 py-3">
-                    <span className="rounded bg-slate-800 px-2 py-0.5 text-[11px] text-slate-300 capitalize">
+                    <span className="rounded bg-[var(--bg-elevated)] px-2 py-0.5 text-[11px] text-[var(--text-secondary)] capitalize">
                       {c.primary_mechanism}
                     </span>
                   </td>
@@ -151,7 +151,7 @@ export function IndustryCorporateExposure({
                         ? "bg-rose-950/40 text-rose-300 border border-rose-800/40"
                         : c.market_relevance === "MEDIUM"
                         ? "bg-amber-950/40 text-amber-300 border border-amber-800/40"
-                        : "bg-slate-800 text-slate-400 border border-slate-700"
+                        : "bg-[var(--bg-elevated)] text-[var(--text-muted)] border border-[var(--border-strong)]"
                     }`}>
                       {c.market_relevance}
                     </span>
@@ -160,7 +160,7 @@ export function IndustryCorporateExposure({
                   <td className="px-4 py-3 text-right">
                     <Link
                       href={`/companies/${encodeURIComponent(c.company_id)}`}
-                      className="rounded bg-slate-800 px-2.5 py-1 text-xs text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                      className="rounded bg-[var(--bg-elevated)] px-2.5 py-1 text-xs text-[var(--text-secondary)] hover:bg-[var(--bg-card-hover)] hover:text-white transition-colors"
                     >
                       Dossier →
                     </Link>

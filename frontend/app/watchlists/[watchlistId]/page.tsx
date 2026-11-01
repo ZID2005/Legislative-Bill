@@ -15,6 +15,7 @@ import type {
   WatchlistItemResponse,
   WatchlistResponse,
 } from "@/types/api";
+import { ErrorState, SkeletonCard } from "@/components/ui/Skeleton";
 
 interface WatchlistDetailPageProps {
   params: Promise<{ watchlistId: string }>;
@@ -159,62 +160,63 @@ export default function WatchlistDetailPage({ params }: WatchlistDetailPageProps
 
   const getEntityDeepLink = (item: WatchlistItemResponse) => {
     const type = item.entity_type.toUpperCase();
-    if (type === "BILL") return `/bills/${item.entity_id}`;
-    if (type === "COMPANY") return `/companies/${item.entity_id}`;
-    if (type === "INDUSTRY") return `/industries/${item.entity_id}`;
-    if (type === "STATE" || type === "JURISDICTION") return `/states?state=${item.entity_id}`;
+    if (type === "BILL") return `/bills/${encodeURIComponent(item.entity_id)}`;
+    if (type === "COMPANY") return `/companies/${encodeURIComponent(item.entity_id)}`;
+    if (type === "INDUSTRY") return `/industries/${encodeURIComponent(item.entity_id)}`;
+    if (type === "STATE" || type === "JURISDICTION") return `/states/${encodeURIComponent(item.entity_id)}`;
     return "#";
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 p-6 sm:p-8 space-y-8">
+    <div className="min-h-screen bg-[var(--bg-base)] text-[var(--text-primary)] p-6 sm:p-8 space-y-8">
       {/* Breadcrumb Navigation */}
-      <div className="flex items-center gap-2 text-xs text-slate-400">
-        <Link href="/workspace" className="hover:text-slate-200">
+      <div className="flex items-center gap-2 text-xs text-[var(--text-muted)]">
+        <Link href="/workspace" className="hover:text-[var(--text-primary)]">
           Workspace
         </Link>
         <span>/</span>
-        <Link href="/watchlists" className="hover:text-slate-200">
+        <Link href="/watchlists" className="hover:text-[var(--text-primary)]">
           Watchlists
         </Link>
         <span>/</span>
-        <span className="text-slate-200 font-semibold truncate max-w-xs">
+        <span className="text-[var(--text-primary)] font-semibold truncate max-w-xs">
           {watchlist?.name || watchlistId}
         </span>
       </div>
 
       {error && (
-        <div className="p-4 rounded-xl bg-red-950/40 border border-red-800 text-sm text-red-200">
-          {error}
-        </div>
+        <ErrorState error={error} onRetry={loadWatchlistDetail} />
       )}
 
       {loading && (
-        <div className="p-12 text-center text-slate-500">Loading watchlist workspace...</div>
+        <div className="space-y-4">
+          <SkeletonCard />
+          <SkeletonCard />
+        </div>
       )}
 
       {!loading && watchlist && (
         <>
           {/* Header Banner */}
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-sm">
+          <div className="bg-[var(--bg-card)] border border-[var(--border-default)] rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-sm">
             <div className="space-y-2">
               <div className="flex items-center gap-3">
                 <span className="text-2xl">⭐</span>
-                <h1 className="text-xl sm:text-2xl font-bold text-slate-100">
+                <h1 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)]">
                   {watchlist.name}
                 </h1>
                 <span className={`text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider ${
-                  watchlist.is_active ? "bg-emerald-950 text-emerald-300 border border-emerald-800" : "bg-slate-800 text-slate-400"
+                  watchlist.is_active ? "bg-[var(--color-success-bg)] text-[var(--color-success-text)] border border-[var(--color-success-border)]" : "bg-[var(--bg-elevated)] text-[var(--text-muted)]"
                 }`}>
                   {watchlist.is_active ? "Active" : "Archived"}
                 </span>
               </div>
 
-              <p className="text-sm text-slate-400 max-w-2xl leading-relaxed">
+              <p className="text-sm text-[var(--text-muted)] max-w-2xl leading-relaxed">
                 {watchlist.description || "Custom watchlist for monitoring legislative policy and corporate exposures."}
               </p>
 
-              <div className="flex items-center gap-4 text-xs text-slate-500 pt-1">
+              <div className="flex items-center gap-4 text-xs text-[var(--text-faint)] pt-1">
                 <span>Created {new Date(watchlist.created_at).toLocaleDateString()}</span>
                 <span>•</span>
                 <span>Tenant Scoped</span>
@@ -232,7 +234,7 @@ export default function WatchlistDetailPage({ params }: WatchlistDetailPageProps
               </button>
               <button
                 onClick={() => setShowAddRule(true)}
-                className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-lg border border-slate-700 transition-colors flex items-center gap-1.5"
+                className="px-4 py-2 bg-[var(--bg-elevated)] hover:bg-[var(--bg-card-hover)] text-[var(--text-primary)] text-xs font-semibold rounded-lg border border-[var(--border-strong)] transition-colors flex items-center gap-1.5"
               >
                 <span>🔔</span>
                 <span>Add Alert Rule</span>
@@ -244,22 +246,22 @@ export default function WatchlistDetailPage({ params }: WatchlistDetailPageProps
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             {/* Left Column: Monitored Entities */}
             <div className="lg:col-span-7 space-y-4">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-                <h2 className="text-base font-semibold text-slate-100 flex items-center gap-2">
+              <div className="flex items-center justify-between border-b border-[var(--border-default)] pb-3">
+                <h2 className="text-base font-semibold text-[var(--text-primary)] flex items-center gap-2">
                   <span>Monitored Entities</span>
-                  <span className="text-xs font-normal text-slate-400">
+                  <span className="text-xs font-normal text-[var(--text-muted)]">
                     ({items.length} items)
                   </span>
                 </h2>
 
                 {/* Filter Tabs */}
-                <div className="flex items-center gap-1 bg-slate-900 p-1 rounded-lg border border-slate-800 text-xs">
+                <div className="flex items-center gap-1 bg-[var(--bg-card)] p-1 rounded-lg border border-[var(--border-default)] text-xs">
                   {["ALL", "BILL", "COMPANY", "INDUSTRY", "STATE"].map((tab) => (
                     <button
                       key={tab}
                       onClick={() => setEntityFilter(tab)}
                       className={`px-2.5 py-1 font-medium rounded-md transition-colors ${
-                        entityFilter === tab ? "bg-blue-600 text-white" : "text-slate-400 hover:text-slate-200"
+                        entityFilter === tab ? "bg-blue-600 text-white" : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"
                       }`}
                     >
                       {tab}
@@ -271,37 +273,59 @@ export default function WatchlistDetailPage({ params }: WatchlistDetailPageProps
               {/* Items List */}
               <div className="space-y-3">
                 {filteredItems.length === 0 ? (
-                  <div className="p-8 text-center bg-slate-900/50 rounded-xl border border-slate-800 space-y-2">
-                    <p className="text-xs text-slate-400">No entities found for this filter.</p>
-                    <button
-                      onClick={() => setShowAddItem(true)}
-                      className="text-xs text-blue-400 hover:text-blue-300 font-semibold"
-                    >
-                      + Add an entity now
-                    </button>
+                  <div
+                    data-testid="empty-watchlist-items-state"
+                    className="p-8 text-center bg-[var(--bg-card)]/50 rounded-xl border border-[var(--border-default)] space-y-3"
+                  >
+                    <div className="w-10 h-10 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-500 flex items-center justify-center mx-auto text-base" aria-hidden="true">
+                      📋
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-semibold text-[var(--text-primary)]">
+                        {entityFilter === "ALL" ? "No Entities in This Watchlist" : `No ${entityFilter} Entities Monitored`}
+                      </h4>
+                      <p className="text-xs text-[var(--text-muted)] max-w-sm mx-auto mt-0.5 leading-relaxed">
+                        Add parliamentary bills, state assemblies, corporate tickers, or industry sectors to monitor regulatory milestones and trigger automated alerts.
+                      </p>
+                    </div>
+                    <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
+                      <button
+                        onClick={() => setShowAddItem(true)}
+                        data-testid="add-entity-btn"
+                        className="px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition-colors"
+                      >
+                        + Add Entity Now
+                      </button>
+                      <Link
+                        href="/bills"
+                        className="px-3.5 py-1.5 rounded-lg bg-[var(--bg-surface)] hover:bg-[var(--bg-card-hover)] text-[var(--text-secondary)] border border-[var(--border-default)] text-xs font-semibold transition-colors"
+                      >
+                        Browse Bills →
+                      </Link>
+                    </div>
                   </div>
                 ) : (
                   filteredItems.map((it) => (
                     <div
                       key={it.item_id}
-                      className="p-4 bg-slate-900 border border-slate-800 rounded-xl hover:border-slate-700 transition-colors flex items-center justify-between gap-4"
+                      className="p-4 bg-[var(--bg-card)] border border-[var(--border-default)] rounded-xl hover:border-[var(--border-strong)] transition-colors flex items-center justify-between gap-4"
                     >
                       <div className="space-y-1">
                         <div className="flex items-center gap-2">
-                          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-[var(--bg-elevated)] text-[var(--text-secondary)] border border-[var(--border-strong)]">
                             {it.entity_type}
                           </span>
-                          <span className="text-xs font-mono text-slate-400">
+                          <span className="text-xs font-mono text-[var(--text-muted)]">
                             {it.entity_id}
                           </span>
                         </div>
-                        <h4 className="text-sm font-semibold text-slate-100 hover:text-blue-400 transition-colors">
+                        <h4 className="text-sm font-semibold text-[var(--text-primary)] hover:text-blue-400 transition-colors">
                           <Link href={getEntityDeepLink(it)}>
                             {it.display_name || it.entity_id}
                           </Link>
                         </h4>
                         {it.notes && (
-                          <p className="text-xs text-slate-400 italic">
+                          <p className="text-xs text-[var(--text-muted)] italic">
                             Note: {it.notes}
                           </p>
                         )}
@@ -310,14 +334,14 @@ export default function WatchlistDetailPage({ params }: WatchlistDetailPageProps
                       <div className="flex items-center gap-2 flex-shrink-0">
                         <Link
                           href={getEntityDeepLink(it)}
-                          className="px-3 py-1.5 text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg transition-colors"
+                          className="px-3 py-1.5 text-xs font-medium bg-[var(--bg-elevated)] hover:bg-[var(--bg-card-hover)] text-[var(--text-primary)] rounded-lg transition-colors"
                         >
                           View →
                         </Link>
                         <button
                           onClick={() => handleRemoveItem(it.item_id, it.display_name || it.entity_id)}
                           title="Remove item"
-                          className="p-1.5 text-slate-500 hover:text-red-400 rounded-lg hover:bg-slate-800 transition-colors"
+                          className="p-1.5 text-[var(--text-faint)] hover:text-red-400 rounded-lg hover:bg-[var(--bg-elevated)] transition-colors"
                         >
                           ✕
                         </button>
@@ -330,10 +354,10 @@ export default function WatchlistDetailPage({ params }: WatchlistDetailPageProps
 
             {/* Right Column: Alert Rules */}
             <div className="lg:col-span-5 space-y-4">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-                <h2 className="text-base font-semibold text-slate-100 flex items-center gap-2">
+              <div className="flex items-center justify-between border-b border-[var(--border-default)] pb-3">
+                <h2 className="text-base font-semibold text-[var(--text-primary)] flex items-center gap-2">
                   <span>Alert Rules</span>
-                  <span className="text-xs font-normal text-slate-400">
+                  <span className="text-xs font-normal text-[var(--text-muted)]">
                     ({rules.length} active triggers)
                   </span>
                 </h2>
@@ -349,8 +373,8 @@ export default function WatchlistDetailPage({ params }: WatchlistDetailPageProps
               {/* Rules List */}
               <div className="space-y-3">
                 {rules.length === 0 ? (
-                  <div className="p-8 text-center bg-slate-900/50 rounded-xl border border-slate-800 space-y-2">
-                    <p className="text-xs text-slate-400">No alert rules attached to this watchlist.</p>
+                  <div className="p-8 text-center bg-[var(--bg-card)]/50 rounded-xl border border-[var(--border-default)] space-y-2">
+                    <p className="text-xs text-[var(--text-muted)]">No alert rules attached to this watchlist.</p>
                     <button
                       onClick={() => setShowAddRule(true)}
                       className="text-xs text-blue-400 hover:text-blue-300 font-semibold"
@@ -362,36 +386,36 @@ export default function WatchlistDetailPage({ params }: WatchlistDetailPageProps
                   rules.map((rule) => (
                     <div
                       key={rule.rule_id}
-                      className="p-3.5 bg-slate-900 border border-slate-800 rounded-xl space-y-2"
+                      className="p-3.5 bg-[var(--bg-card)] border border-[var(--border-default)] rounded-xl space-y-2"
                     >
                       <div className="flex items-center justify-between">
-                        <span className="text-xs font-semibold text-slate-200">
+                        <span className="text-xs font-semibold text-[var(--text-primary)]">
                           {rule.alert_type}
                         </span>
                         <span className={`text-[10px] font-bold px-2 py-0.5 rounded ${
                           rule.minimum_severity === "CRITICAL"
-                            ? "bg-red-950 text-red-300 border border-red-800"
+                            ? "bg-[var(--color-danger-bg)] text-[var(--color-danger-text)] border border-[var(--color-danger-border)]"
                             : rule.minimum_severity === "HIGH"
-                            ? "bg-amber-950 text-amber-300 border border-amber-800"
-                            : "bg-blue-950 text-blue-300 border border-blue-800"
+                            ? "bg-[var(--color-warning-bg)] text-[var(--color-warning-text)] border border-[var(--color-warning-border)]"
+                            : "bg-[var(--color-info-bg)] text-[var(--color-info-text)] border border-[var(--color-info-border)]"
                         }`}>
                           ≥ {rule.minimum_severity}
                         </span>
                       </div>
 
-                      <div className="flex items-center justify-between pt-2 border-t border-slate-800 text-xs">
+                      <div className="flex items-center justify-between pt-2 border-t border-[var(--border-default)] text-xs">
                         <div className="flex items-center gap-2">
                           <button
                             onClick={() => handleToggleRule(rule)}
                             className={`px-2 py-0.5 text-[10px] font-bold rounded ${
                               rule.enabled
-                                ? "bg-emerald-950 text-emerald-300 border border-emerald-800"
-                                : "bg-slate-800 text-slate-500 border border-slate-700"
+                                ? "bg-[var(--color-success-bg)] text-[var(--color-success-text)] border border-[var(--color-success-border)]"
+                                : "bg-[var(--bg-elevated)] text-[var(--text-faint)] border border-[var(--border-strong)]"
                             }`}
                           >
                             {rule.enabled ? "ENABLED" : "DISABLED"}
                           </button>
-                          <span className="text-[11px] text-slate-500">
+                          <span className="text-[11px] text-[var(--text-faint)]">
                             Channels: {(rule.notification_channels || []).join(", ")}
                           </span>
                         </div>
@@ -401,7 +425,7 @@ export default function WatchlistDetailPage({ params }: WatchlistDetailPageProps
                             const rid = rule.alert_rule_id || rule.rule_id;
                             if (rid) handleDeleteRule(rid);
                           }}
-                          className="text-slate-500 hover:text-red-400 text-xs"
+                          className="text-[var(--text-faint)] hover:text-red-400 text-xs"
                           title="Delete Rule"
                         >
                           Delete
@@ -419,12 +443,12 @@ export default function WatchlistDetailPage({ params }: WatchlistDetailPageProps
       {/* Add Item Modal */}
       {showAddItem && (
         <div className="fixed inset-0 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4 z-50">
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 space-y-4 shadow-xl">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-              <h3 className="text-base font-bold text-slate-100">Add Monitored Entity</h3>
+          <div className="bg-[var(--bg-card)] border border-[var(--border-default)] rounded-2xl max-w-md w-full p-6 space-y-4 shadow-xl">
+            <div className="flex items-center justify-between border-b border-[var(--border-default)] pb-3">
+              <h3 className="text-base font-bold text-[var(--text-primary)]">Add Monitored Entity</h3>
               <button
                 onClick={() => setShowAddItem(false)}
-                className="text-slate-400 hover:text-slate-200 text-sm"
+                className="text-[var(--text-muted)] hover:text-[var(--text-primary)] text-sm"
               >
                 ✕
               </button>
@@ -432,13 +456,13 @@ export default function WatchlistDetailPage({ params }: WatchlistDetailPageProps
 
             <form onSubmit={handleAddItem} className="space-y-4">
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1">
+                <label className="block text-xs font-medium text-[var(--text-secondary)] mb-1">
                   Entity Type *
                 </label>
                 <select
                   value={itemType}
                   onChange={(e) => setItemType(e.target.value as any)}
-                  className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-blue-500"
+                  className="w-full bg-[var(--bg-base)] border border-[var(--border-strong)] rounded-lg px-3 py-2 text-sm text-[var(--text-primary)] focus:outline-none focus:border-blue-500"
                 >
                   <option value="BILL">Legislative Bill</option>
                   <option value="COMPANY">Public Company</option>
@@ -448,7 +472,7 @@ export default function WatchlistDetailPage({ params }: WatchlistDetailPageProps
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1">
+                <label className="block text-xs font-medium text-[var(--text-secondary)] mb-1">
                   Entity ID / Symbol *
                 </label>
                 <input
@@ -465,12 +489,12 @@ export default function WatchlistDetailPage({ params }: WatchlistDetailPageProps
                       ? "e.g. renewable_energy"
                       : "e.g. Maharashtra"
                   }
-                  className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-blue-500"
+                  className="w-full bg-[var(--bg-base)] border border-[var(--border-strong)] rounded-lg px-3 py-2 text-sm text-[var(--text-primary)] focus:outline-none focus:border-blue-500"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1">
+                <label className="block text-xs font-medium text-[var(--text-secondary)] mb-1">
                   Display Name (Optional)
                 </label>
                 <input
@@ -478,12 +502,12 @@ export default function WatchlistDetailPage({ params }: WatchlistDetailPageProps
                   value={displayName}
                   onChange={(e) => setDisplayName(e.target.value)}
                   placeholder="e.g. The Coastal Shipping Bill, 2024"
-                  className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-blue-500"
+                  className="w-full bg-[var(--bg-base)] border border-[var(--border-strong)] rounded-lg px-3 py-2 text-sm text-[var(--text-primary)] focus:outline-none focus:border-blue-500"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1">
+                <label className="block text-xs font-medium text-[var(--text-secondary)] mb-1">
                   Internal Notes (Optional)
                 </label>
                 <input
@@ -491,7 +515,7 @@ export default function WatchlistDetailPage({ params }: WatchlistDetailPageProps
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
                   placeholder="e.g. High priority port logistics exposure"
-                  className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-blue-500"
+                  className="w-full bg-[var(--bg-base)] border border-[var(--border-strong)] rounded-lg px-3 py-2 text-sm text-[var(--text-primary)] focus:outline-none focus:border-blue-500"
                 />
               </div>
 
@@ -499,7 +523,7 @@ export default function WatchlistDetailPage({ params }: WatchlistDetailPageProps
                 <button
                   type="button"
                   onClick={() => setShowAddItem(false)}
-                  className="px-4 py-2 text-xs font-medium text-slate-400 hover:text-slate-200"
+                  className="px-4 py-2 text-xs font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)]"
                 >
                   Cancel
                 </button>
@@ -519,12 +543,12 @@ export default function WatchlistDetailPage({ params }: WatchlistDetailPageProps
       {/* Add Alert Rule Modal */}
       {showAddRule && (
         <div className="fixed inset-0 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4 z-50">
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 space-y-4 shadow-xl">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-              <h3 className="text-base font-bold text-slate-100">Attach Alert Rule</h3>
+          <div className="bg-[var(--bg-card)] border border-[var(--border-default)] rounded-2xl max-w-md w-full p-6 space-y-4 shadow-xl">
+            <div className="flex items-center justify-between border-b border-[var(--border-default)] pb-3">
+              <h3 className="text-base font-bold text-[var(--text-primary)]">Attach Alert Rule</h3>
               <button
                 onClick={() => setShowAddRule(false)}
-                className="text-slate-400 hover:text-slate-200 text-sm"
+                className="text-[var(--text-muted)] hover:text-[var(--text-primary)] text-sm"
               >
                 ✕
               </button>
@@ -532,13 +556,13 @@ export default function WatchlistDetailPage({ params }: WatchlistDetailPageProps
 
             <form onSubmit={handleAddRule} className="space-y-4">
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1">
+                <label className="block text-xs font-medium text-[var(--text-secondary)] mb-1">
                   Trigger Event Type *
                 </label>
                 <select
                   value={alertType}
                   onChange={(e) => setAlertType(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-blue-500"
+                  className="w-full bg-[var(--bg-base)] border border-[var(--border-strong)] rounded-lg px-3 py-2 text-sm text-[var(--text-primary)] focus:outline-none focus:border-blue-500"
                 >
                   <option value="BILL_STATUS_CHANGE">Bill Status Change (e.g. Introduced to Passed)</option>
                   <option value="NEW_EXPOSURE_DETECTED">New Corporate Exposure Detected</option>
@@ -549,13 +573,13 @@ export default function WatchlistDetailPage({ params }: WatchlistDetailPageProps
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1">
+                <label className="block text-xs font-medium text-[var(--text-secondary)] mb-1">
                   Minimum Severity Threshold *
                 </label>
                 <select
                   value={minSeverity}
                   onChange={(e) => setMinSeverity(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-blue-500"
+                  className="w-full bg-[var(--bg-base)] border border-[var(--border-strong)] rounded-lg px-3 py-2 text-sm text-[var(--text-primary)] focus:outline-none focus:border-blue-500"
                 >
                   <option value="LOW">Low (All updates)</option>
                   <option value="MEDIUM">Medium (Default - Substantive changes)</option>
@@ -568,7 +592,7 @@ export default function WatchlistDetailPage({ params }: WatchlistDetailPageProps
                 <button
                   type="button"
                   onClick={() => setShowAddRule(false)}
-                  className="px-4 py-2 text-xs font-medium text-slate-400 hover:text-slate-200"
+                  className="px-4 py-2 text-xs font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)]"
                 >
                   Cancel
                 </button>

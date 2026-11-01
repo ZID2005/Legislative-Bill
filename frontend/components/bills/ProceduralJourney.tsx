@@ -1,4 +1,4 @@
-/**
+﻿/**
  * components/bills/ProceduralJourney.tsx
  * =======================================
  * Legislative procedural timeline based strictly on actual available dates and statuses.
@@ -100,7 +100,7 @@ export function ProceduralJourney({ bill, className = "" }: ProceduralJourneyPro
         <div className="flex items-center justify-between w-full">
           <div>
             <CardTitle>Procedural Journey</CardTitle>
-            <p className="text-xs text-slate-500 mt-0.5">
+            <p className="text-xs text-[var(--text-faint)] mt-0.5">
               Verified statutory journey milestones based strictly on recorded parliamentary gazette records.
             </p>
           </div>
@@ -109,7 +109,7 @@ export function ProceduralJourney({ bill, className = "" }: ProceduralJourneyPro
       </CardHeader>
 
       <div className="pt-2">
-        <ol className="relative border-l border-slate-800 ml-3.5 space-y-6">
+        <ol className="relative border-l border-[var(--border-default)] ml-3.5 space-y-6">
           {milestones.map((m) => {
             const isDone = m.status === "completed";
             const isInProg = m.status === "in_progress";
@@ -123,24 +123,24 @@ export function ProceduralJourney({ bill, className = "" }: ProceduralJourneyPro
                       ? "border-emerald-500/80 bg-emerald-950 text-emerald-300 ring-4 ring-slate-950"
                       : isInProg
                       ? "border-blue-500/80 bg-blue-950 text-blue-300 animate-pulse ring-4 ring-slate-950"
-                      : "border-slate-800 bg-slate-900 text-slate-600 ring-4 ring-slate-950"
+                      : "border-[var(--border-default)] bg-[var(--bg-card)] text-slate-600 ring-4 ring-slate-950"
                   }`}
                   aria-hidden="true"
                 >
                   {isDone ? "✓" : isInProg ? "●" : "○"}
                 </span>
 
-                <div className="rounded-lg border border-slate-800/80 bg-slate-900/40 p-3 hover:bg-slate-900/70 transition-colors">
+                <div className="rounded-lg border border-[var(--border-default)]/80 bg-[var(--bg-card)]/40 p-3 hover:bg-[var(--bg-card)]/70 transition-colors">
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-1">
-                    <h4 className="text-xs font-semibold text-slate-200">
+                    <h4 className="text-xs font-semibold text-[var(--text-primary)]">
                       {m.label}
                     </h4>
                     <div className="flex items-center gap-1.5">
                       <span
                         className={`text-[11px] font-mono ${
                           m.date === "Date not available"
-                            ? "text-slate-500 italic"
-                            : "text-slate-300 font-medium"
+                            ? "text-[var(--text-faint)] italic"
+                            : "text-[var(--text-secondary)] font-medium"
                         }`}
                       >
                         {m.date}
@@ -151,14 +151,14 @@ export function ProceduralJourney({ bill, className = "" }: ProceduralJourneyPro
                             ? "bg-emerald-950/80 text-emerald-400 border border-emerald-800/50"
                             : isInProg
                             ? "bg-blue-950/80 text-blue-300 border border-blue-800/50"
-                            : "bg-slate-800/60 text-slate-500 border border-slate-700/50"
+                            : "bg-[var(--bg-elevated)]/60 text-[var(--text-faint)] border border-[var(--border-strong)]/50"
                         }`}
                       >
                         {isDone ? "Recorded" : isInProg ? "Active" : "Pending"}
                       </span>
                     </div>
                   </div>
-                  <p className="text-xs text-slate-400 leading-relaxed">
+                  <p className="text-xs text-[var(--text-muted)] leading-relaxed">
                     {m.notes}
                   </p>
                 </div>
@@ -167,8 +167,8 @@ export function ProceduralJourney({ bill, className = "" }: ProceduralJourneyPro
           })}
         </ol>
 
-        <div className="mt-4 rounded-md border border-slate-800/60 bg-slate-900/30 p-2.5 text-[11px] text-slate-500 leading-normal flex items-start gap-2">
-          <span className="text-slate-400" aria-hidden="true">ℹ</span>
+        <div className="mt-4 rounded-md border border-[var(--border-default)]/60 bg-[var(--bg-card)]/30 p-2.5 text-[11px] text-[var(--text-faint)] leading-normal flex items-start gap-2">
+          <span className="text-[var(--text-muted)]" aria-hidden="true">ℹ</span>
           <span>
             <strong>Research Integrity Note:</strong> Specific intermediate dates are explicitly rendered as
             &ldquo;Date not available&rdquo; unless authoritatively recorded in source parliamentary gazettes.

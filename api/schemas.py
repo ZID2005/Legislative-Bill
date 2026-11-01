@@ -926,11 +926,23 @@ class NotificationSummaryResponse(BaseModel):
 
 
 class AIAskRequest(BaseModel):
-    question: str = Field(..., min_length=3, description="Grounded query for AI analyst")
-    context_type: Optional[str] = Field("bill", description="bill | company | comparison | watchlist | workspace | monitoring")
-    context_id: Optional[str] = Field(None, description="Target bill_id, company_id, or comma-separated bill_ids")
+    question: Optional[str] = Field(None, min_length=1, description="Grounded query for AI analyst")
+    message: Optional[str] = Field(None, min_length=1, description="Alternative query field")
+    context_type: Optional[str] = Field("bill", description="bill | company | industry | sector | general | portfolio | watchlist | workspace | monitoring | comparison")
+    context_id: Optional[str] = Field(None, description="Target bill_id, company_id, portfolio_id, or comma-separated bill_ids")
+    portfolio_id: Optional[str] = Field(None, description="Optional target portfolio_id for portfolio-scoped queries")
     watchlist_id: Optional[str] = Field(None, description="Optional target watchlist_id for watchlist-scoped queries")
-    persona: str = Field("GENERAL_PUBLIC", description="GENERAL_PUBLIC | INVESTOR | POLICY_RESEARCHER")
+    persona: str = Field("GENERAL_PUBLIC", description="GENERAL_PUBLIC | INVESTOR | POLICY_RESEARCHER | BUSINESS")
+
+
+class AIChatRequest(BaseModel):
+    message: Optional[str] = Field(None, min_length=1, description="Conversational query for AI analyst")
+    question: Optional[str] = Field(None, min_length=1, description="Alternative query field")
+    context_type: Optional[str] = Field("general", description="bill | company | industry | sector | general | portfolio | watchlist | workspace | monitoring | comparison")
+    context_id: Optional[str] = Field(None, description="Target entity ID")
+    portfolio_id: Optional[str] = Field(None, description="Optional target portfolio_id")
+    watchlist_id: Optional[str] = Field(None, description="Optional target watchlist_id")
+    persona: str = Field("GENERAL_PUBLIC", description="GENERAL_PUBLIC | INVESTOR | POLICY_RESEARCHER | BUSINESS")
 
 
 class AIAskResponse(BaseModel):
@@ -943,6 +955,9 @@ class AIAskResponse(BaseModel):
     is_cached: bool = False
     disclaimer: str
     provenance_sources: list[str] = Field(default_factory=list)
+    citations: list[dict[str, Any]] = Field(default_factory=list)
+    epistemic_labels: list[str] = Field(default_factory=list)
+    warnings: list[str] = Field(default_factory=list)
     answer: Optional[str] = None
     context_sources: list[str] = Field(default_factory=list)
 

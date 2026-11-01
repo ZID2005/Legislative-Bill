@@ -1,4 +1,4 @@
-/**
+﻿/**
  * components/monitoring/JurisdictionBanner.tsx
  * =============================================
  * Displays the Central vs State jurisdiction separation notice
@@ -35,18 +35,18 @@ export function JurisdictionBanner({ variant = "full", className = "" }: Jurisdi
 
   return (
     <div
-      className={`rounded-xl border border-slate-700 bg-slate-900/60 overflow-hidden ${className}`}
+      className={`rounded-xl border border-[var(--border-strong)] bg-[var(--bg-card)]/60 overflow-hidden ${className}`}
       role="region"
       aria-label="Jurisdiction coverage and prediction scope"
     >
-      <div className="px-5 py-3 border-b border-slate-800 flex items-center gap-2">
+      <div className="px-5 py-3 border-b border-[var(--border-default)] flex items-center gap-2">
         <span className="text-amber-400 text-lg" aria-hidden="true">⚖</span>
-        <h2 className="text-sm font-semibold text-slate-200">
+        <h2 className="text-sm font-semibold text-[var(--text-primary)]">
           Legislative Monitoring — Coverage & Scope
         </h2>
       </div>
 
-      <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-slate-800">
+      <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-[var(--border-default)]">
         {/* Central */}
         <div className="px-5 py-4">
           <div className="flex items-center gap-2 mb-2">
@@ -54,10 +54,10 @@ export function JurisdictionBanner({ variant = "full", className = "" }: Jurisdi
               🏛 Central Parliament
             </span>
           </div>
-          <p className="text-sm text-slate-300 leading-relaxed">
+          <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
             Production market-analysis coverage exists for the validated Central universe.
           </p>
-          <ul className="mt-2 space-y-1 text-xs text-slate-400">
+          <ul className="mt-2 space-y-1 text-xs text-[var(--text-muted)]">
             <li>• 20 production bills monitored</li>
             <li>• 47 quantitative securities covered</li>
             <li>• Quantitative market analysis available where predictions exist</li>
@@ -71,10 +71,10 @@ export function JurisdictionBanner({ variant = "full", className = "" }: Jurisdi
               🗳 State Legislatures
             </span>
           </div>
-          <p className="text-sm text-slate-300 leading-relaxed">
+          <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
             State legislative monitoring and economic intelligence are supported.
           </p>
-          <ul className="mt-2 space-y-1 text-xs text-slate-400">
+          <ul className="mt-2 space-y-1 text-xs text-[var(--text-muted)]">
             <li>• 4 states implemented · 24 states planned</li>
             <li>• 44 state bills monitored · 86 corporate exposures</li>
             <li>
@@ -90,9 +90,9 @@ export function JurisdictionBanner({ variant = "full", className = "" }: Jurisdi
         </div>
       </div>
 
-      <div className="px-5 py-3 border-t border-slate-800 bg-slate-950/40">
-        <p className="text-xs text-slate-500">
-          <span className="font-semibold text-slate-400">Architecture: </span>
+      <div className="px-5 py-3 border-t border-[var(--border-default)] bg-[var(--bg-base)]/40">
+        <p className="text-xs text-[var(--text-faint)]">
+          <span className="font-semibold text-[var(--text-muted)]">Architecture: </span>
           OFFICIAL SOURCE → MONITORING → CHANGE DETECTION → LEGISLATIVE DISCOVERY
           → KNOWLEDGE UPDATE → EXPOSURE UPDATE → OPTIONAL DOWNSTREAM ANALYSIS.
           Monitoring never automatically triggers model retraining or prediction generation.

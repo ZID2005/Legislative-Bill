@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Suspense } from "react";
 import PredictionsContent from "./PredictionsContent";
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function PredictionsPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-slate-950 p-8 text-slate-400">Loading prediction analytics...</div>}>
+    <Suspense fallback={<div className="min-h-screen bg-[var(--bg-base)] p-8 text-[var(--text-muted)]">Loading prediction analytics...</div>}>
       <PredictionsContent />
     </Suspense>
   );

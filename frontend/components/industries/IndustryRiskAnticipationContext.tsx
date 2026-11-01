@@ -1,4 +1,4 @@
-/**
+﻿/**
  * components/industries/IndustryRiskAnticipationContext.tsx
  * ========================================================
  * Summarizes derived institutional risk profiles and pre-event information diffusion metrics for the industry.
@@ -27,7 +27,7 @@ export function IndustryRiskAnticipationContext({
       <section aria-labelledby="industry-risk-heading" className="space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <h2 id="industry-risk-heading" className="text-lg font-semibold text-white">
+            <h2 id="industry-risk-heading" className="text-lg font-semibold text-[var(--text-primary)]">
               Industry Risk Context
             </h2>
             <SourceBadge type="DERIVED" size="xs" />
@@ -37,8 +37,8 @@ export function IndustryRiskAnticipationContext({
           </Link>
         </div>
 
-        <div className="rounded-lg border border-slate-800 bg-slate-900/70 p-5 space-y-4">
-          <p className="text-xs text-slate-400 italic">
+        <div className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/70 p-5 space-y-4">
+          <p className="text-xs text-[var(--text-muted)] italic">
             {riskSummary.explanation}
           </p>
 
@@ -51,7 +51,7 @@ export function IndustryRiskAnticipationContext({
               { label: "VERY HIGH", key: "VERY_HIGH", color: "text-rose-400", bg: "bg-rose-950/40 border-rose-800/40" },
             ].map((band) => (
               <div key={band.key} className={`rounded-lg border p-2.5 text-center ${band.bg}`}>
-                <span className="text-[10px] font-semibold tracking-wider text-slate-400 block truncate">
+                <span className="text-[10px] font-semibold tracking-wider text-[var(--text-muted)] block truncate">
                   {band.label}
                 </span>
                 <p className={`mt-1 text-base font-bold ${band.color}`}>
@@ -61,8 +61,8 @@ export function IndustryRiskAnticipationContext({
             ))}
           </div>
 
-          <div className="flex items-center justify-between text-xs pt-2 border-t border-slate-800/80">
-            <span className="text-slate-400">High / Very-High Risk Exposure Evaluations:</span>
+          <div className="flex items-center justify-between text-xs pt-2 border-t border-[var(--border-default)]/80">
+            <span className="text-[var(--text-muted)]">High / Very-High Risk Exposure Evaluations:</span>
             <span className="font-semibold text-rose-300">
               {riskSummary.high_risk_count} records
             </span>
@@ -74,7 +74,7 @@ export function IndustryRiskAnticipationContext({
       <section aria-labelledby="industry-anticipation-heading" className="space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <h2 id="industry-anticipation-heading" className="text-lg font-semibold text-white">
+            <h2 id="industry-anticipation-heading" className="text-lg font-semibold text-[var(--text-primary)]">
               Pre-Event Information Diffusion
             </h2>
             <SourceBadge type="DERIVED" size="xs" />
@@ -84,21 +84,21 @@ export function IndustryRiskAnticipationContext({
           </Link>
         </div>
 
-        <div className="rounded-lg border border-slate-800 bg-slate-900/70 p-5 space-y-4">
+        <div className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/70 p-5 space-y-4">
           {/* Mandatory Verbatim Legal Disclaimer */}
-          <div className="rounded border border-slate-700/50 bg-slate-800/40 p-2.5 text-[11px] text-slate-300 leading-relaxed italic">
+          <div className="rounded border border-[var(--border-strong)]/50 bg-[var(--bg-elevated)]/40 p-2.5 text-[11px] text-[var(--text-secondary)] leading-relaxed italic">
             "{anticipationSummary.verbatim_disclaimer}"
           </div>
 
           <div className="grid grid-cols-4 gap-2 pt-1">
             {[
-              { label: "NO EVIDENCE", key: "NO_EVIDENCE", color: "text-slate-400", bg: "bg-slate-800/40 border-slate-700" },
+              { label: "NO EVIDENCE", key: "NO_EVIDENCE", color: "text-[var(--text-muted)]", bg: "bg-[var(--bg-elevated)]/40 border-[var(--border-strong)]" },
               { label: "WEAK", key: "WEAK_EVIDENCE", color: "text-blue-400", bg: "bg-blue-950/40 border-blue-800/40" },
               { label: "MODERATE", key: "MODERATE_EVIDENCE", color: "text-amber-400", bg: "bg-amber-950/40 border-amber-800/40" },
               { label: "STRONG", key: "STRONG_EVIDENCE", color: "text-purple-400", bg: "bg-purple-950/40 border-purple-800/40" },
             ].map((tier) => (
               <div key={tier.key} className={`rounded-lg border p-2.5 text-center ${tier.bg}`}>
-                <span className="text-[10px] font-semibold tracking-wider text-slate-400 block truncate">
+                <span className="text-[10px] font-semibold tracking-wider text-[var(--text-muted)] block truncate">
                   {tier.label}
                 </span>
                 <p className={`mt-1 text-base font-bold ${tier.color}`}>
@@ -108,8 +108,8 @@ export function IndustryRiskAnticipationContext({
             ))}
           </div>
 
-          <div className="flex items-center justify-between text-xs pt-2 border-t border-slate-800/80">
-            <span className="text-slate-400">Pre-Event Detected Public Signals:</span>
+          <div className="flex items-center justify-between text-xs pt-2 border-t border-[var(--border-default)]/80">
+            <span className="text-[var(--text-muted)]">Pre-Event Detected Public Signals:</span>
             <span className="font-semibold text-purple-300">
               {anticipationSummary.flagged_pairs_count} flagged pairs
             </span>

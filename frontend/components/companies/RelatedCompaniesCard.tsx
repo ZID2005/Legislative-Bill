@@ -1,4 +1,4 @@
-/**
+﻿/**
  * components/companies/RelatedCompaniesCard.tsx
  * ==============================================
  * Displays legitimate corporate relationships sourced directly from the backend.
@@ -43,7 +43,7 @@ export function RelatedCompaniesCard({
             <CardTitle>Related Entities &amp; Sector Peers</CardTitle>
             <SourceBadge type="FACT" size="xs" showTooltip />
           </div>
-          <span className="text-xs text-slate-500">
+          <span className="text-xs text-[var(--text-faint)]">
             {company.sector} Sector
           </span>
         </div>
@@ -52,14 +52,14 @@ export function RelatedCompaniesCard({
       <div className="space-y-4 text-xs">
         {/* Group Affiliation if available */}
         {company.group_name && (
-          <div className="rounded-lg border border-slate-800 bg-slate-900/60 p-3 space-y-1">
-            <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider block">
+          <div className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/60 p-3 space-y-1">
+            <span className="text-[10px] font-semibold text-[var(--text-faint)] uppercase tracking-wider block">
               Corporate Conglomerate Affiliation
             </span>
-            <p className="text-xs font-semibold text-slate-200">
+            <p className="text-xs font-semibold text-[var(--text-primary)]">
               {company.group_name}
             </p>
-            <p className="text-[11px] text-slate-400">
+            <p className="text-[11px] text-[var(--text-muted)]">
               Member enterprise sharing common group sponsorship and consolidated strategic positioning.
             </p>
           </div>
@@ -67,12 +67,12 @@ export function RelatedCompaniesCard({
 
         {/* Sector Peers List */}
         <div>
-          <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider block mb-2">
+          <span className="text-[11px] font-semibold text-[var(--text-faint)] uppercase tracking-wider block mb-2">
             Sector Peers in {company.sector}:
           </span>
 
           {otherPeers.length === 0 ? (
-            <p className="text-slate-500 italic py-2">
+            <p className="text-[var(--text-faint)] italic py-2">
               No peer entities recorded within this exact sector classification.
             </p>
           ) : (
@@ -81,11 +81,11 @@ export function RelatedCompaniesCard({
                 <Link
                   key={peer.company_id}
                   href={`/companies/${encodeURIComponent(peer.company_id)}`}
-                  className="rounded-lg border border-slate-800 bg-slate-900/40 p-3 hover:bg-slate-800/60 hover:border-slate-700 transition-colors flex flex-col justify-between"
+                  className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/40 p-3 hover:bg-[var(--bg-elevated)]/60 hover:border-[var(--border-strong)] transition-colors flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-start justify-between gap-1.5">
-                      <span className="font-semibold text-slate-200 hover:text-blue-400 transition-colors line-clamp-1">
+                      <span className="font-semibold text-[var(--text-primary)] hover:text-blue-400 transition-colors line-clamp-1">
                         {peer.company_name}
                       </span>
                       <Badge
@@ -95,12 +95,12 @@ export function RelatedCompaniesCard({
                         {peer.is_quant_eligible ? "Quant" : "Intel"}
                       </Badge>
                     </div>
-                    <span className="text-[11px] text-slate-400 block mt-0.5">
+                    <span className="text-[11px] text-[var(--text-muted)] block mt-0.5">
                       {peer.industry || peer.sector}
                     </span>
                   </div>
 
-                  <div className="flex items-center justify-between text-[10px] text-slate-500 pt-2 mt-2 border-t border-slate-800/80">
+                  <div className="flex items-center justify-between text-[10px] text-[var(--text-faint)] pt-2 mt-2 border-t border-[var(--border-default)]/80">
                     <span>{peer.ticker_nse ? `NSE: ${peer.ticker_nse}` : peer.listing_status}</span>
                     <span>{peer.documented_exposure_count || 0} Bills</span>
                   </div>

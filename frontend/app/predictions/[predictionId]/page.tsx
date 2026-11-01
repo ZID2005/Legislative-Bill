@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Suspense } from "react";
 import PredictionDetailContent from "./PredictionDetailContent";
 
@@ -15,7 +15,7 @@ export default async function PredictionDetailPage({
   const { predictionId } = await params;
 
   return (
-    <Suspense fallback={<div className="min-h-screen bg-slate-950 p-8 text-slate-400">Loading prediction dossier...</div>}>
+    <Suspense fallback={<div className="min-h-screen bg-[var(--bg-base)] p-8 text-[var(--text-muted)]">Loading prediction dossier...</div>}>
       <PredictionDetailContent predictionId={predictionId} />
     </Suspense>
   );

@@ -1,25 +1,28 @@
 /**
  * app/states/[state]/StateDetailContent.tsx
  * ==========================================
- * Task 8.31C — State Legislative Detail Dossier.
+ * Sub-National Legislative Intelligence Dossier.
  *
  * Implements:
  * - State profile, capital, assembly, official gazette intake source
- * - Enacted Assembly Acts list with PDF / Dossier links
- * - Corporate Operational Footprint in state
- * - StatePredictionFirewall permanent invariant notice
+ * - Enacted Assembly Acts list with search, status filters, and dossier links
+ * - Corporate Operational Footprint in state (facilities & statutory transmission)
+ * - StatePredictionFirewall permanent invariant notice (0 quantitative predictions)
+ * - Restrained editorial-finance aesthetic adhering to SEANCE_DESIGN_SYSTEM.md
  */
 
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
 import { billsApi } from "@/lib/api/bills";
 import type { BillSummaryItem, PaginatedResponse } from "@/types/api";
 import { StatePredictionFirewall } from "@/components/firewalls/StatePredictionFirewall";
 import { EpistemicBadge } from "@/components/ui/EpistemicBadge";
 import { InstitutionalTable, type TableColumn } from "@/components/ui/InstitutionalTable";
-import { StatusBadge } from "@/components/ui/Badge";
+import { StatusBadge, Badge } from "@/components/ui/Badge";
+import { Button } from "@/components/ui/Button";
+import { SearchInput } from "@/components/ui/SearchInput";
 import { ErrorState, SkeletonCard } from "@/components/ui/Skeleton";
 
 interface StateProfile {
@@ -128,6 +131,7 @@ export default function StateDetailContent({ stateParam }: { stateParam: string 
   const [billsData, setBillsData] = useState<PaginatedResponse<BillSummaryItem> | null>(null);
   const [loadingBills, setLoadingBills] = useState(true);
   const [errorBills, setErrorBills] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     let cancelled = false;
@@ -155,6 +159,18 @@ export default function StateDetailContent({ stateParam }: { stateParam: string 
     };
   }, [stateDisplayName]);
 
+  const filteredBills = useMemo(() => {
+    if (!billsData?.items) return [];
+    if (!searchQuery.trim()) return billsData.items;
+    const q = searchQuery.toLowerCase();
+    return billsData.items.filter(
+      (b) =>
+        b.title.toLowerCase().includes(q) ||
+        (b.bill_number && b.bill_number.toLowerCase().includes(q)) ||
+        b.bill_id.toLowerCase().includes(q)
+    );
+  }, [billsData, searchQuery]);
+
   const actColumns: TableColumn<BillSummaryItem>[] = [
     {
       key: "title",
@@ -164,13 +180,13 @@ export default function StateDetailContent({ stateParam }: { stateParam: string 
         <div className="min-w-[260px] max-w-md">
           <Link
             href={`/bills/${bill.bill_id}`}
-            className="font-medium text-slate-100 hover:text-indigo-300 transition-colors line-clamp-1"
+            className="font-semibold text-[var(--text-primary)] hover:text-indigo-400 transition-colors line-clamp-1"
           >
             {bill.title}
           </Link>
           <div className="flex items-center gap-1.5 mt-0.5">
-            <span className="text-[10px] font-mono text-slate-500">{bill.bill_number || bill.bill_id}</span>
-            {bill.year && <span className="text-[10px] text-slate-600">· {bill.year}</span>}
+            <span className="text-[10px] font-mono text-[var(--text-muted)]">{bill.bill_number || bill.bill_id}</span>
+            {bill.year && <span className="text-[10px] text-[var(--text-faint)]">· {bill.year}</span>}
           </div>
         </div>
       ),
@@ -190,7 +206,7 @@ export default function StateDetailContent({ stateParam }: { stateParam: string 
       sortable: true,
       width: "150px",
       render: (bill) => (
-        <span className="font-mono-num font-semibold text-indigo-300">
+        <span className="font-mono tabular-nums font-semibold text-indigo-300">
           {bill.company_exposure_count ?? 0}
         </span>
       ),
@@ -203,7 +219,7 @@ export default function StateDetailContent({ stateParam }: { stateParam: string 
       render: (bill) => (
         <Link
           href={`/bills/${bill.bill_id}`}
-          className="px-2.5 py-1 text-xs font-medium text-indigo-300 hover:text-indigo-200 bg-indigo-950/40 hover:bg-indigo-900/50 rounded border border-indigo-700/40 transition-colors"
+          className="px-2.5 py-1 text-xs font-semibold text-indigo-300 hover:text-indigo-200 bg-indigo-950/40 hover:bg-indigo-900/50 rounded border border-indigo-700/40 transition-colors inline-block"
         >
           View Dossier →
         </Link>
@@ -212,166 +228,194 @@ export default function StateDetailContent({ stateParam }: { stateParam: string 
   ];
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 p-6 space-y-6 max-w-7xl mx-auto">
-      {/* Breadcrumb & Navigation */}
-      <div className="flex items-center gap-2 text-xs text-slate-400">
-        <Link href="/states" className="hover:text-slate-200">
-          State Registry
-        </Link>
-        <span>/</span>
-        <span className="text-slate-200 font-medium">{stateDisplayName}</span>
-      </div>
-
-      {/* Header */}
-      <div className="space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-          <div>
-            <div className="flex items-center gap-3">
-              <h1 className="text-3xl font-bold text-slate-100 tracking-tight">
-                {stateDisplayName}
-              </h1>
-              {profile && (
-                <span className="text-xs font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
-                  {profile.code}
-                </span>
-              )}
-              <EpistemicBadge type="FACT" size="sm" />
-            </div>
-            <p className="text-sm text-slate-400 mt-1">
-              {profile ? profile.assembly : "State Legislative Assembly"} · Capital: {profile ? profile.capital : "State Capital"}
-            </p>
+    <div className="min-h-screen bg-[var(--bg-base)] text-[var(--text-primary)] pb-24">
+      {/* Top Breadcrumb & Actions Bar */}
+      <div className="border-b border-[var(--border-default)] bg-[var(--bg-card)]/80 backdrop-blur-md sticky top-14 z-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="flex items-center gap-2 text-xs text-[var(--text-muted)]">
+            <Link href="/states" className="hover:text-[var(--text-primary)] transition-colors">
+              State Registry
+            </Link>
+            <span>/</span>
+            <span className="text-[var(--text-primary)] font-semibold">{stateDisplayName}</span>
           </div>
 
           <div className="flex items-center gap-2">
             <Link
               href={`/bills?jurisdiction=state&state=${encodeURIComponent(stateDisplayName)}`}
-              className="px-3 py-1.5 text-xs font-medium text-slate-300 hover:text-white bg-slate-900 hover:bg-slate-800 rounded border border-slate-700 transition-colors"
             >
-              Browse in Bills Filter →
+              <Button variant="outline" size="xs" className="border-[var(--border-strong)] hover:bg-[var(--bg-elevated)] text-xs h-7">
+                Browse in Bills Filter →
+              </Button>
             </Link>
-          </div>
-        </div>
-
-        {/* Metric Cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <div className="p-3.5 rounded-lg bg-slate-900 border border-slate-800">
-            <div className="text-xs text-slate-400">Enacted Assembly Acts</div>
-            <div className="text-2xl font-bold font-mono-num text-slate-100 mt-1">
-              {profile ? profile.actsCount : billsData?.total ?? 0}
-            </div>
-            <div className="text-[11px] text-slate-500 mt-0.5">Ingested & Indexed</div>
-          </div>
-          <div className="p-3.5 rounded-lg bg-indigo-950/20 border border-indigo-800/30">
-            <div className="text-xs text-indigo-400">Corporate Exposures</div>
-            <div className="text-2xl font-bold font-mono-num text-indigo-300 mt-1">
-              {profile ? profile.exposuresCount : "—"}
-            </div>
-            <div className="text-[11px] text-indigo-400/70 mt-0.5">Operating Facilities</div>
-          </div>
-          <div className="p-3.5 rounded-lg bg-slate-900 border border-slate-800">
-            <div className="text-xs text-slate-400">Official Source</div>
-            <div className="text-sm font-medium text-slate-200 mt-1 truncate">
-              {profile ? profile.gazette : "Official State Gazette"}
-            </div>
-            <div className="text-[11px] text-emerald-400 mt-0.5">Intake Active</div>
-          </div>
-          <div className="p-3.5 rounded-lg bg-rose-950/20 border border-rose-800/40">
-            <div className="text-xs text-rose-400">State Stock Predictions</div>
-            <div className="text-2xl font-bold font-mono-num text-rose-300 mt-1">0</div>
-            <div className="text-[11px] text-rose-400/80 mt-0.5 font-medium">Firewall Invariant</div>
           </div>
         </div>
       </div>
 
-      {/* Mandatory Firewall Banner */}
-      <StatePredictionFirewall state={stateDisplayName} />
-
-      {/* State Assembly Acts Section */}
-      <div className="space-y-3">
-        <div className="flex items-center justify-between">
-          <div>
-            <h2 className="text-lg font-semibold text-slate-100">
-              State Legislative Assembly Enactments
-            </h2>
-            <p className="text-xs text-slate-400">
-              Official acts and amendments passed by the {stateDisplayName} Assembly.
-            </p>
-          </div>
-          <span className="text-xs font-mono text-slate-400">
-            Level 2 Intelligence Records
-          </span>
-        </div>
-
-        {loadingBills ? (
-          <div className="space-y-2">
-            {[1, 2, 3].map((i) => (
-              <SkeletonCard key={i} className="h-12 bg-slate-900/60" />
-            ))}
-          </div>
-        ) : errorBills ? (
-          <ErrorState error={errorBills} onRetry={() => setLoadingBills(true)} />
-        ) : !billsData || billsData.items.length === 0 ? (
-          <div className="p-6 rounded-lg bg-slate-900/60 border border-slate-800 text-center text-sm text-slate-400">
-            No specific assembly acts returned for this jurisdiction query. Check the{" "}
-            <Link href="/bills?jurisdiction=state" className="text-indigo-400 underline">
-              State Bills directory
-            </Link>
-            .
-          </div>
-        ) : (
-          <InstitutionalTable
-            columns={actColumns}
-            data={billsData.items}
-            keyExtractor={(b) => b.bill_id}
-            compact
-            striped
-          />
-        )}
-      </div>
-
-      {/* State Corporate Operational Footprint */}
-      {profile && profile.keyCorporates && (
-        <div className="space-y-3 pt-4 border-t border-slate-800">
-          <div>
-            <h2 className="text-lg font-semibold text-slate-100">
-              Documented Corporate Operational Footprint in {stateDisplayName}
-            </h2>
-            <p className="text-xs text-slate-400">
-              Corporations with substantial manufacturing plants, operating headquarters, or direct statutory liabilities in the state.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {profile.keyCorporates.map((corp) => (
-              <div
-                key={corp.isin}
-                className="p-4 rounded-lg bg-slate-900 border border-slate-800 flex flex-col justify-between space-y-2"
-              >
-                <div>
-                  <div className="flex items-start justify-between">
-                    <span className="text-sm font-semibold text-slate-100">{corp.name}</span>
-                    <span className="text-[10px] font-mono text-slate-500">{corp.isin}</span>
-                  </div>
-                  <p className="text-xs text-slate-300 mt-1">
-                    <span className="text-slate-500">Facilities / Footprint:</span> {corp.facilities}
-                  </p>
-                  <p className="text-xs text-indigo-300 mt-0.5">
-                    <span className="text-slate-500">State Statutory Transmission:</span> {corp.exposure}
-                  </p>
-                </div>
-                <div className="pt-2 border-t border-slate-800/80 flex justify-end">
-                  <Link
-                    href={`/companies/${corp.isin}`}
-                    className="text-xs text-indigo-400 hover:text-indigo-300 font-medium"
-                  >
-                    View Corporate Profile →
-                  </Link>
-                </div>
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 space-y-6">
+        {/* Header Hero */}
+        <div className="space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+            <div>
+              <div className="flex items-center gap-3">
+                <h1 className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)] tracking-tight">
+                  {stateDisplayName}
+                </h1>
+                {profile && (
+                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-[var(--bg-card)] text-[var(--text-secondary)] border border-[var(--border-default)]">
+                    {profile.code}
+                  </span>
+                )}
+                <EpistemicBadge type="FACT" size="sm" />
+                <Badge variant="primary" size="xs">
+                  Level 2 State Intelligence
+                </Badge>
               </div>
-            ))}
+              <p className="text-xs sm:text-sm text-[var(--text-muted)] mt-1">
+                {profile ? profile.assembly : "State Legislative Assembly"} · Capital: <span className="text-[var(--text-secondary)]">{profile ? profile.capital : "State Capital"}</span>
+              </p>
+            </div>
+          </div>
+
+          {/* Metric Cards */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div className="p-3.5 rounded-lg bg-[var(--bg-card)] border border-[var(--border-default)] shadow-sm">
+              <div className="text-[11px] font-medium text-[var(--text-muted)] uppercase tracking-wider">Enacted Assembly Acts</div>
+              <div className="text-2xl font-bold font-mono tabular-nums text-[var(--text-primary)] mt-1">
+                {profile ? profile.actsCount : billsData?.total ?? 0}
+              </div>
+              <div className="text-[11px] text-[var(--text-faint)] mt-0.5 font-mono">Ingested & Indexed</div>
+            </div>
+
+            <div className="p-3.5 rounded-lg bg-indigo-950/20 border border-indigo-800/30 shadow-sm">
+              <div className="text-[11px] font-medium text-indigo-400 uppercase tracking-wider">Corporate Exposures</div>
+              <div className="text-2xl font-bold font-mono tabular-nums text-indigo-300 mt-1">
+                {profile ? profile.exposuresCount : "—"}
+              </div>
+              <div className="text-[11px] text-indigo-400/80 mt-0.5 font-mono">Operating Facilities</div>
+            </div>
+
+            <div className="p-3.5 rounded-lg bg-[var(--bg-card)] border border-[var(--border-default)] shadow-sm">
+              <div className="text-[11px] font-medium text-[var(--text-muted)] uppercase tracking-wider">Official Source</div>
+              <div className="text-sm font-semibold text-[var(--text-primary)] mt-1 truncate">
+                {profile ? profile.gazette : "Official State Gazette"}
+              </div>
+              <div className="text-[11px] text-emerald-400 mt-0.5 font-medium">Intake Active</div>
+            </div>
+
+            <div className="p-3.5 rounded-lg bg-rose-950/20 border border-rose-800/40 shadow-sm">
+              <div className="text-[11px] font-medium text-rose-400 uppercase tracking-wider">State Stock Predictions</div>
+              <div className="text-2xl font-bold font-mono tabular-nums text-rose-300 mt-1">0</div>
+              <div className="text-[11px] text-rose-400/80 mt-0.5 font-medium">Firewall Invariant</div>
+            </div>
           </div>
         </div>
-      )}
+
+        {/* Mandatory Firewall Banner */}
+        <StatePredictionFirewall state={stateDisplayName} />
+
+        {/* State Assembly Acts Section */}
+        <section className="bg-[var(--bg-card)] border border-[var(--border-default)] rounded-xl p-5 shadow-sm space-y-4" aria-labelledby="assembly-acts-heading">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[var(--border-subtle)] pb-3">
+            <div>
+              <div className="flex items-center gap-2">
+                <h2 id="assembly-acts-heading" className="text-sm sm:text-base font-bold text-[var(--text-primary)]">
+                  State Legislative Assembly Enactments
+                </h2>
+                <Badge variant="primary" size="xs">
+                  Level 2 Records
+                </Badge>
+              </div>
+              <p className="text-xs text-[var(--text-muted)] mt-0.5">
+                Official acts and statutory amendments passed by the {stateDisplayName} Assembly.
+              </p>
+            </div>
+
+            <SearchInput
+              placeholder="Search acts in this state..."
+              value={searchQuery}
+              onChange={(v) => setSearchQuery(v)}
+              className="w-56 h-8 text-xs"
+            />
+          </div>
+
+          {loadingBills ? (
+            <div className="space-y-2">
+              {[1, 2, 3].map((i) => (
+                <SkeletonCard key={i} className="h-12 bg-[var(--bg-card)]/60" />
+              ))}
+            </div>
+          ) : errorBills ? (
+            <ErrorState error={errorBills} onRetry={() => setLoadingBills(true)} />
+          ) : !billsData || filteredBills.length === 0 ? (
+            <div className="p-8 rounded-lg bg-[var(--bg-base)] border border-[var(--border-subtle)] text-center text-xs text-[var(--text-muted)]">
+              {searchQuery ? "No assembly acts matched the search filter." : "No specific assembly acts returned for this jurisdiction query."}{" "}
+              Check the{" "}
+              <Link href="/bills?jurisdiction=state" className="text-indigo-400 underline font-medium">
+                State Bills directory
+              </Link>
+              .
+            </div>
+          ) : (
+            <div className="rounded-lg border border-[var(--border-subtle)] overflow-hidden">
+              <InstitutionalTable
+                columns={actColumns}
+                data={filteredBills}
+                keyExtractor={(b) => b.bill_id}
+                compact
+                striped
+              />
+            </div>
+          )}
+        </section>
+
+        {/* State Corporate Operational Footprint */}
+        {profile && profile.keyCorporates && (
+          <section className="bg-[var(--bg-card)] border border-[var(--border-default)] rounded-xl p-5 shadow-sm space-y-4" aria-labelledby="corporate-footprint-heading">
+            <div className="border-b border-[var(--border-subtle)] pb-3">
+              <div className="flex items-center gap-2">
+                <h2 id="corporate-footprint-heading" className="text-sm sm:text-base font-bold text-[var(--text-primary)]">
+                  Documented Corporate Operational Footprint in {stateDisplayName}
+                </h2>
+                <EpistemicBadge type="OBSERVED" size="sm" />
+              </div>
+              <p className="text-xs text-[var(--text-muted)] mt-0.5">
+                Corporations with verified physical manufacturing plants, operating headquarters, or direct statutory liabilities in the state.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+              {profile.keyCorporates.map((corp) => (
+                <div
+                  key={corp.isin}
+                  className="p-4 rounded-xl bg-[var(--bg-base)] border border-[var(--border-subtle)] flex flex-col justify-between space-y-3 hover:border-[var(--border-strong)] transition-colors"
+                >
+                  <div>
+                    <div className="flex items-start justify-between gap-2">
+                      <span className="text-xs sm:text-sm font-bold text-[var(--text-primary)]">{corp.name}</span>
+                      <span className="text-[10px] font-mono text-[var(--text-muted)]">{corp.isin}</span>
+                    </div>
+                    <p className="text-xs text-[var(--text-secondary)] mt-1.5 leading-relaxed">
+                      <span className="text-[var(--text-faint)] font-medium">Facilities / Footprint:</span> {corp.facilities}
+                    </p>
+                    <p className="text-xs text-indigo-300 mt-1 leading-relaxed">
+                      <span className="text-[var(--text-faint)] font-medium">State Statutory Transmission:</span> {corp.exposure}
+                    </p>
+                  </div>
+                  <div className="pt-2.5 border-t border-[var(--border-subtle)] flex justify-end">
+                    <Link
+                      href={`/companies/${corp.isin}`}
+                      className="text-xs text-indigo-400 hover:text-indigo-300 font-semibold transition-colors"
+                    >
+                      View Corporate Profile →
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+      </main>
     </div>
   );
 }

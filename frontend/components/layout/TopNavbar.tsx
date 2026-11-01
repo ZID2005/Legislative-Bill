@@ -1,37 +1,38 @@
 /**
  * components/layout/TopNavbar.tsx
  * =================================
- * Task 8.31C — Modern Institutional Top Navigation Bar.
+ * Task 1.7A — Global Navigation Frame & Institutional Chrome.
  *
- * Implements the approved 5-workspace institutional navigation:
- * 1. Legislation Hub (/bills, /explorer, /states, /latest-bills, /upcoming-legislation, /live-discovery, /bills/compare, /overview)
- * 2. Markets & Risk Hub (/predictions, /risk, /anticipation)
- * 3. Corporate Universe Hub (/companies, /industries, /sectors)
- * 4. Portfolio & Executive Hub (/portfolio, /reports, /workspace)
- * 5. System & Observability Hub (/monitoring, /coverage, /watchlists, /alerts, /notifications)
- *
- * Global Institutional Anchors:
- * - Brand/Home: /
- * - Primary Anchor: /workspace ("What changed since I last looked?")
- * - Direct Anchors: /portfolio, /reports
- * - Command Palette (⌘K)
- * - Live Monitoring Pulse (Real API telemetry from /monitoring/overview)
- * - AI Analyst Quick Launch (✦ /ai-analyst)
- * - Notification Bell (/notifications)
- * - User Profile & Tenant Switcher (/settings, /coverage)
+ * Implements the approved premium editorial-finance navigation:
+ * 1. Streamlined 4-Hub Cognitive Model:
+ *    - Legislation Hub (/bills, /explorer, /states, /latest-bills, /upcoming-legislation, /live-discovery, /bills/compare, /overview)
+ *    - Markets & Risk Hub (/predictions, /risk, /anticipation)
+ *    - Corporate Universe Hub (/companies, /industries, /sectors)
+ *    - Institutional Direct Anchors: /workspace, /portfolio, /reports, /ai-analyst
+ * 2. Strict Dual-Theme Polish:
+ *    - Light, Dark, and System modes with calibrated semantic tokens
+ *    - Zero hardcoded dark tints or invisible white text in daytime mode
+ * 3. Accessibility & Motion:
+ *    - Full keyboard navigation (Tab, Enter, Space, Arrows, Escape, ⌘K)
+ *    - Mobile slide-over drawer with focus management and ARIA dialog
+ *    - Respects prefers-reduced-motion
+ *    - Live monitoring telemetry pulse (GET /api/v1/monitoring/overview)
  */
 
 "use client";
 
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { useSearch } from "@/hooks/useSearch";
 import { UserSession, authApi } from "@/lib/api/auth";
 import { monitoringApi } from "@/lib/api/monitoring";
+import { portfolioApi } from "@/lib/api/portfolio";
 import { CommandPalette } from "@/components/ui/CommandPalette";
-import type { SearchResultItem } from "@/types/api";
+import { SeanceBrand } from "@/components/brand/SeanceBrand";
+import { ThemeSwitcher } from "@/components/theme/ThemeSwitcher";
+import { CollabToolbar, Collaborator, getAuthenticatedUserInitial } from "@/components/ui/collab-toolbar";
+import { ImportHoldingsModal } from "@/components/portfolio/ImportHoldingsModal";
 
 // ---------------------------------------------------------------------------
 // Nav types and structures
@@ -123,22 +124,22 @@ export const NAV_GROUPS: NavGroup[] = [
 function NavBadge({ badge }: { badge: "LIVE" | "NEW" | "AI" }) {
   if (badge === "LIVE") {
     return (
-      <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider bg-emerald-500/15 border border-emerald-500/25 text-emerald-400">
-        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+      <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider bg-[var(--color-success-bg)] border border-[var(--color-success-border)] text-[var(--color-success)]">
+        <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-success)] animate-pulse" />
         LIVE
       </span>
     );
   }
   if (badge === "NEW") {
     return (
-      <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider bg-blue-500/15 border border-blue-500/25 text-blue-400">
+      <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider bg-[var(--color-info-bg)] border border-[var(--color-info-border)] text-[var(--color-info)]">
         NEW
       </span>
     );
   }
   if (badge === "AI") {
     return (
-      <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider bg-violet-500/15 border border-violet-500/25 text-violet-400">
+      <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider bg-[var(--epistemic-prediction-bg)] border border-[var(--epistemic-prediction-border)] text-[var(--epistemic-prediction-text)]">
         AI
       </span>
     );
@@ -157,13 +158,32 @@ function DropdownMenu({
   group: NavGroup;
   onClose: () => void;
 }) {
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Focus first focusable link inside dropdown on open
+    const firstLink = menuRef.current?.querySelector<HTMLAnchorElement>("a");
+    firstLink?.focus();
+  }, []);
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Escape") {
+      e.stopPropagation();
+      onClose();
+    }
+  };
+
   if (!group.children) return null;
+
   return (
     <div
-      className="absolute top-full left-0 mt-1 w-84 rounded-lg border border-white/10 bg-[#0c1322] shadow-2xl shadow-black/80 z-50 dropdown-enter overflow-hidden"
+      ref={menuRef}
+      onKeyDown={handleKeyDown}
+      className="absolute top-full left-0 mt-1 w-84 rounded-lg border border-[var(--border-default)] bg-[var(--bg-surface)] shadow-2xl z-50 dropdown-enter overflow-hidden"
       role="menu"
+      aria-label={`${group.label} navigation`}
     >
-      <div className="p-1.5 divide-y divide-white/5">
+      <div className="p-1.5 divide-y divide-[var(--border-subtle)]">
         <div className="space-y-0.5">
           {group.children.map((child) => (
             <Link
@@ -171,7 +191,7 @@ function DropdownMenu({
               href={child.href}
               onClick={onClose}
               role="menuitem"
-              className="flex items-start gap-2.5 px-3 py-2 rounded-md hover:bg-[#121b2f] transition-colors group"
+              className="flex items-start gap-2.5 px-3 py-2 rounded-md hover:bg-[var(--bg-card-hover)] transition-colors group focus:outline-none focus:bg-[var(--bg-card-hover)]"
             >
               {child.icon && (
                 <span className="text-sm mt-0.5 flex-shrink-0 opacity-70 group-hover:opacity-100 transition-opacity">
@@ -180,13 +200,13 @@ function DropdownMenu({
               )}
               <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-1.5">
-                  <span className="text-xs font-medium text-slate-200 group-hover:text-white transition-colors">
+                  <span className="text-xs font-medium text-[var(--text-primary)] transition-colors">
                     {child.label}
                   </span>
                   {child.badge && <NavBadge badge={child.badge} />}
                 </div>
                 {child.description && (
-                  <p className="text-[11px] text-slate-400 mt-0.5 line-clamp-1">
+                  <p className="text-[11px] text-[var(--text-muted)] mt-0.5 line-clamp-1">
                     {child.description}
                   </p>
                 )}
@@ -213,6 +233,7 @@ function MobileDrawer({
   session: UserSession | null;
 }) {
   const pathname = usePathname();
+  const drawerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!open) return;
@@ -228,24 +249,28 @@ function MobileDrawer({
   return (
     <>
       <div
-        className="fixed inset-0 bg-black/70 backdrop-blur-xs z-40 transition-opacity duration-200 lg:hidden"
+        className="fixed inset-0 bg-[var(--overlay-backdrop)] backdrop-blur-xs z-40 transition-opacity duration-200"
         onClick={onClose}
         aria-hidden="true"
       />
 
       <div
-        className="fixed inset-y-0 right-0 w-80 max-w-[85vw] bg-[#0c1322] border-l border-white/10 z-50 flex flex-col shadow-2xl duration-200 ease-out transform lg:hidden"
+        ref={drawerRef}
+        className="fixed inset-y-0 right-0 w-80 max-w-[85vw] bg-[var(--bg-surface)] border-l border-[var(--border-default)] z-50 flex flex-col shadow-2xl duration-200 ease-out transform"
         role="dialog"
         aria-label="Mobile navigation"
+        aria-modal="true"
       >
-        <div className="flex items-center justify-between px-4 py-3.5 border-b border-white/10 bg-[#090e18]">
-          <div className="flex items-center gap-2">
-            <span className="text-blue-400 text-lg">⚖</span>
-            <span className="text-sm font-bold text-white tracking-tight">LegisIntel</span>
-          </div>
+        <div className="flex items-center justify-between px-4 py-3.5 border-b border-[var(--border-default)] bg-[var(--bg-base)]">
+          <SeanceBrand
+            size="sm"
+            href={null}
+            showSublabel={false}
+            aria-label="Seance"
+          />
           <button
             onClick={onClose}
-            className="p-1 rounded-md text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
+            className="p-1 rounded-md text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] transition-colors focus:outline-none focus:ring-1 focus:ring-[var(--focus-ring)]"
             aria-label="Close navigation"
           >
             <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -254,21 +279,37 @@ function MobileDrawer({
           </button>
         </div>
 
+        {/* Mobile Theme Preference Selector */}
+        <div className="px-4 py-2.5 border-b border-[var(--border-subtle)] flex items-center justify-between bg-[var(--bg-surface)]">
+          <span className="text-xs text-[var(--text-muted)] font-medium">Theme</span>
+          <ThemeSwitcher size="sm" />
+        </div>
+
         {/* Scrollable nav content */}
-        <nav className="flex-1 overflow-y-auto py-3 px-3 space-y-4" aria-label="Mobile navigation">
+        <nav className="flex-1 overflow-y-auto py-3 px-3 space-y-4" aria-label="Mobile navigation links">
           {/* Quick links */}
-          <div className="grid grid-cols-2 gap-1.5 pb-2 border-b border-white/5">
+          <div className="grid grid-cols-2 gap-1.5 pb-2 border-b border-[var(--border-subtle)]">
             <Link
               href="/workspace"
               onClick={onClose}
-              className="flex items-center gap-2 px-2.5 py-2 rounded bg-indigo-600/15 border border-indigo-500/25 text-indigo-300 text-xs font-medium"
+              className={cn(
+                "flex items-center gap-2 px-2.5 py-2 rounded text-xs font-medium transition-colors",
+                pathname === "/workspace"
+                  ? "bg-[var(--action-primary)] text-white font-semibold"
+                  : "bg-[var(--bg-card)] border border-[var(--border-default)] text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)]"
+              )}
             >
               <span>🏛</span> Workspace
             </Link>
             <Link
               href="/portfolio"
               onClick={onClose}
-              className="flex items-center gap-2 px-2.5 py-2 rounded bg-white/5 border border-white/5 text-slate-300 text-xs font-medium"
+              className={cn(
+                "flex items-center gap-2 px-2.5 py-2 rounded text-xs font-medium transition-colors",
+                pathname === "/portfolio"
+                  ? "bg-[var(--action-primary)] text-white font-semibold"
+                  : "bg-[var(--bg-card)] border border-[var(--border-default)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)]"
+              )}
             >
               <span>💼</span> Portfolio
             </Link>
@@ -277,7 +318,7 @@ function MobileDrawer({
           {NAV_GROUPS.filter(g => g.id !== "workspace" && g.id !== "portfolio").map((group) => (
             <div key={group.id} className="space-y-1">
               <div className="px-2 py-0.5">
-                <span className="text-[10px] font-bold tracking-wider uppercase text-slate-400">
+                <span className="text-[10px] font-bold tracking-wider uppercase text-[var(--text-muted)]">
                   {group.label}
                 </span>
               </div>
@@ -288,7 +329,9 @@ function MobileDrawer({
                   onClick={onClose}
                   className={cn(
                     "flex items-center gap-2 px-3 py-2 rounded text-xs font-medium transition-colors",
-                    pathname === group.href ? "bg-white/10 text-white" : "text-slate-300 hover:bg-white/5"
+                    pathname === group.href
+                      ? "bg-[var(--bg-card-hover)] text-[var(--text-primary)] font-semibold border border-[var(--border-strong)]"
+                      : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)]"
                   )}
                 >
                   {group.icon && <span>{group.icon}</span>}
@@ -308,7 +351,9 @@ function MobileDrawer({
                           onClick={onClose}
                           className={cn(
                             "flex items-center justify-between px-2.5 py-1.5 rounded text-xs transition-colors",
-                            isActive ? "bg-indigo-600/20 text-indigo-300 font-medium" : "text-slate-400 hover:text-slate-200 hover:bg-white/5"
+                            isActive
+                              ? "bg-[var(--bg-card-hover)] text-[var(--action-primary)] font-semibold border border-[var(--border-strong)]"
+                              : "text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)]"
                           )}
                         >
                           <div className="flex items-center gap-2 truncate">
@@ -326,10 +371,10 @@ function MobileDrawer({
           ))}
 
           {/* System & Observability links */}
-          <div className="space-y-1 pt-2 border-t border-white/5">
+          <div className="space-y-1 pt-2 border-t border-[var(--border-subtle)]">
             <div className="px-2 py-0.5">
-              <span className="text-[10px] font-bold tracking-wider uppercase text-slate-400">
-                System & Observability
+              <span className="text-[10px] font-bold tracking-wider uppercase text-[var(--text-muted)]">
+                System &amp; Observability
               </span>
             </div>
             <ul className="space-y-0.5 pl-1">
@@ -345,7 +390,12 @@ function MobileDrawer({
                   <Link
                     href={item.href}
                     onClick={onClose}
-                    className="flex items-center gap-2 px-2.5 py-1.5 rounded text-xs text-slate-400 hover:text-slate-200 hover:bg-white/5"
+                    className={cn(
+                      "flex items-center gap-2 px-2.5 py-1.5 rounded text-xs transition-colors",
+                      pathname === item.href
+                        ? "bg-[var(--bg-card-hover)] text-[var(--text-primary)] font-semibold"
+                        : "text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)]"
+                    )}
                   >
                     <span>{item.icon}</span>
                     <span>{item.label}</span>
@@ -357,16 +407,16 @@ function MobileDrawer({
         </nav>
 
         {/* Drawer footer */}
-        <div className="border-t border-white/10 p-3 bg-[#090e18] flex-shrink-0">
+        <div className="border-t border-[var(--border-default)] p-3 bg-[var(--bg-base)] flex-shrink-0">
           <div className="flex items-center gap-2.5 px-2 py-1.5 rounded">
-            <div className="h-7 w-7 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center text-xs font-bold text-slate-200 flex-shrink-0">
-              {session?.display_name?.charAt(0)?.toUpperCase() ?? "U"}
+            <div className="h-7 w-7 rounded-full bg-[var(--bg-elevated)] border border-[var(--border-default)] flex items-center justify-center text-xs font-bold text-[var(--text-primary)] flex-shrink-0">
+              {getAuthenticatedUserInitial(session)}
             </div>
             <div className="min-w-0">
-              <p className="text-xs font-medium text-slate-200 truncate">
-                {session?.display_name || "Analyst"}
+              <p className="text-xs font-medium text-[var(--text-primary)] truncate">
+                {session?.display_name || session?.name || "Analyst"}
               </p>
-              <p className="text-[10px] text-slate-400 font-mono truncate">
+              <p className="text-[10px] text-[var(--text-muted)] font-mono truncate">
                 {session?.role || "MEMBER"} · {session?.tenant_id || "default"}
               </p>
             </div>
@@ -383,11 +433,19 @@ function MobileDrawer({
 
 export function TopNavbar() {
   const pathname = usePathname();
+  const router = useRouter();
+
+  // Task 1.15A: Suppress TopNavbar on /onboarding
+  if (pathname === "/onboarding" || (typeof pathname === "string" && pathname.startsWith("/onboarding"))) {
+    return null;
+  }
+
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [session, setSession] = useState<UserSession | null>(null);
+  const [uploadModalOpen, setUploadModalOpen] = useState(false);
   const [monitoringOverview, setMonitoringOverview] = useState<any>(null);
   const [monitoringLoading, setMonitoringLoading] = useState(true);
 
@@ -496,30 +554,62 @@ export function TopNavbar() {
     };
   }, [monitoringOverview, monitoringLoading]);
 
+  // Authenticated user avatar for the CollabToolbar (Phase 3: single avatar with uppercase initial)
+  const authenticatedUser = React.useMemo<Collaborator>(() => {
+    const initial = getAuthenticatedUserInitial(session);
+    const displayName =
+      (session?.display_name && session.display_name.trim()) ||
+      (session?.name && session.name.trim()) ||
+      (session?.email && session.email.split("@")[0]) ||
+      "Institutional Analyst";
+
+    return {
+      name: displayName,
+      initials: initial,
+      role: session?.role || "MEMBER",
+      tenantId: session?.tenant_id || "default",
+      email: session?.email,
+    };
+  }, [session]);
+
+  // Handle portfolio holdings file import from CollabToolbar
+  const handleImportHoldings = async (holdings: any[]) => {
+    try {
+      const pfs = await portfolioApi.listPortfolios();
+      const targetId = pfs[0]?.portfolio_id || "default_portfolio";
+      await portfolioApi.importHoldings(targetId, holdings);
+      setUploadModalOpen(false);
+      if (pathname === "/portfolio") {
+        window.location.reload();
+      } else {
+        router.push("/portfolio");
+      }
+    } catch (err) {
+      console.error("Header holdings import error:", err);
+      throw err;
+    }
+  };
+
   return (
     <>
       <header
-        className="fixed top-0 left-0 right-0 z-30 h-14 navbar-blur bg-[#070b12]/95 border-b border-white/10 flex items-center"
+        className="fixed top-0 left-0 right-0 z-30 h-14 navbar-blur bg-[var(--bg-nav)] border-b border-[var(--border-default)] flex items-center transition-colors duration-150"
         role="banner"
       >
         <div className="flex items-center w-full px-4 gap-2">
           {/* Brand Logo */}
-          <Link
+          <SeanceBrand
+            size="sm"
             href="/"
-            className="flex items-center gap-2 mr-3 flex-shrink-0 group"
-            aria-label="LegisIntel Home"
-          >
-            <span className="text-blue-400 text-lg group-hover:text-blue-300 transition-colors">⚖</span>
-            <div className="flex flex-col">
-              <span className="text-sm font-bold text-white tracking-tight leading-none">LegisIntel</span>
-              <span className="text-[9px] font-mono text-slate-400 leading-tight">Institutional Terminal</span>
-            </div>
-          </Link>
+            showSublabel={false}
+            className="mr-2 shrink-0"
+            aria-label="Seance Home"
+          />
 
           {/* Desktop Navigation */}
           <nav
             ref={navRef}
-            className="hidden lg:flex items-center gap-1 flex-1"
+            className="hidden lg:flex items-center gap-0.5 flex-1 min-w-0"
             aria-label="Main navigation"
           >
             {NAV_GROUPS.map((group) => {
@@ -533,14 +623,14 @@ export function TopNavbar() {
                     key={group.id}
                     href={group.href}
                     className={cn(
-                      "flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-medium transition-colors",
+                      "flex items-center gap-1 px-2 py-1 rounded-md text-xs font-medium transition-colors focus:outline-none focus:ring-1 focus:ring-[var(--focus-ring)] shrink-0",
                       isActive
-                        ? "text-white bg-white/10 font-semibold"
-                        : "text-slate-300 hover:text-white hover:bg-white/5"
+                        ? "text-[var(--text-primary)] bg-[var(--bg-card-hover)] border border-[var(--border-strong)] font-semibold shadow-xs"
+                        : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)]"
                     )}
                   >
                     {group.icon && <span className="text-xs">{group.icon}</span>}
-                    {group.label}
+                    <span>{group.label}</span>
                     {group.badge && <NavBadge badge={group.badge} />}
                   </Link>
                 );
@@ -548,22 +638,30 @@ export function TopNavbar() {
 
               // Dropdown group
               return (
-                <div key={group.id} className="relative">
+                <div key={group.id} className="relative shrink-0">
                   <button
                     onClick={() => setActiveDropdown(isOpen ? null : group.id)}
                     onMouseEnter={() => setActiveDropdown(group.id)}
+                    onKeyDown={(e) => {
+                      if (e.key === "ArrowDown" || e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        setActiveDropdown(group.id);
+                      } else if (e.key === "Escape") {
+                        setActiveDropdown(null);
+                      }
+                    }}
                     className={cn(
-                      "flex items-center gap-1 px-2.5 py-1.5 rounded-md text-xs font-medium transition-colors",
+                      "flex items-center gap-1 px-2 py-1 rounded-md text-xs font-medium transition-colors focus:outline-none focus:ring-1 focus:ring-[var(--focus-ring)]",
                       isActive || isOpen
-                        ? "text-white bg-white/10 font-semibold"
-                        : "text-slate-300 hover:text-white hover:bg-white/5"
+                        ? "text-[var(--text-primary)] bg-[var(--bg-card-hover)] border border-[var(--border-strong)] font-semibold shadow-xs"
+                        : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)]"
                     )}
                     aria-expanded={isOpen}
                     aria-haspopup="true"
                   >
                     <span>{group.label}</span>
                     <svg
-                      className={cn("h-3 w-3 transition-transform duration-150 text-slate-400", isOpen && "rotate-180")}
+                      className={cn("h-3 w-3 transition-transform duration-150 text-[var(--text-muted)]", isOpen && "rotate-180")}
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -585,20 +683,20 @@ export function TopNavbar() {
           </nav>
 
           {/* Right Utility Controls */}
-          <div className="flex items-center gap-2 ml-auto">
+          <div className="flex items-center gap-1.5 ml-auto shrink-0">
             {/* Command Palette Trigger Button (⌘K) */}
             <button
               onClick={() => setCommandPaletteOpen(true)}
-              className="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-xs text-slate-300 bg-white/5 border border-white/10 hover:text-white hover:bg-white/10 transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-indigo-500"
+              className="flex items-center gap-1.5 px-2 py-1 rounded-md text-xs text-[var(--text-secondary)] bg-[var(--bg-surface)] border border-[var(--border-default)] hover:text-[var(--text-primary)] hover:border-[var(--border-strong)] hover:bg-[var(--bg-card-hover)] transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--focus-ring)]"
               aria-label="Open command palette (⌘K)"
               id="global-search-btn"
             >
-              <svg className="h-3.5 w-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg className="h-3.5 w-3.5 text-[var(--text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <circle cx={11} cy={11} r={8} />
                 <path strokeLinecap="round" d="M21 21l-4.35-4.35" />
               </svg>
-              <span className="hidden sm:inline">Search & Commands</span>
-              <kbd className="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[9px] font-mono bg-white/5 border border-white/10 rounded text-slate-400">
+              <span className="hidden 2xl:inline">Search &amp; Commands</span>
+              <kbd className="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[9px] font-mono bg-[var(--bg-elevated)] border border-[var(--border-default)] rounded text-[var(--text-muted)]">
                 ⌘K
               </kbd>
             </button>
@@ -606,26 +704,26 @@ export function TopNavbar() {
             {/* Live Monitoring Pulse Indicator */}
             <Link
               href="/monitoring"
-              className="hidden md:flex items-center gap-1.5 px-2 py-1 rounded border border-white/10 bg-white/5 hover:bg-white/10 transition-colors text-[10px] font-mono text-slate-300"
+              className="hidden md:flex items-center gap-1.5 px-2 py-1 rounded border border-[var(--border-default)] bg-[var(--bg-surface)] hover:bg-[var(--bg-card-hover)] hover:border-[var(--border-strong)] transition-colors text-[10px] font-mono text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
               title="Real-time legislative source health"
             >
               <span
                 className={cn(
                   "w-1.5 h-1.5 rounded-full",
                   pulseInfo.status === "healthy"
-                    ? "bg-emerald-400 animate-pulse"
+                    ? "bg-emerald-500 animate-pulse"
                     : pulseInfo.status === "degraded"
-                    ? "bg-amber-400 animate-pulse"
-                    : "bg-slate-500"
+                    ? "bg-amber-500 animate-pulse"
+                    : "bg-slate-400"
                 )}
               />
-              <span className="uppercase tracking-wider">{pulseInfo.text}</span>
+              <span className="uppercase tracking-wider font-semibold">{pulseInfo.text}</span>
             </Link>
 
             {/* Notifications Bell */}
             <Link
               href="/notifications"
-              className="relative p-1.5 rounded-md text-slate-400 hover:text-white hover:bg-white/5 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-indigo-500"
+              className="relative p-1.5 rounded-md text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--focus-ring)]"
               aria-label="Notifications"
             >
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -634,31 +732,55 @@ export function TopNavbar() {
               </svg>
             </Link>
 
-            {/* User Profile Menu */}
+            {/* Desktop Theme Switcher */}
+            <ThemeSwitcher size="sm" className="hidden sm:inline-flex" />
+
+            {/* Collaboration Toolbar & Secondary Actions Dropdown */}
             <div className="relative" ref={profileRef}>
-              <button
-                onClick={() => setProfileOpen(!profileOpen)}
-                className="h-7 w-7 rounded-full bg-slate-800 border border-white/20 flex items-center justify-center text-xs font-bold text-slate-100 hover:border-indigo-400 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-indigo-500"
-                aria-label="User account menu"
-                aria-expanded={profileOpen}
-              >
-                {session?.display_name?.charAt(0)?.toUpperCase() ?? "A"}
-              </button>
+              <CollabToolbar
+                groups={[["chat"], "avatar", ["upload", "menu"]]}
+                userAvatar={authenticatedUser}
+                avatars={[authenticatedUser]}
+                actionProps={{
+                  chat: {
+                    onClick: () => router.push("/ai-analyst"),
+                    isActive: pathname === "/ai-analyst",
+                    ariaLabel: "Grounded AI Analyst (/ai-analyst)",
+                    title: "Open Grounded AI Analyst Terminal (/ai-analyst)",
+                  },
+                  upload: {
+                    onClick: () => setUploadModalOpen(true),
+                    ariaLabel: "Import Holdings CSV/JSON",
+                    title: "Import Portfolio Holdings (CSV/JSON)",
+                  },
+                  menu: {
+                    onClick: () => setProfileOpen((prev) => !prev),
+                    isActive: profileOpen,
+                    ariaLabel: "Secondary Header Menu",
+                    title: "Account & Secondary Workspace Actions",
+                  },
+                }}
+                onAvatarClick={() => setProfileOpen((prev) => !prev)}
+              />
 
               {profileOpen && (
-                <div className="absolute right-0 mt-2 w-64 rounded-lg border border-white/10 bg-[#0c1322] shadow-2xl py-2 z-50 dropdown-enter">
-                  <div className="px-4 py-2 border-b border-white/10">
-                    <p className="font-semibold text-white text-xs truncate">
+                <div
+                  role="menu"
+                  aria-label="User account and secondary workspace actions"
+                  className="absolute right-0 mt-2 w-64 rounded-lg border border-[var(--border-default)] bg-[var(--bg-surface)] shadow-2xl py-2 z-50 dropdown-enter"
+                >
+                  <div className="px-4 py-2 border-b border-[var(--border-default)]">
+                    <p className="font-semibold text-[var(--text-primary)] text-xs truncate">
                       {session?.display_name || "Institutional Analyst"}
                     </p>
-                    <p className="text-[11px] text-slate-400 truncate mt-0.5">
+                    <p className="text-[11px] text-[var(--text-muted)] truncate mt-0.5">
                       {session?.email || "analyst@institutional.org"}
                     </p>
                     <div className="mt-1.5 flex items-center gap-1.5">
-                      <span className="text-[9.5px] font-mono px-1.5 py-0.2 rounded bg-indigo-950 text-indigo-300 border border-indigo-800 uppercase">
+                      <span className="text-[9.5px] font-mono px-1.5 py-0.5 rounded bg-[var(--color-info-bg)] text-[var(--color-info)] border border-[var(--color-info-border)] uppercase font-semibold">
                         {session?.role || "MEMBER"}
                       </span>
-                      <span className="text-[10px] text-slate-500 font-mono truncate">
+                      <span className="text-[10px] text-[var(--text-muted)] font-mono truncate">
                         {session?.tenant_id || "default"}
                       </span>
                     </div>
@@ -668,48 +790,62 @@ export function TopNavbar() {
                     <Link
                       href="/workspace"
                       onClick={() => setProfileOpen(false)}
-                      className="flex items-center gap-2.5 px-4 py-1.5 text-slate-300 hover:bg-[#121b2f] hover:text-white transition-colors"
+                      role="menuitem"
+                      className="flex items-center gap-2.5 px-4 py-1.5 text-[var(--text-secondary)] hover:bg-[var(--bg-card-hover)] hover:text-[var(--text-primary)] transition-colors"
                     >
                       <span>🏛</span> Daily Workspace
                     </Link>
                     <Link
                       href="/watchlists"
                       onClick={() => setProfileOpen(false)}
-                      className="flex items-center gap-2.5 px-4 py-1.5 text-slate-300 hover:bg-[#121b2f] hover:text-white transition-colors"
+                      role="menuitem"
+                      className="flex items-center gap-2.5 px-4 py-1.5 text-[var(--text-secondary)] hover:bg-[var(--bg-card-hover)] hover:text-[var(--text-primary)] transition-colors"
                     >
                       <span>⭐</span> Custom Watchlists
                     </Link>
                     <Link
                       href="/alerts"
                       onClick={() => setProfileOpen(false)}
-                      className="flex items-center gap-2.5 px-4 py-1.5 text-slate-300 hover:bg-[#121b2f] hover:text-white transition-colors"
+                      role="menuitem"
+                      className="flex items-center gap-2.5 px-4 py-1.5 text-[var(--text-secondary)] hover:bg-[var(--bg-card-hover)] hover:text-[var(--text-primary)] transition-colors"
                     >
                       <span>🔔</span> Alerts Center
                     </Link>
                     <Link
                       href="/coverage"
                       onClick={() => setProfileOpen(false)}
-                      className="flex items-center gap-2.5 px-4 py-1.5 text-slate-300 hover:bg-[#121b2f] hover:text-white transition-colors"
+                      role="menuitem"
+                      className="flex items-center gap-2.5 px-4 py-1.5 text-[var(--text-secondary)] hover:bg-[var(--bg-card-hover)] hover:text-[var(--text-primary)] transition-colors"
                     >
                       <span>📊</span> Platform Coverage Audit
                     </Link>
                     <Link
+                      href="/live-discovery"
+                      onClick={() => setProfileOpen(false)}
+                      role="menuitem"
+                      className="flex items-center gap-2.5 px-4 py-1.5 text-[var(--text-secondary)] hover:bg-[var(--bg-card-hover)] hover:text-[var(--text-primary)] transition-colors"
+                    >
+                      <span>📡</span> Live Intake Feed
+                    </Link>
+                    <Link
                       href="/settings"
                       onClick={() => setProfileOpen(false)}
-                      className="flex items-center gap-2.5 px-4 py-1.5 text-slate-300 hover:bg-[#121b2f] hover:text-white transition-colors"
+                      role="menuitem"
+                      className="flex items-center gap-2.5 px-4 py-1.5 text-[var(--text-secondary)] hover:bg-[var(--bg-card-hover)] hover:text-[var(--text-primary)] transition-colors"
                     >
-                      <span>⚙</span> Settings & RBAC
+                      <span>⚙</span> Settings &amp; RBAC
                     </Link>
                     <Link
                       href="/onboarding"
                       onClick={() => setProfileOpen(false)}
-                      className="flex items-center gap-2.5 px-4 py-1.5 text-slate-300 hover:bg-[#121b2f] hover:text-white transition-colors"
+                      role="menuitem"
+                      className="flex items-center gap-2.5 px-4 py-1.5 text-[var(--text-secondary)] hover:bg-[var(--bg-card-hover)] hover:text-[var(--text-primary)] transition-colors"
                     >
                       <span>✦</span> Onboarding Tour
                     </Link>
                   </div>
 
-                  <div className="border-t border-white/10 pt-1 text-xs">
+                  <div className="border-t border-[var(--border-subtle)] pt-1 text-xs">
                     {session ? (
                       <button
                         onClick={async () => {
@@ -717,7 +853,8 @@ export function TopNavbar() {
                           await authApi.logout();
                           window.location.href = "/login";
                         }}
-                        className="w-full flex items-center gap-2.5 px-4 py-1.5 text-rose-400 hover:bg-white/5 transition-colors"
+                        role="menuitem"
+                        className="w-full flex items-center gap-2.5 px-4 py-1.5 text-[var(--color-danger)] hover:bg-[var(--bg-card-hover)] transition-colors text-left font-medium"
                       >
                         <span>→</span> Sign Out
                       </button>
@@ -725,7 +862,8 @@ export function TopNavbar() {
                       <Link
                         href="/login"
                         onClick={() => setProfileOpen(false)}
-                        className="flex items-center gap-2.5 px-4 py-1.5 text-blue-400 hover:bg-white/5 transition-colors"
+                        role="menuitem"
+                        className="flex items-center gap-2.5 px-4 py-1.5 text-[var(--action-primary)] hover:bg-[var(--bg-card-hover)] transition-colors font-medium"
                       >
                         Sign In / Register
                       </Link>
@@ -738,7 +876,7 @@ export function TopNavbar() {
             {/* Mobile Hamburger */}
             <button
               onClick={() => setMobileOpen(true)}
-              className="lg:hidden p-1.5 rounded-md text-slate-400 hover:text-white hover:bg-white/5 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-indigo-500"
+              className="lg:hidden p-1.5 rounded-md text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--focus-ring)]"
               aria-label="Open navigation menu"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -760,6 +898,13 @@ export function TopNavbar() {
       <CommandPalette
         open={commandPaletteOpen}
         onClose={() => setCommandPaletteOpen(false)}
+      />
+
+      {/* Portfolio Holdings Upload Modal */}
+      <ImportHoldingsModal
+        isOpen={uploadModalOpen}
+        onClose={() => setUploadModalOpen(false)}
+        onImport={handleImportHoldings}
       />
     </>
   );

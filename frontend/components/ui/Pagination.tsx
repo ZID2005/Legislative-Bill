@@ -1,11 +1,13 @@
 /**
  * components/ui/Pagination.tsx
  * ============================
- * Pagination controls for paginated API responses.
+ * Institutional pagination controls for paginated API responses.
+ * Uses semantic dual-theme tokens and vector navigation chevrons.
  */
 
 import React from "react";
 import { cn } from "@/lib/utils";
+import { ChevronLeftIcon, ChevronRightIcon } from "./Icons";
 
 export interface PaginationProps {
   page: number;
@@ -32,39 +34,41 @@ export function Pagination({
   return (
     <div
       className={cn(
-        "flex items-center justify-between text-sm text-slate-400",
+        "flex items-center justify-between text-xs text-[var(--text-muted)] select-none",
         className
       )}
     >
       <p>
         Showing{" "}
-        <span className="font-medium text-slate-300">
+        <span className="font-semibold text-[var(--text-primary)] font-mono">
           {new Intl.NumberFormat("en-IN").format(start)}–
           {new Intl.NumberFormat("en-IN").format(end)}
         </span>{" "}
         of{" "}
-        <span className="font-medium text-slate-300">
+        <span className="font-semibold text-[var(--text-primary)] font-mono">
           {new Intl.NumberFormat("en-IN").format(total)}
-        </span>
+        </span>{" "}
+        records
       </p>
 
-      <div className="flex items-center gap-1" role="navigation" aria-label="Pagination">
+      <div className="flex items-center gap-1.5" role="navigation" aria-label="Pagination">
         <button
           onClick={() => onPageChange(page - 1)}
           disabled={page === 1}
           aria-label="Previous page"
           className={cn(
-            "px-2.5 py-1.5 rounded border text-xs font-medium transition-colors",
-            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500",
+            "inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border text-xs font-medium transition-all",
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)]",
             page === 1
-              ? "border-slate-800 text-slate-600 cursor-not-allowed"
-              : "border-slate-700 text-slate-300 hover:bg-slate-800 hover:border-slate-600"
+              ? "border-[var(--border-subtle)] text-[var(--text-faint)] opacity-40 cursor-not-allowed bg-transparent"
+              : "border-[var(--border-default)] text-[var(--text-primary)] bg-[var(--bg-secondary)] hover:bg-[var(--bg-card-hover)] hover:border-[var(--border-strong)] active:translate-y-[0.5px]"
           )}
         >
-          ← Prev
+          <ChevronLeftIcon size="xs" />
+          <span>Prev</span>
         </button>
 
-        <span className="px-3 py-1.5 text-slate-400 text-xs">
+        <span className="px-2.5 py-1 text-[var(--text-muted)] font-mono text-xs">
           {page} / {pages}
         </span>
 
@@ -73,14 +77,15 @@ export function Pagination({
           disabled={page === pages}
           aria-label="Next page"
           className={cn(
-            "px-2.5 py-1.5 rounded border text-xs font-medium transition-colors",
-            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500",
+            "inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border text-xs font-medium transition-all",
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)]",
             page === pages
-              ? "border-slate-800 text-slate-600 cursor-not-allowed"
-              : "border-slate-700 text-slate-300 hover:bg-slate-800 hover:border-slate-600"
+              ? "border-[var(--border-subtle)] text-[var(--text-faint)] opacity-40 cursor-not-allowed bg-transparent"
+              : "border-[var(--border-default)] text-[var(--text-primary)] bg-[var(--bg-secondary)] hover:bg-[var(--bg-card-hover)] hover:border-[var(--border-strong)] active:translate-y-[0.5px]"
           )}
         >
-          Next →
+          <span>Next</span>
+          <ChevronRightIcon size="xs" />
         </button>
       </div>
     </div>

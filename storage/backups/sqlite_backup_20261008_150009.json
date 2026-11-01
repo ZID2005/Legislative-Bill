@@ -1,0 +1,7 @@
+{
+  "timestamp": "2026-10-08T15:00:11.239938+00:00",
+  "backup_file": "sqlite_backup_20261008_150009.sqlite",
+  "sha256": "03d87dfbeb5a95f093b3f12695193bdb8d111c0c0cb302fcedb3161462eaf01f",
+  "provider_type": "SQLITE",
+  "baseline_sha256": "50ae76039bccf2e4a671cf2ae915889e490b17404db6eb2e49e7965ecd6400b7"
+}

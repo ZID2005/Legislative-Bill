@@ -208,6 +208,17 @@ class DecisionRepository:
         """
         Retrieve all DecisionSupportRecord objects associated with a specific company ISIN.
         """
+        s_isin = sanitize_id(company_isin)
+        matching = [f for f in self._root.glob(f"dec_*_{s_isin}_*.json")]
+        if matching:
+            records: list[DecisionSupportRecord] = []
+            for filepath in matching:
+                try:
+                    data = load_json(filepath)
+                    records.append(DecisionSupportRecord.from_dict(data))
+                except Exception:
+                    pass
+            return records
         all_records = self.load_all()
         return [rec for rec in all_records if rec.company_isin == company_isin]
 

@@ -1004,6 +1004,31 @@ export interface BillVersionHistory {
   versions: BillVersionItem[];
 }
 
+export interface FreshnessItem {
+  dataset: string;
+  status: "LIVE" | "RECENT" | "STALE" | "NOT_AVAILABLE" | string;
+  record_count: number;
+  authority: string;
+  jurisdiction: string;
+  cadence: string;
+  last_successful_update?: string | null;
+  last_checked_at?: string | null;
+  provenance_summary: string;
+}
+
+export interface FreshnessResponse {
+  overall_status: string;
+  as_of: string;
+  timestamp?: string | null;
+  total_datasets: number;
+  live_count: number;
+  recent_count: number;
+  stale_count: number;
+  not_available_count: number;
+  datasets: FreshnessItem[];
+}
+
+
 
 // ---------------------------------------------------------------------------
 // Watchlists
@@ -1148,9 +1173,11 @@ export type AIPersona =
   | "POLICY_RESEARCHER";
 
 export interface AIAskRequest {
-  question: string;
-  context_type: string; // "bill" | "company" | "comparison" | "workspace"
-  context_id: string;
+  question?: string;
+  message?: string;
+  context_type: string; // "bill" | "company" | "comparison" | "workspace" | "portfolio" | "general"
+  context_id?: string;
+  portfolio_id?: string;
   persona?: string; // "GENERAL_PUBLIC" | "INVESTOR" | "CORPORATE_POLICY" | "POLICY_RESEARCHER"
 }
 
@@ -1164,6 +1191,10 @@ export interface AIAskResponse {
   is_cached: boolean;
   disclaimer: string;
   provenance_sources: string[];
+  citations?: any[];
+  epistemic_labels?: string[];
+  warnings?: string[];
+  latency_ms?: number;
   model?: string;
   grounding_sources?: string[];
   question?: string;

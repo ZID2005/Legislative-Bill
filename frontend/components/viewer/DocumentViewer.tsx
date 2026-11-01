@@ -1,25 +1,28 @@
-/**
+﻿/**
  * components/viewer/DocumentViewer.tsx
  * ========================================
- * Task 8.25 — In-platform bill/PDF document viewer (Phase 11).
+ * In-platform bill & statutory PDF document viewer for Seance.
  *
- * Option A: PDF rendered inline via native browser PDF support (iframe/embed)
- * Option B: Fallback to "View Official Source" button
- *
- * Features:
- * - PDF viewer (browser-native)
- * - Page navigation
- * - Zoom controls
- * - Document metadata
- * - Source attribution
- * - Download option
- * - Official source fallback
+ * Implements:
+ * - Browser-native PDF viewer integration with responsive viewport
+ * - Zoom, fullscreen, and download controls using standardized vector icons
+ * - Dual-theme semantic tokens for toolbar, canvas, fallback, and metadata
+ * - Official statutory source attribution and hash verification
  */
 
 "use client";
 
 import React, { useState, useRef } from "react";
 import { cn } from "@/lib/utils";
+import {
+  ZoomInIcon,
+  ZoomOutIcon,
+  DownloadIcon,
+  ExternalLinkIcon,
+  MaximizeIcon,
+  MinimizeIcon,
+  BillsIcon,
+} from "@/components/ui/Icons";
 
 export interface DocumentViewerProps {
   /** PDF URL to display. Can be a local path or external URL. */
@@ -69,20 +72,20 @@ export function DocumentViewer({
   return (
     <div
       className={cn(
-        "card-base overflow-hidden",
-        fullscreen && "fixed inset-0 z-50 rounded-none",
+        "rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface)] overflow-hidden shadow-xs transition-all",
+        fullscreen && "fixed inset-0 z-50 rounded-none border-0",
         className
       )}
     >
       {/* Viewer toolbar */}
-      <div className="flex items-center gap-2 px-4 py-2.5 border-b border-white/8 bg-slate-900/60 flex-wrap">
+      <div className="flex items-center gap-2 px-4 py-2.5 border-b border-[var(--border-default)] bg-[var(--bg-base)] flex-wrap">
         {/* Title */}
         <div className="flex-1 min-w-0">
-          <p className="text-xs font-medium text-slate-300 truncate">
+          <p className="text-xs font-semibold text-[var(--text-primary)] truncate">
             {title ?? "Legislative Document"}
           </p>
           {metadata?.organization && (
-            <p className="text-[10px] text-slate-600">{metadata.organization}</p>
+            <p className="text-[10px] text-[var(--text-muted)] mt-0.5">{metadata.organization}</p>
           )}
         </div>
 
@@ -92,16 +95,14 @@ export function DocumentViewer({
             <button
               onClick={handleZoomOut}
               disabled={zoom <= 50}
-              className="p-1.5 rounded text-slate-400 hover:text-white hover:bg-white/5 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+              className="p-1.5 rounded-lg text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] disabled:opacity-30 disabled:cursor-not-allowed transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--focus-ring)]"
               aria-label="Zoom out"
             >
-              <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M20 12H4" />
-              </svg>
+              <ZoomOutIcon size="xs" />
             </button>
             <button
               onClick={handleZoomReset}
-              className="px-2 py-1 text-[10px] font-mono text-slate-400 hover:text-white hover:bg-white/5 rounded transition-all min-w-[3rem] text-center"
+              className="px-2 py-1 text-[10px] font-mono text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] rounded-md transition-all min-w-[3rem] text-center focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--focus-ring)]"
               aria-label={`Zoom: ${zoom}%`}
             >
               {zoom}%
@@ -109,28 +110,24 @@ export function DocumentViewer({
             <button
               onClick={handleZoomIn}
               disabled={zoom >= 200}
-              className="p-1.5 rounded text-slate-400 hover:text-white hover:bg-white/5 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+              className="p-1.5 rounded-lg text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] disabled:opacity-30 disabled:cursor-not-allowed transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--focus-ring)]"
               aria-label="Zoom in"
             >
-              <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16M4 12h16" />
-              </svg>
+              <ZoomInIcon size="xs" />
             </button>
           </div>
         )}
 
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-2">
           {/* Download */}
           {pdfUrl && (
             <a
               href={pdfUrl}
               download
-              className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs rounded-lg border border-white/8 text-slate-400 hover:text-white hover:bg-white/5 transition-all"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs rounded-lg border border-[var(--border-default)] bg-[var(--bg-secondary)] text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] transition-all font-medium"
             >
-              <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-              </svg>
-              Download
+              <DownloadIcon size="xs" />
+              <span>Download</span>
             </a>
           )}
 
@@ -140,30 +137,20 @@ export function DocumentViewer({
               href={officialSourceUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs rounded-lg border border-blue-500/25 bg-blue-500/10 text-blue-400 hover:text-blue-300 hover:bg-blue-500/15 transition-all"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs rounded-lg border border-[var(--action-primary)]/30 bg-[var(--action-primary)]/12 text-[var(--action-primary)] hover:bg-[var(--action-primary)]/20 transition-all font-medium"
             >
-              <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-              {officialSourceLabel ?? "Official Source"}
+              <ExternalLinkIcon size="xs" />
+              <span>{officialSourceLabel ?? "Official Source"}</span>
             </a>
           )}
 
           {/* Fullscreen toggle */}
           <button
             onClick={() => setFullscreen(!fullscreen)}
-            className="p-1.5 rounded text-slate-500 hover:text-white hover:bg-white/5 transition-all"
+            className="p-1.5 rounded-lg text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--focus-ring)]"
             aria-label={fullscreen ? "Exit fullscreen" : "Fullscreen"}
           >
-            {fullscreen ? (
-              <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3" />
-              </svg>
-            ) : (
-              <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3" />
-              </svg>
-            )}
+            {fullscreen ? <MinimizeIcon size="xs" /> : <MaximizeIcon size="xs" />}
           </button>
         </div>
       </div>
@@ -172,7 +159,7 @@ export function DocumentViewer({
       {canRenderPdf ? (
         <div
           className="relative overflow-auto"
-          style={{ height: viewerHeight, background: "#1a2032" }}
+          style={{ height: viewerHeight, background: "var(--bg-secondary)" }}
         >
           <iframe
             ref={iframeRef}
@@ -192,20 +179,20 @@ export function DocumentViewer({
       ) : (
         /* Fallback when PDF cannot be rendered */
         <div
-          className="flex flex-col items-center justify-center gap-6 bg-slate-950/50"
+          className="flex flex-col items-center justify-center gap-6 bg-[var(--bg-secondary)]/30"
           style={{ height: viewerHeight }}
         >
           <div className="text-center space-y-3 max-w-md px-6">
-            <div className="h-16 w-16 mx-auto rounded-2xl bg-white/5 border border-white/8 flex items-center justify-center text-3xl">
-              📄
+            <div className="h-16 w-16 mx-auto rounded-2xl bg-[var(--bg-card)] border border-[var(--border-default)] flex items-center justify-center text-[var(--text-muted)] shadow-xs">
+              <BillsIcon size="xl" />
             </div>
-            <h3 className="text-base font-semibold text-slate-200">
+            <h3 className="text-base font-semibold text-[var(--text-primary)]">
               {title ?? "Legislative Document"}
             </h3>
-            <p className="text-sm text-slate-500 leading-relaxed">
+            <p className="text-xs text-[var(--text-muted)] leading-relaxed">
               {viewerError
-                ? "The document could not be rendered in-platform. Please use the official source to read the full text."
-                : "No PDF document is currently available for this bill. Please use the official source link."}
+                ? "The document could not be rendered in-platform. Please use the official source link to access the verified parliamentary record."
+                : "No inline PDF document is currently available for this bill. Official Gazette and assembly links are provided below."}
             </p>
           </div>
 
@@ -214,12 +201,10 @@ export function DocumentViewer({
               href={officialSourceUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2.5 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition-all focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[var(--action-primary)] hover:bg-[var(--action-primary-hover)] text-[var(--text-primary)] font-semibold text-xs shadow-xs transition-all focus:outline-none focus:ring-2 focus:ring-[var(--focus-ring)]"
             >
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-              View Official Source
+              <ExternalLinkIcon size="sm" />
+              <span>View Official Source</span>
             </a>
           )}
         </div>
@@ -227,35 +212,35 @@ export function DocumentViewer({
 
       {/* Metadata footer */}
       {metadata && (
-        <div className="border-t border-white/8 px-4 py-3 bg-slate-900/40">
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-1 text-[10px] text-slate-600">
+        <div className="border-t border-[var(--border-default)] px-4 py-3 bg-[var(--bg-base)]">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-1 text-[10px] text-[var(--text-muted)]">
             {metadata.organization && (
               <span>
-                <span className="text-slate-700 uppercase tracking-wider">Source: </span>
+                <span className="font-semibold text-[var(--text-secondary)] uppercase tracking-wider">Source: </span>
                 {metadata.organization}
               </span>
             )}
             {metadata.documentDate && (
               <span>
-                <span className="text-slate-700 uppercase tracking-wider">Document Date: </span>
+                <span className="font-semibold text-[var(--text-secondary)] uppercase tracking-wider">Document Date: </span>
                 {new Date(metadata.documentDate).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}
               </span>
             )}
             {metadata.lastVerified && (
               <span>
-                <span className="text-slate-700 uppercase tracking-wider">Last Verified: </span>
+                <span className="font-semibold text-[var(--text-secondary)] uppercase tracking-wider">Last Verified: </span>
                 {new Date(metadata.lastVerified).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}
               </span>
             )}
             {metadata.pageCount && (
               <span>
-                <span className="text-slate-700 uppercase tracking-wider">Pages: </span>
+                <span className="font-semibold text-[var(--text-secondary)] uppercase tracking-wider">Pages: </span>
                 {metadata.pageCount}
               </span>
             )}
             {metadata.documentHash && (
               <span className="font-mono">
-                <span className="text-slate-700 uppercase tracking-wider">Hash: </span>
+                <span className="font-semibold text-[var(--text-secondary)] uppercase tracking-wider">Hash: </span>
                 {metadata.documentHash.slice(0, 12)}…
               </span>
             )}

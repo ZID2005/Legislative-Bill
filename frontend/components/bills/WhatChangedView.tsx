@@ -1,4 +1,4 @@
-/**
+﻿/**
  * components/bills/WhatChangedView.tsx
  * =====================================
  * Task 8.27 Phase 4 — "What Changed?" Structured Change Summary.
@@ -63,20 +63,20 @@ export function WhatChangedView({
                 </Badge>
               )}
             </div>
-            <p className="text-[11px] text-slate-500 mt-0.5">
+            <p className="text-[11px] text-[var(--text-faint)] mt-0.5">
               Structured audit trail distinguishing document-level revisions from legislative status changes.
             </p>
           </div>
 
           {/* Filter Pills */}
           {has_changes && (
-            <div className="flex items-center gap-1 bg-slate-900 border border-slate-800 rounded-lg p-0.5 text-xs">
+            <div className="flex items-center gap-1 bg-[var(--bg-card)] border border-[var(--border-default)] rounded-lg p-0.5 text-xs">
               <button
                 onClick={() => setFilterType("all")}
                 className={`px-2.5 py-1 rounded-md text-[11px] font-medium transition-colors ${
                   filterType === "all"
-                    ? "bg-slate-800 text-slate-100 shadow-sm"
-                    : "text-slate-400 hover:text-slate-200"
+                    ? "bg-[var(--bg-elevated)] text-[var(--text-primary)] shadow-sm"
+                    : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"
                 }`}
               >
                 All ({total_changes})
@@ -86,7 +86,7 @@ export function WhatChangedView({
                 className={`px-2.5 py-1 rounded-md text-[11px] font-medium transition-colors ${
                   filterType === "legislative"
                     ? "bg-blue-900/60 text-blue-200 shadow-sm"
-                    : "text-slate-400 hover:text-slate-200"
+                    : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"
                 }`}
               >
                 Legislative ({legislative_changes.length})
@@ -96,7 +96,7 @@ export function WhatChangedView({
                 className={`px-2.5 py-1 rounded-md text-[11px] font-medium transition-colors ${
                   filterType === "document"
                     ? "bg-amber-900/60 text-amber-200 shadow-sm"
-                    : "text-slate-400 hover:text-slate-200"
+                    : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"
                 }`}
               >
                 Documents ({document_changes.length})
@@ -108,14 +108,14 @@ export function WhatChangedView({
 
       <div className="p-4 sm:p-5 space-y-4">
         {/* Summary Banner */}
-        <div className="p-3 rounded-lg border border-slate-800 bg-slate-900/50 flex items-start gap-3">
+        <div className="p-3 rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/50 flex items-start gap-3">
           <span className="text-lg">ℹ️</span>
           <div className="space-y-1 text-xs">
-            <p className="text-slate-200 leading-relaxed font-medium">
+            <p className="text-[var(--text-primary)] leading-relaxed font-medium">
               {summary_text || "No modifications recorded since baseline catalog ingestion."}
             </p>
             {last_change_detected_at && (
-              <p className="text-[11px] text-slate-500 font-mono">
+              <p className="text-[11px] text-[var(--text-faint)] font-mono">
                 Latest verified change detected: {formatDate(last_change_detected_at)}
               </p>
             )}
@@ -137,7 +137,7 @@ export function WhatChangedView({
             {/* Legislative Changes Section */}
             {filteredLegChanges.length > 0 && (
               <div className="space-y-2">
-                <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+                <h4 className="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider flex items-center gap-1.5">
                   <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
                   Legislative Status & Procedural Changes ({filteredLegChanges.length})
                 </h4>
@@ -145,33 +145,33 @@ export function WhatChangedView({
                   {filteredLegChanges.map((lc, idx) => (
                     <div
                       key={idx}
-                      className="p-3 rounded-lg border border-blue-900/40 bg-slate-900/40 text-xs space-y-1.5"
+                      className="p-3 rounded-lg border border-blue-900/40 bg-[var(--bg-card)]/40 text-xs space-y-1.5"
                     >
                       <div className="flex items-center justify-between gap-2 flex-wrap">
                         <div className="flex items-center gap-2">
-                          <span className="font-semibold text-slate-200">
+                          <span className="font-semibold text-[var(--text-primary)]">
                             Field: <span className="font-mono text-blue-300">{lc.field_name}</span>
                           </span>
                           <Badge variant="blue" size="xs">
                             {lc.change_type}
                           </Badge>
                         </div>
-                        <span className="text-[11px] text-slate-400 font-mono">
+                        <span className="text-[11px] text-[var(--text-muted)] font-mono">
                           {formatDate(lc.detected_at)}
                         </span>
                       </div>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] pt-1 border-t border-slate-800">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] pt-1 border-t border-[var(--border-default)]">
                         <div>
-                          <span className="text-slate-500">Previous Value:</span>{" "}
-                          <span className="text-slate-400 font-mono">{lc.old_value || "—"}</span>
+                          <span className="text-[var(--text-faint)]">Previous Value:</span>{" "}
+                          <span className="text-[var(--text-muted)] font-mono">{lc.old_value || "—"}</span>
                         </div>
                         <div>
-                          <span className="text-slate-500">Updated Value:</span>{" "}
+                          <span className="text-[var(--text-faint)]">Updated Value:</span>{" "}
                           <span className="text-emerald-400 font-mono font-medium">{lc.new_value || "—"}</span>
                         </div>
                       </div>
-                      <p className="text-[11px] text-slate-400">
-                        Authority: <span className="text-slate-300">{lc.source_authority}</span>
+                      <p className="text-[11px] text-[var(--text-muted)]">
+                        Authority: <span className="text-[var(--text-secondary)]">{lc.source_authority}</span>
                       </p>
                     </div>
                   ))}
@@ -182,7 +182,7 @@ export function WhatChangedView({
             {/* Document Changes Section */}
             {filteredDocChanges.length > 0 && (
               <div className="space-y-2">
-                <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+                <h4 className="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider flex items-center gap-1.5">
                   <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
                   Official Document & Hash Changes ({filteredDocChanges.length})
                 </h4>
@@ -190,34 +190,34 @@ export function WhatChangedView({
                   {filteredDocChanges.map((dc, idx) => (
                     <div
                       key={idx}
-                      className="p-3 rounded-lg border border-amber-900/40 bg-slate-900/40 text-xs space-y-1.5"
+                      className="p-3 rounded-lg border border-amber-900/40 bg-[var(--bg-card)]/40 text-xs space-y-1.5"
                     >
                       <div className="flex items-center justify-between gap-2 flex-wrap">
                         <div className="flex items-center gap-2">
-                          <span className="font-semibold text-slate-200">
+                          <span className="font-semibold text-[var(--text-primary)]">
                             Document Binary Modified
                           </span>
                           <Badge variant="amber" size="xs">
                             {dc.change_type}
                           </Badge>
                         </div>
-                        <span className="text-[11px] text-slate-400 font-mono">
+                        <span className="text-[11px] text-[var(--text-muted)] font-mono">
                           {formatDate(dc.detected_at)}
                         </span>
                       </div>
-                      <div className="text-[11px] space-y-1 pt-1 border-t border-slate-800">
+                      <div className="text-[11px] space-y-1 pt-1 border-t border-[var(--border-default)]">
                         {dc.previous_hash && (
-                          <div className="font-mono text-slate-400 truncate">
-                            <span className="text-slate-500">Previous SHA-256:</span> {dc.previous_hash}
+                          <div className="font-mono text-[var(--text-muted)] truncate">
+                            <span className="text-[var(--text-faint)]">Previous SHA-256:</span> {dc.previous_hash}
                           </div>
                         )}
                         {dc.new_hash && (
                           <div className="font-mono text-emerald-400 truncate">
-                            <span className="text-slate-500">Verified New SHA-256:</span> {dc.new_hash}
+                            <span className="text-[var(--text-faint)]">Verified New SHA-256:</span> {dc.new_hash}
                           </div>
                         )}
                       </div>
-                      <p className="text-[11px] text-slate-400 italic">
+                      <p className="text-[11px] text-[var(--text-muted)] italic">
                         {dc.notes}
                       </p>
                     </div>
@@ -227,7 +227,7 @@ export function WhatChangedView({
             )}
           </div>
         ) : (
-          <div className="text-center py-6 border border-dashed border-slate-800 rounded-lg text-slate-400 text-xs">
+          <div className="text-center py-6 border border-dashed border-[var(--border-default)] rounded-lg text-[var(--text-muted)] text-xs">
             No document or procedural alterations detected. The legislative record remains at its authoritative initial baseline.
           </div>
         )}

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * components/bills/AnticipationSection.tsx
  * ========================================
  * Pre-Event Anticipation & Information Diffusion section.
@@ -37,12 +37,12 @@ export function AnticipationSection({
             <SourceBadge type="DERIVED" size="xs" showTooltip />
           </div>
         </CardHeader>
-        <div className="rounded-lg border border-slate-800 bg-slate-900/50 p-6 text-center space-y-2">
+        <div className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/50 p-6 text-center space-y-2">
           <span className="text-2xl" aria-hidden="true">📡</span>
-          <h4 className="text-sm font-semibold text-slate-300">
+          <h4 className="text-sm font-semibold text-[var(--text-secondary)]">
             Anticipation Analysis Not Applicable to State Legislation
           </h4>
-          <p className="text-xs text-slate-500 max-w-md mx-auto leading-relaxed">
+          <p className="text-xs text-[var(--text-faint)] max-w-md mx-auto leading-relaxed">
             Pre-event econometric anticipation and information diffusion modeling operates strictly on Central Parliamentary enactments.
             State assembly proceedings are not subjected to pre-event market leakage diagnostics.
           </p>
@@ -65,12 +65,12 @@ export function AnticipationSection({
             <SourceBadge type="DERIVED" size="xs" showTooltip />
           </div>
         </CardHeader>
-        <div className="rounded-lg border border-slate-800 bg-slate-900/40 p-6 text-center space-y-2">
+        <div className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/40 p-6 text-center space-y-2">
           <span className="text-xl" aria-hidden="true">📊</span>
-          <h4 className="text-xs font-semibold text-slate-300">
+          <h4 className="text-xs font-semibold text-[var(--text-secondary)]">
             Anticipation Diagnostics Not Available
           </h4>
-          <p className="text-xs text-slate-500 max-w-md mx-auto">
+          <p className="text-xs text-[var(--text-faint)] max-w-md mx-auto">
             Pre-event information diffusion modeling is not recorded for this legislative measure.
           </p>
         </div>
@@ -93,7 +93,7 @@ export function AnticipationSection({
           <div className="flex flex-wrap items-center justify-between gap-2 w-full">
             <div>
               <CardTitle>Pre-Event Legislative Anticipation &amp; Diffusion Analysis</CardTitle>
-              <p className="text-xs text-slate-500 mt-0.5">
+              <p className="text-xs text-[var(--text-faint)] mt-0.5">
                 Econometric diagnostics evaluating whether legislative signals were reflected in market volumes prior to formal introduction.
               </p>
             </div>
@@ -120,8 +120,8 @@ export function AnticipationSection({
 
         {/* Aggregate Metrics Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
-          <div className="rounded-lg border border-slate-800 bg-slate-900/60 p-3">
-            <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5">
+          <div className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/60 p-3">
+            <p className="text-[10px] font-semibold text-[var(--text-faint)] uppercase tracking-wider mb-0.5">
               Anticipation Score
             </p>
             <p className="text-base font-mono font-bold text-amber-400">
@@ -129,35 +129,35 @@ export function AnticipationSection({
             </p>
           </div>
 
-          <div className="rounded-lg border border-slate-800 bg-slate-900/60 p-3">
-            <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5">
+          <div className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/60 p-3">
+            <p className="text-[10px] font-semibold text-[var(--text-faint)] uppercase tracking-wider mb-0.5">
               Diagnostic Tier
             </p>
-            <p className="text-xs font-bold text-slate-200 mt-1">
+            <p className="text-xs font-bold text-[var(--text-primary)] mt-1">
               {classification}
             </p>
           </div>
 
-          <div className="rounded-lg border border-slate-800 bg-slate-900/60 p-3">
-            <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5">
+          <div className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/60 p-3">
+            <p className="text-[10px] font-semibold text-[var(--text-faint)] uppercase tracking-wider mb-0.5">
               Pre-Event Signal
             </p>
             <span
               className={`inline-block text-xs font-semibold px-2 py-0.5 rounded mt-0.5 ${
                 flag
                   ? "bg-amber-950 text-amber-300 border border-amber-800"
-                  : "bg-slate-800 text-slate-400 border border-slate-700"
+                  : "bg-[var(--bg-elevated)] text-[var(--text-muted)] border border-[var(--border-strong)]"
               }`}
             >
               {flag ? "Flagged (Diffusion Detected)" : "Unflagged (Normal)"}
             </span>
           </div>
 
-          <div className="rounded-lg border border-slate-800 bg-slate-900/60 p-3">
-            <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5">
+          <div className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/60 p-3">
+            <p className="text-[10px] font-semibold text-[var(--text-faint)] uppercase tracking-wider mb-0.5">
               Confidence &amp; Universe
             </p>
-            <p className="text-xs font-medium text-slate-300 mt-1">
+            <p className="text-xs font-medium text-[var(--text-secondary)] mt-1">
               {confidence} · {totalAnalyzed} Companies
             </p>
           </div>
@@ -166,12 +166,12 @@ export function AnticipationSection({
         {/* Company Pre-Event Breakdown Table */}
         {scores.length > 0 && (
           <div>
-            <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2.5">
+            <h4 className="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-2.5">
               Company Diagnostic Breakdown (Top Samples)
             </h4>
-            <div className="overflow-x-auto rounded-lg border border-slate-800">
-              <table className="w-full text-left text-xs text-slate-300" aria-label="Company anticipation breakdown">
-                <thead className="bg-slate-900/90 text-slate-400 uppercase text-[10px] tracking-wider border-b border-slate-800">
+            <div className="overflow-x-auto rounded-lg border border-[var(--border-default)]">
+              <table className="w-full text-left text-xs text-[var(--text-secondary)]" aria-label="Company anticipation breakdown">
+                <thead className="bg-[var(--bg-card)]/90 text-[var(--text-muted)] uppercase text-[10px] tracking-wider border-b border-[var(--border-default)]">
                   <tr>
                     <th scope="col" className="py-2.5 px-3">Company</th>
                     <th scope="col" className="py-2.5 px-3">Anticipation Score</th>
@@ -180,7 +180,7 @@ export function AnticipationSection({
                     <th scope="col" className="py-2.5 px-3">Diagnostic Rationale</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800/60 bg-slate-950/40 font-mono text-[11px]">
+                <tbody className="divide-y divide-[var(--border-default)]/60 bg-[var(--bg-base)]/40 font-mono text-[11px]">
                   {scores.slice(0, 8).map((sc: any, idx: number) => {
                     const scVal = typeof sc.anticipation_score === "number"
                       ? sc.anticipation_score.toFixed(3)
@@ -188,12 +188,12 @@ export function AnticipationSection({
                     const scFlag = Boolean(sc.anticipation_flag);
 
                     return (
-                      <tr key={idx} className="hover:bg-slate-900/40">
+                      <tr key={idx} className="hover:bg-[var(--bg-card)]/40">
                         <td className="py-2.5 px-3 font-sans">
-                          <span className="font-semibold text-slate-200 block">
+                          <span className="font-semibold text-[var(--text-primary)] block">
                             {sc.company_symbol || sc.company_name || sc.company_isin}
                           </span>
-                          <span className="text-[10px] text-slate-500 font-mono">
+                          <span className="text-[10px] text-[var(--text-faint)] font-mono">
                             {sc.company_isin}
                           </span>
                         </td>
@@ -201,7 +201,7 @@ export function AnticipationSection({
                           {scVal}
                         </td>
                         <td className="py-2.5 px-3 font-sans">
-                          <span className="text-[10px] px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-300">
+                          <span className="text-[10px] px-1.5 py-0.5 rounded bg-[var(--bg-elevated)] border border-[var(--border-strong)] text-[var(--text-secondary)]">
                             {sc.classification || "RECORDED"}
                           </span>
                         </td>
@@ -210,13 +210,13 @@ export function AnticipationSection({
                             className={`text-[10px] font-semibold px-1.5 py-0.5 rounded ${
                               scFlag
                                 ? "bg-amber-950/80 text-amber-300"
-                                : "text-slate-500"
+                                : "text-[var(--text-faint)]"
                             }`}
                           >
                             {scFlag ? "Flagged" : "Normal"}
                           </span>
                         </td>
-                        <td className="py-2.5 px-3 font-sans text-slate-400 text-[11px] max-w-sm truncate leading-snug">
+                        <td className="py-2.5 px-3 font-sans text-[var(--text-muted)] text-[11px] max-w-sm truncate leading-snug">
                           {sc.decision_reason || "Pre-event market diagnostics evaluated."}
                         </td>
                       </tr>

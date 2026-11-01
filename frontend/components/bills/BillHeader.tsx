@@ -1,4 +1,4 @@
-/**
+﻿/**
  * components/bills/BillHeader.tsx
  * ================================
  * Institutional header for the Bill Detail Dossier.
@@ -62,24 +62,24 @@ export function BillHeader({
     <header className={`space-y-4 ${className}`} aria-label="Bill identity and summary">
       {/* Breadcrumb Navigation */}
       <nav
-        className="text-xs text-slate-500 flex items-center flex-wrap gap-1.5"
+        className="text-xs text-[var(--text-faint)] flex items-center flex-wrap gap-1.5"
         aria-label="Breadcrumb"
       >
         <Link
           href="/explorer"
-          className="hover:text-slate-300 transition-colors"
+          className="hover:text-[var(--text-secondary)] transition-colors"
         >
           India Explorer
         </Link>
         <span aria-hidden="true">›</span>
         <Link
           href="/bills"
-          className="hover:text-slate-300 transition-colors"
+          className="hover:text-[var(--text-secondary)] transition-colors"
         >
           Bills
         </Link>
         <span aria-hidden="true">›</span>
-        <span className="text-slate-300 font-medium truncate max-w-md">
+        <span className="text-[var(--text-secondary)] font-medium truncate max-w-md">
           {bill.short_title || bill.title}
         </span>
       </nav>
@@ -106,37 +106,37 @@ export function BillHeader({
       {/* Main Title & Bill Number */}
       <div className="space-y-1">
         <div className="flex flex-wrap items-baseline gap-2">
-          <h1 className="text-2xl md:text-3xl font-bold text-slate-100 tracking-tight leading-snug">
+          <h1 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] tracking-tight leading-snug">
             {bill.title}
           </h1>
         </div>
         {bill.bill_number && (
-          <p className="text-xs font-mono text-slate-400">
+          <p className="text-xs font-mono text-[var(--text-muted)]">
             Official Bill No.:{" "}
-            <span className="text-slate-300 font-medium">{bill.bill_number}</span>
+            <span className="text-[var(--text-secondary)] font-medium">{bill.bill_number}</span>
           </p>
         )}
       </div>
 
       {/* Legislative Metadata Ribbon */}
-      <div className="flex flex-wrap items-center gap-y-2 gap-x-5 text-xs text-slate-400 pt-1 border-t border-slate-800/80">
+      <div className="flex flex-wrap items-center gap-y-2 gap-x-5 text-xs text-[var(--text-muted)] pt-1 border-t border-[var(--border-default)]/80">
         <div className="flex items-center gap-1.5">
-          <span className="text-slate-500">Legislature:</span>
-          <span className="font-medium text-slate-200">{bill.legislature}</span>
+          <span className="text-[var(--text-faint)]">Legislature:</span>
+          <span className="font-medium text-[var(--text-primary)]">{bill.legislature}</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <span className="text-slate-500">Chamber:</span>
-          <span className="font-medium text-slate-200">{bill.house || "—"}</span>
+          <span className="text-[var(--text-faint)]">Chamber:</span>
+          <span className="font-medium text-[var(--text-primary)]">{bill.house || "—"}</span>
         </div>
         {bill.year && (
           <div className="flex items-center gap-1.5">
-            <span className="text-slate-500">Year:</span>
-            <span className="font-medium text-slate-200">{bill.year}</span>
+            <span className="text-[var(--text-faint)]">Year:</span>
+            <span className="font-medium text-[var(--text-primary)]">{bill.year}</span>
           </div>
         )}
         <div className="flex items-center gap-1.5">
-          <span className="text-slate-500">Introduced:</span>
-          <span className="font-medium text-slate-200">
+          <span className="text-[var(--text-faint)]">Introduced:</span>
+          <span className="font-medium text-[var(--text-primary)]">
             {bill.introduction_date
               ? formatDate(bill.introduction_date)
               : "Date not available"}
@@ -144,8 +144,8 @@ export function BillHeader({
         </div>
         {bill.assent_date && (
           <div className="flex items-center gap-1.5">
-            <span className="text-slate-500">Assent:</span>
-            <span className="font-medium text-slate-200">
+            <span className="text-[var(--text-faint)]">Assent:</span>
+            <span className="font-medium text-[var(--text-primary)]">
               {formatDate(bill.assent_date)}
             </span>
           </div>
@@ -170,7 +170,7 @@ export function BillHeader({
             target="_blank"
             rel="noopener noreferrer"
             id="btn-official-pdf"
-            className="inline-flex items-center gap-1.5 rounded-lg border border-slate-700 bg-slate-800/80 px-3 py-1.5 text-xs font-medium text-slate-200 hover:bg-slate-700 hover:text-white transition-colors"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-[var(--border-strong)] bg-[var(--bg-elevated)]/80 px-3 py-1.5 text-xs font-medium text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] hover:text-white transition-colors"
           >
             📄 Official PDF ↗
           </a>
@@ -182,7 +182,7 @@ export function BillHeader({
             target="_blank"
             rel="noopener noreferrer"
             id="btn-official-source"
-            className="inline-flex items-center gap-1.5 rounded-lg border border-slate-700 bg-slate-800/80 px-3 py-1.5 text-xs font-medium text-slate-200 hover:bg-slate-700 hover:text-white transition-colors"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-[var(--border-strong)] bg-[var(--bg-elevated)]/80 px-3 py-1.5 text-xs font-medium text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] hover:text-white transition-colors"
           >
             🏛 Official Portal ↗
           </a>
@@ -191,7 +191,7 @@ export function BillHeader({
         <Link
           href={`/bills/compare?bill1=${encodeURIComponent(bill.bill_id)}`}
           id="btn-compare-bill"
-          className="inline-flex items-center gap-1.5 rounded-lg border border-slate-700 bg-slate-800/80 px-3 py-1.5 text-xs font-medium text-slate-200 hover:bg-slate-700 hover:text-white transition-colors"
+          className="inline-flex items-center gap-1.5 rounded-lg border border-[var(--border-strong)] bg-[var(--bg-elevated)]/80 px-3 py-1.5 text-xs font-medium text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] hover:text-white transition-colors"
         >
           ⚖ Compare Bill
         </Link>

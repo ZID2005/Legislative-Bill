@@ -1,0 +1,101 @@
+[
+  {
+    "name": "Stage 1 to Stage 2 Transition",
+    "filename": "stage_1_to_2_transition.webm",
+    "repoPath": "D:\\Legislative-bill\\docs\\recordings\\stage_1_to_2_transition.webm",
+    "artifactPath": "C:\\Users\\sanal\\.gemini\\antigravity\\brain\\53dc565f-b818-41e6-84bf-da465cea7ccc\\recordings\\stage_1_to_2_transition.webm",
+    "cls": 0,
+    "details": {
+      "stage1Visible": true,
+      "stage2Visible": true,
+      "imagesLoaded": true,
+      "imageSources": [
+        "http://127.0.0.1:3000/_next/image?url=%2Fonboarding%2Fstage2_command_center.png&w=3840&q=75",
+        "http://127.0.0.1:3000/_next/image?url=%2Fonboarding%2Fstage2_workspace_telemetry.png&w=3840&q=75"
+      ]
+    }
+  },
+  {
+    "name": "Stage 2 to Stage 3 Transition",
+    "filename": "stage_2_to_3_transition.webm",
+    "repoPath": "D:\\Legislative-bill\\docs\\recordings\\stage_2_to_3_transition.webm",
+    "artifactPath": "C:\\Users\\sanal\\.gemini\\antigravity\\brain\\53dc565f-b818-41e6-84bf-da465cea7ccc\\recordings\\stage_2_to_3_transition.webm",
+    "cls": 0,
+    "details": {
+      "stage3Visible": true,
+      "singleImageActive": true,
+      "imageSource": "http://127.0.0.1:3000/_next/image?url=%2Fonboarding%2Fstage3_exposure_matrix.png&w=3840&q=75"
+    }
+  },
+  {
+    "name": "Reverse Navigation (Backward Direction-Aware Physics)",
+    "filename": "reverse_navigation.webm",
+    "repoPath": "D:\\Legislative-bill\\docs\\recordings\\reverse_navigation.webm",
+    "artifactPath": "C:\\Users\\sanal\\.gemini\\antigravity\\brain\\53dc565f-b818-41e6-84bf-da465cea7ccc\\recordings\\reverse_navigation.webm",
+    "cls": 0,
+    "details": {
+      "statePreserved": true,
+      "reversedToStage2": true
+    }
+  },
+  {
+    "name": "Primary & Secondary Screenshot Movement",
+    "filename": "primary_secondary_movement.webm",
+    "repoPath": "D:\\Legislative-bill\\docs\\recordings\\primary_secondary_movement.webm",
+    "artifactPath": "C:\\Users\\sanal\\.gemini\\antigravity\\brain\\53dc565f-b818-41e6-84bf-da465cea7ccc\\recordings\\primary_secondary_movement.webm",
+    "cls": 0,
+    "details": {
+      "primaryAnim": "550ms cubic-bezier(0.16, 1, 0.3, 1) 0s 1 normal both running fcPrimaryInForward",
+      "secondaryAnim": "650ms cubic-bezier(0.16, 1, 0.3, 1) 0s 1 normal both running fcSecondaryInForward",
+      "primaryZIndex": "10",
+      "secondaryZIndex": "5",
+      "primaryTransform": "matrix(1, 0, 0, 1, 0, 0)",
+      "secondaryTransform": "matrix(0.999507, 0.0314108, -0.0314108, 0.999507, 0, 0)"
+    }
+  },
+  {
+    "name": "Interactive Hover Parallax",
+    "filename": "hover_parallax.webm",
+    "repoPath": "D:\\Legislative-bill\\docs\\recordings\\hover_parallax.webm",
+    "artifactPath": "C:\\Users\\sanal\\.gemini\\antigravity\\brain\\53dc565f-b818-41e6-84bf-da465cea7ccc\\recordings\\hover_parallax.webm",
+    "cls": 0,
+    "details": {
+      "beforeHover": {
+        "pTransform": "matrix(1, 0, 0, 1, 0, 0)",
+        "sTransform": "matrix(0.999507, 0.0314108, -0.0314108, 0.999507, 0, 0)"
+      },
+      "duringHover": {
+        "pTransform": "matrix(1.01, 0, 0, 1.01, -2, -4)",
+        "sTransform": "matrix(1.01895, 0.0462702, -0.0462702, 1.01895, 6, 8)",
+        "pBorder": "rgba(255, 255, 255, 0.24)",
+        "sOpacity": "0.9"
+      },
+      "afterUnhover": {
+        "pTransform": "matrix(1, 0, 0, 1, 0, 0)",
+        "sTransform": "matrix(0.999507, 0.0314108, -0.0314108, 0.999507, 0, 0)"
+      },
+      "parallaxVerified": true
+    }
+  },
+  {
+    "name": "Prefers-Reduced-Motion Accessibility",
+    "filename": "reduced_motion_behavior.webm",
+    "repoPath": "D:\\Legislative-bill\\docs\\recordings\\reduced_motion_behavior.webm",
+    "artifactPath": "C:\\Users\\sanal\\.gemini\\antigravity\\brain\\53dc565f-b818-41e6-84bf-da465cea7ccc\\recordings\\reduced_motion_behavior.webm",
+    "cls": 0,
+    "details": {
+      "reducedMotionApplied": true,
+      "stage3Visible": true
+    }
+  },
+  {
+    "name": "Full 8-Stage Onboarding Motion Walkthrough",
+    "filename": "full_onboarding_walkthrough.webm",
+    "repoPath": "D:\\Legislative-bill\\docs\\recordings\\full_onboarding_walkthrough.webm",
+    "artifactPath": "C:\\Users\\sanal\\.gemini\\antigravity\\brain\\53dc565f-b818-41e6-84bf-da465cea7ccc\\recordings\\full_onboarding_walkthrough.webm",
+    "cls": 0,
+    "details": {
+      "completedAllStages": true
+    }
+  }
+]

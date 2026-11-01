@@ -124,14 +124,14 @@ export function CompanyExposureMatrix({
               <CardTitle>Legislative Exposure Matrix</CardTitle>
               <SourceBadge type="DERIVED" size="xs" showTooltip />
             </div>
-            <span className="text-xs text-slate-400">
+            <span className="text-xs text-[var(--text-muted)]">
               Showing {filteredExposures.length} of {exposures.length} documented bills
             </span>
           </div>
         </CardHeader>
 
         {/* Filter Controls Bar */}
-        <div className="space-y-3 pb-3 border-b border-slate-800">
+        <div className="space-y-3 pb-3 border-b border-[var(--border-default)]">
           {/* Top filter row: Search & Reset */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
             <div className="relative flex-1">
@@ -140,13 +140,13 @@ export function CompanyExposureMatrix({
                 placeholder="Filter by bill title, bill number, or economic mechanism..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full rounded-md border border-slate-700 bg-slate-800/80 px-3 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="w-full rounded-md border border-[var(--border-strong)] bg-[var(--bg-elevated)]/80 px-3 py-1.5 text-xs text-[var(--text-primary)] placeholder-[var(--input-placeholder)] focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                 aria-label="Filter exposures"
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery("")}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 text-xs"
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[var(--text-faint)] hover:text-[var(--text-secondary)] text-xs"
                   aria-label="Clear search"
                 >
                   ✕
@@ -159,7 +159,7 @@ export function CompanyExposureMatrix({
                 variant="ghost"
                 size="sm"
                 onClick={handleResetFilters}
-                className="text-xs text-slate-400 hover:text-white shrink-0"
+                className="text-xs text-[var(--text-muted)] hover:text-white shrink-0"
               >
                 Reset Filters
               </Button>
@@ -170,14 +170,14 @@ export function CompanyExposureMatrix({
           <div className="flex flex-wrap items-center gap-2 text-xs">
             {/* Jurisdiction */}
             <div className="flex items-center gap-1.5">
-              <label htmlFor="jurisdiction-select" className="text-slate-500 font-medium">
+              <label htmlFor="jurisdiction-select" className="text-[var(--text-faint)] font-medium">
                 Jurisdiction:
               </label>
               <select
                 id="jurisdiction-select"
                 value={jurisdictionFilter}
                 onChange={(e) => setJurisdictionFilter(e.target.value)}
-                className="rounded border border-slate-700 bg-slate-800 px-2 py-1 text-slate-300 text-xs focus:border-blue-500 focus:outline-none"
+                className="rounded border border-[var(--border-strong)] bg-[var(--bg-elevated)] px-2 py-1 text-[var(--text-secondary)] text-xs focus:border-blue-500 focus:outline-none"
               >
                 <option value="ALL">All Jurisdictions</option>
                 <option value="CENTRAL">Central Parliament</option>
@@ -187,14 +187,14 @@ export function CompanyExposureMatrix({
 
             {/* Directness */}
             <div className="flex items-center gap-1.5">
-              <label htmlFor="directness-select" className="text-slate-500 font-medium">
+              <label htmlFor="directness-select" className="text-[var(--text-faint)] font-medium">
                 Directness:
               </label>
               <select
                 id="directness-select"
                 value={directnessFilter}
                 onChange={(e) => setDirectnessFilter(e.target.value)}
-                className="rounded border border-slate-700 bg-slate-800 px-2 py-1 text-slate-300 text-xs focus:border-blue-500 focus:outline-none"
+                className="rounded border border-[var(--border-strong)] bg-[var(--bg-elevated)] px-2 py-1 text-[var(--text-secondary)] text-xs focus:border-blue-500 focus:outline-none"
               >
                 <option value="ALL">All Types</option>
                 <option value="DIRECT">Direct Only</option>
@@ -204,14 +204,14 @@ export function CompanyExposureMatrix({
 
             {/* Exposure Strength */}
             <div className="flex items-center gap-1.5">
-              <label htmlFor="strength-select" className="text-slate-500 font-medium">
+              <label htmlFor="strength-select" className="text-[var(--text-faint)] font-medium">
                 Strength:
               </label>
               <select
                 id="strength-select"
                 value={strengthFilter}
                 onChange={(e) => setStrengthFilter(e.target.value)}
-                className="rounded border border-slate-700 bg-slate-800 px-2 py-1 text-slate-300 text-xs focus:border-blue-500 focus:outline-none"
+                className="rounded border border-[var(--border-strong)] bg-[var(--bg-elevated)] px-2 py-1 text-[var(--text-secondary)] text-xs focus:border-blue-500 focus:outline-none"
               >
                 <option value="ALL">All Strengths</option>
                 <option value="HIGH">High</option>
@@ -222,14 +222,14 @@ export function CompanyExposureMatrix({
 
             {/* Market Relevance */}
             <div className="flex items-center gap-1.5">
-              <label htmlFor="market-rel-select" className="text-slate-500 font-medium">
+              <label htmlFor="market-rel-select" className="text-[var(--text-faint)] font-medium">
                 Relevance:
               </label>
               <select
                 id="market-rel-select"
                 value={marketRelFilter}
                 onChange={(e) => setMarketRelFilter(e.target.value)}
-                className="rounded border border-slate-700 bg-slate-800 px-2 py-1 text-slate-300 text-xs focus:border-blue-500 focus:outline-none"
+                className="rounded border border-[var(--border-strong)] bg-[var(--bg-elevated)] px-2 py-1 text-[var(--text-secondary)] text-xs focus:border-blue-500 focus:outline-none"
               >
                 <option value="ALL">All Relevance</option>
                 <option value="HIGH">High</option>
@@ -247,10 +247,10 @@ export function CompanyExposureMatrix({
         {filteredExposures.length === 0 ? (
           <div className="text-center py-10 px-4">
             <span className="text-2xl" aria-hidden="true">🔍</span>
-            <h4 className="text-sm font-semibold text-slate-300 mt-2">
+            <h4 className="text-sm font-semibold text-[var(--text-secondary)] mt-2">
               No matching exposures found
             </h4>
-            <p className="text-xs text-slate-500 mt-1">
+            <p className="text-xs text-[var(--text-faint)] mt-1">
               {isFiltered
                 ? "Try relaxing your search query or filter criteria."
                 : "No verified legislative exposures recorded for this entity."}
@@ -270,7 +270,7 @@ export function CompanyExposureMatrix({
           <div className="overflow-x-auto -mx-6">
             <table className="w-full text-left text-xs border-collapse min-w-[800px]" role="table">
               <thead>
-                <tr className="border-b border-slate-800 bg-slate-900/50 text-slate-400 font-semibold">
+                <tr className="border-b border-[var(--border-default)] bg-[var(--bg-card)]/50 text-[var(--text-muted)] font-semibold">
                   <th scope="col" className="py-2.5 px-4 w-5/12">Legislative Bill</th>
                   <th scope="col" className="py-2.5 px-3 w-2/12">Jurisdiction &amp; State</th>
                   <th scope="col" className="py-2.5 px-3 w-2/12">Vector &amp; Strength</th>
@@ -278,28 +278,41 @@ export function CompanyExposureMatrix({
                   <th scope="col" className="py-2.5 px-3 w-1/12 text-center">Evidence</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60">
+              <tbody className="divide-y divide-[var(--border-default)]/60">
                 {filteredExposures.map((exp) => {
                   const isCentral = exp.jurisdiction?.toLowerCase() === "central";
                   return (
                     <tr
                       key={`${exp.bill_id}-${exp.exposure_type}`}
-                      className="hover:bg-slate-800/40 transition-colors"
+                      className="hover:bg-[var(--bg-elevated)]/40 transition-colors"
                     >
                       {/* Bill Title & Number */}
                       <td className="py-3 px-4">
                         <Link
                           href={`/bills/${encodeURIComponent(exp.bill_id)}`}
-                          className="font-semibold text-slate-200 hover:text-blue-400 transition-colors block text-sm leading-snug"
+                          className="font-semibold text-[var(--text-primary)] hover:text-blue-400 transition-colors block text-sm leading-snug"
                         >
                           {exp.bill_title}
                         </Link>
-                        <div className="flex flex-wrap items-center gap-2 mt-1 text-[11px] text-slate-500">
+                        <div className="flex flex-wrap items-center gap-2 mt-1 text-[11px] text-[var(--text-faint)]">
                           {exp.bill_number && <span>{exp.bill_number}</span>}
                           {exp.sector && <span>• {exp.sector}</span>}
                           {exp.bill_status && (
-                            <span className="capitalize text-slate-400">
+                            <span className="capitalize text-[var(--text-muted)]">
                               • {exp.bill_status.replace(/_/g, " ")}
+                            </span>
+                          )}
+                          {isCentral ? (
+                            <Link
+                              href={`/bills/${encodeURIComponent(exp.bill_id)}?tab=predictions`}
+                              className="text-emerald-400 hover:underline font-semibold"
+                              title="View bill predictions"
+                            >
+                              • Market Modelled ↗
+                            </Link>
+                          ) : (
+                            <span className="text-cyan-400 font-mono text-[10px]">
+                              • Statutory Fact (0 Stock Predictions)
                             </span>
                           )}
                         </div>
@@ -318,7 +331,7 @@ export function CompanyExposureMatrix({
                           {exp.state && (
                             <Link
                               href={`/states/${encodeURIComponent(exp.state)}`}
-                              className="text-[11px] text-slate-400 hover:text-white transition-colors"
+                              className="text-[11px] text-[var(--text-muted)] hover:text-white transition-colors"
                             >
                               {exp.state}
                             </Link>
@@ -336,12 +349,12 @@ export function CompanyExposureMatrix({
                             size="xs"
                           />
                           {exp.market_relevance && exp.market_relevance !== "NONE" && (
-                            <div className="text-[10px] text-slate-500 flex items-center gap-1">
+                            <div className="text-[10px] text-[var(--text-faint)] flex items-center gap-1">
                               <span>Relevance:</span>
-                              <span className="font-semibold text-slate-300">
+                              <span className="font-semibold text-[var(--text-secondary)]">
                                 {exp.market_relevance}
                               </span>
-                              <span className="text-[9px] text-slate-500">(Qualitative)</span>
+                              <span className="text-[9px] text-[var(--text-faint)]">(Qualitative)</span>
                             </div>
                           )}
                         </div>
@@ -349,11 +362,11 @@ export function CompanyExposureMatrix({
 
                       {/* Economic Mechanism */}
                       <td className="py-3 px-3">
-                        <span className="inline-block rounded bg-slate-800/80 border border-slate-700/60 px-2 py-1 text-slate-300 text-[11px] font-medium">
+                        <span className="inline-block rounded bg-[var(--bg-elevated)]/80 border border-[var(--border-strong)]/60 px-2 py-1 text-[var(--text-secondary)] text-[11px] font-medium">
                           {exp.mechanism || "Direct statutory governance"}
                         </span>
                         {exp.business_activity && (
-                          <span className="block text-[11px] text-slate-500 mt-0.5 truncate max-w-xs">
+                          <span className="block text-[11px] text-[var(--text-faint)] mt-0.5 truncate max-w-xs">
                             Activity: {exp.business_activity}
                           </span>
                         )}
@@ -392,23 +405,23 @@ export function CompanyExposureMatrix({
           aria-modal="true"
           aria-labelledby="evidence-drawer-title"
         >
-          <div className="w-full max-w-xl rounded-xl border border-slate-800 bg-slate-900 p-6 shadow-2xl space-y-4 max-h-[85vh] overflow-y-auto">
+          <div className="w-full max-w-xl rounded-xl border border-[var(--border-default)] bg-[var(--bg-card)] p-6 shadow-2xl space-y-4 max-h-[85vh] overflow-y-auto">
             {/* Header */}
-            <div className="flex items-start justify-between gap-3 border-b border-slate-800 pb-3">
+            <div className="flex items-start justify-between gap-3 border-b border-[var(--border-default)] pb-3">
               <div>
                 <div className="flex items-center gap-2">
-                  <h3 id="evidence-drawer-title" className="text-sm font-semibold text-slate-100">
+                  <h3 id="evidence-drawer-title" className="text-sm font-semibold text-[var(--text-primary)]">
                     Statutory &amp; Corporate Evidence
                   </h3>
                   <SourceBadge type="FACT" size="xs" />
                 </div>
-                <p className="text-xs text-slate-400 mt-0.5 font-medium">
+                <p className="text-xs text-[var(--text-muted)] mt-0.5 font-medium">
                   {selectedExposure.bill_title}
                 </p>
               </div>
               <button
                 onClick={() => setSelectedExposure(null)}
-                className="text-slate-400 hover:text-white text-base p-1"
+                className="text-[var(--text-muted)] hover:text-white text-base p-1"
                 aria-label="Close evidence modal"
               >
                 ✕
@@ -416,26 +429,26 @@ export function CompanyExposureMatrix({
             </div>
 
             {/* Exposure Details */}
-            <div className="grid grid-cols-2 gap-2 text-xs bg-slate-800/40 p-3 rounded-lg border border-slate-800">
+            <div className="grid grid-cols-2 gap-2 text-xs bg-[var(--bg-elevated)]/40 p-3 rounded-lg border border-[var(--border-default)]">
               <div>
-                <span className="text-slate-500">Jurisdiction:</span>{" "}
-                <span className="text-slate-200 capitalize font-medium">
+                <span className="text-[var(--text-faint)]">Jurisdiction:</span>{" "}
+                <span className="text-[var(--text-primary)] capitalize font-medium">
                   {selectedExposure.jurisdiction} {selectedExposure.state && `(${selectedExposure.state})`}
                 </span>
               </div>
               <div>
-                <span className="text-slate-500">Strength:</span>{" "}
-                <span className="text-slate-200 font-medium">
+                <span className="text-[var(--text-faint)]">Strength:</span>{" "}
+                <span className="text-[var(--text-primary)] font-medium">
                   {selectedExposure.exposure_strength} ({selectedExposure.direct_indirect})
                 </span>
               </div>
               <div>
-                <span className="text-slate-500">Mechanism:</span>{" "}
-                <span className="text-slate-200 font-medium">{selectedExposure.mechanism}</span>
+                <span className="text-[var(--text-faint)]">Mechanism:</span>{" "}
+                <span className="text-[var(--text-primary)] font-medium">{selectedExposure.mechanism}</span>
               </div>
               <div>
-                <span className="text-slate-500">Market Relevance:</span>{" "}
-                <span className="text-slate-200 font-medium">
+                <span className="text-[var(--text-faint)]">Market Relevance:</span>{" "}
+                <span className="text-[var(--text-primary)] font-medium">
                   {selectedExposure.market_relevance || "NONE"}
                 </span>
               </div>
@@ -443,7 +456,7 @@ export function CompanyExposureMatrix({
 
             {/* Evidence Claims List */}
             <div className="space-y-3">
-              <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
+              <h4 className="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider">
                 Documented Claims &amp; References
               </h4>
 
@@ -452,12 +465,12 @@ export function CompanyExposureMatrix({
                   {selectedExposure.evidence.map((ev, idx) => (
                     <div
                       key={idx}
-                      className="rounded-lg border border-slate-800 bg-slate-800/30 p-3 space-y-1.5 text-xs"
+                      className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-elevated)]/30 p-3 space-y-1.5 text-xs"
                     >
-                      <p className="text-slate-200 leading-relaxed font-medium">
+                      <p className="text-[var(--text-primary)] leading-relaxed font-medium">
                         "{ev.claim}"
                       </p>
-                      <div className="flex flex-wrap items-center gap-2 text-[11px] text-slate-400">
+                      <div className="flex flex-wrap items-center gap-2 text-[11px] text-[var(--text-muted)]">
                         {ev.reference && <span>Source: {ev.reference}</span>}
                         {ev.statutory_section && (
                           <span className="font-mono text-cyan-400">
@@ -479,7 +492,7 @@ export function CompanyExposureMatrix({
                   ))}
                 </div>
               ) : (
-                <p className="text-xs text-slate-500 italic p-3 bg-slate-800/20 rounded border border-slate-800">
+                <p className="text-xs text-[var(--text-faint)] italic p-3 bg-[var(--bg-elevated)]/20 rounded border border-[var(--border-default)]">
                   Evidence is validated against official parliamentary records and regulatory filings.
                 </p>
               )}
@@ -487,8 +500,8 @@ export function CompanyExposureMatrix({
 
             {/* Source URLs */}
             {selectedExposure.source_urls && selectedExposure.source_urls.length > 0 && (
-              <div className="space-y-1 pt-2 border-t border-slate-800">
-                <span className="text-[11px] text-slate-500 block">Authoritative URLs:</span>
+              <div className="space-y-1 pt-2 border-t border-[var(--border-default)]">
+                <span className="text-[11px] text-[var(--text-faint)] block">Authoritative URLs:</span>
                 <div className="flex flex-wrap gap-2 text-xs">
                   {selectedExposure.source_urls.map((url, i) => (
                     <a
@@ -506,13 +519,23 @@ export function CompanyExposureMatrix({
             )}
 
             {/* Modal Actions */}
-            <div className="flex items-center justify-between pt-3 border-t border-slate-800">
-              <Link
-                href={`/bills/${encodeURIComponent(selectedExposure.bill_id)}`}
-                className="text-xs text-blue-400 hover:underline font-medium"
-              >
-                Open Full Bill Dossier ↗
-              </Link>
+            <div className="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-[var(--border-default)]">
+              <div className="flex flex-wrap items-center gap-3">
+                <Link
+                  href={`/bills/${encodeURIComponent(selectedExposure.bill_id)}`}
+                  className="text-xs text-blue-400 hover:underline font-medium"
+                >
+                  Open Full Bill Dossier ↗
+                </Link>
+                {selectedExposure.jurisdiction?.toLowerCase() === "central" && (
+                  <Link
+                    href={`/bills/${encodeURIComponent(selectedExposure.bill_id)}?tab=predictions`}
+                    className="text-xs text-emerald-400 hover:underline font-medium"
+                  >
+                    View Market Predictions ↗
+                  </Link>
+                )}
+              </div>
               <Button
                 variant="outline"
                 size="sm"

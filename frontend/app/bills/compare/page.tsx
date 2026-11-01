@@ -1,4 +1,4 @@
-/**
+﻿/**
  * app/bills/compare/page.tsx
  * ===========================
  * Task 8.31C — Institutional Statutory Comparison Workspace.
@@ -117,16 +117,16 @@ export default function BillComparisonPage() {
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="text-xl">⚖</span>
-            <h1 className="text-xl font-bold text-white tracking-tight">Statutory Comparison Workbench</h1>
+            <h1 className="text-xl font-bold text-[var(--text-primary)] tracking-tight">Statutory Comparison Workbench</h1>
             <EpistemicBadge type="FACT" size="xs" />
           </div>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-[var(--text-muted)]">
             Side-by-side analytical comparison of provisions, corporate exposure overlap, and market transmission.
           </p>
         </div>
         <Link
           href="/bills"
-          className="text-xs text-slate-400 hover:text-white px-3 py-1.5 rounded border border-white/10 bg-white/5 transition-colors self-start sm:self-auto"
+          className="text-xs text-[var(--text-muted)] hover:text-white px-3 py-1.5 rounded border border-white/10 bg-white/5 transition-colors self-start sm:self-auto"
         >
           ← Back to Bills Directory
         </Link>
@@ -138,7 +138,7 @@ export default function BillComparisonPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-[#0c1322] border border-white/10 rounded-lg p-4">
         {/* Left Bill Picker */}
         <div className="space-y-1.5">
-          <label className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider flex items-center justify-between">
+          <label className="text-[11px] font-semibold text-[var(--text-muted)] uppercase tracking-wider flex items-center justify-between">
             <span>Primary Enactment (Side A)</span>
             {billA && <CapabilityBadge level={getCapabilityLevel(billA.bill.jurisdiction, billA.bill.modeling_eligibility)} />}
           </label>
@@ -146,7 +146,7 @@ export default function BillComparisonPage() {
             value={billAId}
             onChange={(e) => setBillAId(e.target.value)}
             disabled={loadingList}
-            className="w-full bg-[#070b12] border border-white/10 rounded-md px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-indigo-500"
+            className="w-full bg-[#070b12] border border-white/10 rounded-md px-3 py-2 text-xs text-[var(--text-primary)] focus:outline-none focus:border-indigo-500"
           >
             {billsList.map((b) => (
               <option key={b.bill_id} value={b.bill_id}>
@@ -158,7 +158,7 @@ export default function BillComparisonPage() {
 
         {/* Right Bill Picker */}
         <div className="space-y-1.5">
-          <label className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider flex items-center justify-between">
+          <label className="text-[11px] font-semibold text-[var(--text-muted)] uppercase tracking-wider flex items-center justify-between">
             <span>Comparison Enactment (Side B)</span>
             {billB && <CapabilityBadge level={getCapabilityLevel(billB.bill.jurisdiction, billB.bill.modeling_eligibility)} />}
           </label>
@@ -166,7 +166,7 @@ export default function BillComparisonPage() {
             value={billBId}
             onChange={(e) => setBillBId(e.target.value)}
             disabled={loadingList}
-            className="w-full bg-[#070b12] border border-white/10 rounded-md px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-indigo-500"
+            className="w-full bg-[#070b12] border border-white/10 rounded-md px-3 py-2 text-xs text-[var(--text-primary)] focus:outline-none focus:border-indigo-500"
           >
             {billsList.map((b) => (
               <option key={b.bill_id} value={b.bill_id}>
@@ -189,43 +189,43 @@ export default function BillComparisonPage() {
           {/* Section 1: Statutory Metadata Comparison */}
           <div className="bg-[#0c1322] border border-white/10 rounded-lg overflow-hidden">
             <div className="px-4 py-3 bg-[#090e18] border-b border-white/10 flex items-center justify-between">
-              <h2 className="text-xs font-semibold text-slate-200 uppercase tracking-wider">
+              <h2 className="text-xs font-semibold text-[var(--text-primary)] uppercase tracking-wider">
                 1. Institutional Statutory Profiles
               </h2>
-              <span className="text-[10px] font-mono text-slate-500">Side-by-Side Metadata</span>
+              <span className="text-[10px] font-mono text-[var(--text-faint)]">Side-by-Side Metadata</span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/10">
               {/* Bill A Profile */}
               <div className="p-4 space-y-3">
                 <div>
-                  <h3 className="text-sm font-bold text-white leading-snug">{billA.bill.title}</h3>
-                  <p className="text-[11px] font-mono text-slate-400 mt-0.5">{billA.bill.bill_number || "Statutory Act"}</p>
+                  <h3 className="text-sm font-bold text-[var(--text-primary)] leading-snug">{billA.bill.title}</h3>
+                  <p className="text-[11px] font-mono text-[var(--text-muted)] mt-0.5">{billA.bill.bill_number || "Statutory Act"}</p>
                 </div>
-                <div className="space-y-1.5 text-xs text-slate-300">
+                <div className="space-y-1.5 text-xs text-[var(--text-secondary)]">
                   <div className="flex justify-between py-1 border-b border-white/5">
-                    <span className="text-slate-500">Jurisdiction</span>
-                    <span className="font-medium text-slate-200 uppercase">{billA.bill.jurisdiction} {billA.bill.state ? `(${billA.bill.state})` : ""}</span>
+                    <span className="text-[var(--text-faint)]">Jurisdiction</span>
+                    <span className="font-medium text-[var(--text-primary)] uppercase">{billA.bill.jurisdiction} {billA.bill.state ? `(${billA.bill.state})` : ""}</span>
                   </div>
                   <div className="flex justify-between py-1 border-b border-white/5">
-                    <span className="text-slate-500">Chamber</span>
+                    <span className="text-[var(--text-faint)]">Chamber</span>
                     <span>{billA.bill.house || "Parliament"}</span>
                   </div>
                   <div className="flex justify-between py-1 border-b border-white/5">
-                    <span className="text-slate-500">Status</span>
+                    <span className="text-[var(--text-faint)]">Status</span>
                     <span className="font-mono text-emerald-400 font-semibold">{billA.bill.status}</span>
                   </div>
                   <div className="flex justify-between py-1 border-b border-white/5">
-                    <span className="text-slate-500">Enactment Date</span>
+                    <span className="text-[var(--text-faint)]">Enactment Date</span>
                     <span className="font-mono">{billA.bill.introduction_date || "—"}</span>
                   </div>
                   <div className="flex justify-between py-1 border-b border-white/5">
-                    <span className="text-slate-500">Policy Domain</span>
+                    <span className="text-[var(--text-faint)]">Policy Domain</span>
                     <span>{billA.bill.policy_domain || "Regulatory"}</span>
                   </div>
                   <div className="flex justify-between py-1 border-b border-white/5">
-                    <span className="text-slate-500">Exposures Documented</span>
-                    <span className="font-mono font-bold text-slate-100">{exposuresA.length} entities</span>
+                    <span className="text-[var(--text-faint)]">Exposures Documented</span>
+                    <span className="font-mono font-bold text-[var(--text-primary)]">{exposuresA.length} entities</span>
                   </div>
                 </div>
                 <div className="pt-2">
@@ -241,33 +241,33 @@ export default function BillComparisonPage() {
               {/* Bill B Profile */}
               <div className="p-4 space-y-3">
                 <div>
-                  <h3 className="text-sm font-bold text-white leading-snug">{billB.bill.title}</h3>
-                  <p className="text-[11px] font-mono text-slate-400 mt-0.5">{billB.bill.bill_number || "Statutory Act"}</p>
+                  <h3 className="text-sm font-bold text-[var(--text-primary)] leading-snug">{billB.bill.title}</h3>
+                  <p className="text-[11px] font-mono text-[var(--text-muted)] mt-0.5">{billB.bill.bill_number || "Statutory Act"}</p>
                 </div>
-                <div className="space-y-1.5 text-xs text-slate-300">
+                <div className="space-y-1.5 text-xs text-[var(--text-secondary)]">
                   <div className="flex justify-between py-1 border-b border-white/5">
-                    <span className="text-slate-500">Jurisdiction</span>
-                    <span className="font-medium text-slate-200 uppercase">{billB.bill.jurisdiction} {billB.bill.state ? `(${billB.bill.state})` : ""}</span>
+                    <span className="text-[var(--text-faint)]">Jurisdiction</span>
+                    <span className="font-medium text-[var(--text-primary)] uppercase">{billB.bill.jurisdiction} {billB.bill.state ? `(${billB.bill.state})` : ""}</span>
                   </div>
                   <div className="flex justify-between py-1 border-b border-white/5">
-                    <span className="text-slate-500">Chamber</span>
+                    <span className="text-[var(--text-faint)]">Chamber</span>
                     <span>{billB.bill.house || "Parliament"}</span>
                   </div>
                   <div className="flex justify-between py-1 border-b border-white/5">
-                    <span className="text-slate-500">Status</span>
+                    <span className="text-[var(--text-faint)]">Status</span>
                     <span className="font-mono text-emerald-400 font-semibold">{billB.bill.status}</span>
                   </div>
                   <div className="flex justify-between py-1 border-b border-white/5">
-                    <span className="text-slate-500">Enactment Date</span>
+                    <span className="text-[var(--text-faint)]">Enactment Date</span>
                     <span className="font-mono">{billB.bill.introduction_date || "—"}</span>
                   </div>
                   <div className="flex justify-between py-1 border-b border-white/5">
-                    <span className="text-slate-500">Policy Domain</span>
+                    <span className="text-[var(--text-faint)]">Policy Domain</span>
                     <span>{billB.bill.policy_domain || "Regulatory"}</span>
                   </div>
                   <div className="flex justify-between py-1 border-b border-white/5">
-                    <span className="text-slate-500">Exposures Documented</span>
-                    <span className="font-mono font-bold text-slate-100">{exposuresB.length} entities</span>
+                    <span className="text-[var(--text-faint)]">Exposures Documented</span>
+                    <span className="font-mono font-bold text-[var(--text-primary)]">{exposuresB.length} entities</span>
                   </div>
                 </div>
                 <div className="pt-2">
@@ -285,10 +285,10 @@ export default function BillComparisonPage() {
           {/* Section 2: Corporate Exposure Overlap Analysis */}
           <div className="bg-[#0c1322] border border-white/10 rounded-lg overflow-hidden">
             <div className="px-4 py-3 bg-[#090e18] border-b border-white/10 flex items-center justify-between">
-              <h2 className="text-xs font-semibold text-slate-200 uppercase tracking-wider">
+              <h2 className="text-xs font-semibold text-[var(--text-primary)] uppercase tracking-wider">
                 2. Corporate Exposure Overlap Matrix
               </h2>
-              <span className="text-[10px] font-mono text-slate-500">
+              <span className="text-[10px] font-mono text-[var(--text-faint)]">
                 {overlapAnalysis.common.length} Overlapping Entities
               </span>
             </div>
@@ -307,8 +307,8 @@ export default function BillComparisonPage() {
                         className="p-2.5 rounded bg-amber-950/20 border border-amber-500/30 flex items-center justify-between"
                       >
                         <div>
-                          <p className="text-xs font-semibold text-slate-100">{exp.company_name}</p>
-                          <p className="text-[10px] font-mono text-slate-400">{exp.sector || exp.company_id}</p>
+                          <p className="text-xs font-semibold text-[var(--text-primary)]">{exp.company_name}</p>
+                          <p className="text-[10px] font-mono text-[var(--text-muted)]">{exp.sector || exp.company_id}</p>
                         </div>
                         <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 uppercase">
                           DUAL IMPACT
@@ -318,7 +318,7 @@ export default function BillComparisonPage() {
                   </div>
                 </div>
               ) : (
-                <div className="text-xs text-slate-400 italic">
+                <div className="text-xs text-[var(--text-muted)] italic">
                   No direct corporate exposure overlap detected between these two enactments.
                 </div>
               )}
@@ -326,28 +326,28 @@ export default function BillComparisonPage() {
               {/* Side A Unique Exposures vs Side B Unique Exposures */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-white/5">
                 <div>
-                  <h4 className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                  <h4 className="text-[11px] font-semibold text-[var(--text-muted)] uppercase tracking-wider mb-2">
                     Exclusively Exposed to {billA.bill.short_title || billA.bill.title} ({overlapAnalysis.uniqueA.length}):
                   </h4>
                   <div className="space-y-1 max-h-48 overflow-y-auto pr-1">
                     {overlapAnalysis.uniqueA.slice(0, 8).map((exp) => (
                       <div key={exp.company_id || exp.company_name} className="flex items-center justify-between text-xs py-1 border-b border-white/5">
-                        <span className="text-slate-300 truncate">{exp.company_name}</span>
-                        <span className="font-mono text-[10px] text-slate-500">{exp.exposure_type || "DIRECT"}</span>
+                        <span className="text-[var(--text-secondary)] truncate">{exp.company_name}</span>
+                        <span className="font-mono text-[10px] text-[var(--text-faint)]">{exp.exposure_type || "DIRECT"}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
                 <div>
-                  <h4 className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                  <h4 className="text-[11px] font-semibold text-[var(--text-muted)] uppercase tracking-wider mb-2">
                     Exclusively Exposed to {billB.bill.short_title || billB.bill.title} ({overlapAnalysis.uniqueB.length}):
                   </h4>
                   <div className="space-y-1 max-h-48 overflow-y-auto pr-1">
                     {overlapAnalysis.uniqueB.slice(0, 8).map((exp) => (
                       <div key={exp.company_id || exp.company_name} className="flex items-center justify-between text-xs py-1 border-b border-white/5">
-                        <span className="text-slate-300 truncate">{exp.company_name}</span>
-                        <span className="font-mono text-[10px] text-slate-500">{exp.exposure_type || "DIRECT"}</span>
+                        <span className="text-[var(--text-secondary)] truncate">{exp.company_name}</span>
+                        <span className="font-mono text-[10px] text-[var(--text-faint)]">{exp.exposure_type || "DIRECT"}</span>
                       </div>
                     ))}
                   </div>
@@ -359,26 +359,26 @@ export default function BillComparisonPage() {
           {/* Section 3: Statutory Provisions Diff */}
           <div className="bg-[#0c1322] border border-white/10 rounded-lg overflow-hidden">
             <div className="px-4 py-3 bg-[#090e18] border-b border-white/10 flex items-center justify-between">
-              <h2 className="text-xs font-semibold text-slate-200 uppercase tracking-wider">
+              <h2 className="text-xs font-semibold text-[var(--text-primary)] uppercase tracking-wider">
                 3. Key Statutory Provisions Comparison
               </h2>
-              <span className="text-[10px] font-mono text-slate-500">Section Analysis</span>
+              <span className="text-[10px] font-mono text-[var(--text-faint)]">Section Analysis</span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/10">
               {/* Provisions A */}
               <div className="p-4 space-y-2">
-                <h4 className="text-xs font-semibold text-slate-300 mb-2">
+                <h4 className="text-xs font-semibold text-[var(--text-secondary)] mb-2">
                   {billA.bill.title} Provisions ({billA.provisions.length}):
                 </h4>
                 {billA.provisions.length === 0 ? (
-                  <p className="text-xs text-slate-500 italic">No provision clauses recorded.</p>
+                  <p className="text-xs text-[var(--text-faint)] italic">No provision clauses recorded.</p>
                 ) : (
                   <div className="space-y-2 max-h-64 overflow-y-auto pr-1">
                     {billA.provisions.map((p, idx) => (
                       <div key={idx} className="p-2 rounded bg-white/[0.02] border border-white/5 space-y-1">
                         <span className="text-[10px] font-mono text-indigo-400 font-semibold">{`Clause ${idx + 1}`}</span>
-                        <p className="text-xs text-slate-300 leading-relaxed">{p}</p>
+                        <p className="text-xs text-[var(--text-secondary)] leading-relaxed">{p}</p>
                       </div>
                     ))}
                   </div>
@@ -387,17 +387,17 @@ export default function BillComparisonPage() {
 
               {/* Provisions B */}
               <div className="p-4 space-y-2">
-                <h4 className="text-xs font-semibold text-slate-300 mb-2">
+                <h4 className="text-xs font-semibold text-[var(--text-secondary)] mb-2">
                   {billB.bill.title} Provisions ({billB.provisions.length}):
                 </h4>
                 {billB.provisions.length === 0 ? (
-                  <p className="text-xs text-slate-500 italic">No provision clauses recorded.</p>
+                  <p className="text-xs text-[var(--text-faint)] italic">No provision clauses recorded.</p>
                 ) : (
                   <div className="space-y-2 max-h-64 overflow-y-auto pr-1">
                     {billB.provisions.map((p, idx) => (
                       <div key={idx} className="p-2 rounded bg-white/[0.02] border border-white/5 space-y-1">
                         <span className="text-[10px] font-mono text-indigo-400 font-semibold">{`Clause ${idx + 1}`}</span>
-                        <p className="text-xs text-slate-300 leading-relaxed">{p}</p>
+                        <p className="text-xs text-[var(--text-secondary)] leading-relaxed">{p}</p>
                       </div>
                     ))}
                   </div>

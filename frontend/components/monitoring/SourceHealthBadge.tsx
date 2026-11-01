@@ -1,4 +1,4 @@
-/**
+﻿/**
  * components/monitoring/SourceHealthBadge.tsx
  * =============================================
  * Status badge for monitoring source health.
@@ -50,13 +50,13 @@ const STATUS_CONFIG: Record<string, { label: string; icon: string; color: string
   PLANNED: {
     label: "Planned",
     icon: "◦",
-    color: "bg-slate-500/15 text-slate-400 border-slate-500/30",
+    color: "bg-slate-500/15 text-[var(--text-muted)] border-slate-500/30",
     description: "Source is planned but not yet implemented",
   },
   NOT_IMPLEMENTED: {
     label: "Not Implemented",
     icon: "–",
-    color: "bg-slate-500/15 text-slate-400 border-slate-500/30",
+    color: "bg-slate-500/15 text-[var(--text-muted)] border-slate-500/30",
     description: "Source is configured but not yet implemented",
   },
   ERROR: {
@@ -68,7 +68,7 @@ const STATUS_CONFIG: Record<string, { label: string; icon: string; color: string
   DISABLED: {
     label: "Disabled",
     icon: "○",
-    color: "bg-slate-600/15 text-slate-500 border-slate-600/30",
+    color: "bg-slate-600/15 text-[var(--text-faint)] border-slate-600/30",
     description: "Source monitoring is disabled",
   },
   NEVER_CHECKED: {
@@ -84,7 +84,7 @@ export function SourceHealthBadge({ status, className = "", size = "sm" }: Sourc
   const cfg = STATUS_CONFIG[key] ?? {
     label: status,
     icon: "?",
-    color: "bg-slate-500/15 text-slate-400 border-slate-500/30",
+    color: "bg-slate-500/15 text-[var(--text-muted)] border-slate-500/30",
     description: status,
   };
 

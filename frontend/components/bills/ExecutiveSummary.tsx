@@ -1,4 +1,4 @@
-/**
+﻿/**
  * components/bills/ExecutiveSummary.tsx
  * =====================================
  * Executive Summary component for the Bill Detail Dossier.
@@ -33,49 +33,49 @@ export function ExecutiveSummary({ bill, className = "" }: ExecutiveSummaryProps
           </div>
         </CardHeader>
         <div className="space-y-4">
-          <p className="text-sm text-slate-300 leading-relaxed font-normal">
+          <p className="text-sm text-[var(--text-secondary)] leading-relaxed font-normal">
             {summaryText}
           </p>
 
           {/* Quick Metrics Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5 pt-2 border-t border-slate-800/80">
-            <div className="rounded-md border border-slate-800/80 bg-slate-900/60 p-2.5">
-              <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5 pt-2 border-t border-[var(--border-default)]/80">
+            <div className="rounded-md border border-[var(--border-default)]/80 bg-[var(--bg-card)]/60 p-2.5">
+              <p className="text-[10px] font-semibold text-[var(--text-faint)] uppercase tracking-wider mb-0.5">
                 Policy Domain
               </p>
-              <p className="text-xs font-medium text-slate-200 truncate">
+              <p className="text-xs font-medium text-[var(--text-primary)] truncate">
                 {bill.policy_domain || "General Legislation"}
               </p>
             </div>
 
-            <div className="rounded-md border border-slate-800/80 bg-slate-900/60 p-2.5">
-              <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5">
+            <div className="rounded-md border border-[var(--border-default)]/80 bg-[var(--bg-card)]/60 p-2.5">
+              <p className="text-[10px] font-semibold text-[var(--text-faint)] uppercase tracking-wider mb-0.5">
                 Primary Sector
               </p>
-              <p className="text-xs font-medium text-slate-200 truncate">
+              <p className="text-xs font-medium text-[var(--text-primary)] truncate">
                 {bill.economic_sectors && bill.economic_sectors.length > 0
                   ? bill.economic_sectors[0]
                   : "Multi-sectoral"}
               </p>
             </div>
 
-            <div className="rounded-md border border-slate-800/80 bg-slate-900/60 p-2.5">
-              <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5">
+            <div className="rounded-md border border-[var(--border-default)]/80 bg-[var(--bg-card)]/60 p-2.5">
+              <p className="text-[10px] font-semibold text-[var(--text-faint)] uppercase tracking-wider mb-0.5">
                 Corporate Exposures
               </p>
-              <p className="text-xs font-medium text-slate-200">
+              <p className="text-xs font-medium text-[var(--text-primary)]">
                 {bill.company_exposure_count} verified{" "}
-                <span className="text-[11px] text-slate-400">
+                <span className="text-[11px] text-[var(--text-muted)]">
                   ({bill.listed_company_exposure_count} listed)
                 </span>
               </p>
             </div>
 
-            <div className="rounded-md border border-slate-800/80 bg-slate-900/60 p-2.5">
-              <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5">
+            <div className="rounded-md border border-[var(--border-default)]/80 bg-[var(--bg-card)]/60 p-2.5">
+              <p className="text-[10px] font-semibold text-[var(--text-faint)] uppercase tracking-wider mb-0.5">
                 Market Relevance
               </p>
-              <p className="text-xs font-medium text-slate-200">
+              <p className="text-xs font-medium text-[var(--text-primary)]">
                 {bill.market_relevance}
               </p>
             </div>

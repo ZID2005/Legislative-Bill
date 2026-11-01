@@ -500,6 +500,13 @@ class Settings:
     RATE_LIMIT_AI_RPM: int = _env_int("RATE_LIMIT_AI_RPM", 30)
     RATE_LIMIT_MONITORING_RPM: int = _env_int("RATE_LIMIT_MONITORING_RPM", 10)
 
+    # Task 8.31E-A — Groq AI Assistant Settings
+    GROQ_API_KEY: str = _env("GROQ_API_KEY", "")
+    GROQ_MODEL: str = _env("GROQ_MODEL", "openai/gpt-oss-120b")
+    GROQ_TIMEOUT: float = float(os.getenv("GROQ_TIMEOUT", "30.0"))
+    GROQ_MAX_TOKENS: int = _env_int("GROQ_MAX_TOKENS", 1024)
+    GROQ_TEMPERATURE: float = float(os.getenv("GROQ_TEMPERATURE", "0.2"))
+
     def ensure_directories(self) -> None:
         """Create all required project directories if they do not already exist."""
         dirs = [

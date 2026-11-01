@@ -1,19 +1,20 @@
 /**
  * components/ui/ContextDrawer.tsx
  * ================================
- * Task 8.31C — Slide-over Contextual Intelligence Drawer.
+ * Slide-over Contextual Intelligence Drawer for Seance.
  *
  * Implements accessible slide-over pane:
  * - Traps focus & listens for Escape
- * - Hairline institutional borders
- * - Smooth transition (150-200ms)
- * - Header with title, subtitle, epistemic badge, and close button
+ * - Hairline institutional borders and backdrop blur
+ * - Smooth CSS transitions (transform and opacity)
+ * - Header with title, subtitle, epistemic badge, and accessible close button
  */
 
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
+import { CloseIcon } from "./Icons";
 
 export interface ContextDrawerProps {
   open: boolean;
@@ -36,6 +37,8 @@ export function ContextDrawer({
   width = "max-w-xl",
   footer,
 }: ContextDrawerProps) {
+  const panelRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (!open) return;
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -58,7 +61,7 @@ export function ContextDrawer({
     >
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/70 backdrop-blur-xs transition-opacity duration-200"
+        className="fixed inset-0 bg-[var(--overlay-backdrop)] backdrop-blur-xs transition-opacity duration-200"
         onClick={onClose}
         aria-hidden="true"
       />
@@ -66,31 +69,30 @@ export function ContextDrawer({
       {/* Slide-over panel */}
       <div className="fixed inset-y-0 right-0 flex max-w-full pl-10">
         <div
+          ref={panelRef}
           className={cn(
-            "w-screen bg-[#0c1322] border-l border-white/10 shadow-2xl flex flex-col transform transition-transform duration-200 ease-out",
+            "w-screen bg-[var(--bg-surface)] border-l border-[var(--border-default)] shadow-2xl flex flex-col transform transition-transform duration-200 ease-out",
             width
           )}
         >
           {/* Header */}
-          <div className="px-6 py-4 border-b border-white/10 bg-[#090e18] flex items-start justify-between gap-4">
+          <div className="px-6 py-4 border-b border-[var(--border-default)] bg-[var(--bg-base)] flex items-start justify-between gap-4 flex-shrink-0">
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-2">
-                <h2 className="text-sm font-semibold text-slate-100 truncate">{title}</h2>
+                <h2 className="text-sm font-semibold text-[var(--text-primary)] truncate">{title}</h2>
                 {badge}
               </div>
               {subtitle && (
-                <p className="text-xs text-slate-400 mt-0.5 line-clamp-1">{subtitle}</p>
+                <p className="text-xs text-[var(--text-muted)] mt-0.5 line-clamp-1">{subtitle}</p>
               )}
             </div>
             <button
               type="button"
               onClick={onClose}
-              className="text-slate-400 hover:text-slate-200 p-1 rounded-md hover:bg-white/5 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-indigo-500"
+              className="text-[var(--text-muted)] hover:text-[var(--text-primary)] p-1.5 rounded-lg hover:bg-[var(--bg-card-hover)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)]"
               aria-label="Close drawer"
             >
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
+              <CloseIcon size="sm" />
             </button>
           </div>
 
@@ -101,7 +103,7 @@ export function ContextDrawer({
 
           {/* Optional Footer */}
           {footer && (
-            <div className="px-6 py-3.5 border-t border-white/10 bg-[#090e18] flex items-center justify-end gap-2">
+            <div className="px-6 py-3.5 border-t border-[var(--border-default)] bg-[var(--bg-base)] flex items-center justify-end gap-2 flex-shrink-0">
               {footer}
             </div>
           )}

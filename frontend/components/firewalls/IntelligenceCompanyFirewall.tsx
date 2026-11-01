@@ -4,9 +4,10 @@
  * Renders when a non-quantitative (intelligence-only) company's
  * predictions are requested.
  *
- * CRITICAL: Must NEVER show prediction widgets for intelligence entities.
+ * CRITICAL STATUTORY FIREWALL: Must NEVER show prediction widgets for intelligence entities.
  * Shows: company profile, legislative exposure, economic mechanisms,
  * relevant states, and documented evidence.
+ * Dual-theme synchronized for Seance.
  */
 
 import React from "react";
@@ -31,32 +32,33 @@ export function IntelligenceCompanyFirewall({
   return (
     <section
       className={cn(
-        "rounded-lg border border-slate-700 bg-slate-900 p-6",
+        "rounded-2xl border border-[var(--border-default)] bg-[var(--bg-card)] p-6 shadow-xs transition-colors",
         className
       )}
+      role="region"
       aria-label="Prediction availability status"
     >
       {/* Header */}
-      <div className="flex items-start gap-3 mb-5">
+      <div className="flex items-start gap-3.5 mb-5">
         <div
-          className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-amber-900/40 border border-amber-700/40"
+          className="mt-0.5 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-[var(--color-warning)]/12 border border-[var(--color-warning)]/30 text-[var(--color-warning)]"
           aria-hidden="true"
         >
           <span className="text-base">🏢</span>
         </div>
         <div>
-          <h3 className="text-sm font-semibold text-slate-200">
+          <h3 className="text-sm font-bold text-[var(--text-primary)] tracking-tight">
             Market prediction unavailable for this entity
           </h3>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <p className="text-xs text-[var(--text-muted)] mt-0.5">
             {entityName} — {entityType} · {universeType}
           </p>
         </div>
       </div>
 
       {/* Explanation */}
-      <p className="text-sm text-slate-400 mb-5 leading-relaxed">
-        This entity is classified as a <span className="text-slate-300 font-medium">qualitative intelligence entity</span>,
+      <p className="text-sm text-[var(--text-secondary)] mb-5 leading-relaxed">
+        This entity is classified as a <span className="text-[var(--text-primary)] font-semibold">qualitative intelligence entity</span>,
         not a quantitative prediction-eligible listed security.
         It may be an unlisted company, a state entity, a cooperative, or an entity
         without sufficient market data for the backtested quantitative model.
@@ -64,11 +66,11 @@ export function IntelligenceCompanyFirewall({
       </p>
 
       {/* Available intelligence */}
-      <div className="rounded-md border border-slate-800 bg-slate-800/40 p-4 mb-4">
-        <p className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-3">
+      <div className="rounded-xl border border-[var(--border-default)] bg-[var(--bg-secondary)]/50 p-4 mb-4">
+        <p className="text-xs font-semibold text-[var(--text-primary)] uppercase tracking-wider mb-3">
           Available intelligence for this entity
         </p>
-        <ul className="space-y-2" role="list">
+        <ul className="space-y-2.5" role="list">
           {[
             {
               icon: "📋",
@@ -101,13 +103,13 @@ export function IntelligenceCompanyFirewall({
               available: true,
             },
           ].map(({ icon, label, desc, available }) => (
-            <li key={label} className={cn("flex items-start gap-2", !available && "opacity-40")}>
+            <li key={label} className={cn("flex items-start gap-2.5", !available && "opacity-40")}>
               <span className="text-sm mt-0.5 flex-shrink-0" aria-hidden="true">
                 {icon}
               </span>
               <div>
-                <span className="text-xs font-medium text-slate-300">{label}</span>
-                <p className="text-xs text-slate-500">{desc}</p>
+                <span className="text-xs font-semibold text-[var(--text-primary)]">{label}</span>
+                <p className="text-xs text-[var(--text-muted)] leading-relaxed">{desc}</p>
               </div>
             </li>
           ))}
@@ -115,11 +117,11 @@ export function IntelligenceCompanyFirewall({
       </div>
 
       {/* Explicitly not available */}
-      <div className="rounded-md border border-slate-800 bg-slate-800/20 p-3">
-        <p className="text-xs font-medium text-slate-500 mb-1.5">
+      <div className="rounded-xl border border-[var(--border-default)] bg-[var(--bg-secondary)]/40 p-4">
+        <p className="text-xs font-semibold text-[var(--text-muted)] mb-2">
           Quantitative prediction unavailable (firewall active)
         </p>
-        <ul className="space-y-1 text-xs text-slate-600">
+        <ul className="space-y-1.5 text-xs text-[var(--text-muted)]">
           {[
             "Stock return prediction",
             "Market direction (Bullish/Bearish)",
@@ -127,16 +129,16 @@ export function IntelligenceCompanyFirewall({
             "Anticipation bias scores",
             "Stakeholder reports",
           ].map((item) => (
-            <li key={item} className="flex items-center gap-1.5">
-              <span aria-hidden="true">✕</span>
-              {item}
+            <li key={item} className="flex items-center gap-2">
+              <span aria-hidden="true" className="font-bold">✕</span>
+              <span>{item}</span>
             </li>
           ))}
         </ul>
       </div>
 
       {predictionStatus?.message && (
-        <p className="mt-3 text-xs text-slate-600 italic">
+        <p className="mt-3.5 text-xs text-[var(--text-muted)] italic">
           System note: {predictionStatus.message}
         </p>
       )}

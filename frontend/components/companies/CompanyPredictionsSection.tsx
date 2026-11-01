@@ -81,12 +81,12 @@ export function CompanyPredictionsSection({
             <SourceBadge type="PREDICTION" size="xs" showTooltip />
           </div>
         </CardHeader>
-        <div className="rounded-lg border border-slate-800 bg-slate-900/50 p-6 text-center space-y-3">
+        <div className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-surface-elevated)] p-6 text-center space-y-3">
           <span className="text-2xl" aria-hidden="true">📊</span>
-          <h4 className="text-sm font-semibold text-slate-300">
+          <h4 className="text-sm font-semibold text-[var(--text-primary)]">
             Prediction data is not currently available for this company/bill combination.
           </h4>
-          <p className="text-xs text-slate-500 max-w-md mx-auto leading-relaxed">
+          <p className="text-xs text-[var(--text-secondary)] max-w-md mx-auto leading-relaxed">
             Econometric market projections are calculated exclusively for Central Parliamentary enactments within the frozen backtested production dataset.
           </p>
         </div>
@@ -118,12 +118,12 @@ export function CompanyPredictionsSection({
   return (
     <div className={`space-y-6 ${className}`} aria-label="Central Quantitative Predictions">
       {/* Disclaimer Banner */}
-      <div className="rounded-lg border border-blue-900/50 bg-blue-950/20 p-3.5 text-xs text-slate-300 space-y-1">
+      <div className="rounded-lg border border-blue-900/50 bg-blue-950/20 p-3.5 text-xs text-[var(--text-secondary)] space-y-1">
         <div className="flex items-center gap-2">
           <span className="text-blue-400 font-semibold">Institutional Methodology Disclosure</span>
           <SourceBadge type="PREDICTION" size="xs" />
         </div>
-        <p className="text-slate-400 leading-relaxed text-[11px]">
+        <p className="text-[var(--text-secondary)] leading-relaxed text-[11px]">
           Quantitative price projections reflect multi-horizon econometric event study models calibrated on historical market behavior.
           All projections represent neutral statistical estimates. This platform does not provide investment advice, price targets, or trading recommendations.
         </p>
@@ -136,23 +136,23 @@ export function CompanyPredictionsSection({
               <CardTitle>Central Market Impact Projections</CardTitle>
               <SourceBadge type="PREDICTION" size="xs" showTooltip />
             </div>
-            <span className="text-xs text-slate-400">
+            <span className="text-xs font-mono font-tabular text-[var(--text-secondary)]">
               {filteredPredictions.length} modelled event windows
             </span>
           </div>
         </CardHeader>
 
         {/* Event Window Filter Tabs */}
-        <div className="flex flex-wrap items-center gap-1.5 pb-3 border-b border-slate-800 text-xs">
-          <span className="text-slate-500 mr-1 font-medium">Event Window:</span>
+        <div className="flex flex-wrap items-center gap-1.5 pb-3 border-b border-[var(--border-default)] text-xs">
+          <span className="text-[var(--text-secondary)] mr-1 font-medium">Event Window:</span>
           {eventWindows.map((win) => (
             <button
               key={win}
               onClick={() => setSelectedWindow(win)}
-              className={`px-2.5 py-1 rounded text-xs font-medium transition-colors ${
+              className={`px-2.5 py-1 rounded text-xs font-medium font-mono font-tabular transition-colors ${
                 selectedWindow === win
-                  ? "bg-blue-600 text-white"
-                  : "bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700"
+                  ? "bg-[var(--action-primary)] text-[var(--text-primary)] shadow-xs"
+                  : "bg-[var(--bg-surface-elevated)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-surface-hover)] border border-[var(--border-default)]"
               }`}
             >
               {win === "ALL" ? "All Windows" : win}
@@ -162,17 +162,17 @@ export function CompanyPredictionsSection({
 
         {/* Prediction Table */}
         <div className="overflow-x-auto -mx-6">
-          <table className="w-full text-left text-xs border-collapse min-w-[700px]">
+          <table className="financial-table w-full text-left text-xs border-collapse min-w-[700px]">
             <thead>
-              <tr className="border-b border-slate-800 bg-slate-900/50 text-slate-400 font-semibold">
+              <tr className="border-b border-[var(--border-default)] bg-[var(--bg-surface-elevated)] text-[var(--text-secondary)] font-semibold">
                 <th scope="col" className="py-2.5 px-4 w-4/12">Legislative Measure</th>
-                <th scope="col" className="py-2.5 px-3 w-2/12">Event Window</th>
+                <th scope="col" className="py-2.5 px-3 w-2/12 font-tabular">Event Window</th>
                 <th scope="col" className="py-2.5 px-3 w-2/12">Modelled Direction</th>
                 <th scope="col" className="py-2.5 px-3 w-2/12">Market Classification</th>
                 <th scope="col" className="py-2.5 px-3 w-2/12 text-center">Decision Support</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60">
+            <tbody className="divide-y divide-[var(--border-default)]">
               {filteredPredictions.map((pred) => {
                 const billId = pred.bill_id;
                 const billTitle =
@@ -185,24 +185,28 @@ export function CompanyPredictionsSection({
                 return (
                   <tr
                     key={pred.prediction_id}
-                    className="hover:bg-slate-800/40 transition-colors"
+                    className="hover:bg-[var(--bg-surface-elevated)]/60 transition-colors"
                   >
                     {/* Bill Title */}
                     <td className="py-3 px-4">
                       <Link
                         href={`/bills/${encodeURIComponent(billId)}`}
-                        className="font-semibold text-slate-200 hover:text-blue-400 transition-colors block text-sm"
+                        className="font-semibold text-[var(--text-primary)] hover:text-[var(--action-primary)] transition-colors block text-sm"
                       >
                         {billTitle}
                       </Link>
-                      <span className="text-[10px] text-slate-500 block mt-0.5 font-mono">
-                        ID: {pred.prediction_id}
-                      </span>
+                      <Link
+                        href={`/predictions/${encodeURIComponent(pred.prediction_id)}`}
+                        className="text-[10px] text-[var(--action-primary)] hover:underline block mt-0.5 font-mono font-tabular"
+                        title="View full prediction dossier"
+                      >
+                        Dossier ID: {pred.prediction_id} ↗
+                      </Link>
                     </td>
 
                     {/* Window */}
                     <td className="py-3 px-3">
-                      <span className="font-mono text-xs font-semibold text-slate-300 bg-slate-800 px-2 py-0.5 rounded border border-slate-700/60">
+                      <span className="font-mono font-tabular text-xs font-semibold text-[var(--text-primary)] bg-[var(--bg-surface-elevated)] px-2 py-0.5 rounded border border-[var(--border-default)]">
                         {pred.event_window}
                       </span>
                     </td>
@@ -214,7 +218,7 @@ export function CompanyPredictionsSection({
                         confidence={pred.predicted_confidence}
                         size="xs"
                       />
-                      <span className="text-[10px] text-slate-500 block mt-0.5">
+                      <span className="text-[10px] text-[var(--text-muted)] block mt-0.5 font-tabular">
                         Strength: {pred.predicted_impact_strength || "LOW"}
                       </span>
                     </td>
@@ -226,7 +230,7 @@ export function CompanyPredictionsSection({
                           className={`inline-block font-semibold text-[11px] ${
                             pred.predicted_market_moving
                               ? "text-amber-400"
-                              : "text-slate-400"
+                              : "text-[var(--text-secondary)]"
                           }`}
                         >
                           {pred.predicted_market_moving
@@ -234,7 +238,7 @@ export function CompanyPredictionsSection({
                             : "Standard Volatility"}
                         </span>
                         {typeof pred.market_moving_probability === "number" && (
-                          <span className="text-[10px] text-slate-500 block">
+                          <span className="text-[10px] text-[var(--text-muted)] block font-mono font-tabular">
                             Prob: {(pred.market_moving_probability * 100).toFixed(1)}%
                           </span>
                         )}
@@ -243,18 +247,30 @@ export function CompanyPredictionsSection({
 
                     {/* Decision Support Trigger */}
                     <td className="py-3 px-3 text-center">
-                      <Button
-                        variant="outline"
-                        size="xs"
-                        onClick={() => handleOpenDecision(pred.prediction_id)}
-                        disabled={loadingDecisionId === pred.prediction_id}
-                        className="text-xs border-slate-700 hover:border-slate-500"
-                        aria-label={`View decision assessment for ${billTitle}`}
-                      >
-                        {loadingDecisionId === pred.prediction_id
-                          ? "Loading..."
-                          : "⚖ Assessment"}
-                      </Button>
+                      <div className="flex items-center justify-center gap-1.5">
+                        <Link href={`/predictions/${encodeURIComponent(pred.prediction_id)}`}>
+                          <Button
+                            variant="ghost"
+                            size="xs"
+                            className="text-xs text-[var(--action-primary)] hover:bg-[var(--bg-surface-elevated)]"
+                            aria-label={`View full prediction dossier for ${billTitle}`}
+                          >
+                            Dossier ↗
+                          </Button>
+                        </Link>
+                        <Button
+                          variant="outline"
+                          size="xs"
+                          onClick={() => handleOpenDecision(pred.prediction_id)}
+                          disabled={loadingDecisionId === pred.prediction_id}
+                          className="text-xs border-[var(--border-default)] hover:border-[var(--border-strong)]"
+                          aria-label={`View decision assessment for ${billTitle}`}
+                        >
+                          {loadingDecisionId === pred.prediction_id
+                            ? "Loading..."
+                            : "⚖ Assessment"}
+                        </Button>
+                      </div>
                     </td>
                   </tr>
                 );
@@ -272,23 +288,23 @@ export function CompanyPredictionsSection({
           aria-modal="true"
           aria-labelledby="decision-modal-title"
         >
-          <div className="w-full max-w-2xl rounded-xl border border-slate-800 bg-slate-900 p-6 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
+          <div className="w-full max-w-2xl rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface)] p-6 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
             {/* Header */}
-            <div className="flex items-start justify-between gap-3 border-b border-slate-800 pb-3">
+            <div className="flex items-start justify-between gap-3 border-b border-[var(--border-default)] pb-3">
               <div>
                 <div className="flex items-center gap-2">
-                  <h3 id="decision-modal-title" className="text-sm font-semibold text-slate-100">
+                  <h3 id="decision-modal-title" className="text-sm font-semibold text-[var(--text-primary)]">
                     Decision-Support Assessment
                   </h3>
                   <SourceBadge type="DERIVED" size="xs" />
                 </div>
-                <p className="text-xs text-slate-400 mt-0.5">
-                  Window: <span className="font-mono text-slate-200">{selectedDecision.event_window}</span> · ID: {selectedDecision.decision_id}
+                <p className="text-xs text-[var(--text-secondary)] mt-0.5">
+                  Window: <span className="font-mono font-tabular text-[var(--text-primary)]">{selectedDecision.event_window}</span> · ID: <span className="font-mono font-tabular">{selectedDecision.decision_id}</span>
                 </p>
               </div>
               <button
                 onClick={() => setSelectedDecision(null)}
-                className="text-slate-400 hover:text-white text-base p-1"
+                className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base p-1"
                 aria-label="Close decision modal"
               >
                 ✕
@@ -297,21 +313,21 @@ export function CompanyPredictionsSection({
 
             {/* Metric Chips */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
-              <div className="rounded bg-slate-800/60 p-2.5 border border-slate-800">
-                <span className="text-slate-500 block text-[10px] uppercase">Impact Category</span>
-                <span className="font-bold text-slate-200">{selectedDecision.impact_category}</span>
+              <div className="rounded bg-[var(--bg-surface-elevated)] p-2.5 border border-[var(--border-default)]">
+                <span className="text-[var(--text-muted)] block text-[10px] uppercase">Impact Category</span>
+                <span className="font-bold text-[var(--text-primary)]">{selectedDecision.impact_category}</span>
               </div>
-              <div className="rounded bg-slate-800/60 p-2.5 border border-slate-800">
-                <span className="text-slate-500 block text-[10px] uppercase">Risk Category</span>
-                <span className="font-bold text-slate-200">{selectedDecision.risk_category}</span>
+              <div className="rounded bg-[var(--bg-surface-elevated)] p-2.5 border border-[var(--border-default)]">
+                <span className="text-[var(--text-muted)] block text-[10px] uppercase">Risk Category</span>
+                <span className="font-bold text-[var(--text-primary)]">{selectedDecision.risk_category}</span>
               </div>
-              <div className="rounded bg-slate-800/60 p-2.5 border border-slate-800">
-                <span className="text-slate-500 block text-[10px] uppercase">Pricing-In Risk</span>
+              <div className="rounded bg-[var(--bg-surface-elevated)] p-2.5 border border-[var(--border-default)]">
+                <span className="text-[var(--text-muted)] block text-[10px] uppercase">Pricing-In Risk</span>
                 <span className="font-bold text-amber-400">{selectedDecision.pricing_in_risk}</span>
               </div>
-              <div className="rounded bg-slate-800/60 p-2.5 border border-slate-800">
-                <span className="text-slate-500 block text-[10px] uppercase">Impact Score</span>
-                <span className="font-bold text-blue-400">
+              <div className="rounded bg-[var(--bg-surface-elevated)] p-2.5 border border-[var(--border-default)]">
+                <span className="text-[var(--text-muted)] block text-[10px] uppercase">Impact Score</span>
+                <span className="font-bold font-mono font-tabular text-blue-400">
                   {typeof selectedDecision.impact_score === "number"
                     ? selectedDecision.impact_score.toFixed(2)
                     : selectedDecision.impact_score}
@@ -322,49 +338,49 @@ export function CompanyPredictionsSection({
             {/* Decision Reason */}
             {selectedDecision.decision_reason && (
               <div className="space-y-1 text-xs">
-                <span className="font-semibold text-slate-400 uppercase tracking-wider block">
+                <span className="font-semibold text-[var(--text-secondary)] uppercase tracking-wider block">
                   Model Rationale &amp; Transmission Rationale
                 </span>
-                <p className="text-slate-300 bg-slate-800/40 p-3 rounded border border-slate-800 leading-relaxed">
+                <p className="text-[var(--text-secondary)] bg-[var(--bg-surface-elevated)] p-3 rounded border border-[var(--border-default)] leading-relaxed">
                   {selectedDecision.decision_reason}
                 </p>
               </div>
             )}
 
             {/* Stakeholder Summaries */}
-            <div className="space-y-2 pt-2 border-t border-slate-800 text-xs">
-              <h4 className="font-semibold text-slate-400 uppercase tracking-wider">
+            <div className="space-y-2 pt-2 border-t border-[var(--border-default)] text-xs">
+              <h4 className="font-semibold text-[var(--text-secondary)] uppercase tracking-wider">
                 Persona Perspective Summaries
               </h4>
 
               {selectedDecision.investor_summary && (
-                <div className="rounded bg-slate-800/30 p-3 border border-slate-800/80 space-y-1">
+                <div className="rounded bg-[var(--bg-surface-elevated)] p-3 border border-[var(--border-default)] space-y-1">
                   <span className="font-semibold text-blue-400 block text-[11px]">
                     💼 Investor Summary
                   </span>
-                  <p className="text-slate-300 leading-relaxed">
+                  <p className="text-[var(--text-secondary)] leading-relaxed">
                     {selectedDecision.investor_summary}
                   </p>
                 </div>
               )}
 
               {selectedDecision.business_summary && (
-                <div className="rounded bg-slate-800/30 p-3 border border-slate-800/80 space-y-1">
+                <div className="rounded bg-[var(--bg-surface-elevated)] p-3 border border-[var(--border-default)] space-y-1">
                   <span className="font-semibold text-emerald-400 block text-[11px]">
                     🏢 Corporate / Enterprise Summary
                   </span>
-                  <p className="text-slate-300 leading-relaxed">
+                  <p className="text-[var(--text-secondary)] leading-relaxed">
                     {selectedDecision.business_summary}
                   </p>
                 </div>
               )}
 
               {selectedDecision.public_summary && (
-                <div className="rounded bg-slate-800/30 p-3 border border-slate-800/80 space-y-1">
+                <div className="rounded bg-[var(--bg-surface-elevated)] p-3 border border-[var(--border-default)] space-y-1">
                   <span className="font-semibold text-purple-400 block text-[11px]">
                     👥 Industry &amp; Public Summary
                   </span>
-                  <p className="text-slate-300 leading-relaxed">
+                  <p className="text-[var(--text-secondary)] leading-relaxed">
                     {selectedDecision.public_summary}
                   </p>
                 </div>
@@ -372,10 +388,13 @@ export function CompanyPredictionsSection({
             </div>
 
             {/* Modal Actions */}
-            <div className="flex items-center justify-between pt-3 border-t border-slate-800">
-              <span className="text-[11px] text-slate-500">
-                Analytical assessment only; not financial advice.
-              </span>
+            <div className="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-[var(--border-default)]">
+              <Link
+                href={`/predictions/${encodeURIComponent(selectedDecision.prediction_id || `${selectedDecision.bill_id}_${selectedDecision.company_isin}_${selectedDecision.event_window}`)}`}
+                className="text-xs text-[var(--action-primary)] hover:underline font-semibold inline-flex items-center gap-1"
+              >
+                <span>Open Full Prediction Dossier →</span>
+              </Link>
               <Button
                 variant="outline"
                 size="sm"

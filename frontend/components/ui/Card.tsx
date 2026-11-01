@@ -1,7 +1,13 @@
 /**
  * components/ui/Card.tsx
  * ======================
- * Card container and StatCard components for the analytics platform.
+ * Institutional surface system: Card, CardHeader, CardTitle, CardBody, CardFooter,
+ * and calibrated StatCard KPI tiles for Seance.
+ *
+ * Implements:
+ * - Surface hierarchy: surface (default), secondary, elevated, subtle
+ * - Interactive hover and elevation transitions
+ * - Dual-theme calibrated colors for StatCard KPI highlights and trends
  */
 
 import React from "react";
@@ -11,19 +17,31 @@ import { cn } from "@/lib/utils";
 // Base Card
 // ---------------------------------------------------------------------------
 
-export interface CardProps {
+export type CardVariant = "default" | "surface" | "secondary" | "elevated" | "subtle";
+
+export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   id?: string;
   className?: string;
   padding?: "none" | "sm" | "md" | "lg";
+  variant?: CardVariant;
   hover?: boolean;
+  interactive?: boolean;
 }
 
 const paddingClasses = {
   none: "",
-  sm: "p-4",
+  sm: "p-3.5",
   md: "p-5",
   lg: "p-6",
+};
+
+const variantSurfaceClasses: Record<CardVariant, string> = {
+  default: "bg-[var(--bg-card)] border-[var(--border-default)] shadow-xs",
+  surface: "bg-[var(--bg-surface)] border-[var(--border-default)] shadow-xs",
+  secondary: "bg-[var(--bg-secondary)] border-[var(--border-default)] shadow-xs",
+  elevated: "bg-[var(--bg-elevated)] border-[var(--border-strong)] shadow-md",
+  subtle: "bg-[var(--bg-secondary)]/50 border-[var(--border-subtle)]",
 };
 
 export function Card({
@@ -31,18 +49,32 @@ export function Card({
   id,
   className,
   padding = "md",
+  variant = "default",
   hover = false,
+  interactive = false,
+  onClick,
+  ...props
 }: CardProps) {
+  const isInteractive = interactive || hover || !!onClick;
+
   return (
     <div
       id={id}
+      onClick={onClick}
+      role={isInteractive && onClick ? "button" : undefined}
+      tabIndex={isInteractive && onClick ? 0 : undefined}
       className={cn(
-        "bg-slate-900 border border-slate-800 rounded-lg",
-        hover &&
-          "hover:border-slate-700 hover:bg-slate-800/50 transition-all duration-200 cursor-pointer",
+        "border rounded-xl transition-all duration-200",
+        variantSurfaceClasses[variant],
+        isInteractive && [
+          "cursor-pointer hover:border-[var(--border-strong)] hover:bg-[var(--bg-card-hover)]",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)]",
+          "hover:shadow-md hover:-translate-y-[1px] active:translate-y-0",
+        ],
         paddingClasses[padding],
         className
       )}
+      {...props}
     >
       {children}
     </div>
@@ -50,7 +82,7 @@ export function Card({
 }
 
 // ---------------------------------------------------------------------------
-// Card Header, Body, Footer helpers
+// Card Layout Helpers
 // ---------------------------------------------------------------------------
 
 export function CardHeader({
@@ -63,7 +95,7 @@ export function CardHeader({
   return (
     <div
       className={cn(
-        "flex items-center justify-between pb-3 mb-4 border-b border-slate-800",
+        "flex items-center justify-between pb-3.5 mb-4 border-b border-[var(--border-default)]",
         className
       )}
     >
@@ -80,9 +112,23 @@ export function CardTitle({
   className?: string;
 }) {
   return (
-    <h3 className={cn("text-sm font-semibold text-slate-200", className)}>
+    <h3 className={cn("text-sm font-semibold tracking-tight text-[var(--text-primary)]", className)}>
       {children}
     </h3>
+  );
+}
+
+export function CardDescription({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <p className={cn("text-xs text-[var(--text-muted)] mt-0.5", className)}>
+      {children}
+    </p>
   );
 }
 
@@ -93,11 +139,32 @@ export function CardBody({
   children: React.ReactNode;
   className?: string;
 }) {
-  return <div className={cn("", className)}>{children}</div>;
+  return <div className={cn("space-y-3", className)}>{children}</div>;
+}
+
+export const CardContent = CardBody;
+
+export function CardFooter({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <div
+      className={cn(
+        "pt-3.5 mt-4 border-t border-[var(--border-default)] flex items-center justify-between text-xs text-[var(--text-muted)]",
+        className
+      )}
+    >
+      {children}
+    </div>
+  );
 }
 
 // ---------------------------------------------------------------------------
-// StatCard — KPI metric tile
+// StatCard — Calibrated Institutional KPI Tile
 // ---------------------------------------------------------------------------
 
 export interface StatCardProps {
@@ -109,24 +176,25 @@ export interface StatCardProps {
   trend?: "up" | "down" | "neutral";
   highlight?: "default" | "blue" | "emerald" | "amber" | "rose" | "purple";
   className?: string;
+  id?: string;
 }
 
 const highlightBorderMap = {
-  default: "border-slate-800",
-  blue: "border-blue-700/50",
-  emerald: "border-emerald-700/50",
-  amber: "border-amber-700/50",
-  rose: "border-rose-700/50",
-  purple: "border-purple-700/50",
+  default: "border-[var(--border-default)]",
+  blue: "border-[var(--action-primary)]/40",
+  emerald: "border-[var(--color-positive)]/40",
+  amber: "border-[var(--color-warning)]/40",
+  rose: "border-[var(--color-negative)]/40",
+  purple: "border-[var(--color-model)]/40",
 };
 
 const highlightTextMap = {
-  default: "text-white",
-  blue: "text-blue-300",
-  emerald: "text-emerald-300",
-  amber: "text-amber-300",
-  rose: "text-rose-300",
-  purple: "text-purple-300",
+  default: "text-[var(--text-primary)]",
+  blue: "text-[var(--action-primary)]",
+  emerald: "text-[var(--color-positive)]",
+  amber: "text-[var(--color-warning)]",
+  rose: "text-[var(--color-negative)]",
+  purple: "text-[var(--color-model)]",
 };
 
 export function StatCard({
@@ -138,37 +206,38 @@ export function StatCard({
   trend,
   highlight = "default",
   className,
+  id,
 }: StatCardProps) {
-  const trendIcon =
-    trend === "up" ? "↑" : trend === "down" ? "↓" : null;
+  const trendIcon = trend === "up" ? "↑" : trend === "down" ? "↓" : null;
   const trendColor =
     trend === "up"
-      ? "text-emerald-400"
+      ? "text-[var(--color-positive)]"
       : trend === "down"
-      ? "text-rose-400"
-      : "text-slate-400";
+      ? "text-[var(--color-negative)]"
+      : "text-[var(--text-muted)]";
 
   return (
     <div
+      id={id}
       className={cn(
-        "bg-slate-900 rounded-lg p-5 border",
+        "bg-[var(--bg-card)] rounded-xl p-5 border shadow-xs transition-all duration-200",
         highlightBorderMap[highlight],
         className
       )}
     >
       <div className="flex items-start justify-between mb-3">
-        <p className="text-xs font-medium text-slate-400 uppercase tracking-wider">
+        <p className="text-[11px] font-semibold text-[var(--text-muted)] uppercase tracking-wider">
           {label}
         </p>
         {icon && (
-          <span className="text-slate-500 text-base" aria-hidden="true">
+          <span className="text-[var(--text-muted)] text-base inline-flex items-center" aria-hidden="true">
             {icon}
           </span>
         )}
       </div>
       <p
         className={cn(
-          "text-2xl font-bold tracking-tight",
+          "text-2xl font-bold tracking-tight text-[var(--text-primary)] font-tabular tabular-nums",
           highlightTextMap[highlight]
         )}
       >
@@ -177,13 +246,15 @@ export function StatCard({
           : value}
       </p>
       {(subValue !== undefined || subLabel) && (
-        <p className={cn("text-xs mt-1.5", trendColor)}>
-          {trendIcon && <span>{trendIcon} </span>}
-          {subValue !== undefined &&
-            (typeof subValue === "number"
-              ? new Intl.NumberFormat("en-IN").format(subValue)
-              : subValue)}
-          {subLabel && ` ${subLabel}`}
+        <p className={cn("text-xs mt-2 font-medium flex items-center gap-1", trendColor)}>
+          {trendIcon && <span aria-hidden="true">{trendIcon}</span>}
+          <span className="font-tabular tabular-nums">
+            {subValue !== undefined &&
+              (typeof subValue === "number"
+                ? new Intl.NumberFormat("en-IN").format(subValue)
+                : subValue)}
+            {subLabel && ` ${subLabel}`}
+          </span>
         </p>
       )}
     </div>

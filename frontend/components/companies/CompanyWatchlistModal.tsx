@@ -1,4 +1,4 @@
-/**
+﻿/**
  * components/companies/CompanyWatchlistModal.tsx
  * ===============================================
  * Modal dialog for subscribing a corporate entity to a user watchlist.
@@ -126,20 +126,20 @@ export function CompanyWatchlistModal({
       aria-modal="true"
       aria-labelledby="watchlist-modal-title"
     >
-      <div className="w-full max-w-md rounded-xl border border-slate-800 bg-slate-900 p-6 shadow-2xl space-y-4">
+      <div className="w-full max-w-md rounded-xl border border-[var(--border-default)] bg-[var(--bg-card)] p-6 shadow-2xl space-y-4">
         {/* Modal Header */}
-        <div className="flex items-start justify-between border-b border-slate-800 pb-3">
+        <div className="flex items-start justify-between border-b border-[var(--border-default)] pb-3">
           <div>
-            <h3 id="watchlist-modal-title" className="text-base font-semibold text-slate-100">
+            <h3 id="watchlist-modal-title" className="text-base font-semibold text-[var(--text-primary)]">
               Add Company to Watchlist
             </h3>
-            <p className="text-xs text-slate-400 mt-0.5 font-medium truncate max-w-xs">
+            <p className="text-xs text-[var(--text-muted)] mt-0.5 font-medium truncate max-w-xs">
               {company.company_name}
             </p>
           </div>
           <button
             onClick={onClose}
-            className="text-slate-400 hover:text-white text-base p-1"
+            className="text-[var(--text-muted)] hover:text-white text-base p-1"
             aria-label="Close modal"
           >
             ✕
@@ -147,10 +147,10 @@ export function CompanyWatchlistModal({
         </div>
 
         {/* Company Identity Ribbon */}
-        <div className="rounded-lg bg-slate-800/40 p-3 border border-slate-800 flex items-center justify-between text-xs">
+        <div className="rounded-lg bg-[var(--bg-elevated)]/40 p-3 border border-[var(--border-default)] flex items-center justify-between text-xs">
           <div>
-            <span className="font-semibold text-slate-200 block">{company.company_name}</span>
-            <span className="text-slate-400 text-[11px] block mt-0.5">
+            <span className="font-semibold text-[var(--text-primary)] block">{company.company_name}</span>
+            <span className="text-[var(--text-muted)] text-[11px] block mt-0.5">
               ISIN: {company.isin || "—"} · Sector: {company.sector || "General"}
             </span>
           </div>
@@ -173,7 +173,7 @@ export function CompanyWatchlistModal({
         )}
 
         {loading ? (
-          <div className="py-6 text-center text-xs text-slate-400 space-y-2">
+          <div className="py-6 text-center text-xs text-[var(--text-muted)] space-y-2">
             <div className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-solid border-blue-500 border-r-transparent" />
             <p>Loading your watchlists...</p>
           </div>
@@ -181,7 +181,7 @@ export function CompanyWatchlistModal({
           <div className="space-y-4 text-xs">
             {/* Toggle Existing vs New Watchlist */}
             <div className="flex items-center justify-between">
-              <span className="text-slate-300 font-medium">Target Watchlist:</span>
+              <span className="text-[var(--text-secondary)] font-medium">Target Watchlist:</span>
               {watchlists.length > 0 && (
                 <button
                   type="button"
@@ -199,7 +199,7 @@ export function CompanyWatchlistModal({
                 <select
                   value={selectedId}
                   onChange={(e) => setSelectedId(e.target.value)}
-                  className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-xs text-slate-200 focus:border-blue-500 focus:outline-none"
+                  className="w-full rounded-lg border border-[var(--border-strong)] bg-[var(--bg-elevated)] px-3 py-2 text-xs text-[var(--text-primary)] focus:border-blue-500 focus:outline-none"
                   aria-label="Select watchlist"
                 >
                   {watchlists.map((wl) => (
@@ -213,9 +213,9 @@ export function CompanyWatchlistModal({
 
             {/* Create New Watchlist Inline */}
             {isCreatingNew && (
-              <div className="space-y-2.5 rounded-lg border border-slate-800 bg-slate-800/20 p-3">
+              <div className="space-y-2.5 rounded-lg border border-[var(--border-default)] bg-[var(--bg-elevated)]/20 p-3">
                 <div>
-                  <label htmlFor="new-wl-name" className="block text-[11px] text-slate-400 mb-1">
+                  <label htmlFor="new-wl-name" className="block text-[11px] text-[var(--text-muted)] mb-1">
                     Watchlist Name *
                   </label>
                   <input
@@ -224,11 +224,11 @@ export function CompanyWatchlistModal({
                     placeholder="e.g., Heavy Industries Portfolio"
                     value={newWlName}
                     onChange={(e) => setNewWlName(e.target.value)}
-                    className="w-full rounded border border-slate-700 bg-slate-800 px-2.5 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:border-blue-500 focus:outline-none"
+                    className="w-full rounded border border-[var(--border-strong)] bg-[var(--bg-elevated)] px-2.5 py-1.5 text-xs text-[var(--text-primary)] placeholder-[var(--input-placeholder)] focus:border-blue-500 focus:outline-none"
                   />
                 </div>
                 <div>
-                  <label htmlFor="new-wl-desc" className="block text-[11px] text-slate-400 mb-1">
+                  <label htmlFor="new-wl-desc" className="block text-[11px] text-[var(--text-muted)] mb-1">
                     Description (optional)
                   </label>
                   <input
@@ -237,20 +237,20 @@ export function CompanyWatchlistModal({
                     placeholder="e.g., Tracking legislative exposure across manufacturing"
                     value={newWlDesc}
                     onChange={(e) => setNewWlDesc(e.target.value)}
-                    className="w-full rounded border border-slate-700 bg-slate-800 px-2.5 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:border-blue-500 focus:outline-none"
+                    className="w-full rounded border border-[var(--border-strong)] bg-[var(--bg-elevated)] px-2.5 py-1.5 text-xs text-[var(--text-primary)] placeholder-[var(--input-placeholder)] focus:border-blue-500 focus:outline-none"
                   />
                 </div>
               </div>
             )}
 
             {/* Modal Actions */}
-            <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-800">
+            <div className="flex items-center justify-end gap-2 pt-3 border-t border-[var(--border-default)]">
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={onClose}
                 disabled={submitting}
-                className="text-xs text-slate-400 hover:text-white"
+                className="text-xs text-[var(--text-muted)] hover:text-white"
               >
                 Cancel
               </Button>

@@ -232,6 +232,10 @@ class CompanyExposureRepository:
 
         return results
 
+    def get_by_company(self, company_identifier: str) -> list[StateCorporateExposure]:
+        """Alias for get_bills_for_company."""
+        return self.get_bills_for_company(company_identifier)
+
     def get_companies_for_bill(self, bill_id: str) -> list[StateCorporateExposure]:
         """
         QUERY B: Which companies are exposed to this bill?

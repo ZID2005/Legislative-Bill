@@ -1,4 +1,4 @@
-/**
+﻿/**
  * app/live-discovery/page.tsx
  * ============================
  * Task 8.25 — Live Legislative Discovery.
@@ -163,7 +163,7 @@ const STATUS_COLORS: Record<string, string> = {
   PASSED: "bg-emerald-500/15 border-emerald-500/30 text-emerald-300",
   ASSENT_PENDING: "bg-amber-500/12 border-amber-500/25 text-amber-400",
   NOTIFIED: "bg-blue-500/12 border-blue-500/25 text-blue-400",
-  ARCHIVED: "bg-slate-700/30 border-slate-600/30 text-slate-500",
+  ARCHIVED: "bg-slate-700/30 border-slate-600/30 text-[var(--text-faint)]",
   UPCOMING: "bg-violet-500/12 border-violet-500/25 text-violet-400",
   SOURCE_UNVERIFIED: "bg-rose-500/12 border-rose-500/25 text-rose-400",
 };
@@ -210,7 +210,7 @@ function LiveBillCard({ record }: { record: LiveBillRecord }) {
         <div className="flex-1 min-w-0">
           <div className="flex flex-wrap items-center gap-1.5 mb-1.5">
             <DataStatusBadge status={record.status} showDot />
-            <span className="text-[10px] px-1.5 py-0.5 rounded bg-white/5 border border-white/8 text-slate-500 font-medium">
+            <span className="text-[10px] px-1.5 py-0.5 rounded bg-white/5 border border-white/8 text-[var(--text-faint)] font-medium">
               {record.jurisdiction === "central" ? "Central" : record.state}
             </span>
             {record.house && (
@@ -219,12 +219,12 @@ function LiveBillCard({ record }: { record: LiveBillRecord }) {
               </span>
             )}
             {!record.isInAnalyticalModel && (
-              <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-slate-800/60 border border-white/5 text-slate-600 font-mono">
+              <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-[var(--bg-elevated)]/60 border border-white/5 text-slate-600 font-mono">
                 NOT IN PREDICTION MODEL
               </span>
             )}
           </div>
-          <h3 className="text-sm font-semibold text-slate-100 leading-snug line-clamp-2">
+          <h3 className="text-sm font-semibold text-[var(--text-primary)] leading-snug line-clamp-2">
             {record.title}
           </h3>
           {record.billNumber && (
@@ -235,23 +235,23 @@ function LiveBillCard({ record }: { record: LiveBillRecord }) {
 
       {/* Subject */}
       {record.subject && (
-        <p className="text-xs text-slate-400 leading-relaxed line-clamp-2">{record.subject}</p>
+        <p className="text-xs text-[var(--text-muted)] leading-relaxed line-clamp-2">{record.subject}</p>
       )}
 
       {/* Metadata grid */}
       <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs border-t border-white/5 pt-3">
         <div>
           <span className="text-slate-600">Discovered</span>
-          <p className="text-slate-300 font-medium">{timeAgo(record.discoveredAt)}</p>
+          <p className="text-[var(--text-secondary)] font-medium">{timeAgo(record.discoveredAt)}</p>
         </div>
         <div>
           <span className="text-slate-600">Last Updated</span>
-          <p className="text-slate-300 font-medium">{timeAgo(record.lastUpdated)}</p>
+          <p className="text-[var(--text-secondary)] font-medium">{timeAgo(record.lastUpdated)}</p>
         </div>
         {record.introducedDate && (
           <div>
             <span className="text-slate-600">Introduced</span>
-            <p className="text-slate-300 font-medium">{formatDate(record.introducedDate)}</p>
+            <p className="text-[var(--text-secondary)] font-medium">{formatDate(record.introducedDate)}</p>
           </div>
         )}
         <div>
@@ -272,7 +272,7 @@ function LiveBillCard({ record }: { record: LiveBillRecord }) {
       <div className="flex items-center justify-between pt-2 border-t border-white/5">
         <div className="min-w-0">
           <span className="text-[10px] text-slate-600 uppercase tracking-wider">SOURCE</span>
-          <p className="text-xs text-slate-400 truncate">{record.source}</p>
+          <p className="text-xs text-[var(--text-muted)] truncate">{record.source}</p>
         </div>
         <div className="flex items-center gap-2 flex-shrink-0">
           {record.sourceUrl && (
@@ -338,10 +338,10 @@ export default function LiveDiscoveryPage() {
             LIVE
           </span>
         </div>
-        <h1 className="text-headline text-white mb-3">Live Legislative Discovery</h1>
-        <p className="text-slate-400 text-sm max-w-2xl leading-relaxed">
+        <h1 className="text-headline text-[var(--text-primary)] mb-3">Live Legislative Discovery</h1>
+        <p className="text-[var(--text-muted)] text-sm max-w-2xl leading-relaxed">
           Newly discovered bills and legislative measures from authoritative sources.
-          These records are tracked in real-time and are <strong className="text-slate-300">separate from the frozen quantitative analytical model</strong>.
+          These records are tracked in real-time and are <strong className="text-[var(--text-secondary)]">separate from the frozen quantitative analytical model</strong>.
         </p>
       </div>
 
@@ -367,7 +367,7 @@ export default function LiveDiscoveryPage() {
       <div className="flex flex-wrap items-center gap-3 mb-6">
         {/* Search */}
         <div className="relative flex-1 min-w-[200px] max-w-xs">
-          <svg className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <svg className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[var(--text-faint)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <circle cx={11} cy={11} r={8} />
             <path strokeLinecap="round" d="M21 21l-4.35-4.35" />
           </svg>
@@ -376,12 +376,12 @@ export default function LiveDiscoveryPage() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search bills…"
-            className="w-full pl-9 pr-4 py-2 bg-slate-900/60 border border-white/8 rounded-lg text-sm text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-blue-500/50 transition-colors"
+            className="w-full pl-9 pr-4 py-2 bg-[var(--bg-card)]/60 border border-white/8 rounded-lg text-sm text-[var(--text-primary)] placeholder:text-slate-600 focus:outline-none focus:border-blue-500/50 transition-colors"
           />
         </div>
 
         {/* Jurisdiction filter */}
-        <div className="flex items-center gap-1 bg-slate-900/60 border border-white/8 rounded-lg p-1">
+        <div className="flex items-center gap-1 bg-[var(--bg-card)]/60 border border-white/8 rounded-lg p-1">
           {JURISDICTION_FILTERS.map((f) => (
             <button
               key={f}
@@ -389,8 +389,8 @@ export default function LiveDiscoveryPage() {
               className={cn(
                 "px-3 py-1 rounded-md text-xs font-medium transition-all",
                 jurisdictionFilter === f
-                  ? "bg-white/10 text-white"
-                  : "text-slate-500 hover:text-slate-300"
+                  ? "bg-white/10 text-[var(--text-primary)]"
+                  : "text-[var(--text-faint)] hover:text-[var(--text-secondary)]"
               )}
             >
               {f}
@@ -402,7 +402,7 @@ export default function LiveDiscoveryPage() {
         <select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
-          className="px-3 py-2 bg-slate-900/60 border border-white/8 rounded-lg text-xs text-slate-300 focus:outline-none focus:border-blue-500/50 transition-colors"
+          className="px-3 py-2 bg-[var(--bg-card)]/60 border border-white/8 rounded-lg text-xs text-[var(--text-secondary)] focus:outline-none focus:border-blue-500/50 transition-colors"
         >
           {STATUS_FILTERS.map((f) => (
             <option key={f} value={f}>{f === "All" ? "All Statuses" : f}</option>
@@ -413,7 +413,7 @@ export default function LiveDiscoveryPage() {
         <select
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
-          className="px-3 py-2 bg-slate-900/60 border border-white/8 rounded-lg text-xs text-slate-300 focus:outline-none focus:border-blue-500/50 transition-colors"
+          className="px-3 py-2 bg-[var(--bg-card)]/60 border border-white/8 rounded-lg text-xs text-[var(--text-secondary)] focus:outline-none focus:border-blue-500/50 transition-colors"
         >
           <option value="discovered">Sort: Discovered</option>
           <option value="updated">Sort: Last Updated</option>
@@ -428,7 +428,7 @@ export default function LiveDiscoveryPage() {
       {/* Results */}
       {filtered.length === 0 ? (
         <div className="card-base p-12 text-center">
-          <p className="text-slate-500 text-sm">No records match your current filters.</p>
+          <p className="text-[var(--text-faint)] text-sm">No records match your current filters.</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -441,7 +441,7 @@ export default function LiveDiscoveryPage() {
       {/* Footer disclaimer */}
       <div className="mt-10 pt-6 border-t border-white/5">
         <p className="text-xs text-slate-600 max-w-3xl leading-relaxed">
-          <strong className="text-slate-500">Live Discovery Disclaimer:</strong> Records in this section are sourced
+          <strong className="text-[var(--text-faint)]">Live Discovery Disclaimer:</strong> Records in this section are sourced
           from authoritative legislative bodies but have not been processed through the quantitative analytical
           pipeline. No stock price predictions, market impact scores, or anticipation signals are available
           for these records unless they independently pass the analytical eligibility criteria in a future

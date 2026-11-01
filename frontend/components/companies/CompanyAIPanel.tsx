@@ -1,4 +1,4 @@
-/**
+﻿/**
  * components/companies/CompanyAIPanel.tsx
  * =======================================
  * Grounded Groq AI Assistant for Corporate Profiles.
@@ -94,11 +94,11 @@ export function CompanyAIPanel({ company, className = "" }: CompanyAIPanelProps)
             <SourceBadge type="INTERPRETATION" size="xs" showTooltip />
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-xs text-slate-500">Perspective:</span>
+            <span className="text-xs text-[var(--text-faint)]">Perspective:</span>
             <select
               value={persona}
               onChange={(e) => setPersona(e.target.value)}
-              className="rounded border border-slate-700 bg-slate-800 px-2 py-1 text-xs text-slate-200 focus:border-blue-500 focus:outline-none"
+              className="rounded border border-[var(--border-strong)] bg-[var(--bg-elevated)] px-2 py-1 text-xs text-[var(--text-primary)] focus:border-blue-500 focus:outline-none"
               aria-label="Select AI Analyst Persona"
             >
               <option value="GENERAL_PUBLIC">General Public</option>
@@ -112,14 +112,14 @@ export function CompanyAIPanel({ company, className = "" }: CompanyAIPanelProps)
 
       <div className="space-y-4">
         {/* Intro */}
-        <p className="text-xs text-slate-400 leading-relaxed">
-          Ask grounded questions regarding <strong className="text-slate-200">{company.company_name}</strong>'s legislative footprint, statutory provisions, and transmission mechanisms.
+        <p className="text-xs text-[var(--text-muted)] leading-relaxed">
+          Ask grounded questions regarding <strong className="text-[var(--text-primary)]">{company.company_name}</strong>'s legislative footprint, statutory provisions, and transmission mechanisms.
           All answers are grounded strictly in validated project repositories with offline fallback guard.
         </p>
 
         {/* Quick Prompt Chips */}
         <div>
-          <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider block mb-2">
+          <span className="text-[11px] font-semibold text-[var(--text-faint)] uppercase tracking-wider block mb-2">
             Recommended Prompt Chips:
           </span>
           <div className="flex flex-wrap gap-2">
@@ -131,7 +131,7 @@ export function CompanyAIPanel({ company, className = "" }: CompanyAIPanelProps)
                   handleSubmit(chip);
                 }}
                 disabled={loading}
-                className="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700/80 rounded-full px-3 py-1 transition-colors text-left"
+                className="text-xs bg-[var(--bg-elevated)] hover:bg-[var(--bg-card-hover)] text-[var(--text-secondary)] hover:text-white border border-[var(--border-strong)]/80 rounded-full px-3 py-1 transition-colors text-left"
               >
                 {chip}
               </button>
@@ -153,7 +153,7 @@ export function CompanyAIPanel({ company, className = "" }: CompanyAIPanelProps)
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
             disabled={loading}
-            className="flex-1 rounded-lg border border-slate-700 bg-slate-800/80 px-3 py-2 text-xs text-slate-200 placeholder-slate-500 focus:border-blue-500 focus:outline-none"
+            className="flex-1 rounded-lg border border-[var(--border-strong)] bg-[var(--bg-elevated)]/80 px-3 py-2 text-xs text-[var(--text-primary)] placeholder-[var(--input-placeholder)] focus:border-blue-500 focus:outline-none"
             aria-label="Ask AI a question"
           />
           <div className="flex gap-2">
@@ -172,7 +172,7 @@ export function CompanyAIPanel({ company, className = "" }: CompanyAIPanelProps)
               size="sm"
               onClick={handleSynthesizeProfile}
               disabled={loading}
-              className="text-xs shrink-0 border-slate-700"
+              className="text-xs shrink-0 border-[var(--border-strong)]"
             >
               Full Profile Synthesis
             </Button>
@@ -188,11 +188,11 @@ export function CompanyAIPanel({ company, className = "" }: CompanyAIPanelProps)
 
         {/* AI Answer Card */}
         {aiResponse && (
-          <div className="rounded-xl border border-slate-700 bg-slate-900/80 p-5 space-y-3 animate-fade-in">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-2.5">
+          <div className="rounded-xl border border-[var(--border-strong)] bg-[var(--bg-card)]/80 p-5 space-y-3 animate-fade-in">
+            <div className="flex items-center justify-between border-b border-[var(--border-default)] pb-2.5">
               <div className="flex items-center gap-2">
                 <span className="text-base" aria-hidden="true">💡</span>
-                <h4 className="text-xs font-semibold text-slate-200">
+                <h4 className="text-xs font-semibold text-[var(--text-primary)]">
                   AI Analytical Response ({aiResponse.persona})
                 </h4>
                 {aiResponse.success ? (
@@ -202,26 +202,26 @@ export function CompanyAIPanel({ company, className = "" }: CompanyAIPanelProps)
                 )}
               </div>
               {aiResponse.is_cached && (
-                <span className="text-[10px] text-slate-500 font-mono">Cached Insight</span>
+                <span className="text-[10px] text-[var(--text-faint)] font-mono">Cached Insight</span>
               )}
             </div>
 
             {/* Content Body */}
-            <div className="text-xs text-slate-300 leading-relaxed whitespace-pre-line space-y-2">
+            <div className="text-xs text-[var(--text-secondary)] leading-relaxed whitespace-pre-line space-y-2">
               {aiResponse.content}
             </div>
 
             {/* Provenance & Disclaimer Footer */}
-            <div className="pt-3 border-t border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] text-slate-500">
+            <div className="pt-3 border-t border-[var(--border-default)] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] text-[var(--text-faint)]">
               <div className="flex flex-wrap items-center gap-1.5">
                 <span>Sources:</span>
                 {aiResponse.provenance_sources?.map((src, i) => (
-                  <span key={i} className="text-slate-400 font-medium">
+                  <span key={i} className="text-[var(--text-muted)] font-medium">
                     {src}{i < (aiResponse.provenance_sources?.length ?? 1) - 1 ? " • " : ""}
                   </span>
                 ))}
               </div>
-              <span className="italic text-slate-500 text-[10px]">
+              <span className="italic text-[var(--text-faint)] text-[10px]">
                 {aiResponse.disclaimer || "Analytical explanation only; not investment advice."}
               </span>
             </div>

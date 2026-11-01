@@ -79,6 +79,10 @@ export const authApi = {
     return apiClient.get<OrganizationDetails>("/api/v1/account/organization");
   },
 
+  updateOrganization(data: { name?: string; metadata?: Record<string, any> }): Promise<OrganizationDetails> {
+    return apiClient.patch<OrganizationDetails>("/api/v1/account/organization", data);
+  },
+
   listMembers(): Promise<{ items: MemberItem[]; total_members?: number }> {
     return apiClient.get<{ items: MemberItem[]; total_members?: number }>("/api/v1/account/members");
   },

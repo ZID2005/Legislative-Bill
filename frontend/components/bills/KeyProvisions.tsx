@@ -1,4 +1,4 @@
-/**
+﻿/**
  * components/bills/KeyProvisions.tsx
  * ===================================
  * Renders structured provisions, amended statutes, regulatory authority,
@@ -49,7 +49,7 @@ export function KeyProvisions({
           <div className="flex items-center justify-between w-full">
             <div>
               <CardTitle>Key Statutory Provisions &amp; Legal Framework</CardTitle>
-              <p className="text-xs text-slate-500 mt-0.5">
+              <p className="text-xs text-[var(--text-faint)] mt-0.5">
                 {isState
                   ? `Extracted from ${state || "State"} legislative knowledge records and official assembly texts.`
                   : "Extracted from Central Parliamentary knowledge records and official gazette notifications."}
@@ -62,16 +62,16 @@ export function KeyProvisions({
         <div className="space-y-5">
           {/* Statutory Objective / Statement of Objects and Reasons */}
           {objective && (
-            <div className="rounded-lg border border-slate-800 bg-slate-900/60 p-4">
+            <div className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/60 p-4">
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
+                <span className="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider">
                   Statutory Objective / Preamble
                 </span>
                 <Badge variant="primary" size="xs">
                   Statutory Statement
                 </Badge>
               </div>
-              <blockquote className="text-xs text-slate-300 border-l-2 border-blue-500/60 pl-3.5 py-1 italic leading-relaxed font-sans bg-slate-950/40 rounded-r">
+              <blockquote className="text-xs text-[var(--text-secondary)] border-l-2 border-blue-500/60 pl-3.5 py-1 italic leading-relaxed font-sans bg-[var(--bg-base)]/40 rounded-r">
                 &ldquo;{objective}&rdquo;
               </blockquote>
             </div>
@@ -79,9 +79,9 @@ export function KeyProvisions({
 
           {/* Core Provisions List */}
           <div>
-            <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2.5 flex items-center justify-between">
+            <h4 className="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-2.5 flex items-center justify-between">
               <span>Identified Key Provisions</span>
-              <span className="text-[11px] font-normal text-slate-500">
+              <span className="text-[11px] font-normal text-[var(--text-faint)]">
                 {displayProvisions.length} recorded
               </span>
             </h4>
@@ -91,7 +91,7 @@ export function KeyProvisions({
                 {displayProvisions.map((provision, idx) => (
                   <li
                     key={idx}
-                    className="flex items-start gap-3 rounded-lg border border-slate-800/80 bg-slate-900/40 p-3"
+                    className="flex items-start gap-3 rounded-lg border border-[var(--border-default)]/80 bg-[var(--bg-card)]/40 p-3"
                   >
                     <span
                       className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-blue-900/50 border border-blue-700/60 text-[10px] font-semibold text-blue-300 mt-0.5"
@@ -100,7 +100,7 @@ export function KeyProvisions({
                       §{idx + 1}
                     </span>
                     <div className="flex-1 space-y-1">
-                      <p className="text-xs font-mono text-slate-200 leading-relaxed">
+                      <p className="text-xs font-mono text-[var(--text-primary)] leading-relaxed">
                         {provision}
                       </p>
                     </div>
@@ -108,32 +108,32 @@ export function KeyProvisions({
                 ))}
               </ul>
             ) : (
-              <p className="text-xs text-slate-500 italic">
+              <p className="text-xs text-[var(--text-faint)] italic">
                 Specific clause-level provisions are summarized in the Statement of Objects and Reasons above.
               </p>
             )}
           </div>
 
           {/* Legal Authority & Amended Acts Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2 border-t border-slate-800/80">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2 border-t border-[var(--border-default)]/80">
             {/* Regulatory Authority */}
-            <div className="rounded-lg border border-slate-800/80 bg-slate-900/50 p-3.5 space-y-1.5">
+            <div className="rounded-lg border border-[var(--border-default)]/80 bg-[var(--bg-card)]/50 p-3.5 space-y-1.5">
               <div className="flex items-center gap-2">
                 <span className="text-sm" aria-hidden="true">🏛</span>
-                <span className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
+                <span className="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider">
                   Regulatory / Administrative Authority
                 </span>
               </div>
-              <p className="text-xs font-medium text-slate-200">
+              <p className="text-xs font-medium text-[var(--text-primary)]">
                 {authority || (isState ? `${state || "State"} Competent Administrative Department` : "Central Sponsoring Ministry")}
               </p>
             </div>
 
             {/* Amended Laws / Related Acts */}
-            <div className="rounded-lg border border-slate-800/80 bg-slate-900/50 p-3.5 space-y-1.5">
+            <div className="rounded-lg border border-[var(--border-default)]/80 bg-[var(--bg-card)]/50 p-3.5 space-y-1.5">
               <div className="flex items-center gap-2">
                 <span className="text-sm" aria-hidden="true">⚖</span>
-                <span className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
+                <span className="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider">
                   Amended Statutes / Intersecting Acts
                 </span>
               </div>
@@ -142,19 +142,19 @@ export function KeyProvisions({
                   {amendedActs.slice(0, 5).map((act, i) => (
                     <span
                       key={i}
-                      className="text-[11px] font-mono bg-slate-800/80 border border-slate-700/60 text-slate-300 rounded px-2 py-0.5"
+                      className="text-[11px] font-mono bg-[var(--bg-elevated)]/80 border border-[var(--border-strong)]/60 text-[var(--text-secondary)] rounded px-2 py-0.5"
                     >
                       {act}
                     </span>
                   ))}
                   {amendedActs.length > 5 && (
-                    <span className="text-[10px] text-slate-500 self-center">
+                    <span className="text-[10px] text-[var(--text-faint)] self-center">
                       +{amendedActs.length - 5} more
                     </span>
                   )}
                 </div>
               ) : (
-                <p className="text-xs text-slate-400">Principal enactment (No statutory amendment)</p>
+                <p className="text-xs text-[var(--text-muted)]">Principal enactment (No statutory amendment)</p>
               )}
             </div>
           </div>
@@ -170,7 +170,7 @@ export function KeyProvisions({
                       Financial &amp; Tax Terms
                     </span>
                   </div>
-                  <p className="text-xs text-slate-300 leading-relaxed font-mono">
+                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed font-mono">
                     {financialTerms}
                   </p>
                 </div>
@@ -184,7 +184,7 @@ export function KeyProvisions({
                       Compliance Penalties &amp; Enforcement
                     </span>
                   </div>
-                  <p className="text-xs text-slate-300 leading-relaxed font-mono">
+                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed font-mono">
                     {penalties}
                   </p>
                 </div>

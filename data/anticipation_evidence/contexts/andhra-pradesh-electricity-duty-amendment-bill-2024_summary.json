@@ -40,7 +40,7 @@
       "source_name": "Official Parliament Record / PRS",
       "source_url": "https://aplegislature.org/bills/14-2024",
       "publication_timestamp": "2024-03-05T10:00:00Z",
-      "discovery_timestamp": "2026-10-06T09:39:09.128556Z",
+      "discovery_timestamp": "2026-10-28T16:05:41.685515Z",
       "event_reference": "2024-03-05T10:00:00Z",
       "headline": "Official Introduction: The Andhra Pradesh Electricity Duty (Amendment) Bill, 2024",
       "summary": "Official legislative record for The Andhra Pradesh Electricity Duty (Amendment) Bill, 2024 (Bill No. AP-LA-14-2024) under Legislature.",
@@ -58,12 +58,12 @@
         "official_pdf_url": null
       },
       "verification_status": "VERIFIED",
-      "created_at": "2026-10-06T09:39:09.128560Z",
+      "created_at": "2026-10-28T16:05:41.685542Z",
       "duplicate_of": null,
       "canonical_evidence_id": "pie_off_7fe25aa82284",
       "match_reason": "Direct mention of bill title 'The Andhra Pradesh Electricity Duty (Amendment) Bill, 2024'; Explicit bill number reference 'AP-LA-14-2024'; References subnational jurisdiction 'Andhra Pradesh'"
     }
   ],
   "search_trend_items": [],
-  "created_at": "2026-10-06T09:39:09.128646Z"
+  "created_at": "2026-10-28T16:05:41.686038Z"
 }

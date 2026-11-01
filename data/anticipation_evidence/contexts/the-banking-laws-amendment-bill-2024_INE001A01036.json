@@ -40,7 +40,7 @@
       "source_name": "Official Parliament Record / PRS",
       "source_url": "https://prsindia.org/billtrack/the-banking-laws-amendment-bill-2024",
       "publication_timestamp": "2024-08-09T11:00:00Z",
-      "discovery_timestamp": "2026-10-06T09:39:09.193775Z",
+      "discovery_timestamp": "2026-10-28T16:05:42.370925Z",
       "event_reference": "2024-08-09T11:00:00Z",
       "headline": "Official Introduction: The Banking Laws (Amendment) Bill, 2024",
       "summary": "Official legislative record for The Banking Laws (Amendment) Bill, 2024 (Bill No. 120 of 2024) under Legislature.",
@@ -60,12 +60,12 @@
         "official_pdf_url": null
       },
       "verification_status": "VERIFIED",
-      "created_at": "2026-10-06T09:39:09.193779Z",
+      "created_at": "2026-10-28T16:05:42.370954Z",
       "duplicate_of": null,
       "canonical_evidence_id": "pie_off_65a936f889ca",
       "match_reason": "Direct mention of bill title 'The Banking Laws (Amendment) Bill, 2024'; Explicit bill number reference '120 of 2024'; References affected sector(s): Banking"
     }
   ],
   "search_trend_items": [],
-  "created_at": "2026-10-06T09:39:09.193837Z"
+  "created_at": "2026-10-28T16:05:42.371847Z"
 }

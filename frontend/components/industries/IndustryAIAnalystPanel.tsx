@@ -1,4 +1,4 @@
-/**
+﻿/**
  * components/industries/IndustryAIAnalystPanel.tsx
  * ================================================
  * Grounded AI Industry Analyst panel with prompt chips and persona adaptation.
@@ -66,24 +66,24 @@ export function IndustryAIAnalystPanel({
             ✦
           </div>
           <div>
-            <h2 id="ai-analyst-heading" className="text-lg font-semibold text-white">
+            <h2 id="ai-analyst-heading" className="text-lg font-semibold text-[var(--text-primary)]">
               AI Industry Analyst
             </h2>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-[var(--text-muted)]">
               Grounded, multi-persona synthesis strictly using validated parliamentary & corporate intelligence
             </p>
           </div>
         </div>
 
         {/* Persona Selector */}
-        <div className="inline-flex rounded-lg border border-slate-800 bg-slate-900 p-1 text-xs">
+        <div className="inline-flex rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)] p-1 text-xs">
           <button
             type="button"
             onClick={() => setPersona("INVESTOR")}
             className={`rounded-md px-2.5 py-1 font-medium transition-colors ${
               persona === "INVESTOR"
                 ? "bg-purple-950/60 text-purple-300 border border-purple-800/40"
-                : "text-slate-400 hover:text-slate-200"
+                : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"
             }`}
           >
             Investor
@@ -94,7 +94,7 @@ export function IndustryAIAnalystPanel({
             className={`rounded-md px-2.5 py-1 font-medium transition-colors ${
               persona === "POLICY_RESEARCHER"
                 ? "bg-purple-950/60 text-purple-300 border border-purple-800/40"
-                : "text-slate-400 hover:text-slate-200"
+                : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"
             }`}
           >
             Policy
@@ -105,7 +105,7 @@ export function IndustryAIAnalystPanel({
             className={`rounded-md px-2.5 py-1 font-medium transition-colors ${
               persona === "GENERAL_PUBLIC"
                 ? "bg-purple-950/60 text-purple-300 border border-purple-800/40"
-                : "text-slate-400 hover:text-slate-200"
+                : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"
             }`}
           >
             Public
@@ -114,10 +114,10 @@ export function IndustryAIAnalystPanel({
       </div>
 
       {/* Main Panel Box */}
-      <div className="rounded-xl border border-slate-800 bg-slate-900/80 p-5 shadow-lg space-y-4">
+      <div className="rounded-xl border border-[var(--border-default)] bg-[var(--bg-card)]/80 p-5 shadow-lg space-y-4">
         {/* Chips */}
         <div>
-          <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider block mb-2">
+          <span className="text-[11px] font-medium text-[var(--text-muted)] uppercase tracking-wider block mb-2">
             Suggested Analysis Queries:
           </span>
           <div className="flex flex-wrap gap-1.5">
@@ -130,7 +130,7 @@ export function IndustryAIAnalystPanel({
                   handleAsk(chip);
                 }}
                 disabled={loading}
-                className="rounded-full border border-slate-700/80 bg-slate-800/60 px-3 py-1 text-xs text-slate-300 hover:bg-slate-700 hover:text-white hover:border-slate-600 transition-colors disabled:opacity-50"
+                className="rounded-full border border-[var(--border-strong)]/80 bg-[var(--bg-elevated)]/60 px-3 py-1 text-xs text-[var(--text-secondary)] hover:bg-[var(--bg-card-hover)] hover:text-white hover:border-slate-600 transition-colors disabled:opacity-50"
               >
                 {chip}
               </button>
@@ -151,13 +151,13 @@ export function IndustryAIAnalystPanel({
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
             placeholder={`Ask a grounded question about ${industryName}...`}
-            className="flex-1 rounded-lg border border-slate-700 bg-slate-800/90 px-3.5 py-2 text-xs text-white placeholder-slate-500 focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500"
+            className="flex-1 rounded-lg border border-[var(--border-strong)] bg-[var(--bg-elevated)]/90 px-3.5 py-2 text-xs text-[var(--text-primary)] placeholder-[var(--input-placeholder)] focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500"
             disabled={loading}
           />
           <button
             type="submit"
             disabled={loading || !question.trim()}
-            className="inline-flex items-center gap-1.5 rounded-lg bg-purple-600 px-4 py-2 text-xs font-semibold text-white hover:bg-purple-500 transition-colors disabled:opacity-50"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-purple-600 px-4 py-2 text-xs font-semibold text-[var(--text-primary)] hover:bg-purple-500 transition-colors disabled:opacity-50"
           >
             {loading ? (
               <>
@@ -190,11 +190,11 @@ export function IndustryAIAnalystPanel({
               )}
             </div>
 
-            <div className="text-xs text-slate-200 leading-relaxed whitespace-pre-line space-y-2">
+            <div className="text-xs text-[var(--text-primary)] leading-relaxed whitespace-pre-line space-y-2">
               {response.content}
             </div>
 
-            <div className="text-[10px] text-slate-500 pt-2 border-t border-slate-800/80 italic">
+            <div className="text-[10px] text-[var(--text-faint)] pt-2 border-t border-[var(--border-default)]/80 italic">
               {response.disclaimer}
             </div>
           </div>

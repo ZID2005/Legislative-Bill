@@ -1,4 +1,4 @@
-/**
+﻿/**
  * components/ui/CommandPalette.tsx
  * =================================
  * Task 8.31C — Institutional Command Palette (⌘K).
@@ -188,16 +188,16 @@ export function CommandPalette({ open, onClose }: CommandPaletteProps) {
     >
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/75 backdrop-blur-xs transition-opacity"
+        className="fixed inset-0 bg-[var(--overlay-backdrop)] backdrop-blur-xs transition-opacity"
         onClick={onClose}
         aria-hidden="true"
       />
 
       {/* Palette container */}
-      <div className="relative mx-auto max-w-2xl transform overflow-hidden rounded-xl border border-white/10 bg-[#0c1322] shadow-2xl transition-all">
+      <div className="relative mx-auto max-w-2xl transform overflow-hidden rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface)] shadow-2xl transition-all">
         {/* Search Input Bar */}
-        <div className="flex items-center border-b border-white/10 bg-[#090e18] px-4 py-3">
-          <span className="text-base text-slate-400 mr-3 select-none">🔍</span>
+        <div className="flex items-center border-b border-[var(--border-default)] bg-[var(--bg-base)] px-4 py-3">
+          <span className="text-base text-[var(--text-muted)] mr-3 select-none">🔍</span>
           <input
             ref={inputRef}
             type="text"
@@ -207,18 +207,18 @@ export function CommandPalette({ open, onClose }: CommandPaletteProps) {
               setSelectedIndex(0);
             }}
             placeholder="Type a bill, company, ticker, ISIN, or command (/b, /c, /s, >)..."
-            className="w-full bg-transparent text-sm text-slate-100 placeholder-slate-500 focus:outline-none"
+            className="w-full bg-transparent text-sm text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none"
             autoComplete="off"
             spellCheck="false"
           />
-          <span className="ml-3 rounded border border-white/10 bg-white/5 px-1.5 py-0.5 text-[10px] font-mono text-slate-400 select-none">
+          <span className="ml-3 rounded border border-[var(--border-default)] bg-[var(--bg-secondary)] px-1.5 py-0.5 text-[10px] font-mono text-[var(--text-muted)] select-none">
             ESC
           </span>
         </div>
 
         {/* Filter Pills Strip */}
-        <div className="flex items-center gap-1.5 px-4 py-2 border-b border-white/5 bg-[#090e18]/60 overflow-x-auto text-[11px]">
-          <span className="text-slate-500 font-semibold uppercase tracking-wider text-[9px] mr-1">Scope:</span>
+        <div className="flex items-center gap-1.5 px-4 py-2 border-b border-[var(--border-subtle)] bg-[var(--bg-base)] overflow-x-auto text-[11px]">
+          <span className="text-[var(--text-muted)] font-semibold uppercase tracking-wider text-[9px] mr-1">Scope:</span>
           {[
             { id: "all", label: "All" },
             { id: "bills", label: "/b Bills" },
@@ -237,8 +237,8 @@ export function CommandPalette({ open, onClose }: CommandPaletteProps) {
               className={cn(
                 "px-2 py-0.5 rounded transition-colors whitespace-nowrap",
                 prefixMode === f.id
-                  ? "bg-indigo-600 text-white font-medium"
-                  : "bg-white/5 text-slate-400 hover:text-slate-200 hover:bg-white/10"
+                  ? "bg-[var(--action-primary)] text-[var(--text-primary)] font-medium shadow-xs"
+                  : "bg-[var(--bg-secondary)] text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)]"
               )}
             >
               {f.label}
@@ -247,10 +247,10 @@ export function CommandPalette({ open, onClose }: CommandPaletteProps) {
         </div>
 
         {/* Results List */}
-        <div className="max-h-96 overflow-y-auto p-2 divide-y divide-white/5">
+        <div className="max-h-96 overflow-y-auto p-2 divide-y divide-[var(--border-subtle)]">
           {combinedItems.length === 0 ? (
-            <div className="py-12 text-center text-xs text-slate-500">
-              No matching records or commands for <span className="text-slate-300 font-mono">"{query}"</span>.
+            <div className="py-12 text-center text-xs text-[var(--text-muted)]">
+              No matching records or commands for <span className="text-[var(--text-primary)] font-mono">"{query}"</span>.
             </div>
           ) : (
             combinedItems.map((item, idx) => {
@@ -265,22 +265,22 @@ export function CommandPalette({ open, onClose }: CommandPaletteProps) {
                   onMouseEnter={() => setSelectedIndex(idx)}
                   className={cn(
                     "flex items-center justify-between gap-3 px-3 py-2.5 rounded-lg cursor-pointer transition-colors duration-75",
-                    isSelected ? "bg-[#121b2f] border border-indigo-500/30" : "hover:bg-white/[0.02]"
+                    isSelected ? "bg-[var(--bg-elevated)] border border-[var(--border-strong)]" : "hover:bg-[var(--bg-card-hover)]"
                   )}
                 >
                   <div className="flex items-center gap-3 min-w-0 flex-1">
                     <span className="text-base flex-shrink-0 opacity-80">{item.icon ?? "•"}</span>
                     <div className="min-w-0 flex-1">
-                      <p className={cn("text-xs font-medium truncate", isSelected ? "text-white" : "text-slate-200")}>
+                      <p className={cn("text-xs font-medium truncate", isSelected ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)]")}>
                         {item.title}
                       </p>
                       {item.subtitle && (
-                        <p className="text-[11px] text-slate-500 truncate mt-0.5">{item.subtitle}</p>
+                        <p className="text-[11px] text-[var(--text-muted)] truncate mt-0.5">{item.subtitle}</p>
                       )}
                     </div>
                   </div>
                   {item.badge && (
-                    <span className="flex-shrink-0 text-[9.5px] font-mono px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-slate-400">
+                    <span className="flex-shrink-0 text-[9.5px] font-mono px-1.5 py-0.5 rounded bg-[var(--bg-secondary)] border border-[var(--border-default)] text-[var(--text-muted)]">
                       {item.badge}
                     </span>
                   )}
@@ -291,13 +291,13 @@ export function CommandPalette({ open, onClose }: CommandPaletteProps) {
         </div>
 
         {/* Footer info bar */}
-        <div className="flex items-center justify-between px-4 py-2 border-t border-white/10 bg-[#090e18] text-[10px] text-slate-500">
+        <div className="flex items-center justify-between px-4 py-2.5 border-t border-[var(--border-default)] bg-[var(--bg-base)] text-[10px] text-[var(--text-muted)]">
           <div className="flex items-center gap-3">
-            <span><strong className="text-slate-400">↑↓</strong> Navigate</span>
-            <span><strong className="text-slate-400">↵</strong> Select</span>
-            <span><strong className="text-slate-400">ESC</strong> Close</span>
+            <span><strong className="text-[var(--text-secondary)]">↑↓</strong> Navigate</span>
+            <span><strong className="text-[var(--text-secondary)]">↵</strong> Select</span>
+            <span><strong className="text-[var(--text-secondary)]">ESC</strong> Close</span>
           </div>
-          <span className="font-mono text-slate-500">LegisIntel Precision Search</span>
+          <span className="font-mono text-[var(--text-muted)]">Seance Precision Search</span>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * components/companies/CompanyOverview.tsx
  * =========================================
  * Executive summary card for corporate profiles.
@@ -50,31 +50,31 @@ export function CompanyOverview({ company, className = "" }: CompanyOverviewProp
       <section aria-labelledby="exposure-metrics-heading">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
-            <h2 id="exposure-metrics-heading" className="text-sm font-semibold text-slate-200">
+            <h2 id="exposure-metrics-heading" className="text-sm font-semibold text-[var(--text-primary)]">
               Legislative Exposure Summary
             </h2>
             <SourceBadge type="DERIVED" size="xs" showTooltip />
           </div>
-          <span className="text-xs text-slate-500">
+          <span className="text-xs text-[var(--text-faint)]">
             {company.total_exposures} total verified legislative exposures
           </span>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
           {/* Total Documented Exposures */}
-          <div className="rounded-lg border border-slate-800 bg-slate-900/80 p-3.5 flex flex-col justify-between">
-            <p className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+          <div className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/80 p-3.5 flex flex-col justify-between">
+            <p className="text-[11px] font-medium text-[var(--text-muted)] uppercase tracking-wider">
               Total Exposures
             </p>
             <div className="mt-2 flex items-baseline justify-between">
-              <span className="text-2xl font-bold text-slate-100">{company.total_exposures}</span>
-              <span className="text-[10px] text-slate-500">Bills</span>
+              <span className="text-2xl font-bold text-[var(--text-primary)]">{company.total_exposures}</span>
+              <span className="text-[10px] text-[var(--text-faint)]">Bills</span>
             </div>
           </div>
 
           {/* Central Exposures */}
-          <div className="rounded-lg border border-slate-800 bg-slate-900/80 p-3.5 flex flex-col justify-between">
-            <p className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+          <div className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/80 p-3.5 flex flex-col justify-between">
+            <p className="text-[11px] font-medium text-[var(--text-muted)] uppercase tracking-wider">
               Central Parliament
             </p>
             <div className="mt-2 flex items-baseline justify-between">
@@ -86,8 +86,8 @@ export function CompanyOverview({ company, className = "" }: CompanyOverviewProp
           </div>
 
           {/* State Exposures */}
-          <div className="rounded-lg border border-slate-800 bg-slate-900/80 p-3.5 flex flex-col justify-between">
-            <p className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+          <div className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/80 p-3.5 flex flex-col justify-between">
+            <p className="text-[11px] font-medium text-[var(--text-muted)] uppercase tracking-wider">
               State Assemblies
             </p>
             <div className="mt-2 flex items-baseline justify-between">
@@ -99,8 +99,8 @@ export function CompanyOverview({ company, className = "" }: CompanyOverviewProp
           </div>
 
           {/* Direct Exposures */}
-          <div className="rounded-lg border border-slate-800 bg-slate-900/80 p-3.5 flex flex-col justify-between">
-            <p className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+          <div className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/80 p-3.5 flex flex-col justify-between">
+            <p className="text-[11px] font-medium text-[var(--text-muted)] uppercase tracking-wider">
               Direct Exposure
             </p>
             <div className="mt-2 flex items-baseline justify-between">
@@ -112,8 +112,8 @@ export function CompanyOverview({ company, className = "" }: CompanyOverviewProp
           </div>
 
           {/* Indirect Exposures */}
-          <div className="rounded-lg border border-slate-800 bg-slate-900/80 p-3.5 flex flex-col justify-between">
-            <p className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+          <div className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/80 p-3.5 flex flex-col justify-between">
+            <p className="text-[11px] font-medium text-[var(--text-muted)] uppercase tracking-wider">
               Indirect Exposure
             </p>
             <div className="mt-2 flex items-baseline justify-between">
@@ -125,15 +125,15 @@ export function CompanyOverview({ company, className = "" }: CompanyOverviewProp
           </div>
 
           {/* High Strength Distribution */}
-          <div className="rounded-lg border border-slate-800 bg-slate-900/80 p-3.5 flex flex-col justify-between">
-            <p className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+          <div className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]/80 p-3.5 flex flex-col justify-between">
+            <p className="text-[11px] font-medium text-[var(--text-muted)] uppercase tracking-wider">
               High Impact Vectors
             </p>
             <div className="mt-2 flex items-baseline justify-between">
               <span className="text-2xl font-bold text-rose-400">
                 {strengthCounts.HIGH}
               </span>
-              <span className="text-[10px] text-slate-500">
+              <span className="text-[10px] text-[var(--text-faint)]">
                 {strengthCounts.MEDIUM} Med · {strengthCounts.LOW} Low
               </span>
             </div>
@@ -153,31 +153,31 @@ export function CompanyOverview({ company, className = "" }: CompanyOverviewProp
                 <CardTitle>Business Overview &amp; Commercial Scope</CardTitle>
                 <SourceBadge type="FACT" size="xs" showTooltip />
               </div>
-              <span className="text-xs text-slate-500">{company.sector}</span>
+              <span className="text-xs text-[var(--text-faint)]">{company.sector}</span>
             </div>
           </CardHeader>
 
           {company.business_description ? (
-            <p className="text-sm text-slate-300 leading-relaxed">
+            <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
               {company.business_description}
             </p>
           ) : (
-            <p className="text-sm text-slate-500 italic">
+            <p className="text-sm text-[var(--text-faint)] italic">
               Commercial profile records are maintained under verified sector disclosures.
             </p>
           )}
 
           {/* Documented Business Activities */}
           {company.business_activities && company.business_activities.length > 0 && (
-            <div className="pt-2 border-t border-slate-800/80">
-              <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
+            <div className="pt-2 border-t border-[var(--border-default)]/80">
+              <p className="text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider mb-2">
                 Core Commercial Activities
               </p>
               <div className="flex flex-wrap gap-1.5" role="list">
                 {company.business_activities.map((act) => (
                   <span
                     key={act}
-                    className="text-xs rounded bg-slate-800/80 border border-slate-700/60 px-2.5 py-1 text-slate-300"
+                    className="text-xs rounded bg-[var(--bg-elevated)]/80 border border-[var(--border-strong)]/60 px-2.5 py-1 text-[var(--text-secondary)]"
                     role="listitem"
                   >
                     {act}
@@ -189,9 +189,9 @@ export function CompanyOverview({ company, className = "" }: CompanyOverviewProp
 
           {/* Key Transmission Mechanisms Active */}
           {company.mechanisms && company.mechanisms.length > 0 && (
-            <div className="pt-2 border-t border-slate-800/80">
+            <div className="pt-2 border-t border-[var(--border-default)]/80">
               <div className="flex items-center justify-between mb-2">
-                <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                <p className="text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider">
                   Active Economic Transmission Channels
                 </p>
                 <SourceBadge type="DERIVED" size="xs" />
@@ -218,15 +218,15 @@ export function CompanyOverview({ company, className = "" }: CompanyOverviewProp
             </div>
           </CardHeader>
 
-          <div className="space-y-3 text-xs divide-y divide-slate-800/60">
+          <div className="space-y-3 text-xs divide-y divide-[var(--border-default)]/60">
             {/* Sector / Industry */}
             <div className="pt-1">
-              <span className="text-slate-500 block">Sector / Industry</span>
-              <span className="text-slate-200 font-medium">
+              <span className="text-[var(--text-faint)] block">Sector / Industry</span>
+              <span className="text-[var(--text-primary)] font-medium">
                 {company.sector} — {company.industry || "General"}
               </span>
               {company.sub_industry && (
-                <span className="text-slate-400 block text-[11px] mt-0.5">
+                <span className="text-[var(--text-muted)] block text-[11px] mt-0.5">
                   Sub-industry: {company.sub_industry}
                 </span>
               )}
@@ -234,16 +234,16 @@ export function CompanyOverview({ company, className = "" }: CompanyOverviewProp
 
             {/* Entity Type & Ownership */}
             <div className="pt-2">
-              <span className="text-slate-500 block">Ownership &amp; Form</span>
-              <span className="text-slate-200 font-medium">
+              <span className="text-[var(--text-faint)] block">Ownership &amp; Form</span>
+              <span className="text-[var(--text-primary)] font-medium">
                 {company.ownership_type.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())} · {company.listing_status}
               </span>
             </div>
 
             {/* Headquarters */}
             <div className="pt-2">
-              <span className="text-slate-500 block">Headquarters</span>
-              <span className="text-slate-200 font-medium">
+              <span className="text-[var(--text-faint)] block">Headquarters</span>
+              <span className="text-[var(--text-primary)] font-medium">
                 {[company.hq_city, company.hq_state].filter(Boolean).join(", ") || "India"}
               </span>
             </div>
@@ -251,7 +251,7 @@ export function CompanyOverview({ company, className = "" }: CompanyOverviewProp
             {/* Operating States */}
             {company.operating_states && company.operating_states.length > 0 && (
               <div className="pt-2">
-                <span className="text-slate-500 block mb-1">
+                <span className="text-[var(--text-faint)] block mb-1">
                   Operating States ({company.operating_states.length})
                 </span>
                 <div className="flex flex-wrap gap-1">
@@ -259,13 +259,13 @@ export function CompanyOverview({ company, className = "" }: CompanyOverviewProp
                     <Link
                       key={st}
                       href={`/states/${encodeURIComponent(st)}`}
-                      className="text-[11px] bg-slate-800 text-slate-300 hover:text-white px-1.5 py-0.5 rounded transition-colors"
+                      className="text-[11px] bg-[var(--bg-elevated)] text-[var(--text-secondary)] hover:text-white px-1.5 py-0.5 rounded transition-colors"
                     >
                       {st}
                     </Link>
                   ))}
                   {company.operating_states.length > 6 && (
-                    <span className="text-[11px] text-slate-500 self-center">
+                    <span className="text-[11px] text-[var(--text-faint)] self-center">
                       +{company.operating_states.length - 6} more
                     </span>
                   )}
@@ -275,7 +275,7 @@ export function CompanyOverview({ company, className = "" }: CompanyOverviewProp
 
             {/* Data Sources & Certification */}
             <div className="pt-2">
-              <span className="text-slate-500 block mb-1">Authoritative Data Sources</span>
+              <span className="text-[var(--text-faint)] block mb-1">Authoritative Data Sources</span>
               <div className="flex flex-wrap gap-1">
                 {(company.data_sources && company.data_sources.length > 0
                   ? company.data_sources
@@ -283,7 +283,7 @@ export function CompanyOverview({ company, className = "" }: CompanyOverviewProp
                 ).map((src) => (
                   <span
                     key={src}
-                    className="text-[10px] bg-slate-800/80 text-slate-400 border border-slate-700/40 px-1.5 py-0.5 rounded"
+                    className="text-[10px] bg-[var(--bg-elevated)]/80 text-[var(--text-muted)] border border-[var(--border-strong)]/40 px-1.5 py-0.5 rounded"
                   >
                     {src}
                   </span>

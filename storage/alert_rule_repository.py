@@ -38,6 +38,18 @@ class AlertRuleRepository:
         self._root_dir = root_dir or _get_default_rules_dir()
         ensure_dir(self._root_dir)
 
+    def _get_db(self) -> Any:
+        if self._root_dir != _get_default_rules_dir():
+            return None
+        try:
+            from storage.database.provider import get_database_provider
+            db = get_database_provider()
+            if db and db.status in ("READY", "CONFIGURED"):
+                return db
+        except Exception:
+            pass
+        return None
+
     def _user_rules_dir(self, tenant_id: str, user_id: str) -> Path:
         path = self._root_dir / tenant_id / user_id
         ensure_dir(path)
@@ -55,6 +67,34 @@ class AlertRuleRepository:
                 f"Alert rule '{rule.alert_rule_id}' already exists for user '{rule.user_id}'"
             )
 
+        db = self._get_db()
+        if db:
+            try:
+                db.execute_mutation(
+                    """
+                    INSERT INTO alert_rules (
+                        rule_id, tenant_id, user_id, watchlist_id, name, rule_type,
+                        minimum_severity, conditions, enabled, created_at, updated_at
+                    ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
+                    """,
+                    (
+                        rule.alert_rule_id,
+                        rule.tenant_id,
+                        rule.user_id,
+                        rule.watchlist_id,
+                        f"Rule {rule.alert_rule_id[:8]}",
+                        rule.alert_type.value if hasattr(rule.alert_type, "value") else str(rule.alert_type),
+                        rule.minimum_severity.value if hasattr(rule.minimum_severity, "value") else str(rule.minimum_severity),
+                        "{}",
+                        rule.enabled,
+                        rule.created_at,
+                        rule.updated_at,
+                    ),
+                    tenant_id=rule.tenant_id,
+                )
+            except Exception as e:
+                logger.debug("DB insert alert_rule failed: %s", e)
+
         with open(path, "w", encoding="utf-8") as f:
             json.dump(rule.to_dict(), f, indent=2)
         logger.debug("Created alert rule %s for user %s", rule.alert_rule_id, rule.user_id)
@@ -69,6 +109,37 @@ class AlertRuleRepository:
         """
         Retrieve an alert rule by ID, enforcing tenant/user scoping when supplied.
         """
+        db = self._get_db()
+        if db:
+            try:
+                query = "SELECT rule_id, tenant_id, user_id, watchlist_id, name, rule_type, minimum_severity, conditions, enabled, created_at, updated_at FROM alert_rules WHERE rule_id = %s"
+                params: list[Any] = [alert_rule_id]
+                if tenant_id:
+                    query += " AND tenant_id = %s"
+                    params.append(tenant_id)
+                if user_id:
+                    query += " AND user_id = %s"
+                    params.append(user_id)
+                rows = db.execute_query(query, tuple(params), tenant_id=tenant_id)
+                if rows:
+                    r = rows[0]
+                    from schemas.alert import AlertType, AlertSeverity
+                    at = AlertType(r["rule_type"]) if r["rule_type"] in AlertType._value2member_map_ else AlertType.BILL_STATUS_CHANGE
+                    sev = AlertSeverity(r["minimum_severity"]) if r["minimum_severity"] in AlertSeverity._value2member_map_ else AlertSeverity.MEDIUM
+                    return AlertRule(
+                        alert_rule_id=r["rule_id"],
+                        tenant_id=r["tenant_id"],
+                        user_id=r["user_id"],
+                        watchlist_id=r.get("watchlist_id"),
+                        alert_type=at,
+                        minimum_severity=sev,
+                        enabled=bool(r.get("enabled", True)),
+                        created_at=str(r.get("created_at")),
+                        updated_at=str(r.get("updated_at")),
+                    )
+            except Exception as e:
+                logger.debug("DB get alert_rule failed: %s", e)
+
         if tenant_id and user_id:
             path = self._user_rules_dir(tenant_id, user_id) / f"rule_{alert_rule_id}.json"
             if not path.is_file():
@@ -103,14 +174,36 @@ class AlertRuleRepository:
         from datetime import datetime, timezone
         rule.updated_at = datetime.now(timezone.utc).isoformat()
 
+        db = self._get_db()
+        if db:
+            try:
+                db.execute_mutation(
+                    """
+                    UPDATE alert_rules
+                    SET enabled = %s, minimum_severity = %s, updated_at = %s
+                    WHERE rule_id = %s AND tenant_id = %s;
+                    """,
+                    (
+                        rule.enabled,
+                        rule.minimum_severity.value if hasattr(rule.minimum_severity, "value") else str(rule.minimum_severity),
+                        rule.updated_at,
+                        rule.alert_rule_id,
+                        rule.tenant_id,
+                    ),
+                    tenant_id=rule.tenant_id,
+                )
+            except Exception as e:
+                logger.debug("DB update alert_rule failed: %s", e)
+
         path = self._user_rules_dir(rule.tenant_id, rule.user_id) / f"rule_{rule.alert_rule_id}.json"
-        if not path.is_file():
+        if not path.is_file() and not db:
             raise ValueError(
                 f"Cannot update non-existent alert rule '{rule.alert_rule_id}'"
             )
 
-        with open(path, "w", encoding="utf-8") as f:
-            json.dump(rule.to_dict(), f, indent=2)
+        if path.parent.is_dir():
+            with open(path, "w", encoding="utf-8") as f:
+                json.dump(rule.to_dict(), f, indent=2)
         return rule
 
     def enable(
@@ -217,9 +310,20 @@ class AlertRuleRepository:
         tenant_id: str = "default_tenant",
         user_id: str = "default_user",
     ) -> bool:
-        """Delete an alert rule file."""
+        """Delete an alert rule."""
+        db = self._get_db()
+        if db:
+            try:
+                db.execute_mutation(
+                    "DELETE FROM alert_rules WHERE rule_id = %s AND tenant_id = %s;",
+                    (alert_rule_id, tenant_id),
+                    tenant_id=tenant_id,
+                )
+            except Exception as e:
+                logger.debug("DB delete alert_rule failed: %s", e)
+
         path = self._user_rules_dir(tenant_id, user_id) / f"rule_{alert_rule_id}.json"
         if path.is_file():
             path.unlink()
             return True
-        return False
+        return db is not None

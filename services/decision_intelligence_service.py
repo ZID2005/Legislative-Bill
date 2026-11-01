@@ -230,7 +230,8 @@ class DecisionIntelligenceService:
         if industry:
             ind_lower = industry.lower()
             ind_stem = ind_lower.rstrip("s")
-            if any(ind_lower in s or s in ind_lower or (len(ind_stem) >= 4 and ind_stem in s) for s in bill_sec_lower):
+            ind_tokens = {t.strip() for t in ind_lower.replace("&", " ").replace("/", " ").split() if len(t.strip()) >= 4 and t.strip() not in ("services", "service")}
+            if any(ind_lower in s or s in ind_lower or (len(ind_stem) >= 4 and ind_stem in s) or any(tok in s for tok in ind_tokens) for s in bill_sec_lower):
                 industry_match = True
                 signals.append(RelevanceSignal.INDUSTRY_EXPOSURE)
                 signals.append(RelevanceSignal.INDUSTRY_MATCH)
@@ -251,7 +252,8 @@ class DecisionIntelligenceService:
         if sector:
             sec_lower = sector.lower()
             sec_stem = sec_lower.rstrip("s")
-            if any(sec_lower in s or s in sec_lower or (len(sec_stem) >= 4 and sec_stem in s) for s in bill_sec_lower):
+            sec_tokens = {t.strip() for t in sec_lower.replace("&", " ").replace("/", " ").split() if len(t.strip()) >= 4 and t.strip() not in ("services", "service")}
+            if any(sec_lower in s or s in sec_lower or (len(sec_stem) >= 4 and sec_stem in s) or any(tok in s for tok in sec_tokens) for s in bill_sec_lower):
                 sector_match = True
                 signals.append(RelevanceSignal.SECTOR_EXPOSURE)
                 signals.append(RelevanceSignal.SECTOR_MATCH)

@@ -99,22 +99,22 @@ export default function CompaniesContent() {
         <div className="min-w-[220px] max-w-sm">
           <Link
             href={`/companies/${company.company_id || company.isin}`}
-            className="font-medium text-slate-100 hover:text-indigo-300 transition-colors line-clamp-1"
+            className="font-medium text-[var(--text-primary)] hover:text-indigo-300 transition-colors line-clamp-1"
           >
             {company.company_name}
           </Link>
           <div className="flex items-center gap-1.5 mt-0.5">
             {company.ticker_nse && (
-              <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-slate-800 text-slate-300 border border-slate-700">
+              <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-[var(--bg-elevated)] text-[var(--text-secondary)] border border-[var(--border-strong)]">
                 {company.ticker_nse}
               </span>
             )}
             {company.ticker_bse && !company.ticker_nse && (
-              <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-slate-800 text-slate-300 border border-slate-700">
+              <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-[var(--bg-elevated)] text-[var(--text-secondary)] border border-[var(--border-strong)]">
                 BSE: {company.ticker_bse}
               </span>
             )}
-            <span className="text-[10px] font-mono text-slate-500">{company.isin}</span>
+            <span className="text-[10px] font-mono text-[var(--text-faint)]">{company.isin}</span>
           </div>
         </div>
       ),
@@ -125,8 +125,8 @@ export default function CompaniesContent() {
       sortable: true,
       render: (company) => (
         <div className="max-w-[200px]">
-          <span className="text-xs text-slate-200 block truncate">{company.sector || "Unclassified"}</span>
-          <span className="text-[10px] text-slate-500 block truncate">{company.industry || "—"}</span>
+          <span className="text-xs text-[var(--text-primary)] block truncate">{company.sector || "Unclassified"}</span>
+          <span className="text-[10px] text-[var(--text-faint)] block truncate">{company.industry || "—"}</span>
         </div>
       ),
     },
@@ -161,7 +161,7 @@ export default function CompaniesContent() {
       sortable: true,
       width: "100px",
       render: (company) => (
-        <span className="font-mono-num font-semibold text-slate-200">
+        <span className="font-mono-num font-semibold text-[var(--text-primary)]">
           {company.documented_exposure_count ?? 0}
         </span>
       ),
@@ -197,7 +197,7 @@ export default function CompaniesContent() {
         <div className="flex items-center justify-end gap-1.5">
           <button
             onClick={() => setInspectCompany(company)}
-            className="px-2 py-1 text-[11px] font-medium text-slate-300 hover:text-white bg-slate-800/80 hover:bg-slate-700/80 rounded border border-slate-700/60 transition-colors"
+            className="px-2 py-1 text-[11px] font-medium text-[var(--text-secondary)] hover:text-white bg-[var(--bg-elevated)]/80 hover:bg-[var(--bg-card-hover)]/80 rounded border border-[var(--border-strong)]/60 transition-colors"
             title="Inspect entity details"
           >
             Inspect
@@ -214,32 +214,32 @@ export default function CompaniesContent() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 p-6 space-y-6 max-w-7xl mx-auto">
+    <div className="min-h-screen bg-[var(--bg-base)] text-[var(--text-primary)] p-6 space-y-6 max-w-7xl mx-auto">
       {/* Header & Metric Strip */}
       <div className="space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 mb-1">
               <span className="text-xl">🏢</span>
-              <h1 className="text-2xl font-bold text-slate-100 tracking-tight">
+              <h1 className="text-2xl font-bold text-[var(--text-primary)] tracking-tight">
                 Corporate Intelligence Universe
               </h1>
               <EpistemicBadge type="FACT" size="sm" />
             </div>
-            <p className="text-sm text-slate-400">
+            <p className="text-sm text-[var(--text-muted)]">
               70 Master Corporate Entities indexed across Central and State legislative exposure networks.
             </p>
           </div>
           <div className="flex items-center gap-2">
             <Link
               href="/industries"
-              className="px-3 py-1.5 text-xs font-medium text-slate-300 hover:text-white bg-slate-900 hover:bg-slate-800 rounded border border-slate-700 transition-colors"
+              className="px-3 py-1.5 text-xs font-medium text-[var(--text-secondary)] hover:text-white bg-[var(--bg-card)] hover:bg-[var(--bg-elevated)] rounded border border-[var(--border-strong)] transition-colors"
             >
               Industry Breakdown →
             </Link>
             <Link
               href="/sectors"
-              className="px-3 py-1.5 text-xs font-medium text-slate-300 hover:text-white bg-slate-900 hover:bg-slate-800 rounded border border-slate-700 transition-colors"
+              className="px-3 py-1.5 text-xs font-medium text-[var(--text-secondary)] hover:text-white bg-[var(--bg-card)] hover:bg-[var(--bg-elevated)] rounded border border-[var(--border-strong)] transition-colors"
             >
               Macro Sectors →
             </Link>
@@ -248,10 +248,10 @@ export default function CompaniesContent() {
 
         {/* 4 Stat Cards */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <div className="p-3.5 rounded-lg bg-slate-900/90 border border-slate-800 shadow-sm">
-            <div className="text-xs text-slate-400">Total Universe</div>
-            <div className="text-2xl font-bold font-mono-num text-slate-100 mt-1">70</div>
-            <div className="text-[11px] text-slate-500 mt-0.5">Master Legal Entities</div>
+          <div className="p-3.5 rounded-lg bg-[var(--bg-card)]/90 border border-[var(--border-default)] shadow-sm">
+            <div className="text-xs text-[var(--text-muted)]">Total Universe</div>
+            <div className="text-2xl font-bold font-mono-num text-[var(--text-primary)] mt-1">70</div>
+            <div className="text-[11px] text-[var(--text-faint)] mt-0.5">Master Legal Entities</div>
           </div>
           <div className="p-3.5 rounded-lg bg-emerald-950/20 border border-emerald-800/30 shadow-sm">
             <div className="text-xs text-emerald-400">Quantitative Securities</div>
@@ -272,8 +272,8 @@ export default function CompaniesContent() {
       </div>
 
       {/* Universe Filter Tabs */}
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-3">
-        <div className="flex items-center gap-1 bg-slate-900/80 p-1 rounded-lg border border-slate-800">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--border-default)] pb-3">
+        <div className="flex items-center gap-1 bg-[var(--bg-card)]/80 p-1 rounded-lg border border-[var(--border-default)] overflow-x-auto max-w-full">
           {UNIVERSE_TABS.map((tab) => (
             <button
               key={tab.id}
@@ -284,15 +284,15 @@ export default function CompaniesContent() {
               className={cn(
                 "px-3 py-1.5 rounded-md text-xs font-medium transition-colors flex items-center gap-1.5",
                 universeType === tab.id
-                  ? "bg-indigo-600 text-white shadow-sm"
-                  : "text-slate-400 hover:text-slate-200 hover:bg-slate-800/60"
+                  ? "bg-indigo-600 text-[var(--text-primary)] shadow-sm"
+                  : "text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-elevated)]/60"
               )}
             >
               <span>{tab.label}</span>
               <span
                 className={cn(
                   "text-[10px] font-mono px-1 rounded",
-                  universeType === tab.id ? "bg-indigo-700/60 text-white" : "bg-slate-800 text-slate-400"
+                  universeType === tab.id ? "bg-indigo-700/60 text-[var(--text-primary)]" : "bg-[var(--bg-elevated)] text-[var(--text-muted)]"
                 )}
               >
                 {tab.count}
@@ -302,12 +302,12 @@ export default function CompaniesContent() {
         </div>
 
         {/* View Mode Toggle */}
-        <div className="flex items-center gap-1 bg-slate-900 p-0.5 rounded border border-slate-800 text-xs">
+        <div className="flex items-center gap-1 bg-[var(--bg-card)] p-0.5 rounded border border-[var(--border-default)] text-xs">
           <button
             onClick={() => setViewMode("table")}
             className={cn(
               "px-2.5 py-1 rounded font-medium transition-colors",
-              viewMode === "table" ? "bg-slate-800 text-slate-100" : "text-slate-400 hover:text-slate-200"
+              viewMode === "table" ? "bg-[var(--bg-elevated)] text-[var(--text-primary)]" : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"
             )}
             title="Institutional Table View"
           >
@@ -317,7 +317,7 @@ export default function CompaniesContent() {
             onClick={() => setViewMode("grid")}
             className={cn(
               "px-2.5 py-1 rounded font-medium transition-colors",
-              viewMode === "grid" ? "bg-slate-800 text-slate-100" : "text-slate-400 hover:text-slate-200"
+              viewMode === "grid" ? "bg-[var(--bg-elevated)] text-[var(--text-primary)]" : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"
             )}
             title="Card Grid View"
           >
@@ -345,7 +345,7 @@ export default function CompaniesContent() {
               setSector(e.target.value);
               setPage(1);
             }}
-            className="w-full px-3 py-2 bg-slate-900 border border-slate-800 text-slate-200 text-xs rounded-lg focus:outline-none focus:border-indigo-500"
+            className="w-full px-3 py-2 bg-[var(--bg-card)] border border-[var(--border-default)] text-[var(--text-primary)] text-xs rounded-lg focus:outline-none focus:border-indigo-500"
           >
             {SECTOR_OPTIONS.map((sec) => (
               <option key={sec} value={sec}>
@@ -376,7 +376,7 @@ export default function CompaniesContent() {
       {loading ? (
         <div className="space-y-3">
           {[1, 2, 3, 4, 5].map((i) => (
-            <SkeletonCard key={i} className="h-14 bg-slate-900/60" />
+            <SkeletonCard key={i} className="h-14 bg-[var(--bg-card)]/60" />
           ))}
         </div>
       ) : error ? (
@@ -393,7 +393,7 @@ export default function CompaniesContent() {
                 setSector("");
                 setPage(1);
               }}
-              className="px-3 py-1.5 text-xs rounded bg-slate-800 hover:bg-slate-700 text-slate-200"
+              className="px-3 py-1.5 text-xs rounded bg-[var(--bg-elevated)] hover:bg-[var(--bg-card-hover)] text-[var(--text-primary)]"
             >
               Reset filters
             </button>
@@ -428,11 +428,11 @@ export default function CompaniesContent() {
               return (
                 <div
                   key={company.company_id || company.isin}
-                  className="p-4 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 transition-colors flex flex-col justify-between"
+                  className="p-4 rounded-lg bg-[var(--bg-card)] border border-[var(--border-default)] hover:border-[var(--border-strong)] transition-colors flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-start justify-between gap-2 mb-2">
-                      <span className="text-xs font-mono text-slate-500">{company.isin}</span>
+                      <span className="text-xs font-mono text-[var(--text-faint)]">{company.isin}</span>
                       {isQuant ? (
                         <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-emerald-950/70 text-emerald-300 border border-emerald-800/40">
                           QUANT
@@ -445,26 +445,26 @@ export default function CompaniesContent() {
                     </div>
                     <Link
                       href={`/companies/${company.company_id || company.isin}`}
-                      className="font-medium text-slate-100 hover:text-indigo-300 transition-colors line-clamp-1 block text-sm"
+                      className="font-medium text-[var(--text-primary)] hover:text-indigo-300 transition-colors line-clamp-1 block text-sm"
                     >
                       {company.company_name}
                     </Link>
-                    <p className="text-xs text-slate-400 mt-1 line-clamp-1">
+                    <p className="text-xs text-[var(--text-muted)] mt-1 line-clamp-1">
                       {company.sector} · {company.industry}
                     </p>
                   </div>
 
-                  <div className="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+                  <div className="mt-4 pt-3 border-t border-[var(--border-default)]/80 flex items-center justify-between text-xs">
                     <div>
-                      <span className="text-slate-500">Exposures: </span>
-                      <span className="font-mono-num font-semibold text-slate-200">
+                      <span className="text-[var(--text-faint)]">Exposures: </span>
+                      <span className="font-mono-num font-semibold text-[var(--text-primary)]">
                         {company.documented_exposure_count ?? 0}
                       </span>
                     </div>
                     <div className="flex items-center gap-1.5">
                       <button
                         onClick={() => setInspectCompany(company)}
-                        className="text-slate-400 hover:text-white px-2 py-0.5 rounded bg-slate-800"
+                        className="text-[var(--text-muted)] hover:text-white px-2 py-0.5 rounded bg-[var(--bg-elevated)]"
                       >
                         Inspect
                       </button>
@@ -501,7 +501,7 @@ export default function CompaniesContent() {
           <div className="space-y-5 text-sm">
             {/* Header badges */}
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-xs font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-200 border border-slate-700">
+              <span className="text-xs font-mono px-2 py-0.5 rounded bg-[var(--bg-elevated)] text-[var(--text-primary)] border border-[var(--border-strong)]">
                 {inspectCompany.ticker_nse ? `NSE: ${inspectCompany.ticker_nse}` : inspectCompany.isin}
               </span>
               {inspectCompany.is_quant_eligible || inspectCompany.universe_type === "quantitative" ? (
@@ -516,25 +516,25 @@ export default function CompaniesContent() {
             </div>
 
             {/* Core attributes */}
-            <div className="p-3.5 rounded-lg bg-slate-900 border border-slate-800 space-y-2.5">
+            <div className="p-3.5 rounded-lg bg-[var(--bg-card)] border border-[var(--border-default)] space-y-2.5">
               <div className="flex justify-between">
-                <span className="text-xs text-slate-400">Sector</span>
-                <span className="text-xs font-medium text-slate-200">{inspectCompany.sector || "—"}</span>
+                <span className="text-xs text-[var(--text-muted)]">Sector</span>
+                <span className="text-xs font-medium text-[var(--text-primary)]">{inspectCompany.sector || "—"}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-xs text-slate-400">Industry</span>
-                <span className="text-xs font-medium text-slate-200">{inspectCompany.industry || "—"}</span>
+                <span className="text-xs text-[var(--text-muted)]">Industry</span>
+                <span className="text-xs font-medium text-[var(--text-primary)]">{inspectCompany.industry || "—"}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-xs text-slate-400">Headquarters</span>
-                <span className="text-xs font-medium text-slate-200">{inspectCompany.hq_state || "India"}</span>
+                <span className="text-xs text-[var(--text-muted)]">Headquarters</span>
+                <span className="text-xs font-medium text-[var(--text-primary)]">{inspectCompany.hq_state || "India"}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-xs text-slate-400">Listing Status</span>
-                <span className="text-xs font-medium text-slate-200">{inspectCompany.listing_status || "—"}</span>
+                <span className="text-xs text-[var(--text-muted)]">Listing Status</span>
+                <span className="text-xs font-medium text-[var(--text-primary)]">{inspectCompany.listing_status || "—"}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-xs text-slate-400">Documented Exposures</span>
+                <span className="text-xs text-[var(--text-muted)]">Documented Exposures</span>
                 <span className="text-xs font-mono-num font-semibold text-indigo-300">
                   {inspectCompany.documented_exposure_count ?? 0}
                 </span>
@@ -557,7 +557,7 @@ export default function CompaniesContent() {
             <div className="pt-2">
               <Link
                 href={`/companies/${inspectCompany.company_id || inspectCompany.isin}`}
-                className="w-full inline-flex items-center justify-center gap-2 px-4 py-2 text-xs font-medium text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg transition-colors"
+                className="w-full inline-flex items-center justify-center gap-2 px-4 py-2 text-xs font-medium text-[var(--text-primary)] bg-indigo-600 hover:bg-indigo-500 rounded-lg transition-colors"
               >
                 <span>Open Full Company Dossier</span>
                 <span>→</span>

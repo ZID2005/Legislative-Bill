@@ -1,20 +1,20 @@
 /**
  * app/monitoring/MonitoringCenterContent.tsx
  * ===========================================
- * Full client component for the Legislative Monitoring & Discovery Center.
+ * Legislative Monitoring & Observability Center (Task 1.11A Redesign).
  *
- * Tabs:
- *   Overview | Sources | Check History | Detected Changes | Discovery Feed | AI Analyst
- *
- * All data flows from existing /api/v1/monitoring/* endpoints.
- * No automatic stock prediction. State predictions remain strictly 0.
- *
- * Task 8.14.9 — Legislative Monitoring & Discovery Center.
+ * Implements:
+ * - 3-Level Information Architecture (Overview, Detail, Diagnostics)
+ * - Restrained editorial-finance aesthetic adhering to SEANCE_DESIGN_SYSTEM.md
+ * - Factual telemetry from /api/v1/monitoring/* and /api/v1/freshness
+ * - Strict Central vs State statutory firewall (State stock predictions permanently 0)
+ * - Full URL search parameter synchronization for tab and drawer state
  */
 
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef, useTransition } from "react";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import type {
   ChangeEventDetail,
   MonitoringOverview,
@@ -34,6 +34,7 @@ import { DiscoveryFeed } from "@/components/monitoring/DiscoveryFeed";
 import { SchedulerPanel } from "@/components/monitoring/SchedulerPanel";
 import { ChangeDetailDrawer } from "@/components/monitoring/ChangeDetailDrawer";
 import { MonitoringAIAnalyst } from "@/components/monitoring/MonitoringAIAnalyst";
+import { cn } from "@/lib/utils";
 
 // ---------------------------------------------------------------------------
 // Tab definitions
@@ -48,14 +49,21 @@ type TabId =
   | "scheduler"
   | "ai";
 
-const TABS: { id: TabId; label: string; icon: string }[] = [
-  { id: "overview", label: "Overview", icon: "📊" },
-  { id: "sources", label: "Sources", icon: "🔌" },
-  { id: "history", label: "Check History", icon: "🕐" },
-  { id: "changes", label: "Detected Changes", icon: "🔄" },
-  { id: "discovery", label: "Discovery Feed", icon: "📡" },
-  { id: "scheduler", label: "Scheduler", icon: "⏱" },
-  { id: "ai", label: "AI Analyst", icon: "🤖" },
+interface TabItem {
+  id: TabId;
+  label: string;
+  glyph: string;
+  description: string;
+}
+
+const TABS: TabItem[] = [
+  { id: "overview", label: "Overview", glyph: "◉", description: "Operational telemetry & pipeline freshness" },
+  { id: "sources", label: "Sources", glyph: "🔌", description: "Configured central & state portals" },
+  { id: "history", label: "Check History", glyph: "⏱", description: "Audit trail of surveillance runs" },
+  { id: "changes", label: "Detected Changes", glyph: "🔄", description: "Verified legislative deltas & diffs" },
+  { id: "discovery", label: "Discovery Feed", glyph: "📡", description: "Intake stream of gazetted enactments" },
+  { id: "scheduler", label: "Scheduler", glyph: "⚙", description: "Surveillance thread & run controls" },
+  { id: "ai", label: "AI Analyst", glyph: "✦", description: "Grounded surveillance inquiry assistant" },
 ];
 
 // ---------------------------------------------------------------------------
@@ -63,7 +71,19 @@ const TABS: { id: TabId; label: string; icon: string }[] = [
 // ---------------------------------------------------------------------------
 
 export function MonitoringCenterContent() {
-  const [activeTab, setActiveTab] = useState<TabId>("overview");
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const [, startTransition] = useTransition();
+
+  // Read initial tab from URL search parameters
+  const initialTabParam = searchParams.get("tab") as TabId | null;
+  const initialSourceParam = searchParams.get("source");
+  const initialEventParam = searchParams.get("event");
+
+  const [activeTab, setActiveTab] = useState<TabId>(
+    initialTabParam && TABS.some((t) => t.id === initialTabParam) ? initialTabParam : "overview"
+  );
 
   // Overview
   const [overview, setOverview] = useState<MonitoringOverview | null>(null);
@@ -78,7 +98,7 @@ export function MonitoringCenterContent() {
   const [sourceJurisdiction, setSourceJurisdiction] = useState("");
 
   // Source detail drawer
-  const [selectedSourceId, setSelectedSourceId] = useState<string | null>(null);
+  const [selectedSourceId, setSelectedSourceId] = useState<string | null>(initialSourceParam ?? null);
   const [sourceDetail, setSourceDetail] = useState<MonitoringSourceDetail | null>(null);
   const [sourceDetailLoading, setSourceDetailLoading] = useState(false);
   const [sourceDetailError, setSourceDetailError] = useState<string | null>(null);
@@ -101,19 +121,36 @@ export function MonitoringCenterContent() {
   });
 
   // Change detail drawer
-  const [selectedEventId, setSelectedEventId] = useState<string | null>(null);
+  const [selectedEventId, setSelectedEventId] = useState<string | null>(initialEventParam ?? null);
   const [eventDetail, setEventDetail] = useState<ChangeEventDetail | null>(null);
   const [eventDetailLoading, setEventDetailLoading] = useState(false);
   const [eventDetailError, setEventDetailError] = useState<string | null>(null);
 
-  // Discovery feed (same data, no filters pre-applied)
+  // Discovery feed
   const [discovery, setDiscovery] = useState<PaginatedResponse<ChangeEventDetail> | null>(null);
   const [discoveryLoading, setDiscoveryLoading] = useState(false);
   const [discoveryError, setDiscoveryError] = useState<string | null>(null);
   const [discoveryPage, setDiscoveryPage] = useState(1);
 
+  // Synchronize tab and drawer state from URL strictly on actual searchParams changes (e.g. browser back/forward)
+  const prevSearchParamsRef = useRef<string>(searchParams ? searchParams.toString() : "");
+  useEffect(() => {
+    const currentQs = searchParams ? searchParams.toString() : "";
+    if (currentQs === prevSearchParamsRef.current) return;
+    prevSearchParamsRef.current = currentQs;
+
+    const urlTab = searchParams.get("tab") as TabId | null;
+    if (urlTab && TABS.some((t) => t.id === urlTab)) {
+      setActiveTab(urlTab);
+    }
+    const urlSource = searchParams.get("source");
+    setSelectedSourceId(urlSource);
+    const urlEvent = searchParams.get("event");
+    setSelectedEventId(urlEvent);
+  }, [searchParams]);
+
   // ---------------------------------------------------------------------------
-  // Data fetching — Tab-gated for performance
+  // Data fetching
   // ---------------------------------------------------------------------------
 
   const fetchOverview = useCallback(async () => {
@@ -215,48 +252,99 @@ export function MonitoringCenterContent() {
     if (activeTab === "discovery") fetchDiscovery();
   }, [activeTab, fetchDiscovery]);
 
-  // ---------------------------------------------------------------------------
   // Source detail fetch
-  // ---------------------------------------------------------------------------
-
   useEffect(() => {
-    if (!selectedSourceId) return;
+    if (!selectedSourceId) {
+      setSourceDetail(null);
+      return;
+    }
     setSourceDetailLoading(true);
     setSourceDetailError(null);
-    monitoringApi.getSource(selectedSourceId).then((d) => {
-      setSourceDetail(d);
-    }).catch((e: unknown) => {
-      setSourceDetailError((e as Error).message ?? "Failed to load source detail");
-    }).finally(() => setSourceDetailLoading(false));
+    monitoringApi.getSource(selectedSourceId)
+      .then((d) => setSourceDetail(d))
+      .catch((e: unknown) => setSourceDetailError((e as Error).message ?? "Failed to load source detail"))
+      .finally(() => setSourceDetailLoading(false));
   }, [selectedSourceId]);
 
-  // ---------------------------------------------------------------------------
   // Change event detail fetch
-  // ---------------------------------------------------------------------------
-
   useEffect(() => {
-    if (!selectedEventId) return;
+    if (!selectedEventId) {
+      setEventDetail(null);
+      return;
+    }
     setEventDetailLoading(true);
     setEventDetailError(null);
-    monitoringApi.getChangeDetail(selectedEventId).then((d) => {
-      setEventDetail(d);
-    }).catch((e: unknown) => {
-      setEventDetailError((e as Error).message ?? "Failed to load change detail");
-    }).finally(() => setEventDetailLoading(false));
+    monitoringApi.getChangeDetail(selectedEventId)
+      .then((d) => setEventDetail(d))
+      .catch((e: unknown) => setEventDetailError((e as Error).message ?? "Failed to load change detail"))
+      .finally(() => setEventDetailLoading(false));
   }, [selectedEventId]);
 
   // ---------------------------------------------------------------------------
-  // Handlers
+  // URL Parameter Synchronization Handlers
   // ---------------------------------------------------------------------------
+
+  const updateUrlParams = useCallback((updater: (params: URLSearchParams) => void) => {
+    try {
+      const params = new URLSearchParams(searchParams ? searchParams.toString() : "");
+      updater(params);
+      const qs = params.toString();
+      const target = qs ? `${pathname}?${qs}` : pathname;
+      if (router && typeof router.replace === "function") {
+        router.replace(target, { scroll: false });
+      } else if (router && typeof router.push === "function") {
+        router.push(target);
+      }
+    } catch {
+      // Ignore navigation update errors in test or SSR environments
+    }
+  }, [router, pathname, searchParams]);
+
+  const handleTabChange = (tab: TabId) => {
+    setActiveTab(tab);
+    startTransition(() => {
+      updateUrlParams((params) => {
+        params.set("tab", tab);
+      });
+    });
+  };
 
   const handleSourceClick = (source: MonitoringSourceItem) => {
     setSelectedSourceId(source.source_id);
     setSourceDetail(null);
+    startTransition(() => {
+      updateUrlParams((params) => {
+        params.set("source", source.source_id);
+      });
+    });
+  };
+
+  const handleCloseSourceDrawer = () => {
+    setSelectedSourceId(null);
+    startTransition(() => {
+      updateUrlParams((params) => {
+        params.delete("source");
+      });
+    });
   };
 
   const handleEventClick = (event: ChangeEventDetail) => {
     setSelectedEventId(event.event_id);
     setEventDetail(null);
+    startTransition(() => {
+      updateUrlParams((params) => {
+        params.set("event", event.event_id);
+      });
+    });
+  };
+
+  const handleCloseEventDrawer = () => {
+    setSelectedEventId(null);
+    startTransition(() => {
+      updateUrlParams((params) => {
+        params.delete("event");
+      });
+    });
   };
 
   const handleChangeFilterChange = (f: Partial<typeof changesFilters>) => {
@@ -269,53 +357,73 @@ export function MonitoringCenterContent() {
   // ---------------------------------------------------------------------------
 
   return (
-    <div className="p-4 md:p-6 space-y-5 max-w-[1400px] mx-auto">
-      {/* Page header */}
-      <header>
-        <div className="flex items-start justify-between gap-4 flex-wrap mb-1">
-          <div>
-            <h1 className="text-xl font-bold text-slate-100">
+    <div className="p-4 md:p-6 space-y-6 max-w-[1400px] mx-auto min-h-screen">
+      {/* Editorial Page Header */}
+      <header className="border-b border-[var(--border-hairline)] pb-4">
+        <div className="flex items-start justify-between gap-4 flex-wrap">
+          <div className="space-y-1">
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-mono font-semibold uppercase tracking-wider text-blue-400">
+                Observability Center
+              </span>
+              <span className="text-[var(--text-faint)]">/</span>
+              <span className="text-xs font-mono text-[var(--text-faint)] uppercase">
+                Continuous Ingestion
+              </span>
+            </div>
+            <h1 className="text-2xl font-bold tracking-tight text-[var(--text-primary)]">
               Legislative Monitoring & Discovery Center
             </h1>
-            <p className="text-sm text-slate-400 mt-0.5">
-              Real-time legislative change detection · Central Parliament + State Assemblies
+            <p className="text-xs sm:text-sm text-[var(--text-muted)] max-w-3xl leading-relaxed">
+              Real-time legislative change detection across Central Parliament and 4 Sub-National State Assemblies (AP, KA, KL, TS). State legislative monitoring produces zero quantitative stock predictions.
             </p>
           </div>
-          <div className="flex items-center gap-2 text-xs text-slate-500 bg-slate-900/60 border border-slate-800 rounded-lg px-3 py-2">
-            <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true" />
-            System operational · Additive monitoring only
+
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 text-xs font-mono text-[var(--text-secondary)] bg-[var(--bg-card)] border border-[var(--border-hairline)] rounded-lg px-3 py-2 shadow-xs">
+              <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true" />
+              <span>Surveillance active</span>
+            </div>
           </div>
         </div>
       </header>
 
-      {/* Jurisdiction Banner */}
+      {/* Mandatory Jurisdiction & Firewall Banner */}
       <JurisdictionBanner variant="compact" />
 
-      {/* Tab Navigation */}
-      <nav role="tablist" aria-label="Monitoring center sections" className="flex items-center gap-1 border-b border-slate-800 overflow-x-auto pb-0">
-        {TABS.map((tab) => (
-          <button
-            key={tab.id}
-            id={`tab-${tab.id}`}
-            role="tab"
-            aria-selected={activeTab === tab.id}
-            aria-controls={`panel-${tab.id}`}
-            onClick={() => setActiveTab(tab.id)}
-            className={`flex items-center gap-1.5 px-4 py-2.5 text-sm font-medium border-b-2 transition-colors whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 ${
-              activeTab === tab.id
-                ? "border-blue-500 text-blue-400"
-                : "border-transparent text-slate-500 hover:text-slate-300 hover:border-slate-600"
-            }`}
-          >
-            <span aria-hidden="true">{tab.icon}</span>
-            {tab.label}
-          </button>
-        ))}
+      {/* Tab Navigation Segmented Bar */}
+      <nav
+        role="tablist"
+        aria-label="Monitoring center sections"
+        className="flex items-center gap-1 border-b border-[var(--border-hairline)] overflow-x-auto pb-0 -mb-2"
+      >
+        {TABS.map((tab) => {
+          const isSelected = activeTab === tab.id;
+          return (
+            <button
+              key={tab.id}
+              id={`tab-${tab.id}`}
+              role="tab"
+              aria-selected={isSelected}
+              aria-controls={`panel-${tab.id}`}
+              onClick={() => handleTabChange(tab.id)}
+              className={cn(
+                "flex items-center gap-2 px-3.5 py-2.5 text-xs font-mono font-semibold border-b-2 transition-all whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 select-none",
+                isSelected
+                  ? "border-blue-500 text-blue-400 bg-[var(--bg-surface)]/60 rounded-t-md"
+                  : "border-transparent text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:border-[var(--border-strong)]"
+              )}
+            >
+              <span aria-hidden="true" className="text-xs">{tab.glyph}</span>
+              <span>{tab.label}</span>
+            </button>
+          );
+        })}
       </nav>
 
       {/* Tab Panels */}
       <main>
-        {/* Overview */}
+        {/* Overview Tab Panel */}
         <section
           id="panel-overview"
           role="tabpanel"
@@ -327,10 +435,11 @@ export function MonitoringCenterContent() {
             data={overview}
             loading={overviewLoading}
             error={overviewError}
+            onTriggerPoll={fetchOverview}
           />
         </section>
 
-        {/* Sources */}
+        {/* Sources Registry Tab Panel */}
         <section
           id="panel-sources"
           role="tabpanel"
@@ -349,7 +458,7 @@ export function MonitoringCenterContent() {
           />
         </section>
 
-        {/* Check History */}
+        {/* Check History Tab Panel */}
         <section
           id="panel-history"
           role="tabpanel"
@@ -365,7 +474,7 @@ export function MonitoringCenterContent() {
           />
         </section>
 
-        {/* Detected Changes */}
+        {/* Detected Changes Tab Panel */}
         <section
           id="panel-changes"
           role="tabpanel"
@@ -384,17 +493,15 @@ export function MonitoringCenterContent() {
           />
         </section>
 
-        {/* Discovery Feed */}
+        {/* Discovery Feed Tab Panel */}
         <section
           id="panel-discovery"
           role="tabpanel"
           aria-labelledby="tab-discovery"
           hidden={activeTab !== "discovery"}
-          className="animate-fade-in"
+          className="animate-fade-in space-y-4"
         >
-          <div className="mb-4">
-            <JurisdictionBanner variant="full" />
-          </div>
+          <JurisdictionBanner variant="full" />
           <DiscoveryFeed
             data={discovery}
             loading={discoveryLoading}
@@ -404,7 +511,7 @@ export function MonitoringCenterContent() {
           />
         </section>
 
-        {/* Scheduler */}
+        {/* Scheduler Tab Panel */}
         <section
           id="panel-scheduler"
           role="tabpanel"
@@ -419,7 +526,7 @@ export function MonitoringCenterContent() {
           />
         </section>
 
-        {/* AI Analyst */}
+        {/* AI Analyst Tab Panel */}
         <section
           id="panel-ai"
           role="tabpanel"
@@ -427,7 +534,7 @@ export function MonitoringCenterContent() {
           hidden={activeTab !== "ai"}
           className="animate-fade-in"
         >
-          <MonitoringAIAnalyst className="min-h-[500px]" />
+          <MonitoringAIAnalyst className="min-h-[520px]" />
         </section>
       </main>
 
@@ -437,7 +544,7 @@ export function MonitoringCenterContent() {
         data={sourceDetail}
         loading={sourceDetailLoading}
         error={sourceDetailError}
-        onClose={() => setSelectedSourceId(null)}
+        onClose={handleCloseSourceDrawer}
       />
 
       {/* Change Detail Drawer */}
@@ -446,7 +553,7 @@ export function MonitoringCenterContent() {
         data={eventDetail}
         loading={eventDetailLoading}
         error={eventDetailError}
-        onClose={() => setSelectedEventId(null)}
+        onClose={handleCloseEventDrawer}
       />
     </div>
   );
